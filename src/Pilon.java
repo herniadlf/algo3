@@ -1,5 +1,5 @@
 package src;
 
-public class Pilon extends Construible {
+public class Pilon extends Construccion {
 
 }

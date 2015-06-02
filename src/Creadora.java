@@ -1,10 +1,10 @@
 package src;
 import java.util.ArrayList;
 
-
-
-public class Creadora extends Construccion {
+public abstract class Creadora extends Construccion {
+	
 	ArrayList<Unidad> unidadesCreables;
 	
-	public void crearUnidad(){}; 
+	public void crearUnidad(){};
+	
 }

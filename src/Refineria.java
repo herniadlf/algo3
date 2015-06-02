@@ -1,5 +1,5 @@
 package src;
 
-public class Refineria extends Construible {
+public class Refineria extends Construccion{
 
 }

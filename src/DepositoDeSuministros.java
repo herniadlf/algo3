@@ -1,5 +1,5 @@
 package src;
 
-public class DepositoDeSuministros extends Construible {
+public class DepositoDeSuministros extends Construccion {
 
 }

@@ -1,6 +1,6 @@
 package src;
 
-public class Unidad implements Mapeable{
+public abstract class Unidad implements Mapeable{
 	
 	private String nombre;
 	private int transporte;
