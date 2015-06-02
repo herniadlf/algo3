@@ -8,7 +8,23 @@ import java.util.Map;
 
 public class Mapa {
 
-	private Map<Posicion,Contenido> mapa;
+	private Map<Posicion,Mapeable> mapa;
 	private int tamanio;
+	
+	private static Mapa INSTANCE = null;
+	
+	private Mapa (){};
+	
+	private synchronized static void createInstance() {
+		if (INSTANCE == null) { 
+	       INSTANCE = new Mapa();
+	    }
+	}
+
+	public static Mapa getInstance() {
+	    if (INSTANCE == null) 
+	    	createInstance();
+	    return INSTANCE;
+	}
 		
 }
