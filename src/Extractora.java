@@ -1,7 +1,7 @@
 package src;
 
 public class Extractora extends Construccion {
-		Recurso recurso;
+		FuenteDeRecurso recurso;
 		
 		public void extraer(){};
 }

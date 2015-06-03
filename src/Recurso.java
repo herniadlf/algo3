@@ -1,29 +1,14 @@
 package src;
 
-
-public class Recurso implements Mapeable {
-	//private int cantidad;
+public abstract class Recurso {
 	
-	public Recurso colocarContenido(){
-		return null;
+	int cantidad;
+	public void setCantidad(int numero){
+		cantidad = numero;
 	}
-
-	@Override
-	public Mapeable dibujar() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Mapeable quitarContenido() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Mapeable mover() {
-		// TODO Auto-generated method stub
-		return null;
+	public int getCantidad(){
+		return cantidad;
 	}
 	
 }
+

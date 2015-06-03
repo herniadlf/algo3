@@ -1,3 +1,4 @@
+package src;
 
 public class Vida {
 
@@ -6,21 +7,19 @@ public class Vida {
 	public Vida (int vidaDeUnidad){
 		this.vida = vidaDeUnidad;
 		
-		}
+	}
 	
 	public void recibirDanio(int danio){
 		this.vida = this.vida - danio;
 		
- }
+	}
 	
 	public int obtenerVida(){
 		return this.vida;
 		
-		}
+	}
 	
-	
-	
-	
+		
 	
 	
 }
