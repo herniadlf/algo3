@@ -8,4 +8,12 @@ public class Barraca extends Creadora {
 		//setCosto(ConstantesAlgoCraft.COSTO_MINERALES_BARRACA,0);
 		setCosto(150,0);
 	}
+	
+	public Marine crearMarine(){
+		
+		Marine marine = new Marine();
+		return marine;
+		
+	}
+	
 }

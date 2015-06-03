@@ -1,9 +1,9 @@
-
+package src;
 
 public class Zealot extends Unidad {
 
 	private Vida vida; 
-	 private Danio danio;
+	private Danio danio;
 	
 	public Zealot (){
 		

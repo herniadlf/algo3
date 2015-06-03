@@ -1,3 +1,4 @@
+package src;
 
 public class Marine extends Unidad {
 
@@ -8,8 +9,6 @@ public class Marine extends Unidad {
 		
 		this.vida = new Vida (40);
 		this.danio= new Danio();
-		
-		
 		
 	}
 	
@@ -127,8 +126,8 @@ public class Marine extends Unidad {
 
 	@Override
 	public Vida getVida() {
-		// TODO Auto-generated method stub
-		return super.vida;
+	
+		return vida;
 	}
 
 	@Override
@@ -137,11 +136,11 @@ public class Marine extends Unidad {
 		return super.danio;
 	}
 	
-	public void atacar (Vida vida){
+	//public void atacar (Vida vida){
 	
-		vida.recibirDanio(this.getDanio());
+	//	vida.recibirDanio(this.getDanio());
 
-	} 
+	//} 
 	
 
 }
