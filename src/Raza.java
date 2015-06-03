@@ -6,5 +6,9 @@ public class Raza {
 
 		private ArrayList<Unidad> unidades;
 		private ArrayList<Construccion> construcciones;
-			
+		
+		
+		
 }
+
+public 
