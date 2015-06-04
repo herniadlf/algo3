@@ -4,15 +4,15 @@ import src.Danio;
 import src.Vida;
 import src.mapa.Mapeable;
 
-
 public class Marine extends Unidad {
 
-	private Vida vida; 
-	private Danio danio;
 	
-	public Marine (){		
-		vida = new Vida(40);
-		danio = new Danio();
+	
+	public Marine (){
+		
+		super.vida = new Vida (40);
+		super.danio= new Danio();
+		
 	}
 	
 	@Override
@@ -130,7 +130,7 @@ public class Marine extends Unidad {
 	@Override
 	public Vida getVida() {
 	
-		return vida;
+		return super.vida;
 	}
 
 	@Override
@@ -139,11 +139,29 @@ public class Marine extends Unidad {
 		return super.danio;
 	}
 	
-	//public void atacar (Vida vida){
+	public void atacarEnAire (Unidad unidad){
+		
+		unidad.recibirDanio((super.danio.getDanioAire()));
+		
+		
+} 
 	
-	//	vida.recibirDanio(this.getDanio());
+	public void recibirDanio (int danio){
+		
+		
+		
+			super.vida.recibirDanio(danio);
+			
+			}
 
-	//} 
+	@Override
+	public void atacarEnTierra(Unidad unidad) {
+		// TODO Auto-generated method stub
+		
+		unidad.recibirDanio((this.getDanio()).getDanioTierra());
+		
+		
+	}
 	
 
 }

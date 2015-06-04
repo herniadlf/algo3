@@ -1,5 +1,4 @@
 package src;
-
 public class Vida {
 
 	private int vida;
@@ -18,6 +17,7 @@ public class Vida {
 		return this.vida;
 		
 	}
+	
 	
 		
 	

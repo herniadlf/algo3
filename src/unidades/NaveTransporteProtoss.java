@@ -138,4 +138,22 @@ public class NaveTransporteProtoss extends Unidad {
 		return null;
 	}
 
+	@Override
+	public void atacarEnTierra(Unidad unidad) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void atacarEnAire(Unidad unidad) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void recibirDanio(int Danio) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

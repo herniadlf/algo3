@@ -1,5 +1,6 @@
 package src.unidades;
 
+
 import src.Danio;
 import src.Vida;
 import src.mapa.Mapeable;
@@ -7,13 +8,12 @@ import src.mapa.Mapeable;
 
 public class Zealot extends Unidad {
 
-	private Vida vida; 
-	private Danio danio;
+
 	
 	public Zealot (){
 		
-		this.vida = new Vida (40);
-		this.danio= new Danio();
+		super.vida = new Vida (40);
+		super.danio= new Danio();
 		
 		
 		
@@ -80,6 +80,7 @@ public class Zealot extends Unidad {
 		super.vida= vida;
 		
 		
+		
 	}
 	@Override
 	public void setearDanio() {
@@ -143,13 +144,34 @@ public class Zealot extends Unidad {
 		return super.danio;
 	}
 	
-	public void atacar (Vida vida){
+	public void atacarEnAire (Unidad unidad){
 	
-		//vida.recibirDanio(this.getDanio());
+		unidad.recibirDanio((this.getDanio()).getDanioAire());
 		
-		//COMENTO PORQUE NO COMPILABA - HAY QUE ARREGLAR - PEPE
+		
+} 
+	
+	public void recibirDanio (int danio){
+		
+		
+		if(danio> 60){
+			this.vida.recibirDanio(danio);
+			
+			}
+		
+		
+		
+		
+	}
 
-	} 
+	@Override
+	public void atacarEnTierra(Unidad unidad) {
+		// TODO Auto-generated method stub
+		
+		unidad.recibirDanio((this.getDanio()).getDanioTierra());
+		
+		
+	}
 	
 
 }

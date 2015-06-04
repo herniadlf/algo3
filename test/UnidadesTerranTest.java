@@ -1,12 +1,14 @@
 package test;
 
+
+
+import src.unidades.*;
+
 import org.junit.Assert;
 import org.junit.Test;
 
 import src.*;
 import src.construcciones.Barraca;
-import src.construcciones.Construccion;
-import src.mapa.Posicion;
 import src.razas.Terran;
 import src.unidades.Marine;
 
@@ -25,4 +27,28 @@ public class UnidadesTerranTest {
 		
 		
 	}
+	
+	
+		
+		@Test
+		public void marineAtacaZealotSinRomperEscudo (){
+			
+			Marine marine = new Marine();
+			Zealot zealot = new Zealot ();
+			marine.atacarEnAire(zealot);
+		Vida vida= zealot.getVida();
+		Assert.assertTrue((vida.obtenerVida()) == 40);
+		
+	
+		
+		
+		
+		
+		
+		
+		
+		
+	}
+	
+	
 }

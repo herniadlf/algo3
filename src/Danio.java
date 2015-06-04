@@ -21,6 +21,18 @@ public class Danio {
 		this.danioTierra = danio;
 		
 	}
+	
+	
+	public int getDanioAire (){
+		
+		return this.danioAire;
+		
+	}
+	
+	public int getDanioTierra(){
+		return this.danioTierra;
+		
+	}
 		
 		
 		

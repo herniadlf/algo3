@@ -1,9 +1,9 @@
 package src.unidades;
 
+
 import src.Danio;
 import src.Vida;
 import src.mapa.Mapeable;
-
 
 public abstract class Unidad implements Mapeable{
 	
@@ -42,7 +42,8 @@ public abstract class Unidad implements Mapeable{
 	public abstract Vida getVida();
 	public abstract Danio getDanio();
 	
-	
-	
+	public abstract void atacarEnTierra (Unidad unidad);
+	public abstract void atacarEnAire (Unidad unidad);
+	public abstract void recibirDanio (int Danio);
 	
 }
