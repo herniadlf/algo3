@@ -11,7 +11,7 @@ import excepciones.ExcepcionPosicionInvalida;
 public class Mapa {
 
 	private Map<Posicion,Mapeable> mapa;
-	private int tamanio;
+	private int tamanio = 100;
 	
 	private static Mapa INSTANCE = null;
 	
@@ -60,11 +60,12 @@ public class Mapa {
 	}
 
 	private boolean estaDentroDeLimites(Posicion unaPosicion) {
-		return ((unaPosicion.getX() >= 0) && (unaPosicion.getX() < tamanio)
-				&& (unaPosicion.getY() >= 0) && (unaPosicion.getY() < tamanio));
+		return ((unaPosicion.getX() > 0) && (unaPosicion.getX() < this.tamanio)
+				&& (unaPosicion.getY() > 0) && (unaPosicion.getY() < this.tamanio));
 	}
 	
-	public Mapeable obtenerContenidoEnPosicion(Posicion unaPosicion){
+	public Mapeable obtenerContenidoEnPosicion(int i, int j){
+		Posicion unaPosicion = new Posicion(i,j);
 		return this.mapa.get(unaPosicion);
 	}
 	
