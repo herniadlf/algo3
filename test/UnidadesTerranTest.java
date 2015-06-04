@@ -15,23 +15,21 @@ import src.unidades.Marine;
 
 public class UnidadesTerranTest {
 	
-	@Test
-	public void marineCuesta50mineralYseCreaCon40deVida() {
+		@Test
+		public void marineCuesta50mineralYseCreaCon40deVida() {
 		
-		Jugador jugador = new Jugador("carlos","rojo", new Terran());
-		Barraca barraca = new Barraca();
-		jugador.construir(barraca); 
-		Marine marine = barraca.crearMarine();
-		Assert.assertTrue((marine.getVida().obtenerVida()) == 40);
-		//falta chequear el mineral, no continue por superposicion de conceptos en cuanto a esta implementacion
+			Jugador jugador = new Jugador("carlos","rojo", new Terran());
+			Barraca barraca = new Barraca();
+			jugador.construir(barraca); 
+			Marine marine = barraca.crearMarine();
+			
+			Assert.assertTrue((marine.getVida().obtenerVida()) == 40);
+			//falta chequear el mineral
 		
-		
-	}
-	
-		
+		}
 		
 		@Test
-		public void GolliatSeCreaCon125DeVida(){
+		public void golliatSeCreaCon125DeVida(){
 			
 			Jugador jugador = new Jugador("carlos","rojo", new Terran());
 			Fabrica fabrica = new Fabrica();
@@ -42,18 +40,24 @@ public class UnidadesTerranTest {
 			
 		}
 		
-		
 		@Test
-		public void EspectroSeCreaCon120deVida(){
+		public void espectroSeCreaCon120deVidaNaveCienciaCon200yNaveTransporteCon150(){
 			
 			Jugador jugador = new Jugador("carlos","rojo", new Terran());
 			PuertoEstelarTerran puertoEstelar = new PuertoEstelarTerran();
 			jugador.construir(puertoEstelar);
 			Espectro espectro = puertoEstelar.crearEspectro();
+			NaveCiencia naveCiencia = puertoEstelar.crearNaveCiencia();
+			NaveTransporteTerran naveTransporte = puertoEstelar.crearNaveTransporteTerran();
 			
 			Assert.assertTrue(espectro.getVida().obtenerVida() == 120);
+			Assert.assertTrue(naveCiencia.getVida().obtenerVida() == 200);
+			Assert.assertTrue(naveTransporte.getVida().obtenerVida() == 150);
 			
 		}
+		
+		
+		
 		@Test
 		public void marineAtacaZealotSinRomperEscudo (){
 			
@@ -61,11 +65,9 @@ public class UnidadesTerranTest {
 			Zealot zealot = new Zealot ();
 			marine.atacarEnAire(zealot);
 			Vida vida= zealot.getVida();
-			Assert.assertTrue((vida.obtenerVida()) == 40);
+			Assert.assertTrue((vida.obtenerVida()) == 40);	
 		
-		
-		
-	}
+		}
 	
 	
 }

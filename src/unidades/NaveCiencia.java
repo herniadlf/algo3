@@ -7,6 +7,15 @@ import src.mapa.Mapeable;
 
 public class NaveCiencia extends Unidad {
 
+	
+	public NaveCiencia(){
+		
+		vida = new Vida(200);
+		danio = new Danio();
+		
+	}
+	
+	
 	@Override
 	public Mapeable colocarContenido() {
 		// TODO Auto-generated method stub
@@ -129,8 +138,9 @@ public class NaveCiencia extends Unidad {
 
 	@Override
 	public Vida getVida() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return vida;
+		
 	}
 
 	@Override
