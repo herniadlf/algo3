@@ -6,5 +6,6 @@ public class Acceso extends Creadora {
 			super();
 			setVida(ConstantesAlgoCraft.HP_ACCESO);
 			setCosto(ConstantesAlgoCraft.COSTO_MINERALES_ACCESO,0);
+			// DE MIERDA
 		}
 }
