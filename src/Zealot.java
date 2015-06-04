@@ -140,7 +140,9 @@ public class Zealot extends Unidad {
 	
 	public void atacar (Vida vida){
 	
-		vida.recibirDanio(this.getDanio());
+		//vida.recibirDanio(this.getDanio());
+		
+		//COMENTO PORQUE NO COMPILABA - HAY QUE ARREGLAR - PEPE
 
 	} 
 	
