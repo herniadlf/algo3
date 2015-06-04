@@ -7,6 +7,14 @@ import src.mapa.Mapeable;
 
 public class Golliat extends Unidad {
 
+	
+	public Golliat() {
+		
+		vida = new Vida(125);
+		danio = new Danio();
+		
+	}
+	
 	@Override
 	public Mapeable colocarContenido() {
 		// TODO Auto-generated method stub
@@ -129,8 +137,9 @@ public class Golliat extends Unidad {
 
 	@Override
 	public Vida getVida() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return vida;
+		
 	}
 
 	@Override

@@ -11,7 +11,7 @@ public class ConstantesAlgoCraft {
 		public static final int	HP_CENTROMINERAL = 750;
 		public static final int HP_PILON = 300;
 		public static final int HP_ACCESO = 500;
-		public static final int HP_ARHICVOSTEMPLARIOS = 500;
+		public static final int HP_ARCHIVOSTEMPLARIOS = 500;
 		public static final int HP_PUERTOESTELAR_PROTOSS = 600;
 		public static final int HP_ASIMILADOR = 400;
 		public static final int HP_NEXOMINERAL = 400;

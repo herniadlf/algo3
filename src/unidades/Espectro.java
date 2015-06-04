@@ -7,6 +7,14 @@ import src.mapa.Mapeable;
 
 public class Espectro extends Unidad {
 
+	
+	public Espectro(){
+		
+		vida = new Vida(120);
+		danio = new Danio();
+		
+	}
+	
 	@Override
 	public Mapeable colocarContenido() {
 		// TODO Auto-generated method stub
@@ -129,8 +137,8 @@ public class Espectro extends Unidad {
 
 	@Override
 	public Vida getVida() {
-		// TODO Auto-generated method stub
-		return null;
+		
+		return vida;
 	}
 
 	@Override
