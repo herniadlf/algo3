@@ -3,7 +3,7 @@ package src.mapa;
 
 public class FuenteDeRecurso implements Mapeable {
 	private Posicion posicion;
-	
+	private String nombre;
 	public FuenteDeRecurso colocarContenido(){
 		return null;
 	}

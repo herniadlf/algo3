@@ -7,4 +7,5 @@ public interface Mapeable {
 	Mapeable dibujar();
 	Mapeable quitarContenido();
 	Mapeable mover();
+	String getNombre();
 }

@@ -28,8 +28,8 @@ public class Terran extends Raza {
 		construccionesPosibles.add(new Barraca());
 		construccionesPosibles.add(new DepositoDeSuministros());
 		construccionesPosibles.add(new Refineria());
-		construccionesPosibles.add(new Fabrica());
-		construccionesPosibles.add(new PuertoEstelarTerran());
+		//construccionesPosibles.add(new Fabrica());
+		//construccionesPosibles.add(new PuertoEstelarTerran());
 	}
 	
 	public Barraca construirBarraca(Posicion posicion) {

@@ -6,6 +6,10 @@ import org.junit.Test;
 import src.*;
 import src.construcciones.Barraca;
 import src.construcciones.Construccion;
+import src.construcciones.Extractora;
+import src.construcciones.NexoMineral;
+import src.construcciones.Refineria;
+import src.mapa.Mapa;
 public class ConstruccionTest {
 		
 		@Test
@@ -19,4 +23,5 @@ public class ConstruccionTest {
 				Assert.assertEquals(650, jug.getDinero().getMinerales());
 		}
 			
+
 }

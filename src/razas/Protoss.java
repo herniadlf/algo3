@@ -39,7 +39,7 @@ public class Protoss extends Raza {
 		construccionesPosibles.add(new Pilon());
 		construccionesPosibles.add(new Acceso());
 		construccionesPosibles.add(new Asimilador());
-		construccionesPosibles.add(new ArchivosTemplarios());
-		construccionesPosibles.add(new PuertoEstelarProtoss());
+		//construccionesPosibles.add(new ArchivosTemplarios());
+		//construccionesPosibles.add(new PuertoEstelarProtoss());
 	}
 }

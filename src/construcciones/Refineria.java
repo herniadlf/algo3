@@ -2,7 +2,7 @@ package src.construcciones;
 
 import src.ConstantesAlgoCraft;
 
-public class Refineria extends Construccion{
+public class Refineria extends Extractora{
 
 	public Refineria(){
 		super();

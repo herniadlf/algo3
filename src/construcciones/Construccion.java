@@ -30,11 +30,17 @@ public class Construccion implements Mapeable{
 		vida = new Vida(v); 
 	}
 	
-	private Posicion posicion;
-	public Posicion getPosicion(){ return posicion; };
-	public void setPosicion(Posicion p){
-		posicion = p;
+	private int posicionX;
+	public int getPosicion(){ return posicionX; };
+	public void setPosicion(int posX){
+		posX = p;
 	}
+	private int posicionY;
+	public int getPosicion(){ return posicionY; };
+	public void setPosicion(int posY){
+		posY = p;
+	}
+	
 	public Construccion(){}
 	
 	public Construccion colocarContenido(){
