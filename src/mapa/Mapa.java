@@ -29,7 +29,7 @@ public class Mapa {
 	
 	public Mapa() {
 		
-		this.mapa = new HashMap<>();
+		this.mapa = new HashMap<Posicion,Mapeable>();
 		for (int i = 1; i <= this.tamanio; i++) {
 			for (int j = 1; j <= this.tamanio; j++) {
 				Posicion posicion = new Posicion(i,j);
