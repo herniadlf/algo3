@@ -41,7 +41,15 @@ public class Mapa {
 	
 	public void colocarEn(int i, int j, Mapeable unElemento) {
 		Posicion posicion = new Posicion(i,j);
-		mapa.put(posicion, unElemento);
+		try {
+			this.validarCoordenadas(posicion);
+			mapa.put(posicion, unElemento);
+		}
+		catch (ExcepcionPosicionInvalida e) {
+			
+			System.out.println(e.getMessage());
+		}
+
 	}
 	
 	public boolean validarCoordenadas(Posicion unaPosicion) throws ExcepcionPosicionInvalida {
