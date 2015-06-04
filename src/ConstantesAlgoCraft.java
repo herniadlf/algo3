@@ -2,6 +2,9 @@ package src;
 
 public class ConstantesAlgoCraft {
 
+		//TAMANIO DEL MAPA
+		public static final int TAMANIO_MAPA = 500;
+	
 		//HIT POINTS EDIFICIOS (VIDA)
 		public static final int HP_SUMINISTROS = 500;
 		public static final int HP_PUERTOESTELAR_TERRAN = 1300;
