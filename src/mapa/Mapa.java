@@ -5,9 +5,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 import excepciones.ExcepcionPosicionInvalida;
 import src.ConstantesAlgoCraft;
+import src.mapa.*;
 
 public class Mapa {
 
@@ -72,6 +74,24 @@ public class Mapa {
 	public void eliminarElementoEnPosicion(Posicion unaPosicion){
 		Pasto pasto = new Pasto();
 		this.mapa.put(unaPosicion,pasto);
+	}
+	
+	public void crearCantidadDeArbolesEnMapa(int cantidadDeArboles){
+		if(cantidadDeArboles < (int)(ConstantesAlgoCraft.TAMANIO_MAPA * 0.1) ) {	//10% del tamaño del mapa
+			
+			Random random = new Random();
+			
+			for(int k = 1; k <= cantidadDeArboles; k++) {
+				
+				Arbol unArbol = new Arbol();
+				int i = random.nextInt(ConstantesAlgoCraft.TAMANIO_MAPA)+1;
+				int j = random.nextInt(ConstantesAlgoCraft.TAMANIO_MAPA)+1;
+				this.colocarEn(i, j, unArbol);
+			}
+			
+		}
+		
+		
 	}
 		
 }

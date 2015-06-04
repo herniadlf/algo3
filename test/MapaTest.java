@@ -44,5 +44,18 @@ public class MapaTest {
 		mapa.validarCoordenadas(unaPosicion);
 		
 	}
+	
+	@Test
+	public void AgregarArbolAlMapa() {
+		
+		Mapa mapa = new Mapa();
+		
+		Arbol unArbol = new Arbol();
+		
+		mapa.colocarEn(10, 10, unArbol);
+		
+		Assert.assertEquals((mapa.obtenerContenidoEnPosicion(10,10)), unArbol);
+		
+	}
 		
 }
