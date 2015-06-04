@@ -6,6 +6,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import src.mapa.Mapeable;
+import src.mapa.Posicion;
+
 public class Mapa {
 
 	private Map<Posicion,Mapeable> mapa;

@@ -1,4 +1,6 @@
-package src;
+package src.construcciones;
+
+import src.ConstantesAlgoCraft;
 
 public class CentroDeMineral extends Extractora {
 

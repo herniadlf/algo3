@@ -1,24 +1,17 @@
-package src;
+package src.unidades;
 
-public class Zealot extends Unidad {
+import src.Danio;
+import src.Vida;
+import src.mapa.Mapeable;
 
-	private Vida vida; 
-	private Danio danio;
-	
-	public Zealot (){
-		
-		this.vida = new Vida (40);
-		this.danio= new Danio();
-		
-		
-		
-	}
-	
+public class NaveTransporteProtoss extends Unidad {
+
 	@Override
 	public Mapeable colocarContenido() {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
 	@Override
 	public Mapeable dibujar() {
 		// TODO Auto-generated method stub
@@ -31,120 +24,118 @@ public class Zealot extends Unidad {
 		return null;
 	}
 
+	@Override
 	public Mapeable mover() {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
 	@Override
 	public void setearNombre() {
-		super.nombre = "Marine";
-		
+		// TODO Auto-generated method stub
+
 	}
+
 	@Override
 	public void setearTransporte() {
-		super.transporte=1;
-		
+		// TODO Auto-generated method stub
+
 	}
+
 	@Override
 	public void setearVision() {
-		super.vision= 7;
-		
+		// TODO Auto-generated method stub
+
 	}
+
 	@Override
 	public void setearCosto() {
-		super.costo= 50;
-		
+		// TODO Auto-generated method stub
+
 	}
+
 	@Override
 	public void setearTiempoDeCreacion() {
-		super.tiempoDeCreacion=3;
-		
+		// TODO Auto-generated method stub
+
 	}
+
 	@Override
 	public void setearSuministros() {
-		super.suministro=1;
-		
+		// TODO Auto-generated method stub
+
 	}
+
 	@Override
 	public void setearRangoDeAtaques() {
-		super.rangoAtaque=4;
-		
+		// TODO Auto-generated method stub
+
 	}
+
 	@Override
 	public void setearVida() {
-		super.vida= vida;
-		
-		
+		// TODO Auto-generated method stub
+
 	}
+
 	@Override
 	public void setearDanio() {
-		
-		danio.setearDanioAire(6);
-		danio.setearDanioTierra(6);
-		
+		// TODO Auto-generated method stub
+
 	}
 
 	@Override
 	public String getNombre() {
 		// TODO Auto-generated method stub
-		return super.nombre;
+		return null;
 	}
 
 	@Override
 	public int getTransporte() {
 		// TODO Auto-generated method stub
-		return super.transporte;
+		return 0;
 	}
 
 	@Override
 	public int getVision() {
 		// TODO Auto-generated method stub
-		return super.vision;
+		return 0;
 	}
 
 	@Override
 	public int getCosto() {
 		// TODO Auto-generated method stub
-		return super.costo;
+		return 0;
 	}
 
 	@Override
 	public int getTiempoDeCreacion() {
 		// TODO Auto-generated method stub
-		return super.tiempoDeCreacion;
+		return 0;
 	}
 
 	@Override
 	public int getSuministros() {
 		// TODO Auto-generated method stub
-		return super.suministro;
+		return 0;
 	}
 
 	@Override
 	public int getRangoDeAtaques() {
 		// TODO Auto-generated method stub
-		return super.rangoAtaque;
+		return 0;
 	}
 
 	@Override
 	public Vida getVida() {
 		// TODO Auto-generated method stub
-		return super.vida;
+		return null;
 	}
 
 	@Override
 	public Danio getDanio() {
 		// TODO Auto-generated method stub
-		return super.danio;
+		return null;
 	}
-	
-	public void atacar (Vida vida){
-	
-		//vida.recibirDanio(this.getDanio());
-		
-		//COMENTO PORQUE NO COMPILABA - HAY QUE ARREGLAR - PEPE
-
-	} 
-	
 
 }

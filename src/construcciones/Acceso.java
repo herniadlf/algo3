@@ -1,4 +1,6 @@
-package src;
+package src.construcciones;
+
+import src.ConstantesAlgoCraft;
 
 public class Acceso extends Creadora {
 

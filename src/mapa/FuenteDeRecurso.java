@@ -1,4 +1,4 @@
-package src;
+package src.mapa;
 
 
 public class FuenteDeRecurso implements Mapeable {

@@ -2,7 +2,10 @@ package test;
 
 import org.junit.Assert;
 import org.junit.Test;
+
 import src.*;
+import src.construcciones.Barraca;
+import src.construcciones.Construccion;
 public class ConstruccionTest {
 		
 		@Test

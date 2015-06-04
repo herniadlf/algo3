@@ -1,4 +1,8 @@
-package src;
+package src.construcciones;
+
+import src.Dinero;
+import src.Vida;
+import src.mapa.Mapeable;
 
 
 public class Construccion implements Mapeable{

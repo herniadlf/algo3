@@ -1,4 +1,9 @@
-package src;
+package src.unidades;
+
+import src.Danio;
+import src.Vida;
+import src.mapa.Mapeable;
+
 
 public abstract class Unidad implements Mapeable{
 	

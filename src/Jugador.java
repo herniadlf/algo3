@@ -1,5 +1,9 @@
 package src;
 
+import src.construcciones.Construccion;
+import src.razas.Protoss;
+import src.razas.Raza;
+
 public class Jugador {
 	
 	private String nombre;
@@ -13,9 +17,9 @@ public class Jugador {
 	private Raza raza;
 	public void setRaza(Raza r){ raza = r; }
 	
-	private int unidades;
-	public int getUnidades(){ return unidades; }
-	public void setUnidades(int numero){ unidades = numero; }
+	private int poblacion;
+	public int getPoblacion(){ return poblacion; }
+	public void setPoblacion(int numero){ poblacion = numero; }
 	
 	private Dinero dineroJugador;
 	public Dinero getDinero(){ return dineroJugador; }
@@ -27,23 +31,15 @@ public class Jugador {
 		setNombre(nombre);
 		setColor(color);
 		setRaza(raza);
-		setUnidades(10);
+		setPoblacion(10);
 		setDinero(800,400);
 	}
 	
 	public Jugador(){
-		setUnidades(10);
+		setPoblacion(10);
 		setDinero(800,400);
-	}
-		
-	//for testing
-	public void prepararParaPrueba() {
-		setDinero(400,400);
-		setUnidades(100);
-		setRaza(new Protoss());
-		setColor("rojo");
-		setNombre("jorge");
-	}
+	}		
+	
 	public void construir(Construccion edificio) {
 		int cantidadMineral = dineroJugador.getMinerales();
 		cantidadMineral = cantidadMineral - edificio.getCosto().getMinerales();
