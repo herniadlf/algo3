@@ -7,11 +7,11 @@ import java.util.List;
 import java.util.Map;
 
 import excepciones.ExcepcionPosicionInvalida;
+import src.ConstantesAlgoCraft;
 
 public class Mapa {
 
 	private Map<Posicion,Mapeable> mapa;
-	private int tamanio = 100;
 	
 	private static Mapa INSTANCE = null;
 	
@@ -30,8 +30,8 @@ public class Mapa {
 	public Mapa() {
 		
 		this.mapa = new HashMap<Posicion,Mapeable>();
-		for (int i = 1; i <= this.tamanio; i++) {
-			for (int j = 1; j <= this.tamanio; j++) {
+		for (int i = 1; i <= ConstantesAlgoCraft.TAMANIO_MAPA; i++) {
+			for (int j = 1; j <= ConstantesAlgoCraft.TAMANIO_MAPA; j++) {
 				Posicion posicion = new Posicion(i,j);
 				Pasto pasto = new Pasto();
 				mapa.put(posicion, pasto);
@@ -60,8 +60,8 @@ public class Mapa {
 	}
 
 	private boolean estaDentroDeLimites(Posicion unaPosicion) {
-		return ((unaPosicion.getX() > 0) && (unaPosicion.getX() < this.tamanio)
-				&& (unaPosicion.getY() > 0) && (unaPosicion.getY() < this.tamanio));
+		return ((unaPosicion.getX() > 0) && (unaPosicion.getX() < ConstantesAlgoCraft.TAMANIO_MAPA)
+				&& (unaPosicion.getY() > 0) && (unaPosicion.getY() < ConstantesAlgoCraft.TAMANIO_MAPA));
 	}
 	
 	public Mapeable obtenerContenidoEnPosicion(int i, int j){
