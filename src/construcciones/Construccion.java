@@ -3,6 +3,7 @@ package src.construcciones;
 import src.Dinero;
 import src.Vida;
 import src.mapa.Mapeable;
+import src.mapa.Posicion;
 
 
 public class Construccion implements Mapeable{
@@ -29,16 +30,12 @@ public class Construccion implements Mapeable{
 		vida = new Vida(v); 
 	}
 	
-	public Construccion(){}
-	
-	//for testing
-	public void prepararParaPrueba(){
-		setNombre("edificio");
-		setTiempoDeConstruccion(3);
-		setCosto(100,0);
-		setVida(800);
+	private Posicion posicion;
+	public Posicion getPosicion(){ return posicion; };
+	public void setPosicion(Posicion p){
+		posicion = p;
 	}
-	
+	public Construccion(){}
 	
 	public Construccion colocarContenido(){
 		return null;
