@@ -1,12 +1,15 @@
 package src.construcciones;
+import java.util.AbstractCollection;
 import java.util.ArrayList;
 
 import src.unidades.Unidad;
 
 public abstract class Creadora extends Construccion {
 	
-	ArrayList<Unidad> unidadesCreables;
+	AbstractCollection<Unidad> unidadesCreables;
 	
-	public void crearUnidad(){};
+	public Unidad crearUnidad(Unidad unidad){
+		return unidad;
+	};
 	
 }
