@@ -2,6 +2,7 @@ package test;
 
 
 
+import junit.framework.TestCase;
 import src.unidades.*;
 
 import org.junit.Assert;
@@ -16,12 +17,24 @@ import src.razas.Terran;
 import src.unidades.Marine;
 
 
-public class UnidadesTerranTest {
+public class UnidadesTerranTest extends TestCase{
 	
+		Mapa mapa;
+		Jugador jugador;
+	
+	
+		@Override
+		protected void setUp() throws Exception {
+			
+			super.setUp();
+			mapa = new Mapa(50);
+			jugador = new Jugador("carlos","rojo", new Terran());
+			
+			
+		}
 		@Test
-		public void marineCuesta50mineralYseCreaCon40deVida() throws ExcepcionPosicionInvalida, ExcepcionExtractoraSinRecurso {
-			Mapa mapa = new Mapa(50);
-			Jugador jugador = new Jugador("carlos","rojo", new Terran());
+		public void testmarineCuesta50mineralYseCreaCon40deVida() throws ExcepcionPosicionInvalida, ExcepcionExtractoraSinRecurso {
+
 			Barraca barraca = new Barraca();
 			try {
 				jugador.construir(barraca,mapa,3,4);
@@ -37,9 +50,8 @@ public class UnidadesTerranTest {
 		}
 		
 		@Test
-		public void golliatSeCreaCon125DeVida() throws ExcepcionPosicionInvalida, ExcepcionExtractoraSinRecurso{
-			Mapa mapa = new Mapa(50);
-			Jugador jugador = new Jugador("carlos","rojo", new Terran());
+		public void testgolliatSeCreaCon125DeVida() throws ExcepcionPosicionInvalida, ExcepcionExtractoraSinRecurso{
+		
 			Fabrica fabrica = new Fabrica();
 			try {
 				jugador.construir(fabrica,mapa,4,4);
@@ -54,9 +66,8 @@ public class UnidadesTerranTest {
 		}
 		
 		@Test
-		public void espectroSeCreaCon120deVidaNaveCienciaCon200yNaveTransporteCon150() throws ExcepcionPosicionInvalida, ExcepcionExtractoraSinRecurso{
-			Mapa mapa = new Mapa(50);
-			Jugador jugador = new Jugador("carlos","rojo", new Terran());
+		public void testespectroSeCreaCon120deVidaNaveCienciaCon200yNaveTransporteCon150() throws ExcepcionPosicionInvalida, ExcepcionExtractoraSinRecurso{
+		
 			PuertoEstelarTerran puertoEstelar = new PuertoEstelarTerran();
 			try {
 				jugador.construir(puertoEstelar,mapa,30,30);
@@ -77,7 +88,7 @@ public class UnidadesTerranTest {
 		
 		
 		@Test
-		public void marineAtacaZealotSinRomperEscudo (){
+		public void testmarineAtacaZealotSinRomperEscudo (){
 			
 			Marine marine = new Marine();
 			Zealot zealot = new Zealot ();
