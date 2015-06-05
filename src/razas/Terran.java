@@ -29,10 +29,10 @@ public class Terran extends Raza {
 		unidadesPosibles.add(new Espectro());
 		unidadesPosibles.add(new NaveCiencia());
 		unidadesPosibles.add(new NaveTransporteTerran());
-		construccionesPosibles.add(new CentroDeMineral(new FuenteDeMinerales()));
+		construccionesPosibles.add(new CentroDeMineral());
 		construccionesPosibles.add(new Barraca());
 		construccionesPosibles.add(new DepositoDeSuministros());
-		construccionesPosibles.add(new Refineria(new FuenteDeGasVespeno()));
+		construccionesPosibles.add(new Refineria());
 		// estas se habilitan una vez que se construyen los edificios requeridos
 		//construccionesPosibles.add(new Fabrica());
 		//construccionesPosibles.add(new PuertoEstelarTerran());

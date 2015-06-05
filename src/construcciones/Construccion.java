@@ -40,8 +40,27 @@ public class Construccion implements Mapeable{
 	public void setPosicionY(int posY){
 		posicionY = posY;
 	}
+	protected ConstructorStrategy constructor;
+	public void setConstructor(ConstructorStrategy c){
+		constructor=c;
+	}
+	public ConstructorStrategy getConstructor(){
+		return constructor;
+	}
 	
+	public Construccion edificioRequerido;
+	
+	public Construccion getEdificioRequerido() {
+		return edificioRequerido;
+	}
+	public void setEdificioRequerido(Construccion edificioRequerido) {
+		this.edificioRequerido = edificioRequerido;
+	}
 	public Construccion(){}
+	
+	public boolean esLoMismo(Mapeable aComparar){
+		return (this.getNombre() == aComparar.getNombre());
+	}
 	
 	public Construccion colocarContenido(){
 		return null;

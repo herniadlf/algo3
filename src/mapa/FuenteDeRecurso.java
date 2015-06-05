@@ -19,6 +19,9 @@ public class FuenteDeRecurso implements Mapeable {
 		return null;
 	}
 
+	public boolean esLoMismo(Mapeable aComparar){
+		return (this.getNombre() == aComparar.getNombre());
+	}
 	@Override
 	public Mapeable dibujar() {
 		// TODO Auto-generated method stub

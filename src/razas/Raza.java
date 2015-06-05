@@ -7,8 +7,22 @@ import src.unidades.Unidad;
 
 public abstract class Raza {
 
-		protected AbstractCollection<Unidad> unidadesPosibles;
-		protected AbstractCollection<Construccion> construccionesPosibles;
+		protected LinkedList<Unidad> unidadesPosibles;
+		protected LinkedList<Construccion> construccionesPosibles;
+		public boolean verificarEdificioPosible(Construccion c){
+			Boolean founded = false;
+			Iterator list = construccionesPosibles.iterator();
+			while ( (list.hasNext()) && (founded == false) ){
+				Construccion auxiliar = (Construccion) list.next();
+				founded = auxiliar.esLoMismo(c);
+			}
+			return founded;
+		}
+		public void actualizarEdificios(Construccion edificio) {
+			if (!verificarEdificioPosible(edificio)){
+				construccionesPosibles.add(edificio);
+			}
+		}
 					
 }
 

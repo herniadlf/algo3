@@ -2,6 +2,9 @@ package src.mapa;
 
 public class Pasto implements Mapeable{
 
+	public boolean esLoMismo(Mapeable aComparar){
+		return (this.getNombre() == aComparar.getNombre());
+	}
 	@Override
 	public Mapeable colocarContenido() {
 		// TODO Auto-generated method stub

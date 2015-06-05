@@ -7,8 +7,14 @@ import src.mapa.Mapeable;
 public abstract class Extractora extends Construccion {
 		FuenteDeRecurso fuente;
 		
-		public Extractora(FuenteDeRecurso recursoAExtraer){
-			fuente = recursoAExtraer;
+		public FuenteDeRecurso getFuente(){
+			return fuente;
+		}
+		public void setFuente(FuenteDeRecurso f){
+			fuente = f; 
+		}
+		public Extractora(){
+			setConstructor(new ConstructorExtractora());
 		}
 		public void extraer(){};
 		

@@ -45,5 +45,8 @@ public abstract class Unidad implements Mapeable{
 	public abstract void atacarEnTierra (Unidad unidad);
 	public abstract void atacarEnAire (Unidad unidad);
 	public abstract void recibirDanio (int Danio);
+	public boolean esLoMismo(Mapeable aComparar){
+		return (this.getNombre() == aComparar.getNombre());
+	}
 	
 }

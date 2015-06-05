@@ -7,6 +7,7 @@ import src.unidades.*;
 import org.junit.Assert;
 import org.junit.Test;
 
+import excepciones.ExcepcionExtractoraSinRecurso;
 import excepciones.ExcepcionPosicionInvalida;
 import src.*;
 import src.construcciones.*;
@@ -18,11 +19,16 @@ import src.unidades.Marine;
 public class UnidadesTerranTest {
 	
 		@Test
-		public void marineCuesta50mineralYseCreaCon40deVida() throws ExcepcionPosicionInvalida {
+		public void marineCuesta50mineralYseCreaCon40deVida() throws ExcepcionPosicionInvalida, ExcepcionExtractoraSinRecurso {
 			Mapa mapa = new Mapa(50);
 			Jugador jugador = new Jugador("carlos","rojo", new Terran());
 			Barraca barraca = new Barraca();
-			jugador.construir(barraca,mapa,3,4); 
+			try {
+				jugador.construir(barraca,mapa,3,4);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} 
 			Marine marine = barraca.crearMarine();
 			
 			Assert.assertTrue((marine.getVida().obtenerVida()) == 40);
@@ -31,11 +37,16 @@ public class UnidadesTerranTest {
 		}
 		
 		@Test
-		public void golliatSeCreaCon125DeVida() throws ExcepcionPosicionInvalida{
+		public void golliatSeCreaCon125DeVida() throws ExcepcionPosicionInvalida, ExcepcionExtractoraSinRecurso{
 			Mapa mapa = new Mapa(50);
 			Jugador jugador = new Jugador("carlos","rojo", new Terran());
 			Fabrica fabrica = new Fabrica();
-			jugador.construir(fabrica,mapa,4,4); 
+			try {
+				jugador.construir(fabrica,mapa,4,4);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} 
 			Golliat golliat = fabrica.crearGolliat();
 			
 			Assert.assertTrue((golliat.getVida().obtenerVida()) == 125);
@@ -43,11 +54,16 @@ public class UnidadesTerranTest {
 		}
 		
 		@Test
-		public void espectroSeCreaCon120deVidaNaveCienciaCon200yNaveTransporteCon150() throws ExcepcionPosicionInvalida{
+		public void espectroSeCreaCon120deVidaNaveCienciaCon200yNaveTransporteCon150() throws ExcepcionPosicionInvalida, ExcepcionExtractoraSinRecurso{
 			Mapa mapa = new Mapa(50);
 			Jugador jugador = new Jugador("carlos","rojo", new Terran());
 			PuertoEstelarTerran puertoEstelar = new PuertoEstelarTerran();
-			jugador.construir(puertoEstelar,mapa,30,30);
+			try {
+				jugador.construir(puertoEstelar,mapa,30,30);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			Espectro espectro = puertoEstelar.crearEspectro();
 			NaveCiencia naveCiencia = puertoEstelar.crearNaveCiencia();
 			NaveTransporteTerran naveTransporte = puertoEstelar.crearNaveTransporteTerran();

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import src.unidades.Unidad;
 
-public abstract class Creadora extends Construccion {
+public abstract class Creadora extends NoExtractora {
 	
 	AbstractCollection<Unidad> unidadesCreables;
 	
