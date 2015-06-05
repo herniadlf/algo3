@@ -1,13 +1,16 @@
 package src.construcciones;
 
+import java.util.LinkedList;
+
 import src.ConstantesAlgoCraft;
 
 public class Acceso extends Creadora {
 
 		public Acceso (){
-			super();
+			unidadesCreables = new LinkedList();
+			setNombre("Acceso");
 			setVida(ConstantesAlgoCraft.HP_ACCESO);
 			setCosto(ConstantesAlgoCraft.COSTO_MINERALES_ACCESO,0);
-			// DE MIERDA
+			setTiempoDeConstruccion(ConstantesAlgoCraft.TIEMPO_ACCESO);
 		}
 }

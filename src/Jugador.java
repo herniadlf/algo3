@@ -1,6 +1,9 @@
 package src;
 
+import excepciones.ExcepcionPosicionInvalida;
 import src.construcciones.Construccion;
+import src.construcciones.Constructor;
+import src.mapa.Mapa;
 import src.razas.Protoss;
 import src.razas.Raza;
 
@@ -40,10 +43,13 @@ public class Jugador {
 		setDinero(800,400);
 	}		
 	
-	public void construir(Construccion edificio) {
-		int cantidadMineral = dineroJugador.getMinerales();
-		cantidadMineral = cantidadMineral - edificio.getCosto().getMinerales();
-		dineroJugador.setMinerales(cantidadMineral);		
+	public void construir(Construccion edificio, Mapa map, int x, int y) throws ExcepcionPosicionInvalida {
+		Constructor encargado = new Constructor(edificio.getTiempoDeConstruccion(),x,y);
+		encargado.construir(edificio,map);
+		this.gastarPlata(edificio.getCosto());
+	}
+	private void gastarPlata(Dinero costo) {
+		dineroJugador.restar(costo);		
 	}
 	
 }

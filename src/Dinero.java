@@ -22,4 +22,8 @@ public class Dinero {
 			minerales = new Mineral(mins);
 			gasVespeno = new GasVespeno(gas);
 		}
+		public void restar(Dinero costo) {
+			minerales.setCantidad(this.getMinerales() - costo.getMinerales());		
+			gasVespeno.setCantidad(this.getGasVespeno() - costo.getGasVespeno());
+		}
 }

@@ -3,6 +3,7 @@ package test;
 import org.junit.Assert;
 import org.junit.Test;
 
+import excepciones.ExcepcionPosicionInvalida;
 import src.*;
 import src.construcciones.Barraca;
 import src.construcciones.Construccion;
@@ -14,11 +15,14 @@ public class ConstruccionTest {
 		
 		@Test
 		public void construccionExitosaPorRecursosSuficientes(){
-				Construccion edificio = new Barraca();
+				Mapa mapa = new Mapa(50);
 				Jugador jug = new Jugador(); // Jugador se crea con 800 M
 				
-						
-				jug.construir(edificio); // barraca cuesta 150 M
+				try {
+					jug.construir(new Barraca(),mapa,2,2);// BARRACA CUESTA 150 M
+				} catch (ExcepcionPosicionInvalida e) {					
+					e.printStackTrace();
+				} 
 				
 				Assert.assertEquals(650, jug.getDinero().getMinerales());
 		}

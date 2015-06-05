@@ -1,9 +1,20 @@
 package src.mapa;
 
+import src.Recurso;
+
 
 public class FuenteDeRecurso implements Mapeable {
-	private Posicion posicion;
-	private String nombre;
+	protected int posicionX;
+	protected int posicionY;
+	protected String nombre;
+	protected Recurso recurso;
+	
+	public FuenteDeRecurso(){
+		posicionX = 0;
+		posicionY = 0;
+		nombre = "Fuente de Recurso";
+	}
+	
 	public FuenteDeRecurso colocarContenido(){
 		return null;
 	}

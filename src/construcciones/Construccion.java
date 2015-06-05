@@ -31,14 +31,14 @@ public class Construccion implements Mapeable{
 	}
 	
 	private int posicionX;
-	public int getPosicion(){ return posicionX; };
-	public void setPosicion(int posX){
-		posX = p;
+	public int getPosicionX(){ return posicionX; };
+	public void setPosicionX(int posX){
+		posX = posicionX;
 	}
 	private int posicionY;
-	public int getPosicion(){ return posicionY; };
-	public void setPosicion(int posY){
-		posY = p;
+	public int getPosicionY(){ return posicionY; };
+	public void setPosicionY(int posY){
+		posicionY = posY;
 	}
 	
 	public Construccion(){}

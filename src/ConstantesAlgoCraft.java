@@ -63,9 +63,11 @@ public class ConstantesAlgoCraft {
 		public static final int TIEMPO_ARCHIVOSTEMPLARIOS = 4;
 		public static final int TIEMPO_SUMINISTROS = 5;
 		public static final int TIEMPO_FABRICA = 3;
-		
-				
-		
+		public static final int TIEMPO_EXTRACTORES = 2;
+		public static final int TIEMPO_ACCESO = 3;
+		public static final int TIEMPO_BARACA = 3;
+		public static final int TIEMPO_PILON = 5;
+		public static final int TIEMPO_PUERTOS = 4;	
 		
 		
 }

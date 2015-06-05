@@ -10,6 +10,6 @@ public abstract class Creadora extends Construccion {
 	
 	public Unidad crearUnidad(Unidad unidad){
 		return unidad;
-	};
-	
+	}
+		
 }

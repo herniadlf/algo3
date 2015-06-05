@@ -1,17 +1,20 @@
 package src.construcciones;
 
+import java.util.LinkedList;
+
 import src.ConstantesAlgoCraft;
 import src.unidades.Espectro;
 import src.unidades.NaveCiencia;
 import src.unidades.NaveTransporteTerran;
 
-public class PuertoEstelarTerran extends Construccion {
+public class PuertoEstelarTerran extends Creadora {
 
 	public PuertoEstelarTerran(){
-		
-		super();
+		unidadesCreables = new LinkedList();
+		setNombre("Puerto Estelar Terran");
 		setVida(ConstantesAlgoCraft.HP_PUERTOESTELAR_TERRAN);
-		setCosto(ConstantesAlgoCraft.COSTO_MINERALES_PUERTOESTELAR,0);
+		setCosto(ConstantesAlgoCraft.COSTO_MINERALES_PUERTOESTELAR,ConstantesAlgoCraft.COSTO_GAS_PUERTOESTELAR);
+		setTiempoDeConstruccion(ConstantesAlgoCraft.TIEMPO_PUERTOS);
 	
 	}
 	

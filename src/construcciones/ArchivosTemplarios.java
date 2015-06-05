@@ -7,7 +7,6 @@ import src.ConstantesAlgoCraft;
 public class ArchivosTemplarios extends Creadora {
 	
 	public ArchivosTemplarios(){
-		super();
 		unidadesCreables = new LinkedList();
 		setNombre("Archivos Templarios");
 		setTiempoDeConstruccion(ConstantesAlgoCraft.TIEMPO_ARCHIVOSTEMPLARIOS);

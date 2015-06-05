@@ -4,9 +4,12 @@ import src.mapa.FuenteDeRecurso;
 import src.mapa.Mapa;
 import src.mapa.Mapeable;
 
-public class Extractora extends Construccion {
-		FuenteDeRecurso recurso;
+public abstract class Extractora extends Construccion {
+		FuenteDeRecurso fuente;
 		
+		public Extractora(FuenteDeRecurso recursoAExtraer){
+			fuente = recursoAExtraer;
+		}
 		public void extraer(){};
 		
 }
