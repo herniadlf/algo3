@@ -26,4 +26,10 @@ public class Arbol implements Mapeable{
 		return null;
 	}
 
+	@Override
+	public String getNombre() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
