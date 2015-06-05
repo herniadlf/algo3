@@ -2,7 +2,9 @@ package src;
 
 public class ConstantesAlgoCraft {
 
-		//TAMANIO DEL MAPA
+		// GENERALES
+		public static final int RECURSOS_POR_TURNO = 10;
+		public static final int POBLACION_MAXIMA = 200;
 		public static final int TAMANIO_MAPA = 500;
 	
 		//HIT POINTS EDIFICIOS (VIDA)
@@ -20,7 +22,6 @@ public class ConstantesAlgoCraft {
 		public static final int HP_NEXOMINERAL = 400;
 		
 		
-	
 		// COSTOS EDIFICIOS
 		public static final int COSTO_MINERALES_REFINERIA = 100; 
 		public static final int COSTO_MINERALES_CENTROMINERAL = 100; 
@@ -58,12 +59,13 @@ public class ConstantesAlgoCraft {
 		public static final int COSTO_GAS_ALTOTEMPLARIO = 150;
 		public static final int COSTO_MINERALES_TRANSPORTE_PROTOSS = 200;
 		
-		// ATRIBUTOS UNIDADES TERRAN
+		// TIEMPOS DE CONSTRUCCION
+		public static final int TIEMPO_ARCHIVOSTEMPLARIOS = 4;
+		public static final int TIEMPO_SUMINISTROS = 5;
+		public static final int TIEMPO_FABRICA = 3;
 		
+				
 		
-		// GENERALES
-		public static final int RECURSOS_POR_TURNO = 10;
-		public static final int POBLACION_MAXIMA = 200;
 		
 		
 }
