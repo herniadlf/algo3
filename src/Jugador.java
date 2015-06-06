@@ -5,6 +5,7 @@ import excepciones.ExcepcionEdificioPrevioRequerido;
 import excepciones.ExcepcionExtractoraSinRecurso;
 import excepciones.ExcepcionNoHayLugarParaCrear;
 import excepciones.ExcepcionPosicionInvalida;
+import excepciones.ExcepcionYaHayElementoEnLaPosicion;
 import src.construcciones.Construccion;
 import src.construcciones.ConstructorStrategy;
 import src.construcciones.Creadora;
@@ -114,7 +115,7 @@ public class Jugador {
 	
 	public Unidad crearUnidad(Unidad aEntrenar, Creadora edificio, Mapa map) 
 			throws ExcepcionPosicionInvalida, ExcepcionNoHayLugarParaCrear, 
-			ExcepcionEdificioNoPuedeCrearUnidad{
+			ExcepcionEdificioNoPuedeCrearUnidad, ExcepcionYaHayElementoEnLaPosicion{
 		
 		if ( edificio.verificarUnidadCreable(aEntrenar) ){
 			this.setPoblacion( this.getPoblacion() + aEntrenar.getSuministros() );
