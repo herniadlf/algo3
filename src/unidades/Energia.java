@@ -16,5 +16,17 @@ public class Energia {
 		
 	}
 	
+	public void aumentarEnergia(int masCantidad){
+		
+		cantidad = cantidad + masCantidad;
+		
+	}
+	
+	public int obtenerCantidad(){
+		
+		return cantidad;
+		
+	}
+	
 	
 }

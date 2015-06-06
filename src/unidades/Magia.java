@@ -2,13 +2,21 @@ package src.unidades;
 
 public abstract class Magia {
 
-	int danio;
-	int energiaNecesaria;
+	protected int danio;
+	protected int energiaNecesaria;
+
 	
 	public void atacar(Unidad unidad){
 		
 		
 	}
+	
+	public int obtenerEnergiaNecesaria(){
+		
+		return energiaNecesaria;
+	
+	}
+	
 	
 	
 }

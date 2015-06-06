@@ -1,5 +1,7 @@
 package src.unidades;
 
+import java.util.ArrayList;
+
 import src.Danio;
 import src.Vida;
 import src.mapa.Mapeable;
@@ -7,6 +9,7 @@ import src.mapa.Mapeable;
 
 public class NaveCiencia extends Magica {
 
+	private static int ENERGIA_POR_TURNO = 10;
 	
 	public NaveCiencia(){
 		
@@ -18,6 +21,11 @@ public class NaveCiencia extends Magica {
 		
 	}
 	
+	public void pasoTurno(){
+		
+		energia.aumentarEnergia(ENERGIA_POR_TURNO);
+		
+	}
 	
 	@Override
 	public Mapeable colocarContenido() {
@@ -167,6 +175,39 @@ public class NaveCiencia extends Magica {
 	@Override
 	public void recibirDanio(int Danio) {
 		// TODO Auto-generated method stub
+		
+	}
+
+
+	public int obtenerEnergia() {
+	
+		return energia.obtenerCantidad(); 
+	}
+
+
+	public ArrayList<Magia> obtenerMagias() {
+		
+		return magias;
+		
+	}
+
+
+	public void atacarConEMP(Unidad unidad) {
+		
+		Magia emp = magias.get(0);
+		if(energia.obtenerCantidad() >= emp.obtenerEnergiaNecesaria()){
+			emp.atacar(unidad);
+			energia.disminuirEnergia(emp.obtenerEnergiaNecesaria());
+		}
+	}
+	
+	public void atacarConRadiacion(Unidad unidad) {
+			
+		Magia radiacion = magias.get(1);
+		if(energia.obtenerCantidad() >= radiacion.obtenerEnergiaNecesaria()){
+			radiacion.atacar(unidad);
+			energia.disminuirEnergia(radiacion.obtenerEnergiaNecesaria());
+		}	
 		
 	}
 

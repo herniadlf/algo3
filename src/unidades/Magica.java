@@ -8,8 +8,17 @@ import src.mapa.Mapeable;
 
 public abstract class Magica extends Unidad {
 
+	
 	Energia energia;
 	ArrayList<Magia> magias = new ArrayList<Magia>();
+	
+	
+	public void pasoTurno(){
+		
+		
+		
+	}
+			
 	
 	@Override
 	public Mapeable colocarContenido() {

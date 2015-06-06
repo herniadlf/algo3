@@ -2,6 +2,10 @@ package test;
 
 
 
+import java.util.ArrayList;
+
+import javax.swing.text.html.HTMLDocument.Iterator;
+
 import junit.framework.TestCase;
 import src.unidades.*;
 
@@ -92,6 +96,24 @@ public class UnidadesTerranTest extends TestCase{
 			Assert.assertTrue((vida.obtenerVida()) == 100);	
 		
 		}
-	
+		
+		public void testNaveCienciaUsaRadiacionContraEnemigoYPierde75Energia(){
+			
+			NaveCiencia naveCiencia = new NaveCiencia();
+			Dragon dragon = new Dragon();
+			
+			Assert.assertTrue(naveCiencia.obtenerEnergia() == 50);
+			
+			naveCiencia.pasoTurno();
+			naveCiencia.pasoTurno();
+			naveCiencia.pasoTurno();
+			
+			Assert.assertTrue(naveCiencia.obtenerEnergia() == 80);
+			naveCiencia.atacarConRadiacion(dragon);
+			Assert.assertTrue(naveCiencia.obtenerEnergia() == 5);
+			
+			
+		}
+		
 	
 }
