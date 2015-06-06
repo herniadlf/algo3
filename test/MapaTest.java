@@ -4,6 +4,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import excepciones.ExcepcionPosicionInvalida;
+import excepciones.ExcepcionSuperaLimenteDeArbolesPermitos;
 import src.mapa.*;
 import src.construcciones.*;
 import excepciones.*;
@@ -19,7 +20,7 @@ public class MapaTest {
 		for (int i = 1; i <= mapa.getTamanioMapa(); i++) {
 			for (int j = 1; j <= mapa.getTamanioMapa(); j++) {
 				
-				Assert.assertTrue((mapa.obtenerContenidoEnPosicion(i,j)) instanceof Pasto);
+				Assert.assertTrue((mapa.obtenerContenidoEnPosicion(i,j)).esPisable());
 			}
 		}
 	}
@@ -59,11 +60,11 @@ public class MapaTest {
 		
 		mapa.colocarEn(5, 5, unaBarraca);
 		
-		Assert.assertEquals(mapa.obtenerContenidoEnPosicion(5,5), unaBarraca);
+		Assert.assertFalse((mapa.obtenerContenidoEnPosicion(5,5)).esPisable());
 		
 		mapa.eliminarElementoEnPosicion(5,5);
 		
-		Assert.assertTrue((mapa.obtenerContenidoEnPosicion(5,5)) instanceof Pasto);
+		Assert.assertTrue((mapa.obtenerContenidoEnPosicion(5,5)).esPisable());
 		
 	}
 	
@@ -73,6 +74,39 @@ public class MapaTest {
 		Mapa mapa = new Mapa(10);
 		
 		Assert.assertEquals(mapa.distanciaEntreLosPuntos(7, 5, 4, 1), 5);
+	}
+	
+	@Test
+	public void colocarArbolesEnMapa() throws ExcepcionPosicionInvalida, ExcepcionSuperaLimenteDeArbolesPermitos {
+		
+		Mapa mapa = new Mapa(100);
+		
+		mapa.crearCantidadDeArbolesEnMapa(10);
+		
+		int casillerosNoPisables = 0;
+		
+		for (int i = 1; i <= mapa.getTamanioMapa(); i++) {
+			for (int j = 1; j <= mapa.getTamanioMapa(); j++) {
+				
+				if(!mapa.obtenerContenidoEnPosicion(i,j).esPisable()) {
+					
+					casillerosNoPisables++;
+					
+				}	
+			}
+		}
+		
+		Assert.assertEquals(casillerosNoPisables, 10);	
+		
+	}
+	
+	@Test (expected = ExcepcionSuperaLimenteDeArbolesPermitos.class)
+	public void colocarMasArbolesQueElDiezPorcientoDelMapaLanzaExcepcion() throws ExcepcionPosicionInvalida, ExcepcionSuperaLimenteDeArbolesPermitos {
+		
+	Mapa mapa = new Mapa(100);
+		
+	mapa.crearCantidadDeArbolesEnMapa(20);
+		
 	}
 		
 }
