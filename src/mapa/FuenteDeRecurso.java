@@ -45,5 +45,11 @@ public class FuenteDeRecurso implements Mapeable {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public boolean esPisable() {
+		// TODO Auto-generated method stub
+		return false;
+	}
 	
 }

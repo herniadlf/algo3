@@ -36,4 +36,10 @@ public class Arbol implements Mapeable{
 		return null;
 	}
 
+	@Override
+	public boolean esPisable() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }

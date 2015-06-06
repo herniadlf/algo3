@@ -34,6 +34,11 @@ public class Pasto implements Mapeable{
 		// TODO Auto-generated method stub
 		return null;
 	}
+	@Override
+	public boolean esPisable() {
+		// TODO Auto-generated method stub
+		return true;
+	}
 
 }
 

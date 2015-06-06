@@ -8,6 +8,7 @@ import java.util.Map;
 import java.util.Random;
 
 import excepciones.ExcepcionPosicionInvalida;
+import excepciones.ExcepcionSuperaLimenteDeArbolesPermitos;
 import src.ConstantesAlgoCraft;
 import src.mapa.*;
 
@@ -73,9 +74,9 @@ public class Mapa {
 		this.mapa.put(unaPosicion,pasto);
 	}
 	
-	public void crearCantidadDeArbolesEnMapa(int cantidadDeArboles) throws ExcepcionPosicionInvalida{
+	public void crearCantidadDeArbolesEnMapa(int cantidadDeArboles) throws ExcepcionPosicionInvalida, ExcepcionSuperaLimenteDeArbolesPermitos{
 		
-		if(cantidadDeArboles < (int)(tamanio * 0.1) ) {	  //Como máximo el 10% del tamaño del mapa
+		if(cantidadDeArboles <= (int)(tamanio * 0.1) ) {	  //Como máximo el 10% del tamaño del mapa
 			
 			Random random = new Random();
 			
@@ -85,8 +86,16 @@ public class Mapa {
 				int i = random.nextInt(tamanio)+1;  //Genero números randoms para determinar la posicion del Arbol
 				int j = random.nextInt(tamanio)+1;
 				this.colocarEn(i, j, unArbol);
-			}	
-		}		
+			}
+			
+		}
+		
+		else {
+			
+			throw new ExcepcionSuperaLimenteDeArbolesPermitos("La cantidad de arboles no debe superar el 10% del tamanio del mapa");
+			
+		}
+		
 	}
 	
 	public int distanciaEntreLosPuntos(int x1, int y1, int x2, int y2) {
