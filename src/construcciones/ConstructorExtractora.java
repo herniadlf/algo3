@@ -3,6 +3,7 @@ package src.construcciones;
 import src.mapa.Mapa;
 import excepciones.ExcepcionExtractoraSinRecurso;
 import excepciones.ExcepcionPosicionInvalida;
+import excepciones.ExcepcionYaHayElementoEnLaPosicion;
 
 public class ConstructorExtractora extends ConstructorStrategy {
 	
@@ -11,7 +12,7 @@ public class ConstructorExtractora extends ConstructorStrategy {
 	public void setConstruccion(Extractora edificio){
 		aConstruir = edificio;
 	}
-	public void construir(Mapa map,Extractora edificio) throws ExcepcionPosicionInvalida, ExcepcionExtractoraSinRecurso{
+	public void construir(Mapa map,Extractora edificio) throws ExcepcionPosicionInvalida, ExcepcionExtractoraSinRecurso, ExcepcionYaHayElementoEnLaPosicion{
 		aConstruir = edificio;
 		if ( (map.obtenerContenidoEnPosicion(aConstruir.getPosicionX(), aConstruir.getPosicionY())).esLoMismo(this.aConstruir.getFuente()) ){
 			map.colocarEn(aConstruir.getPosicionX(),aConstruir.getPosicionY(),this.aConstruir);

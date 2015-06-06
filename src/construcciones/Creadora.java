@@ -5,6 +5,7 @@ import java.util.LinkedList;
 
 import excepciones.ExcepcionNoHayLugarParaCrear;
 import excepciones.ExcepcionPosicionInvalida;
+import excepciones.ExcepcionYaHayElementoEnLaPosicion;
 import src.mapa.Mapa;
 import src.mapa.Pasto;
 import src.mapa.Posicion;
@@ -29,7 +30,7 @@ public abstract class Creadora extends NoExtractora {
 		return founded;
 	}
 
-	public void entrenarUnidad(Unidad aEntrenar,Mapa map) throws ExcepcionPosicionInvalida, ExcepcionNoHayLugarParaCrear {
+	public void entrenarUnidad(Unidad aEntrenar,Mapa map) throws ExcepcionPosicionInvalida, ExcepcionNoHayLugarParaCrear, ExcepcionYaHayElementoEnLaPosicion {
 		Posicion auxiliar = alrededores.getFirst();		
 		Boolean hayLugar = (map.obtenerContenidoEnPosicion(auxiliar.getX(), auxiliar.getY())).esLoMismo(new Pasto());		
 		Iterator list = alrededores.iterator();		

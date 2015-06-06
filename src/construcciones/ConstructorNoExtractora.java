@@ -1,6 +1,7 @@
 package src.construcciones;
 
 import excepciones.ExcepcionPosicionInvalida;
+import excepciones.ExcepcionYaHayElementoEnLaPosicion;
 import src.mapa.Mapa;
 
 public class ConstructorNoExtractora extends ConstructorStrategy {
@@ -10,7 +11,7 @@ public class ConstructorNoExtractora extends ConstructorStrategy {
 	public void setConstruccion(NoExtractora edificio){
 		aConstruir = edificio;
 	}
-	public void construir(Mapa map, NoExtractora edificio) throws ExcepcionPosicionInvalida{
+	public void construir(Mapa map, NoExtractora edificio) throws ExcepcionPosicionInvalida, ExcepcionYaHayElementoEnLaPosicion{
 			 /* se me ocurre hacer algo de este estilo...
 			  * if (tiempoDeConstruccion > 0) {
 				 	tiempoDeConstruccion = tiempoDeConstruccion - 1
