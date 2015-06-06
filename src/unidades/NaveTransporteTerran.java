@@ -74,5 +74,10 @@ public class NaveTransporteTerran extends Unidad {
 		// TODO Auto-generated method stub
 		
 	}
+	@Override
+	public boolean esPisable() {
+		// TODO Auto-generated method stub
+		return false;
+	}
 
 }

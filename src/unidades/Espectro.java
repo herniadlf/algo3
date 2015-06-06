@@ -73,4 +73,10 @@ public class Espectro extends Unidad {
 		
 	}
 
+	@Override
+	public boolean esPisable() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }

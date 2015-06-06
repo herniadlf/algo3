@@ -83,6 +83,13 @@ public class Zealot extends Unidad {
 		unidad.recibirDanio((this.getDanio()).getDanioTierra());
 		
 	}
+
+
+	@Override
+	public boolean esPisable() {
+		// TODO Auto-generated method stub
+		return false;
+	}
 	
 
 }

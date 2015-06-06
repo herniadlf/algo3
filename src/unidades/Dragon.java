@@ -75,4 +75,10 @@ public class Dragon extends Unidad {
 		
 	}
 
+	@Override
+	public boolean esPisable() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }

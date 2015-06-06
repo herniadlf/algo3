@@ -71,6 +71,12 @@ public class Marine extends Unidad {
 		
 		
 	}
+
+	@Override
+	public boolean esPisable() {
+		// TODO Auto-generated method stub
+		return false;
+	}
 	
 
 }

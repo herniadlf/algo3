@@ -72,4 +72,10 @@ public class Golliat extends Unidad {
 		
 	}
 
+	@Override
+	public boolean esPisable() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }

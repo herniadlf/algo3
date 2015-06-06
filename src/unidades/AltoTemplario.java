@@ -75,4 +75,10 @@ public class AltoTemplario extends Magica {
 		
 	}
 
+	@Override
+	public boolean esPisable() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }
