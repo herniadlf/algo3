@@ -52,13 +52,13 @@ public class Marine extends Unidad {
 	@Override
 	public void setearVision() {
 		
-		vision= 7;
+		vision = 7;
 		
 	}
 	@Override
 	public void setearCosto() {
 		
-		costo= 50;
+		costo = 50;
 		
 	}
 	@Override
@@ -82,8 +82,6 @@ public class Marine extends Unidad {
 	@Override
 	public void setearVida() {
 		
-		//vida = vida;
-		
 		
 	}
 	@Override
@@ -96,64 +94,71 @@ public class Marine extends Unidad {
 
 	@Override
 	public String getNombre() {
-		// TODO Auto-generated method stub
-		return super.nombre;
+	
+		return nombre;
+		
 	}
 
 	@Override
 	public int getTransporte() {
-		// TODO Auto-generated method stub
-		return super.transporte;
+	
+		return transporte;
+		
 	}
 
 	@Override
 	public int getVision() {
-		// TODO Auto-generated method stub
-		return super.vision;
+		
+		return vision;
+		
 	}
 
 	@Override
 	public int getCosto() {
-		// TODO Auto-generated method stub
-		return super.costo;
+	
+		return costo;
+		
 	}
 
 	@Override
 	public int getTiempoDeCreacion() {
-		// TODO Auto-generated method stub
-		return super.tiempoDeCreacion;
+	
+		return tiempoDeCreacion;
+		
 	}
 
 	@Override
 	public int getSuministros() {
-		// TODO Auto-generated method stub
-		return super.suministro;
+		
+		return suministro;
 	}
 
 	@Override
 	public int getRangoDeAtaques() {
-		// TODO Auto-generated method stub
-		return super.rangoAtaque;
+		
+		return rangoAtaque;
+		
 	}
 
 	@Override
 	public Vida getVida() {
 	
-		return super.vida;
+		return vida;
+		
 	}
 
 	@Override
 	public Danio getDanio() {
 		
 		return danio;
+		
 	}
 	
 	public void atacarEnAire (Unidad unidad){
 		
 		unidad.recibirDanio((super.danio.getDanioAire()));
-		
-		
-} 
+			
+	} 
 	
 	public void recibirDanio (int danio){
 		
