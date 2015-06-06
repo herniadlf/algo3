@@ -22,6 +22,8 @@ public class NaveCiencia extends Magica {
 	private static final int VIDA = 200;
 	private static final int VISION = 10;
 	private static final int ENERGIA = 50;
+	private static final int COSTO_MINERALES = 100;
+	private static final int COSTO_GAS = 225;
 	
 	public NaveCiencia (){
 		setCosto(ConstantesAlgoCraft.COSTO_MINERALES_NAVECIENCIA,ConstantesAlgoCraft.COSTO_GAS_NAVECIENCIA);

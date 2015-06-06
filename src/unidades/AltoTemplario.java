@@ -12,11 +12,13 @@ public class AltoTemplario extends Magica {
 	private static final int DANIO_TIERRA = 0;
 	private static final int RANGO_ATAQUE = 0;
 	private static final int SUMINISTRO = 2;
-	private static final int TIEMPO_CREACION = 5;
+	private static final int TIEMPO_CREACION = 7;
 	private static final int TRANSPORTE = 2;
 	private static final int VIDA = 40;
 	private static final int ESCUDO = 40;
 	private static final int VISION = 7;
+	private static final int COSTO_MINERALES = 50;
+	private static final int COSTO_GAS = 150;
 	
 	Escudo escudo;
 	
