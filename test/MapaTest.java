@@ -3,9 +3,11 @@ package test;
 import org.junit.Assert;
 import org.junit.Test;
 
+import excepciones.ExcepcionExtractoraSinRecurso;
 import excepciones.ExcepcionPosicionInvalida;
 import excepciones.ExcepcionSuperaLimenteDeArbolesPermitos;
 import excepciones.ExcepcionYaHayElementoEnLaPosicion;
+import src.Mineral;
 import src.mapa.*;
 import src.construcciones.*;
 import excepciones.*;
@@ -124,5 +126,23 @@ public class MapaTest {
 	mapa.crearCantidadDeArbolesEnMapa(20);
 		
 	}
+	
+	@Test
+	public void construyeExtractoraSobreRecurso() throws ExcepcionPosicionInvalida, ExcepcionYaHayElementoEnLaPosicion, ExcepcionExtractoraSinRecurso {
+		
+		Mapa mapa = new Mapa(10);
+		
+		FuenteDeMinerales unaFuenteDeMineral = new FuenteDeMinerales();
+		
+		Extractora unExtractor = new CentroDeMineral();
+	
+		mapa.colocarEn(5, 5, unaFuenteDeMineral);
+		
+		mapa.colocarExtractorEn(5, 5, unExtractor);
+		
+		Assert.assertEquals(mapa.obtenerContenidoEnPosicion(5, 5), unExtractor);
+				 
+	}
+	
 		
 }

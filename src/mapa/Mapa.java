@@ -7,10 +7,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
+import excepciones.ExcepcionExtractoraSinRecurso;
 import excepciones.ExcepcionPosicionInvalida;
 import excepciones.ExcepcionSuperaLimenteDeArbolesPermitos;
 import excepciones.ExcepcionYaHayElementoEnLaPosicion;
 import src.ConstantesAlgoCraft;
+import src.construcciones.Extractora;
 import src.mapa.*;
 
 public class Mapa {
@@ -45,6 +47,21 @@ public class Mapa {
 		this.validarPosicionSinElemento(posicion);
 		mapa.put(posicion, unElemento);
 
+	}
+	
+	public void colocarExtractorEn(int i, int j, Extractora unExtractor) throws ExcepcionPosicionInvalida, ExcepcionExtractoraSinRecurso {
+		
+		Posicion posicion = new Posicion(i,j);
+		this.validarCoordenadas(posicion);
+		if (obtenerContenidoEnPosicion(i, j).esLoMismo(unExtractor.getFuente())) {
+			
+			mapa.put(posicion, unExtractor);
+		}
+		else {
+			
+			throw new ExcepcionExtractoraSinRecurso("No se puede construir edificio extractor sin fuente de recursos.");
+		}
+		
 	}
 	
 	private void validarPosicionSinElemento(Posicion posicion) throws ExcepcionPosicionInvalida, ExcepcionYaHayElementoEnLaPosicion {
