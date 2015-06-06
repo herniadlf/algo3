@@ -3,6 +3,7 @@ package src.construcciones;
 import java.util.LinkedList;
 
 import src.ConstantesAlgoCraft;
+import src.unidades.Zealot;
 
 public class Acceso extends Creadora {
 
@@ -15,4 +16,13 @@ public class Acceso extends Creadora {
 			setTiempoDeConstruccion(ConstantesAlgoCraft.TIEMPO_ACCESO);
 			setEdificioRequerido(new Pilon());
 		}
+		
+		
+		public Zealot crearZealot(){
+			
+			Zealot zealot = new Zealot();
+			return zealot;
+			
+		}
+		
 }

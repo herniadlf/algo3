@@ -8,14 +8,19 @@ import src.mapa.Mapeable;
 
 public class Zealot extends Unidad {
 
-
+	Escudo escudo;
 	
 	public Zealot (){
 		
-		super.vida = new Vida (40);
-		super.danio= new Danio();
+		vida = new Vida (100);
+		danio= new Danio();	
+		escudo = new Escudo(60, this);
 		
+	}
+	
+	public Escudo getEscudo(){
 		
+		return escudo;
 		
 	}
 	
@@ -153,13 +158,10 @@ public class Zealot extends Unidad {
 	
 	public void recibirDanio (int danio){
 		
-		
-		if(danio> 60){
-			this.vida.recibirDanio(danio);
+		escudo.atacar(danio);
+		//if(danio> 60){
+		//	this.vida.recibirDanio(danio);
 			
-			}
-		
-		
 		
 		
 	}

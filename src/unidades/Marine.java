@@ -12,6 +12,7 @@ public class Marine extends Unidad {
 		
 		super.vida = new Vida (40);
 		super.danio= new Danio();
+		this.setearDanio();
 		
 	}
 	
@@ -38,42 +39,50 @@ public class Marine extends Unidad {
 	}
 	@Override
 	public void setearNombre() {
-		super.nombre = "Marine";
+		
+		nombre = "Marine";
 		
 	}
 	@Override
 	public void setearTransporte() {
-		super.transporte=1;
+		
+		transporte = 1;
 		
 	}
 	@Override
 	public void setearVision() {
-		super.vision= 7;
+		
+		vision= 7;
 		
 	}
 	@Override
 	public void setearCosto() {
-		super.costo= 50;
+		
+		costo= 50;
 		
 	}
 	@Override
 	public void setearTiempoDeCreacion() {
-		super.tiempoDeCreacion=3;
+		
+		tiempoDeCreacion = 3;
 		
 	}
 	@Override
 	public void setearSuministros() {
-		super.suministro=1;
+		
+		suministro = 1;
 		
 	}
 	@Override
 	public void setearRangoDeAtaques() {
-		super.rangoAtaque=4;
+		
+		rangoAtaque = 4;
 		
 	}
 	@Override
 	public void setearVida() {
-		super.vida= vida;
+		
+		//vida = vida;
 		
 		
 	}
@@ -135,8 +144,8 @@ public class Marine extends Unidad {
 
 	@Override
 	public Danio getDanio() {
-		// TODO Auto-generated method stub
-		return super.danio;
+		
+		return danio;
 	}
 	
 	public void atacarEnAire (Unidad unidad){
@@ -148,15 +157,12 @@ public class Marine extends Unidad {
 	
 	public void recibirDanio (int danio){
 		
-		
-		
-			super.vida.recibirDanio(danio);
+			vida.recibirDanio(danio);
 			
-			}
+	}
 
 	@Override
 	public void atacarEnTierra(Unidad unidad) {
-		// TODO Auto-generated method stub
 		
 		unidad.recibirDanio((this.getDanio()).getDanioTierra());
 		

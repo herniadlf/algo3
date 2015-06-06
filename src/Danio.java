@@ -30,6 +30,7 @@ public class Danio {
 	}
 	
 	public int getDanioTierra(){
+		
 		return this.danioTierra;
 		
 	}
