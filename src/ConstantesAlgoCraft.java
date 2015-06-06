@@ -19,8 +19,7 @@ public class ConstantesAlgoCraft {
 		public static final int HP_ARCHIVOSTEMPLARIOS = 500;
 		public static final int HP_PUERTOESTELAR_PROTOSS = 600;
 		public static final int HP_ASIMILADOR = 400;
-		public static final int HP_NEXOMINERAL = 400;
-		
+		public static final int HP_NEXOMINERAL = 400;	
 		
 		// COSTOS EDIFICIOS
 		public static final int COSTO_MINERALES_REFINERIA = 100; 
@@ -67,7 +66,6 @@ public class ConstantesAlgoCraft {
 		public static final int TIEMPO_ACCESO = 3;
 		public static final int TIEMPO_BARACA = 3;
 		public static final int TIEMPO_PILON = 5;
-		public static final int TIEMPO_PUERTOS = 4;	
-		
+		public static final int TIEMPO_PUERTOS = 4;		
 		
 }

@@ -5,37 +5,32 @@ public class Danio {
 	private int danioTierra;
 	private int danioAire;
 
-	public  Danio(){
+	public Danio() {
 		
 	}
 	
-	public void setearDanioAire ( int danio){
+	public void setearDanioAire(int danio) {
 		
 		this.danioAire = danio;
 		
-		
 	}
 	
-	public void setearDanioTierra (int danio){
+	public void setearDanioTierra (int danio) {
 		
 		this.danioTierra = danio;
 		
 	}
 	
-	
-	public int getDanioAire (){
+	public int getDanioAire() {
 		
 		return this.danioAire;
-		
 	}
 	
-	public int getDanioTierra(){
+	public int getDanioTierra() {
 		
 		return this.danioTierra;
 		
 	}
-		
-		
 		
 }
 	
