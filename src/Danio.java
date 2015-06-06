@@ -5,17 +5,18 @@ public class Danio {
 	private int danioTierra;
 	private int danioAire;
 
-	public Danio() {
-		
+	public Danio(int danioAire2, int danioTierra2) {
+		danioAire = danioAire2;
+		danioTierra = danioTierra2;
 	}
 	
-	public void setearDanioAire(int danio) {
+	public void setDanioAire(int danio) {
 		
 		this.danioAire = danio;
 		
 	}
 	
-	public void setearDanioTierra (int danio) {
+	public void setDanioTierra (int danio) {
 		
 		this.danioTierra = danio;
 		
