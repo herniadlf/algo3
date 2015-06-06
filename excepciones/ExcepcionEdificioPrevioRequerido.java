@@ -1,4 +1,4 @@
-package test;
+package excepciones;
 
 import excepciones.ExcepcionGeneral;
 

@@ -1,19 +1,33 @@
 package src.unidades;
 
+import src.ConstantesAlgoCraft;
 import src.Danio;
+import src.Dinero;
 import src.Vida;
 import src.mapa.Mapeable;
 
 public class Marine extends Unidad {
 
-	
-	
+	private static final int DANIO_AIRE = 6;
+	private static final int DANIO_TIERRA = 6;
+	private static final int RANGO_ATAQUE = 4;
+	private static final int SUMINISTRO = 1;
+	private static final int TIEMPO_CREACION = 3;
+	private static final int TRANSPORTE = 1;
+	private static final int VIDA = 40;
+	private static final int VISION= 7;
+	private static final int COSTO_MINERALES = 50;
+			
 	public Marine (){
-		
-		super.vida = new Vida (40);
-		super.danio= new Danio();
-		this.setearDanio();
-		
+		setCosto(COSTO_MINERALES,0);
+		setDanio(DANIO_AIRE,DANIO_TIERRA);
+		setNombre("Marine");
+		setRangoDeAtaques(RANGO_ATAQUE);
+		setSuministros(SUMINISTRO);
+		setTiempoDeCreacion(TIEMPO_CREACION);
+		setTransporte(TRANSPORTE);
+		setVida(new Vida(VIDA));
+		setVision(VISION);
 	}
 	
 	@Override
@@ -37,123 +51,7 @@ public class Marine extends Unidad {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	@Override
-	public void setearNombre() {
 		
-		nombre = "Marine";
-		
-	}
-	@Override
-	public void setearTransporte() {
-		
-		transporte = 1;
-		
-	}
-	@Override
-	public void setearVision() {
-		
-		vision = 7;
-		
-	}
-	@Override
-	public void setearCosto() {
-		
-		costo = 50;
-		
-	}
-	@Override
-	public void setearTiempoDeCreacion() {
-		
-		tiempoDeCreacion = 3;
-		
-	}
-	@Override
-	public void setearSuministros() {
-		
-		suministro = 1;
-		
-	}
-	@Override
-	public void setearRangoDeAtaques() {
-		
-		rangoAtaque = 4;
-		
-	}
-	@Override
-	public void setearVida() {
-		
-		
-	}
-	@Override
-	public void setearDanio() {
-		
-		danio.setearDanioAire(6);
-		danio.setearDanioTierra(6);
-		
-	}
-
-	@Override
-	public String getNombre() {
-	
-		return nombre;
-		
-	}
-
-	@Override
-	public int getTransporte() {
-	
-		return transporte;
-		
-	}
-
-	@Override
-	public int getVision() {
-		
-		return vision;
-		
-	}
-
-	@Override
-	public int getCosto() {
-	
-		return costo;
-		
-	}
-
-	@Override
-	public int getTiempoDeCreacion() {
-	
-		return tiempoDeCreacion;
-		
-	}
-
-	@Override
-	public int getSuministros() {
-		
-		return suministro;
-	}
-
-	@Override
-	public int getRangoDeAtaques() {
-		
-		return rangoAtaque;
-		
-	}
-
-	@Override
-	public Vida getVida() {
-	
-		return vida;
-		
-	}
-
-	@Override
-	public Danio getDanio() {
-		
-		return danio;
-		
-	}
-	
 	public void atacarEnAire (Unidad unidad){
 		
 		unidad.recibirDanio((super.danio.getDanioAire()));

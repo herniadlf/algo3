@@ -3,6 +3,7 @@ package test;
 import org.junit.Assert;
 import org.junit.Test;
 
+import excepciones.ExcepcionEdificioPrevioRequerido;
 import excepciones.ExcepcionExtractoraSinRecurso;
 import excepciones.ExcepcionPosicionInvalida;
 import src.*;
@@ -23,9 +24,9 @@ public class ConstruccionTest {
 		public void construccionExitosaPorRecursosSuficientes() throws ExcepcionEdificioPrevioRequerido{
 				Mapa mapa = new Mapa(50);
 				Jugador jug = new Jugador("carlos","rojo",new Terran()); // Jugador se crea con 800 M
-				int prueba = 0;
+			
 				try {
-					jug.construir(new Barraca(),mapa,2,2);// BARRACA CUESTA 150 M
+					Construccion barraca = jug.construir(new Barraca(),mapa,2,2);// BARRACA CUESTA 150 M
 				} catch (ExcepcionPosicionInvalida | ExcepcionExtractoraSinRecurso e) {} 
 			
 				Assert.assertEquals(650, jug.getDinero().getMinerales());
@@ -50,9 +51,9 @@ public class ConstruccionTest {
 			Mapa mapa = new Mapa(50);
 			Jugador jug = new Jugador("carlos","rojo",new Protoss());
 					
-			jug.construir(new NexoMineral(), mapa, 10, 10);
+			Construccion nexoMineral = jug.construir(new NexoMineral(), mapa, 10, 10);
 			
-			Assert.assertFalse(mapa.obtenerContenidoEnPosicion(10, 10).esLoMismo(new NexoMineral()));	
+			Assert.assertFalse(mapa.obtenerContenidoEnPosicion(10, 10).esLoMismo(nexoMineral));	
 			
 			
 		}
@@ -62,9 +63,17 @@ public class ConstruccionTest {
 			Mapa mapa = new Mapa(50);
 			Jugador jug = new Jugador("carlos","rojo",new Terran());
 		
-			jug.construir(new Fabrica(), mapa, 10, 10);			
+			Construccion fabrica = jug.construir(new Fabrica(), mapa, 10, 10);			
 			
-			Assert.assertFalse( (mapa.obtenerContenidoEnPosicion(10, 10)).esLoMismo(new Fabrica()));
+			Assert.assertFalse( (mapa.obtenerContenidoEnPosicion(10, 10)).esLoMismo(fabrica));
+			/*
+			Construccion barraca = jug.construir(new Barraca(), mapa, 2, 4);
+			fabrica = jug.construir(new Fabrica(), mapa, 10, 10);
 			
+			Assert.assertTrue( (mapa.obtenerContenidoEnPosicion(10, 10)).esLoMismo(fabrica));
+			necesita colocarse bien en el mapa!
+			*/ 
 		}
+		
+		
 }

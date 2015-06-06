@@ -2,7 +2,9 @@ package src.unidades;
 
 import java.util.ArrayList;
 
+import src.ConstantesAlgoCraft;
 import src.Danio;
+import src.Dinero;
 import src.Vida;
 import src.mapa.Mapeable;
 
@@ -11,15 +13,30 @@ public class NaveCiencia extends Magica {
 
 	private static int ENERGIA_POR_TURNO = 10;
 	
-	public NaveCiencia(){
-		
-		vida = new Vida(200);
-		danio = new Danio();
-		energia = new Energia(50);
+	private static final int DANIO_AIRE = 0;
+	private static final int DANIO_TIERRA = 0;
+	private static final int RANGO_ATAQUE = 0;
+	private static final int SUMINISTRO = 2;
+	private static final int TIEMPO_CREACION = 10;
+	private static final int TRANSPORTE = 0;
+	private static final int VIDA = 200;
+	private static final int VISION = 10;
+	private static final int ENERGIA = 50;
+	
+	public NaveCiencia (){
+		setCosto(ConstantesAlgoCraft.COSTO_MINERALES_NAVECIENCIA,ConstantesAlgoCraft.COSTO_GAS_NAVECIENCIA);
+		setDanio(DANIO_AIRE,DANIO_TIERRA);
+		setNombre("Nave Ciencia");
+		setRangoDeAtaques(RANGO_ATAQUE);
+		setSuministros(SUMINISTRO);
+		setTiempoDeCreacion(TIEMPO_CREACION);
+		setTransporte(TRANSPORTE);
+		setVida(new Vida(VIDA));
+		setVision(VISION);
+		energia = new Energia(ENERGIA);
 		magias.add(new EMP());
 		magias.add(new Radiacion());
-		
-	}
+	}	
 	
 	public void pasoTurno(){
 		
@@ -47,115 +64,6 @@ public class NaveCiencia extends Magica {
 
 	@Override
 	public Mapeable mover() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void setearNombre() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void setearTransporte() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void setearVision() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void setearCosto() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void setearTiempoDeCreacion() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void setearSuministros() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void setearRangoDeAtaques() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void setearVida() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void setearDanio() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public String getNombre() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public int getTransporte() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int getVision() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int getCosto() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int getTiempoDeCreacion() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int getSuministros() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int getRangoDeAtaques() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public Vida getVida() {
-		
-		return vida;
-		
-	}
-
-	@Override
-	public Danio getDanio() {
 		// TODO Auto-generated method stub
 		return null;
 	}

@@ -1,23 +1,41 @@
 package src.unidades;
 
 
+import src.ConstantesAlgoCraft;
 import src.Danio;
+import src.Dinero;
 import src.Vida;
 import src.mapa.Mapeable;
 
 
 public class Zealot extends Unidad {
 
+	private static final int DANIO_AIRE = 0;
+	private static final int DANIO_TIERRA = 8;
+	private static final int RANGO_ATAQUE = 1;
+	private static final int SUMINISTRO = 2;
+	private static final int TIEMPO_CREACION = 4;
+	private static final int TRANSPORTE = 2;
+	private static final int VIDA = 100;
+	private static final int ESCUDO = 60;
+	private static final int VISION= 7;
+	
 	Escudo escudo;
 	
 	public Zealot (){
+		setCosto(ConstantesAlgoCraft.COSTO_MINERALES_ZEALOT,0);
+		setDanio(DANIO_AIRE,DANIO_TIERRA);
+		setNombre("Zealot");
+		setRangoDeAtaques(RANGO_ATAQUE);
+		setSuministros(SUMINISTRO);
+		setTiempoDeCreacion(TIEMPO_CREACION);
+		setTransporte(TRANSPORTE);
+		setVida(new Vida(VIDA));
+		setVision(VISION);
+		escudo = new Escudo(ESCUDO,this); 
+	}		
+
 		
-		vida = new Vida (100);
-		danio= new Danio();	
-		escudo = new Escudo(60, this);
-		
-	}
-	
 	public Escudo getEscudo(){
 		
 		return escudo;
@@ -45,122 +63,7 @@ public class Zealot extends Unidad {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	@Override
-	public void setearNombre() {
-		
-		nombre = "Zealot";
-		
-	}
-	@Override
-	public void setearTransporte() {
-		
-		super.transporte = 2;
-		
-	}
-	@Override
-	public void setearVision() {
-		
-		vision = 7;
-		
-	}
-	@Override
-	public void setearCosto() {
-		
-		costo = 100;
-		
-	}
-	@Override
-	public void setearTiempoDeCreacion() {
-		
-		tiempoDeCreacion = 4;
-		
-	}
-	@Override
-	public void setearSuministros() {
-		
-		suministro = 2;
-		
-	}
-	@Override
-	public void setearRangoDeAtaques() {
-		
-		rangoAtaque = 1;
-		
-	}
-	@Override
-	public void setearVida() {
-		
-		
-	}
-	@Override
-	public void setearDanio() {
-		
-		danio.setearDanioTierra(8);
-		
-	}
 
-	@Override
-	public String getNombre() {
-	
-		return nombre;
-		
-	}
-
-	@Override
-	public int getTransporte() {
-		
-		return transporte;
-		
-	}
-
-	@Override
-	public int getVision() {
-		
-		return vision;
-		
-	}
-
-	@Override
-	public int getCosto() {
-		
-		return costo;
-		
-	}
-
-	@Override
-	public int getTiempoDeCreacion() {
-		
-		return tiempoDeCreacion;
-		
-	}
-
-	@Override
-	public int getSuministros() {
-		
-		return suministro;
-		
-	}
-
-	@Override
-	public int getRangoDeAtaques() {
-	
-		return rangoAtaque;
-		
-	}
-
-	@Override
-	public Vida getVida() {
-		
-		return vida;
-		
-	}
-
-	@Override
-	public Danio getDanio() {
-		
-		return danio;
-		
-	}
 	
 	public void atacarEnAire (Unidad unidad){
 	

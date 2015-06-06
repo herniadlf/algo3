@@ -1,6 +1,8 @@
 package src.unidades;
 
+import src.ConstantesAlgoCraft;
 import src.Danio;
+import src.Dinero;
 import src.Vida;
 import src.mapa.Mapeable;
 
@@ -8,14 +10,28 @@ import src.mapa.Mapeable;
 public class NaveTransporteTerran extends Unidad {
 
 	
-	public NaveTransporteTerran(){
-		
-		vida = new Vida(150);
-		danio = new Danio();
-		
-	}
-			
+	private static final int DANIO_AIRE = 0;
+	private static final int DANIO_TIERRA = 0;
+	private static final int RANGO_ATAQUE = 0;
+	private static final int SUMINISTRO = 2;
+	private static final int TIEMPO_CREACION = 5;
+	private static final int TRANSPORTE = 8;// capacidad
+	private static final int VIDA = 150;
+	private static final int VISION = 8;
 	
+	
+	public NaveTransporteTerran() {
+		
+		setCosto(ConstantesAlgoCraft.COSTO_MINERALES_TRANSPORTE_TERRAN,ConstantesAlgoCraft.COSTO_GAS_TRANSPORTE_TERRAN);
+		setDanio(DANIO_AIRE,DANIO_TIERRA);
+		setNombre("Nave Transporte");
+		setRangoDeAtaques(RANGO_ATAQUE);
+		setSuministros(SUMINISTRO);
+		setTiempoDeCreacion(TIEMPO_CREACION);
+		setTransporte(TRANSPORTE);
+		setVida(new Vida(VIDA));
+		setVision(VISION);	
+	}
 	@Override
 	public Mapeable colocarContenido() {
 		// TODO Auto-generated method stub
@@ -40,115 +56,7 @@ public class NaveTransporteTerran extends Unidad {
 		return null;
 	}
 
-	@Override
-	public void setearNombre() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void setearTransporte() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void setearVision() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void setearCosto() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void setearTiempoDeCreacion() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void setearSuministros() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void setearRangoDeAtaques() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void setearVida() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void setearDanio() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public String getNombre() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public int getTransporte() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int getVision() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int getCosto() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int getTiempoDeCreacion() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int getSuministros() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int getRangoDeAtaques() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public Vida getVida() {
-		
-		return vida;
-		
-	}
-
-	@Override
-	public Danio getDanio() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
+	
 	@Override
 	public void atacarEnTierra(Unidad unidad) {
 		// TODO Auto-generated method stub

@@ -11,9 +11,10 @@ import junit.framework.TestCase;
 
 public class UnidadesProtossTest extends TestCase{
 	
+	private Jugador jugador;
+	private Mapa mapa;
 	
-	protected void setUp() throws Exception {
-		
+	protected void setUp() throws Exception {		
 
 		super.setUp();
 		Mapa mapa = new Mapa(50);
@@ -25,7 +26,7 @@ public class UnidadesProtossTest extends TestCase{
 	public void testZealotSeCreaCon60escudoY100deVida(){
 		
 		Acceso acceso = new Acceso();
-		Zealot zealot = acceso.crearZealot();
+		Zealot zealot = acceso.crearZealot();		
 		
 		Assert.assertTrue((zealot.getVida().obtenerVida()) == 100);
 		Assert.assertTrue((zealot.getEscudo().obtenerResistenciaActual()) == 60 );

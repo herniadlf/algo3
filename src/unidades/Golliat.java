@@ -1,18 +1,33 @@
 package src.unidades;
 
+import src.ConstantesAlgoCraft;
 import src.Danio;
+import src.Dinero;
 import src.Vida;
 import src.mapa.Mapeable;
 
 
 public class Golliat extends Unidad {
 
-	
-	public Golliat() {
+	private static final int DANIO_AIRE = 10;
+	private static final int DANIO_TIERRA = 12;
+	private static final int RANGO_ATAQUE = 6;//es el rango de ataque en tierra.. pero tambien tiene rango en aire.:S
+	private static final int SUMINISTRO = 2;
+	private static final int TIEMPO_CREACION = 6;
+	private static final int TRANSPORTE = 2;
+	private static final int VIDA = 125;
+	private static final int VISION= 8;	
 		
-		vida = new Vida(125);
-		danio = new Danio();
-		
+	public Golliat (){
+		setCosto(ConstantesAlgoCraft.COSTO_MINERALES_GOLLIAT,ConstantesAlgoCraft.COSTO_GAS_GOLLIAT);
+		setDanio(DANIO_AIRE,DANIO_TIERRA);
+		setNombre("Golliat");
+		setRangoDeAtaques(RANGO_ATAQUE);
+		setSuministros(SUMINISTRO);
+		setTiempoDeCreacion(TIEMPO_CREACION);
+		setTransporte(TRANSPORTE);
+		setVida(new Vida(VIDA));
+		setVision(VISION);
 	}
 	
 	@Override
@@ -35,115 +50,6 @@ public class Golliat extends Unidad {
 
 	@Override
 	public Mapeable mover() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public void setearNombre() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void setearTransporte() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void setearVision() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void setearCosto() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void setearTiempoDeCreacion() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void setearSuministros() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void setearRangoDeAtaques() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void setearVida() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void setearDanio() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public String getNombre() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public int getTransporte() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int getVision() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int getCosto() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int getTiempoDeCreacion() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int getSuministros() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public int getRangoDeAtaques() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public Vida getVida() {
-		
-		return vida;
-		
-	}
-
-	@Override
-	public Danio getDanio() {
 		// TODO Auto-generated method stub
 		return null;
 	}
