@@ -102,18 +102,18 @@ public class NaveCiencia extends Magica {
 	}
 
 
-	public void atacarConEMP(Unidad unidad) {
+	public void atacarConEMP(int x, int y) {
 		
-		Magia emp = magias.get(0);
+		PorRangoAtaque emp = (PorRangoAtaque)magias.get(0);
 		if(energia.obtenerCantidad() >= emp.obtenerEnergiaNecesaria()){
-			emp.atacar(unidad);
+			emp.atacar(x,y);
 			energia.disminuirEnergia(emp.obtenerEnergiaNecesaria());
 		}
 	}
 	
 	public void atacarConRadiacion(Unidad unidad) {
 			
-		Magia radiacion = magias.get(1);
+		PorUnidad radiacion = (PorUnidad)magias.get(1);
 		if(energia.obtenerCantidad() >= radiacion.obtenerEnergiaNecesaria()){
 			radiacion.atacar(unidad);
 			energia.disminuirEnergia(radiacion.obtenerEnergiaNecesaria());

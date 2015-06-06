@@ -1,10 +1,8 @@
 package src.unidades;
 
-public class Alucinacion extends PorUnidad {
-	
+public abstract class PorUnidad extends Magia {
 	
 	public void atacar(Unidad unidad){
-		
 		
 		
 	}

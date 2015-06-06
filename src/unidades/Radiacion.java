@@ -1,17 +1,16 @@
 package src.unidades;
 
-public class Radiacion extends Magia {
+public class Radiacion extends PorUnidad {
 
-	private static int DANIO = 10;
 	
 	public Radiacion() {
 		
-		danio = DANIO;
+		danio = 10;
 		energiaNecesaria = 75;
 	
 	}
 	
-	public void atacar(Unidad unidad){
+	public void atacar(Unidad unidad) {
 
 	
 		
