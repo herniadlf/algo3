@@ -1,7 +1,5 @@
 package test;
 
-
-
 import java.util.ArrayList;
 
 import javax.swing.text.html.HTMLDocument.Iterator;
@@ -19,7 +17,6 @@ import src.mapa.Mapa;
 import src.razas.Terran;
 import src.unidades.Marine;
 
-
 public class UnidadesTerranTest extends TestCase{
 	
 		private Mapa mapa;
@@ -31,9 +28,8 @@ public class UnidadesTerranTest extends TestCase{
 			mapa = new Mapa(50);
 			jugador = new Jugador("carlos","rojo", new Terran());
 			
-			
 		}
-	
+		
 		public void testmarineCuesta50mineralYseCreaCon40deVida() throws ExcepcionPosicionInvalida, ExcepcionExtractoraSinRecurso {
 
 			Barraca barraca = new Barraca();
@@ -67,7 +63,7 @@ public class UnidadesTerranTest extends TestCase{
 		}
 		
 	
-		public void testespectroSeCreaCon120deVidaNaveCienciaCon200yNaveTransporteCon150() throws ExcepcionPosicionInvalida, ExcepcionExtractoraSinRecurso{
+		public void testespectroSeCreaCon120deVidaYNaveTransporteCon150() throws ExcepcionPosicionInvalida, ExcepcionExtractoraSinRecurso{
 		
 			PuertoEstelarTerran puertoEstelar = new PuertoEstelarTerran();
 			try {
@@ -77,11 +73,9 @@ public class UnidadesTerranTest extends TestCase{
 				e.printStackTrace();
 			}
 			Espectro espectro = puertoEstelar.crearEspectro();
-			NaveCiencia naveCiencia = puertoEstelar.crearNaveCiencia();
 			NaveTransporteTerran naveTransporte = puertoEstelar.crearNaveTransporteTerran();
 			
 			Assert.assertTrue(espectro.getVida().obtenerVida() == 120);
-			Assert.assertTrue(naveCiencia.getVida().obtenerVida() == 200);
 			Assert.assertTrue(naveTransporte.getVida().obtenerVida() == 150);
 			
 		}
@@ -95,25 +89,6 @@ public class UnidadesTerranTest extends TestCase{
 			Vida vida= zealot.getVida();
 			Assert.assertTrue((vida.obtenerVida()) == 100);	
 		
-		}
-		
-		public void testNaveCienciaUsaRadiacionContraEnemigoYPierde75Energia(){
-			
-			NaveCiencia naveCiencia = new NaveCiencia();
-			Dragon dragon = new Dragon();
-			
-			Assert.assertTrue(naveCiencia.obtenerEnergia() == 50);
-			
-			naveCiencia.pasoTurno();
-			naveCiencia.pasoTurno();
-			naveCiencia.pasoTurno();
-			
-			Assert.assertTrue(naveCiencia.obtenerEnergia() == 80);
-			naveCiencia.atacarConRadiacion(dragon);
-			Assert.assertTrue(naveCiencia.obtenerEnergia() == 5);
-			
-			
-		}
-		
+		}	
 	
 }
