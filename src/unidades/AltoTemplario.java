@@ -4,7 +4,7 @@ import src.Danio;
 import src.Vida;
 import src.mapa.Mapeable;
 
-public class AltoTemplario extends Unidad {
+public class AltoTemplario extends Magica {
 
 	@Override
 	public Mapeable colocarContenido() {

@@ -5,13 +5,16 @@ import src.Vida;
 import src.mapa.Mapeable;
 
 
-public class NaveCiencia extends Unidad {
+public class NaveCiencia extends Magica {
 
 	
 	public NaveCiencia(){
 		
 		vida = new Vida(200);
 		danio = new Danio();
+		energia = new Energia(50);
+		magias.add(new EMP());
+		magias.add(new Radiacion());
 		
 	}
 	
