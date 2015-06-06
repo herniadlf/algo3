@@ -5,6 +5,7 @@ import org.junit.Test;
 
 import excepciones.ExcepcionPosicionInvalida;
 import excepciones.ExcepcionSuperaLimenteDeArbolesPermitos;
+import excepciones.ExcepcionYaHayElementoEnLaPosicion;
 import src.mapa.*;
 import src.construcciones.*;
 import excepciones.*;
@@ -26,7 +27,7 @@ public class MapaTest {
 	}
 	
 	@Test
-	public void colocoYObtengoElementoEnElMapa() throws ExcepcionPosicionInvalida {
+	public void colocoYObtengoElementoEnElMapa() throws ExcepcionPosicionInvalida, ExcepcionYaHayElementoEnLaPosicion {
 		
 		Mapa mapa = new Mapa(10);
 		
@@ -38,9 +39,24 @@ public class MapaTest {
 		
 	}
 	
+	@Test (expected = ExcepcionYaHayElementoEnLaPosicion.class)
+	public void siYaHayElementoLanzaExcepcion() throws ExcepcionPosicionInvalida, ExcepcionYaHayElementoEnLaPosicion {
+		
+		Mapa mapa = new Mapa(10);
+		
+		Barraca unaBarraca = new Barraca();
+		
+		mapa.colocarEn(5, 5, unaBarraca);
+		
+		Refineria unaRefineria = new Refineria();
+		
+		mapa.colocarEn(5, 5, unaRefineria);
+		
+	}
+	
 	
 	@Test (expected = ExcepcionPosicionInvalida.class)
-	public void ingresarPosicionNoValidaLanzaExcepcion() throws ExcepcionPosicionInvalida {
+	public void ingresarPosicionNoValidaLanzaExcepcion() throws ExcepcionPosicionInvalida, ExcepcionYaHayElementoEnLaPosicion {
 		
 		Mapa mapa = new Mapa(10);
 		
@@ -52,7 +68,7 @@ public class MapaTest {
 	
 	
 	@Test
-	public void eliminarElementoDelMapa() throws ExcepcionPosicionInvalida {
+	public void eliminarElementoDelMapa() throws ExcepcionPosicionInvalida, ExcepcionYaHayElementoEnLaPosicion {
 		
 		Mapa mapa = new Mapa(10);
 		
@@ -77,7 +93,7 @@ public class MapaTest {
 	}
 	
 	@Test
-	public void colocarArbolesEnMapa() throws ExcepcionPosicionInvalida, ExcepcionSuperaLimenteDeArbolesPermitos {
+	public void colocarArbolesEnMapa() throws ExcepcionPosicionInvalida, ExcepcionSuperaLimenteDeArbolesPermitos, ExcepcionYaHayElementoEnLaPosicion {
 		
 		Mapa mapa = new Mapa(100);
 		
@@ -101,7 +117,7 @@ public class MapaTest {
 	}
 	
 	@Test (expected = ExcepcionSuperaLimenteDeArbolesPermitos.class)
-	public void colocarMasArbolesQueElDiezPorcientoDelMapaLanzaExcepcion() throws ExcepcionPosicionInvalida, ExcepcionSuperaLimenteDeArbolesPermitos {
+	public void colocarMasArbolesQueElDiezPorcientoDelMapaLanzaExcepcion() throws ExcepcionPosicionInvalida, ExcepcionSuperaLimenteDeArbolesPermitos, ExcepcionYaHayElementoEnLaPosicion {
 		
 	Mapa mapa = new Mapa(100);
 		
