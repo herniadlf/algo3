@@ -9,6 +9,7 @@ import java.util.Random;
 
 import excepciones.ExcepcionPosicionInvalida;
 import excepciones.ExcepcionSuperaLimenteDeArbolesPermitos;
+import excepciones.ExcepcionYaHayElementoEnLaPosicion;
 import src.ConstantesAlgoCraft;
 import src.mapa.*;
 
@@ -37,15 +38,25 @@ public class Mapa {
 		}
 	}
 	
-	public void colocarEn(int i, int j, Mapeable unElemento) throws ExcepcionPosicionInvalida {
+	public void colocarEn(int i, int j, Mapeable unElemento) throws ExcepcionPosicionInvalida, ExcepcionYaHayElementoEnLaPosicion {
 		
 		Posicion posicion = new Posicion(i,j);
 		this.validarCoordenadas(posicion);
+		this.validarPosicionSinElemento(posicion);
 		mapa.put(posicion, unElemento);
 
 	}
 	
-	public boolean validarCoordenadas(Posicion unaPosicion) throws ExcepcionPosicionInvalida {
+	private void validarPosicionSinElemento(Posicion posicion) throws ExcepcionPosicionInvalida, ExcepcionYaHayElementoEnLaPosicion {
+		
+		if(!obtenerContenidoEnPosicion(posicion.getX(), posicion.getY()).esPisable()){
+			
+			throw new ExcepcionYaHayElementoEnLaPosicion("Ya hay un elemento en la posicion");
+		}
+		
+	}
+
+	private boolean validarCoordenadas(Posicion unaPosicion) throws ExcepcionPosicionInvalida {
 		
 		if (!estaDentroDeLimites(unaPosicion)) {
 			throw new ExcepcionPosicionInvalida("Coordenadas fuera del rango del mapa");
@@ -74,20 +85,24 @@ public class Mapa {
 		this.mapa.put(unaPosicion,pasto);
 	}
 	
-	public void crearCantidadDeArbolesEnMapa(int cantidadDeArboles) throws ExcepcionPosicionInvalida, ExcepcionSuperaLimenteDeArbolesPermitos{
+	public void crearCantidadDeArbolesEnMapa(int cantidadDeArboles) throws ExcepcionPosicionInvalida, ExcepcionSuperaLimenteDeArbolesPermitos, ExcepcionYaHayElementoEnLaPosicion{
 		
 		if(cantidadDeArboles <= (int)(tamanio * 0.1) ) {	  //Como máximo el 10% del tamaño del mapa
 			
 			Random random = new Random();
+			int totalArbolesCreados = 0;
 			
-			for(int k = 1; k <= cantidadDeArboles; k++) {
+			while(totalArbolesCreados != cantidadDeArboles) {
 				
 				Arbol unArbol = new Arbol();
 				int i = random.nextInt(tamanio)+1;  //Genero números randoms para determinar la posicion del Arbol
 				int j = random.nextInt(tamanio)+1;
-				this.colocarEn(i, j, unArbol);
-			}
-			
+				if(obtenerContenidoEnPosicion(i, j).esPisable()){
+					
+					this.colocarEn(i, j, unArbol);
+					totalArbolesCreados++;
+				}
+			}	
 		}
 		
 		else {
@@ -103,4 +118,5 @@ public class Mapa {
 		return ((int) Math.sqrt(Math.pow(x2-x1, 2) + Math.pow(y2-y1, 2)));
 	}
 	
+		
 }
