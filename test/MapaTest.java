@@ -134,14 +134,37 @@ public class MapaTest {
 		
 		FuenteDeMinerales unaFuenteDeMineral = new FuenteDeMinerales();
 		
-		Extractora unExtractor = new CentroDeMineral();
+		Extractora unExtractorMineral = new CentroDeMineral();
 	
 		mapa.colocarEn(5, 5, unaFuenteDeMineral);
 		
-		mapa.colocarExtractorEn(5, 5, unExtractor);
+		mapa.colocarExtractorEn(5, 5, unExtractorMineral);
 		
-		Assert.assertEquals(mapa.obtenerContenidoEnPosicion(5, 5), unExtractor);
+		Assert.assertEquals(mapa.obtenerContenidoEnPosicion(5, 5), unExtractorMineral);
+		
+		
+		
+		FuenteDeGasVespeno unaFuenteDeGas = new FuenteDeGasVespeno();
+		
+		Extractora unExtractorGas = new Asimilador();
+	
+		mapa.colocarEn(7, 7, unaFuenteDeGas);
+		
+		mapa.colocarExtractorEn(7, 7, unExtractorGas);
+		
+		Assert.assertEquals(mapa.obtenerContenidoEnPosicion(7, 7), unExtractorGas);
 				 
+	}
+	
+	@Test (expected = ExcepcionExtractoraSinRecurso.class)
+	public void noConstruyeExtractorSiNoHayRecurso() throws ExcepcionPosicionInvalida, ExcepcionExtractoraSinRecurso {
+		
+		Mapa mapa = new Mapa(10);
+		
+		Extractora unExtractor = new CentroDeMineral();
+		
+		mapa.colocarExtractorEn(5, 5, unExtractor);	
+		
 	}
 	
 		

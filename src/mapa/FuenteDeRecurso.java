@@ -4,15 +4,10 @@ import src.Recurso;
 
 
 public class FuenteDeRecurso implements Mapeable {
-	protected int posicionX;
-	protected int posicionY;
 	protected String nombre;
 	protected Recurso recurso;
 	
 	public FuenteDeRecurso(){
-		posicionX = 0;
-		posicionY = 0;
-		nombre = "Fuente de Recurso";
 	}
 	
 	public FuenteDeRecurso colocarContenido(){
@@ -43,7 +38,7 @@ public class FuenteDeRecurso implements Mapeable {
 	@Override
 	public String getNombre() {
 		// TODO Auto-generated method stub
-		return null;
+		return nombre;
 	}
 
 	@Override
