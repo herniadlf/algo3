@@ -38,13 +38,9 @@ public class NaveCiencia extends Magica {
 		energia = new Energia(ENERGIA);
 		magias.add(new EMP());
 		magias.add(new Radiacion());
+		energiaPorTurno = 10;
 	}	
-	
-	public void pasoTurno(){
-		
-		energia.aumentarEnergia(ENERGIA_POR_TURNO);
-		
-	}
+
 	
 	@Override
 	public Mapeable colocarContenido() {

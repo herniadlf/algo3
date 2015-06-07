@@ -19,6 +19,7 @@ public class AltoTemplario extends Magica {
 	private static final int VISION = 7;
 	private static final int COSTO_MINERALES = 50;
 	private static final int COSTO_GAS = 150;
+	private static int ENERGIA = 50;
 	
 	Escudo escudo;
 	
@@ -33,6 +34,10 @@ public class AltoTemplario extends Magica {
 		setVida(new Vida(VIDA));
 		setVision(VISION);	
 		escudo = new Escudo (ESCUDO,this);
+		energia = new Energia(ENERGIA);
+		magias.add(new TormentaPsionica());
+		magias.add(new Alucinacion());
+		energiaPorTurno = 15;
 	}
 	
 	@Override
@@ -83,4 +88,32 @@ public class AltoTemplario extends Magica {
 		return false;
 	}
 
+	public Escudo getEscudo() {
+	
+		return escudo;
+	}
+
+	public int obtenerEnergia() {
+	
+		return energia.obtenerCantidad();
+	}
+
+	public void tormentaPsionica(int x, int y) {
+
+		PorRangoAtaque tormenta = (PorRangoAtaque)magias.get(0);
+		if(energia.obtenerCantidad() >= tormenta.obtenerEnergiaNecesaria()) {
+			tormenta.atacar(x,y);
+			energia.disminuirEnergia(tormenta.obtenerEnergiaNecesaria());
+		
+	}
+
 }
+
+	public int obtenerEnegia() {
+		
+		return energia.obtenerCantidad();
+	}
+}
+
+
+
