@@ -13,7 +13,7 @@ import src.unidades.Unidad;
 
 public abstract class Creadora extends NoExtractora {
 	
-	AbstractCollection<Unidad> unidadesCreables;	
+	LinkedList<Unidad> unidadesCreables;	
 	LinkedList<Posicion> alrededores;
 	
 	public Creadora (){
@@ -25,8 +25,8 @@ public abstract class Creadora extends NoExtractora {
 	}
 
 	public boolean verificarUnidadCreable(Unidad aEntrenar) {
-		Boolean founded = false;
-		Iterator list = unidadesCreables.iterator();
+		Iterator list = unidadesCreables.iterator();		
+		Boolean founded = unidadesCreables.element().esLoMismo(aEntrenar);
 		while ( (list.hasNext()) && (founded == false) ){
 			Construccion auxiliar = (Construccion) list.next();
 			founded = auxiliar.esLoMismo(aEntrenar);

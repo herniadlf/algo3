@@ -11,8 +11,7 @@ public abstract class Raza {
 		protected LinkedList<Construccion> construccionesPosibles;
 		public boolean verificarEdificioPosible(Construccion c){
 			Iterator list = construccionesPosibles.iterator();
-			Construccion busqueda = construccionesPosibles.element();
-			Boolean founded = busqueda.esLoMismo(c);
+			Boolean founded = construccionesPosibles.element().esLoMismo(c);
 			while ( (list.hasNext()) && (founded == false) ){
 				Construccion auxiliar = (Construccion) list.next();
 				founded = auxiliar.esLoMismo(c);
