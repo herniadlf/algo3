@@ -6,6 +6,7 @@ import org.junit.Test;
 import excepciones.ExcepcionEdificioPrevioRequerido;
 import excepciones.ExcepcionExtractoraSinRecurso;
 import excepciones.ExcepcionPosicionInvalida;
+import excepciones.ExcepcionYaHayElementoEnLaPosicion;
 import src.*;
 import src.construcciones.Barraca;
 import src.construcciones.Construccion;
@@ -21,7 +22,7 @@ import src.razas.Terran;
 public class ConstruccionTest {
 		
 		@Test
-		public void construccionExitosaPorRecursosSuficientes() throws ExcepcionEdificioPrevioRequerido{
+		public void construccionExitosaPorRecursosSuficientes() throws ExcepcionEdificioPrevioRequerido, ExcepcionYaHayElementoEnLaPosicion{
 				Mapa mapa = new Mapa(50);
 				Jugador jug = new Jugador("carlos","rojo",new Terran()); // Jugador se crea con 800 M
 			
@@ -32,48 +33,50 @@ public class ConstruccionTest {
 				Assert.assertEquals(650, jug.getDinero().getMinerales());
 		}
 			
-		/*@Test
-		public void construccionExitosaEnElMapa() throws ExcepcionPosicionInvalida, ExcepcionExtractoraSinRecurso{
+		@Test
+		public void construccionExitosaEnElMapa() throws ExcepcionPosicionInvalida, ExcepcionExtractoraSinRecurso, ExcepcionEdificioPrevioRequerido, ExcepcionYaHayElementoEnLaPosicion{
 			Mapa mapa = new Mapa(50);
-			Jugador jug = new Jugador();
+			Jugador jug = new Jugador("carlos","rojo",new Terran());
 			
 			for (int i=1; i< mapa.getTamanioMapa();i++){
 				for (int j=1; j<mapa.getTamanioMapa(); j++){
-					jug.construir( new Barraca(), mapa, i, j);
-					Assert.assertTrue( ( mapa.obtenerContenidoEnPosicion(i, j) ).esLoMismo(new Barraca()));
+					Construccion b = new Barraca();
+					b = jug.construir(b, mapa, i, j);
+					Assert.assertTrue( ( mapa.obtenerContenidoEnPosicion(i, j) ).esLoMismo(b));					
 				}				
 			}
-		} me tira falso el assert.. todavia no coloca bien en el mapa
-		*/
+		} 
 		
-		@Test
-		public void noConstruyeExtractoraSiNoHayFuente() throws ExcepcionPosicionInvalida, ExcepcionExtractoraSinRecurso, ExcepcionEdificioPrevioRequerido{
+		@Test (expected = ExcepcionExtractoraSinRecurso.class)
+		public void noConstruyeExtractoraSiNoHayFuente() throws ExcepcionPosicionInvalida, ExcepcionExtractoraSinRecurso, ExcepcionEdificioPrevioRequerido, ExcepcionYaHayElementoEnLaPosicion{
 			Mapa mapa = new Mapa(50);
 			Jugador jug = new Jugador("carlos","rojo",new Protoss());
 					
 			Construccion nexoMineral = jug.construir(new NexoMineral(), mapa, 10, 10);
-			
-			Assert.assertFalse(mapa.obtenerContenidoEnPosicion(10, 10).esLoMismo(nexoMineral));	
-			
+				
 			
 		}
 		
-		@Test 
-		public void noConstruyeFabricaSinBarraca() throws ExcepcionPosicionInvalida, ExcepcionExtractoraSinRecurso, ExcepcionEdificioPrevioRequerido{
+		@Test (expected = ExcepcionEdificioPrevioRequerido.class)
+		public void noConstruyeFabricaSinBarraca() throws ExcepcionPosicionInvalida, ExcepcionExtractoraSinRecurso, ExcepcionEdificioPrevioRequerido, ExcepcionYaHayElementoEnLaPosicion{
 			Mapa mapa = new Mapa(50);
 			Jugador jug = new Jugador("carlos","rojo",new Terran());
-		
+			
 			Construccion fabrica = jug.construir(new Fabrica(), mapa, 10, 10);			
-			
-			Assert.assertFalse( (mapa.obtenerContenidoEnPosicion(10, 10)).esLoMismo(fabrica));
-			/*
-			Construccion barraca = jug.construir(new Barraca(), mapa, 2, 4);
-			fabrica = jug.construir(new Fabrica(), mapa, 10, 10);
-			
-			Assert.assertTrue( (mapa.obtenerContenidoEnPosicion(10, 10)).esLoMismo(fabrica));
-			necesita colocarse bien en el mapa!
-			*/ 
+					 
 		}
+		
+		@Test
+		public void construccionExitosaDeFabricaConBarraca() throws ExcepcionPosicionInvalida, ExcepcionExtractoraSinRecurso, ExcepcionEdificioPrevioRequerido, ExcepcionYaHayElementoEnLaPosicion{
+			Mapa mapa = new Mapa(50);
+			Jugador jug = new Jugador("carlos","rojo", new Terran());
+			
+			Construccion barraca = jug.construir(new Barraca(), mapa, 5,5);
+			Construccion fabrica = jug.construir(new Fabrica(), mapa, 6, 8);
+			
+			Assert.assertTrue ( mapa.obtenerContenidoEnPosicion(6, 8).esLoMismo(fabrica));
+		}
+		
 		
 		
 }

@@ -14,8 +14,9 @@ public abstract class Extractora extends Construccion {
 			fuente = f; 
 		}
 		public Extractora(){
-			setConstructor(new ConstructorExtractora());
+			setConstructor(new ArquitectoDeExtractora());
 		}
+
 		public void extraer(){};
 		
 }

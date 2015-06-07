@@ -7,7 +7,7 @@ import excepciones.ExcepcionNoHayLugarParaCrear;
 import excepciones.ExcepcionPosicionInvalida;
 import excepciones.ExcepcionYaHayElementoEnLaPosicion;
 import src.construcciones.Construccion;
-import src.construcciones.ConstructorStrategy;
+import src.construcciones.Arquitecto;
 import src.construcciones.Creadora;
 import src.mapa.Mapa;
 import src.razas.Protoss;
@@ -98,14 +98,14 @@ public class Jugador {
 	
 	public Construccion construir(Construccion edificio, Mapa map, int x, int y) 
 			throws ExcepcionPosicionInvalida, ExcepcionExtractoraSinRecurso, 
-			ExcepcionEdificioPrevioRequerido {
+			ExcepcionEdificioPrevioRequerido, ExcepcionYaHayElementoEnLaPosicion {
 		
 		if (this.getRaza().verificarEdificioPosible(edificio.getEdificioRequerido())) {
 			this.gastarPlata(edificio.getCosto());
 			edificio.setPosicionX(x);
 			edificio.setPosicionY(y);
-			edificio.getConstructor().construir(map,edificio);		
-			this.getRaza().actualizarEdificios(edificio);			
+			edificio.getConstructor().construir(map,edificio);
+			this.getRaza().actualizarEdificios(edificio);		
 		}
 		else {
 			throw new ExcepcionEdificioPrevioRequerido("Requiere construir otro edificio antes del solicitado.");			

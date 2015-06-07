@@ -10,8 +10,9 @@ public abstract class Raza {
 		protected LinkedList<Unidad> unidadesPosibles;
 		protected LinkedList<Construccion> construccionesPosibles;
 		public boolean verificarEdificioPosible(Construccion c){
-			Boolean founded = false;
 			Iterator list = construccionesPosibles.iterator();
+			Construccion busqueda = construccionesPosibles.element();
+			Boolean founded = busqueda.esLoMismo(c);
 			while ( (list.hasNext()) && (founded == false) ){
 				Construccion auxiliar = (Construccion) list.next();
 				founded = auxiliar.esLoMismo(c);

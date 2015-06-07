@@ -30,21 +30,21 @@ public class Construccion implements Mapeable{
 		vida = new Vida(v); 
 	}
 	
-	private int posicionX;
+	protected int posicionX;
 	public int getPosicionX(){ return posicionX; };
 	public void setPosicionX(int posX){
-		posX = posicionX;
+		posicionX = posX;
 	}
-	private int posicionY;
+	protected int posicionY;
 	public int getPosicionY(){ return posicionY; };
 	public void setPosicionY(int posY){
 		posicionY = posY;
 	}
-	protected ConstructorStrategy constructor;
-	public void setConstructor(ConstructorStrategy c){
-		constructor=c;
+	protected Arquitecto constructor;
+	public void setConstructor(Arquitecto c){
+		constructor = c;
 	}
-	public ConstructorStrategy getConstructor(){
+	public Arquitecto getConstructor(){
 		return constructor;
 	}
 	

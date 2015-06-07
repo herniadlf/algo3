@@ -16,6 +16,10 @@ public abstract class Creadora extends NoExtractora {
 	AbstractCollection<Unidad> unidadesCreables;	
 	LinkedList<Posicion> alrededores;
 	
+	public Creadora (){
+		super();
+	}
+	
 	public Unidad crearUnidad(Unidad unidad){
 		return unidad;
 	}
