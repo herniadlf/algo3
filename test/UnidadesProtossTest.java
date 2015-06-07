@@ -45,6 +45,27 @@ public class UnidadesProtossTest extends TestCase{
 		
 	}
 	
+	public void testZealotRecibeAtaquesMultiple (){
+		Acceso acceso = new Acceso();
+		Zealot zealot = acceso.crearZealot();
+		
+		Marine primerMarine = new Marine ();
+		Marine segundoMarine = new Marine ();
+		Marine tercerMarine = new Marine ();
+		Marine cuartoMarine = new Marine ();
+		
+		primerMarine.atacarEnTierra(zealot);
+		segundoMarine.atacarEnTierra(zealot);
+		tercerMarine.atacarEnTierra (zealot);
+		cuartoMarine.atacarEnTierra (zealot);
+		
+		Assert.assertTrue((zealot.getVida().obtenerDanioRecibido())==24);
+		
+		
+		
+		
+	}
+	
 	
 	
 	
