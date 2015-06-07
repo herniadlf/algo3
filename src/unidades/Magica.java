@@ -58,7 +58,7 @@ public abstract class Magica extends Unidad {
 	}
 
 	@Override
-	public void recibirDanio(int Danio) {
+	public void recibirDanio() {
 		// TODO Auto-generated method stub
 
 	}

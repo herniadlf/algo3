@@ -65,22 +65,48 @@ public class Zealot extends Unidad {
 	}
 
 	
+
 	public void atacarEnAire (Unidad unidad){
 	
-		unidad.recibirDanio((this.getDanio()).getDanioAire());
+		int danio = this.getDanio().getDanioAire();
+		unidad.seleccionarAtaqueAEnemigo(unidad, danio);
+
+		/*if((this.getUnidadesAtacantes().size())==1){
+			
+			Unidad unidadARepeler = this.getUnidadesAtacantes().get(1);
+			System.out.print(unidadARepeler.getVida().obtenerVida());
+			
+			
+			
+			
+		}*/
+		
+		
 		
 	} 
 	
-	public void recibirDanio (int danio){
+	public void recibirDanio (){
 		
-		escudo.atacar(danio);
+	
+		escudo.atacar(this.getVida().obtenerDanioRecibido());
 		
 	}
 
 	@Override
-	public void atacarEnTierra(Unidad unidad) {
+	public void atacarEnTierra(Unidad unidad){
 		
-		unidad.recibirDanio((this.getDanio()).getDanioTierra());
+		int danio = this.getDanio().getDanioTierra();
+		unidad.seleccionarAtaqueAEnemigo(unidad, danio);
+		
+		/*if((this.getUnidadesAtacantes().size())==1){
+			
+			Unidad unidadARepeler = this.getUnidadesAtacantes().get(1);
+			System.out.print(unidadARepeler.getVida().obtenerVida());
+			
+			
+			
+			
+		}*/
 		
 	}
 
@@ -90,6 +116,13 @@ public class Zealot extends Unidad {
 		// TODO Auto-generated method stub
 		return false;
 	}
+
+
+	@Override
+	public void seleccionarAtaqueAEnemigo(Unidad unidad,int danio) {
 	
+		unidad.getVida().aumentarDanioARecibir(danio);
+		
+	}
 
 }

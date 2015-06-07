@@ -1,6 +1,8 @@
 package src.unidades;
 
 
+import java.util.ArrayList;
+
 import src.Danio;
 import src.Dinero;
 import src.Vida;
@@ -17,6 +19,9 @@ public abstract class Unidad implements Mapeable{
 	protected int suministro;
 	protected int rangoAtaque;
 	protected Vida vida;	
+	protected ArrayList <Unidad> atacantes;
+
+
 	
 	public Unidad(){
 			
@@ -78,9 +83,20 @@ public abstract class Unidad implements Mapeable{
 		return danio;
 	}
 	
+	public ArrayList<Unidad> getUnidadesAtacantes(){
+		return atacantes;
+		
+		
+	}
+	
+	
+	
+	
+	
+	public abstract void seleccionarAtaqueAEnemigo(Unidad unidad, int danio); 
 	public abstract void atacarEnTierra (Unidad unidad);
 	public abstract void atacarEnAire (Unidad unidad);
-	public abstract void recibirDanio (int Danio);
+	public abstract void recibirDanio ();
 	public boolean esLoMismo(Mapeable aComparar){
 		return (this.getNombre() == aComparar.getNombre());
 	}
