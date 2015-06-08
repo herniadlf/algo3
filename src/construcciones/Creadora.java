@@ -37,13 +37,23 @@ public abstract class Creadora extends NoExtractora {
 	public void entrenarUnidad(Unidad aEntrenar,Mapa map) throws ExcepcionPosicionInvalida, ExcepcionNoHayLugarParaCrear, ExcepcionYaHayElementoEnLaPosicion {
 		Posicion auxiliar = alrededores.getFirst();		
 		Boolean hayLugar = (map.obtenerContenidoEnPosicion(auxiliar.getX(), auxiliar.getY())).esPisable();		
-		Iterator list = alrededores.iterator();		
+		Iterator list = alrededores.iterator();
+		
 		while ( (hayLugar == false) && (list.hasNext()) ){
 			auxiliar = (Posicion) list.next();
 			hayLugar = (map.obtenerContenidoEnPosicion(auxiliar.getX(), auxiliar.getY())).esPisable();
 		}
 		if (hayLugar){
+			
+			Posicion posicion = new Posicion (auxiliar.getX(),auxiliar.getY()); //modifique
+			
+			
 			map.colocarEn(auxiliar.getX(), auxiliar.getY(), aEntrenar);
+			aEntrenar.setMapa(map);
+			aEntrenar.setPosicion(posicion);
+			
+			
+			/* que verifique todo lo que tiene que verificar y que la unidad lo coloque*/
 		}
 		else{
 			throw new ExcepcionNoHayLugarParaCrear("No hay lugar para crear la unidad");

@@ -106,7 +106,7 @@ public class Jugador {
 			edificio.setPosicionY(y);
 			edificio.setAlrededores();
 			edificio.getConstructor().construir(map,edificio);
-			this.getRaza().actualizarEdificios(edificio);		
+			this.getRaza().actualizarEdificios(edificio);//pensar 		
 		}
 		else {
 			throw new ExcepcionEdificioPrevioRequerido("Requiere construir otro edificio antes del solicitado.");			
@@ -121,7 +121,7 @@ public class Jugador {
 		if ( edificio.verificarUnidadCreable(aEntrenar) ){
 			this.setPoblacion( this.getPoblacion() + aEntrenar.getSuministros() );
 			this.gastarPlata(aEntrenar.getCosto());
-			edificio.entrenarUnidad(aEntrenar,map);
+			edificio.entrenarUnidad(aEntrenar,map); //pensar 
 		}
 		else {
 			throw new ExcepcionEdificioNoPuedeCrearUnidad("No puede crearse esta unidad en este edificio");

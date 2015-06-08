@@ -3,10 +3,14 @@ package src.unidades;
 
 import java.util.ArrayList;
 
+import excepciones.ExcepcionPosicionInvalida;
+import excepciones.ExcepcionYaHayElementoEnLaPosicion;
 import src.Danio;
 import src.Dinero;
 import src.Vida;
+import src.mapa.Mapa;
 import src.mapa.Mapeable;
+import src.mapa.Posicion;
 
 public abstract class Unidad implements Mapeable{
 	
@@ -20,12 +24,28 @@ public abstract class Unidad implements Mapeable{
 	protected int rangoAtaque;
 	protected Vida vida;	
 	protected ArrayList <Unidad> atacantes;
+	protected Posicion posicion;
+	protected Mapa mapa;
 
 
 	
 	public Unidad(){
 			
 	}
+	
+	public void setMapa (Mapa m){
+		mapa =m;
+		
+		
+		
+	}
+	
+	public void setPosicion (Posicion p){
+		posicion =p;
+		
+		
+	}
+	
 	
 	public void setNombre(String s){
 		nombre = s;
@@ -89,6 +109,8 @@ public abstract class Unidad implements Mapeable{
 		
 	}
 	
+	
+	
 	public void atacarEnAire (Unidad unidad){
 		int danio = this.getDanio().getDanioAire();
 		unidad.getVida().aumentarDanioARecibir(danio);
@@ -113,5 +135,20 @@ public abstract class Unidad implements Mapeable{
 	public boolean esLoMismo(Mapeable aComparar){
 		return (this.getNombre() == aComparar.getNombre());
 	}
+	
+	
+	
+	
+	
+	public void moverAPosicionDeterminada (int x, int y) throws ExcepcionPosicionInvalida, ExcepcionYaHayElementoEnLaPosicion{
+		
+		
+		mapa.colocarEn(x, y, this);
+		mapa.eliminarElementoEnPosicion(posicion.getX(), posicion.getY());
+		
+		/* eliminar de las cordenadas anteriores*/
+		
+	}
+	
 	
 }
