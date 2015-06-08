@@ -60,24 +60,7 @@ public class Dragon extends Unidad {
 	
 
 
-	public void atacarEnAire (Unidad unidad){
 	
-		int danio = this.getDanio().getDanioAire();
-		unidad.seleccionarAtaqueAEnemigo(unidad, danio);
-
-		/*if((this.getUnidadesAtacantes().size())==1){
-			
-			Unidad unidadARepeler = this.getUnidadesAtacantes().get(1);
-			System.out.print(unidadARepeler.getVida().obtenerVida());
-			
-			
-			
-			
-		}*/
-		
-		
-		
-	} 
 	
 	public void recibirDanio (){
 		
@@ -86,23 +69,7 @@ public class Dragon extends Unidad {
 		
 	}
 
-	@Override
-	public void atacarEnTierra(Unidad unidad){
-		
-		int danio = this.getDanio().getDanioTierra();
-		unidad.seleccionarAtaqueAEnemigo(unidad, danio);
-		
-		/*if((this.getUnidadesAtacantes().size())==1){
-			
-			Unidad unidadARepeler = this.getUnidadesAtacantes().get(1);
-			System.out.print(unidadARepeler.getVida().obtenerVida());
-			
-			
-			
-			
-		}*/
-		
-	}
+	
 
 
 	@Override
@@ -112,11 +79,6 @@ public class Dragon extends Unidad {
 	}
 
 
-	@Override
-	public void seleccionarAtaqueAEnemigo(Unidad unidad,int danio) {
 	
-		unidad.getVida().aumentarDanioARecibir(danio);
-		
-	}
 
 }

@@ -89,13 +89,32 @@ public abstract class Unidad implements Mapeable{
 		
 	}
 	
+	public void atacarEnAire (Unidad unidad){
+		int danio = this.getDanio().getDanioAire();
+		unidad.seleccionarAtaqueAEnemigo(unidad, danio);
+
+		
+	} 
 	
 	
+	public void atacarEnTierra(Unidad unidad){
+		
+		int danio = this.getDanio().getDanioTierra();
+		unidad.seleccionarAtaqueAEnemigo(unidad, danio);
+		
+		
+		
+	}
 	
 	
-	public abstract void seleccionarAtaqueAEnemigo(Unidad unidad, int danio); 
-	public abstract void atacarEnTierra (Unidad unidad);
-	public abstract void atacarEnAire (Unidad unidad);
+	public void seleccionarAtaqueAEnemigo(Unidad unidad,int danio) {
+	
+		unidad.getVida().aumentarDanioARecibir(danio);
+		
+	}
+
+	
+
 	public abstract void recibirDanio ();
 	public boolean esLoMismo(Mapeable aComparar){
 		return (this.getNombre() == aComparar.getNombre());
