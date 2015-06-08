@@ -45,29 +45,39 @@ public class UnidadesProtossTest extends TestCase{
 		
 	}
 	
-	public void testZealotRecibeAtaquesMultiple (){
-		Acceso acceso = new Acceso();
+	
+	public void testZealotRecibeMultiplesAtaques (){
+		Acceso acceso = new Acceso ();
 		Zealot zealot = acceso.crearZealot();
 		
-		Marine primerMarine = new Marine ();
-		Marine segundoMarine = new Marine ();
-		Marine tercerMarine = new Marine ();
-		Marine cuartoMarine = new Marine ();
-		
+		Marine primerMarine = new Marine();
 		primerMarine.atacarEnTierra(zealot);
+		
+		Marine segundoMarine = new Marine();
 		segundoMarine.atacarEnTierra(zealot);
-		tercerMarine.atacarEnTierra (zealot);
-		cuartoMarine.atacarEnTierra (zealot);
+		Marine tercerMarine = new Marine();
+		tercerMarine.atacarEnTierra(zealot);
+		Marine cuartoMarine = new Marine();
+		cuartoMarine.atacarEnTierra(zealot);
 		
-		Assert.assertTrue((zealot.getVida().obtenerDanioRecibido())==24);
+		int danioTotalRecibido= zealot.getVida().obtenerDanioRecibido();
 		
+		
+		Assert.assertTrue(danioTotalRecibido == 24 );
+		
+		}
+	
+	public void testDestruccionDeDragon(){
+		
+		Dragon dragon= new Dragon();
+		dragon.getVida().aumentarDanioARecibir(200);
+		dragon.getVida().dismunuirVidaPorDanio();
+		
+		Assert.assertTrue(dragon.getVida().devolverEstadoDeVida()==true);
 		
 		
 		
 	}
-	
-	
-	
 	
 	
 

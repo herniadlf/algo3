@@ -17,7 +17,7 @@ public class Escudo {
 		if(resistencia - danio < 0){
 			
 			int vidaAfectada= danio - resistencia;
-			unidad.getVida().recibirDanio();
+			unidad.getVida().dismunuirVidaPorDanio();
 		}
 		else {
 			

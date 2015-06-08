@@ -63,7 +63,7 @@ public class NaveTransporteTerran extends Unidad {
 	public void recibirDanio (){
 		
 	
-		vida.recibirDanio();;
+		vida.dismunuirVidaPorDanio();;
 		
 	}
 

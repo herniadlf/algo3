@@ -106,7 +106,7 @@ public class NaveCiencia extends Magica {
 	public void recibirDanio (){
 		
 	
-		vida.recibirDanio();;
+		vida.dismunuirVidaPorDanio();;
 		
 	}
 

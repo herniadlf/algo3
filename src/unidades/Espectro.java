@@ -61,7 +61,7 @@ public class Espectro extends Unidad {
 	public void recibirDanio (){
 		
 	
-		vida.recibirDanio();;
+		vida.dismunuirVidaPorDanio();;
 		
 	}
 

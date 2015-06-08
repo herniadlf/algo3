@@ -58,7 +58,7 @@ public class Marine extends Unidad {
 	public void recibirDanio (){
 		
 	
-		vida.recibirDanio();;
+		vida.dismunuirVidaPorDanio();;
 		
 	}
 

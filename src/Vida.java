@@ -2,16 +2,19 @@ package src;
 public class Vida {
 
 	private int vida;
-	private int danioARecibido;
+	private int danioRecibido;
+	private boolean finalizada;
 	
 	public Vida (int vidaDeUnidad){
 		this.vida = vidaDeUnidad;
+		this.finalizada= false;
 		
 	}
 	
-	public void recibirDanio(){
+	public void dismunuirVidaPorDanio(){
 		
-		this.vida = this.vida - this.danioARecibido;
+		this.vida = this.vida - this.danioRecibido;
+		this.actualizarEstadoDeVida();
 		
 	}
 	
@@ -22,12 +25,29 @@ public class Vida {
 	
 	public void aumentarDanioARecibir( int danio){
 		
-		this.danioARecibido= this.danioARecibido+ danio;
+		this.danioRecibido= this.danioRecibido+ danio;
 		
 	}
 	
 	public int obtenerDanioRecibido(){
-		return this.danioARecibido;
+		return this.danioRecibido;
+		
+	}
+	
+	public void actualizarEstadoDeVida (){
+		if (this.vida<=0){
+			this.finalizada= true;
+			
+		}
+		
+		
+		
+	}
+	
+	public boolean devolverEstadoDeVida (){
+		return this.finalizada;
+		
+		
 		
 	}
 	

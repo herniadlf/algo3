@@ -35,4 +35,18 @@ public class Acceso extends Creadora {
 			
 		}
 		
+		
+		
+		public AltoTemplario crearAltoTemplario(){
+			AltoTemplario alto = new AltoTemplario();
+			return alto;
+			}
+		
+		
+		
+		
+		
+		
+		
+		
 }

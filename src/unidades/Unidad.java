@@ -91,7 +91,7 @@ public abstract class Unidad implements Mapeable{
 	
 	public void atacarEnAire (Unidad unidad){
 		int danio = this.getDanio().getDanioAire();
-		unidad.seleccionarAtaqueAEnemigo(unidad, danio);
+		unidad.getVida().aumentarDanioARecibir(danio);
 
 		
 	} 
@@ -100,19 +100,13 @@ public abstract class Unidad implements Mapeable{
 	public void atacarEnTierra(Unidad unidad){
 		
 		int danio = this.getDanio().getDanioTierra();
-		unidad.seleccionarAtaqueAEnemigo(unidad, danio);
-		
-		
-		
-	}
-	
-	
-	public void seleccionarAtaqueAEnemigo(Unidad unidad,int danio) {
-	
 		unidad.getVida().aumentarDanioARecibir(danio);
 		
+		
 	}
-
+	
+	
+	
 	
 
 	public abstract void recibirDanio ();

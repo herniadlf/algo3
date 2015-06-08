@@ -92,31 +92,6 @@ public class UnidadesTerranTest extends TestCase{
 		}	
 		
 		
-		public void testZealotReibeMultiplesAtaques (){
-			Acceso acceso = new Acceso ();
-			Zealot zealot = acceso.crearZealot();
-			
-			Marine primerMarine = new Marine();
-			primerMarine.atacarEnTierra(zealot);
-			
-			Marine segundoMarine = new Marine();
-			segundoMarine.atacarEnTierra(zealot);
-			Marine tercerMarine = new Marine();
-			tercerMarine.atacarEnTierra(zealot);
-			Marine cuartoMarine = new Marine();
-			cuartoMarine.atacarEnTierra(zealot);
-			
-			int danioTotalRecibido= zealot.getVida().obtenerDanioRecibido();
-			
-			
-			Assert.assertTrue(danioTotalRecibido == 24 );
-			
-			
-			
-			
-			
-			
-			
-		}
+	
 	
 }
