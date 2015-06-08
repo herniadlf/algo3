@@ -104,6 +104,7 @@ public class Jugador {
 			this.gastarPlata(edificio.getCosto());
 			edificio.setPosicionX(x);
 			edificio.setPosicionY(y);
+			edificio.setAlrededores();
 			edificio.getConstructor().construir(map,edificio);
 			this.getRaza().actualizarEdificios(edificio);		
 		}

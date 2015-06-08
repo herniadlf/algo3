@@ -26,7 +26,7 @@ public class NaveCiencia extends Magica {
 	private static final int COSTO_GAS = 225;
 	
 	public NaveCiencia (){
-		setCosto(ConstantesAlgoCraft.COSTO_MINERALES_NAVECIENCIA,ConstantesAlgoCraft.COSTO_GAS_NAVECIENCIA);
+		setCosto(COSTO_MINERALES,COSTO_GAS);
 		setDanio(DANIO_AIRE,DANIO_TIERRA);
 		setNombre("Nave Ciencia");
 		setRangoDeAtaques(RANGO_ATAQUE);

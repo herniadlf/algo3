@@ -16,11 +16,12 @@ public class NaveTransporteProtoss extends Unidad {
 	private static final int VIDA = 80;
 	private static final int ESCUDO = 60;
 	private static final int VISION = 8;
-	
+	private static final int COSTO_MINERALES = 200;
+	private static final int COSTO_GAS = 0;	
 	Escudo escudo;
 	
 	public NaveTransporteProtoss() {		
-		setCosto(ConstantesAlgoCraft.COSTO_MINERALES_TRANSPORTE_PROTOSS,0);
+		setCosto(COSTO_MINERALES,COSTO_GAS);
 		setDanio(DANIO_AIRE,DANIO_TIERRA);
 		setNombre("Nave Transporte");
 		setRangoDeAtaques(RANGO_ATAQUE);

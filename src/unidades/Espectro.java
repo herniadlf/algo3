@@ -18,9 +18,11 @@ public class Espectro extends Unidad {
 	private static final int TRANSPORTE = 0;
 	private static final int VIDA = 120;
 	private static final int VISION= 7;
+	private static final int COSTO_MINERALES = 150;
+	private static final int COSTO_GAS = 100;
 	
 	public Espectro (){
-		setCosto(ConstantesAlgoCraft.COSTO_MINERALES_ESPECTRO,ConstantesAlgoCraft.COSTO_GAS_ESPECTRO);
+		setCosto(COSTO_MINERALES,COSTO_GAS);
 		setDanio(DANIO_AIRE,DANIO_TIERRA);
 		setNombre("Espectro");
 		setRangoDeAtaques(RANGO_ATAQUE);

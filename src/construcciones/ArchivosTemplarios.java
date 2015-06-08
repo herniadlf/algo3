@@ -3,18 +3,26 @@ package src.construcciones;
 import java.util.LinkedList;
 
 import src.ConstantesAlgoCraft;
-import src.unidades.AltoTemplario;
+import src.unidades.*;
 
 public class ArchivosTemplarios extends Creadora {
+	private static final int COSTO_MINERALES = 150;
+	private static final int COSTO_GAS = 200;
+	private static final int VIDA = 500;
+	private static final int ESCUDO = 500;
+	private static final int TIEMPO = 9;
+	Escudo escudo;
 	
 	public ArchivosTemplarios(){
 		super();
-		unidadesCreables = new LinkedList();
+		unidadesCreables = new LinkedList<Unidad>();
+		unidadesCreables.add(new AltoTemplario());
 		setNombre("Archivos Templarios");
-		setTiempoDeConstruccion(ConstantesAlgoCraft.TIEMPO_ARCHIVOSTEMPLARIOS);
-		setCosto(ConstantesAlgoCraft.COSTO_MINERALES_ARCHIVOSTEMPLARIOS,ConstantesAlgoCraft.COSTO_GAS_ARCHIVOSTEMPLARIOS);
-		setVida(ConstantesAlgoCraft.HP_ARCHIVOSTEMPLARIOS);
+		setTiempoDeConstruccion(TIEMPO);
+		setCosto(COSTO_MINERALES,COSTO_GAS);
+		setVida(VIDA);
 		setEdificioRequerido(new PuertoEstelarProtoss());
+		//escudo = new Escudo (ESCUDO,this);
 	}
 
 	public AltoTemplario crearAltoTemplario() {

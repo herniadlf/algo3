@@ -3,18 +3,24 @@ package src.construcciones;
 import java.util.LinkedList;
 
 import src.ConstantesAlgoCraft;
-import src.unidades.Marine;
+import src.unidades.*;
 
 
 public class Barraca extends Creadora {
 	
+	private static final int COSTO_MINERALES = 150;
+	private static final int COSTO_GAS = 0;
+	private static final int VIDA = 1000;
+	private static final int TIEMPO = 12;
+	
 	public Barraca(){
 		super();
-		unidadesCreables = new LinkedList();
+		unidadesCreables = new LinkedList<Unidad>();
+		unidadesCreables.add(new Marine());
 		setNombre("Barraca");
-		setVida(ConstantesAlgoCraft.HP_BARRACA);
-		setCosto(ConstantesAlgoCraft.COSTO_MINERALES_BARRACA,0);
-		setTiempoDeConstruccion(ConstantesAlgoCraft.TIEMPO_BARACA);
+		setVida(VIDA);
+		setCosto(COSTO_MINERALES,COSTO_GAS);
+		setTiempoDeConstruccion(TIEMPO);
 		setEdificioRequerido(new DepositoDeSuministros());
 	}
 	

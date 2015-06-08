@@ -17,9 +17,10 @@ public class Marine extends Unidad {
 	private static final int VIDA = 40;
 	private static final int VISION= 7;
 	private static final int COSTO_MINERALES = 50;
+	private static final int COSTO_GAS = 0;
 			
 	public Marine (){
-		setCosto(COSTO_MINERALES,0);
+		setCosto(COSTO_MINERALES,COSTO_GAS);
 		setDanio(DANIO_AIRE,DANIO_TIERRA);
 		setNombre("Marine");
 		setRangoDeAtaques(RANGO_ATAQUE);

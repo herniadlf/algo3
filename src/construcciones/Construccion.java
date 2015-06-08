@@ -1,5 +1,7 @@
 package src.construcciones;
 
+import java.util.LinkedList;
+
 import src.Dinero;
 import src.Vida;
 import src.mapa.Mapeable;
@@ -57,6 +59,19 @@ public class Construccion implements Mapeable{
 		this.edificioRequerido = edificioRequerido;
 	}
 	public Construccion(){}
+	protected LinkedList<Posicion> alrededores;
+	
+	public void setAlrededores(){
+		alrededores = new LinkedList<Posicion>();
+		alrededores.add(new Posicion(posicionX,posicionY+1));
+		alrededores.add(new Posicion(posicionX,posicionY-1));
+		alrededores.add(new Posicion(posicionX-1,posicionY+1));
+		alrededores.add(new Posicion(posicionX-1,posicionY));
+		alrededores.add(new Posicion(posicionX-1,posicionY-1));
+		alrededores.add(new Posicion(posicionX+1,posicionY+1));
+		alrededores.add(new Posicion(posicionX+1,posicionY));
+		alrededores.add(new Posicion(posicionX+1,posicionY-1));		
+	}
 	
 	public boolean esLoMismo(Mapeable aComparar){
 		return (this.getNombre() == aComparar.getNombre());

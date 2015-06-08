@@ -19,11 +19,12 @@ public class Zealot extends Unidad {
 	private static final int VIDA = 100;
 	private static final int ESCUDO = 60;
 	private static final int VISION= 7;
-	
+	private static final int COSTO_MINERALES = 100;
+	private static final int COSTO_GAS = 0;
 	Escudo escudo;
 	
 	public Zealot (){
-		setCosto(ConstantesAlgoCraft.COSTO_MINERALES_ZEALOT,0);
+		setCosto(COSTO_MINERALES,COSTO_GAS);
 		setDanio(DANIO_AIRE,DANIO_TIERRA);
 		setNombre("Zealot");
 		setRangoDeAtaques(RANGO_ATAQUE);

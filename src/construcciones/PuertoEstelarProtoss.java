@@ -3,16 +3,26 @@ package src.construcciones;
 import java.util.LinkedList;
 
 import src.ConstantesAlgoCraft;
+import src.unidades.*;
 
 public class PuertoEstelarProtoss extends Creadora {
-		
+	private static final int COSTO_MINERALES = 150;
+	private static final int COSTO_GAS = 150;
+	private static final int VIDA = 600;
+	private static final int ESCUDO = 600;
+	private static final int TIEMPO = 10;
+	Escudo escudo;
+	
 		public PuertoEstelarProtoss(){
 			super();
-			unidadesCreables = new LinkedList();
+			unidadesCreables = new LinkedList<Unidad>();
+			unidadesCreables.add(new Scout());
+			unidadesCreables.add(new NaveTransporteProtoss());
 			setNombre("Puerto Estelar Protoss");
-			setTiempoDeConstruccion(ConstantesAlgoCraft.TIEMPO_PUERTOS);
-			setVida(ConstantesAlgoCraft.HP_PUERTOESTELAR_PROTOSS);
-			setCosto(ConstantesAlgoCraft.COSTO_MINERALES_PUERTOESTELAR,ConstantesAlgoCraft.COSTO_GAS_PUERTOESTELAR);
+			setTiempoDeConstruccion(TIEMPO);
+			setVida(VIDA);
+			setCosto(COSTO_MINERALES,COSTO_GAS);
 			setEdificioRequerido(new Acceso());
+			// escudo = new Escudo(ESCUDO,this);
 		}
 }

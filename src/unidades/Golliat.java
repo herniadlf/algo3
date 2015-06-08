@@ -17,9 +17,11 @@ public class Golliat extends Unidad {
 	private static final int TRANSPORTE = 2;
 	private static final int VIDA = 125;
 	private static final int VISION= 8;	
+	private static final int COSTO_MINERALES = 100;
+	private static final int COSTO_GAS = 50;
 		
 	public Golliat (){
-		setCosto(ConstantesAlgoCraft.COSTO_MINERALES_GOLLIAT,ConstantesAlgoCraft.COSTO_GAS_GOLLIAT);
+		setCosto(COSTO_MINERALES,COSTO_GAS);
 		setDanio(DANIO_AIRE,DANIO_TIERRA);
 		setNombre("Golliat");
 		setRangoDeAtaques(RANGO_ATAQUE);

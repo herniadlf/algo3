@@ -17,11 +17,12 @@ public class Dragon extends Unidad {
 	private static final int VIDA = 100;
 	private static final int ESCUDO = 80;
 	private static final int VISION= 8;
-	
+	private static final int COSTO_MINERALES = 125;
+	private static final int COSTO_GAS = 50;
 	Escudo escudo;
 	
 	public Dragon (){
-		setCosto(ConstantesAlgoCraft.COSTO_MINERALES_DRAGON,ConstantesAlgoCraft.COSTO_GAS_DRAGON);
+		setCosto(COSTO_MINERALES,COSTO_GAS);
 		setDanio(DANIO_AIRE,DANIO_TIERRA);
 		setNombre("Dragon");
 		setRangoDeAtaques(RANGO_ATAQUE);

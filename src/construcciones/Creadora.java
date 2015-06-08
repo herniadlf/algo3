@@ -14,7 +14,6 @@ import src.unidades.Unidad;
 public abstract class Creadora extends NoExtractora {
 	
 	LinkedList<Unidad> unidadesCreables;	
-	LinkedList<Posicion> alrededores;
 	
 	public Creadora (){
 		super();
@@ -23,6 +22,7 @@ public abstract class Creadora extends NoExtractora {
 	public Unidad crearUnidad(Unidad unidad){
 		return unidad;
 	}
+	
 
 	public boolean verificarUnidadCreable(Unidad aEntrenar) {
 		Iterator list = unidadesCreables.iterator();		
@@ -36,11 +36,11 @@ public abstract class Creadora extends NoExtractora {
 
 	public void entrenarUnidad(Unidad aEntrenar,Mapa map) throws ExcepcionPosicionInvalida, ExcepcionNoHayLugarParaCrear, ExcepcionYaHayElementoEnLaPosicion {
 		Posicion auxiliar = alrededores.getFirst();		
-		Boolean hayLugar = (map.obtenerContenidoEnPosicion(auxiliar.getX(), auxiliar.getY())).esLoMismo(new Pasto());		
+		Boolean hayLugar = (map.obtenerContenidoEnPosicion(auxiliar.getX(), auxiliar.getY())).esPisable();		
 		Iterator list = alrededores.iterator();		
 		while ( (hayLugar == false) && (list.hasNext()) ){
 			auxiliar = (Posicion) list.next();
-			hayLugar = (map.obtenerContenidoEnPosicion(auxiliar.getX(), auxiliar.getY())).esLoMismo(new Pasto());
+			hayLugar = (map.obtenerContenidoEnPosicion(auxiliar.getX(), auxiliar.getY())).esPisable();
 		}
 		if (hayLugar){
 			map.colocarEn(auxiliar.getX(), auxiliar.getY(), aEntrenar);

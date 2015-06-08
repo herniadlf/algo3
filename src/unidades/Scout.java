@@ -17,11 +17,12 @@ public class Scout extends Unidad {
 	private static final int VIDA = 150;
 	private static final int ESCUDO = 100;
 	private static final int VISION= 7;
-	
+	private static final int COSTO_MINERALES = 300;
+	private static final int COSTO_GAS = 150;
 	Escudo escudo;
 	
 	public Scout (){
-		setCosto(ConstantesAlgoCraft.COSTO_MINERALES_SCOUT,ConstantesAlgoCraft.COSTO_GAS_SCOUT);
+		setCosto(COSTO_MINERALES,COSTO_GAS);
 		setDanio(DANIO_AIRE,DANIO_TIERRA);
 		setNombre("Scout");
 		setRangoDeAtaques(RANGO_ATAQUE);

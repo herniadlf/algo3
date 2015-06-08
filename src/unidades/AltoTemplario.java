@@ -24,7 +24,7 @@ public class AltoTemplario extends Magica {
 	Escudo escudo;
 	
 	public AltoTemplario() {		
-		setCosto(ConstantesAlgoCraft.COSTO_MINERALES_ALTOTEMPLARIO,ConstantesAlgoCraft.COSTO_GAS_ALTOTEMPLARIO);
+		setCosto(COSTO_MINERALES,COSTO_GAS);
 		setDanio(DANIO_AIRE,DANIO_TIERRA);
 		setNombre("Alto Templario");
 		setRangoDeAtaques(RANGO_ATAQUE);

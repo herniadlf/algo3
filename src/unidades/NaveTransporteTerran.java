@@ -18,11 +18,12 @@ public class NaveTransporteTerran extends Unidad {
 	private static final int TRANSPORTE = 8;// capacidad
 	private static final int VIDA = 150;
 	private static final int VISION = 8;
-	
+	private static final int COSTO_MINERALES = 100;
+	private static final int COSTO_GAS = 100;
 	
 	public NaveTransporteTerran() {
 		
-		setCosto(ConstantesAlgoCraft.COSTO_MINERALES_TRANSPORTE_TERRAN,ConstantesAlgoCraft.COSTO_GAS_TRANSPORTE_TERRAN);
+		setCosto(COSTO_MINERALES,COSTO_GAS);
 		setDanio(DANIO_AIRE,DANIO_TIERRA);
 		setNombre("Nave Transporte");
 		setRangoDeAtaques(RANGO_ATAQUE);

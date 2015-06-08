@@ -3,13 +3,16 @@ package test;
 import org.junit.Assert;
 import org.junit.Test;
 
+import excepciones.ExcepcionEdificioNoPuedeCrearUnidad;
 import excepciones.ExcepcionEdificioPrevioRequerido;
 import excepciones.ExcepcionExtractoraSinRecurso;
+import excepciones.ExcepcionNoHayLugarParaCrear;
 import excepciones.ExcepcionPosicionInvalida;
 import excepciones.ExcepcionYaHayElementoEnLaPosicion;
 import src.*;
 import src.construcciones.Barraca;
 import src.construcciones.Construccion;
+import src.construcciones.Creadora;
 import src.construcciones.Extractora;
 import src.construcciones.Fabrica;
 import src.construcciones.NexoMineral;
@@ -19,6 +22,7 @@ import src.mapa.Mapa;
 import src.mapa.Pasto;
 import src.razas.Protoss;
 import src.razas.Terran;
+import src.unidades.Marine;
 public class ConstruccionTest {
 		
 		@Test
@@ -77,6 +81,29 @@ public class ConstruccionTest {
 			Assert.assertTrue ( mapa.obtenerContenidoEnPosicion(6, 8).esLoMismo(fabrica));
 		}
 		
-		
-		
+		@Test
+		public void creacionDeUnidadesAlrededorDeEdificio() throws ExcepcionPosicionInvalida, ExcepcionExtractoraSinRecurso, ExcepcionEdificioPrevioRequerido, ExcepcionYaHayElementoEnLaPosicion, ExcepcionNoHayLugarParaCrear, ExcepcionEdificioNoPuedeCrearUnidad{
+			Mapa mapa = new Mapa(50);
+			Jugador jug = new Jugador ("carlos","rojo",new Terran());
+			
+			Construccion barraca = jug.construir(new Barraca(),mapa,5,5);
+			jug.crearUnidad(new Marine(),(Creadora) barraca, mapa);
+			jug.crearUnidad(new Marine(),(Creadora) barraca, mapa);
+			jug.crearUnidad(new Marine(),(Creadora) barraca, mapa);
+			jug.crearUnidad(new Marine(),(Creadora) barraca, mapa);
+			jug.crearUnidad(new Marine(),(Creadora) barraca, mapa);
+			jug.crearUnidad(new Marine(),(Creadora) barraca, mapa);
+			jug.crearUnidad(new Marine(),(Creadora) barraca, mapa);
+			jug.crearUnidad(new Marine(),(Creadora) barraca, mapa);
+			
+			// VERIFICO QUE SE CREAN A LOS COSTADO DEL EDIFICIO
+			Assert.assertTrue(mapa.obtenerContenidoEnPosicion(4,4).esLoMismo(new Marine()));
+			Assert.assertTrue(mapa.obtenerContenidoEnPosicion(4,5).esLoMismo(new Marine()));
+			Assert.assertTrue(mapa.obtenerContenidoEnPosicion(4,6).esLoMismo(new Marine()));
+			Assert.assertTrue(mapa.obtenerContenidoEnPosicion(6,4).esLoMismo(new Marine()));
+			Assert.assertTrue(mapa.obtenerContenidoEnPosicion(6,5).esLoMismo(new Marine()));
+			Assert.assertTrue(mapa.obtenerContenidoEnPosicion(6,6).esLoMismo(new Marine()));
+			Assert.assertTrue(mapa.obtenerContenidoEnPosicion(5,4).esLoMismo(new Marine()));
+			Assert.assertTrue(mapa.obtenerContenidoEnPosicion(5,6).esLoMismo(new Marine()));
+		}
 }
