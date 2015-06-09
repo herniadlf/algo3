@@ -1,10 +1,12 @@
 package src;
 
+import excepciones.ExcepcionConstruccionNoCorrespondiente;
 import excepciones.ExcepcionEdificioNoPuedeCrearUnidad;
 import excepciones.ExcepcionEdificioPrevioRequerido;
 import excepciones.ExcepcionExtractoraSinRecurso;
 import excepciones.ExcepcionNoHayLugarParaCrear;
 import excepciones.ExcepcionPosicionInvalida;
+import excepciones.ExcepcionRecursoInsuficiente;
 import excepciones.ExcepcionYaHayElementoEnLaPosicion;
 import src.construcciones.Construccion;
 import src.construcciones.Arquitecto;
@@ -96,10 +98,8 @@ public class Jugador {
 		
 	}		
 	
-	public Construccion construir(Construccion edificio, Mapa map, int x, int y) 
-			throws ExcepcionPosicionInvalida, ExcepcionExtractoraSinRecurso, 
-			ExcepcionEdificioPrevioRequerido, ExcepcionYaHayElementoEnLaPosicion {
-		
+	public Construccion construir(Construccion edificio, Mapa map, int x, int y)  {
+		/*
 		if (this.getRaza().verificarEdificioPosible(edificio.getEdificioRequerido())) {
 			this.gastarPlata(edificio.getCosto());
 			edificio.setPosicionX(x);
@@ -110,8 +110,36 @@ public class Jugador {
 		}
 		else {
 			throw new ExcepcionEdificioPrevioRequerido("Requiere construir otro edificio antes del solicitado.");			
-		}
+		}*/
+		try {
+			this.verificacionEdificio(edificio);
+			edificio.setPosicionX(x);
+			edificio.setPosicionY(y);
+			edificio.setAlrededores();
+			edificio.getConstructor().construir(map,edificio);
+			this.getRaza().actualizarEdificios(edificio);
+			this.gastarPlata(edificio.getCosto());
+		} catch (ExcepcionConstruccionNoCorrespondiente
+				| ExcepcionRecursoInsuficiente | ExcepcionPosicionInvalida | ExcepcionExtractoraSinRecurso
+				| ExcepcionYaHayElementoEnLaPosicion  e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}		
 		return edificio;
+	}
+	
+	private void verificacionEdificio(Construccion edificio) throws ExcepcionConstruccionNoCorrespondiente, ExcepcionRecursoInsuficiente{
+		this.getRaza().verificarEdificioPosible(edificio.getEdificioRequerido());
+		this.gastoPosible(edificio.getCosto());
+	}
+	
+	private void gastoPosible(Dinero costo) throws ExcepcionRecursoInsuficiente{
+		if (this.getDinero().getMinerales() < costo.getMinerales()){
+			throw new ExcepcionRecursoInsuficiente("No hay suficientes minerales");
+		}
+		if (this.getDinero().getGasVespeno() < costo.getGasVespeno()){
+			throw new ExcepcionRecursoInsuficiente("No hay suficiente gas");
+		}
 	}
 	
 	public Unidad crearUnidad(Unidad aEntrenar, Creadora edificio, Mapa map) 

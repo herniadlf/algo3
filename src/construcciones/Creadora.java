@@ -35,7 +35,7 @@ public abstract class Creadora extends NoExtractora {
 	}
 
 	public void entrenarUnidad(Unidad aEntrenar,Mapa map) throws ExcepcionPosicionInvalida, ExcepcionNoHayLugarParaCrear, ExcepcionYaHayElementoEnLaPosicion {
-		Posicion auxiliar = alrededores.getFirst();		
+		/*Posicion auxiliar = alrededores.getFirst();		
 		Boolean hayLugar = (map.obtenerContenidoEnPosicion(auxiliar.getX(), auxiliar.getY())).esOcupable();		
 		Iterator list = alrededores.iterator();
 		
@@ -45,7 +45,7 @@ public abstract class Creadora extends NoExtractora {
 		}
 		if (hayLugar){
 			
-			Posicion posicion = new Posicion (auxiliar.getX(),auxiliar.getY()); //modifique
+			Posicion posicion = new Posicion (auxiliar.getX(),auxiliar.getY()); 
 			
 			
 			map.colocarEn(auxiliar.getX(), auxiliar.getY(), aEntrenar);
@@ -53,11 +53,40 @@ public abstract class Creadora extends NoExtractora {
 			aEntrenar.setPosicion(posicion);
 			
 			
-			/* que verifique todo lo que tiene que verificar y que la unidad lo coloque*/
+			
 		}
 		else{
 			throw new ExcepcionNoHayLugarParaCrear("No hay lugar para crear la unidad");
+		} 
+		esta es la version que respeta polimorfismo, digamos. Abajo va la que anda con el nuevo mapa,
+		aunque algo hay que tocar porque estoy preguntando todo el tiempo si es terrestre o no..
+		*/
+		Posicion auxiliar = alrededores.getFirst();
+		Boolean hayLugar = false;
+		Iterator<Posicion> list = alrededores.iterator();
+		if (aEntrenar.esTerrestre()){
+			hayLugar = (map.obtenerContenidoEnPosicion(auxiliar.getX(), auxiliar.getY())).getElementoEnTierra().esOcupable();
+			while ( (hayLugar == false) && (list.hasNext()) ){
+				auxiliar = (Posicion) list.next();
+				hayLugar = (map.obtenerContenidoEnPosicion(auxiliar.getX(), auxiliar.getY())).getElementoEnTierra().esOcupable();
+			}
 		}
+		else{
+			hayLugar = (map.obtenerContenidoEnPosicion(auxiliar.getX(), auxiliar.getY())).getElementoEnAire().esOcupable();
+			while ( (hayLugar == false) && (list.hasNext()) ){
+				auxiliar = (Posicion) list.next();
+				hayLugar = (map.obtenerContenidoEnPosicion(auxiliar.getX(), auxiliar.getY())).getElementoEnAire().esOcupable();
+			}
+		}
+		if (hayLugar){			
+			Posicion posicion = new Posicion (auxiliar.getX(),auxiliar.getY()); 			
+			map.colocarEn(auxiliar.getX(), auxiliar.getY(), aEntrenar);
+			aEntrenar.setMapa(map);
+			aEntrenar.setPosicion(posicion);			
+		}
+		else{
+			throw new ExcepcionNoHayLugarParaCrear("No hay lugar para crear la unidad");
+		} 
 	}
 				
 }
