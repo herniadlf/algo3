@@ -19,7 +19,7 @@ import src.construcciones.NexoMineral;
 import src.construcciones.Refineria;
 import src.mapa.FuenteDeMinerales;
 import src.mapa.Mapa;
-import src.mapa.Pasto;
+import src.mapa.EspacioDisponible;
 import src.razas.Protoss;
 import src.razas.Terran;
 import src.unidades.Marine;
@@ -46,7 +46,7 @@ public class ConstruccionTest {
 				for (int j=1; j<mapa.getTamanioMapa(); j++){
 					Construccion b = new Barraca();
 					b = jug.construir(b, mapa, i, j);
-					Assert.assertTrue( ( mapa.obtenerContenidoEnPosicion(i, j) ).esLoMismo(b));					
+					Assert.assertTrue( ( mapa.obtenerContenidoEnPosicion(i, j) ).getElementoEnTierra().esLoMismo(b));					
 				}				
 			}
 		} 
@@ -78,7 +78,7 @@ public class ConstruccionTest {
 			Construccion barraca = jug.construir(new Barraca(), mapa, 5,5);
 			Construccion fabrica = jug.construir(new Fabrica(), mapa, 6, 8);
 			
-			Assert.assertTrue ( mapa.obtenerContenidoEnPosicion(6, 8).esLoMismo(fabrica));
+			Assert.assertTrue ( mapa.obtenerContenidoEnPosicion(6, 8).getElementoEnTierra().esLoMismo(fabrica));
 		}
 		
 		@Test
@@ -97,13 +97,13 @@ public class ConstruccionTest {
 			jug.crearUnidad(new Marine(),(Creadora) barraca, mapa);
 			
 			// VERIFICO QUE SE CREAN A LOS COSTADO DEL EDIFICIO
-			Assert.assertTrue(mapa.obtenerContenidoEnPosicion(4,4).esLoMismo(new Marine()));
-			Assert.assertTrue(mapa.obtenerContenidoEnPosicion(4,5).esLoMismo(new Marine()));
-			Assert.assertTrue(mapa.obtenerContenidoEnPosicion(4,6).esLoMismo(new Marine()));
-			Assert.assertTrue(mapa.obtenerContenidoEnPosicion(6,4).esLoMismo(new Marine()));
-			Assert.assertTrue(mapa.obtenerContenidoEnPosicion(6,5).esLoMismo(new Marine()));
-			Assert.assertTrue(mapa.obtenerContenidoEnPosicion(6,6).esLoMismo(new Marine()));
-			Assert.assertTrue(mapa.obtenerContenidoEnPosicion(5,4).esLoMismo(new Marine()));
-			Assert.assertTrue(mapa.obtenerContenidoEnPosicion(5,6).esLoMismo(new Marine()));
+			Assert.assertTrue(mapa.obtenerContenidoEnPosicion(4,4).getElementoEnTierra().esLoMismo(new Marine()));
+			Assert.assertTrue(mapa.obtenerContenidoEnPosicion(4,5).getElementoEnTierra().esLoMismo(new Marine()));
+			Assert.assertTrue(mapa.obtenerContenidoEnPosicion(4,6).getElementoEnTierra().esLoMismo(new Marine()));
+			Assert.assertTrue(mapa.obtenerContenidoEnPosicion(6,4).getElementoEnTierra().esLoMismo(new Marine()));
+			Assert.assertTrue(mapa.obtenerContenidoEnPosicion(6,5).getElementoEnTierra().esLoMismo(new Marine()));
+			Assert.assertTrue(mapa.obtenerContenidoEnPosicion(6,6).getElementoEnTierra().esLoMismo(new Marine()));
+			Assert.assertTrue(mapa.obtenerContenidoEnPosicion(5,4).getElementoEnTierra().esLoMismo(new Marine()));
+			Assert.assertTrue(mapa.obtenerContenidoEnPosicion(5,6).getElementoEnTierra().esLoMismo(new Marine()));
 		}
 }
