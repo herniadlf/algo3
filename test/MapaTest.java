@@ -16,14 +16,15 @@ public class MapaTest {
 	
 
 	@Test
-	public void creacionDelMapaConPasto() throws ExcepcionPosicionInvalida {
+	public void creacionDelMapaConSectores() throws ExcepcionPosicionInvalida {
 		
 		Mapa mapa = new Mapa(10);
 		
 		for (int i = 1; i <= mapa.getTamanioMapa(); i++) {
 			for (int j = 1; j <= mapa.getTamanioMapa(); j++) {
 				
-				Assert.assertTrue((mapa.obtenerContenidoEnPosicion(i,j)).esPisable());
+				Assert.assertTrue((mapa.obtenerContenidoEnPosicion(i,j)).getElementoEnAire().esOcupable());
+				Assert.assertTrue((mapa.obtenerContenidoEnPosicion(i,j)).getElementoEnAire().esOcupable());
 			}
 		}
 	}
@@ -37,7 +38,7 @@ public class MapaTest {
 		
 		mapa.colocarEn(5, 5, unaBarraca);
 		
-		Assert.assertEquals(mapa.obtenerContenidoEnPosicion(5,5), unaBarraca);
+		Assert.assertEquals(mapa.obtenerContenidoEnPosicion(5,5).getElementoEnTierra(), unaBarraca);
 		
 	}
 	
@@ -78,11 +79,11 @@ public class MapaTest {
 		
 		mapa.colocarEn(5, 5, unaBarraca);
 		
-		Assert.assertFalse((mapa.obtenerContenidoEnPosicion(5,5)).esPisable());
+		Assert.assertFalse((mapa.obtenerContenidoEnPosicion(5,5)).getElementoEnTierra().esOcupable());
 		
-		mapa.eliminarElementoEnPosicion(5,5);
+		mapa.eliminarElementoTerrestreEnPosicion(5,5);
 		
-		Assert.assertTrue((mapa.obtenerContenidoEnPosicion(5,5)).esPisable());
+		Assert.assertTrue((mapa.obtenerContenidoEnPosicion(5,5)).getElementoEnTierra().esOcupable());
 		
 	}
 	
@@ -106,7 +107,7 @@ public class MapaTest {
 		for (int i = 1; i <= mapa.getTamanioMapa(); i++) {
 			for (int j = 1; j <= mapa.getTamanioMapa(); j++) {
 				
-				if(!mapa.obtenerContenidoEnPosicion(i,j).esPisable()) {
+				if(!mapa.obtenerContenidoEnPosicion(i,j).getElementoEnTierra().esOcupable()) {
 					
 					casillerosNoPisables++;
 					
@@ -140,7 +141,7 @@ public class MapaTest {
 		
 		mapa.colocarExtractorEn(5, 5, unExtractorMineral);
 		
-		Assert.assertEquals(mapa.obtenerContenidoEnPosicion(5, 5), unExtractorMineral);
+		Assert.assertEquals(mapa.obtenerContenidoEnPosicion(5, 5).getElementoEnTierra(), unExtractorMineral);
 		
 		
 		
@@ -152,7 +153,7 @@ public class MapaTest {
 		
 		mapa.colocarExtractorEn(7, 7, unExtractorGas);
 		
-		Assert.assertEquals(mapa.obtenerContenidoEnPosicion(7, 7), unExtractorGas);
+		Assert.assertEquals(mapa.obtenerContenidoEnPosicion(7, 7).getElementoEnTierra(), unExtractorGas);
 				 
 	}
 	
