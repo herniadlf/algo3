@@ -8,7 +8,7 @@ public class Vida {
 	public Vida (int vidaDeUnidad){
 		this.vida = vidaDeUnidad;
 		this.finalizada= false;
-		
+		this.danioRecibido = 0;
 	}
 	
 	public void dismunuirVidaPorDanio(){

@@ -127,6 +127,7 @@ public abstract class Unidad implements Mapeable{
 		
 		int danio = this.getDanio().getDanioTierra();
 		unidad.getVida().aumentarDanioARecibir(danio);
+		unidad.recibirDanio();
 		
 		
 	}
