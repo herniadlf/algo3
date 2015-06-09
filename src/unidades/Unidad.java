@@ -26,7 +26,7 @@ public abstract class Unidad implements Mapeable{
 	protected ArrayList <Unidad> atacantes;
 	protected Posicion posicion;
 	protected Mapa mapa;
-
+	protected Entrenador entrenador;
 
 	
 	public Unidad(){
@@ -45,7 +45,9 @@ public abstract class Unidad implements Mapeable{
 		
 		
 	}
-	
+	public void setEntrenador (Entrenador e){
+		entrenador = e;
+	}
 	
 	public void setNombre(String s){
 		nombre = s;
@@ -74,7 +76,9 @@ public abstract class Unidad implements Mapeable{
 	public void setDanio(int danioAire, int danioTierra){
 		danio = new Danio(danioAire,danioTierra);		
 		}
-	
+	public Entrenador getEntrenador(){
+		return entrenador;
+	}
 	public  String getNombre(){
 		return nombre;
 	}

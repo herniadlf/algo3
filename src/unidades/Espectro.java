@@ -31,6 +31,7 @@ public class Espectro extends Unidad {
 		setTransporte(TRANSPORTE);
 		setVida(new Vida(VIDA));
 		setVision(VISION);
+		entrenador = (EntrenadorUnidadVoladora) new EntrenadorUnidadVoladora();
 	}
 	
 	@Override
@@ -57,6 +58,10 @@ public class Espectro extends Unidad {
 		return null;
 	}
 
+	
+	public EntrenadorUnidadVoladora getEntrenador(){
+		return (EntrenadorUnidadVoladora)entrenador;
+	}
 	
 	public void recibirDanio (){
 		

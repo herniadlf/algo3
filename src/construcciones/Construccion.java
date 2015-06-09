@@ -58,19 +58,27 @@ public class Construccion implements Mapeable{
 	public void setEdificioRequerido(Construccion edificioRequerido) {
 		this.edificioRequerido = edificioRequerido;
 	}
-	public Construccion(){}
+	
+	protected int capacidadDeSuministros;
+	public int getCantidadDeSuministros(){
+		return capacidadDeSuministros;
+	}
+	
+	public Construccion(){
+		capacidadDeSuministros = 0;
+	}
 	protected LinkedList<Posicion> alrededores;
 	
 	public void setAlrededores(){
 		alrededores = new LinkedList<Posicion>();
-		alrededores.add(new Posicion(posicionX,posicionY+1));
-		alrededores.add(new Posicion(posicionX,posicionY-1));
 		alrededores.add(new Posicion(posicionX-1,posicionY+1));
-		alrededores.add(new Posicion(posicionX-1,posicionY));
-		alrededores.add(new Posicion(posicionX-1,posicionY-1));
+		alrededores.add(new Posicion(posicionX,posicionY+1));
 		alrededores.add(new Posicion(posicionX+1,posicionY+1));
 		alrededores.add(new Posicion(posicionX+1,posicionY));
-		alrededores.add(new Posicion(posicionX+1,posicionY-1));		
+		alrededores.add(new Posicion(posicionX+1,posicionY-1));
+		alrededores.add(new Posicion(posicionX,posicionY-1));
+		alrededores.add(new Posicion(posicionX-1,posicionY-1));
+		alrededores.add(new Posicion(posicionX-1,posicionY));		
 	}
 	
 	public boolean esLoMismo(Mapeable aComparar){

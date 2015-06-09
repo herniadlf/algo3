@@ -32,6 +32,7 @@ public class NaveTransporteTerran extends Unidad {
 		setTransporte(TRANSPORTE);
 		setVida(new Vida(VIDA));
 		setVision(VISION);	
+		entrenador = (EntrenadorUnidadVoladora) new EntrenadorUnidadVoladora();
 	}
 	@Override
 	public Mapeable colocarContenido() {
@@ -57,7 +58,9 @@ public class NaveTransporteTerran extends Unidad {
 		return null;
 	}
 
-	
+	public EntrenadorUnidadVoladora getEntrenador(){
+		return (EntrenadorUnidadVoladora)entrenador;
+	}
 	
 	
 	public void recibirDanio (){

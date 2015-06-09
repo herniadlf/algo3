@@ -31,6 +31,7 @@ public class NaveTransporteProtoss extends Unidad {
 		setVida(new Vida(VIDA));
 		setVision(VISION);	
 		escudo = new Escudo (ESCUDO,this);
+		entrenador = (EntrenadorUnidadVoladora) new EntrenadorUnidadVoladora();
 	}
 	@Override
 	public Mapeable colocarContenido() {
@@ -56,7 +57,9 @@ public class NaveTransporteProtoss extends Unidad {
 		return null;
 	}
 
-
+	public EntrenadorUnidadVoladora getEntrenador(){
+		return (EntrenadorUnidadVoladora)entrenador;
+	}
 	
 	
 	public void recibirDanio (){

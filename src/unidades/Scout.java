@@ -32,6 +32,7 @@ public class Scout extends Unidad {
 		setVida(new Vida(VIDA));
 		setVision(VISION);
 		escudo = new Escudo(ESCUDO,this); 
+		entrenador = (EntrenadorUnidadVoladora) new EntrenadorUnidadVoladora();
 	}		
 	
 	@Override
@@ -58,7 +59,9 @@ public class Scout extends Unidad {
 		return null;
 	}
 	
-
+	public EntrenadorUnidadVoladora getEntrenador(){
+		return (EntrenadorUnidadVoladora)entrenador;
+	}
 	
 	
 	public void recibirDanio (){

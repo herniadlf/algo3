@@ -29,6 +29,7 @@ public class Marine extends Unidad {
 		setTransporte(TRANSPORTE);
 		setVida(new Vida(VIDA));
 		setVision(VISION);
+		entrenador = (EntrenadorUnidadTerrestre) new EntrenadorUnidadTerrestre();
 	}
 	
 	@Override
@@ -53,7 +54,9 @@ public class Marine extends Unidad {
 		return null;
 	}
 		
-	
+	public EntrenadorUnidadTerrestre getEntrenador(){
+		return (EntrenadorUnidadTerrestre)entrenador;
+	}
 	
 	public void recibirDanio (){
 		

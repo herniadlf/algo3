@@ -34,6 +34,7 @@ public class Zealot extends Unidad {
 		setVida(new Vida(VIDA));
 		setVision(VISION);
 		escudo = new Escudo(ESCUDO,this); 
+		entrenador = (EntrenadorUnidadTerrestre) new EntrenadorUnidadTerrestre();
 	}		
 
 		
@@ -65,7 +66,9 @@ public class Zealot extends Unidad {
 		return null;
 	}
 
-	
+	public EntrenadorUnidadTerrestre getEntrenador(){
+		return (EntrenadorUnidadTerrestre)entrenador;
+	}
 
 	
 	public void recibirDanio (){

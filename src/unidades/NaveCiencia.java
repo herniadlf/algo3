@@ -39,6 +39,7 @@ public class NaveCiencia extends Magica {
 		magias.add(new EMP());
 		magias.add(new Radiacion());
 		energiaPorTurno = 10;
+		entrenador = (EntrenadorUnidadVoladora) new EntrenadorUnidadVoladora();
 	}	
 
 	
@@ -66,8 +67,10 @@ public class NaveCiencia extends Magica {
 		return null;
 	}
 
+	public EntrenadorUnidadVoladora getEntrenador(){
+		return (EntrenadorUnidadVoladora)entrenador;
+	}
 	
-
 
 	public int obtenerEnergia() {
 	

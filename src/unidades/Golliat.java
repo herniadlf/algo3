@@ -30,6 +30,7 @@ public class Golliat extends Unidad {
 		setTransporte(TRANSPORTE);
 		setVida(new Vida(VIDA));
 		setVision(VISION);
+		entrenador = (EntrenadorUnidadTerrestre) new EntrenadorUnidadTerrestre();
 	}
 	
 	@Override
@@ -56,6 +57,9 @@ public class Golliat extends Unidad {
 		return null;
 	}
 	
+	public EntrenadorUnidadTerrestre getEntrenador(){
+		return (EntrenadorUnidadTerrestre)entrenador;
+	}
 	
 	public void recibirDanio (){
 		
