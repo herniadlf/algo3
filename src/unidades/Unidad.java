@@ -144,7 +144,7 @@ public abstract class Unidad implements Mapeable{
 		
 		
 		mapa.colocarEn(x, y, this);
-		mapa.eliminarElementoEnPosicion(posicion.getX(), posicion.getY());
+		mapa.eliminarElementoTerrestreEnPosicion(posicion.getX(), posicion.getY());
 		
 		/* eliminar de las cordenadas anteriores*/
 		

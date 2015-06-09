@@ -71,9 +71,21 @@ public class Scout extends Unidad {
 	
 
 	@Override
-	public boolean esPisable() {
+	public boolean esOcupable() {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+	@Override
+	public boolean esTerrestre() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean esAereo() {
+		// TODO Auto-generated method stub
+		return true;
 	}
 	
 }
