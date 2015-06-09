@@ -34,8 +34,8 @@ public class Mapa {
 			for (int j = 1; j <= tamanio; j++) {
 				
 				Posicion posicion = new Posicion(i,j);
-				Pasto pasto = new Pasto();
-				mapa.put(posicion, pasto);
+				Sector unSector = new Sector(new EspacioDisponible(), new EspacioDisponible());
+				mapa.put(posicion, unSector);
 			}
 		}
 	}
@@ -44,8 +44,13 @@ public class Mapa {
 		
 		Posicion posicion = new Posicion(i,j);
 		this.validarCoordenadas(posicion);
-		this.validarPosicionSinElemento(posicion);
-		mapa.put(posicion, unElemento);
+		this.validarPosicionSinElemento(posicion, unElemento.esTerrestre());
+		if (unElemento.esTerrestre()){
+			this.obtenerContenidoEnPosicion(i, j).setElementoEnTierra(unElemento);
+		}
+		else {
+			this.obtenerContenidoEnPosicion(i, j).setElementoEnAire(unElemento);
+		}
 
 	}
 	
@@ -53,9 +58,9 @@ public class Mapa {
 		
 		Posicion posicion = new Posicion(i,j);
 		this.validarCoordenadas(posicion);
-		if (obtenerContenidoEnPosicion(i, j).esLoMismo(unExtractor.getFuente())) {
+		if (obtenerContenidoEnPosicion(i, j).getElementoEnTierra().esLoMismo(unExtractor.getFuente())) {
 			
-			mapa.put(posicion, unExtractor);
+			this.obtenerContenidoEnPosicion(i, j).setElementoEnTierra(unExtractor);
 		}
 		else {
 			
@@ -64,11 +69,19 @@ public class Mapa {
 		
 	}
 	
-	private void validarPosicionSinElemento(Posicion posicion) throws ExcepcionPosicionInvalida, ExcepcionYaHayElementoEnLaPosicion {
+	private void validarPosicionSinElemento(Posicion posicion, boolean esTerrestre) throws ExcepcionPosicionInvalida, ExcepcionYaHayElementoEnLaPosicion {
 		
-		if(!obtenerContenidoEnPosicion(posicion.getX(), posicion.getY()).esPisable()){
+		Sector unSector = obtenerContenidoEnPosicion(posicion.getX(), posicion.getY());
+		
+		if((esTerrestre) && !unSector.getElementoEnTierra().esOcupable()){
 			
-			throw new ExcepcionYaHayElementoEnLaPosicion("Ya hay un elemento en la posicion");
+			throw new ExcepcionYaHayElementoEnLaPosicion("Ya hay un elemento de Tierra en la posicion");
+		}
+		
+		else if ((!esTerrestre) && !unSector.getElementoEnAire().esOcupable()) {
+			
+			throw new ExcepcionYaHayElementoEnLaPosicion("Ya hay un elemento de Aire en la posicion");
+			
 		}
 		
 	}
@@ -87,19 +100,25 @@ public class Mapa {
 				&& (unaPosicion.getY() > 0) && (unaPosicion.getY() <= tamanio));
 	}
 	
-	public Mapeable obtenerContenidoEnPosicion(int i, int j) throws ExcepcionPosicionInvalida{
+	public Sector obtenerContenidoEnPosicion(int i, int j) throws ExcepcionPosicionInvalida{
 		
 		Posicion unaPosicion = new Posicion(i,j);
 		this.validarCoordenadas(unaPosicion);
-		return this.mapa.get(unaPosicion);
+		return (Sector) this.mapa.get(unaPosicion);
 	}
 	
-	public void eliminarElementoEnPosicion(int i, int j) throws ExcepcionPosicionInvalida{
+	public void eliminarElementoTerrestreEnPosicion(int i, int j) throws ExcepcionPosicionInvalida{
 		
 		Posicion unaPosicion = new Posicion(i,j);
 		this.validarCoordenadas(unaPosicion);
-		Pasto pasto = new Pasto();
-		this.mapa.put(unaPosicion,pasto);
+		this.obtenerContenidoEnPosicion(i, j).setElementoEnTierra(new EspacioDisponible());
+	}
+	
+	public void eliminarElementoAereoEnPosicion(int i, int j) throws ExcepcionPosicionInvalida{
+		
+		Posicion unaPosicion = new Posicion(i,j);
+		this.validarCoordenadas(unaPosicion);
+		this.obtenerContenidoEnPosicion(i, j).setElementoEnAire(new EspacioDisponible());
 	}
 	
 	public void crearCantidadDeArbolesEnMapa(int cantidadDeArboles) throws ExcepcionPosicionInvalida, ExcepcionSuperaLimenteDeArbolesPermitos, ExcepcionYaHayElementoEnLaPosicion{
@@ -114,7 +133,7 @@ public class Mapa {
 				Arbol unArbol = new Arbol();
 				int i = random.nextInt(tamanio)+1;  //Genero números randoms para determinar la posicion del Arbol
 				int j = random.nextInt(tamanio)+1;
-				if(obtenerContenidoEnPosicion(i, j).esPisable()){
+				if(obtenerContenidoEnPosicion(i, j).getElementoEnTierra().esOcupable()){
 					
 					this.colocarEn(i, j, unArbol);
 					totalArbolesCreados++;

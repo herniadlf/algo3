@@ -1,6 +1,6 @@
 package src.mapa;
 
-public class Pasto implements Mapeable{
+public class EspacioDisponible implements Mapeable{
 
 	public boolean esLoMismo(Mapeable aComparar){
 		return (this.getNombre() == aComparar.getNombre());
@@ -35,7 +35,17 @@ public class Pasto implements Mapeable{
 		return null;
 	}
 	@Override
-	public boolean esPisable() {
+	public boolean esOcupable() {
+		// TODO Auto-generated method stub
+		return true;
+	}
+	@Override
+	public boolean esTerrestre() {
+		// TODO Auto-generated method stub
+		return true;
+	}
+	@Override
+	public boolean esAereo() {
 		// TODO Auto-generated method stub
 		return true;
 	}

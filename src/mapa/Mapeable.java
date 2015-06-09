@@ -9,5 +9,7 @@ public interface Mapeable {
 	Mapeable mover();
 	boolean esLoMismo(Mapeable m);
 	String getNombre();
-	boolean esPisable();
+	boolean esOcupable();
+	boolean esTerrestre();
+	boolean esAereo();
 }
