@@ -28,9 +28,9 @@ public class AltoTemplarioTest extends TestCase {
 	
 	public void testAltoTemplarioComienzaCon40Vida40EscudoY50Energia() {
 		
-		Assert.assertTrue(altoTemplario.getVida().obtenerVida() == 40);
-		Assert.assertTrue(altoTemplario.getEscudo().obtenerResistenciaActual() == 40);
-		Assert.assertTrue(altoTemplario.obtenerEnergia() == 50);
+		assertTrue(altoTemplario.getVida().obtenerVida() == 40);
+		assertTrue(altoTemplario.getEscudo().obtenerResistenciaActual() == 40);
+		assertTrue(altoTemplario.obtenerEnergia() == 50);
 		
 	}
 	
