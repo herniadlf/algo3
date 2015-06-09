@@ -25,7 +25,7 @@ public class Acceso extends Creadora {
 			setCosto(COSTO_MINERALES,COSTO_GAS);
 			setTiempoDeConstruccion(TIEMPO);
 			setEdificioRequerido(new Pilon());
-			//escudo = new Escudo(ESCUDO,this);
+			escudo = new Escudo(ESCUDO,this);
 		}
 		
 		
@@ -43,6 +43,11 @@ public class Acceso extends Creadora {
 			return alto;
 			}
 		
+		public Escudo getEscudo(){
+			
+			return escudo;
+			
+		}
 		
 		
 		

@@ -98,19 +98,20 @@ public abstract class Unidad implements Atacable{
 	
 	}
 	
-	public void atacarEnAire (Unidad unidad){
+	public void atacarEnAire (Atacable atacado){
 		
 		int danio = this.getDanio().getDanioAire();
-		unidad.getVida().aumentarDanioARecibir(danio);
+		atacado.getVida().aumentarDanioARecibir(danio);
+		atacado.recibirDanio();
 
 	} 
 	
 	
-	public void atacarEnTierra(Unidad unidad){
+	public void atacarEnTierra(Atacable atacado){
 		
 		int danio = this.getDanio().getDanioTierra();
-		unidad.getVida().aumentarDanioARecibir(danio);
-		unidad.recibirDanio();
+		atacado.getVida().aumentarDanioARecibir(danio);
+		atacado.recibirDanio();
 		
 	}
 

@@ -12,7 +12,7 @@ public class PuertoEstelarProtoss extends Creadora {
 	private static final int VIDA = 600;
 	private static final int ESCUDO = 600;
 	private static final int TIEMPO = 10;
-	Escudo escudo;
+	private Escudo escudo;
 	
 		public PuertoEstelarProtoss(){
 			super();
@@ -24,6 +24,6 @@ public class PuertoEstelarProtoss extends Creadora {
 			setVida(VIDA);
 			setCosto(COSTO_MINERALES,COSTO_GAS);
 			setEdificioRequerido(new Acceso());
-			// escudo = new Escudo(ESCUDO,this);
+			escudo = new Escudo(ESCUDO,this);
 		}
 }

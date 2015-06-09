@@ -23,7 +23,7 @@ public class ArchivosTemplarios extends Creadora {
 		setCosto(COSTO_MINERALES,COSTO_GAS);
 		setVida(VIDA);
 		setEdificioRequerido(new PuertoEstelarProtoss());
-		//escudo = new Escudo (ESCUDO,this);
+		escudo = new Escudo (ESCUDO,this);
 	}
 
 	public AltoTemplario crearAltoTemplario() {

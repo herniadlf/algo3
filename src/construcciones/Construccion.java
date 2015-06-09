@@ -122,6 +122,11 @@ public class Construccion implements Atacable {
 		// TODO Auto-generated method stub
 		return false;
 	}
+	@Override
+	public void recibirDanio() {
+		if()
+		
+	}
 	
 	
 }

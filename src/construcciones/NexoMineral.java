@@ -12,7 +12,7 @@ public class NexoMineral extends Extractora {
 	private static final int ESCUDO = 250;
 	private static final int TIEMPO = 4;
 	
-	Escudo escudo;
+	private Escudo escudo;
 	public NexoMineral() {
 		super();
 		setFuente(new FuenteDeMinerales());
@@ -21,7 +21,14 @@ public class NexoMineral extends Extractora {
 		setCosto(COSTO_MINERALES,COSTO_GAS);
 		setTiempoDeConstruccion(TIEMPO);
 		setEdificioRequerido(new Pilon());
-		//escudo = new Escudo(ESCUDO,this);
+		escudo = new Escudo(ESCUDO,this);
 	}
 
+	public Escudo getEscudo(){
+		
+		return escudo;
+		
+	}
+	
+	
 }

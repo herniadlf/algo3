@@ -11,7 +11,7 @@ public class Pilon extends NoExtractora {
 	private static final int TIEMPO = 5;
 	private static final int SUMINISTROS = 5;
 	
-	Escudo escudo;
+	private Escudo escudo;
 	
 	public Pilon(){
 		super();
@@ -20,6 +20,6 @@ public class Pilon extends NoExtractora {
 		setTiempoDeConstruccion(TIEMPO);
 		setEdificioRequerido(this);
 		capacidadDeSuministros = SUMINISTROS;
-		//escudo = new Escudo(ESCUDO,this);
+		escudo = new Escudo(ESCUDO,this);
 	}
 }

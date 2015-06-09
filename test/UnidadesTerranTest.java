@@ -90,13 +90,15 @@ public class UnidadesTerranTest extends TestCase{
 			Assert.assertTrue((vida.obtenerVida()) == 100);	
 		
 		}	
-		
-		/*public void testEspectroPuedeAtacarEdificiosEnemigos(){
+		/*
+		public void testEspectroPuedeAtacarEdificiosEnemigos(){
 			
 			Espectro espectro = new Espectro();
 			NexoMineral nexoMineral = new NexoMineral();
-			Assert.assertTrue(nexoMineral.getEscudo().obtener == );
+			Assert.assertTrue(nexoMineral.getEscudo().obtenerResistenciaActual() == 250 );
 			
+			espectro.atacarEnAire(nexoMineral);
+			Assert.assertTrue(nexoMineral.getEscudo().obtenerResistenciaActual() == 230 );
 			
 		}
 		*/
