@@ -7,7 +7,7 @@ import excepciones.ExcepcionNoHayLugarParaCrear;
 import excepciones.ExcepcionPosicionInvalida;
 import excepciones.ExcepcionYaHayElementoEnLaPosicion;
 import src.mapa.Mapa;
-import src.mapa.Pasto;
+import src.mapa.EspacioDisponible;
 import src.mapa.Posicion;
 import src.unidades.Unidad;
 
@@ -36,12 +36,12 @@ public abstract class Creadora extends NoExtractora {
 
 	public void entrenarUnidad(Unidad aEntrenar,Mapa map) throws ExcepcionPosicionInvalida, ExcepcionNoHayLugarParaCrear, ExcepcionYaHayElementoEnLaPosicion {
 		Posicion auxiliar = alrededores.getFirst();		
-		Boolean hayLugar = (map.obtenerContenidoEnPosicion(auxiliar.getX(), auxiliar.getY())).esPisable();		
+		Boolean hayLugar = (map.obtenerContenidoEnPosicion(auxiliar.getX(), auxiliar.getY())).esOcupable();		
 		Iterator list = alrededores.iterator();
 		
 		while ( (hayLugar == false) && (list.hasNext()) ){
 			auxiliar = (Posicion) list.next();
-			hayLugar = (map.obtenerContenidoEnPosicion(auxiliar.getX(), auxiliar.getY())).esPisable();
+			hayLugar = (map.obtenerContenidoEnPosicion(auxiliar.getX(), auxiliar.getY())).esOcupable();
 		}
 		if (hayLugar){
 			
