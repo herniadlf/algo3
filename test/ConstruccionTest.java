@@ -90,6 +90,7 @@ public class ConstruccionTest {
 			Mapa mapa = new Mapa(50);
 			Jugador jug = new Jugador ("carlos","rojo",new Protoss());
 			
+			jug.construir(new Pilon(),mapa,9,9);
 			Assert.assertEquals(5, jug.getPoblacionDisponible());
 			jug.construir(new Pilon(),mapa,5,5);
 			Assert.assertEquals(10, jug.getPoblacionDisponible());
@@ -106,8 +107,9 @@ public class ConstruccionTest {
 			Construccion fabrica = jug.construir(new Fabrica(),mapa, 9,9);
 			Construccion puertoEstelarTerran = jug.construir(new PuertoEstelarTerran(), mapa, 16, 16);
 			//Como creo 8 espectrs que requieren 2 suministros, en total necesito 16 suministros,
-			//por lo cual construyo 3 depositosdesuminitros (ya que inicialmente viene una construida)
+			//por lo cual construyo 4 depositosdesuminitros 
 			//para tener 20 suministros disponibles (5 suministros extras x edificio)
+			jug.construir(new DepositoDeSuministros(), mapa, 1, 1);
 			jug.construir(new DepositoDeSuministros(), mapa, 9, 8);
 			jug.construir(new DepositoDeSuministros(), mapa, 10, 2);
 			jug.construir(new DepositoDeSuministros(), mapa, 10, 4);
@@ -136,6 +138,7 @@ public class ConstruccionTest {
 			Mapa mapa = new Mapa(50);
 			Jugador jug = new Jugador ("carlos","rojo",new Terran());
 			
+			jug.construir(new DepositoDeSuministros(), mapa, 30, 30);
 			Construccion barraca = jug.construir(new Barraca(),mapa,5,5);
 			jug.crearUnidad(new Marine(),(Creadora) barraca, mapa);
 			jug.crearUnidad(new Marine(),(Creadora) barraca, mapa);

@@ -92,7 +92,7 @@ public class Jugador {
 		setNombre(nombre);
 		setColor(color);
 		setRaza(raza);
-		setPoblacionDisponible(5);
+		setPoblacionDisponible(0);
 		setDinero(800,400);
 		
 	}
