@@ -2,15 +2,15 @@ package src;
 
 import src.unidades.Unidad;
 
-public class Escudo {
+public class Escudo{
 	
 	private int resistencia; 
-	private Unidad unidad;
+	private Atacable protegido;
 	
-	public Escudo(int resistencia, Unidad unidad) {
+	public Escudo(int resistencia, Atacable protegido) {
 		
 		this.resistencia = resistencia; 
-		this.unidad = unidad;
+		this.protegido = protegido;
 		
 	}
 	
@@ -19,7 +19,7 @@ public class Escudo {
 		if(resistencia - danio < 0){
 			
 			int vidaAfectada= danio - resistencia;
-			unidad.getVida().dismunuirVidaPorDanio();
+			protegido.getVida().dismunuirVidaPorDanio();
 		}
 		else {
 			

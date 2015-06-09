@@ -2,13 +2,14 @@ package src.construcciones;
 
 import java.util.LinkedList;
 
+import src.Atacable;
 import src.Dinero;
 import src.Vida;
 import src.mapa.Mapeable;
 import src.mapa.Posicion;
 
 
-public class Construccion implements Mapeable{
+public class Construccion implements Atacable {
 	
 	private String nombre;
 	public String getNombre(){return nombre;}
@@ -27,7 +28,7 @@ public class Construccion implements Mapeable{
 	}	
 	
 	private Vida vida;
-	public int getVida(){ return vida.obtenerVida(); }
+	public Vida getVida(){ return vida; }
 	public void setVida(int v) {
 		vida = new Vida(v); 
 	}

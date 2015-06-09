@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 import excepciones.ExcepcionPosicionInvalida;
 import excepciones.ExcepcionYaHayElementoEnLaPosicion;
+import src.Atacable;
 import src.Danio;
 import src.Dinero;
 import src.Vida;
@@ -12,7 +13,7 @@ import src.mapa.Mapa;
 import src.mapa.Mapeable;
 import src.mapa.Posicion;
 
-public abstract class Unidad implements Mapeable{
+public abstract class Unidad implements Atacable{
 	
 	protected String nombre;
 	protected int transporte;
