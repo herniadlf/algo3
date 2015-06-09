@@ -23,24 +23,26 @@ public class AltoTemplario extends Magica {
 	
 	Escudo escudo;
 	
-	public AltoTemplario() {		
-		setCosto(COSTO_MINERALES,COSTO_GAS);
-		setDanio(DANIO_AIRE,DANIO_TIERRA);
-		setNombre("Alto Templario");
-		setRangoDeAtaques(RANGO_ATAQUE);
-		setSuministros(SUMINISTRO);
-		setTiempoDeCreacion(TIEMPO_CREACION);
-		setTransporte(TRANSPORTE);
-		setVida(new Vida(VIDA));
-		setVision(VISION);	
+	public AltoTemplario() {	
+		
+		costo = new Dinero(COSTO_MINERALES,COSTO_GAS);
+		danio = new Danio(DANIO_AIRE,DANIO_TIERRA);
+		nombre = "Alto Templario";
+		rangoAtaque = RANGO_ATAQUE;
+		suministro = SUMINISTRO;
+		tiempoDeCreacion = TIEMPO_CREACION;
+		transporte = TRANSPORTE;
+		vida = new Vida(VIDA);
+		vision = VISION;
 		escudo = new Escudo (ESCUDO,this);
 		energia = new Energia(ENERGIA);
 		magias.add(new TormentaPsionica());
 		magias.add(new Alucinacion());
 		energiaPorTurno = 15;
 		entrenador = (EntrenadorUnidadTerrestre) new EntrenadorUnidadTerrestre();
+		
 	}
-	
+		
 	@Override
 	public Mapeable colocarContenido() {
 		// TODO Auto-generated method stub

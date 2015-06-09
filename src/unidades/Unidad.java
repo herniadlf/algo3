@@ -27,99 +27,81 @@ public abstract class Unidad implements Mapeable{
 	protected Posicion posicion;
 	protected Mapa mapa;
 	protected Entrenador entrenador;
-
 	
-	public Unidad(){
-			
-	}
-	
-	public void setMapa (Mapa m){
-		mapa =m;
+	public void setMapa (Mapa mapa){
 		
-		
+		this.mapa =mapa;
 		
 	}
 	
-	public void setPosicion (Posicion p){
-		posicion =p;
+	public void setPosicion (Posicion posicion){
 		
+		this.posicion = posicion;
 		
-	}
-	public void setEntrenador (Entrenador e){
-		entrenador = e;
 	}
 	
-	public void setNombre(String s){
-		nombre = s;
-	}
-	public  void setTransporte(int t){
-		transporte = t;
-	}
-	public  void setVision(int v){
-		vision = v;
-	}
-	public void setCosto(int minerales, int gas){
-		costo = new Dinero(minerales,gas);	
-	}
-	public  void setTiempoDeCreacion(int t){
-		tiempoDeCreacion = t;
-	}
-	public  void setSuministros(int s){
-		suministro = s;
-	}
-	public  void setRangoDeAtaques(int r){
-		rangoAtaque = r;
-	}
-	public  void setVida(Vida v){
-		vida = v;
-	}
-	public void setDanio(int danioAire, int danioTierra){
-		danio = new Danio(danioAire,danioTierra);		
-		}
 	public Entrenador getEntrenador(){
+		
 		return entrenador;
+		
 	}
 	public  String getNombre(){
+		
 		return nombre;
+		
 	}
 	public  int getTransporte(){
+		
 		return transporte;
+		
 	}
 	public  int getVision (){
+		
 		return vision;
+		
 	}
 	public  Dinero getCosto(){
+		
 		return costo;
+		
 	}
 	public  int getTiempoDeCreacion(){
+		
 		return tiempoDeCreacion;
+		
 	}
 	public  int getSuministros(){
+		
 		return suministro;
+		
 	}
 	public  int getRangoDeAtaques(){
+		
 		return rangoAtaque;
+		
 	}
 	public  Vida getVida(){
+		
 		return vida;
+		
 	}
 	public  Danio getDanio(){
+		
 		return danio;
+		
 	}
 	
 	public ArrayList<Unidad> getUnidadesAtacantes(){
+		
 		return atacantes;
-		
-		
+	
 	}
 	
-	
-	
 	public void atacarEnAire (Unidad unidad){
+		
 		int danio = this.getDanio().getDanioAire();
 		unidad.getVida().aumentarDanioARecibir(danio);
 
-		
 	} 
 	
 	
@@ -129,24 +111,17 @@ public abstract class Unidad implements Mapeable{
 		unidad.getVida().aumentarDanioARecibir(danio);
 		unidad.recibirDanio();
 		
-		
 	}
-	
-	
-	
-	
 
 	public abstract void recibirDanio ();
+	
 	public boolean esLoMismo(Mapeable aComparar){
+		
 		return (this.getNombre() == aComparar.getNombre());
+		
 	}
 	
-	
-	
-	
-	
 	public void moverAPosicionDeterminada (int x, int y) throws ExcepcionPosicionInvalida, ExcepcionYaHayElementoEnLaPosicion{
-		
 		
 		mapa.colocarEn(x, y, this);
 		mapa.eliminarElementoTerrestreEnPosicion(posicion.getX(), posicion.getY());
@@ -154,6 +129,5 @@ public abstract class Unidad implements Mapeable{
 		/* eliminar de las cordenadas anteriores*/
 		
 	}
-	
 	
 }

@@ -26,22 +26,23 @@ public class NaveCiencia extends Magica {
 	private static final int COSTO_GAS = 225;
 	
 	public NaveCiencia (){
-		setCosto(COSTO_MINERALES,COSTO_GAS);
-		setDanio(DANIO_AIRE,DANIO_TIERRA);
-		setNombre("Nave Ciencia");
-		setRangoDeAtaques(RANGO_ATAQUE);
-		setSuministros(SUMINISTRO);
-		setTiempoDeCreacion(TIEMPO_CREACION);
-		setTransporte(TRANSPORTE);
-		setVida(new Vida(VIDA));
-		setVision(VISION);
+		
+		costo = new Dinero(COSTO_MINERALES,COSTO_GAS);
+		danio = new Danio(DANIO_AIRE,DANIO_TIERRA);
+		nombre = "Nave Ciencia";
+		rangoAtaque = RANGO_ATAQUE;
+		suministro = SUMINISTRO;
+		tiempoDeCreacion = TIEMPO_CREACION;
+		transporte = TRANSPORTE;
+		vida = new Vida(VIDA);
+		vision = VISION;
 		energia = new Energia(ENERGIA);
 		magias.add(new EMP());
 		magias.add(new Radiacion());
 		energiaPorTurno = 10;
 		entrenador = (EntrenadorUnidadVoladora) new EntrenadorUnidadVoladora();
-	}	
-
+		
+	}
 	
 	@Override
 	public Mapeable colocarContenido() {

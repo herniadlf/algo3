@@ -22,16 +22,18 @@ public class Espectro extends Unidad {
 	private static final int COSTO_GAS = 100;
 	
 	public Espectro (){
-		setCosto(COSTO_MINERALES,COSTO_GAS);
-		setDanio(DANIO_AIRE,DANIO_TIERRA);
-		setNombre("Espectro");
-		setRangoDeAtaques(RANGO_ATAQUE);
-		setSuministros(SUMINISTRO);
-		setTiempoDeCreacion(TIEMPO_CREACION);
-		setTransporte(TRANSPORTE);
-		setVida(new Vida(VIDA));
-		setVision(VISION);
+		
+		costo = new Dinero(COSTO_MINERALES,COSTO_GAS);
+		danio = new Danio(DANIO_AIRE,DANIO_TIERRA);
+		nombre = "Espectro";
+		rangoAtaque = RANGO_ATAQUE;
+		suministro = SUMINISTRO;
+		tiempoDeCreacion = TIEMPO_CREACION;
+		transporte = TRANSPORTE;
+		vida = new Vida(VIDA);
+		vision = VISION;
 		entrenador = (EntrenadorUnidadVoladora) new EntrenadorUnidadVoladora();
+	
 	}
 	
 	@Override

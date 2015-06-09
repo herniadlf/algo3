@@ -22,18 +22,20 @@ public class Dragon extends Unidad {
 	Escudo escudo;
 	
 	public Dragon (){
-		setCosto(COSTO_MINERALES,COSTO_GAS);
-		setDanio(DANIO_AIRE,DANIO_TIERRA);
-		setNombre("Dragon");
-		setRangoDeAtaques(RANGO_ATAQUE);
-		setSuministros(SUMINISTRO);
-		setTiempoDeCreacion(TIEMPO_CREACION);
-		setTransporte(TRANSPORTE);
-		setVida(new Vida(VIDA));
-		setVision(VISION);
-		escudo = new Escudo(ESCUDO,this); 
-		entrenador = (EntrenadorUnidadTerrestre) new EntrenadorUnidadTerrestre();
-	}		
+		
+		costo = new Dinero(COSTO_MINERALES,COSTO_GAS);
+		danio = new Danio(DANIO_AIRE,DANIO_TIERRA);
+		nombre = "Dragon";
+		rangoAtaque = RANGO_ATAQUE;
+		suministro = SUMINISTRO;
+		tiempoDeCreacion = TIEMPO_CREACION;
+		transporte = TRANSPORTE;
+		vida = new Vida(VIDA);
+		vision = VISION;
+		escudo = new Escudo (ESCUDO,this);
+		entrenador = (EntrenadorUnidadVoladora) new EntrenadorUnidadVoladora();
+		
+	}
 	
 	@Override
 	public Mapeable colocarContenido() {

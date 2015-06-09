@@ -24,17 +24,19 @@ public class Zealot extends Unidad {
 	Escudo escudo;
 	
 	public Zealot (){
-		setCosto(COSTO_MINERALES,COSTO_GAS);
-		setDanio(DANIO_AIRE,DANIO_TIERRA);
-		setNombre("Zealot");
-		setRangoDeAtaques(RANGO_ATAQUE);
-		setSuministros(SUMINISTRO);
-		setTiempoDeCreacion(TIEMPO_CREACION);
-		setTransporte(TRANSPORTE);
-		setVida(new Vida(VIDA));
-		setVision(VISION);
-		escudo = new Escudo(ESCUDO,this); 
+		
+		costo = new Dinero(COSTO_MINERALES,COSTO_GAS);
+		danio = new Danio(DANIO_AIRE,DANIO_TIERRA);
+		nombre = "Zealot";
+		rangoAtaque = RANGO_ATAQUE;
+		suministro = SUMINISTRO;
+		tiempoDeCreacion = TIEMPO_CREACION;
+		transporte = TRANSPORTE;
+		vida = new Vida(VIDA);
+		vision = VISION;
+		escudo = new Escudo (ESCUDO,this);
 		entrenador = (EntrenadorUnidadTerrestre) new EntrenadorUnidadTerrestre();
+		
 	}		
 
 		
