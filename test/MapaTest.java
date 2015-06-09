@@ -23,7 +23,7 @@ public class MapaTest {
 		for (int i = 1; i <= mapa.getTamanioMapa(); i++) {
 			for (int j = 1; j <= mapa.getTamanioMapa(); j++) {
 				
-				Assert.assertTrue((mapa.obtenerContenidoEnPosicion(i,j)).getElementoEnAire().esOcupable());
+				Assert.assertTrue((mapa.obtenerContenidoEnPosicion(i,j)).getElementoEnTierra().esOcupable());
 				Assert.assertTrue((mapa.obtenerContenidoEnPosicion(i,j)).getElementoEnAire().esOcupable());
 			}
 		}
