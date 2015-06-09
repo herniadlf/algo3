@@ -4,6 +4,7 @@ package src.unidades;
 import src.ConstantesAlgoCraft;
 import src.Danio;
 import src.Dinero;
+import src.Escudo;
 import src.Vida;
 import src.mapa.Mapeable;
 

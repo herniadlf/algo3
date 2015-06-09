@@ -1,7 +1,7 @@
 package src.construcciones;
 
 import src.ConstantesAlgoCraft;
-import src.unidades.Escudo;
+import src.Escudo;
 
 public class Pilon extends NoExtractora {
 	private static final int COSTO_MINERALES = 100;

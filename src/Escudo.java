@@ -1,4 +1,6 @@
-package src.unidades;
+package src;
+
+import src.unidades.Unidad;
 
 public class Escudo {
 	

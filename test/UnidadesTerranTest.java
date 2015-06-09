@@ -91,7 +91,15 @@ public class UnidadesTerranTest extends TestCase{
 		
 		}	
 		
-		
+		/*public void testEspectroPuedeAtacarEdificiosEnemigos(){
+			
+			Espectro espectro = new Espectro();
+			NexoMineral nexoMineral = new NexoMineral();
+			Assert.assertTrue(nexoMineral.getEscudo().obtener == );
+			
+			
+		}
+		*/
 	
 	
 }

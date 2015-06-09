@@ -1,9 +1,9 @@
 package src.construcciones;
 
 import src.ConstantesAlgoCraft;
+import src.Escudo;
 import src.mapa.FuenteDeMinerales;
 import src.mapa.FuenteDeRecurso;
-import src.unidades.Escudo;
 
 public class NexoMineral extends Extractora {
 	private static final int COSTO_MINERALES = 50;

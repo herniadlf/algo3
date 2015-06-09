@@ -3,6 +3,7 @@ package src.construcciones;
 import java.util.LinkedList;
 
 import src.ConstantesAlgoCraft;
+import src.Escudo;
 import src.unidades.*;
 
 public class ArchivosTemplarios extends Creadora {
