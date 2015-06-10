@@ -164,13 +164,13 @@ public class Jugador {
 		return aEntrenar;
 	}
 	
-	private void verificacionUnidad(Unidad unidad, Creadora edificio) throws ExcepcionUnidadNoCorrespondiente, ExcepcionRecursoInsuficiente, ExcepcionSuministrosInsuficientes, ExcepcionTopeDePoblacionMaxima{ 
+	public void verificacionUnidad(Unidad unidad, Creadora edificio) throws ExcepcionUnidadNoCorrespondiente, ExcepcionRecursoInsuficiente, ExcepcionSuministrosInsuficientes, ExcepcionTopeDePoblacionMaxima{ 
 		edificio.verificarUnidadCreable(unidad);
 		this.gastoPosible(unidad.getCosto());
 		this.alcanzanSuministros(unidad.getSuministros());
 	}
 	
-	private void alcanzanSuministros(int suministros) throws ExcepcionSuministrosInsuficientes, ExcepcionTopeDePoblacionMaxima {
+	public void alcanzanSuministros(int suministros) throws ExcepcionSuministrosInsuficientes, ExcepcionTopeDePoblacionMaxima {
 		if (poblacionDisponible < suministros ){
 			throw new ExcepcionSuministrosInsuficientes("No hay suministros suficientes");
 		}
@@ -179,7 +179,7 @@ public class Jugador {
 		}
 		
 	}
-	private void gastarPlata(Dinero costo) {
+	public void gastarPlata(Dinero costo) {
 		
 		dineroJugador.restar(costo);		
 		
@@ -194,14 +194,13 @@ public class Jugador {
 			
 			turnosPasados = (turno.devolverTurnoActual()- unidadesEnFabricacion.get(i).getTurnoDeEntrenamiento())/2; 
 			
-			if ( (turnosPasados - turno.devolverTurnoActual()) >= unidadesEnFabricacion.get(i).getTiempoDeCreacion()){
+			if ( turnosPasados  >= unidadesEnFabricacion.get(i).getTiempoDeCreacion()){
 				
 				this.crearUnidad(unidadesEnFabricacion.get(i),unidadesEnFabricacion.get(i).getEdifico(), map);
 				
 				} 
-				
+			i++;	
 			}
-			
 		}
 		
 	

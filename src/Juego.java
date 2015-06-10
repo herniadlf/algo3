@@ -49,19 +49,13 @@ public class Juego {
 			jugadorActual = jugador1;
 			}
 		
-		jugadorActual.actualizarFabricacionUnidades(turno, mapa);
-		
-		
-		
-		
+		jugadorActual.actualizarFabricacionUnidades(turno, mapa);		
 	} 
 
 	public void ordenarFabricacionUnidad (Unidad unidad, Creadora edificio){
 		unidad.setEdificio(edificio);
 		unidad.setTurnoInicioDeEntrenamiento(turno.devolverTurnoActual());
-		jugadorActual.obtenerListaDeUnidadesAFabrica().add(unidad);
-		
-		
+		jugadorActual.obtenerListaDeUnidadesAFabrica().add(unidad);		
 	}
 	
 	

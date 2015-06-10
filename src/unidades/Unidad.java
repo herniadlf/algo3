@@ -29,7 +29,7 @@ public abstract class Unidad implements Atacable{
 	protected Posicion posicion;
 	protected Mapa mapa;
 	protected Entrenador entrenador;
-	protected int turnoInicioEnterenamiento;
+	protected int turnoInicioEntrenamiento;
 	protected Creadora edificio;
 	
 	public void setMapa (Mapa mapa){
@@ -58,12 +58,12 @@ public abstract class Unidad implements Atacable{
 	
 	public void setTurnoInicioDeEntrenamiento (int turno){
 		
-		this.turnoInicioEnterenamiento= turno;
+		this.turnoInicioEntrenamiento= turno;
 		
 		
 	}
 	public int getTurnoDeEntrenamiento (){
-		return this.turnoInicioEnterenamiento;
+		return this.turnoInicioEntrenamiento;
 		
 		
 	}
