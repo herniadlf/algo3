@@ -14,9 +14,8 @@ public class Juego {
 	Jugador jugador1,jugador2, jugadorActual;
 	Turno turno;
 	
-	
-	
 	public Juego(Mapa map2, Jugador jug1, Jugador jug2) {
+		
 		super();
 		mapa = map2;
 		jugador1 = jug1;
@@ -32,37 +31,47 @@ public class Juego {
 	}
 
 	public Jugador getJugador1() {
+		
 		return jugador1;
+		
 	}
 	
-	public Jugador getJugador2(){
+	public Jugador getJugador2() {
+		
 		return jugador2;
+		
 	}
 	
-	public Jugador getJugadorActual(){
+	public Jugador getJugadorActual() {
+		
 		return jugadorActual;
 		
 	}
 	
-	
 	public void pasarTurno () throws ExcepcionEdificioNoPuedeCrearUnidad{
+		
 		turno.aumentarTurno();
 		if ((turno.devolverTurnoActual()%2)==0){
+			
 			jugadorActual = jugador2;
-			}
-		else{
+			
+		}
+		else {
+			
 			jugadorActual = jugador1;
-			}
+			
+		}
 		
-		jugadorActual.actualizarFabricacionUnidades(turno, mapa);		
+		jugadorActual.actualizarFabricacionUnidades(turno, mapa);	
+		
 	} 
 
 	public void ordenarFabricacionUnidad (Unidad unidad, Creadora edificio){
+		
 		unidad.setEdificio(edificio);
 		unidad.setTurnoInicioDeEntrenamiento(turno.devolverTurnoActual());
 		jugadorActual.obtenerListaDeUnidadesAFabrica().add(unidad);		
+		
 	}
-	
-	
 	
 }

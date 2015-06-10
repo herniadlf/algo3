@@ -35,7 +35,24 @@ public class Jugador {
 	ArrayList <Unidad> unidadesEnFabricacion;
 	ArrayList<Mapeable> construccionesEnFabricacion;
 	
+	public Jugador(String nombre, String color, Raza raza) {
+		
+		setNombre(nombre);
+		setColor(color);
+		setRaza(raza);
+		setPoblacionDisponible(0);
+		setDinero(800,400);
+		this.unidadesEnFabricacion= new ArrayList<Unidad>();	
+		this.construccionesEnFabricacion= new ArrayList <Mapeable>();
+		
+	}
 	
+	public Jugador() {
+		
+		setPoblacionDisponible(10);
+		setDinero(800,400);
+		
+	}		
 	
 	public String getNombre() {
 		
@@ -88,33 +105,18 @@ public class Jugador {
 		return dineroJugador; 
 		
 	}
+	
 	public void setDinero(int minerales,int gasVespeno) { 
 		
 		dineroJugador = new Dinero(minerales,gasVespeno);
 		
 	}
 		
-	public Jugador(String nombre, String color, Raza raza) {
-		
-		setNombre(nombre);
-		setColor(color);
-		setRaza(raza);
-		setPoblacionDisponible(0);
-		setDinero(800,400);
-		this.unidadesEnFabricacion= new ArrayList<Unidad>();	
-		this.construccionesEnFabricacion= new ArrayList <Mapeable>();
-	}
-	
-	public Jugador() {
-		
-		setPoblacionDisponible(10);
-		setDinero(800,400);
-		
-	}		
 	
 	public Construccion construir(Construccion edificio, Mapa map, int x, int y)  {
 	
 		try {
+			
 			this.verificacionEdificio(edificio);
 			edificio.setPosicionX(x);
 			edificio.setPosicionY(y);
@@ -123,38 +125,45 @@ public class Jugador {
 			this.getRaza().actualizarEdificios(edificio);
 			this.gastarPlata(edificio.getCosto());
 			poblacionDisponible = poblacionDisponible + edificio.getCantidadDeSuministros();
+			
 		} catch (ExcepcionConstruccionNoCorrespondiente
 				| ExcepcionRecursoInsuficiente | ExcepcionPosicionInvalida | ExcepcionExtractoraSinRecurso
 				| ExcepcionYaHayElementoEnLaPosicion  e) {
-			// TODO Auto-generated catch block
+	
 			e.printStackTrace();
 		}		
+		
 		return edificio;
 	}
 	
 	private void verificacionEdificio(Construccion edificio) throws ExcepcionConstruccionNoCorrespondiente, ExcepcionRecursoInsuficiente{
+		
 		this.getRaza().verificarEdificioPosible(edificio.getEdificioRequerido());
 		this.gastoPosible(edificio.getCosto());
 		
 	}
 	
 	private void gastoPosible(Dinero costo) throws ExcepcionRecursoInsuficiente{
+		
 		if (this.getDinero().getMinerales() < costo.getMinerales()){
 			throw new ExcepcionRecursoInsuficiente("No hay suficientes minerales");
 		}
 		if (this.getDinero().getGasVespeno() < costo.getGasVespeno()){
 			throw new ExcepcionRecursoInsuficiente("No hay suficiente gas");
 		}
+		
 	}
 	
 	public Unidad crearUnidad(Unidad aEntrenar, Creadora edificio, Mapa map) throws ExcepcionEdificioNoPuedeCrearUnidad {
 		
 		try {
+			
 			this.verificacionUnidad(aEntrenar, edificio);
 			poblacionDisponible = poblacionDisponible - aEntrenar.getSuministros();
 			poblacionActual = poblacionActual + aEntrenar.getSuministros();
 			this.gastarPlata(aEntrenar.getCosto());
 			edificio.entrenarUnidad(aEntrenar,map);
+			
 		} catch (ExcepcionUnidadNoCorrespondiente
 				| ExcepcionRecursoInsuficiente
 				| ExcepcionSuministrosInsuficientes | ExcepcionPosicionInvalida | ExcepcionNoHayLugarParaCrear
@@ -162,16 +171,21 @@ public class Jugador {
 				ExcepcionTopeDePoblacionMaxima e) {
 			throw new ExcepcionEdificioNoPuedeCrearUnidad("No pudo crearse la unidad requerida");	
 		}
+		
 		return aEntrenar;
+		
 	}
 	
 	public void verificacionUnidad(Unidad unidad, Creadora edificio) throws ExcepcionUnidadNoCorrespondiente, ExcepcionRecursoInsuficiente, ExcepcionSuministrosInsuficientes, ExcepcionTopeDePoblacionMaxima{ 
+		
 		edificio.verificarUnidadCreable(unidad);
 		this.gastoPosible(unidad.getCosto());
 		this.alcanzanSuministros(unidad.getSuministros());
+		
 	}
 	
 	public void alcanzanSuministros(int suministros) throws ExcepcionSuministrosInsuficientes, ExcepcionTopeDePoblacionMaxima {
+		
 		if (poblacionDisponible < suministros ){
 			throw new ExcepcionSuministrosInsuficientes("No hay suministros suficientes");
 		}
@@ -180,12 +194,12 @@ public class Jugador {
 		}
 		
 	}
+	
 	public void gastarPlata(Dinero costo) {
 		
 		dineroJugador.restar(costo);		
 		
 	}
-	
 	
 	public void actualizarFabricacionUnidades (Turno turno, Mapa map) throws ExcepcionEdificioNoPuedeCrearUnidad{
 		
@@ -202,28 +216,22 @@ public class Jugador {
 				this.crearUnidad(unidadesEnFabricacion.get(i),unidadesEnFabricacion.get(i).getEdifico(), map);
 				unidadesEnFabricacion.remove(i);
 				
-				} 
+			} 
+			
 			i++;	
-			}
 		}
-		
-	
-		
-		
-		public ArrayList<Unidad> obtenerListaDeUnidadesAFabrica (){
-			
-			return unidadesEnFabricacion;
-			
-			
-		}
-
-	
-	public void actualizarFabricacionConstrucciones (){
-		
-		
-		
 		
 	}
-	
+		
+		
+	public ArrayList<Unidad> obtenerListaDeUnidadesAFabrica (){
+			
+		return unidadesEnFabricacion;	
+			
+	}
+
+	public void actualizarFabricacionConstrucciones (){
+		
+	}
 	
 }

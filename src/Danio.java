@@ -6,8 +6,10 @@ public class Danio {
 	private int danioAire;
 
 	public Danio(int danioAire2, int danioTierra2) {
+		
 		danioAire = danioAire2;
 		danioTierra = danioTierra2;
+		
 	}
 	
 	public void setDanioAire(int danio) {
