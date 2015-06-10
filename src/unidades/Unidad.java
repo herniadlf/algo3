@@ -9,6 +9,7 @@ import src.Atacable;
 import src.Danio;
 import src.Dinero;
 import src.Vida;
+import src.construcciones.Creadora;
 import src.mapa.Mapa;
 import src.mapa.Mapeable;
 import src.mapa.Posicion;
@@ -28,6 +29,8 @@ public abstract class Unidad implements Atacable{
 	protected Posicion posicion;
 	protected Mapa mapa;
 	protected Entrenador entrenador;
+	protected int turnoInicioEnterenamiento;
+	protected Creadora edificio;
 	
 	public void setMapa (Mapa mapa){
 		
@@ -35,9 +38,33 @@ public abstract class Unidad implements Atacable{
 		
 	}
 	
+	public void setEdificio (Creadora e){
+		edificio = e;
+		
+		}
+	
+	public Creadora getEdifico (){
+		return edificio;
+		
+		
+	} 
+	
+	
 	public void setPosicion (Posicion posicion){
 		
 		this.posicion = posicion;
+		
+	}
+	
+	public void setTurnoInicioDeEntrenamiento (int turno){
+		
+		this.turnoInicioEnterenamiento= turno;
+		
+		
+	}
+	public int getTurnoDeEntrenamiento (){
+		return this.turnoInicioEnterenamiento;
+		
 		
 	}
 	
@@ -103,6 +130,8 @@ public abstract class Unidad implements Atacable{
 		int danio = this.getDanio().getDanioAire();
 		atacado.getVida().aumentarDanioARecibir(danio);
 		atacado.recibirDanio();
+		
+		
 
 	} 
 	

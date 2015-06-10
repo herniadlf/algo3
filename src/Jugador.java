@@ -1,5 +1,7 @@
 package src;
 
+import java.util.ArrayList;
+
 import excepciones.ExcepcionConstruccionNoCorrespondiente;
 import excepciones.ExcepcionEdificioNoPuedeCrearUnidad;
 import excepciones.ExcepcionEdificioPrevioRequerido;
@@ -15,6 +17,7 @@ import src.construcciones.Construccion;
 import src.construcciones.Arquitecto;
 import src.construcciones.Creadora;
 import src.mapa.Mapa;
+import src.mapa.Mapeable;
 import src.razas.Protoss;
 import src.razas.Raza;
 import src.unidades.Unidad;
@@ -29,6 +32,10 @@ public class Jugador {
 	private int poblacionDisponible; // cantidad de unidades que pueden crearse porque hay "casas" construidas
 	private int poblacionActual; // cantidad de unidades ya creadas
 	private Dinero dineroJugador;
+	ArrayList <Unidad> unidadesEnFabricacion;
+	ArrayList<Mapeable> construccionesEnFabricacion;
+	
+	
 	
 	public String getNombre() {
 		
@@ -177,5 +184,43 @@ public class Jugador {
 		dineroJugador.restar(costo);		
 		
 	}
+	
+	
+	public void actualizarFabricacionUnidades (Turno turno, Mapa map) throws ExcepcionEdificioNoPuedeCrearUnidad{
+		
+		int i=1;
+		int turnosPasados;
+		while (i<= unidadesEnFabricacion.size()){
+			
+			turnosPasados = (turno.devolverTurnoActual()- unidadesEnFabricacion.get(i).getTurnoDeEntrenamiento())/2; 
+			
+			if ( (turnosPasados - turno.devolverTurnoActual()) >= unidadesEnFabricacion.get(i).getTiempoDeCreacion()){
+				
+				this.crearUnidad(unidadesEnFabricacion.get(i),unidadesEnFabricacion.get(i).getEdifico(), map);
+				
+				} 
+				
+			}
+			
+		}
+		
+	
+		
+		
+		public ArrayList<Unidad> obtenerListaDeUnidadesAFabrica (){
+			
+			return unidadesEnFabricacion;
+			
+			
+		}
+
+	
+	public void actualizarFabricacionConstrucciones (){
+		
+		
+		
+		
+	}
+	
 	
 }
