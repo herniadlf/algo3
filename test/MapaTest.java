@@ -9,6 +9,7 @@ import excepciones.ExcepcionSuperaLimenteDeArbolesPermitos;
 import excepciones.ExcepcionYaHayElementoEnLaPosicion;
 import src.Mineral;
 import src.mapa.*;
+import src.unidades.Espectro;
 import src.construcciones.*;
 import excepciones.*;
 
@@ -38,8 +39,26 @@ public class MapaTest {
 		
 		mapa.colocarEn(5, 5, unaBarraca);
 		
-		Assert.assertEquals(mapa.obtenerContenidoEnPosicion(5,5).getElementoEnTierra(), unaBarraca);
+		Assert.assertEquals(mapa.obtenerContenidoEnPosicion(5,5).getElementoEnTierra(), unaBarraca);	
 		
+	}
+	
+	@Test
+	public void enUnMismoSectorHayElementoTerrestreYAereo() throws ExcepcionPosicionInvalida, ExcepcionYaHayElementoEnLaPosicion {
+		
+		Mapa mapa = new Mapa(10);
+		
+		Barraca unaBarraca = new Barraca();
+		
+		mapa.colocarEn(5, 5, unaBarraca);
+		
+		Espectro unEspectro = new Espectro();
+		
+		mapa.colocarEn(5, 5, unEspectro);
+		
+		Assert.assertEquals(mapa.obtenerContenidoEnPosicion(5,5).getElementoEnTierra(), unaBarraca);
+		Assert.assertEquals(mapa.obtenerContenidoEnPosicion(5,5).getElementoEnAire(), unEspectro);
+	
 	}
 	
 	@Test (expected = ExcepcionYaHayElementoEnLaPosicion.class)
