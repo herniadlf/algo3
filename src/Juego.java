@@ -39,10 +39,15 @@ public class Juego {
 		return jugador2;
 	}
 	
+	public Jugador getJugadorActual(){
+		return jugadorActual;
+		
+	}
+	
 	
 	public void pasarTurno () throws ExcepcionEdificioNoPuedeCrearUnidad{
 		turno.aumentarTurno();
-		if ((turno.devolverTurnoActual()%2)!=0){
+		if ((turno.devolverTurnoActual()%2)==0){
 			jugadorActual = jugador2;
 			}
 		else{

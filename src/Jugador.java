@@ -101,7 +101,8 @@ public class Jugador {
 		setRaza(raza);
 		setPoblacionDisponible(0);
 		setDinero(800,400);
-		
+		this.unidadesEnFabricacion= new ArrayList<Unidad>();	
+		this.construccionesEnFabricacion= new ArrayList <Mapeable>();
 	}
 	
 	public Jugador() {
@@ -190,13 +191,16 @@ public class Jugador {
 		
 		int i=1;
 		int turnosPasados;
-		while (i<= unidadesEnFabricacion.size()){
+		int turnoOrdenoFabricacion;
+		while (this.unidadesEnFabricacion.size()>i){
 			
-			turnosPasados = (turno.devolverTurnoActual()- unidadesEnFabricacion.get(i).getTurnoDeEntrenamiento())/2; 
+			turnoOrdenoFabricacion = this.unidadesEnFabricacion.get(i).getTurnoDeEntrenamiento();
+			turnosPasados = (turno.devolverTurnoActual()- turnoOrdenoFabricacion); 
 			
 			if ( turnosPasados  >= unidadesEnFabricacion.get(i).getTiempoDeCreacion()){
 				
 				this.crearUnidad(unidadesEnFabricacion.get(i),unidadesEnFabricacion.get(i).getEdifico(), map);
+				unidadesEnFabricacion.remove(i);
 				
 				} 
 			i++;	
