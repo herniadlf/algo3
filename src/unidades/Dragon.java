@@ -67,14 +67,10 @@ public class Dragon extends Unidad {
 	}
 	
 	public void recibirDanio (){
-		
 	
 		escudo.atacar(this.getVida().obtenerDanioRecibido());
 		
 	}
-
-	
-
 
 	@Override
 	public boolean esOcupable() {

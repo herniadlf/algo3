@@ -2,6 +2,7 @@ package src.unidades;
 
 import java.util.ArrayList;
 
+import src.Atacable;
 import src.Danio;
 import src.Dinero;
 import src.Vida;
@@ -46,13 +47,13 @@ public abstract class Magica extends Unidad {
 	}
 	
 	@Override
-	public void atacarEnTierra(Unidad unidad) {
+	public void atacarEnTierra(Atacable atacado) {
 		// TODO Auto-generated method stub
 
 	}
 
 	@Override
-	public void atacarEnAire(Unidad unidad) {
+	public void atacarEnAire(Atacable atacado) {
 		// TODO Auto-generated method stub
 
 	}

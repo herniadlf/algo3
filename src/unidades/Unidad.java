@@ -130,8 +130,6 @@ public abstract class Unidad implements Atacable{
 		int danio = this.getDanio().getDanioAire();
 		atacado.getVida().aumentarDanioARecibir(danio);
 		atacado.recibirDanio();
-		
-		
 
 	} 
 	

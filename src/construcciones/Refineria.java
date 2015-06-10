@@ -8,7 +8,9 @@ public class Refineria extends Extractora{
 	private static final int COSTO_GAS = 0;
 	private static final int VIDA = 750;
 	private static final int TIEMPO = 6;
+	
 	public Refineria( ){
+		
 		super();
 		setFuente(new FuenteDeGasVespeno());
 		setNombre("Refineria");
@@ -16,5 +18,14 @@ public class Refineria extends Extractora{
 		setCosto(COSTO_MINERALES,COSTO_GAS);
 		setTiempoDeConstruccion(TIEMPO);
 		setEdificioRequerido(new DepositoDeSuministros());
+		
 	}
+	
+	
+	public void recibirDanio (){
+		
+		this.getVida().dismunuirVidaPorDanio();
+		
+	}
+	
 }

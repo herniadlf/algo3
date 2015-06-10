@@ -32,5 +32,12 @@ public class ArchivosTemplarios extends Creadora {
 		return altoTemplario;
 		
 	}
+	
+	public void recibirDanio (){
+		
+		
+		escudo.atacar(this.getVida().obtenerDanioRecibido());
+		
+	}
 		
 }

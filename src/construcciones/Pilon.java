@@ -22,4 +22,11 @@ public class Pilon extends NoExtractora {
 		capacidadDeSuministros = SUMINISTROS;
 		escudo = new Escudo(ESCUDO,this);
 	}
+	
+	public void recibirDanio (){
+		
+		escudo.atacar(this.getVida().obtenerDanioRecibido());
+		
+	}
+	
 }

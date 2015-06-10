@@ -124,7 +124,7 @@ public class Construccion implements Atacable {
 	}
 	@Override
 	public void recibirDanio() {
-		if()
+		
 		
 	}
 	

@@ -11,9 +11,10 @@ public class NexoMineral extends Extractora {
 	private static final int VIDA = 250;
 	private static final int ESCUDO = 250;
 	private static final int TIEMPO = 4;
-	
 	private Escudo escudo;
+	
 	public NexoMineral() {
+		
 		super();
 		setFuente(new FuenteDeMinerales());
 		setNombre("Nexo Mineral");
@@ -22,11 +23,18 @@ public class NexoMineral extends Extractora {
 		setTiempoDeConstruccion(TIEMPO);
 		setEdificioRequerido(new Pilon());
 		escudo = new Escudo(ESCUDO,this);
+		
 	}
 
 	public Escudo getEscudo(){
 		
 		return escudo;
+		
+	}
+	
+	public void recibirDanio (){
+		
+		escudo.atacar(this.getVida().obtenerDanioRecibido());
 		
 	}
 	

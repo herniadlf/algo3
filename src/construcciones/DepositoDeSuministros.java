@@ -8,7 +8,9 @@ public class DepositoDeSuministros extends NoExtractora{
 	private static final int VIDA = 500;
 	private static final int TIEMPO = 6;
 	private static final int SUMINISTROS = 5;
+	
 	public DepositoDeSuministros(){
+		
 		super();
 		setNombre("Deposito de Suministros");
 		setVida(VIDA);
@@ -16,5 +18,14 @@ public class DepositoDeSuministros extends NoExtractora{
 		setTiempoDeConstruccion(TIEMPO);
 		setEdificioRequerido(this);
 		capacidadDeSuministros = SUMINISTROS;
+		
 	}
+	
+	
+	public void recibirDanio(){
+			
+		this.getVida().dismunuirVidaPorDanio();
+			
+	}
+	
 }

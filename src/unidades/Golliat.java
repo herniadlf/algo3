@@ -65,12 +65,9 @@ public class Golliat extends Unidad {
 	
 	public void recibirDanio (){
 		
-	
-		vida.dismunuirVidaPorDanio();;
+		vida.dismunuirVidaPorDanio();
 		
 	}
-
-	
 
 
 	@Override

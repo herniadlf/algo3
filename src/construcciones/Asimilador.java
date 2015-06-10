@@ -13,15 +13,23 @@ public class Asimilador extends Extractora {
 	private static final int TIEMPO = 6;
 	private Escudo escudo;
 	
-		public Asimilador(){
-			super();			
-			setFuente(new FuenteDeGasVespeno());
-			setNombre("Asimilador");
-			setVida(VIDA);
-			setCosto(COSTO_MINERALES,COSTO_GAS);
-			setTiempoDeConstruccion(TIEMPO);
-			setEdificioRequerido(new Pilon());
-			escudo = new Escudo(ESCUDO,this);
-		}
+	public Asimilador(){
+		
+		super();			
+		setFuente(new FuenteDeGasVespeno());
+		setNombre("Asimilador");
+		setVida(VIDA);
+		setCosto(COSTO_MINERALES,COSTO_GAS);
+		setTiempoDeConstruccion(TIEMPO);
+		setEdificioRequerido(new Pilon());
+		escudo = new Escudo(ESCUDO,this);
+		
+	}
+	
+	public void recibirDanio (){	
+		
+		escudo.atacar(this.getVida().obtenerDanioRecibido());
+		
+	}
 
 }

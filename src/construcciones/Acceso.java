@@ -13,8 +13,8 @@ public class Acceso extends Creadora {
 	private static final int VIDA = 500;
 	private static final int ESCUDO = 500;
 	private static final int TIEMPO = 8;
+	private Escudo escudo;
 	
-	Escudo escudo;
 		public Acceso (){
 			super();
 			unidadesCreables = new LinkedList<Unidad>();
@@ -49,8 +49,12 @@ public class Acceso extends Creadora {
 			
 		}
 		
+		public void recibirDanio(){
+					
+			escudo.atacar(this.getVida().obtenerDanioRecibido());
 		
-		
+	
+		}	
 		
 		
 		

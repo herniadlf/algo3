@@ -14,16 +14,26 @@ public class PuertoEstelarProtoss extends Creadora {
 	private static final int TIEMPO = 10;
 	private Escudo escudo;
 	
-		public PuertoEstelarProtoss(){
-			super();
-			unidadesCreables = new LinkedList<Unidad>();
-			unidadesCreables.add(new Scout());
-			unidadesCreables.add(new NaveTransporteProtoss());
-			setNombre("Puerto Estelar Protoss");
-			setTiempoDeConstruccion(TIEMPO);
-			setVida(VIDA);
-			setCosto(COSTO_MINERALES,COSTO_GAS);
-			setEdificioRequerido(new Acceso());
-			escudo = new Escudo(ESCUDO,this);
-		}
+	public PuertoEstelarProtoss(){
+		
+		super();
+		unidadesCreables = new LinkedList<Unidad>();
+		unidadesCreables.add(new Scout());
+		unidadesCreables.add(new NaveTransporteProtoss());
+		setNombre("Puerto Estelar Protoss");
+		setTiempoDeConstruccion(TIEMPO);
+		setVida(VIDA);
+		setCosto(COSTO_MINERALES,COSTO_GAS);
+		setEdificioRequerido(new Acceso());
+		escudo = new Escudo(ESCUDO,this);
+		
+	}
+	
+	public void recibirDanio (){
+		
+		escudo.atacar(this.getVida().obtenerDanioRecibido());
+		
+	}
+	
+	
 }
