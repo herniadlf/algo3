@@ -1,7 +1,5 @@
 package src;
 
-import src.unidades.Unidad;
-
 public class Escudo{
 	
 	private int resistenciaTotal;
@@ -45,6 +43,7 @@ public class Escudo{
 			resistenciaActual = resistenciaActual + REGENERACION_POR_TURNO;
 			
 		}
+		
 		else {
 			
 			resistenciaActual = resistenciaTotal;
