@@ -5,6 +5,7 @@ import java.util.Iterator;
 
 import org.junit.Assert;
 
+import excepciones.ExcepcionGeneral;
 import src.Jugador;
 import src.construcciones.Acceso;
 import src.mapa.Mapa;
@@ -82,7 +83,7 @@ public class UnidadesProtossTest extends TestCase{
 		
 	}
 	
-	/*
+	
 	public void testNaveTransporteProtossTransporta8Pasajeros(){
 		
 		NaveTransporteProtoss naveTransporte = new NaveTransporteProtoss();
@@ -99,13 +100,18 @@ public class UnidadesProtossTest extends TestCase{
 		
 		while(i.hasNext()){
 			
-			naveTransporte.llevar(i.next());
-			
+			try{
+	
+				naveTransporte.llevar(i.next());
+			} catch (ExcepcionGeneral e){
+				
+				e.getMessage();
+			}
 		}
 		
 		Assert.assertTrue(naveTransporte.cantidadPasajeros() == 8);		
 		
 	}
-	*/
+	
 
 }

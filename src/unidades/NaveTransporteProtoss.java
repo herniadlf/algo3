@@ -1,5 +1,8 @@
 package src.unidades;
 
+import java.util.ArrayList;
+
+import excepciones.ExcepcionElTransporteEstaLleno;
 import src.ConstantesAlgoCraft;
 import src.Danio;
 import src.Dinero;
@@ -20,6 +23,8 @@ public class NaveTransporteProtoss extends Unidad {
 	private static final int COSTO_MINERALES = 200;
 	private static final int COSTO_GAS = 0;	
 	Escudo escudo;
+	private int cantidadPasajeros;
+	private ArrayList<Unidad> unidadesAbordo;
 	
 	public NaveTransporteProtoss() {		
 	
@@ -34,6 +39,8 @@ public class NaveTransporteProtoss extends Unidad {
 		vision = VISION;
 		escudo = new Escudo (ESCUDO,this);
 		entrenador = (EntrenadorUnidadVoladora) new EntrenadorUnidadVoladora();
+		cantidadPasajeros = 0;
+		unidadesAbordo = new ArrayList<Unidad>();
 		
 	}	
 		
@@ -92,14 +99,26 @@ public class NaveTransporteProtoss extends Unidad {
 		return false;
 	}
 
-	public void llevar(Unidad unidad) {
-		// TODO Auto-generated method stub
+	public void llevar(Unidad unidad) throws ExcepcionElTransporteEstaLleno{
 		
+	if(cantidadPasajeros < TRANSPORTE){
+		
+		unidadesAbordo.add(unidad);
+		cantidadPasajeros = cantidadPasajeros +1;
+	
+	}
+	else {
+		
+		throw new ExcepcionElTransporteEstaLleno("El transporte esta lleno");
+		
+	}
+	
 	}
 
 	public int cantidadPasajeros() {
-		// TODO Auto-generated method stub
-		return 0;
+		
+		return cantidadPasajeros;
+		
 	}
 
 
