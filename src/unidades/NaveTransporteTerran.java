@@ -1,5 +1,7 @@
 package src.unidades;
 
+import java.util.ArrayList;
+
 import src.ConstantesAlgoCraft;
 import src.Danio;
 import src.Dinero;
@@ -7,7 +9,7 @@ import src.Vida;
 import src.mapa.Mapeable;
 
 
-public class NaveTransporteTerran extends Unidad {
+public class NaveTransporteTerran extends DeTransporte {
 
 	
 	private static final int DANIO_AIRE = 0;
@@ -33,7 +35,8 @@ public class NaveTransporteTerran extends Unidad {
 		vida = new Vida(VIDA);
 		vision = VISION;
 		entrenador = (EntrenadorUnidadVoladora) new EntrenadorUnidadVoladora();
-		
+		cantidadPasajeros = 0;
+		unidadesAbordo = new ArrayList<Unidad>();
 	}
 	
 	@Override

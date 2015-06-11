@@ -10,7 +10,7 @@ import src.Escudo;
 import src.Vida;
 import src.mapa.Mapeable;
 
-public class NaveTransporteProtoss extends Unidad {
+public class NaveTransporteProtoss extends DeTransporte {
 	private static final int DANIO_AIRE = 0;
 	private static final int DANIO_TIERRA = 0;
 	private static final int RANGO_ATAQUE = 0;
@@ -23,8 +23,6 @@ public class NaveTransporteProtoss extends Unidad {
 	private static final int COSTO_MINERALES = 200;
 	private static final int COSTO_GAS = 0;	
 	Escudo escudo;
-	private int cantidadPasajeros;
-	private ArrayList<Unidad> unidadesAbordo;
 	
 	public NaveTransporteProtoss() {		
 	
@@ -80,9 +78,6 @@ public class NaveTransporteProtoss extends Unidad {
 		
 	}
 
-	
-
-
 	@Override
 	public boolean esOcupable() {
 		// TODO Auto-generated method stub
@@ -99,28 +94,4 @@ public class NaveTransporteProtoss extends Unidad {
 		return false;
 	}
 
-	public void llevar(Unidad unidad) throws ExcepcionElTransporteEstaLleno{
-		
-	if(cantidadPasajeros < TRANSPORTE){
-		
-		unidadesAbordo.add(unidad);
-		cantidadPasajeros = cantidadPasajeros +1;
-	
-	}
-	else {
-		
-		throw new ExcepcionElTransporteEstaLleno("El transporte esta lleno");
-		
-	}
-	
-	}
-
-	public int cantidadPasajeros() {
-		
-		return cantidadPasajeros;
-		
-	}
-
-
-	
 }
