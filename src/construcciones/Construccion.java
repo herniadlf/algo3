@@ -11,6 +11,19 @@ import src.mapa.Posicion;
 
 public class Construccion implements Atacable {
 	
+	private int turnoInicioDeConstruccion;
+	public void setTurnoInicioDEConstruccion(int t){
+		
+		this.turnoInicioDeConstruccion=t;
+		
+	}
+	
+	public int getTurnoInicioDeConstruccion (){
+		return this.turnoInicioDeConstruccion;
+		
+		
+	} 
+	
 	private String nombre;
 	public String getNombre(){return nombre;}
 	public void setNombre(String n){ nombre = n;	}

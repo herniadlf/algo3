@@ -3,6 +3,7 @@ package src;
 import java.util.ArrayList;
 
 import excepciones.ExcepcionEdificioNoPuedeCrearUnidad;
+import src.construcciones.Construccion;
 import src.construcciones.Creadora;
 import src.mapa.Mapa;
 import src.mapa.Mapeable;
@@ -63,6 +64,7 @@ public class Juego {
 		}
 		
 		jugadorActual.actualizarFabricacionUnidades(turno, mapa);	
+		jugadorActual.actualizarFabricacionConstrucciones(turno, mapa);
 		
 	} 
 
@@ -70,8 +72,23 @@ public class Juego {
 		
 		unidad.setEdificio(edificio);
 		unidad.setTurnoInicioDeEntrenamiento(turno.devolverTurnoActual());
-		jugadorActual.obtenerListaDeUnidadesAFabrica().add(unidad);		
+		jugadorActual.obtenerListaDeUnidadesAFabricar().add(unidad);		
 		
 	}
+	
+	public void ordenFabricacionDeEdificios (Construccion construccion, int x, int y){
+		construccion.setPosicionX(x);
+		construccion.setPosicionY(y);
+		construccion.setTurnoInicioDEConstruccion(turno.devolverTurnoActual());
+		jugadorActual.obtenerListaDeConstruccionesAFabricar().add(construccion);
+		
+		
+
+		
+		
+	}
+	
+	
+	
 	
 }

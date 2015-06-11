@@ -43,7 +43,7 @@ public abstract class Creadora extends NoExtractora {
 		
 		Posicion auxiliar = aEntrenar.getEntrenador().posicionParaEntrenarA(aEntrenar,map,alrededores);
 		
-		System.out.print(auxiliar.getY());
+	
 			
 		map.colocarEn(auxiliar.getX(), auxiliar.getY(), aEntrenar);
 		aEntrenar.setMapa(map);

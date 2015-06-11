@@ -33,7 +33,7 @@ public class Jugador {
 	private int poblacionActual; // cantidad de unidades ya creadas
 	private Dinero dineroJugador;
 	ArrayList <Unidad> unidadesEnFabricacion;
-	ArrayList<Mapeable> construccionesEnFabricacion;
+	ArrayList<Construccion> construccionesEnFabricacion;
 	
 	public Jugador(String nombre, String color, Raza raza) {
 		
@@ -43,7 +43,7 @@ public class Jugador {
 		setPoblacionDisponible(0);
 		setDinero(800,400);
 		this.unidadesEnFabricacion= new ArrayList<Unidad>();	
-		this.construccionesEnFabricacion= new ArrayList <Mapeable>();
+		this.construccionesEnFabricacion= new ArrayList <Construccion>();
 		
 	}
 	
@@ -203,7 +203,7 @@ public class Jugador {
 	
 	public void actualizarFabricacionUnidades (Turno turno, Mapa map) throws ExcepcionEdificioNoPuedeCrearUnidad{
 		
-		int i=1;
+		int i=0;
 		int turnosPasados;
 		int turnoOrdenoFabricacion;
 		while (this.unidadesEnFabricacion.size()>i){
@@ -224,13 +224,44 @@ public class Jugador {
 	}
 		
 		
-	public ArrayList<Unidad> obtenerListaDeUnidadesAFabrica (){
+	public ArrayList<Unidad> obtenerListaDeUnidadesAFabricar (){
 			
 		return unidadesEnFabricacion;	
 			
 	}
-
-	public void actualizarFabricacionConstrucciones (){
+	
+	public ArrayList<Construccion> obtenerListaDeConstruccionesAFabricar(){
+		
+		return construccionesEnFabricacion;
+	}
+	
+	
+	
+	public void actualizarFabricacionConstrucciones (Turno turno, Mapa mapa){
+		
+		int i=0;
+		int turnosPasados;
+		int turnoOrdenoFabricacion;
+		
+		while (this.construccionesEnFabricacion.size()>i){
+			
+			turnoOrdenoFabricacion = this.construccionesEnFabricacion.get(i).getTurnoInicioDeConstruccion();
+			turnosPasados = (turno.devolverTurnoActual()- turnoOrdenoFabricacion); 
+			
+			
+			if ( turnosPasados  >= construccionesEnFabricacion.get(i).getTiempoDeConstruccion()){
+				
+			
+				this.construir(construccionesEnFabricacion.get(i), mapa, construccionesEnFabricacion.get(i).getPosicionX(), construccionesEnFabricacion.get(i).getPosicionY());
+				construccionesEnFabricacion.remove(i);
+				
+			} 
+			
+			i++;	
+		}
+		
+		
+		
 		
 	}
 	
