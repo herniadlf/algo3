@@ -4,10 +4,10 @@ import excepciones.ExcepcionGeneral;
 
 public class ExcepcionEdificioPrevioRequerido extends ExcepcionGeneral {
 
-	public ExcepcionEdificioPrevioRequerido(String descrip) {
+	public ExcepcionEdificioPrevioRequerido(String descripcion) {
 		
-		super(descrip);
-		// TODO Auto-generated constructor stub
+		super(descripcion);
+		
 	}
 
 }

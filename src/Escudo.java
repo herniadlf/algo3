@@ -4,42 +4,53 @@ import src.unidades.Unidad;
 
 public class Escudo{
 	
-	private int resistencia; 
+	private int resistenciaTotal;
+	private int resistenciaActual;
 	private Atacable protegido;
+	private static int REGENERACION_POR_TURNO = 10;
 	
-	public Escudo(int resistencia, Atacable protegido) {
+	public Escudo(int resistenciaTotal, Atacable protegido) {
 		
-		this.resistencia = resistencia; 
+		this.resistenciaTotal = resistenciaTotal; 
 		this.protegido = protegido;
+		resistenciaActual = this.resistenciaTotal;
 		
 	}
 	
 	public void atacar(int danio) {
 		
-		if(resistencia - danio < 0){
+		if(resistenciaActual - danio < 0){
 			
 			protegido.getVida().dismunuirVidaPorDanio();
 		}
 		
 		else {
 			
-			resistencia = resistencia - danio;
+			resistenciaActual = resistenciaActual - danio;
+			
 		}
 		
 	}
 	
 	public int obtenerResistenciaActual(){
 		
-		return resistencia;
+		return resistenciaActual;
 		
 	}
 	
-	private void recuperar(){
+	private void pasoTurno(){
 		
-		// recuperar estado del escudo por turno
+		if(resistenciaActual + REGENERACION_POR_TURNO <= resistenciaTotal){
+			
+			resistenciaActual = resistenciaActual + REGENERACION_POR_TURNO;
+			
+		}
+		else {
+			
+			resistenciaActual = resistenciaTotal;
+			
+		}
 		
 	}
-	
-	
 
 }

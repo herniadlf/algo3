@@ -6,5 +6,6 @@ public class ExcepcionYaHayElementoEnLaPosicion extends ExcepcionGeneral{
 		
 		super(descripcion);
 		
-}
+	}
+
 }
