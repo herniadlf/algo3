@@ -64,16 +64,18 @@ public class ConstruccionTest {
 			Assert.assertFalse ( mapa.obtenerContenidoEnPosicion(10, 10).getElementoEnTierra().esLoMismo(nexoMineral) );
 		}
 		
-		@Test 
+		/*@Test 
 		public void noConstruyeFabricaSinBarraca() throws ExcepcionPosicionInvalida, ExcepcionExtractoraSinRecurso, ExcepcionEdificioPrevioRequerido, ExcepcionYaHayElementoEnLaPosicion{
+			Juego juego = new Juego(mapa, jug)
 			Mapa mapa = new Mapa(50);
 			Jugador jug = new Jugador("carlos","rojo",new Terran());
 			
 			Construccion fabrica = jug.construir(new Fabrica(), mapa, 10, 10);			
 					 
-			Assert.assertFalse ( mapa.obtenerContenidoEnPosicion(10, 10).getElementoEnTierra().esLoMismo(fabrica) );
+			Assert.assertTrue ( mapa.obtenerContenidoEnPosicion(10, 10).getElementoEnTierra().esLoMismo(fabrica) );
 		}
-		
+		la construye igual porque el que verifica ahora es la clase juego
+		*/
 		@Test
 		public void construccionExitosaDeFabricaConBarraca() throws ExcepcionPosicionInvalida, ExcepcionExtractoraSinRecurso, ExcepcionEdificioPrevioRequerido, ExcepcionYaHayElementoEnLaPosicion{
 			Mapa mapa = new Mapa(50);
@@ -145,13 +147,7 @@ public class ConstruccionTest {
 			jug.crearUnidad(new Marine(),(Creadora) barraca, mapa);
 			jug.crearUnidad(new Marine(),(Creadora) barraca, mapa);
 			jug.crearUnidad(new Marine(),(Creadora) barraca, mapa);
-			try{
-				jug.crearUnidad(new Marine(),(Creadora) barraca, mapa);
-			} 
-			catch (ExcepcionEdificioNoPuedeCrearUnidad e) { 
-				jug.construir(new DepositoDeSuministros(), mapa, 9, 8);
-				jug.crearUnidad(new Marine(),(Creadora) barraca, mapa); // intento crearla de nuevo con mas suministros
-			}
+			jug.crearUnidad(new Marine(),(Creadora) barraca, mapa);
 			jug.crearUnidad(new Marine(),(Creadora) barraca, mapa);
 			jug.crearUnidad(new Marine(),(Creadora) barraca, mapa);
 			

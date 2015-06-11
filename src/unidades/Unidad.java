@@ -119,6 +119,21 @@ public abstract class Unidad implements Atacable{
 		
 	}
 	
+	public int getPosicionX (){
+		return posicion.getX();
+		}
+	
+	public int getPosicionY(){
+		return posicion.getY();
+		
+		
+		
+	}
+	
+	
+	
+	
+	
 	public ArrayList<Unidad> getUnidadesAtacantes(){
 		
 		return atacantes;
@@ -127,18 +142,25 @@ public abstract class Unidad implements Atacable{
 	
 	public void atacarEnAire (Atacable atacado){
 		
+		int distanciaEntreEnemigos = mapa.distanciaEntreLosPuntos(atacado.getPosicionX(), atacado.getPosicionY(), this.getPosicionX(), this.getPosicionY());
+		if ((distanciaEntreEnemigos) < this.getVision()){
+
 		int danio = this.getDanio().getDanioAire();
 		atacado.getVida().aumentarDanioARecibir(danio);
 		atacado.recibirDanio();
-
+		}
 	} 
 	
 	
 	public void atacarEnTierra(Atacable atacado){
 		
+		int distanciaEntreEnemigos = mapa.distanciaEntreLosPuntos(atacado.getPosicionX(), atacado.getPosicionY(), this.getPosicionX(), this.getPosicionY());
+		
+		if ((distanciaEntreEnemigos) < this.getVision()){
+	
 		int danio = this.getDanio().getDanioTierra();
 		atacado.getVida().aumentarDanioARecibir(danio);
-		atacado.recibirDanio();
+		atacado.recibirDanio();}
 		
 	}
 

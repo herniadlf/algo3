@@ -9,11 +9,14 @@ import src.unidades.*;
 
 import org.junit.Assert;
 
+import excepciones.ExcepcionEdificioNoPuedeCrearUnidad;
 import excepciones.ExcepcionExtractoraSinRecurso;
 import excepciones.ExcepcionPosicionInvalida;
 import src.*;
 import src.construcciones.*;
 import src.mapa.Mapa;
+import src.mapa.Posicion;
+import src.razas.Protoss;
 import src.razas.Terran;
 import src.unidades.Marine;
 
@@ -81,24 +84,69 @@ public class UnidadesTerranTest extends TestCase{
 		}
 		
 		
-		public void testmarineAtacaZealotSoloRompeEscudo(){
+		public void testmarineAtacaZealotSoloRompeEscudo() throws ExcepcionEdificioNoPuedeCrearUnidad{
 			
-			Marine marine = new Marine();
-			Zealot zealot = new Zealot ();
+			/*--------------------------------------------------------------------------------*/
+			Mapa mapa = new Mapa(50);
+			Jugador jug1 = new Jugador ("carlos","rojo",new Terran());
+			Jugador jug2 = new Jugador ("williams", "azul", new Protoss());
+			
+			jug1.construir(new DepositoDeSuministros(), mapa, 30, 30);
+			jug2.construir(new Pilon(), mapa, 36, 36);
+			Construccion barraca = jug1.construir(new Barraca(),mapa,5,5);
+			Construccion acceso = jug2.construir(new Acceso(), mapa, 8, 8);
+			Unidad marine =jug1.crearUnidad(new Marine(),(Creadora) barraca, mapa);
+			Unidad zealot = jug2.crearUnidad(new Zealot(), (Creadora)acceso, mapa);
+			
 			marine.atacarEnAire(zealot);
 			Vida vida= zealot.getVida();
-			Assert.assertTrue((vida.obtenerVida()) == 100);	
+			Assert.assertTrue((vida.obtenerVida()) == 100);
+			
+			
+			
+			
+			
 		
 		}	
 		
-		public void testEspectroPuedeAtacarEdificiosEnemigos(){
+		public void testEspectroPuedeAtacarEdificiosEnemigos() throws ExcepcionEdificioNoPuedeCrearUnidad{
 			
-			Espectro espectro = new Espectro();
+			Mapa mapa = new Mapa(50);
+			Jugador jug1 = new Jugador ("carlos","rojo",new Terran());
+			Jugador jug2 = new Jugador ("Williams", "azul", new Protoss());
+			jug1.setDinero(999999, 999999);
+			jug2.setDinero(9999, 9999);
+			
+			Construccion barraca = jug1.construir(new Barraca(),mapa,5,5);
+			Construccion fabrica = jug1.construir(new Fabrica(),mapa, 9,9);
+			Construccion puertoEstelarTerran = jug1.construir(new PuertoEstelarTerran(), mapa, 16, 16);
+			NexoMineral nexo =  (NexoMineral) jug2.construir(new NexoMineral(), mapa, 18, 18);
+			//Como creo 8 espectrs que requieren 2 suministros, en total necesito 16 suministros,
+			//por lo cual construyo 4 depositosdesuminitros 
+			//para tener 20 suministros disponibles (5 suministros extras x edificio)
+			jug1.construir(new DepositoDeSuministros(), mapa, 1, 1);
+			jug1.construir(new DepositoDeSuministros(), mapa, 9, 8);
+			jug1.construir(new DepositoDeSuministros(), mapa, 10, 2);
+			jug1.construir(new DepositoDeSuministros(), mapa, 10, 4);
+			
+			Unidad espectro = jug1.crearUnidad(new Espectro(),(Creadora) puertoEstelarTerran, mapa);
+			Assert.assertTrue(nexo.getEscudo().obtenerResistenciaActual() == 250 );
+			espectro.atacarEnAire(nexo);
+			Assert.assertTrue(nexo.getEscudo().obtenerResistenciaActual() == 230 );
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			/*Espectro espectro = new Espectro();
 			NexoMineral nexoMineral = new NexoMineral();
 			Assert.assertTrue(nexoMineral.getEscudo().obtenerResistenciaActual() == 250 );
-			
 			espectro.atacarEnAire(nexoMineral);
-			Assert.assertTrue(nexoMineral.getEscudo().obtenerResistenciaActual() == 230 );
+			Assert.assertTrue(nexoMineral.getEscudo().obtenerResistenciaActual() == 230 );*/
 			
 		}
 	

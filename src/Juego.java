@@ -2,7 +2,15 @@ package src;
 
 import java.util.ArrayList;
 
+import excepciones.ExcepcionConstruccionNoCorrespondiente;
 import excepciones.ExcepcionEdificioNoPuedeCrearUnidad;
+import excepciones.ExcepcionNoHayLugarParaCrear;
+import excepciones.ExcepcionPosicionInvalida;
+import excepciones.ExcepcionRecursoInsuficiente;
+import excepciones.ExcepcionSuministrosInsuficientes;
+import excepciones.ExcepcionTopeDePoblacionMaxima;
+import excepciones.ExcepcionUnidadNoCorrespondiente;
+import excepciones.ExcepcionYaHayElementoEnLaPosicion;
 import src.construcciones.Construccion;
 import src.construcciones.Creadora;
 import src.mapa.Mapa;
@@ -49,7 +57,11 @@ public class Juego {
 		
 	}
 	
-	public void pasarTurno () throws ExcepcionEdificioNoPuedeCrearUnidad{
+	public void pasarTurno () 
+			throws ExcepcionEdificioNoPuedeCrearUnidad,
+			ExcepcionPosicionInvalida, 
+			ExcepcionNoHayLugarParaCrear,
+			ExcepcionYaHayElementoEnLaPosicion{
 		
 		turno.aumentarTurno();
 		if ((turno.devolverTurnoActual()%2)==0){
@@ -68,15 +80,23 @@ public class Juego {
 		
 	} 
 
-	public void ordenarFabricacionUnidad (Unidad unidad, Creadora edificio){
+	public void ordenarFabricacionUnidad (Unidad unidad, Creadora edificio) 
+			throws ExcepcionUnidadNoCorrespondiente, 
+			ExcepcionRecursoInsuficiente, ExcepcionSuministrosInsuficientes, 
+			ExcepcionTopeDePoblacionMaxima{
 		
+		jugadorActual.verificacionUnidad(unidad, edificio);
 		unidad.setEdificio(edificio);
 		unidad.setTurnoInicioDeEntrenamiento(turno.devolverTurnoActual());
 		jugadorActual.obtenerListaDeUnidadesAFabricar().add(unidad);		
 		
 	}
 	
-	public void ordenFabricacionDeEdificios (Construccion construccion, int x, int y){
+	public void ordenFabricacionDeEdificios (Construccion construccion, int x, int y)
+			throws ExcepcionConstruccionNoCorrespondiente, ExcepcionRecursoInsuficiente{
+		
+		jugadorActual.verificacionEdificio(construccion);
+		
 		construccion.setPosicionX(x);
 		construccion.setPosicionY(y);
 		construccion.setTurnoInicioDEConstruccion(turno.devolverTurnoActual());

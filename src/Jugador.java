@@ -40,7 +40,7 @@ public class Jugador {
 		setNombre(nombre);
 		setColor(color);
 		setRaza(raza);
-		setPoblacionDisponible(0);
+		setPoblacionDisponible(5);
 		setDinero(800,400);
 		this.unidadesEnFabricacion= new ArrayList<Unidad>();	
 		this.construccionesEnFabricacion= new ArrayList <Construccion>();
@@ -117,7 +117,6 @@ public class Jugador {
 	
 		try {
 			
-			this.verificacionEdificio(edificio);
 			edificio.setPosicionX(x);
 			edificio.setPosicionY(y);
 			edificio.setAlrededores();
@@ -126,8 +125,7 @@ public class Jugador {
 			this.gastarPlata(edificio.getCosto());
 			poblacionDisponible = poblacionDisponible + edificio.getCantidadDeSuministros();
 			
-		} catch (ExcepcionConstruccionNoCorrespondiente
-				| ExcepcionRecursoInsuficiente | ExcepcionPosicionInvalida | ExcepcionExtractoraSinRecurso
+		} catch (ExcepcionPosicionInvalida | ExcepcionExtractoraSinRecurso
 				| ExcepcionYaHayElementoEnLaPosicion  e) {
 	
 			e.printStackTrace();
@@ -136,7 +134,7 @@ public class Jugador {
 		return edificio;
 	}
 	
-	private void verificacionEdificio(Construccion edificio) throws ExcepcionConstruccionNoCorrespondiente, ExcepcionRecursoInsuficiente{
+	public void verificacionEdificio(Construccion edificio) throws ExcepcionConstruccionNoCorrespondiente, ExcepcionRecursoInsuficiente{
 		
 		this.getRaza().verificarEdificioPosible(edificio.getEdificioRequerido());
 		this.gastoPosible(edificio.getCosto());
@@ -154,25 +152,20 @@ public class Jugador {
 		
 	}
 	
-	public Unidad crearUnidad(Unidad aEntrenar, Creadora edificio, Mapa map) throws ExcepcionEdificioNoPuedeCrearUnidad {
+	public Unidad crearUnidad(Unidad aEntrenar, Creadora edificio, Mapa map) {
 		
-		try {
-			
-			this.verificacionUnidad(aEntrenar, edificio);
 			poblacionDisponible = poblacionDisponible - aEntrenar.getSuministros();
 			poblacionActual = poblacionActual + aEntrenar.getSuministros();
 			this.gastarPlata(aEntrenar.getCosto());
-			edificio.entrenarUnidad(aEntrenar,map);
+			try {
+				edificio.entrenarUnidad(aEntrenar,map);
+			} catch (ExcepcionPosicionInvalida | ExcepcionNoHayLugarParaCrear
+					| ExcepcionYaHayElementoEnLaPosicion e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			
-		} catch (ExcepcionUnidadNoCorrespondiente
-				| ExcepcionRecursoInsuficiente
-				| ExcepcionSuministrosInsuficientes | ExcepcionPosicionInvalida | ExcepcionNoHayLugarParaCrear
-				| ExcepcionYaHayElementoEnLaPosicion |
-				ExcepcionTopeDePoblacionMaxima e) {
-			throw new ExcepcionEdificioNoPuedeCrearUnidad("No pudo crearse la unidad requerida");	
-		}
-		
-		return aEntrenar;
+			return aEntrenar;
 		
 	}
 	
@@ -201,7 +194,10 @@ public class Jugador {
 		
 	}
 	
-	public void actualizarFabricacionUnidades (Turno turno, Mapa map) throws ExcepcionEdificioNoPuedeCrearUnidad{
+	public void actualizarFabricacionUnidades (Turno turno, Mapa map) 
+			throws ExcepcionEdificioNoPuedeCrearUnidad,
+			ExcepcionPosicionInvalida, 
+			ExcepcionNoHayLugarParaCrear, ExcepcionYaHayElementoEnLaPosicion{
 		
 		int i=0;
 		int turnosPasados;
@@ -209,7 +205,7 @@ public class Jugador {
 		while (this.unidadesEnFabricacion.size()>i){
 			
 			turnoOrdenoFabricacion = this.unidadesEnFabricacion.get(i).getTurnoDeEntrenamiento();
-			turnosPasados = (turno.devolverTurnoActual()- turnoOrdenoFabricacion); 
+			turnosPasados = (turno.devolverTurnoActual()- turnoOrdenoFabricacion)/2; 
 			
 			if ( turnosPasados  >= unidadesEnFabricacion.get(i).getTiempoDeCreacion()){
 				
@@ -246,12 +242,12 @@ public class Jugador {
 		while (this.construccionesEnFabricacion.size()>i){
 			
 			turnoOrdenoFabricacion = this.construccionesEnFabricacion.get(i).getTurnoInicioDeConstruccion();
-			turnosPasados = (turno.devolverTurnoActual()- turnoOrdenoFabricacion); 
+			turnosPasados = (turno.devolverTurnoActual()- turnoOrdenoFabricacion)/2; 
 			
 			
 			if ( turnosPasados  >= construccionesEnFabricacion.get(i).getTiempoDeConstruccion()){
 				
-			
+				
 				this.construir(construccionesEnFabricacion.get(i), mapa, construccionesEnFabricacion.get(i).getPosicionX(), construccionesEnFabricacion.get(i).getPosicionY());
 				construccionesEnFabricacion.remove(i);
 				

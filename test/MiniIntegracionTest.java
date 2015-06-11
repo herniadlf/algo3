@@ -3,8 +3,15 @@ package test;
 import org.junit.Assert;
 import org.junit.Test;
 
+import excepciones.ExcepcionConstruccionNoCorrespondiente;
 import excepciones.ExcepcionEdificioNoPuedeCrearUnidad;
+import excepciones.ExcepcionNoHayLugarParaCrear;
 import excepciones.ExcepcionPosicionInvalida;
+import excepciones.ExcepcionRecursoInsuficiente;
+import excepciones.ExcepcionSuministrosInsuficientes;
+import excepciones.ExcepcionTopeDePoblacionMaxima;
+import excepciones.ExcepcionUnidadNoCorrespondiente;
+import excepciones.ExcepcionYaHayElementoEnLaPosicion;
 import src.Juego;
 import src.Jugador;
 import src.construcciones.Barraca;
@@ -24,7 +31,7 @@ public class MiniIntegracionTest {
 	
 	
 	@Test
-	public void testCrearUnidadesSegunTurno() throws ExcepcionEdificioNoPuedeCrearUnidad, ExcepcionPosicionInvalida{
+	public void testCrearUnidadesSegunTurno() throws ExcepcionEdificioNoPuedeCrearUnidad, ExcepcionPosicionInvalida, ExcepcionUnidadNoCorrespondiente, ExcepcionRecursoInsuficiente, ExcepcionSuministrosInsuficientes, ExcepcionTopeDePoblacionMaxima, ExcepcionNoHayLugarParaCrear, ExcepcionYaHayElementoEnLaPosicion{
 		Mapa mapa = new Mapa(50);
 		Jugador jugador1 = new Jugador ("carlos","rojo",new Terran());
 		Jugador jugador2 = new Jugador ("dean","azul",new Terran());
@@ -59,6 +66,13 @@ public class MiniIntegracionTest {
 		juego.pasarTurno();
 		juego.pasarTurno();
 		juego.pasarTurno();
+		juego.pasarTurno();
+		juego.pasarTurno();
+		juego.pasarTurno();
+		juego.pasarTurno();
+		juego.pasarTurno();
+		juego.pasarTurno();
+		juego.pasarTurno();
 
 		
 		
@@ -74,7 +88,7 @@ public class MiniIntegracionTest {
 	}
 	
 	@Test
-	public void testCrearEdificiosSegunTurno() throws ExcepcionEdificioNoPuedeCrearUnidad, ExcepcionPosicionInvalida{
+	public void testCrearEdificiosSegunTurno() throws ExcepcionEdificioNoPuedeCrearUnidad, ExcepcionPosicionInvalida, ExcepcionNoHayLugarParaCrear, ExcepcionYaHayElementoEnLaPosicion, ExcepcionConstruccionNoCorrespondiente, ExcepcionRecursoInsuficiente{
 		Mapa mapa = new Mapa(50);
 		Jugador jugador1 = new Jugador ("carlos","rojo",new Terran());
 		Jugador jugador2 = new Jugador ("dean","azul",new Terran());
@@ -102,18 +116,38 @@ public class MiniIntegracionTest {
 	juego.pasarTurno();
 	juego.pasarTurno();
 	juego.pasarTurno();
+	juego.pasarTurno();
+	juego.pasarTurno();
+	juego.pasarTurno();
+	juego.pasarTurno();
+	juego.pasarTurno();
+	juego.pasarTurno();
+	juego.pasarTurno();
+	juego.pasarTurno();
+	juego.pasarTurno();
+	juego.pasarTurno();
+	juego.pasarTurno();
+	juego.pasarTurno();
+	juego.pasarTurno();
 	
 	
 	
 	Assert.assertTrue(juego.getMapa().obtenerContenidoEnPosicion(10,10).getElementoEnTierra().esLoMismo(new Barraca()));
-	
-	
-	
-
-		
-		
 	}
-
+	
+	@Test (expected = ExcepcionConstruccionNoCorrespondiente.class)
+	public void noConstruyeFabricaSinBarraca()
+			throws ExcepcionPosicionInvalida, 
+			ExcepcionConstruccionNoCorrespondiente, 
+			ExcepcionRecursoInsuficiente {
+		Mapa mapa = new Mapa(50);
+		Jugador jugador1 = new Jugador ("carlos","rojo",new Terran());
+		Jugador jugador2 = new Jugador ("dean","azul",new Terran());
+		Juego juego = new Juego (mapa, jugador1, jugador2);
+		
+		juego.ordenFabricacionDeEdificios(new Fabrica(), 10, 10);			
+				 
+	}
 	
 
 }

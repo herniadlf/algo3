@@ -5,10 +5,18 @@ import java.util.Iterator;
 
 import org.junit.Assert;
 
+import excepciones.ExcepcionEdificioNoPuedeCrearUnidad;
 import excepciones.ExcepcionGeneral;
 import src.Jugador;
+import src.Vida;
 import src.construcciones.Acceso;
+import src.construcciones.Barraca;
+import src.construcciones.Construccion;
+import src.construcciones.Creadora;
+import src.construcciones.DepositoDeSuministros;
+import src.construcciones.Pilon;
 import src.mapa.Mapa;
+import src.razas.Protoss;
 import src.razas.Terran;
 import src.unidades.*;
 import junit.framework.TestCase;
@@ -37,11 +45,26 @@ public class UnidadesProtossTest extends TestCase{
 		
 	}
 	
-	public void testAtacarZealotNuevoPorMarineSoloDaniaEscudo(){
+	public void testAtacarZealotNuevoPorMarineSoloDaniaEscudo() throws ExcepcionEdificioNoPuedeCrearUnidad{
 		
-		Acceso acceso = new Acceso();
-		Zealot zealot = acceso.crearZealot();
-		Marine marine = new Marine();
+		Mapa mapa = new Mapa(50);
+		Jugador jug1 = new Jugador ("carlos","rojo",new Terran());
+		jug1.setDinero(9999, 9999);
+		Jugador jug2 = new Jugador ("williams", "azul", new Protoss());
+		
+		
+		jug1.construir(new DepositoDeSuministros(), mapa, 30, 30);
+		jug2.construir(new Pilon(), mapa, 36, 36);
+		Construccion barraca = jug1.construir(new Barraca(),mapa,5,5);
+		Construccion acceso = jug2.construir(new Acceso(), mapa, 8, 8);
+		Unidad marine =jug1.crearUnidad(new Marine(),(Creadora) barraca, mapa);
+		
+		
+		
+		Zealot zealot =  (Zealot) jug2.crearUnidad(new Zealot(), (Creadora)acceso, mapa);
+		
+		
+		
 		
 		marine.atacarEnTierra(zealot);
 		Assert.assertTrue((zealot.getVida().obtenerVida()) == 100);
@@ -50,24 +73,32 @@ public class UnidadesProtossTest extends TestCase{
 	}
 	
 	
-	public void testZealotRecibeMultiplesAtaques (){
-		Acceso acceso = new Acceso ();
-		Zealot zealot = acceso.crearZealot();
+	public void testZealotRecibeMultiplesAtaques () throws ExcepcionEdificioNoPuedeCrearUnidad{
+		Mapa mapa = new Mapa(50);
+		Jugador jug1 = new Jugador ("carlos","rojo",new Terran());
+		jug1.setDinero(9999, 9999);
+		Jugador jug2 = new Jugador ("williams", "azul", new Protoss());
 		
-		Marine primerMarine = new Marine();
+		
+		jug1.construir(new DepositoDeSuministros(), mapa, 30, 30);
+		jug2.construir(new Pilon(), mapa, 36, 36);
+		Construccion barraca = jug1.construir(new Barraca(),mapa,5,5);
+		Construccion acceso = jug2.construir(new Acceso(), mapa, 8, 8);
+		Unidad primerMarine =jug1.crearUnidad(new Marine(),(Creadora) barraca, mapa);
+		Unidad segundoMarine = jug1.crearUnidad(new Marine(),(Creadora) barraca, mapa);
+		Unidad tercerMarine = jug1.crearUnidad(new Marine(),(Creadora) barraca, mapa);
+		Unidad zealot = jug2.crearUnidad(new Zealot(), (Creadora)acceso, mapa);
+		
+	
 		primerMarine.atacarEnTierra(zealot);
 		
-		Marine segundoMarine = new Marine();
-		segundoMarine.atacarEnTierra(zealot);
-		Marine tercerMarine = new Marine();
-		tercerMarine.atacarEnTierra(zealot);
-		Marine cuartoMarine = new Marine();
-		cuartoMarine.atacarEnTierra(zealot);
 		
+		segundoMarine.atacarEnTierra(zealot);
+		tercerMarine.atacarEnTierra(zealot);
 		int danioTotalRecibido= zealot.getVida().obtenerDanioRecibido();
 		
 		
-		Assert.assertTrue(danioTotalRecibido == 24 );
+		Assert.assertTrue(danioTotalRecibido == 18 );
 		
 		}
 	
