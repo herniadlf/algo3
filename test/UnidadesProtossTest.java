@@ -1,5 +1,8 @@
 package test;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+
 import org.junit.Assert;
 
 import src.Jugador;
@@ -79,6 +82,30 @@ public class UnidadesProtossTest extends TestCase{
 		
 	}
 	
-	
+	/*
+	public void testNaveTransporteProtossTransporta8Pasajeros(){
+		
+		NaveTransporteProtoss naveTransporte = new NaveTransporteProtoss();
+		ArrayList<Marine> marines = new ArrayList<>();
+		
+		for(int i = 0 ; i < 8 ; i++){
+			
+			Marine marine = new Marine();
+			marines.add(marine);
+			
+		}
+			
+		Iterator<Marine> i = marines.iterator();
+		
+		while(i.hasNext()){
+			
+			naveTransporte.llevar(i.next());
+			
+		}
+		
+		Assert.assertTrue(naveTransporte.cantidadPasajeros() == 8);		
+		
+	}
+	*/
 
 }

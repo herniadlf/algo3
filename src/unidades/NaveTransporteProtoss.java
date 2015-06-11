@@ -92,6 +92,16 @@ public class NaveTransporteProtoss extends Unidad {
 		return false;
 	}
 
+	public void llevar(Unidad unidad) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public int cantidadPasajeros() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
 
 	
 }
