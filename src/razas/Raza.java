@@ -24,6 +24,8 @@ public abstract class Raza {
 		public void actualizarEdificios(Construccion edificio) {
 			construccionesPosibles.add(edificio);		
 		}
+		
+		public abstract Construccion getEdificioPrincipal();
 					
 }
 

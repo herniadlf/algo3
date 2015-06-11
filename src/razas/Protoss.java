@@ -48,6 +48,11 @@ public class Protoss extends Raza {
 		//construccionesPosibles.add(new PuertoEstelarProtoss());
 	}
 	
+	public Construccion getEdificioPrincipal () {
+		
+		return new Pilon();
+	}
+	
 
 	
 }

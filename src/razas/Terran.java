@@ -44,5 +44,10 @@ public class Terran extends Raza {
 	return barraca;
 		
 	}
+
+	public Construccion getEdificioPrincipal() {
+		
+		return new DepositoDeSuministros();
+	}
 	
 }
