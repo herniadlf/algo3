@@ -8,8 +8,10 @@ import src.mapa.Mapa;
 import src.razas.Terran;
 import src.unidades.Dragon;
 import src.unidades.NaveCiencia;
+import src.unidades.Zealot;
 import excepciones.ExcepcionExtractoraSinRecurso;
 import excepciones.ExcepcionPosicionInvalida;
+import excepciones.ExcepcionYaHayElementoEnLaPosicion;
 import junit.framework.TestCase;
 
 public class NaveCienciaTest extends TestCase {
@@ -58,6 +60,25 @@ public class NaveCienciaTest extends TestCase {
 		Assert.assertTrue(naveCiencia.obtenerEnergia() == 5);	
 		
 	}
+	
+	/*
+	public void testNaveCienciaUtilizaEMPDaniaEscudoProtoss() throws ExcepcionPosicionInvalida, ExcepcionYaHayElementoEnLaPosicion{
+		
+		NaveCiencia naveCiencia = new NaveCiencia();
+		Dragon dragon = new Dragon();
+		Zealot zealot = new Zealot();
+		
+		mapa.colocarEn(20, 20, dragon);
+		mapa.colocarEn(21, 20, zealot);
+		
+		naveCiencia.atacarConEMP(20, 20); //saca 20 escudo o 20 magia
+
+		Assert.assertTrue(dragon.getEscudo().obtenerResistenciaActual() == 60);
+		Assert.assertTrue(zealot.getEscudo().obtenerResistenciaActual() == 40);
+		
+	}
+	*/
+	
 	
 	
 }

@@ -90,7 +90,11 @@ public class Dragon extends Unidad {
 		return false;
 	}
 
-
+	public Escudo getEscudo(){
+		
+		return escudo;
+		
+	}
 	
 
 }
