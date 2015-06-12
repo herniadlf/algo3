@@ -129,13 +129,12 @@ public class Mapa {
 			int totalArbolesCreados = 0;
 			
 			while(totalArbolesCreados != cantidadDeArboles) {
-				
-				Arbol unArbol = new Arbol();
+			
 				int i = random.nextInt(tamanio)+1;  //Genero números randoms para determinar la posicion del Arbol
 				int j = random.nextInt(tamanio)+1;
 				if(obtenerContenidoEnPosicion(i, j).getElementoEnTierra().esOcupable()){
 					
-					this.colocarEn(i, j, unArbol);
+					this.colocarEn(i, j, new Arbol());
 					totalArbolesCreados++;
 				}
 			}	

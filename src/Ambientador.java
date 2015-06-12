@@ -1,16 +1,19 @@
-/*package src;
+package src;
 
 import java.util.Random;
 
 import excepciones.ExcepcionPosicionInvalida;
 import excepciones.ExcepcionSuperaLimenteDeArbolesPermitos;
 import excepciones.ExcepcionYaHayElementoEnLaPosicion;
-import src.mapa.Arbol;
 import src.mapa.FuenteDeGasVespeno;
 import src.mapa.FuenteDeMinerales;
 import src.mapa.Mapa;
 
 public class Ambientador {
+	
+	private static int CANT_DE_FUENTES_RECURSOS = 4;
+	
+	private static int DISTANCIA_MAXIMA = 10;
 	
 	public Mapa ambientarMapa(int tamanioMapa, int cantDeArboles, Jugador jugador1, Jugador jugador2) throws ExcepcionPosicionInvalida, ExcepcionYaHayElementoEnLaPosicion, ExcepcionSuperaLimenteDeArbolesPermitos {
 		
@@ -18,43 +21,73 @@ public class Ambientador {
 		
 		int posPrincipal1 = (int) ((tamanioMapa) - (tamanioMapa / 4));
 		
-		int posPrincipal2 = (int) (tamanioMapa - posPrincipal1);
+		int posPrincipal2 = (tamanioMapa - posPrincipal1);
 			
-		mapa.colocarEn(posPrincipal1, posPrincipal1, jugador1.getRaza().getEdificioPrincipal());		
+		try {
+			
+			mapa.colocarEn(posPrincipal1, posPrincipal1, jugador1.getRaza().getEdificioPrincipal());		
+			
+			mapa.colocarEn(posPrincipal2, posPrincipal2, jugador2.getRaza().getEdificioPrincipal());
+			
+			this.agregarFuentes(mapa, CANT_DE_FUENTES_RECURSOS, posPrincipal1, posPrincipal1);
+			
+			this.agregarFuentes(mapa, CANT_DE_FUENTES_RECURSOS, posPrincipal1, posPrincipal2);
+			
+			mapa.crearCantidadDeArbolesEnMapa(cantDeArboles);
+			
+		}
 		
-		mapa.colocarEn(posPrincipal2, posPrincipal2, jugador2.getRaza().getEdificioPrincipal());
-		
-		this.agregarFuentes(mapa, 4, posPrincipal1, posPrincipal1);
-		
-		this.agregarFuentes(mapa, 4, posPrincipal1, posPrincipal2);
-		
-		mapa.crearCantidadDeArbolesEnMapa(cantDeArboles);
+		catch (ExcepcionSuperaLimenteDeArbolesPermitos e) {
+			
+			mapa.crearCantidadDeArbolesEnMapa((int) (mapa.getTamanioMapa()*0.1));
+			
+		}
 		
 		return mapa;
-		
+
 	}
 	
-	public void agregarFuentes(Mapa mapa, int cantidad, int alrededorDeX, int alrededorDeY){
+	public void agregarFuentes(Mapa mapa, int cantidadDeseada, int alrededorDeX, int alrededorDeY) throws ExcepcionPosicionInvalida, ExcepcionYaHayElementoEnLaPosicion{
 		
 		Random random = new Random();
 		
-		int totalFuentesCreadas = 0;
+		int totalFuentesDeMineral = 0;
 		
-		while(totalFuentesCreadas != cantidad) {
+		while(totalFuentesDeMineral != cantidadDeseada) {
 			
-			FuenteDeMinerales unFuenteMineral = new FuenteDeMinerales();
-			int i = random.nextInt(cantidad+1)+1;  //Genero números randoms para determinar la posicion de la fuente
-			int j = random.nextInt(cantidad+1)+1;
-			if(obtenerContenidoEnPosicion(i, j).getElementoEnTierra().esOcupable()){
+			int i = random.nextInt(DISTANCIA_MAXIMA);  //Genero números randoms para determinar la posicion de la fuente
+			int j = random.nextInt(DISTANCIA_MAXIMA);
+			
+			try {
 				
-				this.colocarEn(i, j, unArbol);
-				totalArbolesCreados++;
-			}
-		}	
+				mapa.colocarEn(alrededorDeX + i, alrededorDeY + j, new FuenteDeMinerales());
+				totalFuentesDeMineral++;
+				
+				}
+			
+			catch (ExcepcionPosicionInvalida | ExcepcionYaHayElementoEnLaPosicion e) {
+				
+				}	
+		}
 		
-		mapa.colocarEn(i, j, unElemento);
+		int totalFuentesDeGasVespeno = 0;
 		
+		while(totalFuentesDeGasVespeno != cantidadDeseada) {
+			
+			int i = random.nextInt(DISTANCIA_MAXIMA);  //Genero números randoms para determinar la posicion de la fuente
+			int j = random.nextInt(DISTANCIA_MAXIMA);
+			
+			try {
+				
+				mapa.colocarEn(alrededorDeX + i, alrededorDeY + j, new FuenteDeGasVespeno());
+				totalFuentesDeGasVespeno++;
+				
+				}
+			
+			catch (ExcepcionPosicionInvalida | ExcepcionYaHayElementoEnLaPosicion e) {
+				
+				}	
+		}
 	}
 
 }
-*/

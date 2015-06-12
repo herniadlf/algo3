@@ -2,6 +2,13 @@ package src.mapa;
 
 public class Arbol implements Mapeable{
 
+	private String nombre;
+	
+	public Arbol(){
+		
+		this.nombre = "Arbol";
+	}
+	
 	public boolean esLoMismo(Mapeable aComparar){
 		return (this.getNombre() == aComparar.getNombre());
 	}
@@ -33,7 +40,7 @@ public class Arbol implements Mapeable{
 	@Override
 	public String getNombre() {
 		// TODO Auto-generated method stub
-		return null;
+		return this.nombre;
 	}
 
 	@Override

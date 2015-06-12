@@ -121,20 +121,20 @@ public class MapaTest {
 		
 		mapa.crearCantidadDeArbolesEnMapa(10);
 		
-		int casillerosNoPisables = 0;
+		int casillerosConArboles = 0;
 		
 		for (int i = 1; i <= mapa.getTamanioMapa(); i++) {
 			for (int j = 1; j <= mapa.getTamanioMapa(); j++) {
 				
-				if(!mapa.obtenerContenidoEnPosicion(i,j).getElementoEnTierra().esOcupable()) {
+				if(mapa.obtenerContenidoEnPosicion(i,j).getElementoEnTierra().esLoMismo(new Arbol())) {
 					
-					casillerosNoPisables++;
+					casillerosConArboles++;
 					
 				}	
 			}
 		}
 		
-		Assert.assertEquals(casillerosNoPisables, 10);	
+		Assert.assertEquals(casillerosConArboles, 10);	
 		
 	}
 	
