@@ -3,6 +3,7 @@ package test;
 import org.junit.Assert;
 
 import src.Jugador;
+import src.Mineral;
 import src.construcciones.PuertoEstelarTerran;
 import src.mapa.Mapa;
 import src.razas.Terran;
@@ -70,11 +71,13 @@ public class NaveCienciaTest extends TestCase {
 		Dragon dragon = new Dragon();
 		Zealot zealot = new Zealot();
 		AltoTemplario altoTemplario = new AltoTemplario();
+		Mineral mineral = new Mineral(300);
 		
 		
 		mapa.colocarEn(21, 21, dragon);
 		mapa.colocarEn(20, 21, zealot);
 		mapa.colocarEn(20, 20, altoTemplario);
+		
 		
 		naveCiencia.pasoTurno();
 		naveCiencia.pasoTurno();

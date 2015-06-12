@@ -28,6 +28,7 @@ public class Asimilador extends Extractora {
 		escudo = new Escudo(ESCUDO,this);
 		
 	}	
+	
 	public void recibirDanio (){	
 		
 		escudo.atacar(this.getVida().obtenerDanioRecibido());
@@ -35,8 +36,11 @@ public class Asimilador extends Extractora {
 	}
 	
 	public void pasoTurno(Turno turno, Mapa mapa, Jugador jugadorActual){
+		
 		int minerales = jugadorActual.getDinero().getMinerales();
 		int gas = jugadorActual.getDinero().getGasVespeno() + RECURSOS_POR_TURNO;
 		jugadorActual.setDinero(minerales, gas);
+		
 	}
+	
 }

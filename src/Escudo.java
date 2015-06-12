@@ -18,14 +18,10 @@ public class Escudo{
 	public void atacar(int danio) {
 		
 		if(resistenciaActual - danio < 0){
-			
 			protegido.getVida().dismunuirVidaPorDanio();
 		}
-		
-		else {
-			
+		else {	
 			resistenciaActual = resistenciaActual - danio;
-			
 		}
 		
 	}
@@ -39,13 +35,9 @@ public class Escudo{
 	private void pasoTurno(){
 		
 		if(resistenciaActual + REGENERACION_POR_TURNO <= resistenciaTotal){
-			
 			resistenciaActual = resistenciaActual + REGENERACION_POR_TURNO;
-			
 		}
-		
 		else {
-			
 			resistenciaActual = resistenciaTotal;
 			
 		}

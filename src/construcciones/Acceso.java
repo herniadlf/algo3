@@ -16,6 +16,7 @@ public class Acceso extends Creadora {
 	private Escudo escudo;
 	
 		public Acceso (){
+			
 			super();
 			unidadesCreables = new LinkedList<Unidad>();
 			unidadesCreables.add(new Dragon());
@@ -39,9 +40,11 @@ public class Acceso extends Creadora {
 		
 		
 		public AltoTemplario crearAltoTemplario(){
+			
 			AltoTemplario alto = new AltoTemplario();
 			return alto;
-			}
+			
+		}
 		
 		public Escudo getEscudo(){
 			
@@ -52,11 +55,8 @@ public class Acceso extends Creadora {
 		public void recibirDanio(){
 					
 			escudo.atacar(this.getVida().obtenerDanioRecibido());
-		
 	
 		}	
-		
-		
 		
 		
 }

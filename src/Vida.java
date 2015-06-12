@@ -6,9 +6,11 @@ public class Vida {
 	private boolean finalizada;
 	
 	public Vida (int vidaDeUnidad){
+		
 		this.vida = vidaDeUnidad;
 		this.finalizada= false;
 		this.danioRecibido = 0;
+		
 	}
 	
 	public void dismunuirVidaPorDanio(){
@@ -19,6 +21,7 @@ public class Vida {
 	}
 	
 	public int obtenerVida(){
+		
 		return this.vida;
 		
 	}
@@ -30,29 +33,23 @@ public class Vida {
 	}
 	
 	public int obtenerDanioRecibido(){
+		
 		return this.danioRecibido;
 		
 	}
 	
 	public void actualizarEstadoDeVida (){
+		
 		if (this.vida<=0){
-			this.finalizada= true;
-			
+			this.finalizada= true;	
 		}
-		
-		
 		
 	}
 	
 	public boolean devolverEstadoDeVida (){
+		
 		return this.finalizada;
 		
-		
-		
 	}
-	
-	
-		
-	
 	
 }

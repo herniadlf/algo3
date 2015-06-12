@@ -27,6 +27,7 @@ public class Danio {
 	public int getDanioAire() {
 		
 		return this.danioAire;
+		
 	}
 	
 	public int getDanioTierra() {

@@ -2,10 +2,10 @@ package excepciones;
 
 public class ExcepcionRecursoInsuficiente extends ExcepcionGeneral {
 
-		public ExcepcionRecursoInsuficiente (String descripcion) {
+	public ExcepcionRecursoInsuficiente (String descripcion) {
+		
+		super(descripcion);
 			
-			super(descripcion);
-			
-		}
+	}
 		
 }

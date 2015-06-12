@@ -12,5 +12,4 @@ public interface Arquitecto {
 	public void verificarTerreno(Mapa map, int x, int y, Construccion construccion) 
 			throws ExcepcionPosicionInvalida, ExcepcionExtractoraSinRecurso, ExcepcionYaHayElementoEnLaPosicion;
 	
-
 }

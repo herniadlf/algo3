@@ -15,6 +15,7 @@ public class Barraca extends Creadora {
 	private static final int TIEMPO = 12;
 	
 	public Barraca(){
+		
 		super();
 		unidadesCreables = new LinkedList<Unidad>();
 		unidadesCreables.add(new Marine());		
@@ -23,6 +24,7 @@ public class Barraca extends Creadora {
 		setCosto(COSTO_MINERALES,COSTO_GAS);
 		setTiempoDeConstruccion(TIEMPO);
 		setEdificioRequerido(new DepositoDeSuministros());
+		
 	}
 	
 	public Marine crearMarine(){
@@ -37,6 +39,5 @@ public class Barraca extends Creadora {
 		this.getVida().dismunuirVidaPorDanio();
 		
 	}
-	
 	
 }

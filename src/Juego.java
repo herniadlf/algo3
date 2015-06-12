@@ -33,6 +33,7 @@ public class Juego {
 		jugador2 = jug2;
 		jugadorActual = jug1;		
 		turno = new Turno();
+		
 	}
 
 	public Mapa getMapa() {
@@ -59,6 +60,7 @@ public class Juego {
 	}
 	
 	public void pasarTurno () 
+	
 			throws ExcepcionEdificioNoPuedeCrearUnidad,
 			ExcepcionPosicionInvalida, 
 			ExcepcionNoHayLugarParaCrear,
@@ -75,15 +77,17 @@ public class Juego {
 			jugadorActual = jugador1;
 			
 		}
+		
 		jugadorActual.pasoTurno(turno,mapa);
 	
 		
 	} 
 
 	public void ordenarFabricacionUnidad (Unidad unidad, Creadora edificio) 
-			throws ExcepcionUnidadNoCorrespondiente, 
-			ExcepcionRecursoInsuficiente, ExcepcionSuministrosInsuficientes, 
-			ExcepcionTopeDePoblacionMaxima{
+	
+		throws ExcepcionUnidadNoCorrespondiente, 
+		ExcepcionRecursoInsuficiente, ExcepcionSuministrosInsuficientes, 
+		ExcepcionTopeDePoblacionMaxima{
 		
 		jugadorActual.verificacionUnidad(unidad, edificio);
 		unidad.setEdificio(edificio);
@@ -101,10 +105,9 @@ public class Juego {
 		construccion.setPosicionY(y);
 		construccion.verificarTerreno(mapa,x,y);
 		construccion.setTurnoInicioDEConstruccion(turno.devolverTurnoActual());
-		jugadorActual.obtenerConstruccionesEnCamino().add(construccion);			
+		jugadorActual.obtenerConstruccionesEnCamino().add(construccion);		
+		
 	}
-	
-	
-	
+		
 	
 }

@@ -12,7 +12,6 @@ import src.mapa.Mapa;
 public class Ambientador {
 	
 	private static int CANT_DE_FUENTES_RECURSOS = 4;
-	
 	private static int DISTANCIA_MAXIMA = 10;
 	
 	public Mapa ambientarMapa(int tamanioMapa, int cantDeArboles, Jugador jugador1, Jugador jugador2) throws ExcepcionPosicionInvalida, ExcepcionYaHayElementoEnLaPosicion, ExcepcionSuperaLimenteDeArbolesPermitos {
@@ -75,6 +74,7 @@ public class Ambientador {
 		while(totalFuentesDeGasVespeno != cantidadDeseada) {
 			
 			int i = random.nextInt(DISTANCIA_MAXIMA);  //Genero números randoms para determinar la posicion de la fuente
+			
 			int j = random.nextInt(DISTANCIA_MAXIMA);
 			
 			try {
@@ -88,6 +88,7 @@ public class Ambientador {
 				
 				}	
 		}
+		
 	}
 
 }

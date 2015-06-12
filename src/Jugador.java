@@ -59,6 +59,7 @@ public class Jugador {
 		return nombre;
 		
 	}
+	
 	public void setNombre(String nombre) { 
 	
 		this.nombre = nombre; 
@@ -70,6 +71,7 @@ public class Jugador {
 		return color;
 		
 	}
+	
 	public void setColor(String color) { 
 		
 		this.color = color;	

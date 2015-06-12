@@ -5,7 +5,11 @@ import java.util.Iterator;
 
 import excepciones.ExcepcionPosicionInvalida;
 import src.Atacable;
+import src.GasVespeno;
+import src.Mineral;
+import src.Recurso;
 import src.mapa.EspacioDisponible;
+import src.mapa.FuenteDeRecurso;
 import src.mapa.Mapa;
 import src.mapa.Mapeable;
 import src.mapa.Posicion;
@@ -63,21 +67,16 @@ public class EMP extends PorRangoAtaque {
 		try {
 			Sector sector = mapa.obtenerContenidoEnPosicion(x, y);
 			if(!(sector.getElementoEnTierra().getClass() == new EspacioDisponible().getClass())){
-				
-				Atacable objetoEnTierra = (Atacable)sector.getElementoEnTierra();
-				objetoEnTierra.atacarConEMP(danio);					
-			}		
-				
+				if(!(sector.getElementoEnTierra().getClass() == new FuenteDeRecurso().getClass())){
+					Atacable objetoEnTierra = (Atacable)sector.getElementoEnTierra();
+					objetoEnTierra.atacarConEMP(danio);		
+				}		
+			}	
 			
 		} catch (ExcepcionPosicionInvalida e) {
+			e.printStackTrace();	
+		}	
 	
-			e.printStackTrace();
-		}
-		
-		
 	}
-		
-	
-
 	
 }

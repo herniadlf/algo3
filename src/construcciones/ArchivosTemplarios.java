@@ -7,6 +7,7 @@ import src.Escudo;
 import src.unidades.*;
 
 public class ArchivosTemplarios extends Creadora {
+	
 	private static final int COSTO_MINERALES = 150;
 	private static final int COSTO_GAS = 200;
 	private static final int VIDA = 500;
@@ -15,6 +16,7 @@ public class ArchivosTemplarios extends Creadora {
 	Escudo escudo;
 	
 	public ArchivosTemplarios(){
+		
 		super();
 		unidadesCreables = new LinkedList<Unidad>();
 		unidadesCreables.add(new AltoTemplario());
@@ -24,6 +26,7 @@ public class ArchivosTemplarios extends Creadora {
 		setVida(VIDA);
 		setEdificioRequerido(new PuertoEstelarProtoss());
 		escudo = new Escudo (ESCUDO,this);
+		
 	}
 
 	public AltoTemplario crearAltoTemplario() {
@@ -34,7 +37,6 @@ public class ArchivosTemplarios extends Creadora {
 	}
 	
 	public void recibirDanio (){
-		
 		
 		escudo.atacar(this.getVida().obtenerDanioRecibido());
 		
