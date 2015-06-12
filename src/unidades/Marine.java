@@ -88,6 +88,12 @@ public class Marine extends Unidad {
 		return false;
 	}
 
+	@Override
+	public void atacarConEMP() {
+		//no afecta
+		
+	}
+
 
 	
 	

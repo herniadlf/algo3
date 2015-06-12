@@ -40,7 +40,7 @@ public class AltoTemplarioTest extends TestCase {
 		altoTemplario.pasoTurno();
 		altoTemplario.pasoTurno();
 		altoTemplario.tormentaPsionica(30,30);
-		Assert.assertTrue(altoTemplario.obtenerEnegia() == 5);
+		Assert.assertTrue(altoTemplario.obtenerEnergia() == 5);
 		
 	}
 

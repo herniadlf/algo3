@@ -95,6 +95,12 @@ public class Dragon extends Unidad {
 		return escudo;
 		
 	}
+
+	@Override
+	public void atacarConEMP() {
+		escudo.atacar(20);
+		
+	}
 	
 
 }

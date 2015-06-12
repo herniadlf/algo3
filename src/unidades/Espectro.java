@@ -93,6 +93,12 @@ public class Espectro extends Unidad {
 		return true;
 	}
 
+	@Override
+	public void atacarConEMP() {
+		// no afecta
+		
+	}
+
 
 	
 }

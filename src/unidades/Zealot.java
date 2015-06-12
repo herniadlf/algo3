@@ -104,6 +104,13 @@ public class Zealot extends Unidad {
 	}
 
 
+	@Override
+	public void atacarConEMP() {
+		escudo.atacar(20);
+		
+	}
+
+
 	
 
 }

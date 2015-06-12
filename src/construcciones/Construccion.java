@@ -140,6 +140,11 @@ public class Construccion implements Atacable {
 		
 		
 	}
+
+	@Override
+	public void atacarConEMP() {
+		//no afecta a construcciones
+	}
 	
 	
 }

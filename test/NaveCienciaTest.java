@@ -6,6 +6,7 @@ import src.Jugador;
 import src.construcciones.PuertoEstelarTerran;
 import src.mapa.Mapa;
 import src.razas.Terran;
+import src.unidades.AltoTemplario;
 import src.unidades.Dragon;
 import src.unidades.NaveCiencia;
 import src.unidades.Zealot;
@@ -61,23 +62,33 @@ public class NaveCienciaTest extends TestCase {
 		
 	}
 	
-	/*
+	
 	public void testNaveCienciaUtilizaEMPDaniaEscudoProtoss() throws ExcepcionPosicionInvalida, ExcepcionYaHayElementoEnLaPosicion{
 		
 		NaveCiencia naveCiencia = new NaveCiencia();
+		naveCiencia.setMapa(mapa);
 		Dragon dragon = new Dragon();
 		Zealot zealot = new Zealot();
+		AltoTemplario altoTemplario = new AltoTemplario();
+		
 		
 		mapa.colocarEn(20, 20, dragon);
-		mapa.colocarEn(21, 20, zealot);
+		mapa.colocarEn(20, 21, zealot);
+		//mapa.colocarEn(21, 21, altoTemplario);
 		
-		naveCiencia.atacarConEMP(20, 20); //saca 20 escudo o 20 magia
+		naveCiencia.pasoTurno();
+		naveCiencia.pasoTurno();
+		naveCiencia.pasoTurno();
+		naveCiencia.pasoTurno();
+		naveCiencia.pasoTurno();
+
+		naveCiencia.atacarConEMP(20, 20); //saca 20 escudo
 
 		Assert.assertTrue(dragon.getEscudo().obtenerResistenciaActual() == 60);
 		Assert.assertTrue(zealot.getEscudo().obtenerResistenciaActual() == 40);
-		
+		//Assert.assertTrue(altoTemplario.obtenerEnergia() == 30);
 	}
-	*/
+	
 	
 	
 	

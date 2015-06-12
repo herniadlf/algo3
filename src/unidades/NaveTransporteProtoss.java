@@ -94,4 +94,10 @@ public class NaveTransporteProtoss extends DeTransporte {
 		return false;
 	}
 
+	@Override
+	public void atacarConEMP() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

@@ -94,6 +94,12 @@ public class NaveTransporteTerran extends DeTransporte {
 		return false;
 	}
 
+	@Override
+	public void atacarConEMP() {
+		// no afecta
+		
+	}
+
 
 	
 	

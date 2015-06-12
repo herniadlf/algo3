@@ -37,8 +37,8 @@ public class AltoTemplario extends Magica {
 		vision = VISION;
 		escudo = new Escudo (ESCUDO,this);
 		energia = new Energia(ENERGIA);
-		magias.add(new TormentaPsionica());
-		magias.add(new Alucinacion());
+		//magias.add(new TormentaPsionica());
+		//magias.add(new Alucinacion());
 		energiaPorTurno = 15;
 		entrenador = (EntrenadorUnidadTerrestre) new EntrenadorUnidadTerrestre();
 		
@@ -84,20 +84,15 @@ public class AltoTemplario extends Magica {
 
 	public void tormentaPsionica(int x, int y) {
 
-		PorRangoAtaque tormenta = (PorRangoAtaque)magias.get(0);
+		TormentaPsionica tormenta = new TormentaPsionica();
+
 		if(energia.obtenerCantidad() >= tormenta.obtenerEnergiaNecesaria()) {
 			tormenta.atacar(x,y);
 			energia.disminuirEnergia(tormenta.obtenerEnergiaNecesaria());
 		
-	}
+		}
 
-}
-
-	public int obtenerEnegia() {
-		
-		return energia.obtenerCantidad();
 	}
-	
 
 	
 	
@@ -126,7 +121,13 @@ public class AltoTemplario extends Magica {
 		return false;
 	}
 
+	@Override
+	public void atacarConEMP() {
+		energia.disminuirEnergia(20);
+		
+	}
 
+	
 	
 
 	
