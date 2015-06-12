@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import excepciones.ExcepcionConstruccionNoCorrespondiente;
 import excepciones.ExcepcionEdificioNoPuedeCrearUnidad;
+import excepciones.ExcepcionExtractoraSinRecurso;
 import excepciones.ExcepcionNoHayLugarParaCrear;
 import excepciones.ExcepcionPosicionInvalida;
 import excepciones.ExcepcionRecursoInsuficiente;
@@ -13,6 +14,7 @@ import excepciones.ExcepcionUnidadNoCorrespondiente;
 import excepciones.ExcepcionYaHayElementoEnLaPosicion;
 import src.construcciones.Construccion;
 import src.construcciones.Creadora;
+import src.mapa.Escombros;
 import src.mapa.Mapa;
 import src.mapa.Mapeable;
 import src.unidades.Unidad;
@@ -29,8 +31,7 @@ public class Juego {
 		mapa = map2;
 		jugador1 = jug1;
 		jugador2 = jug2;
-		jugadorActual = jug1;
-		
+		jugadorActual = jug1;		
 		turno = new Turno();
 	}
 
@@ -74,9 +75,8 @@ public class Juego {
 			jugadorActual = jugador1;
 			
 		}
-		
-		jugadorActual.actualizarFabricacionUnidades(turno, mapa);	
-		jugadorActual.actualizarFabricacionConstrucciones(turno, mapa);
+		jugadorActual.pasoTurno(turno,mapa);
+	
 		
 	} 
 
@@ -88,24 +88,20 @@ public class Juego {
 		jugadorActual.verificacionUnidad(unidad, edificio);
 		unidad.setEdificio(edificio);
 		unidad.setTurnoInicioDeEntrenamiento(turno.devolverTurnoActual());
-		jugadorActual.obtenerListaDeUnidadesAFabricar().add(unidad);		
+		edificio.agregarUnidadAEntrenamiento(unidad);
 		
 	}
 	
 	public void ordenFabricacionDeEdificios (Construccion construccion, int x, int y)
-			throws ExcepcionConstruccionNoCorrespondiente, ExcepcionRecursoInsuficiente{
+			throws ExcepcionConstruccionNoCorrespondiente, ExcepcionRecursoInsuficiente, 
+			ExcepcionPosicionInvalida, ExcepcionYaHayElementoEnLaPosicion, ExcepcionExtractoraSinRecurso{
 		
-		jugadorActual.verificacionEdificio(construccion);
-		
+		jugadorActual.verificacionEdificio(construccion);	
 		construccion.setPosicionX(x);
 		construccion.setPosicionY(y);
+		construccion.verificarTerreno(mapa,x,y);
 		construccion.setTurnoInicioDEConstruccion(turno.devolverTurnoActual());
-		jugadorActual.obtenerListaDeConstruccionesAFabricar().add(construccion);
-		
-		
-
-		
-		
+		jugadorActual.obtenerConstruccionesEnCamino().add(construccion);			
 	}
 	
 	

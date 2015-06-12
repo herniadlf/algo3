@@ -32,8 +32,8 @@ public class Jugador {
 	private int poblacionDisponible; // cantidad de unidades que pueden crearse porque hay "casas" construidas
 	private int poblacionActual; // cantidad de unidades ya creadas
 	private Dinero dineroJugador;
-	ArrayList <Unidad> unidadesEnFabricacion;
-	ArrayList<Construccion> construccionesEnFabricacion;
+	ArrayList <Construccion> construccionesEnCamino;
+	ArrayList<Construccion> construccionesEnPie;
 	
 	public Jugador(String nombre, String color, Raza raza) {
 		
@@ -42,8 +42,8 @@ public class Jugador {
 		setRaza(raza);
 		setPoblacionDisponible(5);
 		setDinero(800,400);
-		this.unidadesEnFabricacion= new ArrayList<Unidad>();	
-		this.construccionesEnFabricacion= new ArrayList <Construccion>();
+		this.construccionesEnCamino= new ArrayList<Construccion>();	
+		this.construccionesEnPie= new ArrayList <Construccion>();
 		
 	}
 	
@@ -113,18 +113,16 @@ public class Jugador {
 	}
 		
 	
-	public Construccion construir(Construccion edificio, Mapa map, int x, int y)  {
+	public Construccion colocar(Construccion edificio, Mapa map, int x, int y)  {
 	
-		try {
-			
+		try {			
 			edificio.setPosicionX(x);
 			edificio.setPosicionY(y);
 			edificio.setAlrededores();
-			edificio.getConstructor().construir(map,edificio);
+			edificio.colocar(map);
 			this.getRaza().actualizarEdificios(edificio);
 			this.gastarPlata(edificio.getCosto());
-			poblacionDisponible = poblacionDisponible + edificio.getCantidadDeSuministros();
-			
+			poblacionDisponible = poblacionDisponible + edificio.getCantidadDeSuministros();			
 		} catch (ExcepcionPosicionInvalida | ExcepcionExtractoraSinRecurso
 				| ExcepcionYaHayElementoEnLaPosicion  e) {
 	
@@ -152,19 +150,11 @@ public class Jugador {
 		
 	}
 	
-	public Unidad crearUnidad(Unidad aEntrenar, Creadora edificio, Mapa map) {
+	public Unidad actualizarPorNuevaUnidad(Unidad aEntrenar, Creadora edificio, Mapa map) {
 		
 			poblacionDisponible = poblacionDisponible - aEntrenar.getSuministros();
 			poblacionActual = poblacionActual + aEntrenar.getSuministros();
-			this.gastarPlata(aEntrenar.getCosto());
-			try {
-				edificio.entrenarUnidad(aEntrenar,map);
-			} catch (ExcepcionPosicionInvalida | ExcepcionNoHayLugarParaCrear
-					| ExcepcionYaHayElementoEnLaPosicion e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			
+			this.gastarPlata(aEntrenar.getCosto());					
 			return aEntrenar;
 		
 	}
@@ -194,41 +184,28 @@ public class Jugador {
 		
 	}
 	
-	public void actualizarFabricacionUnidades (Turno turno, Mapa map) 
+	public void actualizarTurnoEnConstrucciones (Turno turno, Mapa map) 
 			throws ExcepcionEdificioNoPuedeCrearUnidad,
 			ExcepcionPosicionInvalida, 
 			ExcepcionNoHayLugarParaCrear, ExcepcionYaHayElementoEnLaPosicion{
 		
-		int i=0;
-		int turnosPasados;
-		int turnoOrdenoFabricacion;
-		while (this.unidadesEnFabricacion.size()>i){
-			
-			turnoOrdenoFabricacion = this.unidadesEnFabricacion.get(i).getTurnoDeEntrenamiento();
-			turnosPasados = (turno.devolverTurnoActual()- turnoOrdenoFabricacion)/2; 
-			
-			if ( turnosPasados  >= unidadesEnFabricacion.get(i).getTiempoDeCreacion()){
-				
-				this.crearUnidad(unidadesEnFabricacion.get(i),unidadesEnFabricacion.get(i).getEdifico(), map);
-				unidadesEnFabricacion.remove(i);
-				
-			} 
-			
-			i++;	
+		int i = 0;
+		while (construccionesEnPie.size()>i){
+			construccionesEnPie.get(i).pasoTurno(turno,map,this);
+			i++;
 		}
-		
 	}
 		
 		
-	public ArrayList<Unidad> obtenerListaDeUnidadesAFabricar (){
+	public ArrayList<Construccion> obtenerConstruccionesEnCamino (){
 			
-		return unidadesEnFabricacion;	
+		return construccionesEnCamino;	
 			
 	}
 	
-	public ArrayList<Construccion> obtenerListaDeConstruccionesAFabricar(){
+	public ArrayList<Construccion> getConstruccionesEnPie(){
 		
-		return construccionesEnFabricacion;
+		return construccionesEnPie;
 	}
 	
 	
@@ -239,26 +216,27 @@ public class Jugador {
 		int turnosPasados;
 		int turnoOrdenoFabricacion;
 		
-		while (this.construccionesEnFabricacion.size()>i){
+		while (this.construccionesEnCamino.size()>i){
 			
-			turnoOrdenoFabricacion = this.construccionesEnFabricacion.get(i).getTurnoInicioDeConstruccion();
-			turnosPasados = (turno.devolverTurnoActual()- turnoOrdenoFabricacion)/2; 
+			turnoOrdenoFabricacion = construccionesEnCamino.get(i).getTurnoInicioDeConstruccion();
+			turnosPasados = (turno.devolverTurnoActual()- turnoOrdenoFabricacion)/2; 			
 			
-			
-			if ( turnosPasados  >= construccionesEnFabricacion.get(i).getTiempoDeConstruccion()){
-				
-				
-				this.construir(construccionesEnFabricacion.get(i), mapa, construccionesEnFabricacion.get(i).getPosicionX(), construccionesEnFabricacion.get(i).getPosicionY());
-				construccionesEnFabricacion.remove(i);
-				
+			if ( turnosPasados  >= construccionesEnCamino.get(i).getTiempoDeConstruccion()){				
+				colocar(construccionesEnCamino.get(i), mapa, construccionesEnCamino.get(i).getPosicionX(), construccionesEnCamino.get(i).getPosicionY());
+				construccionesEnPie.add(construccionesEnCamino.get(i));
+				construccionesEnCamino.remove(i);				
 			} 
 			
 			i++;	
 		}
 		
-		
-		
-		
+	}
+
+	public void pasoTurno(Turno turno, Mapa mapa) 
+			throws ExcepcionEdificioNoPuedeCrearUnidad, ExcepcionPosicionInvalida,
+			ExcepcionNoHayLugarParaCrear, ExcepcionYaHayElementoEnLaPosicion {
+		actualizarTurnoEnConstrucciones(turno, mapa);	
+		actualizarFabricacionConstrucciones(turno, mapa);
 	}
 	
 }

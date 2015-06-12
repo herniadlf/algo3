@@ -2,7 +2,10 @@ package src.construcciones;
 
 import src.ConstantesAlgoCraft;
 import src.Escudo;
+import src.Jugador;
+import src.Turno;
 import src.mapa.FuenteDeGasVespeno;
+import src.mapa.Mapa;
 
 public class Asimilador extends Extractora {
 	
@@ -24,12 +27,16 @@ public class Asimilador extends Extractora {
 		setEdificioRequerido(new Pilon());
 		escudo = new Escudo(ESCUDO,this);
 		
-	}
-	
+	}	
 	public void recibirDanio (){	
 		
 		escudo.atacar(this.getVida().obtenerDanioRecibido());
 		
 	}
-
+	
+	public void pasoTurno(Turno turno, Mapa mapa, Jugador jugadorActual){
+		int minerales = jugadorActual.getDinero().getMinerales();
+		int gas = jugadorActual.getDinero().getGasVespeno() + RECURSOS_POR_TURNO;
+		jugadorActual.setDinero(minerales, gas);
+	}
 }

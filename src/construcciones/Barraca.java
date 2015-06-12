@@ -1,5 +1,6 @@
 package src.construcciones;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 
 import src.ConstantesAlgoCraft;
@@ -16,7 +17,7 @@ public class Barraca extends Creadora {
 	public Barraca(){
 		super();
 		unidadesCreables = new LinkedList<Unidad>();
-		unidadesCreables.add(new Marine());
+		unidadesCreables.add(new Marine());		
 		setNombre("Barraca");
 		setVida(VIDA);
 		setCosto(COSTO_MINERALES,COSTO_GAS);

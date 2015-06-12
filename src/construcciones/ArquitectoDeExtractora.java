@@ -8,9 +8,17 @@ import excepciones.ExcepcionYaHayElementoEnLaPosicion;
 public class ArquitectoDeExtractora implements Arquitecto {
 
 	@Override
-	public void construir(Mapa map, Construccion edificio)
+	public void colocar(Mapa map, Construccion edificio)
 			throws ExcepcionPosicionInvalida, ExcepcionExtractoraSinRecurso,
 			ExcepcionYaHayElementoEnLaPosicion {
 		map.colocarExtractorEn(edificio.getPosicionX(), edificio.getPosicionY(), (Extractora) edificio);
 	}
+
+	@Override
+	public void verificarTerreno(Mapa map, int x, int y, Construccion construccion) throws ExcepcionPosicionInvalida, ExcepcionExtractoraSinRecurso {
+		Extractora auxiliar = (Extractora) construccion;
+		map.verificarFuente(x,y,auxiliar);
+	}
+
+
 }

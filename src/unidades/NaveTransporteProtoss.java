@@ -36,7 +36,7 @@ public class NaveTransporteProtoss extends DeTransporte {
 		vida = new Vida(VIDA);
 		vision = VISION;
 		escudo = new Escudo (ESCUDO,this);
-		entrenador = (EntrenadorUnidadVoladora) new EntrenadorUnidadVoladora();
+		colocador = (ColocadorUnidadVoladora) new ColocadorUnidadVoladora();
 		cantidadPasajeros = 0;
 		unidadesAbordo = new ArrayList<Unidad>();
 		
@@ -66,8 +66,8 @@ public class NaveTransporteProtoss extends DeTransporte {
 		return null;
 	}
 
-	public EntrenadorUnidadVoladora getEntrenador(){
-		return (EntrenadorUnidadVoladora)entrenador;
+	public ColocadorUnidadVoladora getColocador(){
+		return (ColocadorUnidadVoladora)colocador;
 	}
 	
 	

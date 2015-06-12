@@ -1,24 +1,30 @@
 package src.construcciones;
 import java.util.AbstractCollection;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
 
+import excepciones.ExcepcionEdificioNoPuedeCrearUnidad;
 import excepciones.ExcepcionNoHayLugarParaCrear;
 import excepciones.ExcepcionPosicionInvalida;
 import excepciones.ExcepcionUnidadNoCorrespondiente;
 import excepciones.ExcepcionYaHayElementoEnLaPosicion;
+import src.Jugador;
+import src.Turno;
 import src.mapa.Mapa;
 import src.mapa.EspacioDisponible;
 import src.mapa.Posicion;
-import src.unidades.Entrenador;
+import src.unidades.ColocadorDeUnidades;
 import src.unidades.Unidad;
 
 public abstract class Creadora extends NoExtractora {
 	
-	LinkedList<Unidad> unidadesCreables;		
+	LinkedList<Unidad> unidadesCreables;
+	ArrayList <Unidad> unidadesEnFabricacion;
 	
 	public Creadora (){
 		super();
+		unidadesEnFabricacion= new ArrayList<Unidad>();
 	}
 	
 	public Unidad crearUnidad(Unidad unidad){
@@ -37,50 +43,53 @@ public abstract class Creadora extends NoExtractora {
 			throw new ExcepcionUnidadNoCorrespondiente("No corresponde la unidad a este edificio");
 		}
 	}
-	public void entrenarUnidad ( Unidad aEntrenar , Mapa map ) 
+	public void colocarUnidad ( Unidad aColocar , Mapa map ) 
 			throws ExcepcionPosicionInvalida, ExcepcionNoHayLugarParaCrear, ExcepcionYaHayElementoEnLaPosicion{
 		
 		
-		Posicion auxiliar = aEntrenar.getEntrenador().posicionParaEntrenarA(aEntrenar,map,alrededores);
-		
-	
+		Posicion auxiliar = aColocar.getColocador().posicionAColocar(aColocar,map,alrededores);	
 			
-		map.colocarEn(auxiliar.getX(), auxiliar.getY(), aEntrenar);
-		aEntrenar.setMapa(map);
-		aEntrenar.setPosicion(auxiliar);
+		map.colocarEn(auxiliar.getX(), auxiliar.getY(), aColocar);
+		aColocar.setMapa(map);
+		aColocar.setPosicion(auxiliar);
 		
 	}
-	/*
-		esta es la version que respeta polimorfismo, digamos. Abajo va la que anda con el nuevo mapa,
-		aunque algo hay que tocar porque estoy preguntando todo el tiempo si es terrestre o no..
+	public void pasoTurno (Turno turno, Mapa map, Jugador jugadorActual) 
+			throws ExcepcionEdificioNoPuedeCrearUnidad,
+			ExcepcionPosicionInvalida, 
+			ExcepcionNoHayLugarParaCrear, ExcepcionYaHayElementoEnLaPosicion{
 		
-		Posicion auxiliar = alrededores.getFirst();
-		Boolean hayLugar = false;
-		Iterator<Posicion> list = alrededores.iterator();
-		if (aEntrenar.esTerrestre()){
-			hayLugar = (map.obtenerContenidoEnPosicion(auxiliar.getX(), auxiliar.getY())).getElementoEnTierra().esOcupable();
-			while ( (hayLugar == false) && (list.hasNext()) ){
-				auxiliar = (Posicion) list.next();
-				hayLugar = (map.obtenerContenidoEnPosicion(auxiliar.getX(), auxiliar.getY())).getElementoEnTierra().esOcupable();
-			}
+		int i=0;
+		int turnosPasados;
+		int turnoOrdenoFabricacion;
+		while (this.unidadesEnFabricacion.size()>i){
+			
+			turnoOrdenoFabricacion = this.unidadesEnFabricacion.get(i).getTurnoDeEntrenamiento();
+			turnosPasados = (turno.devolverTurnoActual()- turnoOrdenoFabricacion)/2; 
+			
+			if ( turnosPasados  >= unidadesEnFabricacion.get(i).getTiempoDeCreacion()){
+				try{
+					colocarUnidad(unidadesEnFabricacion.get(i), map);
+					jugadorActual.actualizarPorNuevaUnidad(unidadesEnFabricacion.get(i),unidadesEnFabricacion.get(i).getEdifico(), map);				
+					unidadesEnFabricacion.remove(i);
+				}
+				catch ( ExcepcionNoHayLugarParaCrear e ) {}							
+			} 
+			
+			i++;	
 		}
-		else{
-			hayLugar = (map.obtenerContenidoEnPosicion(auxiliar.getX(), auxiliar.getY())).getElementoEnAire().esOcupable();
-			while ( (hayLugar == false) && (list.hasNext()) ){
-				auxiliar = (Posicion) list.next();
-				hayLugar = (map.obtenerContenidoEnPosicion(auxiliar.getX(), auxiliar.getY())).getElementoEnAire().esOcupable();
-			}
-		}
-		if (hayLugar){			
-			Posicion posicion = new Posicion (auxiliar.getX(),auxiliar.getY()); 			
-			map.colocarEn(auxiliar.getX(), auxiliar.getY(), aEntrenar);
-			aEntrenar.setMapa(map);
-			aEntrenar.setPosicion(posicion);			
-		}
-		else{
-			throw new ExcepcionNoHayLugarParaCrear("No hay lugar para crear la unidad");
-		} 
-	}*/
-	
+		
+	}
+		
+		
+	public ArrayList<Unidad> obtenerListaDeUnidadesAFabricar (){
+			
+		return unidadesEnFabricacion;	
+			
+	}
+
+	public void agregarUnidadAEntrenamiento(Unidad unidad) {
+		unidadesEnFabricacion.add(unidad);		
+	}	
 				
 }

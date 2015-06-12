@@ -32,7 +32,7 @@ public class Espectro extends Unidad {
 		transporte = TRANSPORTE;
 		vida = new Vida(VIDA);
 		vision = VISION;
-		entrenador = (EntrenadorUnidadVoladora) new EntrenadorUnidadVoladora();
+		colocador = (ColocadorUnidadVoladora) new ColocadorUnidadVoladora();
 	
 	}
 	
@@ -61,8 +61,8 @@ public class Espectro extends Unidad {
 	}
 
 	
-	public EntrenadorUnidadVoladora getEntrenador(){
-		return (EntrenadorUnidadVoladora)entrenador;
+	public ColocadorUnidadVoladora getColocador(){
+		return (ColocadorUnidadVoladora)colocador;
 	}
 	
 	public void recibirDanio (){

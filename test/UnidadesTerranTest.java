@@ -11,7 +11,9 @@ import org.junit.Assert;
 
 import excepciones.ExcepcionEdificioNoPuedeCrearUnidad;
 import excepciones.ExcepcionExtractoraSinRecurso;
+import excepciones.ExcepcionNoHayLugarParaCrear;
 import excepciones.ExcepcionPosicionInvalida;
+import excepciones.ExcepcionYaHayElementoEnLaPosicion;
 import src.*;
 import src.construcciones.*;
 import src.mapa.Mapa;
@@ -37,7 +39,7 @@ public class UnidadesTerranTest extends TestCase{
 
 			Barraca barraca = new Barraca();
 			try {
-				jugador.construir(barraca,mapa,3,4);
+				jugador.colocar(barraca,mapa,3,4);
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -54,7 +56,7 @@ public class UnidadesTerranTest extends TestCase{
 		
 			Fabrica fabrica = new Fabrica();
 			try {
-				jugador.construir(fabrica,mapa,4,4);
+				jugador.colocar(fabrica,mapa,4,4);
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -70,7 +72,7 @@ public class UnidadesTerranTest extends TestCase{
 		
 			PuertoEstelarTerran puertoEstelar = new PuertoEstelarTerran();
 			try {
-				jugador.construir(puertoEstelar,mapa,30,30);
+				jugador.colocar(puertoEstelar,mapa,30,30);
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -84,19 +86,20 @@ public class UnidadesTerranTest extends TestCase{
 		}
 		
 		
-		public void testmarineAtacaZealotSoloRompeEscudo() throws ExcepcionEdificioNoPuedeCrearUnidad{
+		public void testmarineAtacaZealotSoloRompeEscudo() throws ExcepcionEdificioNoPuedeCrearUnidad, ExcepcionPosicionInvalida, ExcepcionNoHayLugarParaCrear, ExcepcionYaHayElementoEnLaPosicion{
 			
 			/*--------------------------------------------------------------------------------*/
 			Mapa mapa = new Mapa(50);
 			Jugador jug1 = new Jugador ("carlos","rojo",new Terran());
 			Jugador jug2 = new Jugador ("williams", "azul", new Protoss());
 			
-			jug1.construir(new DepositoDeSuministros(), mapa, 30, 30);
-			jug2.construir(new Pilon(), mapa, 36, 36);
-			Construccion barraca = jug1.construir(new Barraca(),mapa,5,5);
-			Construccion acceso = jug2.construir(new Acceso(), mapa, 8, 8);
-			Unidad marine =jug1.crearUnidad(new Marine(),(Creadora) barraca, mapa);
-			Unidad zealot = jug2.crearUnidad(new Zealot(), (Creadora)acceso, mapa);
+			Creadora barraca = (Creadora) jug1.colocar(new Barraca(),mapa,5,5);
+			Creadora acceso = (Creadora) jug2.colocar(new Acceso(), mapa, 8, 8);
+			
+			Unidad marine = new Marine();
+			barraca.colocarUnidad(marine, mapa);
+			Unidad zealot = new Zealot();
+			acceso.colocarUnidad(zealot, mapa);
 			
 			marine.atacarEnAire(zealot);
 			Vida vida= zealot.getVida();
@@ -109,7 +112,7 @@ public class UnidadesTerranTest extends TestCase{
 		
 		}	
 		
-		public void testEspectroPuedeAtacarEdificiosEnemigos() throws ExcepcionEdificioNoPuedeCrearUnidad{
+		public void testEspectroPuedeAtacarEdificiosEnemigos() throws ExcepcionEdificioNoPuedeCrearUnidad, ExcepcionPosicionInvalida, ExcepcionNoHayLugarParaCrear, ExcepcionYaHayElementoEnLaPosicion{
 			
 			Mapa mapa = new Mapa(50);
 			Jugador jug1 = new Jugador ("carlos","rojo",new Terran());
@@ -117,30 +120,23 @@ public class UnidadesTerranTest extends TestCase{
 			jug1.setDinero(999999, 999999);
 			jug2.setDinero(9999, 9999);
 			
-			Construccion barraca = jug1.construir(new Barraca(),mapa,5,5);
-			Construccion fabrica = jug1.construir(new Fabrica(),mapa, 9,9);
-			Construccion puertoEstelarTerran = jug1.construir(new PuertoEstelarTerran(), mapa, 16, 16);
-			NexoMineral nexo =  (NexoMineral) jug2.construir(new NexoMineral(), mapa, 18, 18);
+			Creadora barraca = (Creadora) jug1.colocar(new Barraca(),mapa,5,5);
+			Creadora fabrica = (Creadora) jug1.colocar(new Fabrica(),mapa, 9,9);
+			Creadora puertoEstelarTerran = (Creadora) jug1.colocar(new PuertoEstelarTerran(), mapa, 16, 16);
+			NexoMineral nexo =  (NexoMineral) jug2.colocar(new NexoMineral(), mapa, 18, 18);
 			//Como creo 8 espectrs que requieren 2 suministros, en total necesito 16 suministros,
-			//por lo cual construyo 4 depositosdesuminitros 
-			//para tener 20 suministros disponibles (5 suministros extras x edificio)
-			jug1.construir(new DepositoDeSuministros(), mapa, 1, 1);
-			jug1.construir(new DepositoDeSuministros(), mapa, 9, 8);
-			jug1.construir(new DepositoDeSuministros(), mapa, 10, 2);
-			jug1.construir(new DepositoDeSuministros(), mapa, 10, 4);
+			//por lo cual construyo 3 depositosdesuminitros 
+			//para tener 20 suministros disponibles (5 suministros extras x edificio + lo inicial)
+			jug1.colocar(new DepositoDeSuministros(), mapa, 9, 8);
+			jug1.colocar(new DepositoDeSuministros(), mapa, 10, 2);
+			jug1.colocar(new DepositoDeSuministros(), mapa, 10, 4);
 			
-			Unidad espectro = jug1.crearUnidad(new Espectro(),(Creadora) puertoEstelarTerran, mapa);
+			Unidad espectro = new Espectro();
+			puertoEstelarTerran.colocarUnidad(espectro, mapa);
 			Assert.assertTrue(nexo.getEscudo().obtenerResistenciaActual() == 250 );
 			espectro.atacarEnAire(nexo);
 			Assert.assertTrue(nexo.getEscudo().obtenerResistenciaActual() == 230 );
-			
-			
-			
-			
-			
-			
-			
-			
+						
 			
 			/*Espectro espectro = new Espectro();
 			NexoMineral nexoMineral = new NexoMineral();

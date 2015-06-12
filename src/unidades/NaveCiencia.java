@@ -38,7 +38,7 @@ public class NaveCiencia extends Magica {
 		vision = VISION;
 		energia = new Energia(ENERGIA);
 		energiaPorTurno = 10;
-		entrenador = (EntrenadorUnidadVoladora) new EntrenadorUnidadVoladora();
+		colocador = (ColocadorUnidadVoladora) new ColocadorUnidadVoladora();
 		
 	}
 	
@@ -66,8 +66,8 @@ public class NaveCiencia extends Magica {
 		return null;
 	}
 
-	public EntrenadorUnidadVoladora getEntrenador(){
-		return (EntrenadorUnidadVoladora)entrenador;
+	public ColocadorUnidadVoladora getColocador(){
+		return (ColocadorUnidadVoladora)colocador;
 	}
 	
 

@@ -5,6 +5,7 @@ import org.junit.Test;
 
 import excepciones.ExcepcionConstruccionNoCorrespondiente;
 import excepciones.ExcepcionEdificioNoPuedeCrearUnidad;
+import excepciones.ExcepcionExtractoraSinRecurso;
 import excepciones.ExcepcionNoHayLugarParaCrear;
 import excepciones.ExcepcionPosicionInvalida;
 import excepciones.ExcepcionRecursoInsuficiente;
@@ -31,7 +32,7 @@ public class MiniIntegracionTest {
 	
 	
 	@Test
-	public void testCrearUnidadesSegunTurno() throws ExcepcionEdificioNoPuedeCrearUnidad, ExcepcionPosicionInvalida, ExcepcionUnidadNoCorrespondiente, ExcepcionRecursoInsuficiente, ExcepcionSuministrosInsuficientes, ExcepcionTopeDePoblacionMaxima, ExcepcionNoHayLugarParaCrear, ExcepcionYaHayElementoEnLaPosicion{
+	public void testCrearUnidadesSegunTurno() throws ExcepcionEdificioNoPuedeCrearUnidad, ExcepcionPosicionInvalida, ExcepcionUnidadNoCorrespondiente, ExcepcionRecursoInsuficiente, ExcepcionSuministrosInsuficientes, ExcepcionTopeDePoblacionMaxima, ExcepcionNoHayLugarParaCrear, ExcepcionYaHayElementoEnLaPosicion, ExcepcionConstruccionNoCorrespondiente, ExcepcionExtractoraSinRecurso{
 		Mapa mapa = new Mapa(50);
 		Jugador jugador1 = new Jugador ("carlos","rojo",new Terran());
 		Jugador jugador2 = new Jugador ("dean","azul",new Terran());
@@ -39,48 +40,31 @@ public class MiniIntegracionTest {
 		Juego juego = new Juego(mapa, jugador1, jugador2);
 		jugador1.setDinero(99999, 99999);
 		
-		jugador1.construir(new DepositoDeSuministros(), mapa, 30, 30);
-		jugador1.construir(new DepositoDeSuministros(), mapa, 40, 30);
-		jugador1.construir(new DepositoDeSuministros(), mapa, 10, 30);
-		jugador1.construir(new DepositoDeSuministros(), mapa, 20, 30);
-		jugador1.construir(new DepositoDeSuministros(), mapa, 20, 42);
-		Construccion barraca = jugador1.construir(new Barraca(),mapa,5,5);
-	
-	
+		jugador1.colocar(new DepositoDeSuministros(), mapa, 30, 30);
+		jugador1.colocar(new DepositoDeSuministros(), mapa, 40, 30);
+		jugador1.colocar(new DepositoDeSuministros(), mapa, 10, 30);
+		jugador1.colocar(new DepositoDeSuministros(), mapa, 20, 30);
+		jugador1.colocar(new DepositoDeSuministros(), mapa, 20, 42);		
+		Creadora barraca = (Creadora) jugador1.colocar(new Barraca(), mapa, 5, 5);		
+		jugador1.getConstruccionesEnPie().add(barraca);
 		
 		Unidad marine = new Marine();
 		Unidad marine2 = new Marine ();
-		Unidad marine3 = new Marine ();
-		
-		
-		
+		Unidad marine3 = new Marine ();		
 		
 		juego.ordenarFabricacionUnidad(marine,(Creadora) barraca);
 		juego.ordenarFabricacionUnidad(marine2,(Creadora) barraca);
 		juego.ordenarFabricacionUnidad(marine3,(Creadora) barraca);
 		
-		juego.pasarTurno();
-		juego.pasarTurno();
-		juego.pasarTurno();
-		juego.pasarTurno();
-		juego.pasarTurno();
-		juego.pasarTurno();
-		juego.pasarTurno();
-		juego.pasarTurno();
-		juego.pasarTurno();
-		juego.pasarTurno();
-		juego.pasarTurno();
-		juego.pasarTurno();
-		juego.pasarTurno();
-		juego.pasarTurno();
-
+		for (int i = 0; i<4;i++){ // pasar turnos para que se creen
+			juego.pasarTurno();
+			juego.pasarTurno();
+		}			
 		
+		Assert.assertTrue(juego.getMapa().obtenerContenidoEnPosicion(4,6).getElementoEnTierra().esLoMismo(new Marine()));
+		Assert.assertTrue(juego.getMapa().obtenerContenidoEnPosicion(6,6).getElementoEnTierra().esLoMismo(new Marine()));
+		Assert.assertTrue(juego.getMapa().obtenerContenidoEnPosicion(5,6).getElementoEnTierra().esLoMismo(new Marine()));
 		
-		
-	Assert.assertTrue(juego.getMapa().obtenerContenidoEnPosicion(4,6).getElementoEnTierra().esLoMismo(new Marine()));
-	Assert.assertTrue(juego.getMapa().obtenerContenidoEnPosicion(6,6).getElementoEnTierra().esLoMismo(new Marine()));
-	Assert.assertTrue(juego.getMapa().obtenerContenidoEnPosicion(5,6).getElementoEnTierra().esLoMismo(new Marine()));
-	
 	
 
 		
@@ -88,7 +72,11 @@ public class MiniIntegracionTest {
 	}
 	
 	@Test
-	public void testCrearEdificiosSegunTurno() throws ExcepcionEdificioNoPuedeCrearUnidad, ExcepcionPosicionInvalida, ExcepcionNoHayLugarParaCrear, ExcepcionYaHayElementoEnLaPosicion, ExcepcionConstruccionNoCorrespondiente, ExcepcionRecursoInsuficiente{
+	public void testCrearEdificiosSegunTurno() 
+			throws ExcepcionEdificioNoPuedeCrearUnidad, ExcepcionPosicionInvalida, 
+			ExcepcionNoHayLugarParaCrear, ExcepcionYaHayElementoEnLaPosicion,
+			ExcepcionConstruccionNoCorrespondiente, ExcepcionRecursoInsuficiente,
+			ExcepcionExtractoraSinRecurso{
 		Mapa mapa = new Mapa(50);
 		Jugador jugador1 = new Jugador ("carlos","rojo",new Terran());
 		Jugador jugador2 = new Jugador ("dean","azul",new Terran());
@@ -139,7 +127,7 @@ public class MiniIntegracionTest {
 	public void noConstruyeFabricaSinBarraca()
 			throws ExcepcionPosicionInvalida, 
 			ExcepcionConstruccionNoCorrespondiente, 
-			ExcepcionRecursoInsuficiente {
+			ExcepcionRecursoInsuficiente, ExcepcionYaHayElementoEnLaPosicion, ExcepcionExtractoraSinRecurso {
 		Mapa mapa = new Mapa(50);
 		Jugador jugador1 = new Jugador ("carlos","rojo",new Terran());
 		Jugador jugador2 = new Jugador ("dean","azul",new Terran());

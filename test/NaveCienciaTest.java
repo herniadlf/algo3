@@ -32,7 +32,7 @@ public class NaveCienciaTest extends TestCase {
 		
 		PuertoEstelarTerran puertoEstelar = new PuertoEstelarTerran();
 		try {
-			jugador.construir(puertoEstelar,mapa,30,30);
+			jugador.colocar(puertoEstelar,mapa,30,30);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

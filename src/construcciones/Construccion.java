@@ -2,9 +2,17 @@ package src.construcciones;
 
 import java.util.LinkedList;
 
+import excepciones.ExcepcionEdificioNoPuedeCrearUnidad;
+import excepciones.ExcepcionExtractoraSinRecurso;
+import excepciones.ExcepcionNoHayLugarParaCrear;
+import excepciones.ExcepcionPosicionInvalida;
+import excepciones.ExcepcionYaHayElementoEnLaPosicion;
 import src.Atacable;
 import src.Dinero;
+import src.Jugador;
+import src.Turno;
 import src.Vida;
+import src.mapa.Mapa;
 import src.mapa.Mapeable;
 import src.mapa.Posicion;
 
@@ -56,12 +64,12 @@ public class Construccion implements Atacable {
 	public void setPosicionY(int posY){
 		posicionY = posY;
 	}
-	protected Arquitecto constructor;
-	public void setConstructor(Arquitecto c){
-		constructor = c;
+	protected Arquitecto arquitecto;
+	public void setArquitecto(Arquitecto c){
+		arquitecto = c;
 	}
-	public Arquitecto getConstructor(){
-		return constructor;
+	public Arquitecto getArquitecto(){
+		return arquitecto;
 	}
 	
 	public Construccion edificioRequerido;
@@ -144,6 +152,19 @@ public class Construccion implements Atacable {
 	@Override
 	public void atacarConEMP(int danio) {
 		//no afecta a construcciones
+	}
+
+	public void pasoTurno(Turno turno, Mapa map, Jugador jugador) throws ExcepcionEdificioNoPuedeCrearUnidad, ExcepcionPosicionInvalida, ExcepcionNoHayLugarParaCrear, ExcepcionYaHayElementoEnLaPosicion {
+		//sera implementado		
+	}
+
+	public void verificarTerreno(Mapa map, int x, int y) 
+			throws ExcepcionPosicionInvalida, ExcepcionExtractoraSinRecurso, ExcepcionYaHayElementoEnLaPosicion {
+		arquitecto.verificarTerreno(map,x,y,this);	
+	}
+
+	public void colocar(Mapa map) throws ExcepcionPosicionInvalida, ExcepcionExtractoraSinRecurso, ExcepcionYaHayElementoEnLaPosicion {
+		arquitecto.colocar(map, this);
 	}
 	
 	

@@ -11,6 +11,7 @@ import excepciones.ExcepcionPosicionInvalida;
 import excepciones.ExcepcionYaHayElementoEnLaPosicion;
 import src.*;
 import src.construcciones.Barraca;
+import src.construcciones.CentroDeMineral;
 import src.construcciones.Construccion;
 import src.construcciones.Creadora;
 import src.construcciones.DepositoDeSuministros;
@@ -20,6 +21,7 @@ import src.construcciones.NexoMineral;
 import src.construcciones.Pilon;
 import src.construcciones.PuertoEstelarTerran;
 import src.construcciones.Refineria;
+import src.mapa.FuenteDeGasVespeno;
 import src.mapa.FuenteDeMinerales;
 import src.mapa.Mapa;
 import src.mapa.EspacioDisponible;
@@ -34,7 +36,7 @@ public class ConstruccionTest {
 				Mapa mapa = new Mapa(50);
 				Jugador jug = new Jugador("carlos","rojo",new Terran()); // Jugador se crea con 800 M			
 				
-				Construccion barraca = jug.construir(new Barraca(),mapa,2,2);// BARRACA CUESTA 150 M				
+				Construccion barraca = jug.colocar(new Barraca(),mapa,2,2);// BARRACA CUESTA 150 M				
 			
 				Assert.assertEquals(650, jug.getDinero().getMinerales());
 		}
@@ -48,7 +50,7 @@ public class ConstruccionTest {
 			for (int i=1; i< mapa.getTamanioMapa();i++){
 				for (int j=1; j<mapa.getTamanioMapa(); j++){
 					Construccion b = new Barraca();
-					b = jug.construir(b, mapa, i, j);
+					b = jug.colocar(b, mapa, i, j);
 					Assert.assertTrue( ( mapa.obtenerContenidoEnPosicion(i, j) ).getElementoEnTierra().esLoMismo(b));					
 				}				
 			}
@@ -59,7 +61,7 @@ public class ConstruccionTest {
 			Mapa mapa = new Mapa(50);
 			Jugador jug = new Jugador("carlos","rojo",new Protoss());
 					
-			Construccion nexoMineral = jug.construir(new NexoMineral(), mapa, 10, 10);
+			Construccion nexoMineral = jug.colocar(new NexoMineral(), mapa, 10, 10);
 				
 			Assert.assertFalse ( mapa.obtenerContenidoEnPosicion(10, 10).getElementoEnTierra().esLoMismo(nexoMineral) );
 		}
@@ -81,8 +83,8 @@ public class ConstruccionTest {
 			Mapa mapa = new Mapa(50);
 			Jugador jug = new Jugador("carlos","rojo", new Terran());
 			
-			Construccion barraca = jug.construir(new Barraca(), mapa, 5,5);
-			Construccion fabrica = jug.construir(new Fabrica(), mapa, 6, 8);
+			Construccion barraca = jug.colocar(new Barraca(), mapa, 5,5);
+			Construccion fabrica = jug.colocar(new Fabrica(), mapa, 6, 8);
 			
 			Assert.assertTrue ( mapa.obtenerContenidoEnPosicion(6, 8).getElementoEnTierra().esLoMismo(fabrica));
 		}
@@ -92,10 +94,10 @@ public class ConstruccionTest {
 			Mapa mapa = new Mapa(50);
 			Jugador jug = new Jugador ("carlos","rojo",new Protoss());
 			
-			jug.construir(new Pilon(),mapa,9,9);
-			Assert.assertEquals(5, jug.getPoblacionDisponible());
-			jug.construir(new Pilon(),mapa,5,5);
+			jug.colocar(new Pilon(),mapa,9,9);
 			Assert.assertEquals(10, jug.getPoblacionDisponible());
+			jug.colocar(new Pilon(),mapa,5,5);
+			Assert.assertEquals(15, jug.getPoblacionDisponible());
 		}
 		
 		
@@ -105,25 +107,25 @@ public class ConstruccionTest {
 			Jugador jug = new Jugador ("carlos","rojo",new Terran());
 			jug.setDinero(999999, 999999);
 			
-			Construccion barraca = jug.construir(new Barraca(),mapa,5,5);
-			Construccion fabrica = jug.construir(new Fabrica(),mapa, 9,9);
-			Construccion puertoEstelarTerran = jug.construir(new PuertoEstelarTerran(), mapa, 16, 16);
+			Construccion barraca = jug.colocar(new Barraca(),mapa,5,5);
+			Construccion fabrica = jug.colocar(new Fabrica(),mapa, 9,9);
+			Creadora puertoEstelarTerran = (Creadora) jug.colocar(new PuertoEstelarTerran(), mapa, 16, 16);
 			//Como creo 8 espectrs que requieren 2 suministros, en total necesito 16 suministros,
 			//por lo cual construyo 4 depositosdesuminitros 
 			//para tener 20 suministros disponibles (5 suministros extras x edificio)
-			jug.construir(new DepositoDeSuministros(), mapa, 1, 1);
-			jug.construir(new DepositoDeSuministros(), mapa, 9, 8);
-			jug.construir(new DepositoDeSuministros(), mapa, 10, 2);
-			jug.construir(new DepositoDeSuministros(), mapa, 10, 4);
-			
-			jug.crearUnidad(new Espectro(),(Creadora) puertoEstelarTerran, mapa);
-			jug.crearUnidad(new Espectro(),(Creadora) puertoEstelarTerran, mapa);
-			jug.crearUnidad(new Espectro(),(Creadora) puertoEstelarTerran, mapa);			
-			jug.crearUnidad(new Espectro(),(Creadora) puertoEstelarTerran, mapa);
-			jug.crearUnidad(new Espectro(),(Creadora) puertoEstelarTerran, mapa);
-			jug.crearUnidad(new Espectro(),(Creadora) puertoEstelarTerran, mapa);			
-			jug.crearUnidad(new Espectro(),(Creadora) puertoEstelarTerran, mapa);
-			jug.crearUnidad(new Espectro(),(Creadora) puertoEstelarTerran, mapa);
+			jug.colocar(new DepositoDeSuministros(), mapa, 1, 1);
+			jug.colocar(new DepositoDeSuministros(), mapa, 9, 8);
+			jug.colocar(new DepositoDeSuministros(), mapa, 10, 2);
+			jug.colocar(new DepositoDeSuministros(), mapa, 10, 4);			
+
+			puertoEstelarTerran.colocarUnidad(new Espectro(), mapa);
+			puertoEstelarTerran.colocarUnidad(new Espectro(), mapa);
+			puertoEstelarTerran.colocarUnidad(new Espectro(), mapa);
+			puertoEstelarTerran.colocarUnidad(new Espectro(), mapa);
+			puertoEstelarTerran.colocarUnidad(new Espectro(), mapa);
+			puertoEstelarTerran.colocarUnidad(new Espectro(), mapa);
+			puertoEstelarTerran.colocarUnidad(new Espectro(), mapa);
+			puertoEstelarTerran.colocarUnidad(new Espectro(), mapa);
 			
 			// VERIFICO QUE SE CREAN A LOS COSTADOS DEL EDIFICIO
 			Assert.assertTrue(mapa.obtenerContenidoEnPosicion(15,17).getElementoEnAire().esLoMismo(new Espectro()));
@@ -139,17 +141,18 @@ public class ConstruccionTest {
 		public void creacionDeUnidadesTerrestresAlrededorDeEdificio() throws ExcepcionPosicionInvalida, ExcepcionExtractoraSinRecurso, ExcepcionEdificioPrevioRequerido, ExcepcionYaHayElementoEnLaPosicion, ExcepcionNoHayLugarParaCrear, ExcepcionEdificioNoPuedeCrearUnidad{
 			Mapa mapa = new Mapa(50);
 			Jugador jug = new Jugador ("carlos","rojo",new Terran());
+			jug.setDinero(999999, 999999);
+			jug.colocar(new DepositoDeSuministros(), mapa, 30, 30);
+			Creadora barraca = (Creadora) jug.colocar(new Barraca(),mapa,5,5);
 			
-			jug.construir(new DepositoDeSuministros(), mapa, 30, 30);
-			Construccion barraca = jug.construir(new Barraca(),mapa,5,5);
-			jug.crearUnidad(new Marine(),(Creadora) barraca, mapa);
-			jug.crearUnidad(new Marine(),(Creadora) barraca, mapa);
-			jug.crearUnidad(new Marine(),(Creadora) barraca, mapa);
-			jug.crearUnidad(new Marine(),(Creadora) barraca, mapa);
-			jug.crearUnidad(new Marine(),(Creadora) barraca, mapa);
-			jug.crearUnidad(new Marine(),(Creadora) barraca, mapa);
-			jug.crearUnidad(new Marine(),(Creadora) barraca, mapa);
-			jug.crearUnidad(new Marine(),(Creadora) barraca, mapa);
+			barraca.colocarUnidad(new Marine(), mapa);
+			barraca.colocarUnidad(new Marine(), mapa);
+			barraca.colocarUnidad(new Marine(), mapa);
+			barraca.colocarUnidad(new Marine(), mapa);
+			barraca.colocarUnidad(new Marine(), mapa);
+			barraca.colocarUnidad(new Marine(), mapa);
+			barraca.colocarUnidad(new Marine(), mapa);
+			barraca.colocarUnidad(new Marine(), mapa);
 			
 			// VERIFICO QUE SE CREAN A LOS COSTADOS DEL EDIFICIO
 			Assert.assertTrue(mapa.obtenerContenidoEnPosicion(4,4).getElementoEnTierra().esLoMismo(new Marine()));
@@ -162,4 +165,32 @@ public class ConstruccionTest {
 			Assert.assertTrue(mapa.obtenerContenidoEnPosicion(5,6).getElementoEnTierra().esLoMismo(new Marine()));
 		}
 		
+		@Test
+		public void seColectanRecursosAlPasarTurno() throws ExcepcionPosicionInvalida, ExcepcionYaHayElementoEnLaPosicion, ExcepcionEdificioNoPuedeCrearUnidad, ExcepcionNoHayLugarParaCrear{
+			
+			Mapa mapa = new Mapa(50);
+			Jugador jugador1 = new Jugador ("carlos","rojo",new Terran());
+			Jugador jugador2 = new Jugador ("dean","azul",new Terran());
+			Juego juego = new Juego (mapa, jugador1, jugador2);
+			
+			mapa.colocarEn(4, 4, new FuenteDeMinerales());
+			mapa.colocarEn(5,5, new FuenteDeGasVespeno());
+			
+			Assert.assertTrue(jugador1.getDinero().getMinerales() == 800); // INICIALES
+			Assert.assertTrue(jugador1.getDinero().getGasVespeno() == 400); // INICIALES
+			
+			Extractora deMinerales = (Extractora) jugador1.colocar(new CentroDeMineral(),mapa,4,4);
+			Extractora deGas = (Extractora) jugador1.colocar(new Refineria(), mapa, 5, 5);
+			jugador1.getConstruccionesEnPie().add(deMinerales);
+			jugador1.getConstruccionesEnPie().add(deGas);
+			
+			Assert.assertTrue(jugador1.getDinero().getMinerales() == 650); // gasto de construccion
+			Assert.assertTrue(jugador1.getDinero().getGasVespeno() == 400); // gasto de construccion
+			
+			juego.pasarTurno();
+			juego.pasarTurno();
+			
+			Assert.assertTrue(jugador1.getDinero().getMinerales() == 660); // +10 por turno
+			Assert.assertTrue(jugador1.getDinero().getGasVespeno() == 410); // +10 por turno
+		}
 }

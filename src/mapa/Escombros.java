@@ -1,25 +1,16 @@
 package src.mapa;
 
-import src.Recurso;
-
-
-public class FuenteDeRecurso implements Mapeable {
-	protected String nombre;
-	protected Recurso recurso;
-	
-	public Recurso getRecurso(){
-		return recurso;
+public class Escombros implements Mapeable {
+	private String nombre;
+	public Escombros(){
+		nombre = "Escombros";
 	}
-	public FuenteDeRecurso(){
-	}
-	
-	public FuenteDeRecurso colocarContenido(){
+	@Override
+	public Mapeable colocarContenido() {
+		// TODO Auto-generated method stub
 		return null;
 	}
 
-	public boolean esLoMismo(Mapeable aComparar){
-		return (this.getNombre() == aComparar.getNombre());
-	}
 	@Override
 	public Mapeable dibujar() {
 		// TODO Auto-generated method stub
@@ -36,6 +27,11 @@ public class FuenteDeRecurso implements Mapeable {
 	public Mapeable mover() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public boolean esLoMismo(Mapeable m) {
+		return (m.getNombre() == nombre);
 	}
 
 	@Override
@@ -61,5 +57,5 @@ public class FuenteDeRecurso implements Mapeable {
 		// TODO Auto-generated method stub
 		return false;
 	}
-	
+
 }

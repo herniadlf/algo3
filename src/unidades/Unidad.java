@@ -28,7 +28,7 @@ public abstract class Unidad implements Atacable{
 	protected ArrayList <Unidad> atacantes;
 	protected Posicion posicion;
 	protected Mapa mapa;
-	protected Entrenador entrenador;
+	protected ColocadorDeUnidades colocador;
 	protected int turnoInicioEntrenamiento;
 	protected Creadora edificio;
 	
@@ -68,9 +68,9 @@ public abstract class Unidad implements Atacable{
 		
 	}
 	
-	public Entrenador getEntrenador(){
+	public ColocadorDeUnidades getColocador(){
 		
-		return entrenador;
+		return colocador;
 		
 	}
 	public  String getNombre(){
@@ -124,15 +124,9 @@ public abstract class Unidad implements Atacable{
 		}
 	
 	public int getPosicionY(){
-		return posicion.getY();
+		return posicion.getY();	
 		
-		
-		
-	}
-	
-	
-	
-	
+	}	
 	
 	public ArrayList<Unidad> getUnidadesAtacantes(){
 		
@@ -153,7 +147,6 @@ public abstract class Unidad implements Atacable{
 	
 	
 	public void atacarEnTierra(Atacable atacado){
-		
 		int distanciaEntreEnemigos = mapa.distanciaEntreLosPuntos(atacado.getPosicionX(), atacado.getPosicionY(), this.getPosicionX(), this.getPosicionY());
 		
 		if ((distanciaEntreEnemigos) < this.getVision()){

@@ -31,7 +31,7 @@ public class Golliat extends Unidad {
 		transporte = TRANSPORTE;
 		vida = new Vida(VIDA);
 		vision = VISION;
-		entrenador = (EntrenadorUnidadTerrestre) new EntrenadorUnidadTerrestre();
+		colocador = (ColocadorUnidadTerrestre) new ColocadorUnidadTerrestre();
 		
 	}
 	
@@ -59,8 +59,8 @@ public class Golliat extends Unidad {
 		return null;
 	}
 	
-	public EntrenadorUnidadTerrestre getEntrenador(){
-		return (EntrenadorUnidadTerrestre)entrenador;
+	public ColocadorUnidadTerrestre getColocador(){
+		return (ColocadorUnidadTerrestre)colocador;
 	}
 	
 	public void recibirDanio (){

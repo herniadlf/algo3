@@ -40,7 +40,7 @@ public class AltoTemplario extends Magica {
 		//magias.add(new TormentaPsionica());
 		//magias.add(new Alucinacion());
 		energiaPorTurno = 15;
-		entrenador = (EntrenadorUnidadTerrestre) new EntrenadorUnidadTerrestre();
+		colocador = (ColocadorUnidadTerrestre) new ColocadorUnidadTerrestre();
 		
 	}
 		
@@ -68,8 +68,8 @@ public class AltoTemplario extends Magica {
 		return null;
 	}
 
-	public EntrenadorUnidadTerrestre getEntrenador(){
-		return (EntrenadorUnidadTerrestre)entrenador;
+	public ColocadorUnidadTerrestre getColocador(){
+		return (ColocadorUnidadTerrestre)colocador;
 	}
 
 	public Escudo getEscudo() {

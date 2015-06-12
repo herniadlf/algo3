@@ -34,7 +34,7 @@ public class Dragon extends Unidad {
 		vida = new Vida(VIDA);
 		vision = VISION;
 		escudo = new Escudo (ESCUDO,this);
-		entrenador = (EntrenadorUnidadVoladora) new EntrenadorUnidadVoladora();
+		colocador = (ColocadorUnidadVoladora) new ColocadorUnidadVoladora();
 		
 	}
 	
@@ -62,8 +62,8 @@ public class Dragon extends Unidad {
 		return null;
 	}
 	
-	public EntrenadorUnidadTerrestre getEntrenador(){
-		return (EntrenadorUnidadTerrestre)entrenador;
+	public ColocadorUnidadTerrestre getColocador(){
+		return (ColocadorUnidadTerrestre)colocador;
 	}
 	
 	public void recibirDanio (){

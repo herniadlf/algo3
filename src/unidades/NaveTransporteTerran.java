@@ -34,7 +34,7 @@ public class NaveTransporteTerran extends DeTransporte {
 		transporte = TRANSPORTE;
 		vida = new Vida(VIDA);
 		vision = VISION;
-		entrenador = (EntrenadorUnidadVoladora) new EntrenadorUnidadVoladora();
+		colocador = (ColocadorUnidadVoladora) new ColocadorUnidadVoladora();
 		cantidadPasajeros = 0;
 		unidadesAbordo = new ArrayList<Unidad>();
 	}
@@ -63,8 +63,8 @@ public class NaveTransporteTerran extends DeTransporte {
 		return null;
 	}
 
-	public EntrenadorUnidadVoladora getEntrenador(){
-		return (EntrenadorUnidadVoladora)entrenador;
+	public ColocadorUnidadVoladora getColocador(){
+		return (ColocadorUnidadVoladora)colocador;
 	}
 	
 	

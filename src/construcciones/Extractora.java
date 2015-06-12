@@ -1,10 +1,14 @@
 package src.construcciones;
 
+import src.Jugador;
+import src.Turno;
 import src.mapa.FuenteDeRecurso;
 import src.mapa.Mapa;
 import src.mapa.Mapeable;
 
 public abstract class Extractora extends Construccion {
+		protected static final int RECURSOS_POR_TURNO = 10;
+		
 		FuenteDeRecurso fuente;
 		
 		public FuenteDeRecurso getFuente(){
@@ -15,9 +19,9 @@ public abstract class Extractora extends Construccion {
 		}
 		public Extractora(){
 			super();
-			setConstructor(new ArquitectoDeExtractora());
+			setArquitecto(new ArquitectoDeExtractora());
 		}
 
-		public void extraer(){};
+		public void pasoTurno(Turno turno, Mapa mapa, Jugador jugadorActual){}
 		
 }

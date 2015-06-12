@@ -7,6 +7,10 @@ import org.junit.Assert;
 
 import excepciones.ExcepcionEdificioNoPuedeCrearUnidad;
 import excepciones.ExcepcionGeneral;
+import excepciones.ExcepcionNoHayLugarParaCrear;
+import excepciones.ExcepcionPosicionInvalida;
+import excepciones.ExcepcionYaHayElementoEnLaPosicion;
+import src.Juego;
 import src.Jugador;
 import src.Vida;
 import src.construcciones.Acceso;
@@ -16,6 +20,7 @@ import src.construcciones.Creadora;
 import src.construcciones.DepositoDeSuministros;
 import src.construcciones.Pilon;
 import src.mapa.Mapa;
+import src.mapa.Posicion;
 import src.razas.Protoss;
 import src.razas.Terran;
 import src.unidades.*;
@@ -45,7 +50,7 @@ public class UnidadesProtossTest extends TestCase{
 		
 	}
 	
-	public void testAtacarZealotNuevoPorMarineSoloDaniaEscudo() throws ExcepcionEdificioNoPuedeCrearUnidad{
+	public void testAtacarZealotNuevoPorMarineSoloDaniaEscudo() throws ExcepcionEdificioNoPuedeCrearUnidad, ExcepcionPosicionInvalida, ExcepcionNoHayLugarParaCrear, ExcepcionYaHayElementoEnLaPosicion{
 		
 		Mapa mapa = new Mapa(50);
 		Jugador jug1 = new Jugador ("carlos","rojo",new Terran());
@@ -53,18 +58,13 @@ public class UnidadesProtossTest extends TestCase{
 		Jugador jug2 = new Jugador ("williams", "azul", new Protoss());
 		
 		
-		jug1.construir(new DepositoDeSuministros(), mapa, 30, 30);
-		jug2.construir(new Pilon(), mapa, 36, 36);
-		Construccion barraca = jug1.construir(new Barraca(),mapa,5,5);
-		Construccion acceso = jug2.construir(new Acceso(), mapa, 8, 8);
-		Unidad marine =jug1.crearUnidad(new Marine(),(Creadora) barraca, mapa);
+		Creadora barraca = (Creadora) jug1.colocar(new Barraca(),mapa,5,5);
+		Creadora acceso = (Creadora) jug2.colocar(new Acceso(), mapa, 8, 8);
+		Unidad marine = new Marine();
+		barraca.colocarUnidad(marine, mapa);
 		
-		
-		
-		Zealot zealot =  (Zealot) jug2.crearUnidad(new Zealot(), (Creadora)acceso, mapa);
-		
-		
-		
+		Zealot zealot =  new Zealot();
+		acceso.colocarUnidad(zealot, mapa);
 		
 		marine.atacarEnTierra(zealot);
 		Assert.assertTrue((zealot.getVida().obtenerVida()) == 100);
@@ -73,28 +73,33 @@ public class UnidadesProtossTest extends TestCase{
 	}
 	
 	
-	public void testZealotRecibeMultiplesAtaques () throws ExcepcionEdificioNoPuedeCrearUnidad{
+	public void testZealotRecibeMultiplesAtaques () 
+			throws ExcepcionEdificioNoPuedeCrearUnidad, ExcepcionPosicionInvalida, ExcepcionYaHayElementoEnLaPosicion, ExcepcionNoHayLugarParaCrear{
+		
 		Mapa mapa = new Mapa(50);
-		Jugador jug1 = new Jugador ("carlos","rojo",new Terran());
-		jug1.setDinero(9999, 9999);
-		Jugador jug2 = new Jugador ("williams", "azul", new Protoss());
+		Jugador jugador1 = new Jugador ("carlos","rojo",new Terran());
+		Jugador jugador2 = new Jugador ("dean","azul",new Terran());
 		
+		Juego juego = new Juego(mapa, jugador1, jugador2);
+		jugador1.setDinero(99999, 99999);
+		Creadora barraca = (Creadora) jugador1.colocar(new Barraca(), mapa, 5, 5);		
 		
-		jug1.construir(new DepositoDeSuministros(), mapa, 30, 30);
-		jug2.construir(new Pilon(), mapa, 36, 36);
-		Construccion barraca = jug1.construir(new Barraca(),mapa,5,5);
-		Construccion acceso = jug2.construir(new Acceso(), mapa, 8, 8);
-		Unidad primerMarine =jug1.crearUnidad(new Marine(),(Creadora) barraca, mapa);
-		Unidad segundoMarine = jug1.crearUnidad(new Marine(),(Creadora) barraca, mapa);
-		Unidad tercerMarine = jug1.crearUnidad(new Marine(),(Creadora) barraca, mapa);
-		Unidad zealot = jug2.crearUnidad(new Zealot(), (Creadora)acceso, mapa);
+		Creadora acceso = (Creadora) jugador2.colocar(new Acceso(), mapa, 2, 2);		
 		
-	
-		primerMarine.atacarEnTierra(zealot);
+		Unidad primerMarine = new Marine();
+		Unidad segundoMarine = new Marine();
+		Unidad tercerMarine = new Marine();
+		Unidad zealot = new Zealot();	
 		
-		
+		barraca.colocarUnidad(primerMarine, mapa);	
+		barraca.colocarUnidad(segundoMarine, mapa);
+		barraca.colocarUnidad(tercerMarine, mapa);
+		acceso.colocarUnidad(zealot, mapa);
+				
+		primerMarine.atacarEnTierra(zealot);		
 		segundoMarine.atacarEnTierra(zealot);
 		tercerMarine.atacarEnTierra(zealot);
+		
 		int danioTotalRecibido= zealot.getVida().obtenerDanioRecibido();
 		
 		

@@ -7,7 +7,7 @@ import excepciones.ExcepcionPosicionInvalida;
 import src.mapa.Mapa;
 import src.mapa.Posicion;
 
-public interface Entrenador {
+public interface ColocadorDeUnidades {
 
-		public Posicion posicionParaEntrenarA(Unidad aEntrenar, Mapa map, LinkedList<Posicion> alrededores) throws ExcepcionPosicionInvalida, ExcepcionNoHayLugarParaCrear;
+		public Posicion posicionAColocar(Unidad aColocar, Mapa map, LinkedList<Posicion> alrededores) throws ExcepcionPosicionInvalida, ExcepcionNoHayLugarParaCrear;
 }

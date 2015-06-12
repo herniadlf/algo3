@@ -38,10 +38,10 @@ public class JuegoTest extends TestCase{
 		
 	
 		public void testConstruccionDeAmbosJugadores() throws ExcepcionPosicionInvalida{
-			juego.getJugador1().construir(new Barraca(), map, 4, 4);			
+			juego.getJugador1().colocar(new Barraca(), map, 4, 4);			
 			assertTrue ( map.obtenerContenidoEnPosicion(4, 4).getElementoEnTierra().esLoMismo(new Barraca()) );
 			
-			juego.getJugador2().construir(new Acceso(), map, 8, 8);
+			juego.getJugador2().colocar(new Acceso(), map, 8, 8);
 			assertTrue ( map.obtenerContenidoEnPosicion(8, 8).getElementoEnTierra().esLoMismo(new Acceso()));		
 			
 		}
