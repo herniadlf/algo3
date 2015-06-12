@@ -65,7 +65,7 @@ public class EMP extends PorRangoAtaque {
 			if(!(sector.getElementoEnTierra().getClass() == new EspacioDisponible().getClass())){
 				
 				Atacable objetoEnTierra = (Atacable)sector.getElementoEnTierra();
-				objetoEnTierra.atacarConEMP();					
+				objetoEnTierra.atacarConEMP(danio);					
 			}		
 				
 			

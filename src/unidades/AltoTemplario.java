@@ -93,6 +93,16 @@ public class AltoTemplario extends Magica {
 		}
 
 	}
+	
+	public void alucinacion(Unidad unidad){
+		
+		Alucinacion alucinacion = new Alucinacion();
+		if(energia.obtenerCantidad() >= alucinacion.obtenerEnergiaNecesaria()){
+			alucinacion.atacar(unidad);
+			energia.disminuirEnergia(alucinacion.obtenerEnergiaNecesaria());
+		}
+		
+	}
 
 	
 	
@@ -112,7 +122,7 @@ public class AltoTemplario extends Magica {
 	@Override
 	public boolean esTerrestre() {
 		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 	@Override
@@ -122,8 +132,9 @@ public class AltoTemplario extends Magica {
 	}
 
 	@Override
-	public void atacarConEMP() {
-		energia.disminuirEnergia(20);
+	public void atacarConEMP(int danio) {
+		
+		energia.disminuirEnergia(danio);
 		
 	}
 

@@ -89,7 +89,7 @@ public class Marine extends Unidad {
 	}
 
 	@Override
-	public void atacarConEMP() {
+	public void atacarConEMP(int danio) {
 		//no afecta
 		
 	}

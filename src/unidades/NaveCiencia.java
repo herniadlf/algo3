@@ -37,8 +37,6 @@ public class NaveCiencia extends Magica {
 		vida = new Vida(VIDA);
 		vision = VISION;
 		energia = new Energia(ENERGIA);
-		//magias.add(new EMP(mapa));
-		//magias.add(new Radiacion());
 		energiaPorTurno = 10;
 		entrenador = (EntrenadorUnidadVoladora) new EntrenadorUnidadVoladora();
 		
@@ -77,32 +75,6 @@ public class NaveCiencia extends Magica {
 	
 		return energia.obtenerCantidad(); 
 	}
-
-	/*
-	public ArrayList<Magia> obtenerMagias() {
-		
-		return magias;
-		
-	}
-	
-
-	public void atacarConEMP(int x, int y) {
-		
-		PorRangoAtaque emp = (PorRangoAtaque)magias.get(0);
-		if(energia.obtenerCantidad() >= emp.obtenerEnergiaNecesaria()){
-			emp.atacar(x,y);
-			energia.disminuirEnergia(emp.obtenerEnergiaNecesaria());
-		}
-	}
-	
-	public void atacarConRadiacion(Unidad unidad) {
-			
-		PorUnidad radiacion = (PorUnidad)magias.get(1);
-		if(energia.obtenerCantidad() >= radiacion.obtenerEnergiaNecesaria()){
-			radiacion.atacar(unidad);
-			energia.disminuirEnergia(radiacion.obtenerEnergiaNecesaria());
-		}	
-	*/
 	
 	public void atacarConEMP(int x, int y) {
 		
@@ -156,7 +128,7 @@ public class NaveCiencia extends Magica {
 	}
 
 	@Override
-	public void atacarConEMP() {
+	public void atacarConEMP(int danio) {
 		// no afecta
 		
 	}

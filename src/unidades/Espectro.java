@@ -94,7 +94,7 @@ public class Espectro extends Unidad {
 	}
 
 	@Override
-	public void atacarConEMP() {
+	public void atacarConEMP(int danio) {
 		// no afecta
 		
 	}

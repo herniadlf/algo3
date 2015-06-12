@@ -95,7 +95,7 @@ public class NaveTransporteTerran extends DeTransporte {
 	}
 
 	@Override
-	public void atacarConEMP() {
+	public void atacarConEMP(int danio) {
 		// no afecta
 		
 	}

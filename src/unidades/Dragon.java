@@ -97,8 +97,8 @@ public class Dragon extends Unidad {
 	}
 
 	@Override
-	public void atacarConEMP() {
-		escudo.atacar(20);
+	public void atacarConEMP(int danio) {
+		escudo.atacar(danio);
 		
 	}
 	

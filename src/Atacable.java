@@ -9,7 +9,7 @@ public interface Atacable extends Mapeable{
 	public int getPosicionY();
 	
 	public Vida getVida();
-	public void atacarConEMP();
+	public void atacarConEMP(int danio);
 	public void recibirDanio();
 
 }

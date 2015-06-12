@@ -95,8 +95,8 @@ public class Scout extends Unidad {
 	}
 
 	@Override
-	public void atacarConEMP() {
-		// TODO Auto-generated method stub
+	public void atacarConEMP(int danio) {
+		escudo.atacar(danio);
 		
 	}
 	

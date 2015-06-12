@@ -72,9 +72,9 @@ public class NaveCienciaTest extends TestCase {
 		AltoTemplario altoTemplario = new AltoTemplario();
 		
 		
-		mapa.colocarEn(20, 20, dragon);
+		mapa.colocarEn(21, 21, dragon);
 		mapa.colocarEn(20, 21, zealot);
-		//mapa.colocarEn(21, 21, altoTemplario);
+		mapa.colocarEn(20, 20, altoTemplario);
 		
 		naveCiencia.pasoTurno();
 		naveCiencia.pasoTurno();
@@ -82,11 +82,11 @@ public class NaveCienciaTest extends TestCase {
 		naveCiencia.pasoTurno();
 		naveCiencia.pasoTurno();
 
-		naveCiencia.atacarConEMP(20, 20); //saca 20 escudo
+		naveCiencia.atacarConEMP(20, 20); //saca 20 escudo 0 20 energia
 
 		Assert.assertTrue(dragon.getEscudo().obtenerResistenciaActual() == 60);
 		Assert.assertTrue(zealot.getEscudo().obtenerResistenciaActual() == 40);
-		//Assert.assertTrue(altoTemplario.obtenerEnergia() == 30);
+		Assert.assertTrue(altoTemplario.obtenerEnergia() == 30);
 	}
 	
 	
