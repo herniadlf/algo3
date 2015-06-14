@@ -5,6 +5,7 @@ import java.util.LinkedList;
 import excepciones.ExcepcionEdificioNoPuedeCrearUnidad;
 import excepciones.ExcepcionExtractoraSinRecurso;
 import excepciones.ExcepcionNoHayLugarParaCrear;
+import excepciones.ExcepcionNoPudoColocarseUnidad;
 import excepciones.ExcepcionPosicionInvalida;
 import excepciones.ExcepcionYaHayElementoEnLaPosicion;
 import src.Atacable;
@@ -224,8 +225,7 @@ public class Construccion implements Atacable {
 		
 	}
 
-	public void pasoTurno(Turno turno, Mapa map, Jugador jugador) throws ExcepcionEdificioNoPuedeCrearUnidad, ExcepcionPosicionInvalida, ExcepcionNoHayLugarParaCrear, ExcepcionYaHayElementoEnLaPosicion {
-		
+	public void pasoTurno(Turno turno, Mapa map, Jugador jugador) throws ExcepcionNoPudoColocarseUnidad {
 		//sera implementado		
 	
 	}

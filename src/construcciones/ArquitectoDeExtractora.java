@@ -11,6 +11,7 @@ public class ArquitectoDeExtractora implements Arquitecto {
 			throws ExcepcionPosicionInvalida, ExcepcionExtractoraSinRecurso,
 			ExcepcionYaHayElementoEnLaPosicion {
 		
+		map.eliminarElementoTerrestreEnPosicion(edificio.getPosicionX(), edificio.getPosicionY());
 		map.colocarExtractorEn(edificio.getPosicionX(), edificio.getPosicionY(), (Extractora) edificio);
 		
 	}
@@ -18,8 +19,7 @@ public class ArquitectoDeExtractora implements Arquitecto {
 	public void verificarTerreno(Mapa map, int x, int y, Construccion construccion) throws ExcepcionPosicionInvalida, ExcepcionExtractoraSinRecurso {
 		
 		Extractora auxiliar = (Extractora) construccion;
-		map.verificarFuente(x,y,auxiliar);
-		
+		map.verificarFuente(x,y,auxiliar);		
 	}
 
 }

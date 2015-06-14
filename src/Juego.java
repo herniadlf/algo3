@@ -4,8 +4,11 @@ import java.util.ArrayList;
 
 import excepciones.ExcepcionConstruccionNoCorrespondiente;
 import excepciones.ExcepcionEdificioNoPuedeCrearUnidad;
+import excepciones.ExcepcionErrorPasoDeTurno;
 import excepciones.ExcepcionExtractoraSinRecurso;
 import excepciones.ExcepcionNoHayLugarParaCrear;
+import excepciones.ExcepcionNoPudoColocarseEdificio;
+import excepciones.ExcepcionNoPudoCrearseUnidad;
 import excepciones.ExcepcionPosicionInvalida;
 import excepciones.ExcepcionRecursoInsuficiente;
 import excepciones.ExcepcionSuministrosInsuficientes;
@@ -59,12 +62,7 @@ public class Juego {
 		
 	}
 	
-	public void pasarTurno () 
-	
-			throws ExcepcionEdificioNoPuedeCrearUnidad,
-			ExcepcionPosicionInvalida, 
-			ExcepcionNoHayLugarParaCrear,
-			ExcepcionYaHayElementoEnLaPosicion{
+	public void pasarTurno () throws ExcepcionErrorPasoDeTurno 	{
 		
 		turno.aumentarTurno();
 		if ((turno.devolverTurnoActual()%2)==0){
@@ -84,29 +82,43 @@ public class Juego {
 	} 
 
 	public void ordenarFabricacionUnidad (Unidad unidad, Creadora edificio) 
+			throws ExcepcionNoPudoCrearseUnidad 
 	
-		throws ExcepcionUnidadNoCorrespondiente, 
-		ExcepcionRecursoInsuficiente, ExcepcionSuministrosInsuficientes, 
-		ExcepcionTopeDePoblacionMaxima{
+		 {
 		
-		jugadorActual.verificacionUnidad(unidad, edificio);
-		unidad.setEdificio(edificio);
-		unidad.setTurnoInicioDeEntrenamiento(turno.devolverTurnoActual());
-		edificio.agregarUnidadAEntrenamiento(unidad);
+		try {
+			jugadorActual.verificacionUnidad(unidad, edificio);
+			unidad.setEdificio(edificio);
+			unidad.setTurnoInicioDeEntrenamiento(turno.devolverTurnoActual());
+			edificio.agregarUnidadAEntrenamiento(unidad);
+		} catch (ExcepcionUnidadNoCorrespondiente
+				| ExcepcionRecursoInsuficiente
+				| ExcepcionSuministrosInsuficientes
+				| ExcepcionTopeDePoblacionMaxima e) {
+			throw new ExcepcionNoPudoCrearseUnidad(e);
+		}
+	
 		
 	}
 	
-	public void ordenFabricacionDeEdificios (Construccion construccion, int x, int y)
-			throws ExcepcionConstruccionNoCorrespondiente, ExcepcionRecursoInsuficiente, 
-			ExcepcionPosicionInvalida, ExcepcionYaHayElementoEnLaPosicion, ExcepcionExtractoraSinRecurso{
+	public void ordenFabricacionDeEdificios (Construccion construccion, int x, int y) 
+			throws ExcepcionNoPudoColocarseEdificio {
 		
-		jugadorActual.verificacionEdificio(construccion);	
-		construccion.setPosicionX(x);
-		construccion.setPosicionY(y);
-		construccion.verificarTerreno(mapa,x,y);
-		construccion.setTurnoInicioDEConstruccion(turno.devolverTurnoActual());
-		jugadorActual.obtenerConstruccionesEnCamino().add(construccion);		
-		
+		try {
+			jugadorActual.verificacionEdificio(construccion);
+			construccion.setPosicionX(x);
+			construccion.setPosicionY(y);
+			construccion.verificarTerreno(mapa,x,y);
+			construccion.setTurnoInicioDEConstruccion(turno.devolverTurnoActual());
+			jugadorActual.obtenerConstruccionesEnCamino().add(construccion);		
+			jugadorActual.gastarPlata(construccion.getCosto());
+		} catch (ExcepcionConstruccionNoCorrespondiente
+				| ExcepcionRecursoInsuficiente | 
+				ExcepcionYaHayElementoEnLaPosicion | 
+				ExcepcionExtractoraSinRecurso |ExcepcionPosicionInvalida e) {	
+			throw new ExcepcionNoPudoColocarseEdificio(e);
+		}	
+	
 	}
 		
 	

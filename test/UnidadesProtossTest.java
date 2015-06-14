@@ -8,6 +8,7 @@ import org.junit.Assert;
 import excepciones.ExcepcionEdificioNoPuedeCrearUnidad;
 import excepciones.ExcepcionGeneral;
 import excepciones.ExcepcionNoHayLugarParaCrear;
+import excepciones.ExcepcionNoPudoColocarseEdificio;
 import excepciones.ExcepcionPosicionInvalida;
 import excepciones.ExcepcionYaHayElementoEnLaPosicion;
 import src.Juego;
@@ -50,7 +51,11 @@ public class UnidadesProtossTest extends TestCase{
 		
 	}
 	
-	public void testAtacarZealotNuevoPorMarineSoloDaniaEscudo() throws ExcepcionEdificioNoPuedeCrearUnidad, ExcepcionPosicionInvalida, ExcepcionNoHayLugarParaCrear, ExcepcionYaHayElementoEnLaPosicion{
+	public void testAtacarZealotNuevoPorMarineSoloDaniaEscudo() 
+			throws ExcepcionNoPudoColocarseEdificio,
+			ExcepcionPosicionInvalida, 
+			ExcepcionNoHayLugarParaCrear, 
+			ExcepcionYaHayElementoEnLaPosicion {
 		
 		Mapa mapa = new Mapa(50);
 		Jugador jug1 = new Jugador ("carlos","rojo",new Terran());
@@ -74,7 +79,11 @@ public class UnidadesProtossTest extends TestCase{
 	
 	
 	public void testZealotRecibeMultiplesAtaques () 
-			throws ExcepcionEdificioNoPuedeCrearUnidad, ExcepcionPosicionInvalida, ExcepcionYaHayElementoEnLaPosicion, ExcepcionNoHayLugarParaCrear{
+			throws ExcepcionNoPudoColocarseEdificio, 
+			ExcepcionPosicionInvalida, 
+			ExcepcionNoHayLugarParaCrear, 
+			ExcepcionYaHayElementoEnLaPosicion 
+			{
 		
 		Mapa mapa = new Mapa(50);
 		Jugador jugador1 = new Jugador ("carlos","rojo",new Terran());

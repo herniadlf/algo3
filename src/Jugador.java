@@ -5,8 +5,11 @@ import java.util.ArrayList;
 import excepciones.ExcepcionConstruccionNoCorrespondiente;
 import excepciones.ExcepcionEdificioNoPuedeCrearUnidad;
 import excepciones.ExcepcionEdificioPrevioRequerido;
+import excepciones.ExcepcionErrorPasoDeTurno;
 import excepciones.ExcepcionExtractoraSinRecurso;
 import excepciones.ExcepcionNoHayLugarParaCrear;
+import excepciones.ExcepcionNoPudoColocarseEdificio;
+import excepciones.ExcepcionNoPudoColocarseUnidad;
 import excepciones.ExcepcionPosicionInvalida;
 import excepciones.ExcepcionRecursoInsuficiente;
 import excepciones.ExcepcionSuministrosInsuficientes;
@@ -113,11 +116,11 @@ public class Jugador {
 		
 	}
 		
-	public Construccion colocar(Construccion edificio, Mapa map, int x, int y)  {
+	public Construccion colocar(Construccion edificio, Mapa map, int i, int j) throws ExcepcionNoPudoColocarseEdificio  {
 	
-		try {			
-			edificio.setPosicionX(x);
-			edificio.setPosicionY(y);
+		try {				
+			edificio.setPosicionX(i);
+			edificio.setPosicionY(j);
 			edificio.setAlrededores();
 			edificio.colocar(map);
 			this.getRaza().actualizarEdificios(edificio);
@@ -125,8 +128,7 @@ public class Jugador {
 			poblacionDisponible = poblacionDisponible + edificio.getCantidadDeSuministros();			
 		} catch (ExcepcionPosicionInvalida | ExcepcionExtractoraSinRecurso
 				| ExcepcionYaHayElementoEnLaPosicion  e) {
-	
-			e.printStackTrace();
+				throw new ExcepcionNoPudoColocarseEdificio(e);
 		}		
 		
 		return edificio;
@@ -184,10 +186,7 @@ public class Jugador {
 		
 	}
 	
-	public void actualizarTurnoEnConstrucciones (Turno turno, Mapa map) 
-			throws ExcepcionEdificioNoPuedeCrearUnidad,
-			ExcepcionPosicionInvalida, 
-			ExcepcionNoHayLugarParaCrear, ExcepcionYaHayElementoEnLaPosicion{
+	public void actualizarTurnoEnConstrucciones (Turno turno, Mapa map) throws ExcepcionNoPudoColocarseUnidad {
 		
 		int i = 0;
 		while (construccionesEnPie.size()>i){
@@ -210,7 +209,8 @@ public class Jugador {
 	
 	
 	
-	public void actualizarFabricacionConstrucciones (Turno turno, Mapa mapa){
+	public void actualizarFabricacionConstrucciones (Turno turno, Mapa mapa) 
+			throws ExcepcionNoPudoColocarseEdificio 	{
 		
 		int i=0;
 		int turnosPasados;
@@ -232,11 +232,13 @@ public class Jugador {
 		
 	}
 
-	public void pasoTurno(Turno turno, Mapa mapa) 
-			throws ExcepcionEdificioNoPuedeCrearUnidad, ExcepcionPosicionInvalida,
-			ExcepcionNoHayLugarParaCrear, ExcepcionYaHayElementoEnLaPosicion {
-		actualizarTurnoEnConstrucciones(turno, mapa);	
-		actualizarFabricacionConstrucciones(turno, mapa);
+	public void pasoTurno(Turno turno, Mapa mapa) throws ExcepcionErrorPasoDeTurno 	{
+		try{
+			actualizarTurnoEnConstrucciones(turno, mapa);	
+			actualizarFabricacionConstrucciones(turno, mapa);
+		} catch ( ExcepcionNoPudoColocarseEdificio | ExcepcionNoPudoColocarseUnidad e){
+			throw new ExcepcionErrorPasoDeTurno(e);
+		}
 	}
 	
 }

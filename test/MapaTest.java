@@ -183,8 +183,11 @@ public class MapaTest {
 		
 		Extractora unExtractor = new CentroDeMineral();
 		
-		mapa.colocarExtractorEn(5, 5, unExtractor);	
-		
+		for (int i = 1; i <= mapa.getTamanioMapa(); i++) {
+			for (int j = 1; j <= mapa.getTamanioMapa(); j++) {
+				mapa.verificarFuente(i, j, unExtractor);
+			}
+		}
 	}
 	
 		

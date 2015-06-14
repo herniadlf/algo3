@@ -5,8 +5,11 @@ import org.junit.Test;
 
 import excepciones.ExcepcionConstruccionNoCorrespondiente;
 import excepciones.ExcepcionEdificioNoPuedeCrearUnidad;
+import excepciones.ExcepcionErrorPasoDeTurno;
 import excepciones.ExcepcionExtractoraSinRecurso;
 import excepciones.ExcepcionNoHayLugarParaCrear;
+import excepciones.ExcepcionNoPudoColocarseEdificio;
+import excepciones.ExcepcionNoPudoCrearseUnidad;
 import excepciones.ExcepcionPosicionInvalida;
 import excepciones.ExcepcionRecursoInsuficiente;
 import excepciones.ExcepcionSuministrosInsuficientes;
@@ -32,7 +35,11 @@ public class MiniIntegracionTest {
 	
 	
 	@Test
-	public void testCrearUnidadesSegunTurno() throws ExcepcionEdificioNoPuedeCrearUnidad, ExcepcionPosicionInvalida, ExcepcionUnidadNoCorrespondiente, ExcepcionRecursoInsuficiente, ExcepcionSuministrosInsuficientes, ExcepcionTopeDePoblacionMaxima, ExcepcionNoHayLugarParaCrear, ExcepcionYaHayElementoEnLaPosicion, ExcepcionConstruccionNoCorrespondiente, ExcepcionExtractoraSinRecurso{
+	public void testCrearUnidadesSegunTurno() 
+			throws ExcepcionNoPudoColocarseEdificio, 
+			ExcepcionNoPudoCrearseUnidad, 
+			ExcepcionErrorPasoDeTurno, 
+			ExcepcionPosicionInvalida {
 		Mapa mapa = new Mapa(50);
 		Jugador jugador1 = new Jugador ("carlos","rojo",new Terran());
 		Jugador jugador2 = new Jugador ("dean","azul",new Terran());
@@ -72,11 +79,9 @@ public class MiniIntegracionTest {
 	}
 	
 	@Test
-	public void testCrearEdificiosSegunTurno() 
-			throws ExcepcionEdificioNoPuedeCrearUnidad, ExcepcionPosicionInvalida, 
-			ExcepcionNoHayLugarParaCrear, ExcepcionYaHayElementoEnLaPosicion,
-			ExcepcionConstruccionNoCorrespondiente, ExcepcionRecursoInsuficiente,
-			ExcepcionExtractoraSinRecurso{
+	public void testCrearEdificiosSegunTurno()
+			throws ExcepcionNoPudoColocarseEdificio, 
+			ExcepcionPosicionInvalida, ExcepcionErrorPasoDeTurno {
 		Mapa mapa = new Mapa(50);
 		Jugador jugador1 = new Jugador ("carlos","rojo",new Terran());
 		Jugador jugador2 = new Jugador ("dean","azul",new Terran());
@@ -123,11 +128,9 @@ public class MiniIntegracionTest {
 	Assert.assertTrue(juego.getMapa().obtenerContenidoEnPosicion(10,10).getElementoEnTierra().esLoMismo(new Barraca()));
 	}
 	
-	@Test (expected = ExcepcionConstruccionNoCorrespondiente.class)
-	public void noConstruyeFabricaSinBarraca()
-			throws ExcepcionPosicionInvalida, 
-			ExcepcionConstruccionNoCorrespondiente, 
-			ExcepcionRecursoInsuficiente, ExcepcionYaHayElementoEnLaPosicion, ExcepcionExtractoraSinRecurso {
+	@Test (expected = ExcepcionNoPudoColocarseEdificio.class)
+	public void noConstruyeFabricaSinBarraca() throws ExcepcionNoPudoColocarseEdificio
+			 {
 		Mapa mapa = new Mapa(50);
 		Jugador jugador1 = new Jugador ("carlos","rojo",new Terran());
 		Jugador jugador2 = new Jugador ("dean","azul",new Terran());

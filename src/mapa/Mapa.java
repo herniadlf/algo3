@@ -58,17 +58,16 @@ public class Mapa {
 		
 		Posicion posicion = new Posicion(i,j);
 		this.validarCoordenadas(posicion);
-		this.verificarFuente(i,j,unExtractor);		
+		this.obtenerContenidoEnPosicion(i, j).setElementoEnTierra(unExtractor);		
 		
 	}
 	
 	public void verificarFuente(int x, int y,Extractora unExtractor) throws ExcepcionPosicionInvalida, ExcepcionExtractoraSinRecurso{
-		if (obtenerContenidoEnPosicion(x, y).getElementoEnTierra().esLoMismo(unExtractor.getFuente())) {			
-			this.obtenerContenidoEnPosicion(x, y).setElementoEnTierra(unExtractor);
+		if (!obtenerContenidoEnPosicion(x, y).getElementoEnTierra().esLoMismo(unExtractor.getFuente())) {			
+			throw new ExcepcionExtractoraSinRecurso("No se puede construir edificio extractor sin fuente de recursos.");
 		}
 		else {
-			
-			throw new ExcepcionExtractoraSinRecurso("No se puede construir edificio extractor sin fuente de recursos.");
+				this.obtenerContenidoEnPosicion(x, y).setElementoEnTierra(new Escombros());
 		}
 	}
 	

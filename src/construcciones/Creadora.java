@@ -6,6 +6,7 @@ import java.util.LinkedList;
 
 import excepciones.ExcepcionEdificioNoPuedeCrearUnidad;
 import excepciones.ExcepcionNoHayLugarParaCrear;
+import excepciones.ExcepcionNoPudoColocarseUnidad;
 import excepciones.ExcepcionPosicionInvalida;
 import excepciones.ExcepcionUnidadNoCorrespondiente;
 import excepciones.ExcepcionYaHayElementoEnLaPosicion;
@@ -49,21 +50,19 @@ public abstract class Creadora extends NoExtractora {
 	}
 	
 	public void colocarUnidad ( Unidad aColocar , Mapa map ) 
-			throws ExcepcionPosicionInvalida, ExcepcionNoHayLugarParaCrear, ExcepcionYaHayElementoEnLaPosicion{
+			throws ExcepcionPosicionInvalida, 
+			ExcepcionNoHayLugarParaCrear, 
+			ExcepcionYaHayElementoEnLaPosicion {		
 		
-		
-		Posicion auxiliar = aColocar.getColocador().posicionAColocar(aColocar,map,alrededores);	
-			
-		map.colocarEn(auxiliar.getX(), auxiliar.getY(), aColocar);
-		aColocar.setMapa(map);
-		aColocar.setPosicion(auxiliar);
+			Posicion auxiliar = aColocar.getColocador().posicionAColocar(aColocar,map,alrededores);		
+			map.colocarEn(auxiliar.getX(), auxiliar.getY(), aColocar);
+			aColocar.setMapa(map);
+			aColocar.setPosicion(auxiliar);
+	
 		
 	}
 	
-	public void pasoTurno (Turno turno, Mapa map, Jugador jugadorActual) 
-			throws ExcepcionEdificioNoPuedeCrearUnidad,
-			ExcepcionPosicionInvalida, 
-			ExcepcionNoHayLugarParaCrear, ExcepcionYaHayElementoEnLaPosicion{
+	public void pasoTurno (Turno turno, Mapa map, Jugador jugadorActual) throws ExcepcionNoPudoColocarseUnidad {
 		
 		int i=0;
 		int turnosPasados;
@@ -79,7 +78,10 @@ public abstract class Creadora extends NoExtractora {
 					jugadorActual.actualizarPorNuevaUnidad(unidadesEnFabricacion.get(i),unidadesEnFabricacion.get(i).getEdifico(), map);				
 					unidadesEnFabricacion.remove(i);
 				}
-				catch ( ExcepcionNoHayLugarParaCrear e ) {}							
+				catch ( ExcepcionNoHayLugarParaCrear e ) {}	
+				catch (ExcepcionPosicionInvalida | ExcepcionYaHayElementoEnLaPosicion w){
+					throw new ExcepcionNoPudoColocarseUnidad(w);
+				}
 			} 
 			
 			i++;	

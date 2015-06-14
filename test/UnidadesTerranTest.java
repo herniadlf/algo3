@@ -12,6 +12,7 @@ import org.junit.Assert;
 import excepciones.ExcepcionEdificioNoPuedeCrearUnidad;
 import excepciones.ExcepcionExtractoraSinRecurso;
 import excepciones.ExcepcionNoHayLugarParaCrear;
+import excepciones.ExcepcionNoPudoColocarseEdificio;
 import excepciones.ExcepcionPosicionInvalida;
 import excepciones.ExcepcionYaHayElementoEnLaPosicion;
 import src.*;
@@ -86,7 +87,11 @@ public class UnidadesTerranTest extends TestCase{
 		}
 		
 		
-		public void testmarineAtacaZealotSoloRompeEscudo() throws ExcepcionEdificioNoPuedeCrearUnidad, ExcepcionPosicionInvalida, ExcepcionNoHayLugarParaCrear, ExcepcionYaHayElementoEnLaPosicion{
+		public void testmarineAtacaZealotSoloRompeEscudo() 
+				throws ExcepcionNoPudoColocarseEdificio, 
+				ExcepcionPosicionInvalida, 
+				ExcepcionNoHayLugarParaCrear, 
+				ExcepcionYaHayElementoEnLaPosicion {
 			
 			/*--------------------------------------------------------------------------------*/
 			Mapa mapa = new Mapa(50);
@@ -112,7 +117,10 @@ public class UnidadesTerranTest extends TestCase{
 		
 		}	
 		
-		public void testEspectroPuedeAtacarEdificiosEnemigos() throws ExcepcionEdificioNoPuedeCrearUnidad, ExcepcionPosicionInvalida, ExcepcionNoHayLugarParaCrear, ExcepcionYaHayElementoEnLaPosicion{
+		public void testEspectroPuedeAtacarEdificiosEnemigos() 
+		throws ExcepcionPosicionInvalida, 
+		ExcepcionNoHayLugarParaCrear, 
+		ExcepcionYaHayElementoEnLaPosicion, ExcepcionNoPudoColocarseEdificio{
 			
 			Mapa mapa = new Mapa(50);
 			Jugador jug1 = new Jugador ("carlos","rojo",new Terran());

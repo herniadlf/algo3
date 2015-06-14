@@ -3,29 +3,27 @@ package excepciones;
 public class ExcepcionGeneral extends Exception {
 	
 	String descripcion;
-		
-	public String getDescripcion() { 
+	ExcepcionGeneral causa;
 			
-		return descripcion;
-			
+	public ExcepcionGeneral getCausa(){
+		return causa;
+	}
+	
+	public String getDescripcion() { 			
+		return descripcion;			
 	}
 		
 	public void setDescripcion(String descripcion) {
-			
-		this.descripcion = descripcion;
-		
+			this.descripcion = descripcion;		
 	}
 
-	public ExcepcionGeneral(String descripcion) {
-			
-		setDescripcion(descripcion);
-			
+	public ExcepcionGeneral(String descripcion2 ) {			
+		descripcion = "Error";		
+		causa = this;
 	}
 		
-	public String getMensaje() {
-			
-		return getDescripcion();
-			
+	public String getMensaje() {			
+		return getDescripcion();			
 	}
 		
 }

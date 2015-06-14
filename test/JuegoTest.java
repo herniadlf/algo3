@@ -5,6 +5,7 @@ import junit.framework.TestCase;
 import org.junit.Assert;
 import org.junit.Test;
 
+import excepciones.ExcepcionNoPudoColocarseEdificio;
 import excepciones.ExcepcionPosicionInvalida;
 import src.Juego;
 import src.Jugador;
@@ -37,7 +38,7 @@ public class JuegoTest extends TestCase{
 		}
 		
 	
-		public void testConstruccionDeAmbosJugadores() throws ExcepcionPosicionInvalida{
+		public void testConstruccionDeAmbosJugadores() throws ExcepcionNoPudoColocarseEdificio, ExcepcionPosicionInvalida  {
 			juego.getJugador1().colocar(new Barraca(), map, 4, 4);			
 			assertTrue ( map.obtenerContenidoEnPosicion(4, 4).getElementoEnTierra().esLoMismo(new Barraca()) );
 			

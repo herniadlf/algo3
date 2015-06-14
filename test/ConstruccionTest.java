@@ -3,13 +3,18 @@ package test;
 import org.junit.Assert;
 import org.junit.Test;
 
+import excepciones.ExcepcionConstruccionNoCorrespondiente;
 import excepciones.ExcepcionEdificioNoPuedeCrearUnidad;
 import excepciones.ExcepcionEdificioPrevioRequerido;
+import excepciones.ExcepcionErrorPasoDeTurno;
 import excepciones.ExcepcionExtractoraSinRecurso;
 import excepciones.ExcepcionNoHayLugarParaCrear;
+import excepciones.ExcepcionNoPudoColocarseEdificio;
 import excepciones.ExcepcionPosicionInvalida;
+import excepciones.ExcepcionRecursoInsuficiente;
 import excepciones.ExcepcionYaHayElementoEnLaPosicion;
 import src.*;
+import src.construcciones.Acceso;
 import src.construcciones.Barraca;
 import src.construcciones.CentroDeMineral;
 import src.construcciones.Construccion;
@@ -32,7 +37,7 @@ import src.unidades.Marine;
 public class ConstruccionTest {
 		
 		@Test
-		public void construccionExitosaPorRecursosSuficientes() {
+		public void construccionExitosaPorRecursosSuficientes() throws ExcepcionNoPudoColocarseEdificio {
 				Mapa mapa = new Mapa(50);
 				Jugador jug = new Jugador("carlos","rojo",new Terran()); // Jugador se crea con 800 M			
 				
@@ -42,7 +47,7 @@ public class ConstruccionTest {
 		}
 			
 		@Test
-		public void construccionExitosaEnElMapa() throws ExcepcionPosicionInvalida, ExcepcionExtractoraSinRecurso, ExcepcionEdificioPrevioRequerido, ExcepcionYaHayElementoEnLaPosicion{
+		public void construccionExitosaEnElMapa() throws ExcepcionNoPudoColocarseEdificio, ExcepcionPosicionInvalida{
 			Mapa mapa = new Mapa(50);
 			Jugador jug = new Jugador("carlos","rojo",new Terran());
 			jug.setDinero(9999999, 999999); // ya que pruebo construir en todos los puntos del mapa necesito mucha plata
@@ -55,31 +60,21 @@ public class ConstruccionTest {
 				}				
 			}
 		} 
-		
-		@Test 
-		public void noConstruyeExtractoraSiNoHayFuente() throws ExcepcionPosicionInvalida, ExcepcionExtractoraSinRecurso, ExcepcionEdificioPrevioRequerido, ExcepcionYaHayElementoEnLaPosicion{
-			Mapa mapa = new Mapa(50);
-			Jugador jug = new Jugador("carlos","rojo",new Protoss());
-					
-			Construccion nexoMineral = jug.colocar(new NexoMineral(), mapa, 10, 10);
 				
-			Assert.assertFalse ( mapa.obtenerContenidoEnPosicion(10, 10).getElementoEnTierra().esLoMismo(nexoMineral) );
-		}
-		
-		/*@Test 
-		public void noConstruyeFabricaSinBarraca() throws ExcepcionPosicionInvalida, ExcepcionExtractoraSinRecurso, ExcepcionEdificioPrevioRequerido, ExcepcionYaHayElementoEnLaPosicion{
-			Juego juego = new Juego(mapa, jug)
+		@Test (expected = ExcepcionNoPudoColocarseEdificio.class)
+		public void noConstruyeFabricaSinBarraca() throws ExcepcionNoPudoColocarseEdificio {
 			Mapa mapa = new Mapa(50);
-			Jugador jug = new Jugador("carlos","rojo",new Terran());
+			Jugador jugador1 = new Jugador ("carlos","rojo",new Terran());
+			Jugador jugador2 = new Jugador ("dean","azul",new Terran());
 			
-			Construccion fabrica = jug.construir(new Fabrica(), mapa, 10, 10);			
-					 
-			Assert.assertTrue ( mapa.obtenerContenidoEnPosicion(10, 10).getElementoEnTierra().esLoMismo(fabrica) );
+			Juego juego = new Juego(mapa, jugador1, jugador2);
+			
+			juego.ordenFabricacionDeEdificios(new Fabrica(), 3, 3);
 		}
-		la construye igual porque el que verifica ahora es la clase juego
-		*/
+	
+		
 		@Test
-		public void construccionExitosaDeFabricaConBarraca() throws ExcepcionPosicionInvalida, ExcepcionExtractoraSinRecurso, ExcepcionEdificioPrevioRequerido, ExcepcionYaHayElementoEnLaPosicion{
+		public void construccionExitosaDeFabricaConBarraca() throws ExcepcionNoPudoColocarseEdificio, ExcepcionPosicionInvalida {
 			Mapa mapa = new Mapa(50);
 			Jugador jug = new Jugador("carlos","rojo", new Terran());
 			
@@ -90,7 +85,7 @@ public class ConstruccionTest {
 		}
 		
 		@Test
-		public void nuevoPilonAumentaSuministrosDeJugador(){
+		public void nuevoPilonAumentaSuministrosDeJugador() throws ExcepcionNoPudoColocarseEdificio{
 			Mapa mapa = new Mapa(50);
 			Jugador jug = new Jugador ("carlos","rojo",new Protoss());
 			
@@ -102,7 +97,11 @@ public class ConstruccionTest {
 		
 		
 		@Test
-		public void creacionDeUnidadesVoladorasAlrededorDeEdificio() throws ExcepcionPosicionInvalida, ExcepcionExtractoraSinRecurso, ExcepcionEdificioPrevioRequerido, ExcepcionYaHayElementoEnLaPosicion, ExcepcionNoHayLugarParaCrear, ExcepcionEdificioNoPuedeCrearUnidad{
+		public void creacionDeUnidadesVoladorasAlrededorDeEdificio() 
+				throws ExcepcionNoPudoColocarseEdificio, 
+				ExcepcionPosicionInvalida, 
+				ExcepcionNoHayLugarParaCrear, 
+				ExcepcionYaHayElementoEnLaPosicion  {
 			Mapa mapa = new Mapa(50);
 			Jugador jug = new Jugador ("carlos","rojo",new Terran());
 			jug.setDinero(999999, 999999);
@@ -138,7 +137,12 @@ public class ConstruccionTest {
 			Assert.assertTrue(mapa.obtenerContenidoEnPosicion(15,16).getElementoEnAire().esLoMismo(new Espectro()));
 		}
 		@Test
-		public void creacionDeUnidadesTerrestresAlrededorDeEdificio() throws ExcepcionPosicionInvalida, ExcepcionExtractoraSinRecurso, ExcepcionEdificioPrevioRequerido, ExcepcionYaHayElementoEnLaPosicion, ExcepcionNoHayLugarParaCrear, ExcepcionEdificioNoPuedeCrearUnidad{
+		public void creacionDeUnidadesTerrestresAlrededorDeEdificio() 
+				throws ExcepcionNoPudoColocarseEdificio, 
+				ExcepcionPosicionInvalida,
+				ExcepcionNoHayLugarParaCrear, 
+				ExcepcionYaHayElementoEnLaPosicion {
+			
 			Mapa mapa = new Mapa(50);
 			Jugador jug = new Jugador ("carlos","rojo",new Terran());
 			jug.setDinero(999999, 999999);
@@ -166,7 +170,11 @@ public class ConstruccionTest {
 		}
 		
 		@Test
-		public void seColectanRecursosAlPasarTurno() throws ExcepcionPosicionInvalida, ExcepcionYaHayElementoEnLaPosicion, ExcepcionEdificioNoPuedeCrearUnidad, ExcepcionNoHayLugarParaCrear{
+		public void seColectanRecursosAlPasarTurno() 
+				throws ExcepcionPosicionInvalida, 
+				ExcepcionYaHayElementoEnLaPosicion, 
+				ExcepcionNoPudoColocarseEdificio, 
+				ExcepcionErrorPasoDeTurno {
 			
 			Mapa mapa = new Mapa(50);
 			Jugador jugador1 = new Jugador ("carlos","rojo",new Terran());
@@ -193,4 +201,42 @@ public class ConstruccionTest {
 			Assert.assertTrue(jugador1.getDinero().getMinerales() == 660); // +10 por turno
 			Assert.assertTrue(jugador1.getDinero().getGasVespeno() == 410); // +10 por turno
 		}
+		
+		@Test (expected = ExcepcionNoPudoColocarseEdificio.class)
+		public void seReservaLugarAunqueLaConstruccionNoEstaFinalizada() throws ExcepcionNoPudoColocarseEdificio, ExcepcionPosicionInvalida, ExcepcionErrorPasoDeTurno {
+			
+			Mapa mapa = new Mapa(50);
+			Jugador jugador1 = new Jugador ("carlos","rojo",new Terran());
+			Jugador jugador2 = new Jugador ("dean","azul",new Protoss());
+			
+			Juego juego = new Juego(mapa, jugador1, jugador2);
+			
+			juego.ordenFabricacionDeEdificios(new Barraca(), 3, 3);
+			Assert.assertFalse(mapa.obtenerContenidoEnPosicion(3, 3).getElementoEnTierra().esLoMismo(new Barraca()));
+			//todavia no se termino la construccion
+			juego.pasarTurno();
+			juego.ordenFabricacionDeEdificios(new Acceso(), 3, 3);
+			//el otro jugador intenta construir, pero ya esta el espacio reservado
+		}
+			
+		@Test (expected = ExcepcionNoPudoColocarseEdificio.class)
+		public void seReservaLugarParaExtractoraDeRecursos() 
+				throws ExcepcionPosicionInvalida, 
+				ExcepcionYaHayElementoEnLaPosicion, 
+				ExcepcionNoPudoColocarseEdificio,
+				ExcepcionErrorPasoDeTurno {
+			Mapa mapa = new Mapa(50);
+			Jugador jugador1 = new Jugador ("carlos","rojo",new Terran());
+			Jugador jugador2 = new Jugador ("dean","azul",new Protoss());
+			
+			Juego juego = new Juego(mapa, jugador1, jugador2);
+			mapa.colocarEn(3, 3, new FuenteDeMinerales());
+			
+			juego.ordenFabricacionDeEdificios(new CentroDeMineral(), 5, 5);
+			Assert.assertFalse(mapa.obtenerContenidoEnPosicion(3, 3).getElementoEnTierra().esLoMismo(new CentroDeMineral()));
+			
+			juego.pasarTurno();
+			juego.ordenFabricacionDeEdificios(new NexoMineral(), 5, 5);
+		}
+		
 }
