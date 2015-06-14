@@ -13,10 +13,10 @@ public abstract class DeTransporte extends Unidad {
 	
 	public void llevar(Unidad unidad) throws ExcepcionElTransporteEstaLleno{
 		
-		if(cantidadPasajeros < TRANSPORTE){
+		if(cantidadPasajeros + unidad.getTransporte() <= TRANSPORTE){
 			
 			unidadesAbordo.add(unidad);
-			cantidadPasajeros = cantidadPasajeros +1;
+			cantidadPasajeros = cantidadPasajeros + unidad.getTransporte();
 		
 		}
 		else {

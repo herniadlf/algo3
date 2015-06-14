@@ -129,7 +129,7 @@ public class UnidadesProtossTest extends TestCase{
 	}
 	
 	
-	public void testNaveTransporteProtossTransporta8Pasajeros(){
+	public void testNaveTransporteProtossTransporta8Marines(){
 		
 		NaveTransporteProtoss naveTransporte = new NaveTransporteProtoss();
 		ArrayList<Marine> marines = new ArrayList<>();
