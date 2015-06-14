@@ -9,4 +9,5 @@ public class FuenteDeGasVespeno extends FuenteDeRecurso {
 		recurso = new GasVespeno(999999);
 		nombre = "Gas Vespeno";
 	}
+	
 }

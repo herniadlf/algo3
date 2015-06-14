@@ -9,4 +9,5 @@ public class FuenteDeMinerales extends FuenteDeRecurso {
 		recurso = new Mineral(999999);	
 		nombre = "Mineral";
 	}
+	
 }

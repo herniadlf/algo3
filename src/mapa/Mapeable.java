@@ -12,4 +12,5 @@ public interface Mapeable {
 	boolean esOcupable();
 	boolean esTerrestre();
 	boolean esAereo();
+	
 }

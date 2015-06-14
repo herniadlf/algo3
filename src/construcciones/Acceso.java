@@ -15,45 +15,44 @@ public class Acceso extends Creadora {
 	private static final int TIEMPO = 8;
 	private Escudo escudo;
 	
-		public Acceso (){
+	public Acceso (){
 			
-			super();
-			unidadesCreables = new LinkedList<Unidad>();
-			unidadesCreables.add(new Dragon());
-			unidadesCreables.add(new Zealot());
-			setNombre("Acceso");
-			setVida(VIDA);
-			setCosto(COSTO_MINERALES,COSTO_GAS);
-			setTiempoDeConstruccion(TIEMPO);
-			setEdificioRequerido(new Pilon());
-			escudo = new Escudo(ESCUDO,this);
-		}
+		super();
+		unidadesCreables = new LinkedList<Unidad>();
+		unidadesCreables.add(new Dragon());
+		unidadesCreables.add(new Zealot());
+		setNombre("Acceso");
+		setVida(VIDA);
+		setCosto(COSTO_MINERALES,COSTO_GAS);
+		setTiempoDeConstruccion(TIEMPO);
+		setEdificioRequerido(new Pilon());
+		escudo = new Escudo(ESCUDO,this);
+	}
 		
-		public Zealot crearZealot(){
+	public Zealot crearZealot(){
 			
-			Zealot zealot = new Zealot();
-			return zealot;
+		Zealot zealot = new Zealot();
+		return zealot;
 			
-		}
+	}
 		
-		public AltoTemplario crearAltoTemplario(){
+	public AltoTemplario crearAltoTemplario(){
 			
-			AltoTemplario alto = new AltoTemplario();
-			return alto;
+		AltoTemplario alto = new AltoTemplario();
+		return alto;
 			
-		}
+	}
 		
-		public Escudo getEscudo(){
+	public Escudo getEscudo(){
 			
-			return escudo;
-			
-		}
+		return escudo;
 		
-		public void recibirDanio(){
+	}
+		
+	public void recibirDanio(){
 					
-			escudo.atacar(this.getVida().obtenerDanioRecibido());
+		escudo.atacar(this.getVida().obtenerDanioRecibido());
 	
-		}	
-		
-		
+	}	
+			
 }

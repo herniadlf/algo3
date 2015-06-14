@@ -8,29 +8,30 @@ import src.mapa.Mapeable;
 
 public abstract class Extractora extends Construccion {
 	
-		protected static final int RECURSOS_POR_TURNO = 10;
-		FuenteDeRecurso fuente;
+	protected static final int RECURSOS_POR_TURNO = 10;
+	FuenteDeRecurso fuente;
 		
-		public FuenteDeRecurso getFuente(){
+	public FuenteDeRecurso getFuente(){
 			
-			return fuente;
-			
-		}
+		return fuente;
 		
-		public void setFuente(FuenteDeRecurso fuente){
-			
-			this.fuente = fuente; 
-		}
+	}
 		
-		public Extractora(){
+	public void setFuente(FuenteDeRecurso fuente){
 			
-			super();
-			setArquitecto(new ArquitectoDeExtractora());
+		this.fuente = fuente; 
+		
+	}
+		
+	public Extractora(){
 			
-		}
-
-		public void pasoTurno(Turno turno, Mapa mapa, Jugador jugadorActual){
+		super();
+		setArquitecto(new ArquitectoDeExtractora());
 			
-		}
+	}
+	
+	public void pasoTurno(Turno turno, Mapa mapa, Jugador jugadorActual){
+			
+	}
 		
 }

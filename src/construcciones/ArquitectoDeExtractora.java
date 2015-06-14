@@ -20,6 +20,7 @@ public class ArquitectoDeExtractora implements Arquitecto {
 		
 		Extractora auxiliar = (Extractora) construccion;
 		map.verificarFuente(x,y,auxiliar);		
+		
 	}
 
 }

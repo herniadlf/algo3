@@ -1,6 +1,5 @@
 package src.unidades;
 
-import src.ConstantesAlgoCraft;
 import src.Danio;
 import src.Dinero;
 import src.Escudo;
@@ -21,7 +20,6 @@ public class AltoTemplario extends Magica {
 	private static final int COSTO_MINERALES = 50;
 	private static final int COSTO_GAS = 150;
 	private static int ENERGIA = 50;
-	
 	Escudo escudo;
 	private boolean tormentaEnCurso;
 	private TormentaPsionica tormenta;
@@ -46,42 +44,42 @@ public class AltoTemplario extends Magica {
 		
 	}
 		
-	@Override
 	public Mapeable colocarContenido() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	public Mapeable dibujar() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	public Mapeable quitarContenido() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	public Mapeable mover() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	public ColocadorUnidadTerrestre getColocador(){
+		
 		return (ColocadorUnidadTerrestre)colocador;
+		
 	}
 
 	public Escudo getEscudo() {
 	
 		return escudo;
+		
 	}
 
 	public int obtenerEnergia() {
 	
 		return energia.obtenerCantidad();
+		
 	}
 
 	public void tormentaPsionica(int x, int y) {
@@ -106,8 +104,6 @@ public class AltoTemplario extends Magica {
 		}
 		
 	}
-
-	
 	
 	public void recibirDanio (){
 	
@@ -115,19 +111,18 @@ public class AltoTemplario extends Magica {
 		
 	}
 
-	@Override
 	public boolean esOcupable() {
-		// TODO Auto-generated method stub
+		
 		return false;
+		
 	}
 
-	
 	public boolean esTerrestre() {
 		
 		return true;
+		
 	}
 
-	
 	public boolean esAereo() {
 	
 		return false;
@@ -142,7 +137,9 @@ public class AltoTemplario extends Magica {
 	
 	public void afectadoPorTormentaPsionica(int danio){
 		
-		escudo.atacar(danio);
+		vida.aumentarDanioARecibir(danio);
+		this.recibirDanio();
+		vida.reestablecerDanioRecibido();
 		
 	}
 

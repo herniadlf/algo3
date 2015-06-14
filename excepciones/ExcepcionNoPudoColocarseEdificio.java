@@ -6,6 +6,5 @@ public class ExcepcionNoPudoColocarseEdificio extends ExcepcionGeneral {
 		super("No pudo colocarse edificio.");
 		causa = e;
 	}
-	
 
 }

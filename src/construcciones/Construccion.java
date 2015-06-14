@@ -193,8 +193,9 @@ public class Construccion implements Atacable {
 	}
 	
 	public boolean esOcupable() {
-		// TODO Auto-generated method stub
+	
 		return false;
+		
 	}
 	
 	public boolean esTerrestre() {
