@@ -7,7 +7,6 @@ import excepciones.ExcepcionYaHayElementoEnLaPosicion;
 
 public class ArquitectoDeExtractora implements Arquitecto {
 
-	@Override
 	public void colocar(Mapa map, Construccion edificio)
 			throws ExcepcionPosicionInvalida, ExcepcionExtractoraSinRecurso,
 			ExcepcionYaHayElementoEnLaPosicion {
@@ -16,7 +15,6 @@ public class ArquitectoDeExtractora implements Arquitecto {
 		
 	}
 
-	@Override
 	public void verificarTerreno(Mapa map, int x, int y, Construccion construccion) throws ExcepcionPosicionInvalida, ExcepcionExtractoraSinRecurso {
 		
 		Extractora auxiliar = (Extractora) construccion;

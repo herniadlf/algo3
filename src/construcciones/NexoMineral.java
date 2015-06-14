@@ -9,6 +9,7 @@ import src.mapa.FuenteDeRecurso;
 import src.mapa.Mapa;
 
 public class NexoMineral extends Extractora {
+	
 	private static final int COSTO_MINERALES = 50;
 	private static final int COSTO_GAS = 0;
 	private static final int VIDA = 250;
@@ -40,10 +41,13 @@ public class NexoMineral extends Extractora {
 		escudo.atacar(this.getVida().obtenerDanioRecibido());
 		
 	}
+	
 	public void pasoTurno(Turno turno, Mapa mapa, Jugador jugadorActual){
+		
 		int minerales = jugadorActual.getDinero().getMinerales()  + RECURSOS_POR_TURNO;
 		int gas = jugadorActual.getDinero().getGasVespeno();
 		jugadorActual.setDinero(minerales, gas);
+		
 	}
 	
 }

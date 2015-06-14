@@ -32,7 +32,7 @@ public class Escudo{
 		
 	}
 	
-	private void pasoTurno(){
+	public void pasoTurno(){
 		
 		if(resistenciaActual + REGENERACION_POR_TURNO <= resistenciaTotal){
 			resistenciaActual = resistenciaActual + REGENERACION_POR_TURNO;

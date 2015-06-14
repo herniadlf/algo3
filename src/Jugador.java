@@ -101,7 +101,6 @@ public class Jugador {
 	
 	}
 	
-	
 	public Dinero getDinero() { 
 		
 		return dineroJugador; 
@@ -114,7 +113,6 @@ public class Jugador {
 		
 	}
 		
-	
 	public Construccion colocar(Construccion edificio, Mapa map, int x, int y)  {
 	
 		try {			

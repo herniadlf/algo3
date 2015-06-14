@@ -29,15 +29,12 @@ public class Acceso extends Creadora {
 			escudo = new Escudo(ESCUDO,this);
 		}
 		
-		
 		public Zealot crearZealot(){
 			
 			Zealot zealot = new Zealot();
 			return zealot;
 			
 		}
-		
-		
 		
 		public AltoTemplario crearAltoTemplario(){
 			

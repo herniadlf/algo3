@@ -2,10 +2,10 @@ package excepciones;
 
 public class ExcepcionExtractoraSinRecurso extends ExcepcionGeneral {
 	
-		public ExcepcionExtractoraSinRecurso(String str){
+	public ExcepcionExtractoraSinRecurso(String str){
+		
+		super(str);
 			
-			super(str);
-			
-		}
+	}
 		
 }

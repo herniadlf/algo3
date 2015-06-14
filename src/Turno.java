@@ -10,13 +10,11 @@ public class Turno {
 		
 	}
 	
-	
 	public void aumentarTurno(){
 		
 		this.turno= this.turno +1;
 		
 	}
-	
 	
 	public int devolverTurnoActual(){
 		

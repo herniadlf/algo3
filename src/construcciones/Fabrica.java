@@ -13,6 +13,7 @@ public class Fabrica extends Creadora {
 	private static final int TIEMPO = 12;
 	
 	public Fabrica(){	
+		
 		super();
 		unidadesCreables = new LinkedList<Unidad>();
 		unidadesCreables.add(new Golliat());
@@ -21,8 +22,8 @@ public class Fabrica extends Creadora {
 		setCosto(COSTO_MINERALES,COSTO_GAS);	
 		setTiempoDeConstruccion(TIEMPO);
 		setEdificioRequerido(new Barraca());
+		
 	}
-	
 	
 	public Golliat crearGolliat() {
 		
@@ -31,7 +32,6 @@ public class Fabrica extends Creadora {
 		
 	}
 	
-
 	public void recibirDanio (){
 			
 		this.getVida().disminuirVidaPorDanio();

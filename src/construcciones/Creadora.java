@@ -23,16 +23,20 @@ public abstract class Creadora extends NoExtractora {
 	ArrayList <Unidad> unidadesEnFabricacion;
 	
 	public Creadora (){
+		
 		super();
 		unidadesEnFabricacion= new ArrayList<Unidad>();
+		
 	}
 	
 	public Unidad crearUnidad(Unidad unidad){
+		
 		return unidad;
+		
 	}
 	
-
 	public void verificarUnidadCreable(Unidad aEntrenar) throws ExcepcionUnidadNoCorrespondiente {
+		
 		Iterator<Unidad> list = unidadesCreables.iterator();		
 		Boolean founded = unidadesCreables.element().esLoMismo(aEntrenar);
 		while ( (list.hasNext()) && (founded == false) ){
@@ -43,6 +47,7 @@ public abstract class Creadora extends NoExtractora {
 			throw new ExcepcionUnidadNoCorrespondiente("No corresponde la unidad a este edificio");
 		}
 	}
+	
 	public void colocarUnidad ( Unidad aColocar , Mapa map ) 
 			throws ExcepcionPosicionInvalida, ExcepcionNoHayLugarParaCrear, ExcepcionYaHayElementoEnLaPosicion{
 		
@@ -54,6 +59,7 @@ public abstract class Creadora extends NoExtractora {
 		aColocar.setPosicion(auxiliar);
 		
 	}
+	
 	public void pasoTurno (Turno turno, Mapa map, Jugador jugadorActual) 
 			throws ExcepcionEdificioNoPuedeCrearUnidad,
 			ExcepcionPosicionInvalida, 
@@ -89,7 +95,9 @@ public abstract class Creadora extends NoExtractora {
 	}
 
 	public void agregarUnidadAEntrenamiento(Unidad unidad) {
+		
 		unidadesEnFabricacion.add(unidad);		
+		
 	}	
 				
 }

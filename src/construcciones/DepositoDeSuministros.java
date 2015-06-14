@@ -3,6 +3,7 @@ package src.construcciones;
 import src.ConstantesAlgoCraft;
 
 public class DepositoDeSuministros extends NoExtractora{
+	
 	private static final int COSTO_MINERALES = 100;
 	private static final int COSTO_GAS = 0;
 	private static final int VIDA = 500;
@@ -20,7 +21,6 @@ public class DepositoDeSuministros extends NoExtractora{
 		capacidadDeSuministros = SUMINISTROS;
 		
 	}
-	
 	
 	public void recibirDanio(){
 			

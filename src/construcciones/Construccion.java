@@ -43,12 +43,12 @@ public class Construccion implements Atacable {
 		
 	} 
 	
-	
 	public String getNombre(){
 		
 		return nombre;
 		
 	}
+	
 	public void setNombre(String nombre){ 
 		
 		this.nombre = nombre;	
@@ -60,6 +60,7 @@ public class Construccion implements Atacable {
 		return tiempoDeConstruccion;
 		
 	}
+	
 	public void setTiempoDeConstruccion(int tiempo){ 
 		
 		tiempoDeConstruccion = tiempo;	
@@ -175,37 +176,36 @@ public class Construccion implements Atacable {
 		
 	}
 
-	@Override
 	public Mapeable dibujar() {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
-	@Override
+	
 	public Mapeable quitarContenido() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
 	public Mapeable mover() {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	@Override
+	
 	public boolean esOcupable() {
 		// TODO Auto-generated method stub
 		return false;
 	}
-	@Override
+	
 	public boolean esTerrestre() {
-		// TODO Auto-generated method stub
+
 		return true;
+		
 	}
-	@Override
+	
 	public boolean esAereo() {
-		// TODO Auto-generated method stub
+		
 		return false;
+		
 	}
 	
 	public void recibirDanio() {	

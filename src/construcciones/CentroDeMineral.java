@@ -32,8 +32,11 @@ public class CentroDeMineral extends Extractora {
 	}
 	
 	public void pasoTurno(Turno turno, Mapa mapa, Jugador jugadorActual){
+		
 		int minerales = jugadorActual.getDinero().getMinerales()  + RECURSOS_POR_TURNO;
 		int gas = jugadorActual.getDinero().getGasVespeno();
 		jugadorActual.setDinero(minerales, gas);
+		
 	}
+	
 }
