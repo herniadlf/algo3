@@ -71,8 +71,6 @@ public class NaveCienciaTest extends TestCase {
 		Dragon dragon = new Dragon();
 		Zealot zealot = new Zealot();
 		AltoTemplario altoTemplario = new AltoTemplario();
-		Mineral mineral = new Mineral(300);
-		
 		
 		mapa.colocarEn(21, 21, dragon);
 		mapa.colocarEn(20, 21, zealot);
@@ -85,7 +83,7 @@ public class NaveCienciaTest extends TestCase {
 		naveCiencia.pasoTurno();
 		naveCiencia.pasoTurno();
 
-		naveCiencia.atacarConEMP(20, 20); //saca 20 escudo 0 20 energia
+		naveCiencia.emp(20, 20); //saca 20 escudo 0 20 energia
 
 		Assert.assertTrue(dragon.getEscudo().obtenerResistenciaActual() == 60);
 		Assert.assertTrue(zealot.getEscudo().obtenerResistenciaActual() == 40);

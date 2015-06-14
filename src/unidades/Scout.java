@@ -96,7 +96,14 @@ public class Scout extends Unidad {
 
 	@Override
 	public void atacarConEMP(int danio) {
+		
 		escudo.atacar(danio);
+		
+	}
+	
+	public Escudo getEscudo(){
+		
+		return escudo;
 		
 	}
 	

@@ -76,7 +76,7 @@ public class NaveCiencia extends Magica {
 		return energia.obtenerCantidad(); 
 	}
 	
-	public void atacarConEMP(int x, int y) {
+	public void emp(int x, int y) {
 		
 		EMP emp = new EMP(mapa, x, y);
 		if(energia.obtenerCantidad() >= emp.obtenerEnergiaNecesaria()){
