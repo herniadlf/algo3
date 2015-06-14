@@ -110,7 +110,11 @@ public class Zealot extends Unidad {
 		
 	}
 
-
+	public void afectadoPorTormentaPsionica(int danio){
+		
+		escudo.atacar(danio);
+		
+	}
 	
 
 }

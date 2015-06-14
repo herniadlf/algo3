@@ -217,6 +217,12 @@ public class Construccion implements Atacable {
 		//No afecta a construcciones
 		
 	}
+	
+	public void afectadoPorTormentaPsionica(int danio){
+		
+		//No afecta a construcciones
+		
+	}
 
 	public void pasoTurno(Turno turno, Mapa map, Jugador jugador) throws ExcepcionEdificioNoPuedeCrearUnidad, ExcepcionPosicionInvalida, ExcepcionNoHayLugarParaCrear, ExcepcionYaHayElementoEnLaPosicion {
 		

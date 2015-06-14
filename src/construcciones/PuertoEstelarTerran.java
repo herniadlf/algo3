@@ -45,7 +45,7 @@ public class PuertoEstelarTerran extends Creadora {
 
 	public void recibirDanio (){
 		
-		this.getVida().dismunuirVidaPorDanio();
+		this.getVida().disminuirVidaPorDanio();
 		
 	}
 	

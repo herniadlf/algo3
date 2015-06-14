@@ -65,7 +65,7 @@ public class Golliat extends Unidad {
 	
 	public void recibirDanio (){
 		
-		vida.dismunuirVidaPorDanio();
+		vida.disminuirVidaPorDanio();
 		
 	}
 
@@ -94,7 +94,12 @@ public class Golliat extends Unidad {
 		
 	}
 
-
+	public void afectadoPorTormentaPsionica(int danio){
+		
+		vida.aumentarDanioARecibir(danio);
+		
+	}
+	
 	
 	
 

@@ -100,4 +100,12 @@ public class NaveTransporteProtoss extends DeTransporte {
 		
 	}
 
+
+	public void afectadoPorTormentaPsionica(int danio){
+		
+		escudo.atacar(danio);
+		
+	}
+	
+	
 }

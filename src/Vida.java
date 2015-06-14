@@ -13,7 +13,7 @@ public class Vida {
 		
 	}
 	
-	public void dismunuirVidaPorDanio(){
+	public void disminuirVidaPorDanio(){
 		
 		this.vida = this.vida - this.danioRecibido;
 		this.actualizarEstadoDeVida();
@@ -52,4 +52,9 @@ public class Vida {
 		
 	}
 	
+	public void reestablecerDanioRecibido(){
+		
+		danioRecibido = 0;
+		
+	}
 }

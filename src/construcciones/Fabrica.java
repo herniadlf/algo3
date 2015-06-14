@@ -34,7 +34,7 @@ public class Fabrica extends Creadora {
 
 	public void recibirDanio (){
 			
-		this.getVida().dismunuirVidaPorDanio();
+		this.getVida().disminuirVidaPorDanio();
 			
 	}
 

@@ -12,6 +12,8 @@ public interface Atacable extends Mapeable{
 	
 	public void atacarConEMP(int danio);
 	
+	public void afectadoPorTormentaPsionica(int danio);
+	
 	public void recibirDanio();
 
 }

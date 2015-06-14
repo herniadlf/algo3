@@ -27,7 +27,7 @@ public class CentroDeMineral extends Extractora {
 		
 	public void recibirDanio (){
 			
-		this.getVida().dismunuirVidaPorDanio();
+		this.getVida().disminuirVidaPorDanio();
 			
 	}
 	

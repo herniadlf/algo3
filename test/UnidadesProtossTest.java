@@ -111,7 +111,7 @@ public class UnidadesProtossTest extends TestCase{
 		
 		Dragon dragon= new Dragon();
 		dragon.getVida().aumentarDanioARecibir(200);
-		dragon.getVida().dismunuirVidaPorDanio();
+		dragon.getVida().disminuirVidaPorDanio();
 		
 		Assert.assertTrue(dragon.getVida().devolverEstadoDeVida()==true);
 		

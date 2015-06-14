@@ -46,6 +46,7 @@ public class AltoTemplarioTest extends TestCase {
 	
 	public void testTormentaPsionicaCuesta75Energia(){
 		
+		altoTemplario.setMapa(mapa);
 		altoTemplario.pasoTurno();
 		altoTemplario.pasoTurno();
 		altoTemplario.tormentaPsionica(30,30);
@@ -53,7 +54,7 @@ public class AltoTemplarioTest extends TestCase {
 		
 	}
 	
-	/*
+	
 	public void testTormentaPsionicaDaña100DuranteDosTurnosAtodasLasUnidades() throws ExcepcionPosicionInvalida, ExcepcionYaHayElementoEnLaPosicion{
 		
 		altoTemplario.setMapa(mapa);
@@ -68,13 +69,9 @@ public class AltoTemplarioTest extends TestCase {
 		//cargar energia
 		altoTemplario.pasoTurno();//65
 		altoTemplario.pasoTurno();//80
-		altoTemplario.pasoTurno();//95
-		altoTemplario.pasoTurno();//110
-		altoTemplario.pasoTurno();//125
-		altoTemplario.pasoTurno();//140
-		altoTemplario.pasoTurno();//155
 		
-		altoTemplario.tormentaPsionica(20, 20); //
+		altoTemplario.tormentaPsionica(20, 20); //5
+		Assert.assertTrue(altoTemplario.obtenerEnergia() == 5);
 		
 		//1er Turno saco 100 solo a UNIDADES
 		Assert.assertTrue(scout.getEscudo().obtenerResistenciaActual() == 0);
@@ -83,17 +80,14 @@ public class AltoTemplarioTest extends TestCase {
 		//Assert.assertTrue(marine.getVida().obtenerVida() == 0);
 		
 		//2do Turno saca 100 mas
-		altoTemplario.pasoTurno();//95
+		altoTemplario.pasoTurno();//20
 		
+		Assert.assertTrue(altoTemplario.obtenerEnergia() == 20);
 		Assert.assertTrue(scout.getEscudo().obtenerResistenciaActual() == 0);
 		Assert.assertTrue(scout.getVida().obtenerVida() == 50);
 		Assert.assertTrue(fabrica.getVida().obtenerVida() == 1250);
 		//Assert.assertTrue(marine.getVida().obtenerVida() == 0);
 		
-		
 	}
-	*/
-	
-	
 
 }

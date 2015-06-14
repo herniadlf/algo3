@@ -23,6 +23,8 @@ public class AltoTemplario extends Magica {
 	private static int ENERGIA = 50;
 	
 	Escudo escudo;
+	private boolean tormentaEnCurso;
+	private TormentaPsionica tormenta;
 	
 	public AltoTemplario() {	
 		
@@ -37,10 +39,10 @@ public class AltoTemplario extends Magica {
 		vision = VISION;
 		escudo = new Escudo (ESCUDO,this);
 		energia = new Energia(ENERGIA);
-		//magias.add(new TormentaPsionica());
-		//magias.add(new Alucinacion());
 		energiaPorTurno = 15;
 		colocador = (ColocadorUnidadTerrestre) new ColocadorUnidadTerrestre();
+		tormentaEnCurso = false;
+		tormenta = null;
 		
 	}
 		
@@ -84,11 +86,12 @@ public class AltoTemplario extends Magica {
 
 	public void tormentaPsionica(int x, int y) {
 
-		TormentaPsionica tormenta = new TormentaPsionica();
+		tormenta = new TormentaPsionica(mapa,x,y);
 
 		if(energia.obtenerCantidad() >= tormenta.obtenerEnergiaNecesaria()) {
-			tormenta.atacar(x,y);
+			tormenta.atacar();
 			energia.disminuirEnergia(tormenta.obtenerEnergiaNecesaria());
+			tormentaEnCurso = true;
 		
 		}
 
@@ -107,7 +110,6 @@ public class AltoTemplario extends Magica {
 	
 	
 	public void recibirDanio (){
-		
 	
 		escudo.atacar(this.getVida().obtenerDanioRecibido());
 		
@@ -119,28 +121,40 @@ public class AltoTemplario extends Magica {
 		return false;
 	}
 
-	@Override
+	
 	public boolean esTerrestre() {
-		// TODO Auto-generated method stub
+		
 		return true;
 	}
 
-	@Override
+	
 	public boolean esAereo() {
-		// TODO Auto-generated method stub
+	
 		return false;
+		
 	}
 
-	@Override
 	public void atacarConEMP(int danio) {
 		
 		energia.disminuirEnergia(danio);
 		
 	}
-
 	
-	
+	public void afectadoPorTormentaPsionica(int danio){
+		
+		escudo.atacar(danio);
+		
+	}
 
+	public void pasoTurno(){
+		
+		energia.aumentarEnergia(energiaPorTurno);
+		if(tormentaEnCurso){
+			tormenta.atacar();
+			tormentaEnCurso = false;
+		}
+		
+	}
 	
 }
 

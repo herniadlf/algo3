@@ -24,7 +24,7 @@ public class DepositoDeSuministros extends NoExtractora{
 	
 	public void recibirDanio(){
 			
-		this.getVida().dismunuirVidaPorDanio();
+		this.getVida().disminuirVidaPorDanio();
 			
 	}
 	

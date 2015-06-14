@@ -71,7 +71,7 @@ public class NaveTransporteTerran extends DeTransporte {
 	public void recibirDanio (){
 		
 	
-		vida.dismunuirVidaPorDanio();;
+		vida.disminuirVidaPorDanio();;
 		
 	}
 
@@ -100,6 +100,12 @@ public class NaveTransporteTerran extends DeTransporte {
 		
 	}
 
+	public void afectadoPorTormentaPsionica(int danio){
+		
+		vida.aumentarDanioARecibir(danio);
+		
+	}
+	
 
 	
 	

@@ -100,7 +100,7 @@ public class NaveCiencia extends Magica {
 	public void recibirDanio (){
 		
 	
-		vida.dismunuirVidaPorDanio();;
+		vida.disminuirVidaPorDanio();;
 		
 	}
 
@@ -132,7 +132,13 @@ public class NaveCiencia extends Magica {
 		// no afecta
 		
 	}
-
+	
+	public void afectadoPorTormentaPsionica(int danio){
+		
+		vida.aumentarDanioARecibir(danio);
+		
+	}
+	
 
 	
 

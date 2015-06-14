@@ -16,10 +16,6 @@ import src.mapa.Posicion;
 import src.mapa.Sector;
 
 public class EMP extends PorRangoAtaque {
-
-	Mapa mapa;
-	private int posicionX;
-	private int posicionY;
 	
 	protected ArrayList<Posicion> alrededores;	
 	
@@ -34,33 +30,6 @@ public class EMP extends PorRangoAtaque {
 		
 	}
 	
-	
-	public void setAlrededores(){
-		
-		alrededores = new ArrayList<Posicion>();
-		alrededores.add(new Posicion(posicionX-1,posicionY+1));
-		alrededores.add(new Posicion(posicionX,posicionY+1));
-		alrededores.add(new Posicion(posicionX+1,posicionY+1));
-		alrededores.add(new Posicion(posicionX+1,posicionY));
-		alrededores.add(new Posicion(posicionX+1,posicionY-1));
-		alrededores.add(new Posicion(posicionX,posicionY-1));
-		alrededores.add(new Posicion(posicionX-1,posicionY-1));
-		alrededores.add(new Posicion(posicionX-1,posicionY));		
-	}
-		
-	public void atacar(){
-		
-		this.atacarEnEstaPosicion(posicionX, posicionY);
-		Iterator<Posicion> i = alrededores.iterator();
-		
-		while(i.hasNext()){
-			Posicion nuevaPosicion = i.next();
-			int proximoX = nuevaPosicion.getX();
-			int proximoY = nuevaPosicion.getY();
-			atacarEnEstaPosicion(proximoX, proximoY);
-		}
-	
-	}
 
 	public void atacarEnEstaPosicion(int x,int y){
 		

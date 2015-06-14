@@ -68,7 +68,7 @@ public class Espectro extends Unidad {
 	public void recibirDanio (){
 		
 	
-		vida.dismunuirVidaPorDanio();;
+		vida.disminuirVidaPorDanio();;
 		
 	}
 
@@ -99,6 +99,12 @@ public class Espectro extends Unidad {
 		
 	}
 
+	public void afectadoPorTormentaPsionica(int danio){
+		
+		vida.aumentarDanioARecibir(danio);
+		
+	}
+	
 
 	
 }

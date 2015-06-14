@@ -63,38 +63,32 @@ public class Scout extends Unidad {
 	}
 	
 	public ColocadorUnidadVoladora getColocador(){
+		
 		return (ColocadorUnidadVoladora)colocador;
+		
 	}
-	
 	
 	public void recibirDanio (){
 		
-	
 		escudo.atacar(this.getVida().obtenerDanioRecibido());
 		
 	}
 
-	
-
-	@Override
 	public boolean esOcupable() {
-		// TODO Auto-generated method stub
+		
 		return false;
 	}
 
-	@Override
 	public boolean esTerrestre() {
-		// TODO Auto-generated method stub
+		
 		return false;
 	}
 
-	@Override
 	public boolean esAereo() {
-		// TODO Auto-generated method stub
+		
 		return true;
 	}
 
-	@Override
 	public void atacarConEMP(int danio) {
 		
 		escudo.atacar(danio);
@@ -104,6 +98,15 @@ public class Scout extends Unidad {
 	public Escudo getEscudo(){
 		
 		return escudo;
+		
+	}
+	
+
+	public void afectadoPorTormentaPsionica(int danio){
+			
+		vida.aumentarDanioARecibir(danio);
+		this.recibirDanio();
+		vida.reestablecerDanioRecibido();
 		
 	}
 	

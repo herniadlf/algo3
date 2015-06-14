@@ -18,7 +18,7 @@ public class Escudo{
 	public void atacar(int danio) {
 		
 		if(resistenciaActual - danio < 0){
-			protegido.getVida().dismunuirVidaPorDanio();
+			protegido.getVida().disminuirVidaPorDanio();
 		}
 		else {	
 			resistenciaActual = resistenciaActual - danio;

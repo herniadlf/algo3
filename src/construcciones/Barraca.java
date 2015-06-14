@@ -36,7 +36,7 @@ public class Barraca extends Creadora {
 	
 	public void recibirDanio (){
 		
-		this.getVida().dismunuirVidaPorDanio();
+		this.getVida().disminuirVidaPorDanio();
 		
 	}
 	
