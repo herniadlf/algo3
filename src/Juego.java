@@ -90,6 +90,7 @@ public class Juego {
 			jugadorActual.verificacionUnidad(unidad, edificio);
 			unidad.setEdificio(edificio);
 			unidad.setTurnoInicioDeEntrenamiento(turno.devolverTurnoActual());
+			unidad.setAtaquesPermitidosPorTurno(jugadorActual.getAtaquesPermitidosPorTurno());
 			edificio.agregarUnidadAEntrenamiento(unidad);
 		} catch (ExcepcionUnidadNoCorrespondiente
 				| ExcepcionRecursoInsuficiente

@@ -104,6 +104,12 @@ public class Espectro extends Unidad {
 		vida.aumentarDanioARecibir(danio);
 		
 	}
+
+	@Override
+	public void pasoTurno() {
+		// TODO Auto-generated method stub
+		
+	}
 	
 
 	

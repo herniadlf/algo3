@@ -1,6 +1,7 @@
 package src.unidades;
 
 
+import excepciones.ExcepcionPosicionInvalida;
 import src.ConstantesAlgoCraft;
 import src.Danio;
 import src.Dinero;
@@ -39,6 +40,14 @@ public class Zealot extends Unidad {
 		colocador = (ColocadorUnidadTerrestre) new ColocadorUnidadTerrestre();
 		
 	}		
+	
+public void pasoTurno() {
+		
+		escudo.pasoTurno();
+		
+		
+	}
+	
 
 		
 	public Escudo getEscudo(){
@@ -74,10 +83,14 @@ public class Zealot extends Unidad {
 	}
 
 	
-	public void recibirDanio (){
+	public void recibirDanio () throws ExcepcionPosicionInvalida{
 		
 	
 		escudo.atacar(this.getVida().obtenerDanioRecibido());
+		boolean estadoDeVidaFinalizado= vida.devolverEstadoDeVida();
+		  if (estadoDeVidaFinalizado==true){
+			 super.mapa.eliminarElementoTerrestreEnPosicion(super.getPosicionX(), super.getPosicionY());
+			 }
 		
 	}
 

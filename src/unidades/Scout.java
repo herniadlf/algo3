@@ -1,5 +1,6 @@
 package src.unidades;
 
+import excepciones.ExcepcionPosicionInvalida;
 import src.ConstantesAlgoCraft;
 import src.Danio;
 import src.Dinero;
@@ -38,6 +39,14 @@ public class Scout extends Unidad {
 		
 	}		
 	
+public void pasoTurno() {
+		
+		escudo.pasoTurno();
+		
+		
+	}
+	
+	
 	@Override
 	public Mapeable colocarContenido() {
 		// TODO Auto-generated method stub
@@ -68,9 +77,13 @@ public class Scout extends Unidad {
 		
 	}
 	
-	public void recibirDanio (){
+	public void recibirDanio () throws ExcepcionPosicionInvalida{
 		
 		escudo.atacar(this.getVida().obtenerDanioRecibido());
+		boolean estadoDeVidaFinalizado= vida.devolverEstadoDeVida();
+		  if (estadoDeVidaFinalizado==true){
+			 super.mapa.eliminarElementoTerrestreEnPosicion(super.getPosicionX(), super.getPosicionY());
+			 }
 		
 	}
 
@@ -102,7 +115,7 @@ public class Scout extends Unidad {
 	}
 	
 
-	public void afectadoPorTormentaPsionica(int danio){
+	public void afectadoPorTormentaPsionica(int danio) throws ExcepcionPosicionInvalida{
 			
 		vida.aumentarDanioARecibir(danio);
 		this.recibirDanio();

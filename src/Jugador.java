@@ -1,6 +1,7 @@
 package src;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import excepciones.ExcepcionConstruccionNoCorrespondiente;
 import excepciones.ExcepcionEdificioNoPuedeCrearUnidad;
@@ -37,6 +38,11 @@ public class Jugador {
 	private Dinero dineroJugador;
 	ArrayList <Construccion> construccionesEnCamino;
 	ArrayList<Construccion> construccionesEnPie;
+	AtaquesPermitidosPorTurno ataques;
+	private Juego juego;
+	ArrayList<Unidad> unidadesAlistadas;
+	
+	
 	
 	public Jugador(String nombre, String color, Raza raza) {
 		
@@ -47,6 +53,9 @@ public class Jugador {
 		setDinero(800,400);
 		this.construccionesEnCamino= new ArrayList<Construccion>();	
 		this.construccionesEnPie= new ArrayList <Construccion>();
+		this.ataques= new  AtaquesPermitidosPorTurno();
+		
+		
 		
 	}
 	
@@ -62,12 +71,19 @@ public class Jugador {
 		return nombre;
 		
 	}
+	public AtaquesPermitidosPorTurno getAtaquesPermitidosPorTurno(){
+		return ataques;
+		
+		
+	}
 	
 	public void setNombre(String nombre) { 
 	
 		this.nombre = nombre; 
 	
 	}
+	
+	
 	
 	public String getColor() {
 		
@@ -98,6 +114,18 @@ public class Jugador {
 
 	}
 	
+	public void setJuego (Juego juego){
+		this.juego= juego;
+		
+		
+	}
+	
+	public Juego getJuego(){
+		return this.juego;
+		
+		
+	}
+	
 	public void setPoblacionDisponible(int numero) { 
 		
 		poblacionDisponible = numero; 
@@ -110,11 +138,13 @@ public class Jugador {
 		
 	}
 	
+	
 	public void setDinero(int minerales,int gasVespeno) { 
 		
 		dineroJugador = new Dinero(minerales,gasVespeno);
 		
 	}
+		
 		
 	public Construccion colocar(Construccion edificio, Mapa map, int i, int j) throws ExcepcionNoPudoColocarseEdificio  {
 	
@@ -231,6 +261,12 @@ public class Jugador {
 		}
 		
 	}
+	
+	public void agragarAUnidadesAlistadas (Unidad unidad){
+		this.unidadesAlistadas.add(unidad);
+		
+		
+	}
 
 	public void pasoTurno(Turno turno, Mapa mapa) throws ExcepcionErrorPasoDeTurno 	{
 		try{
@@ -239,6 +275,11 @@ public class Jugador {
 		} catch ( ExcepcionNoPudoColocarseEdificio | ExcepcionNoPudoColocarseUnidad e){
 			throw new ExcepcionErrorPasoDeTurno(e);
 		}
-	}
+		
+		/*Iterator<Unidad> i = unidadesAlistadas.iterator();
+		while(i.hasNext()){
+			Unidad unidad = i.next();
+			unidad.pasoTurno();
+		}*/
 	
-}
+}}

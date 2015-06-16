@@ -105,6 +105,12 @@ public class NaveTransporteTerran extends DeTransporte {
 		vida.aumentarDanioARecibir(danio);
 		
 	}
+
+	@Override
+	public void pasoTurno() {
+		// TODO Auto-generated method stub
+		
+	}
 	
 
 	

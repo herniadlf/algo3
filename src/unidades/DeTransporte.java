@@ -3,6 +3,7 @@ package src.unidades;
 import java.util.ArrayList;
 
 import excepciones.ExcepcionElTransporteEstaLleno;
+import excepciones.ExcepcionPosicionInvalida;
 import src.mapa.Mapeable;
 
 public abstract class DeTransporte extends Unidad {
@@ -77,7 +78,7 @@ public abstract class DeTransporte extends Unidad {
 	}
 
 	@Override
-	public void recibirDanio() {
+	public void recibirDanio() throws ExcepcionPosicionInvalida {
 		// TODO Auto-generated method stub
 
 	}

@@ -3,6 +3,7 @@ package src.unidades;
 import java.util.ArrayList;
 
 import excepciones.ExcepcionElTransporteEstaLleno;
+import excepciones.ExcepcionPosicionInvalida;
 import src.ConstantesAlgoCraft;
 import src.Danio;
 import src.Dinero;
@@ -42,6 +43,13 @@ public class NaveTransporteProtoss extends DeTransporte {
 		
 	}	
 		
+public void pasoTurno() {
+		
+		escudo.pasoTurno();
+		
+		
+	}
+	
 	@Override
 	public Mapeable colocarContenido() {
 		// TODO Auto-generated method stub
@@ -71,10 +79,13 @@ public class NaveTransporteProtoss extends DeTransporte {
 	}
 	
 	
-	public void recibirDanio (){
+	public void recibirDanio () throws ExcepcionPosicionInvalida{
 		
-	
 		escudo.atacar(this.getVida().obtenerDanioRecibido());
+		boolean estadoDeVidaFinalizado= vida.devolverEstadoDeVida();
+		  if (estadoDeVidaFinalizado==true){
+			 super.mapa.eliminarElementoTerrestreEnPosicion(super.getPosicionX(), super.getPosicionY());
+			 }
 		
 	}
 

@@ -1,5 +1,6 @@
 package src.unidades;
 
+import excepciones.ExcepcionPosicionInvalida;
 import src.Danio;
 import src.Dinero;
 import src.Escudo;
@@ -105,9 +106,14 @@ public class AltoTemplario extends Magica {
 		
 	}
 	
-	public void recibirDanio (){
+	public void recibirDanio () throws ExcepcionPosicionInvalida{
 	
+
 		escudo.atacar(this.getVida().obtenerDanioRecibido());
+		boolean estadoDeVidaFinalizado= vida.devolverEstadoDeVida();
+		  if (estadoDeVidaFinalizado==true){
+			 super.mapa.eliminarElementoTerrestreEnPosicion(super.getPosicionX(), super.getPosicionY());
+			 }
 		
 	}
 
@@ -135,7 +141,7 @@ public class AltoTemplario extends Magica {
 		
 	}
 	
-	public void afectadoPorTormentaPsionica(int danio){
+	public void afectadoPorTormentaPsionica(int danio) throws ExcepcionPosicionInvalida{
 		
 		vida.aumentarDanioARecibir(danio);
 		this.recibirDanio();

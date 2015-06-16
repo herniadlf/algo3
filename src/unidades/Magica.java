@@ -2,6 +2,7 @@ package src.unidades;
 
 import java.util.ArrayList;
 
+import excepciones.ExcepcionPosicionInvalida;
 import src.Atacable;
 import src.Danio;
 import src.Dinero;
@@ -59,7 +60,7 @@ public abstract class Magica extends Unidad {
 	}
 
 	@Override
-	public void recibirDanio() {
+	public void recibirDanio() throws ExcepcionPosicionInvalida {
 		// TODO Auto-generated method stub
 
 	}

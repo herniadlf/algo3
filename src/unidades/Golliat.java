@@ -99,6 +99,12 @@ public class Golliat extends Unidad {
 		vida.aumentarDanioARecibir(danio);
 		
 	}
+
+	@Override
+	public void pasoTurno() {
+		// TODO Auto-generated method stub
+		
+	}
 	
 	
 	

@@ -99,6 +99,12 @@ public class Marine extends Unidad {
 		vida.aumentarDanioARecibir(danio);
 		
 	}
+
+	@Override
+	public void pasoTurno() {
+		// TODO Auto-generated method stub
+		
+	}
 	
 	
 	

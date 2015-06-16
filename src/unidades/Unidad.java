@@ -3,9 +3,13 @@ package src.unidades;
 
 import java.util.ArrayList;
 
+import excepciones.ExcepcionEdificioNoPuedeCrearUnidad;
+import excepciones.ExcepcionErrorPasoDeTurno;
+import excepciones.ExcepcionNoHayLugarParaCrear;
 import excepciones.ExcepcionPosicionInvalida;
 import excepciones.ExcepcionYaHayElementoEnLaPosicion;
 import src.Atacable;
+import src.AtaquesPermitidosPorTurno;
 import src.Danio;
 import src.Dinero;
 import src.Vida;
@@ -31,12 +35,21 @@ public abstract class Unidad implements Atacable{
 	protected ColocadorDeUnidades colocador;
 	protected int turnoInicioEntrenamiento;
 	protected Creadora edificio;
+	protected AtaquesPermitidosPorTurno ataques;
 	
 	public void setMapa (Mapa mapa){
 		
 		this.mapa =mapa;
 		
 	}
+	
+	public abstract void pasoTurno ();
+	
+	public void setAtaquesPermitidosPorTurno(AtaquesPermitidosPorTurno ata){
+		this.ataques = ata;
+		
+		
+	} 
 	
 	public void setEdificio (Creadora e){
 		edificio = e;
@@ -134,7 +147,7 @@ public abstract class Unidad implements Atacable{
 	
 	}
 	
-	public void atacarEnAire (Atacable atacado){
+	public void atacarEnAire (Atacable atacado) throws ExcepcionEdificioNoPuedeCrearUnidad, ExcepcionPosicionInvalida, ExcepcionNoHayLugarParaCrear, ExcepcionYaHayElementoEnLaPosicion, ExcepcionErrorPasoDeTurno{
 		
 		int distanciaEntreEnemigos = mapa.distanciaEntreLosPuntos(atacado.getPosicionX(), atacado.getPosicionY(), this.getPosicionX(), this.getPosicionY());
 		if ((distanciaEntreEnemigos) < this.getVision()){
@@ -142,22 +155,27 @@ public abstract class Unidad implements Atacable{
 		int danio = this.getDanio().getDanioAire();
 		atacado.getVida().aumentarDanioARecibir(danio);
 		atacado.recibirDanio();
+		ataques.aumentarAtaquesPermitidos();
+		
 		}
 	} 
 	
 	
-	public void atacarEnTierra(Atacable atacado){
+	public void atacarEnTierra(Atacable atacado) throws ExcepcionEdificioNoPuedeCrearUnidad, ExcepcionPosicionInvalida, ExcepcionNoHayLugarParaCrear, ExcepcionYaHayElementoEnLaPosicion, ExcepcionErrorPasoDeTurno{
 		int distanciaEntreEnemigos = mapa.distanciaEntreLosPuntos(atacado.getPosicionX(), atacado.getPosicionY(), this.getPosicionX(), this.getPosicionY());
 		
 		if ((distanciaEntreEnemigos) < this.getVision()){
 	
 		int danio = this.getDanio().getDanioTierra();
 		atacado.getVida().aumentarDanioARecibir(danio);
-		atacado.recibirDanio();}
+		atacado.recibirDanio();
+		ataques.aumentarAtaquesPermitidos();
+		
+		}
 		
 	}
 
-	public abstract void recibirDanio ();
+	public abstract void recibirDanio () throws ExcepcionPosicionInvalida;
 	
 	public boolean esLoMismo(Mapeable aComparar){
 		

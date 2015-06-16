@@ -6,11 +6,13 @@ import java.util.Iterator;
 import org.junit.Assert;
 
 import excepciones.ExcepcionEdificioNoPuedeCrearUnidad;
+import excepciones.ExcepcionErrorPasoDeTurno;
 import excepciones.ExcepcionGeneral;
 import excepciones.ExcepcionNoHayLugarParaCrear;
 import excepciones.ExcepcionNoPudoColocarseEdificio;
 import excepciones.ExcepcionPosicionInvalida;
 import excepciones.ExcepcionYaHayElementoEnLaPosicion;
+import src.AtaquesPermitidosPorTurno;
 import src.Juego;
 import src.Jugador;
 import src.Vida;
@@ -55,18 +57,22 @@ public class UnidadesProtossTest extends TestCase{
 			throws ExcepcionNoPudoColocarseEdificio,
 			ExcepcionPosicionInvalida, 
 			ExcepcionNoHayLugarParaCrear, 
-			ExcepcionYaHayElementoEnLaPosicion {
+			ExcepcionYaHayElementoEnLaPosicion, ExcepcionEdificioNoPuedeCrearUnidad, ExcepcionErrorPasoDeTurno {
 		
 		Mapa mapa = new Mapa(50);
 		Jugador jug1 = new Jugador ("carlos","rojo",new Terran());
 		jug1.setDinero(9999, 9999);
 		Jugador jug2 = new Jugador ("williams", "azul", new Protoss());
-		
+		Juego juego = new Juego(mapa, jug1, jug2);
+		AtaquesPermitidosPorTurno ataques = new AtaquesPermitidosPorTurno();
+		ataques.setJuego(juego);
 		
 		Creadora barraca = (Creadora) jug1.colocar(new Barraca(),mapa,5,5);
 		Creadora acceso = (Creadora) jug2.colocar(new Acceso(), mapa, 8, 8);
 		Unidad marine = new Marine();
 		barraca.colocarUnidad(marine, mapa);
+		
+		marine.setAtaquesPermitidosPorTurno(ataques);
 		
 		Zealot zealot =  new Zealot();
 		acceso.colocarUnidad(zealot, mapa);
@@ -82,7 +88,7 @@ public class UnidadesProtossTest extends TestCase{
 			throws ExcepcionNoPudoColocarseEdificio, 
 			ExcepcionPosicionInvalida, 
 			ExcepcionNoHayLugarParaCrear, 
-			ExcepcionYaHayElementoEnLaPosicion 
+			ExcepcionYaHayElementoEnLaPosicion, ExcepcionEdificioNoPuedeCrearUnidad, ExcepcionErrorPasoDeTurno 
 			{
 		
 		Mapa mapa = new Mapa(50);
@@ -99,6 +105,11 @@ public class UnidadesProtossTest extends TestCase{
 		Unidad segundoMarine = new Marine();
 		Unidad tercerMarine = new Marine();
 		Unidad zealot = new Zealot();	
+		AtaquesPermitidosPorTurno ataques = new AtaquesPermitidosPorTurno();
+		primerMarine.setAtaquesPermitidosPorTurno(ataques);
+		segundoMarine.setAtaquesPermitidosPorTurno(ataques);
+		tercerMarine.setAtaquesPermitidosPorTurno(ataques);
+		ataques.setJuego(juego);
 		
 		barraca.colocarUnidad(primerMarine, mapa);	
 		barraca.colocarUnidad(segundoMarine, mapa);
@@ -158,5 +169,81 @@ public class UnidadesProtossTest extends TestCase{
 		
 	}
 	
+/*	public void testAsesinatoDeProtosEliminacionDelMapa()
+			throws ExcepcionNoPudoColocarseEdificio, 
+			ExcepcionPosicionInvalida, 
+			ExcepcionNoHayLugarParaCrear, 
+			ExcepcionYaHayElementoEnLaPosicion, ExcepcionEdificioNoPuedeCrearUnidad, ExcepcionErrorPasoDeTurno 
+			{
+		
+		Mapa mapa = new Mapa(50);
+		Jugador jugador1 = new Jugador ("carlos","rojo",new Terran());
+		Jugador jugador2 = new Jugador ("dean","azul",new Terran());
+		
+		Juego juego = new Juego(mapa, jugador1, jugador2);
+		jugador1.setDinero(99999, 99999);
+		Creadora barraca = (Creadora) jugador1.colocar(new Barraca(), mapa, 5, 5);		
+		
+		Creadora acceso = (Creadora) jugador2.colocar(new Acceso(), mapa, 2, 2);		
+		
+		Unidad primerMarine = new Marine();
+		Unidad segundoMarine = new Marine();
+		Unidad tercerMarine = new Marine();
+		Zealot zealot = new Zealot();	
+		
+		barraca.colocarUnidad(primerMarine, mapa);	
+		barraca.colocarUnidad(segundoMarine, mapa);
+		barraca.colocarUnidad(tercerMarine, mapa);
+		acceso.colocarUnidad(zealot, mapa);
+				
+		primerMarine.atacarEnTierra(zealot);		
+		segundoMarine.atacarEnTierra(zealot);
+		tercerMarine.atacarEnTierra(zealot);
+		primerMarine.atacarEnTierra(zealot);		
+		segundoMarine.atacarEnTierra(zealot);
+		tercerMarine.atacarEnTierra(zealot);
+		primerMarine.atacarEnTierra(zealot);		
+		segundoMarine.atacarEnTierra(zealot);
+		tercerMarine.atacarEnTierra(zealot);
+		primerMarine.atacarEnTierra(zealot);
+		
+		// El Zealot fue colocado en la posicion (1,3)
+		
+		Assert.assertTrue(mapa.obtenerContenidoEnPosicion(1, 3).getElementoEnTierra().getNombre()=="Zealot");
+		
+	
+		
+		
+		Empieza a atacar la vida
+		primerMarine.atacarEnTierra(zealot);		
+		segundoMarine.atacarEnTierra(zealot);
+		tercerMarine.atacarEnTierra(zealot);
+		primerMarine.atacarEnTierra(zealot);		
+		segundoMarine.atacarEnTierra(zealot);
+		tercerMarine.atacarEnTierra(zealot);
+		primerMarine.atacarEnTierra(zealot);		
+		segundoMarine.atacarEnTierra(zealot);
+		tercerMarine.atacarEnTierra(zealot);
+		primerMarine.atacarEnTierra(zealot);
+		primerMarine.atacarEnTierra(zealot);		
+		segundoMarine.atacarEnTierra(zealot);
+		tercerMarine.atacarEnTierra(zealot);
+		primerMarine.atacarEnTierra(zealot);		
+		segundoMarine.atacarEnTierra(zealot);
+		tercerMarine.atacarEnTierra(zealot);
+		primerMarine.atacarEnTierra(zealot);		
+		segundoMarine.atacarEnTierra(zealot);
+		tercerMarine.atacarEnTierra(zealot);
+		primerMarine.atacarEnTierra(zealot);
+		
+		
+		Assert.assertTrue(mapa.obtenerContenidoEnPosicion(1, 3).getElementoEnTierra().getNombre()=="Espacio Disponible");
+	
+	
+	
+	
 
+} */
+	
+	
 }

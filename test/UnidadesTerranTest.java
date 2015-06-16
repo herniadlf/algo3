@@ -9,6 +9,7 @@ import src.unidades.*;
 import org.junit.Assert;
 
 import excepciones.ExcepcionEdificioNoPuedeCrearUnidad;
+import excepciones.ExcepcionErrorPasoDeTurno;
 import excepciones.ExcepcionExtractoraSinRecurso;
 import excepciones.ExcepcionGeneral;
 import excepciones.ExcepcionNoHayLugarParaCrear;
@@ -89,12 +90,14 @@ public class UnidadesTerranTest extends TestCase{
 		throws ExcepcionNoPudoColocarseEdificio, 
 		ExcepcionPosicionInvalida, 
 		ExcepcionNoHayLugarParaCrear, 
-		ExcepcionYaHayElementoEnLaPosicion {
+		ExcepcionYaHayElementoEnLaPosicion, ExcepcionEdificioNoPuedeCrearUnidad, ExcepcionErrorPasoDeTurno {
 			
 		/*--------------------------------------------------------------------------------*/
 		Mapa mapa = new Mapa(50);
 		Jugador jug1 = new Jugador ("carlos","rojo",new Terran());
 		Jugador jug2 = new Jugador ("williams", "azul", new Protoss());
+		Juego juego = new Juego(mapa, jug1, jug2);
+		AtaquesPermitidosPorTurno ataques = new AtaquesPermitidosPorTurno();
 			
 		Creadora barraca = (Creadora) jug1.colocar(new Barraca(),mapa,5,5);
 		Creadora acceso = (Creadora) jug2.colocar(new Acceso(), mapa, 8, 8);
@@ -103,6 +106,8 @@ public class UnidadesTerranTest extends TestCase{
 		barraca.colocarUnidad(marine, mapa);
 		Unidad zealot = new Zealot();
 		acceso.colocarUnidad(zealot, mapa);
+		marine.setAtaquesPermitidosPorTurno(ataques);
+		ataques.setJuego(juego);
 			
 		marine.atacarEnAire(zealot);
 		Vida vida= zealot.getVida();
@@ -113,7 +118,7 @@ public class UnidadesTerranTest extends TestCase{
 	public void testEspectroPuedeAtacarEdificiosEnemigos() 
 		throws ExcepcionPosicionInvalida, 
 		ExcepcionNoHayLugarParaCrear, 
-		ExcepcionYaHayElementoEnLaPosicion, ExcepcionNoPudoColocarseEdificio{
+		ExcepcionYaHayElementoEnLaPosicion, ExcepcionNoPudoColocarseEdificio, ExcepcionEdificioNoPuedeCrearUnidad, ExcepcionErrorPasoDeTurno{
 			
 		Mapa mapa = new Mapa(50);
 		Jugador jug1 = new Jugador ("carlos","rojo",new Terran());
@@ -131,8 +136,12 @@ public class UnidadesTerranTest extends TestCase{
 		jug1.colocar(new DepositoDeSuministros(), mapa, 9, 8);
 		jug1.colocar(new DepositoDeSuministros(), mapa, 10, 2);
 		jug1.colocar(new DepositoDeSuministros(), mapa, 10, 4);
+		Juego juego = new Juego(mapa, jug1, jug2);
 			
 		Unidad espectro = new Espectro();
+		AtaquesPermitidosPorTurno ataques = new AtaquesPermitidosPorTurno();
+		espectro.setAtaquesPermitidosPorTurno(ataques);
+		ataques.setJuego(juego);
 		puertoEstelarTerran.colocarUnidad(espectro, mapa);
 		Assert.assertTrue(nexo.getEscudo().obtenerResistenciaActual() == 250 );
 		espectro.atacarEnAire(nexo);
