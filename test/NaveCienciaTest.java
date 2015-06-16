@@ -6,6 +6,7 @@ import src.Jugador;
 import src.Mineral;
 import src.construcciones.PuertoEstelarTerran;
 import src.mapa.Mapa;
+import src.mapa.Posicion;
 import src.razas.Terran;
 import src.unidades.AltoTemplario;
 import src.unidades.Dragon;
@@ -35,7 +36,6 @@ public class NaveCienciaTest extends TestCase {
 		try {
 			jugador.colocar(puertoEstelar,mapa,30,30);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	
@@ -45,11 +45,15 @@ public class NaveCienciaTest extends TestCase {
 
 	}
 	
-	
-	public void testNaveCienciaUsaRadiacionContraEnemigoYPierde75Energia(){
+	public void testNaveCienciaUsaRadiacionContraEnemigoYPierde75Energia() throws ExcepcionPosicionInvalida, ExcepcionYaHayElementoEnLaPosicion{
 		
 		NaveCiencia naveCiencia = new NaveCiencia();
 		Dragon dragon = new Dragon();
+		naveCiencia.setMapa(mapa);
+		Posicion posicionDragon = new Posicion(20,20);
+		dragon.setPosicion(posicionDragon);
+		mapa.colocarEn(20, 20, dragon);
+		
 		
 		Assert.assertTrue(naveCiencia.obtenerEnergia() == 50);
 		
@@ -58,7 +62,7 @@ public class NaveCienciaTest extends TestCase {
 		naveCiencia.pasoTurno();
 		
 		Assert.assertTrue(naveCiencia.obtenerEnergia() == 80);
-		naveCiencia.atacarConRadiacion(dragon);
+		naveCiencia.radiacion(dragon);
 		Assert.assertTrue(naveCiencia.obtenerEnergia() == 5);	
 		
 	}
@@ -88,6 +92,34 @@ public class NaveCienciaTest extends TestCase {
 		Assert.assertTrue(dragon.getEscudo().obtenerResistenciaActual() == 60);
 		Assert.assertTrue(zealot.getEscudo().obtenerResistenciaActual() == 40);
 		Assert.assertTrue(altoTemplario.obtenerEnergia() == 30);
+		
+	}
+	
+	public void testNaveCienciaUtilizaRadiacionContraAltoTemplarioHastaMatarlo() throws ExcepcionPosicionInvalida, ExcepcionYaHayElementoEnLaPosicion{
+		
+		AltoTemplario altoTemplario = new AltoTemplario();
+		altoTemplario.setMapa(mapa);
+		NaveCiencia naveCiencia = new NaveCiencia();
+		
+		naveCiencia.pasoTurno();
+		naveCiencia.pasoTurno();
+		naveCiencia.pasoTurno();
+		
+		Posicion posicionAltoTemplario = new Posicion(20,20);
+		altoTemplario.setPosicion(posicionAltoTemplario);
+		mapa.colocarEn(20, 20, altoTemplario);
+		naveCiencia.setMapa(mapa);
+		
+		naveCiencia.radiacion(altoTemplario);
+		Assert.assertTrue(altoTemplario.getEscudo().obtenerResistenciaActual() == 10);
+		
+		altoTemplario.pasoTurno();
+		Assert.assertTrue(altoTemplario.getEscudo().obtenerResistenciaActual() == 0);
+		Assert.assertTrue(altoTemplario.getVida().obtenerVida() == 20);
+		
+		altoTemplario.pasoTurno();
+		Assert.assertTrue(altoTemplario.getVida().devolverEstadoDeVida());
+		
 	}
 	
 	

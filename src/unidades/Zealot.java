@@ -129,5 +129,17 @@ public void pasoTurno() {
 		
 	}
 	
+	public void afectadoPorRadiacion(int danio){
+		
+		vida.aumentarDanioARecibir(danio);
+		try {
+			this.recibirDanio();
+		} catch (ExcepcionPosicionInvalida e) {
+			e.printStackTrace();
+		}
+		vida.reestablecerDanioRecibido();
+		
+	}
+	
 
 }

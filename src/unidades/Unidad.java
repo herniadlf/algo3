@@ -36,10 +36,17 @@ public abstract class Unidad implements Atacable{
 	protected int turnoInicioEntrenamiento;
 	protected Creadora edificio;
 	protected AtaquesPermitidosPorTurno ataques;
+	protected boolean afectadoPorRadiacion;
 	
 	public void setMapa (Mapa mapa){
 		
 		this.mapa =mapa;
+		
+	}
+	
+	public Mapa getMapa(){
+		
+		return mapa;
 		
 	}
 	

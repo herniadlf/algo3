@@ -82,7 +82,7 @@ public void pasoTurno() {
 		escudo.atacar(this.getVida().obtenerDanioRecibido());
 		boolean estadoDeVidaFinalizado= vida.devolverEstadoDeVida();
 		  if (estadoDeVidaFinalizado==true){
-			 super.mapa.eliminarElementoTerrestreEnPosicion(super.getPosicionX(), super.getPosicionY());
+			 this.mapa.eliminarElementoTerrestreEnPosicion(this.getPosicionX(), this.getPosicionY());
 			 }
 		
 	}
@@ -119,6 +119,19 @@ public void pasoTurno() {
 			
 		vida.aumentarDanioARecibir(danio);
 		this.recibirDanio();
+		vida.reestablecerDanioRecibido();
+		
+	}
+
+	@Override
+	public void afectadoPorRadiacion(int danio){
+		
+		vida.aumentarDanioARecibir(danio);
+		try {
+			this.recibirDanio();
+		} catch (ExcepcionPosicionInvalida e) {
+			e.printStackTrace();
+		}
 		vida.reestablecerDanioRecibido();
 		
 	}

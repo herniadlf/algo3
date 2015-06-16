@@ -53,6 +53,13 @@ public class Acceso extends Creadora {
 					
 		escudo.atacar(this.getVida().obtenerDanioRecibido());
 	
+	}
+
+	public Dragon crearDragon() {
+
+		Dragon dragon = new Dragon();
+		return dragon;
+		
 	}	
 			
 }

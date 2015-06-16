@@ -18,10 +18,15 @@ public class Escudo{
 	public void atacar(int danio) {
 		
 		if(resistenciaActual - danio < 0){
+			int vidaDaniada = danio - resistenciaActual;
+			protegido.getVida().reestablecerDanioRecibido();
+			protegido.getVida().aumentarDanioARecibir(vidaDaniada);
 			protegido.getVida().disminuirVidaPorDanio();
+			resistenciaActual = 0;
 		}
 		else {	
 			resistenciaActual = resistenciaActual - danio;
+			
 		}
 		
 	}

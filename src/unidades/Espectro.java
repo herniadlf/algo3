@@ -110,6 +110,13 @@ public class Espectro extends Unidad {
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public void afectadoPorRadiacion(int danio) {
+		
+		vida.aumentarDanioARecibir(danio);
+		
+	}
 	
 
 	

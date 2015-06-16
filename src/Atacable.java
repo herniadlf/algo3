@@ -15,6 +15,8 @@ public interface Atacable extends Mapeable{
 	
 	public void afectadoPorTormentaPsionica(int danio) throws ExcepcionPosicionInvalida;
 	
+	public void afectadoPorRadiacion(int danio);
+	
 	public void recibirDanio() throws ExcepcionPosicionInvalida;
 
 }

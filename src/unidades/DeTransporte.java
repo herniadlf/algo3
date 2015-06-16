@@ -82,5 +82,11 @@ public abstract class DeTransporte extends Unidad {
 		// TODO Auto-generated method stub
 
 	}
+	
+	public void afectadoPorRadiacion(int danio){
+		
+		//supuesto: no afecta a naves
+		
+	}
 
 }

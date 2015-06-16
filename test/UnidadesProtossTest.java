@@ -53,6 +53,16 @@ public class UnidadesProtossTest extends TestCase{
 		
 	}
 	
+	public void testDragonSeCreaCon80escudoY100deVida(){
+		
+		Acceso acceso = new Acceso();
+		Dragon dragon = acceso.crearDragon();		
+		
+		Assert.assertTrue((dragon.getVida().obtenerVida()) == 100);
+		Assert.assertTrue((dragon.getEscudo().obtenerResistenciaActual()) == 80 );
+		
+	}
+	
 	public void testAtacarZealotNuevoPorMarineSoloDaniaEscudo() 
 			throws ExcepcionNoPudoColocarseEdificio,
 			ExcepcionPosicionInvalida, 
@@ -133,9 +143,7 @@ public class UnidadesProtossTest extends TestCase{
 		dragon.getVida().aumentarDanioARecibir(200);
 		dragon.getVida().disminuirVidaPorDanio();
 		
-		Assert.assertTrue(dragon.getVida().devolverEstadoDeVida()==true);
-		
-		
+		Assert.assertTrue(dragon.getVida().devolverEstadoDeVida());
 		
 	}
 	

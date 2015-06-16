@@ -243,5 +243,12 @@ public class Construccion implements Atacable {
 		arquitecto.colocar(map, this);
 		
 	}
+
+	
+	public void afectadoPorRadiacion(int danio) {
+		
+		// No afecta a construcciones
+		
+	}
 	
 }

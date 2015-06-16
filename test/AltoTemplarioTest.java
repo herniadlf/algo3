@@ -7,6 +7,7 @@ import src.Mineral;
 import src.construcciones.ArchivosTemplarios;
 import src.construcciones.Fabrica;
 import src.mapa.Mapa;
+import src.mapa.Posicion;
 import src.razas.Terran;
 import src.unidades.AltoTemplario;
 import src.unidades.Dragon;
@@ -59,10 +60,13 @@ public class AltoTemplarioTest extends TestCase {
 		
 		altoTemplario.setMapa(mapa);
 		Scout scout = new Scout();
+		scout.setMapa(mapa);
 		Fabrica fabrica = new Fabrica();
 		//Marine marine = new Marine();
 		
 		mapa.colocarEn(21, 21, scout);
+		Posicion posicionScout = new Posicion(21,21);
+		scout.setPosicion(posicionScout);
 		//mapa.colocarEn(20, 21, marine);
 		mapa.colocarEn(20, 20, fabrica);
 		

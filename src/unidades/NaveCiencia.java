@@ -86,11 +86,11 @@ public class NaveCiencia extends Magica {
 	
 	}
 	
-	public void atacarConRadiacion(Unidad unidad){
+	public void radiacion(Unidad unidad){
 		
-		Radiacion radiacion = new Radiacion();
+		Radiacion radiacion = new Radiacion(unidad,mapa);
 		if(energia.obtenerCantidad() >= radiacion.obtenerEnergiaNecesaria()){
-			radiacion.atacar(unidad);
+			radiacion.atacar();
 			energia.disminuirEnergia(radiacion.obtenerEnergiaNecesaria());
 		}
 			
@@ -136,6 +136,12 @@ public class NaveCiencia extends Magica {
 	public void afectadoPorTormentaPsionica(int danio){
 		
 		vida.aumentarDanioARecibir(danio);
+		
+	}
+
+	public void afectadoPorRadiacion(int danio){
+		
+		//supuesto: no afecta a naves
 		
 	}
 	

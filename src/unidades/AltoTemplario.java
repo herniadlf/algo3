@@ -24,6 +24,7 @@ public class AltoTemplario extends Magica {
 	Escudo escudo;
 	private boolean tormentaEnCurso;
 	private TormentaPsionica tormenta;
+	private int danioRadiacion;
 	
 	public AltoTemplario() {	
 		
@@ -42,6 +43,8 @@ public class AltoTemplario extends Magica {
 		colocador = (ColocadorUnidadTerrestre) new ColocadorUnidadTerrestre();
 		tormentaEnCurso = false;
 		tormenta = null;
+		afectadoPorRadiacion = false;
+		danioRadiacion = 0;
 		
 	}
 		
@@ -113,7 +116,7 @@ public class AltoTemplario extends Magica {
 		boolean estadoDeVidaFinalizado= vida.devolverEstadoDeVida();
 		  if (estadoDeVidaFinalizado==true){
 			 super.mapa.eliminarElementoTerrestreEnPosicion(super.getPosicionX(), super.getPosicionY());
-			 }
+		 }
 		
 	}
 
@@ -149,12 +152,29 @@ public class AltoTemplario extends Magica {
 		
 	}
 
+	public void afectadoPorRadiacion(int danio){
+		
+		afectadoPorRadiacion = true;
+		danioRadiacion = danio;
+		vida.aumentarDanioARecibir(danioRadiacion);
+		try {
+			this.recibirDanio();
+		} catch (ExcepcionPosicionInvalida e) {
+			e.printStackTrace();
+		}
+		vida.reestablecerDanioRecibido();
+		
+	}
+	
 	public void pasoTurno(){
 		
 		energia.aumentarEnergia(energiaPorTurno);
 		if(tormentaEnCurso){
 			tormenta.atacar();
 			tormentaEnCurso = false;
+		}
+		if(afectadoPorRadiacion){
+			this.afectadoPorRadiacion(danioRadiacion);
 		}
 		
 	}

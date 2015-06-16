@@ -122,6 +122,12 @@ public void pasoTurno() {
 		
 	}
 	
+	public void afectadoPorRadiacion(int danio){
+		
+		escudo.atacar(danio);
+		
+	}
+	
 	
 
 }
