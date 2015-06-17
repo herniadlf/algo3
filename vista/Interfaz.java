@@ -13,6 +13,9 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
@@ -98,6 +101,7 @@ public class Interfaz {
 
         botonNuevoJuego.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e){
+            	cargarInterfazJuego();
             }
         });
 
@@ -117,6 +121,41 @@ public class Interfaz {
         getFramePrincipal().show();
 	}
 
+
+	protected void cargarInterfazJuego() {
+		// TODO Auto-generated method stub
+		getFramePrincipal().getContentPane().removeAll();
+		getFramePrincipal().setJMenuBar(null);
+		
+		getFramePrincipal().setTitle("AlgoCraft");
+		getFramePrincipal().setResizable(true);
+		
+		JMenuBar barraDeMenu = new JMenuBar(); 
+		
+		JMenu menuJuego = new JMenu("Juego");
+		JMenuItem itemReiniciarPartida = new JMenuItem("Reiniciar Juego");
+		itemReiniciarPartida.addActionListener( new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				//juegonuevo
+			}
+		});
+		menuJuego.add(itemReiniciarPartida);
+		JMenuItem itemSalirDeLaPartida = new JMenuItem("Salir");
+		itemSalirDeLaPartida.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				System.exit(0);
+			}
+		});
+		menuJuego.add(itemSalirDeLaPartida);
+		barraDeMenu.add(menuJuego);
+		
+		getFramePrincipal().setJMenuBar(barraDeMenu);
+		/*
+		getFramePrincipal().pack();
+        getFramePrincipal().setLocation((int)Math.round(getScreenSize().getWidth()/2) - getFramePrincipal().getWidth()/2, (int)Math.round(getScreenSize().getHeight()/2) - getFramePrincipal().getHeight()/2);
+        getFramePrincipal().show();
+	*/
+	}
 
 	private Dimension getScreenSize() {
 		// TODO Auto-generated method stub
