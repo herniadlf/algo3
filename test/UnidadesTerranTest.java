@@ -10,6 +10,7 @@ import org.junit.Assert;
 
 import excepciones.ExcepcionEdificioNoPuedeCrearUnidad;
 import excepciones.ExcepcionElTransporteEstaLleno;
+import excepciones.ExcepcionElementoFueraDelRangoDeAtaque;
 import excepciones.ExcepcionErrorPasoDeTurno;
 import excepciones.ExcepcionExtractoraSinRecurso;
 import excepciones.ExcepcionGeneral;
@@ -17,6 +18,7 @@ import excepciones.ExcepcionNoHayLugarParaCrear;
 import excepciones.ExcepcionNoPudoColocarseEdificio;
 import excepciones.ExcepcionNoPudoCrearseUnidad;
 import excepciones.ExcepcionPosicionInvalida;
+import excepciones.ExcepcionSuperaLimenteDeArbolesPermitos;
 import excepciones.ExcepcionYaHayElementoEnLaPosicion;
 import src.*;
 import src.construcciones.*;
@@ -88,13 +90,13 @@ public class UnidadesTerranTest extends TestCase{
 		throws ExcepcionNoPudoColocarseEdificio, 
 		ExcepcionPosicionInvalida, 
 		ExcepcionNoHayLugarParaCrear, 
-		ExcepcionYaHayElementoEnLaPosicion, ExcepcionEdificioNoPuedeCrearUnidad, ExcepcionErrorPasoDeTurno {
+		ExcepcionYaHayElementoEnLaPosicion, ExcepcionEdificioNoPuedeCrearUnidad, ExcepcionErrorPasoDeTurno, ExcepcionSuperaLimenteDeArbolesPermitos, ExcepcionElementoFueraDelRangoDeAtaque {
 			
 		/*--------------------------------------------------------------------------------*/
-		Mapa mapa = new Mapa(50);
 		Jugador jug1 = new Jugador ("carlos","rojo",new Terran());
 		Jugador jug2 = new Jugador ("williams", "azul", new Protoss());
-		Juego juego = new Juego(mapa, jug1, jug2);
+		Juego juego = new Juego(jug1, jug2, 100);
+		Mapa mapa = juego.getMapa();
 		AtaquesPermitidosPorTurno ataques = new AtaquesPermitidosPorTurno();
 			
 		Creadora barraca = (Creadora) jug1.colocar(new Barraca(),mapa,5,5);
@@ -116,9 +118,8 @@ public class UnidadesTerranTest extends TestCase{
 	public void testEspectroPuedeAtacarEdificiosEnemigos() 
 		throws ExcepcionPosicionInvalida, 
 		ExcepcionNoHayLugarParaCrear, 
-		ExcepcionYaHayElementoEnLaPosicion, ExcepcionNoPudoColocarseEdificio, ExcepcionEdificioNoPuedeCrearUnidad, ExcepcionErrorPasoDeTurno{
+		ExcepcionYaHayElementoEnLaPosicion, ExcepcionNoPudoColocarseEdificio, ExcepcionEdificioNoPuedeCrearUnidad, ExcepcionErrorPasoDeTurno, ExcepcionSuperaLimenteDeArbolesPermitos, ExcepcionElementoFueraDelRangoDeAtaque{
 			
-		Mapa mapa = new Mapa(50);
 		Jugador jug1 = new Jugador ("carlos","rojo",new Terran());
 		Jugador jug2 = new Jugador ("Williams", "azul", new Protoss());
 		jug1.setDinero(999999, 999999);
@@ -134,7 +135,8 @@ public class UnidadesTerranTest extends TestCase{
 		jug1.colocar(new DepositoDeSuministros(), mapa, 9, 8);
 		jug1.colocar(new DepositoDeSuministros(), mapa, 10, 2);
 		jug1.colocar(new DepositoDeSuministros(), mapa, 10, 4);
-		Juego juego = new Juego(mapa, jug1, jug2);
+		Juego juego = new Juego(jug1, jug2, 100);
+		Mapa mapa = juego.getMapa();
 			
 		Unidad espectro = new Espectro();
 		AtaquesPermitidosPorTurno ataques = new AtaquesPermitidosPorTurno();
@@ -145,13 +147,6 @@ public class UnidadesTerranTest extends TestCase{
 		espectro.atacarEnAire(nexo);
 		Assert.assertTrue(nexo.getEscudo().obtenerResistenciaActual() == 230 );
 					
-			
-		/*Espectro espectro = new Espectro();
-		NexoMineral nexoMineral = new NexoMineral();
-		Assert.assertTrue(nexoMineral.getEscudo().obtenerResistenciaActual() == 250 );
-		espectro.atacarEnAire(nexoMineral);
-		Assert.assertTrue(nexoMineral.getEscudo().obtenerResistenciaActual() == 230 );*/
-			
 	}
 	
 	
