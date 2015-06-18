@@ -272,7 +272,7 @@ public class Jugador {
 			throw new ExcepcionErrorPasoDeTurno(e);
 		}
 		
-		System.out.print(this.unidadesAlistadas.size());
+		
 		
 		Iterator<Unidad> i = unidadesAlistadas.iterator();
 		while(i.hasNext()){
