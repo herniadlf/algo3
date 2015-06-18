@@ -23,10 +23,10 @@ public class JuegoTest extends TestCase{
 		
 		protected void setUp() throws Exception{
 			super.setUp();
-			map = new Mapa(50);
 			jug1 = new Jugador("Carlos","verde",new Terran());			
 			jug2 = new Jugador("Fernando","rojo",new Protoss());
-			juego = new Juego(map,jug1,jug2);
+			juego = new Juego(jug1,jug2, 100);
+			map = juego.getMapa();
 		}
 		
 		
