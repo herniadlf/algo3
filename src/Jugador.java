@@ -42,8 +42,6 @@ public class Jugador {
 	private Juego juego;
 	ArrayList<Unidad> unidadesAlistadas;
 	
-	
-	
 	public Jugador(String nombre, String color, Raza raza) {
 		
 		setNombre(nombre);
@@ -55,9 +53,7 @@ public class Jugador {
 		this.construccionesEnPie= new ArrayList <Construccion>();
 		this.ataques= new  AtaquesPermitidosPorTurno();
 		this.unidadesAlistadas= new ArrayList<Unidad>();
-		
-		
-		
+			
 	}
 	
 	public Jugador() {
@@ -72,10 +68,11 @@ public class Jugador {
 		return nombre;
 		
 	}
+	
 	public AtaquesPermitidosPorTurno getAtaquesPermitidosPorTurno(){
+		
 		return ataques;
-		
-		
+	
 	}
 	
 	public void setNombre(String nombre) { 
@@ -83,8 +80,6 @@ public class Jugador {
 		this.nombre = nombre; 
 	
 	}
-	
-	
 	
 	public String getColor() {
 		
@@ -103,6 +98,7 @@ public class Jugador {
 		this.raza = raza;
 	
 	}
+	
 	public Raza getRaza() { 
 		
 		return raza;
@@ -116,14 +112,14 @@ public class Jugador {
 	}
 	
 	public void setJuego (Juego juego){
-		this.juego= juego;
 		
+		this.juego= juego;
 		
 	}
 	
 	public Juego getJuego(){
-		return this.juego;
 		
+		return this.juego;
 		
 	}
 	
@@ -139,13 +135,11 @@ public class Jugador {
 		
 	}
 	
-	
 	public void setDinero(int minerales,int gasVespeno) { 
 		
 		dineroJugador = new Dinero(minerales,gasVespeno);
 		
 	}
-		
 		
 	public Construccion colocar(Construccion edificio, Mapa map, int i, int j) throws ExcepcionNoPudoColocarseEdificio  {
 	
@@ -224,8 +218,8 @@ public class Jugador {
 			construccionesEnPie.get(i).pasoTurno(turno,map,this);
 			i++;
 		}
-	}
 		
+	}
 		
 	public ArrayList<Construccion> obtenerConstruccionesEnCamino (){
 			
@@ -236,9 +230,8 @@ public class Jugador {
 	public ArrayList<Construccion> getConstruccionesEnPie(){
 		
 		return construccionesEnPie;
+		
 	}
-	
-	
 	
 	public void actualizarFabricacionConstrucciones (Turno turno, Mapa mapa) 
 			throws ExcepcionNoPudoColocarseEdificio 	{
@@ -264,12 +257,13 @@ public class Jugador {
 	}
 	
 	public void agragarAUnidadesAlistadas (Unidad unidad){
-		this.unidadesAlistadas.add(unidad);
 		
+		this.unidadesAlistadas.add(unidad);	
 		
 	}
 
 	public void pasoTurno(Turno turno, Mapa mapa) throws ExcepcionErrorPasoDeTurno 	{
+		
 		try{
 			actualizarTurnoEnConstrucciones(turno, mapa);	
 			actualizarFabricacionConstrucciones(turno, mapa);
@@ -286,6 +280,6 @@ public class Jugador {
 			unidad.pasoTurno();
 		}
 	
-		
+	}
 	
-}}
+}

@@ -7,6 +7,7 @@ import src.mapa.FuenteDeGasVespeno;
 import src.mapa.Mapa;
 
 public class Refineria extends Extractora{
+	
 	private static final int COSTO_MINERALES = 100;
 	private static final int COSTO_GAS = 0;
 	private static final int VIDA = 750;

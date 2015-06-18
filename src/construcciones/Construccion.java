@@ -229,6 +229,7 @@ public class Construccion implements Atacable {
 	}
 
 	public void pasoTurno(Turno turno, Mapa map, Jugador jugador) throws ExcepcionNoPudoColocarseUnidad {
+		
 		//sera implementado		
 	
 	}

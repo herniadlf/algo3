@@ -47,6 +47,7 @@ public abstract class Creadora extends NoExtractora {
 		if (!founded){
 			throw new ExcepcionUnidadNoCorrespondiente("No corresponde la unidad a este edificio");
 		}
+		
 	}
 	
 	public void colocarUnidad ( Unidad aColocar , Mapa map ) 
@@ -58,7 +59,6 @@ public abstract class Creadora extends NoExtractora {
 			map.colocarEn(auxiliar.getX(), auxiliar.getY(), aColocar);
 			aColocar.setMapa(map);
 			aColocar.setPosicion(auxiliar);
-	
 		
 	}
 	
@@ -89,7 +89,6 @@ public abstract class Creadora extends NoExtractora {
 		}
 		
 	}
-		
 		
 	public ArrayList<Unidad> obtenerListaDeUnidadesAFabricar (){
 			
