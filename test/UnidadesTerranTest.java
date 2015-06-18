@@ -9,11 +9,13 @@ import src.unidades.*;
 import org.junit.Assert;
 
 import excepciones.ExcepcionEdificioNoPuedeCrearUnidad;
+import excepciones.ExcepcionElTransporteEstaLleno;
 import excepciones.ExcepcionErrorPasoDeTurno;
 import excepciones.ExcepcionExtractoraSinRecurso;
 import excepciones.ExcepcionGeneral;
 import excepciones.ExcepcionNoHayLugarParaCrear;
 import excepciones.ExcepcionNoPudoColocarseEdificio;
+import excepciones.ExcepcionNoPudoCrearseUnidad;
 import excepciones.ExcepcionPosicionInvalida;
 import excepciones.ExcepcionYaHayElementoEnLaPosicion;
 import src.*;
@@ -203,4 +205,53 @@ public class UnidadesTerranTest extends TestCase{
 		Assert.assertTrue(naveTransporte.cantidadPasajeros() == 8);
 	}
 	
-}
+	
+	public void testTransporteDeUnidadesAUnDeterminadoPunto() throws ExcepcionNoPudoColocarseEdificio, ExcepcionNoPudoCrearseUnidad, ExcepcionErrorPasoDeTurno, ExcepcionPosicionInvalida, ExcepcionYaHayElementoEnLaPosicion, ExcepcionElTransporteEstaLleno, ExcepcionNoHayLugarParaCrear{
+		Mapa mapa = new Mapa(50);
+		NaveTransporteTerran naveTransporte = new NaveTransporteTerran();
+		Marine marine1= new Marine();
+		Marine marine2= new Marine();
+		Marine marine3= new Marine();
+		marine1.setMapa(mapa);
+		marine2.setMapa(mapa);
+		marine3.setMapa(mapa);
+		
+		
+		mapa.colocarEn(1, 2, naveTransporte);
+		Posicion posicion = new Posicion (1,2);
+		naveTransporte.setPosicion(posicion);
+		naveTransporte.setMapa(mapa);
+		
+		mapa.colocarEn(2,5,marine1);
+		Posicion posicion1 = new Posicion (2,5);
+		marine1.setPosicion(posicion1);
+		mapa.colocarEn(3, 5, marine2);
+		Posicion posicion2 = new Posicion (3,5);
+		marine2.setPosicion(posicion2);
+		mapa.colocarEn(4, 5, marine3);
+		Posicion posicion3 = new Posicion (6,6);
+		marine3.setPosicion(posicion3);
+		
+		
+		
+		
+		naveTransporte.llevar(marine1);
+		naveTransporte.llevar(marine2);
+		naveTransporte.llevar(marine3);
+		naveTransporte.transportarUnidades(8, 8);
+		
+		// Verifico que las unidades hallan viajado a la posicion determinada 
+		Assert.assertTrue(marine1.getPosicionX() == 7);
+		Assert.assertTrue(marine1.getPosicionY()==9);
+		
+		Assert.assertTrue(marine2.getPosicionX() == 8);
+		Assert.assertTrue(marine2.getPosicionY()==9);
+		
+		Assert.assertTrue(marine3.getPosicionX() == 9);
+		Assert.assertTrue(marine3.getPosicionY()==9);
+		
+		
+		
+		
+	
+}}

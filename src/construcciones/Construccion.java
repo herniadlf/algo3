@@ -151,6 +151,8 @@ public class Construccion implements Atacable {
 		
 	}
 	
+	
+	
 	public void setAlrededores(){
 		
 		alrededores = new LinkedList<Posicion>();
