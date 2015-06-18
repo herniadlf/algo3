@@ -14,12 +14,15 @@ import src.unidades.*;
 import org.junit.Assert;
 
 import excepciones.ExcepcionElTransporteEstaLleno;
+import excepciones.ExcepcionElTransporteNoEstaEnElAlcancePermitido;
 import excepciones.ExcepcionErrorPasoDeTurno;
 import excepciones.ExcepcionExtractoraSinRecurso;
 import excepciones.ExcepcionGeneral;
 import excepciones.ExcepcionNoHayLugarParaCrear;
 import excepciones.ExcepcionNoPudoColocarseEdificio;
 import excepciones.ExcepcionNoPudoCrearseUnidad;
+import excepciones.ExcepcionNoPuedeMoverseUnidad;
+import excepciones.ExcepcionNoSePuedeTransportar;
 import excepciones.ExcepcionNoSePuedenTransportasUnidadesVoladoras;
 import excepciones.ExcepcionPosicionInvalida;
 import excepciones.ExcepcionYaHayElementoEnLaPosicion;
@@ -38,13 +41,12 @@ public class NaveTransporteTerranTest extends TestCase {
 		
 		PuertoEstelarTerran puertoEstelar = new PuertoEstelarTerran();
 		try {
-			jugador.colocar(puertoEstelar,mapa,30,30);			
+			jugador.colocar(puertoEstelar,mapa,8,8);			
 		} catch (Exception e) {
 			e.printStackTrace();
 			
 		}
-
-		naveTransporte = puertoEstelar.crearNaveTransporteTerran();	
+		puertoEstelar.colocarUnidad(new NaveTransporteTerran(), mapa);
 	}
 	
 	public void testNaveTransporteSeCreaCon150deVida() throws ExcepcionPosicionInvalida, ExcepcionExtractoraSinRecurso{
@@ -80,8 +82,9 @@ public class NaveTransporteTerranTest extends TestCase {
 		
 		ArrayList<Golliat> golliats = new ArrayList<>();
 		
-		for(int i = 0 ; i < 4 ; i++){	
+		for(int i = 1 ; i < 5 ; i++){	
 			Golliat golliat = new Golliat();
+			golliat.setPosicion(new Posicion(i,i));
 			golliats.add(golliat);
 		}
 				
@@ -99,7 +102,7 @@ public class NaveTransporteTerranTest extends TestCase {
 	}
 	
 	
-	public void testTransporteDeUnidadesAUnDeterminadoPunto() throws ExcepcionNoPudoColocarseEdificio, ExcepcionNoPudoCrearseUnidad, ExcepcionErrorPasoDeTurno, ExcepcionPosicionInvalida, ExcepcionYaHayElementoEnLaPosicion, ExcepcionElTransporteEstaLleno, ExcepcionNoHayLugarParaCrear, ExcepcionNoSePuedenTransportasUnidadesVoladoras{
+	public void testTransporteDeUnidadesAUnDeterminadoPunto() throws ExcepcionNoPudoColocarseEdificio, ExcepcionNoPudoCrearseUnidad, ExcepcionErrorPasoDeTurno, ExcepcionPosicionInvalida, ExcepcionYaHayElementoEnLaPosicion, ExcepcionElTransporteEstaLleno, ExcepcionNoHayLugarParaCrear, ExcepcionNoSePuedenTransportasUnidadesVoladoras, ExcepcionElTransporteNoEstaEnElAlcancePermitido, ExcepcionNoSePuedeTransportar, ExcepcionNoPuedeMoverseUnidad{
 		
 		Marine marine1= new Marine();
 		Marine marine2= new Marine();
@@ -140,23 +143,23 @@ public class NaveTransporteTerranTest extends TestCase {
 
 	}
 	
-	public void testNaveTranporteNoPuedeLlevarEspectro() throws ExcepcionElTransporteEstaLleno{
+	public void testNaveTranporteNoPuedeLlevarEspectro() throws ExcepcionElTransporteEstaLleno, ExcepcionElTransporteNoEstaEnElAlcancePermitido, ExcepcionNoSePuedeTransportar{
 		
 		Espectro espectro = new Espectro();
 		try {
 			naveTransporte.llevar(espectro);
-		} catch (ExcepcionNoSePuedenTransportasUnidadesVoladoras e) {
+		} catch (ExcepcionNoSePuedeTransportar e) {
 			e.printStackTrace();
 		}
 		
 	}
 	
-	public void testNaveTranporteNoPuedeLlevarNaveCiencia() throws ExcepcionElTransporteEstaLleno{
+	public void testNaveTranporteNoPuedeLlevarNaveCiencia() throws ExcepcionNoSePuedeTransportar{
 		
 		NaveCiencia naveCiencia = new NaveCiencia();
 		try {
 			naveTransporte.llevar(naveCiencia);
-		} catch (ExcepcionNoSePuedenTransportasUnidadesVoladoras e) {
+		} catch (ExcepcionNoSePuedeTransportar e) {
 			e.printStackTrace();
 		}
 		

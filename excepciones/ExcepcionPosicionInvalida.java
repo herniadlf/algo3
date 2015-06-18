@@ -4,7 +4,7 @@ public class ExcepcionPosicionInvalida extends ExcepcionGeneral {
 
 	public ExcepcionPosicionInvalida(String descripcion) {
 		
-		super(descripcion);
+		super(descripcion,null);
 		
 	}
 	

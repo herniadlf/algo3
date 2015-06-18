@@ -4,7 +4,7 @@ public class ExcepcionSuministrosInsuficientes extends ExcepcionGeneral {
 
 	public ExcepcionSuministrosInsuficientes(String descripcion) {
 		
-		super(descripcion);
+		super(descripcion,null);
 		
 	}
 

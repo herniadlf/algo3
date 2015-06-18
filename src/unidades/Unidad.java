@@ -7,6 +7,7 @@ import excepciones.ExcepcionEdificioNoPuedeCrearUnidad;
 import excepciones.ExcepcionElementoFueraDelRangoDeAtaque;
 import excepciones.ExcepcionErrorPasoDeTurno;
 import excepciones.ExcepcionNoHayLugarParaCrear;
+import excepciones.ExcepcionNoPuedeMoverseUnidad;
 import excepciones.ExcepcionPosicionInvalida;
 import excepciones.ExcepcionYaHayElementoEnLaPosicion;
 import src.Atacable;
@@ -199,7 +200,7 @@ public abstract class Unidad implements Atacable{
 		
 	}
 	
-	public void moverAPosicionDeterminada (int x, int y) throws ExcepcionPosicionInvalida, ExcepcionYaHayElementoEnLaPosicion{
+	public void moverAPosicionDeterminada (int x, int y) throws ExcepcionNoPuedeMoverseUnidad {
 		
 		try {
 			
@@ -210,7 +211,7 @@ public abstract class Unidad implements Atacable{
 		
 		catch (ExcepcionPosicionInvalida | ExcepcionYaHayElementoEnLaPosicion e) {
 			
-			e.getMensaje(); //verificar esto
+			throw new ExcepcionNoPuedeMoverseUnidad(e);
 		}
 	
 		

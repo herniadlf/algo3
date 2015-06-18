@@ -35,6 +35,7 @@ import src.razas.Protoss;
 import src.razas.Terran;
 import src.unidades.Espectro;
 import src.unidades.Marine;
+import src.unidades.Zealot;
 public class ConstruccionTest {
 		
 		@Test
@@ -238,5 +239,31 @@ public class ConstruccionTest {
 			juego.pasarTurno();
 			juego.ordenFabricacionDeEdificios(new NexoMineral(), 5, 5);
 		}
+		
+		@Test
+		public void testDestruccionDeEdificioProvocaEliminacionDelMapa() throws ExcepcionPosicionInvalida, ExcepcionNoPudoColocarseEdificio, ExcepcionYaHayElementoEnLaPosicion, ExcepcionSuperaLimenteDeArbolesPermitos {
+			
+			Jugador jugador1 = new Jugador ("carlos","rojo",new Terran());
+			Jugador jugador2 = new Jugador ("dean","azul",new Terran());
+			
+			Juego juego = new Juego(jugador1, jugador2, 100);
+			Mapa mapa = juego.getMapa();
+			jugador1.setDinero(99999, 99999);	
+			
+			Creadora acceso = (Creadora) jugador2.colocar(new Acceso(), mapa, 2, 2);		
+			
+			Assert.assertTrue(mapa.obtenerContenidoEnPosicion(2, 2).getElementoEnTierra().getNombre()=="Acceso");
+					
+			acceso.getVida().aumentarDanioARecibir(600);
+			acceso.recibirDanio();
+			
+			Assert.assertTrue(acceso.getVida().obtenerVida()==400);
+			
+			acceso.getVida().aumentarDanioARecibir(400);
+			acceso.recibirDanio();
+			
+			Assert.assertTrue(mapa.obtenerContenidoEnPosicion(2, 2).getElementoEnTierra().getNombre()=="Espacio Disponible");
+
+			}
 		
 }

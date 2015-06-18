@@ -12,6 +12,7 @@ import excepciones.ExcepcionErrorPasoDeTurno;
 import excepciones.ExcepcionGeneral;
 import excepciones.ExcepcionNoHayLugarParaCrear;
 import excepciones.ExcepcionNoPudoColocarseEdificio;
+import excepciones.ExcepcionNoSePuedeTransportar;
 import excepciones.ExcepcionPosicionInvalida;
 import excepciones.ExcepcionSuperaLimenteDeArbolesPermitos;
 import excepciones.ExcepcionYaHayElementoEnLaPosicion;
@@ -146,9 +147,10 @@ public class UnidadesProtossTest{
 	}
 	
 	@Test
-	public void testNaveTransporteProtossTransporta8Marines(){
+	public void testNaveTransporteProtossTransporta8Marines() throws ExcepcionNoSePuedeTransportar{
 		
 		NaveTransporteProtoss naveTransporte = new NaveTransporteProtoss();
+		
 		ArrayList<Marine> marines = new ArrayList<>();
 		
 		for(int i = 0 ; i < 8 ; i++){
@@ -162,13 +164,9 @@ public class UnidadesProtossTest{
 		
 		while(i.hasNext()){
 			
-			try{
-	
+			
 				naveTransporte.llevar(i.next());
-			} catch (ExcepcionGeneral e){
-				
-				e.getMessage();
-			}
+			
 		}
 		
 		Assert.assertTrue(naveTransporte.cantidadPasajeros() == 8);		
@@ -188,16 +186,11 @@ public class UnidadesProtossTest{
 		
 		Juego juego = new Juego(jugador1, jugador2, 100);
 		Mapa mapa = juego.getMapa();
-		jugador1.setDinero(99999, 99999);
-		//Creadora barraca = (Creadora) jugador1.colocar(new Barraca(), mapa, 5, 5);		
+		jugador1.setDinero(99999, 99999);	
 		
 		Creadora acceso = (Creadora) jugador2.colocar(new Acceso(), mapa, 2, 2);		
-		
-		/*Unidad primerMarine = new Marine();
-		Unidad segundoMarine = new Marine();
-		Unidad tercerMarine = new Marine();*/
+	
 		Zealot zealot = new Zealot();	
-		
 		
 		acceso.colocarUnidad(zealot, mapa);
 		

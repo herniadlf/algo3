@@ -13,7 +13,7 @@ public class ArquitectoDeExtractora implements Arquitecto {
 		
 		map.eliminarElementoTerrestreEnPosicion(edificio.getPosicionX(), edificio.getPosicionY());
 		map.colocarExtractorEn(edificio.getPosicionX(), edificio.getPosicionY(), (Extractora) edificio);
-		
+		edificio.setMapa(map);
 	}
 
 	public void verificarTerreno(Mapa map, int x, int y, Construccion construccion) throws ExcepcionPosicionInvalida, ExcepcionExtractoraSinRecurso {

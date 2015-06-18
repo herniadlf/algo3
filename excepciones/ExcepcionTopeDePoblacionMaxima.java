@@ -4,7 +4,7 @@ public class ExcepcionTopeDePoblacionMaxima extends ExcepcionGeneral {
 
 	public ExcepcionTopeDePoblacionMaxima(String descripcion) {
 		
-		super(descripcion);
+		super(descripcion,null);
 		
 	}
 

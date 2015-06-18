@@ -24,10 +24,11 @@ public class Construccion implements Atacable {
 	private String nombre;
 	private int tiempoDeConstruccion;
 	private Dinero costo;
-	private Vida vida;
+	protected Vida vida;
 	protected int posicionX;
 	protected int posicionY;
 	protected Arquitecto arquitecto;
+	protected Mapa mapa;
 	public Construccion edificioRequerido;
 	protected int capacidadDeSuministros;
 	protected LinkedList<Posicion> alrededores;
@@ -37,7 +38,9 @@ public class Construccion implements Atacable {
 		this.turnoInicioDeConstruccion=t;
 		
 	}
-	
+	public void setMapa(Mapa map){
+		mapa = map;
+	}
 	public int getTurnoInicioDeConstruccion (){
 		
 		return this.turnoInicioDeConstruccion;
@@ -212,7 +215,7 @@ public class Construccion implements Atacable {
 		
 	}
 	
-	public void recibirDanio() {	
+	public void recibirDanio() throws ExcepcionPosicionInvalida {	
 		
 	}
 

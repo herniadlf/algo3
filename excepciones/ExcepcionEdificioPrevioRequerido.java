@@ -4,9 +4,8 @@ import excepciones.ExcepcionGeneral;
 
 public class ExcepcionEdificioPrevioRequerido extends ExcepcionGeneral {
 
-	public ExcepcionEdificioPrevioRequerido(String descripcion) {
-		
-		super(descripcion);
+	public ExcepcionEdificioPrevioRequerido(String descripcion) {		
+		super(descripcion,null);
 		
 	}
 

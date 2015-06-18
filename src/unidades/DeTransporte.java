@@ -4,7 +4,10 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 
 import excepciones.ExcepcionElTransporteEstaLleno;
+import excepciones.ExcepcionElTransporteNoEstaEnElAlcancePermitido;
 import excepciones.ExcepcionNoHayLugarParaCrear;
+import excepciones.ExcepcionNoPuedeMoverseUnidad;
+import excepciones.ExcepcionNoSePuedeTransportar;
 import excepciones.ExcepcionNoSePuedenTransportasUnidadesVoladoras;
 import excepciones.ExcepcionPosicionInvalida;
 import excepciones.ExcepcionYaHayElementoEnLaPosicion;
@@ -19,27 +22,43 @@ public abstract class DeTransporte extends Unidad {
 	protected LinkedList<Posicion> alrededores;
 	private static final int TRANSPORTE = 8;
 	
-	public void llevar(Unidad unidad) throws ExcepcionElTransporteEstaLleno, ExcepcionNoSePuedenTransportasUnidadesVoladoras{
+	public void llevar(Unidad unidad) throws ExcepcionNoSePuedeTransportar{
 		
-		if(cantidadPasajeros + unidad.getTransporte() <= TRANSPORTE){
-			
-			if(!(unidad.getTransporte() == 0)){
-				unidadesAbordo.add(unidad);
-				cantidadPasajeros = cantidadPasajeros + unidad.getTransporte();
-			}
-			else {
-				throw new ExcepcionNoSePuedenTransportasUnidadesVoladoras("Solo transporto unidades terrestres");
-			}
 		
+		try{
+			verificarDistancia(unidad);
+			verificarAsientosDisponibles(unidad);
+			verificarNaveVoladora(unidad);
 		}
-		else {
+		catch (ExcepcionNoSePuedenTransportasUnidadesVoladoras | ExcepcionElTransporteEstaLleno |
+				ExcepcionElTransporteNoEstaEnElAlcancePermitido e){
 			
-			throw new ExcepcionElTransporteEstaLleno("El transporte esta lleno");
-			
+				throw new ExcepcionNoSePuedeTransportar(e);
 		}
-		
-		}
+	}
 	
+	private void verificarNaveVoladora(Unidad unidad) throws ExcepcionNoSePuedenTransportasUnidadesVoladoras {
+		if (unidad.getTransporte() == 0){
+			throw new ExcepcionNoSePuedenTransportasUnidadesVoladoras("Solo transporto unidades terrestres"); 
+		}
+		
+	}
+
+	private void verificarAsientosDisponibles(Unidad unidad) throws ExcepcionElTransporteEstaLleno {
+		if (cantidadPasajeros + unidad.getTransporte() > TRANSPORTE){
+			throw new ExcepcionElTransporteEstaLleno("El transporte esta lleno");
+		}
+		
+	}
+
+	private void verificarDistancia(Unidad unidad) throws ExcepcionElTransporteNoEstaEnElAlcancePermitido {
+		int distanciaALaNave = mapa.distanciaEntreLosPuntos(unidad.getPosicionX(), unidad.getPosicionY(), this.getPosicionX(), this.getPosicionY());
+		if (distanciaALaNave > getVision() ) {
+			throw new ExcepcionElTransporteNoEstaEnElAlcancePermitido("El transporte esta demasiado lejos para abordarlo");
+		}
+		
+	}
+
 	public int cantidadPasajeros() {
 		
 		return cantidadPasajeros;
@@ -47,7 +66,7 @@ public abstract class DeTransporte extends Unidad {
 	}
 	
 	
-	public void transportarUnidades(int x, int y) throws ExcepcionPosicionInvalida, ExcepcionYaHayElementoEnLaPosicion, ExcepcionNoHayLugarParaCrear{
+	public void transportarUnidades(int x, int y) throws ExcepcionNoPuedeMoverseUnidad, ExcepcionPosicionInvalida, ExcepcionNoHayLugarParaCrear, ExcepcionYaHayElementoEnLaPosicion{
 		int i=0;
 		Mapa mapa = this.getMapa();
 		this.moverAPosicionDeterminada(x, y);

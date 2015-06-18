@@ -4,7 +4,7 @@ public class ExcepcionNoSePuedenTransportasUnidadesVoladoras extends ExcepcionGe
 
 	public ExcepcionNoSePuedenTransportasUnidadesVoladoras(String descripcion) {
 		
-		super(descripcion);
+		super(descripcion,null);
 		
 	}
 	

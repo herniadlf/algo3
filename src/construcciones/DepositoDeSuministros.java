@@ -1,5 +1,6 @@
 package src.construcciones;
 
+import excepciones.ExcepcionPosicionInvalida;
 import src.ConstantesAlgoCraft;
 
 public class DepositoDeSuministros extends NoExtractora{
@@ -22,10 +23,13 @@ public class DepositoDeSuministros extends NoExtractora{
 		
 	}
 	
-	public void recibirDanio(){
+	public void recibirDanio() throws ExcepcionPosicionInvalida{
 			
 		this.getVida().disminuirVidaPorDanio();
-			
+		boolean estadoDeVidaFinalizado= vida.devolverEstadoDeVida();
+		  if (estadoDeVidaFinalizado==true){
+			 mapa.eliminarElementoTerrestreEnPosicion(super.getPosicionX(), super.getPosicionY());
+			 }	
 	}
 	
 }

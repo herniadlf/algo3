@@ -4,7 +4,7 @@ public class ExcepcionElTransporteEstaLleno extends ExcepcionGeneral {
 
 	public ExcepcionElTransporteEstaLleno(String descripcion){
 		
-		super(descripcion);
+		super(descripcion,null);
 		
 	}
 	

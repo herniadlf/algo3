@@ -1,5 +1,6 @@
 package src.construcciones;
 
+import excepciones.ExcepcionPosicionInvalida;
 import src.ConstantesAlgoCraft;
 import src.Escudo;
 import src.Jugador;
@@ -36,10 +37,13 @@ public class NexoMineral extends Extractora {
 		
 	}
 	
-	public void recibirDanio (){
+	public void recibirDanio () throws ExcepcionPosicionInvalida{
 		
 		escudo.atacar(this.getVida().obtenerDanioRecibido());
-		
+		boolean estadoDeVidaFinalizado= vida.devolverEstadoDeVida();
+		  if (estadoDeVidaFinalizado==true){
+			 mapa.eliminarElementoTerrestreEnPosicion(super.getPosicionX(), super.getPosicionY());
+			 }
 	}
 	
 	public void pasoTurno(Turno turno, Mapa mapa, Jugador jugadorActual){

@@ -2,6 +2,7 @@ package src.construcciones;
 
 import java.util.LinkedList;
 
+import excepciones.ExcepcionPosicionInvalida;
 import src.ConstantesAlgoCraft;
 import src.unidades.*;
 
@@ -47,10 +48,13 @@ public class PuertoEstelarTerran extends Creadora {
 		
 	}
 
-	public void recibirDanio (){
+	public void recibirDanio () throws ExcepcionPosicionInvalida{
 		
 		this.getVida().disminuirVidaPorDanio();
-		
+		boolean estadoDeVidaFinalizado= vida.devolverEstadoDeVida();
+		  if (estadoDeVidaFinalizado==true){
+			 mapa.eliminarElementoTerrestreEnPosicion(super.getPosicionX(), super.getPosicionY());
+			 }
 	}
 	
 }

@@ -15,7 +15,7 @@ public class ArquitectoDeNoExtractora implements Arquitecto {
 		
 		map.eliminarElementoTerrestreEnPosicion(edificio.getPosicionX(), edificio.getPosicionY()); //remueve escombros
 		map.colocarEn(edificio.getPosicionX(), edificio.getPosicionY(), edificio);
-		
+		edificio.setMapa(map);
 	}
 
 	public void verificarTerreno(Mapa map, int x, int y,Construccion construccion) throws ExcepcionPosicionInvalida,

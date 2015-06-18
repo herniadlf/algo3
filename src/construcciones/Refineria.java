@@ -1,5 +1,6 @@
 package src.construcciones;
 
+import excepciones.ExcepcionPosicionInvalida;
 import src.ConstantesAlgoCraft;
 import src.Jugador;
 import src.Turno;
@@ -26,10 +27,13 @@ public class Refineria extends Extractora{
 	}
 	
 	
-	public void recibirDanio (){
+	public void recibirDanio () throws ExcepcionPosicionInvalida{
 		
 		this.getVida().disminuirVidaPorDanio();
-		
+		boolean estadoDeVidaFinalizado= vida.devolverEstadoDeVida();
+		  if (estadoDeVidaFinalizado==true){
+			 mapa.eliminarElementoTerrestreEnPosicion(super.getPosicionX(), super.getPosicionY());
+			 }
 	}
 	
 	public void pasoTurno(Turno turno, Mapa mapa, Jugador jugadorActual){
