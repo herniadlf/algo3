@@ -11,6 +11,7 @@ import src.mapa.Posicion;
 import src.razas.Terran;
 import src.unidades.AltoTemplario;
 import src.unidades.Dragon;
+import src.unidades.Espectro;
 import src.unidades.Marine;
 import src.unidades.NaveCiencia;
 import src.unidades.Scout;
@@ -35,7 +36,6 @@ public class AltoTemplarioTest extends TestCase {
 		
 	}
 	
-	
 	public void testAltoTemplarioComienzaCon40Vida40EscudoY50Energia() {
 		
 		assertTrue(altoTemplario.getVida().obtenerVida() == 40);
@@ -44,7 +44,6 @@ public class AltoTemplarioTest extends TestCase {
 		
 	}
 	
-	
 	public void testTormentaPsionicaCuesta75Energia(){
 		
 		altoTemplario.setMapa(mapa);
@@ -52,6 +51,20 @@ public class AltoTemplarioTest extends TestCase {
 		altoTemplario.pasoTurno();
 		altoTemplario.tormentaPsionica(30,30);
 		Assert.assertTrue(altoTemplario.obtenerEnergia() == 5);
+		
+	}
+	
+	public void  testAlucinacionCuesta100Energia(){
+		
+		altoTemplario.setMapa(mapa);
+		Espectro espectro = new Espectro();
+		altoTemplario.pasoTurno();//65
+		altoTemplario.pasoTurno();//80
+		altoTemplario.pasoTurno();//95
+		altoTemplario.pasoTurno();//110
+		altoTemplario.alucinacion(espectro);
+		
+		Assert.assertTrue(altoTemplario.obtenerEnergia() == 10);
 		
 	}
 	

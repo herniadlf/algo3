@@ -45,7 +45,6 @@ public class UnidadesTerranTest extends TestCase{
 		try {
 			jugador.colocar(barraca,mapa,3,4);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} 
 		Marine marine = barraca.crearMarine();
@@ -61,9 +60,9 @@ public class UnidadesTerranTest extends TestCase{
 		try {
 			jugador.colocar(fabrica,mapa,4,4);
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} 
+		
 		Golliat golliat = fabrica.crearGolliat();
 			
 		Assert.assertTrue((golliat.getVida().obtenerVida()) == 125);
@@ -71,20 +70,17 @@ public class UnidadesTerranTest extends TestCase{
 	}
 		
 	
-	public void testespectroSeCreaCon120deVidaYNaveTransporteCon150() throws ExcepcionPosicionInvalida, ExcepcionExtractoraSinRecurso{
+	public void testEspectroSeCreaCon120deVida() throws ExcepcionPosicionInvalida, ExcepcionExtractoraSinRecurso{
 		
 		PuertoEstelarTerran puertoEstelar = new PuertoEstelarTerran();
 		try {
 			jugador.colocar(puertoEstelar,mapa,30,30);			
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		Espectro espectro = puertoEstelar.crearEspectro();
-		NaveTransporteTerran naveTransporte = puertoEstelar.crearNaveTransporteTerran();
-			
+		
+		Espectro espectro = puertoEstelar.crearEspectro();	
 		Assert.assertTrue(espectro.getVida().obtenerVida() == 120);
-		Assert.assertTrue(naveTransporte.getVida().obtenerVida() == 150);
 			
 	}
 			
@@ -158,100 +154,6 @@ public class UnidadesTerranTest extends TestCase{
 			
 	}
 	
-	public void testNaveTransporteTerranTransporta8Marines(){
-			
-		NaveTransporteTerran naveTransporte = new NaveTransporteTerran();
-		ArrayList<Marine> marines = new ArrayList<>();
-			
-		for(int i = 0 ; i < 8 ; i++){	
-			Marine marine = new Marine();
-			marines.add(marine);
-		}
-				
-		Iterator<Marine> i = marines.iterator();
-		
-		while(i.hasNext()){	
-			try{
-				naveTransporte.llevar(i.next());
-			} catch (ExcepcionGeneral e){	
-				e.getMessage();
-			}
-		}
-			
-		Assert.assertTrue(naveTransporte.cantidadPasajeros() == 8);		
-			
-	}
-	
-	public void testNaveTransporteSoloPuedeLlevar4Golliats(){
-		
-		NaveTransporteTerran naveTransporte = new NaveTransporteTerran();
-		ArrayList<Golliat> golliats = new ArrayList<>();
-		
-		for(int i = 0 ; i < 4 ; i++){	
-			Golliat golliat = new Golliat();
-			golliats.add(golliat);
-		}
-				
-		Iterator<Golliat> i = golliats.iterator();
-		
-		while(i.hasNext()){	
-			try{
-				naveTransporte.llevar(i.next());
-			} catch (ExcepcionGeneral e){	
-				e.getMessage();
-			}
-		}
-		
-		Assert.assertTrue(naveTransporte.cantidadPasajeros() == 8);
-	}
 	
 	
-	public void testTransporteDeUnidadesAUnDeterminadoPunto() throws ExcepcionNoPudoColocarseEdificio, ExcepcionNoPudoCrearseUnidad, ExcepcionErrorPasoDeTurno, ExcepcionPosicionInvalida, ExcepcionYaHayElementoEnLaPosicion, ExcepcionElTransporteEstaLleno, ExcepcionNoHayLugarParaCrear{
-		Mapa mapa = new Mapa(50);
-		NaveTransporteTerran naveTransporte = new NaveTransporteTerran();
-		Marine marine1= new Marine();
-		Marine marine2= new Marine();
-		Marine marine3= new Marine();
-		marine1.setMapa(mapa);
-		marine2.setMapa(mapa);
-		marine3.setMapa(mapa);
-		
-		
-		mapa.colocarEn(1, 2, naveTransporte);
-		Posicion posicion = new Posicion (1,2);
-		naveTransporte.setPosicion(posicion);
-		naveTransporte.setMapa(mapa);
-		
-		mapa.colocarEn(2,5,marine1);
-		Posicion posicion1 = new Posicion (2,5);
-		marine1.setPosicion(posicion1);
-		mapa.colocarEn(3, 5, marine2);
-		Posicion posicion2 = new Posicion (3,5);
-		marine2.setPosicion(posicion2);
-		mapa.colocarEn(4, 5, marine3);
-		Posicion posicion3 = new Posicion (6,6);
-		marine3.setPosicion(posicion3);
-		
-		
-		
-		
-		naveTransporte.llevar(marine1);
-		naveTransporte.llevar(marine2);
-		naveTransporte.llevar(marine3);
-		naveTransporte.transportarUnidades(8, 8);
-		
-		// Verifico que las unidades hallan viajado a la posicion determinada 
-		Assert.assertTrue(marine1.getPosicionX() == 7);
-		Assert.assertTrue(marine1.getPosicionY()==9);
-		
-		Assert.assertTrue(marine2.getPosicionX() == 8);
-		Assert.assertTrue(marine2.getPosicionY()==9);
-		
-		Assert.assertTrue(marine3.getPosicionX() == 9);
-		Assert.assertTrue(marine3.getPosicionY()==9);
-		
-		
-		
-		
-	
-}}
+}

@@ -10,7 +10,6 @@ import src.mapa.Mapeable;
 
 
 public class NaveTransporteTerran extends DeTransporte {
-
 	
 	private static final int DANIO_AIRE = 0;
 	private static final int DANIO_TIERRA = 0;

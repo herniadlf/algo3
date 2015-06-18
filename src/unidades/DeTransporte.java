@@ -5,6 +5,7 @@ import java.util.LinkedList;
 
 import excepciones.ExcepcionElTransporteEstaLleno;
 import excepciones.ExcepcionNoHayLugarParaCrear;
+import excepciones.ExcepcionNoSePuedenTransportasUnidadesVoladoras;
 import excepciones.ExcepcionPosicionInvalida;
 import excepciones.ExcepcionYaHayElementoEnLaPosicion;
 import src.mapa.Mapa;
@@ -18,12 +19,17 @@ public abstract class DeTransporte extends Unidad {
 	protected LinkedList<Posicion> alrededores;
 	private static final int TRANSPORTE = 8;
 	
-	public void llevar(Unidad unidad) throws ExcepcionElTransporteEstaLleno{
+	public void llevar(Unidad unidad) throws ExcepcionElTransporteEstaLleno, ExcepcionNoSePuedenTransportasUnidadesVoladoras{
 		
 		if(cantidadPasajeros + unidad.getTransporte() <= TRANSPORTE){
 			
-			unidadesAbordo.add(unidad);
-			cantidadPasajeros = cantidadPasajeros + unidad.getTransporte();
+			if(!(unidad.getTransporte() == 0)){
+				unidadesAbordo.add(unidad);
+				cantidadPasajeros = cantidadPasajeros + unidad.getTransporte();
+			}
+			else {
+				throw new ExcepcionNoSePuedenTransportasUnidadesVoladoras("Solo transporto unidades terrestres");
+			}
 		
 		}
 		else {

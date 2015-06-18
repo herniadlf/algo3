@@ -101,7 +101,7 @@ public class AltoTemplario extends Magica {
 	
 	public void alucinacion(Unidad unidad){
 		
-		Alucinacion alucinacion = new Alucinacion();
+		Alucinacion alucinacion = new Alucinacion(unidad);
 		if(energia.obtenerCantidad() >= alucinacion.obtenerEnergiaNecesaria()){
 			alucinacion.atacar(unidad);
 			energia.disminuirEnergia(alucinacion.obtenerEnergiaNecesaria());
