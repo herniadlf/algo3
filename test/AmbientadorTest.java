@@ -26,11 +26,11 @@ public class AmbientadorTest {
 		
 		Jugador jugador2 = new Jugador("p1", "rojo", new Protoss());
 		
-		Mapa mapa = new Ambientador().ambientarMapa(500, 20, jugador1, jugador2);
+		Mapa mapa = new Ambientador().ambientarMapa(200, 20, jugador1, jugador2);
 		
-		int posPrincipal1 = (int) ((500) - (500 / 4));
+		int posPrincipal1 = (int) ((200) - (200 / 4));
 		
-		int posPrincipal2 = (500 - posPrincipal1);
+		int posPrincipal2 = (200 - posPrincipal1);
 		
 		Mapeable base1 = mapa.obtenerContenidoEnPosicion(posPrincipal1, posPrincipal1).getElementoEnTierra();
 		
@@ -49,7 +49,7 @@ public class AmbientadorTest {
 		
 		Jugador jugador2 = new Jugador("p1", "rojo", new Protoss());
 		
-		Mapa mapa = new Ambientador().ambientarMapa(500, 20, jugador1, jugador2);
+		Mapa mapa = new Ambientador().ambientarMapa(200, 20, jugador1, jugador2);
 		
 		int fuenteMinerales = 0;
 		
@@ -86,7 +86,7 @@ public class AmbientadorTest {
 		
 		Jugador jugador2 = new Jugador("p1", "rojo", new Protoss());
 		
-		Mapa mapa = new Ambientador().ambientarMapa(500, 20, jugador1, jugador2);
+		Mapa mapa = new Ambientador().ambientarMapa(200, 20, jugador1, jugador2);
 		
 		int cantArboles = 0;
 
