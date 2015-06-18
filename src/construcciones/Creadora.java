@@ -75,6 +75,7 @@ public abstract class Creadora extends NoExtractora {
 			if ( turnosPasados  >= unidadesEnFabricacion.get(i).getTiempoDeCreacion()){
 				try{
 					colocarUnidad(unidadesEnFabricacion.get(i), map);
+					jugadorActual.agragarAUnidadesAlistadas(unidadesEnFabricacion.get(i));
 					jugadorActual.actualizarPorNuevaUnidad(unidadesEnFabricacion.get(i),unidadesEnFabricacion.get(i).getEdifico(), map);				
 					unidadesEnFabricacion.remove(i);
 				}

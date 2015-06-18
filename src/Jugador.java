@@ -54,6 +54,7 @@ public class Jugador {
 		this.construccionesEnCamino= new ArrayList<Construccion>();	
 		this.construccionesEnPie= new ArrayList <Construccion>();
 		this.ataques= new  AtaquesPermitidosPorTurno();
+		this.unidadesAlistadas= new ArrayList<Unidad>();
 		
 		
 		
@@ -272,14 +273,19 @@ public class Jugador {
 		try{
 			actualizarTurnoEnConstrucciones(turno, mapa);	
 			actualizarFabricacionConstrucciones(turno, mapa);
+			
 		} catch ( ExcepcionNoPudoColocarseEdificio | ExcepcionNoPudoColocarseUnidad e){
 			throw new ExcepcionErrorPasoDeTurno(e);
 		}
 		
-		/*Iterator<Unidad> i = unidadesAlistadas.iterator();
+		System.out.print(this.unidadesAlistadas.size());
+		
+		Iterator<Unidad> i = unidadesAlistadas.iterator();
 		while(i.hasNext()){
 			Unidad unidad = i.next();
 			unidad.pasoTurno();
-		}*/
+		}
+	
+		
 	
 }}
