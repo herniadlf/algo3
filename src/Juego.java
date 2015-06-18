@@ -12,6 +12,7 @@ import excepciones.ExcepcionNoPudoCrearseUnidad;
 import excepciones.ExcepcionPosicionInvalida;
 import excepciones.ExcepcionRecursoInsuficiente;
 import excepciones.ExcepcionSuministrosInsuficientes;
+import excepciones.ExcepcionSuperaLimenteDeArbolesPermitos;
 import excepciones.ExcepcionTopeDePoblacionMaxima;
 import excepciones.ExcepcionUnidadNoCorrespondiente;
 import excepciones.ExcepcionYaHayElementoEnLaPosicion;
@@ -28,12 +29,12 @@ public class Juego {
 	Jugador jugador1,jugador2, jugadorActual;
 	Turno turno;
 	
-	public Juego(Mapa map2, Jugador jug1, Jugador jug2) {
+	public Juego(Jugador jug1, Jugador jug2, int tamanioMapa) throws ExcepcionPosicionInvalida, ExcepcionYaHayElementoEnLaPosicion, ExcepcionSuperaLimenteDeArbolesPermitos {
 		
 		super();
-		mapa = map2;
 		jugador1 = jug1;
 		jugador2 = jug2;
+		mapa = new Ambientador().ambientarMapa(tamanioMapa, (int)(tamanioMapa*0.10), jug1, jug2);
 		jugadorActual = jug1;		
 		turno = new Turno();
 		
