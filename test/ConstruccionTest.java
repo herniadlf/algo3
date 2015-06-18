@@ -12,6 +12,7 @@ import excepciones.ExcepcionNoHayLugarParaCrear;
 import excepciones.ExcepcionNoPudoColocarseEdificio;
 import excepciones.ExcepcionPosicionInvalida;
 import excepciones.ExcepcionRecursoInsuficiente;
+import excepciones.ExcepcionSuperaLimenteDeArbolesPermitos;
 import excepciones.ExcepcionYaHayElementoEnLaPosicion;
 import src.*;
 import src.construcciones.Acceso;
@@ -62,12 +63,11 @@ public class ConstruccionTest {
 		} 
 				
 		@Test (expected = ExcepcionNoPudoColocarseEdificio.class)
-		public void noConstruyeFabricaSinBarraca() throws ExcepcionNoPudoColocarseEdificio {
-			Mapa mapa = new Mapa(50);
+		public void noConstruyeFabricaSinBarraca() throws ExcepcionNoPudoColocarseEdificio, ExcepcionPosicionInvalida, ExcepcionYaHayElementoEnLaPosicion, ExcepcionSuperaLimenteDeArbolesPermitos {
 			Jugador jugador1 = new Jugador ("carlos","rojo",new Terran());
 			Jugador jugador2 = new Jugador ("dean","azul",new Terran());
 			
-			Juego juego = new Juego(mapa, jugador1, jugador2);
+			Juego juego = new Juego(jugador1, jugador2, 100);
 			
 			juego.ordenFabricacionDeEdificios(new Fabrica(), 3, 3);
 		}
@@ -174,13 +174,12 @@ public class ConstruccionTest {
 				throws ExcepcionPosicionInvalida, 
 				ExcepcionYaHayElementoEnLaPosicion, 
 				ExcepcionNoPudoColocarseEdificio, 
-				ExcepcionErrorPasoDeTurno {
+				ExcepcionErrorPasoDeTurno, ExcepcionSuperaLimenteDeArbolesPermitos {
 			
-			Mapa mapa = new Mapa(50);
 			Jugador jugador1 = new Jugador ("carlos","rojo",new Terran());
 			Jugador jugador2 = new Jugador ("dean","azul",new Terran());
-			Juego juego = new Juego (mapa, jugador1, jugador2);
-			
+			Juego juego = new Juego (jugador1, jugador2, 100);
+			Mapa mapa = juego.getMapa();
 			mapa.colocarEn(4, 4, new FuenteDeMinerales());
 			mapa.colocarEn(5,5, new FuenteDeGasVespeno());
 			
@@ -203,13 +202,13 @@ public class ConstruccionTest {
 		}
 		
 		@Test (expected = ExcepcionNoPudoColocarseEdificio.class)
-		public void seReservaLugarAunqueLaConstruccionNoEstaFinalizada() throws ExcepcionNoPudoColocarseEdificio, ExcepcionPosicionInvalida, ExcepcionErrorPasoDeTurno {
+		public void seReservaLugarAunqueLaConstruccionNoEstaFinalizada() throws ExcepcionNoPudoColocarseEdificio, ExcepcionPosicionInvalida, ExcepcionErrorPasoDeTurno, ExcepcionYaHayElementoEnLaPosicion, ExcepcionSuperaLimenteDeArbolesPermitos {
 			
 			Mapa mapa = new Mapa(50);
 			Jugador jugador1 = new Jugador ("carlos","rojo",new Terran());
 			Jugador jugador2 = new Jugador ("dean","azul",new Protoss());
 			
-			Juego juego = new Juego(mapa, jugador1, jugador2);
+			Juego juego = new Juego(jugador1, jugador2,100);
 			
 			juego.ordenFabricacionDeEdificios(new Barraca(), 3, 3);
 			Assert.assertFalse(mapa.obtenerContenidoEnPosicion(3, 3).getElementoEnTierra().esLoMismo(new Barraca()));
@@ -224,12 +223,13 @@ public class ConstruccionTest {
 				throws ExcepcionPosicionInvalida, 
 				ExcepcionYaHayElementoEnLaPosicion, 
 				ExcepcionNoPudoColocarseEdificio,
-				ExcepcionErrorPasoDeTurno {
-			Mapa mapa = new Mapa(50);
+				ExcepcionErrorPasoDeTurno, ExcepcionSuperaLimenteDeArbolesPermitos {
+		
 			Jugador jugador1 = new Jugador ("carlos","rojo",new Terran());
 			Jugador jugador2 = new Jugador ("dean","azul",new Protoss());
 			
-			Juego juego = new Juego(mapa, jugador1, jugador2);
+			Juego juego = new Juego(jugador1, jugador2, 100);
+			Mapa mapa = juego.getMapa();
 			mapa.colocarEn(3, 3, new FuenteDeMinerales());
 			
 			juego.ordenFabricacionDeEdificios(new CentroDeMineral(), 5, 5);
