@@ -4,6 +4,7 @@ package src.unidades;
 import java.util.ArrayList;
 
 import excepciones.ExcepcionEdificioNoPuedeCrearUnidad;
+import excepciones.ExcepcionElementoFueraDelRangoDeAtaque;
 import excepciones.ExcepcionErrorPasoDeTurno;
 import excepciones.ExcepcionNoHayLugarParaCrear;
 import excepciones.ExcepcionPosicionInvalida;
@@ -154,7 +155,7 @@ public abstract class Unidad implements Atacable{
 	
 	}
 	
-	public void atacarEnAire (Atacable atacado) throws ExcepcionEdificioNoPuedeCrearUnidad, ExcepcionPosicionInvalida, ExcepcionNoHayLugarParaCrear, ExcepcionYaHayElementoEnLaPosicion, ExcepcionErrorPasoDeTurno{
+	public void atacarEnAire (Atacable atacado) throws ExcepcionEdificioNoPuedeCrearUnidad, ExcepcionPosicionInvalida, ExcepcionNoHayLugarParaCrear, ExcepcionYaHayElementoEnLaPosicion, ExcepcionErrorPasoDeTurno, ExcepcionElementoFueraDelRangoDeAtaque{
 		
 		int distanciaEntreEnemigos = mapa.distanciaEntreLosPuntos(atacado.getPosicionX(), atacado.getPosicionY(), this.getPosicionX(), this.getPosicionY());
 		if ((distanciaEntreEnemigos) < this.getVision()){
@@ -164,11 +165,15 @@ public abstract class Unidad implements Atacable{
 		atacado.recibirDanio();
 		ataques.aumentarAtaquesPermitidos();
 		
+		} else {
+			
+			throw new ExcepcionElementoFueraDelRangoDeAtaque("El enemigo se encuentra fuera del rango de ataque");
+		
 		}
 	} 
 	
 	
-	public void atacarEnTierra(Atacable atacado) throws ExcepcionEdificioNoPuedeCrearUnidad, ExcepcionPosicionInvalida, ExcepcionNoHayLugarParaCrear, ExcepcionYaHayElementoEnLaPosicion, ExcepcionErrorPasoDeTurno{
+	public void atacarEnTierra(Atacable atacado) throws ExcepcionEdificioNoPuedeCrearUnidad, ExcepcionPosicionInvalida, ExcepcionNoHayLugarParaCrear, ExcepcionYaHayElementoEnLaPosicion, ExcepcionErrorPasoDeTurno, ExcepcionElementoFueraDelRangoDeAtaque{
 		int distanciaEntreEnemigos = mapa.distanciaEntreLosPuntos(atacado.getPosicionX(), atacado.getPosicionY(), this.getPosicionX(), this.getPosicionY());
 		
 		if ((distanciaEntreEnemigos) < this.getVision()){
@@ -177,6 +182,10 @@ public abstract class Unidad implements Atacable{
 		atacado.getVida().aumentarDanioARecibir(danio);
 		atacado.recibirDanio();
 		ataques.aumentarAtaquesPermitidos();
+		
+		}else {
+			
+			throw new ExcepcionElementoFueraDelRangoDeAtaque("El enemigo se encuentra fuera del rango de ataque");
 		
 		}
 		
@@ -192,8 +201,18 @@ public abstract class Unidad implements Atacable{
 	
 	public void moverAPosicionDeterminada (int x, int y) throws ExcepcionPosicionInvalida, ExcepcionYaHayElementoEnLaPosicion{
 		
+		try {
+			
 		mapa.colocarEn(x, y, this);
 		mapa.eliminarElementoTerrestreEnPosicion(posicion.getX(), posicion.getY());
+		
+		}
+		
+		catch (ExcepcionPosicionInvalida | ExcepcionYaHayElementoEnLaPosicion e) {
+			
+			e.getMensaje(); //verificar esto
+		}
+	
 		
 		/* eliminar de las cordenadas anteriores*/
 		
