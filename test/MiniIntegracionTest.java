@@ -5,6 +5,7 @@ import org.junit.Test;
 
 import excepciones.ExcepcionConstruccionNoCorrespondiente;
 import excepciones.ExcepcionEdificioNoPuedeCrearUnidad;
+import excepciones.ExcepcionElementoFueraDelRangoDeAtaque;
 import excepciones.ExcepcionErrorPasoDeTurno;
 import excepciones.ExcepcionExtractoraSinRecurso;
 import excepciones.ExcepcionNoHayLugarParaCrear;
@@ -13,6 +14,7 @@ import excepciones.ExcepcionNoPudoCrearseUnidad;
 import excepciones.ExcepcionPosicionInvalida;
 import excepciones.ExcepcionRecursoInsuficiente;
 import excepciones.ExcepcionSuministrosInsuficientes;
+import excepciones.ExcepcionSuperaLimenteDeArbolesPermitos;
 import excepciones.ExcepcionTopeDePoblacionMaxima;
 import excepciones.ExcepcionUnidadNoCorrespondiente;
 import excepciones.ExcepcionYaHayElementoEnLaPosicion;
@@ -43,12 +45,13 @@ public class MiniIntegracionTest {
 			throws ExcepcionNoPudoColocarseEdificio, 
 			ExcepcionNoPudoCrearseUnidad, 
 			ExcepcionErrorPasoDeTurno, 
-			ExcepcionPosicionInvalida {
-		Mapa mapa = new Mapa(50);
+			ExcepcionPosicionInvalida, ExcepcionYaHayElementoEnLaPosicion, ExcepcionSuperaLimenteDeArbolesPermitos {
+		
 		Jugador jugador1 = new Jugador ("carlos","rojo",new Terran());
 		Jugador jugador2 = new Jugador ("dean","azul",new Terran());
 		
-		Juego juego = new Juego(mapa, jugador1, jugador2);
+		Juego juego = new Juego(jugador1, jugador2, 100);
+		Mapa mapa = juego.getMapa();
 		jugador1.setDinero(99999, 99999);
 		
 		jugador1.colocar(new DepositoDeSuministros(), mapa, 30, 30);
@@ -85,12 +88,13 @@ public class MiniIntegracionTest {
 	@Test
 	public void testCrearEdificiosSegunTurno()
 			throws ExcepcionNoPudoColocarseEdificio, 
-			ExcepcionPosicionInvalida, ExcepcionErrorPasoDeTurno {
-		Mapa mapa = new Mapa(50);
+			ExcepcionPosicionInvalida, ExcepcionErrorPasoDeTurno, ExcepcionYaHayElementoEnLaPosicion, ExcepcionSuperaLimenteDeArbolesPermitos {
+
 		Jugador jugador1 = new Jugador ("carlos","rojo",new Terran());
 		Jugador jugador2 = new Jugador ("dean","azul",new Terran());
 		
-		Juego juego = new Juego(mapa, jugador1, jugador2);
+		Juego juego = new Juego(jugador1, jugador2, 100);
+		Mapa mapa = juego.getMapa();
 		jugador1.setDinero(99999, 99999);
 		
 		Construccion barraca = new Barraca();
@@ -133,12 +137,13 @@ public class MiniIntegracionTest {
 	}
 	
 	@Test (expected = ExcepcionNoPudoColocarseEdificio.class)
-	public void noConstruyeFabricaSinBarraca() throws ExcepcionNoPudoColocarseEdificio
+	public void noConstruyeFabricaSinBarraca() throws ExcepcionNoPudoColocarseEdificio, ExcepcionPosicionInvalida, ExcepcionYaHayElementoEnLaPosicion, ExcepcionSuperaLimenteDeArbolesPermitos
 			 {
-		Mapa mapa = new Mapa(50);
+
 		Jugador jugador1 = new Jugador ("carlos","rojo",new Terran());
 		Jugador jugador2 = new Jugador ("dean","azul",new Terran());
-		Juego juego = new Juego (mapa, jugador1, jugador2);
+		Juego juego = new Juego(jugador1, jugador2, 100);
+		Mapa mapa = juego.getMapa();
 		
 		juego.ordenFabricacionDeEdificios(new Fabrica(), 10, 10);			
 				 
@@ -147,15 +152,15 @@ public class MiniIntegracionTest {
 	
 	@Test
 	public void luegoDeDiezAtaquesPasaElTurno() throws ExcepcionPosicionInvalida,
-	ExcepcionNoHayLugarParaCrear, ExcepcionYaHayElementoEnLaPosicion, ExcepcionEdificioNoPuedeCrearUnidad, ExcepcionNoPudoColocarseEdificio, ExcepcionErrorPasoDeTurno{
+	ExcepcionNoHayLugarParaCrear, ExcepcionYaHayElementoEnLaPosicion, ExcepcionEdificioNoPuedeCrearUnidad, ExcepcionNoPudoColocarseEdificio, ExcepcionErrorPasoDeTurno, ExcepcionSuperaLimenteDeArbolesPermitos, ExcepcionElementoFueraDelRangoDeAtaque{
 		
-		Mapa mapa = new Mapa(50);
 		Jugador jugador1 = new Jugador ("carlos","rojo",new Terran());
 		Jugador jugador2 = new Jugador ("dean","azul",new Terran());
 		Turno turno = new Turno();
 		
 		
-		Juego juego = new Juego(mapa, jugador1, jugador2);
+		Juego juego = new Juego(jugador1, jugador2, 100);
+		Mapa mapa = juego.getMapa();
 		jugador1.setJuego(juego);
 		jugador2.setJuego(juego);
 		
