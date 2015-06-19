@@ -39,6 +39,12 @@ public class Juego {
 		turno = new Turno();
 		
 	}
+	
+	public Juego(){
+		jugador1 = new Jugador();
+		jugador2 = new Jugador();
+		jugadorActual = jugador1;
+	}
 
 	public Mapa getMapa() {
 		
@@ -121,6 +127,10 @@ public class Juego {
 			throw new ExcepcionNoPudoColocarseEdificio(e);
 		}	
 	
+	}
+
+	public void setJugadorActual(Jugador jug) {
+		jugadorActual = jug;		
 	}
 		
 	
