@@ -143,7 +143,7 @@ public class NaveTransporteTerranTest extends TestCase {
 
 	}
 	
-	public void testNaveTranporteNoPuedeLlevarEspectro() throws ExcepcionElTransporteEstaLleno, ExcepcionElTransporteNoEstaEnElAlcancePermitido, ExcepcionNoSePuedeTransportar{
+	public void testNaveTranporteNoPuedeLlevarEspectro() throws ExcepcionElTransporteEstaLleno, ExcepcionElTransporteNoEstaEnElAlcancePermitido, ExcepcionNoSePuedeTransportar, ExcepcionPosicionInvalida{
 		
 		Espectro espectro = new Espectro();
 		try {
@@ -154,7 +154,7 @@ public class NaveTransporteTerranTest extends TestCase {
 		
 	}
 	
-	public void testNaveTranporteNoPuedeLlevarNaveCiencia() throws ExcepcionNoSePuedeTransportar{
+	public void testNaveTranporteNoPuedeLlevarNaveCiencia() throws ExcepcionNoSePuedeTransportar, ExcepcionPosicionInvalida{
 		
 		NaveCiencia naveCiencia = new NaveCiencia();
 		try {

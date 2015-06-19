@@ -26,6 +26,7 @@ import src.construcciones.Construccion;
 import src.construcciones.Creadora;
 import src.construcciones.DepositoDeSuministros;
 import src.construcciones.Pilon;
+import src.construcciones.PuertoEstelarProtoss;
 import src.mapa.Mapa;
 import src.mapa.Posicion;
 import src.razas.Protoss;
@@ -143,33 +144,6 @@ public class UnidadesProtossTest{
 		dragon.getVida().disminuirVidaPorDanio();
 		
 		Assert.assertTrue(dragon.getVida().devolverEstadoDeVida());
-		
-	}
-	
-	@Test
-	public void testNaveTransporteProtossTransporta8Marines() throws ExcepcionNoSePuedeTransportar{
-		
-		NaveTransporteProtoss naveTransporte = new NaveTransporteProtoss();
-		
-		ArrayList<Marine> marines = new ArrayList<>();
-		
-		for(int i = 0 ; i < 8 ; i++){
-			
-			Marine marine = new Marine();
-			marines.add(marine);
-			
-		}
-			
-		Iterator<Marine> i = marines.iterator();
-		
-		while(i.hasNext()){
-			
-			
-				naveTransporte.llevar(i.next());
-			
-		}
-		
-		Assert.assertTrue(naveTransporte.cantidadPasajeros() == 8);		
 		
 	}
 	

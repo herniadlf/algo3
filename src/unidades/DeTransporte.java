@@ -22,13 +22,19 @@ public abstract class DeTransporte extends Unidad {
 	protected LinkedList<Posicion> alrededores;
 	private static final int TRANSPORTE = 8;
 	
-	public void llevar(Unidad unidad) throws ExcepcionNoSePuedeTransportar{
+	public void llevar(Unidad unidad) throws ExcepcionNoSePuedeTransportar, ExcepcionPosicionInvalida{
 		
 		
 		try{
 			verificarDistancia(unidad);
 			verificarAsientosDisponibles(unidad);
 			verificarNaveVoladora(unidad);
+			
+			mapa.eliminarElementoTerrestreEnPosicion(unidad.getPosicionX(), unidad.getPosicionY());
+			cantidadPasajeros++;
+			unidadesAbordo.add(unidad);
+			
+				
 		}
 		catch (ExcepcionNoSePuedenTransportasUnidadesVoladoras | ExcepcionElTransporteEstaLleno |
 				ExcepcionElTransporteNoEstaEnElAlcancePermitido e){
@@ -78,7 +84,6 @@ public abstract class DeTransporte extends Unidad {
 		
 		while (i< unidadesAbordo.size()){
 			Unidad unidad = unidadesAbordo.get(i);
-			mapa.eliminarElementoTerrestreEnPosicion(unidad.getPosicionX(), unidad.getPosicionY());
 			this.colocarUnidad(unidad, unidad.getMapa());
 			
 			i++;
