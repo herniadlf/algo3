@@ -13,6 +13,7 @@ import src.unidades.Dragon;
 import src.unidades.NaveCiencia;
 import src.unidades.Zealot;
 import excepciones.ExcepcionExtractoraSinRecurso;
+import excepciones.ExcepcionNoPuedeMoverseUnidad;
 import excepciones.ExcepcionPosicionInvalida;
 import excepciones.ExcepcionYaHayElementoEnLaPosicion;
 import junit.framework.TestCase;
@@ -122,6 +123,39 @@ public class NaveCienciaTest extends TestCase {
 		
 	}
 	
+	public void testAltoTemplarioAfectadoPorRadiacionAlMoverseDaniaUnidadesASuAlrededor() throws ExcepcionPosicionInvalida, ExcepcionYaHayElementoEnLaPosicion, ExcepcionNoPuedeMoverseUnidad{
+		
+		AltoTemplario altoTemplario = new AltoTemplario();
+		altoTemplario.setMapa(mapa);
+		
+		Dragon dragon = new Dragon();
+		dragon.setMapa(mapa);
+		Posicion posicionDragon = new Posicion(10,17);
+		dragon.setPosicion(posicionDragon);
+		mapa.colocarEn(10,17,dragon);
+		
+		NaveCiencia naveCiencia = new NaveCiencia();
+		
+		naveCiencia.pasoTurno();
+		naveCiencia.pasoTurno();
+		naveCiencia.pasoTurno();
+		
+		Posicion posicionAltoTemplario = new Posicion(10,10);
+		altoTemplario.setPosicion(posicionAltoTemplario);
+		mapa.colocarEn(10, 10, altoTemplario);
+		naveCiencia.setMapa(mapa);
+		
+		naveCiencia.radiacion(altoTemplario);
+		Assert.assertTrue(dragon.getEscudo().obtenerResistenciaActual() == 80); //no lo afecto
+		
+		altoTemplario.moverAPosicionDeterminada(10,16);
+		
+		altoTemplario.pasoTurno();
+		
+		Assert.assertTrue(dragon.getEscudo().obtenerResistenciaActual() == 50);
+		
+		
+	}
 	
 	
 	

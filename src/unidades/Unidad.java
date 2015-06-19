@@ -206,6 +206,8 @@ public abstract class Unidad implements Atacable{
 			
 		mapa.colocarEn(x, y, this);
 		mapa.eliminarElementoTerrestreEnPosicion(posicion.getX(), posicion.getY());
+		Posicion nuevaPosicion = new Posicion(x,y);
+		this.setPosicion(nuevaPosicion);
 		
 		}
 		

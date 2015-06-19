@@ -28,6 +28,7 @@ public class Acceso extends Creadora {
 		setTiempoDeConstruccion(TIEMPO);
 		setEdificioRequerido(new Pilon());
 		escudo = new Escudo(ESCUDO,this);
+		
 	}
 		
 	public Zealot crearZealot(){
@@ -56,7 +57,8 @@ public class Acceso extends Creadora {
 		boolean estadoDeVidaFinalizado= vida.devolverEstadoDeVida();
 		  if (estadoDeVidaFinalizado==true){
 			 mapa.eliminarElementoTerrestreEnPosicion(super.getPosicionX(), super.getPosicionY());
-			 }
+		 }
+		  
 	}
 
 	public Dragon crearDragon() {

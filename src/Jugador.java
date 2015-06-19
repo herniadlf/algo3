@@ -162,6 +162,7 @@ public class Jugador {
 		}		
 		
 		return edificio;
+		
 	}
 	
 	public void verificacionEdificio(Construccion edificio) throws ExcepcionConstruccionNoCorrespondiente, ExcepcionRecursoInsuficiente{

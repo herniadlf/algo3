@@ -41,9 +41,11 @@ public class Juego {
 	}
 	
 	public Juego(){
+		
 		jugador1 = new Jugador();
 		jugador2 = new Jugador();
 		jugadorActual = jugador1;
+		
 	}
 
 	public Mapa getMapa() {
@@ -88,10 +90,7 @@ public class Juego {
 		
 	} 
 
-	public void ordenarFabricacionUnidad (Unidad unidad, Creadora edificio) 
-			throws ExcepcionNoPudoCrearseUnidad 
-	
-		 {
+	public void ordenarFabricacionUnidad (Unidad unidad, Creadora edificio) throws ExcepcionNoPudoCrearseUnidad {
 		
 		try {
 			jugadorActual.verificacionUnidad(unidad, edificio);
@@ -109,8 +108,7 @@ public class Juego {
 		
 	}
 	
-	public void ordenFabricacionDeEdificios (Construccion construccion, int x, int y) 
-			throws ExcepcionNoPudoColocarseEdificio {
+	public void ordenFabricacionDeEdificios (Construccion construccion, int x, int y) throws ExcepcionNoPudoColocarseEdificio {
 		
 		try {
 			jugadorActual.verificacionEdificio(construccion);
@@ -129,9 +127,10 @@ public class Juego {
 	
 	}
 
-	public void setJugadorActual(Jugador jug) {
-		jugadorActual = jug;		
-	}
+	public void setJugadorActual(Jugador jugador) {
 		
+		jugadorActual = jugador;	
+		
+	}
 	
 }

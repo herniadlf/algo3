@@ -34,14 +34,18 @@ public class Construccion implements Atacable {
 	protected int capacidadDeSuministros;
 	protected LinkedList<Posicion> alrededores;
 	
-	public void setTurnoInicioDEConstruccion(int t){
+	public void setTurnoInicioDEConstruccion(int turno){
 		
-		this.turnoInicioDeConstruccion=t;
+		this.turnoInicioDeConstruccion = turno;
 		
 	}
-	public void setMapa(Mapa map){
-		mapa = map;
+	
+	public void setMapa(Mapa mapa){
+		
+		this.mapa = mapa;
+		
 	}
+	
 	public int getTurnoInicioDeConstruccion (){
 		
 		return this.turnoInicioDeConstruccion;
@@ -154,8 +158,6 @@ public class Construccion implements Atacable {
 		capacidadDeSuministros = 0;
 		
 	}
-	
-	
 	
 	public void setAlrededores(){
 		

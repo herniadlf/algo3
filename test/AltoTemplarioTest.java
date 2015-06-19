@@ -106,5 +106,23 @@ public class AltoTemplarioTest extends TestCase {
 		//Assert.assertTrue(marine.getVida().obtenerVida() == 0);
 		
 	}
-
+	
+	/*
+	public void testAltoTemplarioAlucinaUnScout(){
+		
+		Scout scout = new Scout();
+		scout.setMapa(mapa);
+		Posicion posicionScout = new Posicion(20,20);
+		scout.setPosicion(posicionScout);
+		
+		altoTemplario.alucinacion(scout);
+		for(int i=0; i<8; i++){
+			
+			mapa.
+			
+		}
+		
+		
+	}
+	 */
 }

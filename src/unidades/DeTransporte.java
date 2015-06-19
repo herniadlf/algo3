@@ -71,6 +71,7 @@ public abstract class DeTransporte extends Unidad {
 	
 	
 	public void transportarUnidades(int x, int y) throws ExcepcionNoPuedeMoverseUnidad, ExcepcionPosicionInvalida, ExcepcionNoHayLugarParaCrear, ExcepcionYaHayElementoEnLaPosicion{
+		
 		int i=0;
 		Mapa mapa = this.getMapa();
 		this.moverAPosicionDeterminada(x, y);
@@ -79,14 +80,14 @@ public abstract class DeTransporte extends Unidad {
 		this.setPosicion(auxiliar);
 		this.setAlrededores();
 		
-		
 		while (i< unidadesAbordo.size()){
 			Unidad unidad = unidadesAbordo.get(i);
 			this.colocarUnidad(unidad, unidad.getMapa());
 			
 			i++;
 			
-			}
+		}
+		
 } 
 	
 public void setAlrededores(){

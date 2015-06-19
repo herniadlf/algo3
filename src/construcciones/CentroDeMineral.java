@@ -10,6 +10,7 @@ import src.mapa.FuenteDeMinerales;
 import src.mapa.Mapa;
 
 public class CentroDeMineral extends Extractora {
+	
 	private static final int COSTO_MINERALES = 50;
 	private static final int COSTO_GAS = 0;
 	private static final int VIDA = 500;
@@ -33,7 +34,8 @@ public class CentroDeMineral extends Extractora {
 		boolean estadoDeVidaFinalizado= vida.devolverEstadoDeVida();
 		  if (estadoDeVidaFinalizado==true){
 			 mapa.eliminarElementoTerrestreEnPosicion(super.getPosicionX(), super.getPosicionY());
-			 }
+		  }
+		  
 	}
 	
 	public void pasoTurno(Turno turno, Mapa mapa, Jugador jugadorActual) throws ExcepcionEdificioDestruido{
@@ -41,6 +43,7 @@ public class CentroDeMineral extends Extractora {
 		if (vida.devolverEstadoDeVida()){
 			throw new ExcepcionEdificioDestruido();
 		}
+		
 		int minerales = jugadorActual.getDinero().getMinerales()  + RECURSOS_POR_TURNO;
 		int gas = jugadorActual.getDinero().getGasVespeno();
 		jugadorActual.setDinero(minerales, gas);

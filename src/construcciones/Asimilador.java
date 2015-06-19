@@ -37,7 +37,8 @@ public class Asimilador extends Extractora {
 		boolean estadoDeVidaFinalizado= vida.devolverEstadoDeVida();
 		  if (estadoDeVidaFinalizado==true){
 			 mapa.eliminarElementoTerrestreEnPosicion(super.getPosicionX(), super.getPosicionY());
-			 }
+		  }
+		  
 	}
 	
 	public void pasoTurno(Turno turno, Mapa mapa, Jugador jugadorActual) throws ExcepcionEdificioDestruido{
@@ -45,6 +46,7 @@ public class Asimilador extends Extractora {
 		if (vida.devolverEstadoDeVida()){
 			throw new ExcepcionEdificioDestruido();
 		}
+		
 		int minerales = jugadorActual.getDinero().getMinerales();
 		int gas = jugadorActual.getDinero().getGasVespeno() + RECURSOS_POR_TURNO;
 		jugadorActual.setDinero(minerales, gas);

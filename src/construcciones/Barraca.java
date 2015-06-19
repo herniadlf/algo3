@@ -41,7 +41,8 @@ public class Barraca extends Creadora {
 		boolean estadoDeVidaFinalizado= vida.devolverEstadoDeVida();
 		  if (estadoDeVidaFinalizado==true){
 			 mapa.eliminarElementoTerrestreEnPosicion(super.getPosicionX(), super.getPosicionY());
-			 }
+		  }
+		  
 	}
 	
 }

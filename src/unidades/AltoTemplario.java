@@ -174,7 +174,8 @@ public class AltoTemplario extends Magica {
 			tormentaEnCurso = false;
 		}
 		if(afectadoPorRadiacion){
-			this.afectadoPorRadiacion(danioRadiacion);
+			Radiacion radiacion = new Radiacion(this,mapa);
+			radiacion.atacar();
 		}
 		
 	}
