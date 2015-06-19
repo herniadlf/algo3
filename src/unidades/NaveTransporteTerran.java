@@ -34,7 +34,6 @@ public class NaveTransporteTerran extends DeTransporte {
 		vida = new Vida(VIDA);
 		vision = VISION;
 		colocador = (ColocadorUnidadVoladora) new ColocadorUnidadVoladora();
-		cantidadPasajeros = 0;
 		unidadesAbordo = new ArrayList<Unidad>();
 	}
 	

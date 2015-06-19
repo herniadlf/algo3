@@ -38,7 +38,6 @@ public class NaveTransporteProtoss extends DeTransporte {
 		vision = VISION;
 		escudo = new Escudo (ESCUDO,this);
 		colocador = (ColocadorUnidadVoladora) new ColocadorUnidadVoladora();
-		cantidadPasajeros = 0;
 		unidadesAbordo = new ArrayList<Unidad>();
 		
 	}	

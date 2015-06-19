@@ -4,10 +4,17 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 import junit.framework.TestCase;
+import src.Juego;
 import src.Jugador;
+import src.construcciones.Acceso;
+import src.construcciones.Barraca;
+import src.construcciones.Creadora;
+import src.construcciones.Fabrica;
+import src.construcciones.PuertoEstelarProtoss;
 import src.construcciones.PuertoEstelarTerran;
 import src.mapa.Mapa;
 import src.mapa.Posicion;
+import src.razas.Protoss;
 import src.razas.Terran;
 import src.unidades.*;
 
@@ -29,24 +36,29 @@ import excepciones.ExcepcionYaHayElementoEnLaPosicion;
 
 public class NaveTransporteTerranTest extends TestCase {
 	
-	private Mapa mapa;
-	private Jugador jugador;
 	private NaveTransporteTerran naveTransporte;
+	private Mapa mapa;
+	private Creadora barraca;
+	private Creadora puertoEstelar;
+	private Jugador jugador1;
+	private Jugador jugador2;
+	
 	
 	protected void setUp() throws Exception {
 		
 		super.setUp();
-		mapa = new Mapa(50);
-		jugador = new Jugador("Pepe","rojo", new Terran());
+		jugador1 = new Jugador ("carlos","rojo",new Protoss());
+		jugador2 = new Jugador ("dean","azul",new Protoss());
 		
-		PuertoEstelarTerran puertoEstelar = new PuertoEstelarTerran();
-		try {
-			jugador.colocar(puertoEstelar,mapa,8,8);			
-		} catch (Exception e) {
-			e.printStackTrace();
-			
-		}
-		puertoEstelar.colocarUnidad(new NaveTransporteTerran(), mapa);
+		Juego juego = new Juego(jugador1, jugador2, 100);
+		mapa = juego.getMapa();
+		jugador1.setDinero(99999, 99999);
+				
+		 barraca = (Creadora) jugador1.colocar(new Barraca(), mapa, 50, 50);
+		 puertoEstelar = (Creadora) jugador1.colocar(new PuertoEstelarTerran(), mapa, 49, 50);
+		
+		naveTransporte = new NaveTransporteTerran();
+		puertoEstelar.colocarUnidad(naveTransporte, mapa);
 	}
 	
 	public void testNaveTransporteSeCreaCon150deVida() throws ExcepcionPosicionInvalida, ExcepcionExtractoraSinRecurso{
@@ -55,50 +67,34 @@ public class NaveTransporteTerranTest extends TestCase {
 			
 	}
 	
-	public void testNaveTransporteTerranTransporta8Marines(){
+	public void testNaveTransporteTerranTransporta8Marines() throws ExcepcionPosicionInvalida, ExcepcionNoHayLugarParaCrear, ExcepcionYaHayElementoEnLaPosicion, ExcepcionNoSePuedeTransportar{
 		
-		ArrayList<Marine> marines = new ArrayList<>();
+		for(int i = 0 ; i < 8 ; i++){
 			
-		for(int i = 0 ; i < 8 ; i++){	
 			Marine marine = new Marine();
-			marines.add(marine);
+			barraca.colocarUnidad(marine, mapa);
+			naveTransporte.llevar(marine);
+			
 		}
-				
-		Iterator<Marine> i = marines.iterator();
 		
-		while(i.hasNext()){	
-			try{
-				naveTransporte.llevar(i.next());
-			} catch (ExcepcionGeneral e){	
-				e.getMessage();
-			}
-		}
 			
 		Assert.assertTrue(naveTransporte.cantidadPasajeros() == 8);		
 			
 	}
 	
-	public void testNaveTransporteSoloPuedeLlevar4Golliats(){
+	public void testNaveTransporteSoloPuedeLlevar4Golliats() throws ExcepcionPosicionInvalida, ExcepcionNoHayLugarParaCrear, ExcepcionYaHayElementoEnLaPosicion, ExcepcionNoSePuedeTransportar, ExcepcionNoPudoColocarseEdificio{
 		
-		ArrayList<Golliat> golliats = new ArrayList<>();
+		Creadora fabrica = (Creadora) jugador1.colocar(new Fabrica(), mapa, 51, 51);
 		
-		for(int i = 1 ; i < 5 ; i++){	
-			Golliat golliat = new Golliat();
-			golliat.setPosicion(new Posicion(i,i));
-			golliats.add(golliat);
-		}
-				
-		Iterator<Golliat> i = golliats.iterator();
-		
-		while(i.hasNext()){	
-			try{
-				naveTransporte.llevar(i.next());
-			} catch (ExcepcionGeneral e){	
-				e.getMessage();
-			}
+		for(int i = 0 ; i < 4 ; i++){
+			
+			Golliat goliat = new Golliat();
+			fabrica.colocarUnidad(goliat, mapa);
+			naveTransporte.llevar(goliat);
+			
 		}
 		
-		Assert.assertTrue(naveTransporte.cantidadPasajeros() == 8);
+		Assert.assertTrue(naveTransporte.cantidadPasajeros() == 4);
 	}
 	
 	
@@ -143,9 +139,11 @@ public class NaveTransporteTerranTest extends TestCase {
 
 	}
 	
-	public void testNaveTranporteNoPuedeLlevarEspectro() throws ExcepcionElTransporteEstaLleno, ExcepcionElTransporteNoEstaEnElAlcancePermitido, ExcepcionNoSePuedeTransportar, ExcepcionPosicionInvalida{
+	public void testNaveTranporteNoPuedeLlevarEspectro() throws ExcepcionElTransporteEstaLleno, ExcepcionElTransporteNoEstaEnElAlcancePermitido, ExcepcionNoSePuedeTransportar, ExcepcionPosicionInvalida, ExcepcionNoHayLugarParaCrear, ExcepcionYaHayElementoEnLaPosicion{
 		
 		Espectro espectro = new Espectro();
+		puertoEstelar.colocarUnidad(espectro, mapa);
+		
 		try {
 			naveTransporte.llevar(espectro);
 		} catch (ExcepcionNoSePuedeTransportar e) {
@@ -154,9 +152,10 @@ public class NaveTransporteTerranTest extends TestCase {
 		
 	}
 	
-	public void testNaveTranporteNoPuedeLlevarNaveCiencia() throws ExcepcionNoSePuedeTransportar, ExcepcionPosicionInvalida{
+	public void testNaveTranporteNoPuedeLlevarNaveCiencia() throws ExcepcionNoSePuedeTransportar, ExcepcionPosicionInvalida, ExcepcionNoHayLugarParaCrear, ExcepcionYaHayElementoEnLaPosicion{
 		
 		NaveCiencia naveCiencia = new NaveCiencia();
+		puertoEstelar.colocarUnidad(naveCiencia, mapa);
 		try {
 			naveTransporte.llevar(naveCiencia);
 		} catch (ExcepcionNoSePuedeTransportar e) {

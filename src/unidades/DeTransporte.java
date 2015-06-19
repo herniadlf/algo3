@@ -17,7 +17,6 @@ import src.mapa.Posicion;
 
 public abstract class DeTransporte extends Unidad {
 
-	protected int cantidadPasajeros;
 	protected ArrayList<Unidad> unidadesAbordo;
 	protected LinkedList<Posicion> alrededores;
 	private static final int TRANSPORTE = 8;
@@ -31,7 +30,6 @@ public abstract class DeTransporte extends Unidad {
 			verificarNaveVoladora(unidad);
 			
 			mapa.eliminarElementoTerrestreEnPosicion(unidad.getPosicionX(), unidad.getPosicionY());
-			cantidadPasajeros++;
 			unidadesAbordo.add(unidad);
 			
 				
@@ -51,7 +49,7 @@ public abstract class DeTransporte extends Unidad {
 	}
 
 	private void verificarAsientosDisponibles(Unidad unidad) throws ExcepcionElTransporteEstaLleno {
-		if (cantidadPasajeros + unidad.getTransporte() > TRANSPORTE){
+		if (unidadesAbordo.size() + unidad.getTransporte() > TRANSPORTE){
 			throw new ExcepcionElTransporteEstaLleno("El transporte esta lleno");
 		}
 		
@@ -67,7 +65,7 @@ public abstract class DeTransporte extends Unidad {
 
 	public int cantidadPasajeros() {
 		
-		return cantidadPasajeros;
+		return unidadesAbordo.size();
 		
 	}
 	
