@@ -2,6 +2,7 @@ package src.construcciones;
 
 import java.util.LinkedList;
 
+import excepciones.ExcepcionEdificioDestruido;
 import excepciones.ExcepcionEdificioNoPuedeCrearUnidad;
 import excepciones.ExcepcionExtractoraSinRecurso;
 import excepciones.ExcepcionNoHayLugarParaCrear;
@@ -231,10 +232,11 @@ public class Construccion implements Atacable {
 		
 	}
 
-	public void pasoTurno(Turno turno, Mapa map, Jugador jugador) throws ExcepcionNoPudoColocarseUnidad {
-		
-		//sera implementado		
-	
+	public void pasoTurno(Turno turno, Mapa map, Jugador jugador) throws ExcepcionNoPudoColocarseUnidad, ExcepcionEdificioDestruido {
+		if (vida.devolverEstadoDeVida()){
+			throw new ExcepcionEdificioDestruido();
+		}
+			
 	}
 
 	public void verificarTerreno(Mapa map, int x, int y) 

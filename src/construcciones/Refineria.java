@@ -1,5 +1,6 @@
 package src.construcciones;
 
+import excepciones.ExcepcionEdificioDestruido;
 import excepciones.ExcepcionPosicionInvalida;
 import src.ConstantesAlgoCraft;
 import src.Jugador;
@@ -36,8 +37,11 @@ public class Refineria extends Extractora{
 			 }
 	}
 	
-	public void pasoTurno(Turno turno, Mapa mapa, Jugador jugadorActual){
+	public void pasoTurno(Turno turno, Mapa mapa, Jugador jugadorActual) throws ExcepcionEdificioDestruido{
 		
+		if (vida.devolverEstadoDeVida()){
+			throw new ExcepcionEdificioDestruido();
+		}
 		int minerales = jugadorActual.getDinero().getMinerales();
 		int gas = jugadorActual.getDinero().getGasVespeno() + RECURSOS_POR_TURNO;
 		jugadorActual.setDinero(minerales, gas);

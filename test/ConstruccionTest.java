@@ -266,4 +266,31 @@ public class ConstruccionTest {
 
 			}
 		
+		@Test
+		public void testDestruccionDeEdificioLoEliminaDeEdificiosEnPie() throws ExcepcionPosicionInvalida, ExcepcionNoPudoColocarseEdificio, ExcepcionYaHayElementoEnLaPosicion, ExcepcionSuperaLimenteDeArbolesPermitos, ExcepcionErrorPasoDeTurno {
+			
+			Jugador jugador1 = new Jugador ("carlos","rojo",new Protoss());
+			Jugador jugador2 = new Jugador ("dean","azul",new Protoss());
+			
+			Juego juego = new Juego(jugador1, jugador2, 100);
+			jugador1.setDinero(99999, 99999);	
+			
+			Acceso acceso = new Acceso();
+			juego.ordenFabricacionDeEdificios(acceso, 5, 5); 	
+			
+			for (int i = 0; i < 8; i++){
+				juego.pasarTurno();
+				juego.pasarTurno();				
+			}
+			Assert.assertTrue(jugador1.getConstruccionesEnPie().contains(acceso));
+			
+			
+			acceso.getVida().aumentarDanioARecibir(1000);
+			acceso.recibirDanio();
+			juego.pasarTurno();
+			juego.pasarTurno();
+			Assert.assertFalse(jugador1.getConstruccionesEnPie().contains(acceso));
+
+			}
+		
 }

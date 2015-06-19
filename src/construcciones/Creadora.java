@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
 
+import excepciones.ExcepcionEdificioDestruido;
 import excepciones.ExcepcionEdificioNoPuedeCrearUnidad;
 import excepciones.ExcepcionNoHayLugarParaCrear;
 import excepciones.ExcepcionNoPudoColocarseUnidad;
@@ -62,11 +63,14 @@ public abstract class Creadora extends NoExtractora {
 		
 	}
 	
-	public void pasoTurno (Turno turno, Mapa map, Jugador jugadorActual) throws ExcepcionNoPudoColocarseUnidad {
+	public void pasoTurno (Turno turno, Mapa map, Jugador jugadorActual) throws ExcepcionNoPudoColocarseUnidad, ExcepcionEdificioDestruido {
 		
 		int i=0;
 		int turnosPasados;
 		int turnoOrdenoFabricacion;
+		if (vida.devolverEstadoDeVida()){
+			throw new ExcepcionEdificioDestruido();
+		}
 		while (this.unidadesEnFabricacion.size()>i){
 			
 			turnoOrdenoFabricacion = this.unidadesEnFabricacion.get(i).getTurnoDeEntrenamiento();

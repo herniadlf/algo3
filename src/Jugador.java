@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 import excepciones.ExcepcionConstruccionNoCorrespondiente;
+import excepciones.ExcepcionEdificioDestruido;
 import excepciones.ExcepcionEdificioNoPuedeCrearUnidad;
 import excepciones.ExcepcionEdificioPrevioRequerido;
 import excepciones.ExcepcionErrorPasoDeTurno;
@@ -215,8 +216,13 @@ public class Jugador {
 		
 		int i = 0;
 		while (construccionesEnPie.size()>i){
-			construccionesEnPie.get(i).pasoTurno(turno,map,this);
-			i++;
+			try{
+				construccionesEnPie.get(i).pasoTurno(turno,map,this);
+				i++;
+			}
+			catch (ExcepcionEdificioDestruido e){
+				construccionesEnPie.remove(i);
+			}
 		}
 		
 	}

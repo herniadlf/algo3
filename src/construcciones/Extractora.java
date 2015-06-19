@@ -1,5 +1,6 @@
 package src.construcciones;
 
+import excepciones.ExcepcionEdificioDestruido;
 import src.Jugador;
 import src.Turno;
 import src.mapa.FuenteDeRecurso;
@@ -30,7 +31,7 @@ public abstract class Extractora extends Construccion {
 			
 	}
 	
-	public void pasoTurno(Turno turno, Mapa mapa, Jugador jugadorActual){
+	public void pasoTurno(Turno turno, Mapa mapa, Jugador jugadorActual) throws ExcepcionEdificioDestruido{
 			
 	}
 		
