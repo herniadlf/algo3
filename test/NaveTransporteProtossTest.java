@@ -33,7 +33,7 @@ public class NaveTransporteProtossTest {
 		Jugador jugador1 = new Jugador ("carlos","rojo",new Protoss());
 		Jugador jugador2 = new Jugador ("dean","azul",new Protoss());
 		
-		Juego juego = new Juego(jugador1, jugador2, 100);
+		Juego juego = new Juego(jugador1, jugador2, 100, 0);
 		Mapa mapa = juego.getMapa();
 		jugador1.setDinero(99999, 99999);
 		Creadora acceso = (Creadora) jugador1.colocar(new Acceso(), mapa, 90, 50);		
@@ -55,7 +55,7 @@ public class NaveTransporteProtossTest {
 		Jugador jugador1 = new Jugador ("carlos","rojo",new Protoss());
 		Jugador jugador2 = new Jugador ("dean","azul",new Protoss());
 		
-		Juego juego = new Juego(jugador1, jugador2, 100);
+		Juego juego = new Juego(jugador1, jugador2, 100, 0);
 		Mapa mapa = juego.getMapa();
 		jugador1.setDinero(99999, 99999);
 		Creadora acceso = (Creadora) jugador1.colocar(new Acceso(), mapa, 50, 50);		

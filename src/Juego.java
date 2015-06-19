@@ -29,12 +29,12 @@ public class Juego {
 	Jugador jugador1,jugador2, jugadorActual;
 	Turno turno;
 	
-	public Juego(Jugador jug1, Jugador jug2, int tamanioMapa) throws ExcepcionPosicionInvalida, ExcepcionYaHayElementoEnLaPosicion, ExcepcionSuperaLimenteDeArbolesPermitos {
+	public Juego(Jugador jug1, Jugador jug2, int tamanioMapa, int cantidadArboles) throws ExcepcionPosicionInvalida, ExcepcionYaHayElementoEnLaPosicion, ExcepcionSuperaLimenteDeArbolesPermitos {
 		
 		super();
 		jugador1 = jug1;
 		jugador2 = jug2;
-		mapa = new Ambientador().ambientarMapa(tamanioMapa, (int)(tamanioMapa*0.10), jug1, jug2);
+		mapa = new Ambientador().ambientarMapa(tamanioMapa, cantidadArboles, jug1, jug2);
 		jugadorActual = jug1;		
 		turno = new Turno();
 		

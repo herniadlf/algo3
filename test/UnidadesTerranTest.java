@@ -95,7 +95,7 @@ public class UnidadesTerranTest extends TestCase{
 		/*--------------------------------------------------------------------------------*/
 		Jugador jug1 = new Jugador ("carlos","rojo",new Terran());
 		Jugador jug2 = new Jugador ("williams", "azul", new Protoss());
-		Juego juego = new Juego(jug1, jug2, 100);
+		Juego juego = new Juego(jug1, jug2, 100, 0);
 		Mapa mapa = juego.getMapa();
 		AtaquesPermitidosPorTurno ataques = new AtaquesPermitidosPorTurno();
 			
@@ -135,7 +135,7 @@ public class UnidadesTerranTest extends TestCase{
 		jug1.colocar(new DepositoDeSuministros(), mapa, 9, 8);
 		jug1.colocar(new DepositoDeSuministros(), mapa, 10, 2);
 		jug1.colocar(new DepositoDeSuministros(), mapa, 10, 4);
-		Juego juego = new Juego(jug1, jug2, 100);
+		Juego juego = new Juego(jug1, jug2, 100, 0);
 		Mapa mapa = juego.getMapa();
 			
 		Unidad espectro = new Espectro();

@@ -71,7 +71,7 @@ public class UnidadesProtossTest{
 		Jugador jug1 = new Jugador ("carlos","rojo",new Terran());
 		jug1.setDinero(9999, 9999);
 		Jugador jug2 = new Jugador ("williams", "azul", new Protoss());
-		Juego juego = new Juego(jug1, jug2, 100);
+		Juego juego = new Juego(jug1, jug2, 100, 0);
 		Mapa mapa = juego.getMapa();
 		AtaquesPermitidosPorTurno ataques = new AtaquesPermitidosPorTurno();
 		ataques.setJuego(juego);
@@ -103,7 +103,7 @@ public class UnidadesProtossTest{
 		Jugador jugador1 = new Jugador ("carlos","rojo",new Terran());
 		Jugador jugador2 = new Jugador ("dean","azul",new Terran());
 		
-		Juego juego = new Juego(jugador1, jugador2, 100);
+		Juego juego = new Juego(jugador1, jugador2, 100, 0);
 		Mapa mapa = juego.getMapa();
 		jugador1.setDinero(99999, 99999);
 		Creadora barraca = (Creadora) jugador1.colocar(new Barraca(), mapa, 5, 5);		
@@ -158,7 +158,7 @@ public class UnidadesProtossTest{
 		Jugador jugador1 = new Jugador ("carlos","rojo",new Terran());
 		Jugador jugador2 = new Jugador ("dean","azul",new Terran());
 		
-		Juego juego = new Juego(jugador1, jugador2, 100);
+		Juego juego = new Juego(jugador1, jugador2, 100, 0);
 		Mapa mapa = juego.getMapa();
 		jugador1.setDinero(99999, 99999);	
 		
@@ -190,7 +190,7 @@ public class UnidadesProtossTest{
 		Jugador jugador1 = new Jugador ("carlos","rojo",new Terran());
 		Jugador jugador2 = new Jugador ("dean","azul",new Terran());
 		
-		Juego juego = new Juego(jugador1, jugador2, 100);
+		Juego juego = new Juego(jugador1, jugador2, 100, 0);
 		Mapa mapa = juego.getMapa();
 		jugador1.setDinero(99999, 99999);
 		Creadora barraca = (Creadora) jugador1.colocar(new Barraca(), mapa, 90, 90);		

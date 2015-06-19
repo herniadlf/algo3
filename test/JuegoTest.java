@@ -25,7 +25,7 @@ public class JuegoTest extends TestCase{
 			super.setUp();
 			jug1 = new Jugador("Carlos","verde",new Terran());			
 			jug2 = new Jugador("Fernando","rojo",new Protoss());
-			juego = new Juego(jug1,jug2, 100);
+			juego = new Juego(jug1,jug2, 100, 0);
 			map = juego.getMapa();
 		}
 		

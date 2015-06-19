@@ -50,7 +50,7 @@ public class MiniIntegracionTest {
 		Jugador jugador1 = new Jugador ("carlos","rojo",new Terran());
 		Jugador jugador2 = new Jugador ("dean","azul",new Terran());
 		
-		Juego juego = new Juego(jugador1, jugador2, 100);
+		Juego juego = new Juego(jugador1, jugador2, 100, 0);
 		Mapa mapa = juego.getMapa();
 		jugador1.setDinero(99999, 99999);
 		
@@ -93,7 +93,7 @@ public class MiniIntegracionTest {
 		Jugador jugador1 = new Jugador ("carlos","rojo",new Terran());
 		Jugador jugador2 = new Jugador ("dean","azul",new Terran());
 		
-		Juego juego = new Juego(jugador1, jugador2, 100);
+		Juego juego = new Juego(jugador1, jugador2, 100, 0);
 		Mapa mapa = juego.getMapa();
 		jugador1.setDinero(99999, 99999);
 		
@@ -142,7 +142,7 @@ public class MiniIntegracionTest {
 
 		Jugador jugador1 = new Jugador ("carlos","rojo",new Terran());
 		Jugador jugador2 = new Jugador ("dean","azul",new Terran());
-		Juego juego = new Juego(jugador1, jugador2, 100);
+		Juego juego = new Juego(jugador1, jugador2, 100, 0);
 		Mapa mapa = juego.getMapa();
 		
 		juego.ordenFabricacionDeEdificios(new Fabrica(), 10, 10);			
@@ -159,7 +159,7 @@ public class MiniIntegracionTest {
 		Turno turno = new Turno();
 		
 		
-		Juego juego = new Juego(jugador1, jugador2, 100);
+		Juego juego = new Juego(jugador1, jugador2, 100, 0);
 		Mapa mapa = juego.getMapa();
 		jugador1.setJuego(juego);
 		jugador2.setJuego(juego);

@@ -68,7 +68,7 @@ public class ConstruccionTest {
 			Jugador jugador1 = new Jugador ("carlos","rojo",new Terran());
 			Jugador jugador2 = new Jugador ("dean","azul",new Terran());
 			
-			Juego juego = new Juego(jugador1, jugador2, 100);
+			Juego juego = new Juego(jugador1, jugador2, 100, 0);
 			
 			juego.ordenFabricacionDeEdificios(new Fabrica(), 3, 3);
 		}
@@ -179,7 +179,7 @@ public class ConstruccionTest {
 			
 			Jugador jugador1 = new Jugador ("carlos","rojo",new Terran());
 			Jugador jugador2 = new Jugador ("dean","azul",new Terran());
-			Juego juego = new Juego (jugador1, jugador2, 100);
+			Juego juego = new Juego (jugador1, jugador2, 100, 0);
 			Mapa mapa = juego.getMapa();
 			mapa.colocarEn(4, 4, new FuenteDeMinerales());
 			mapa.colocarEn(5,5, new FuenteDeGasVespeno());
@@ -209,7 +209,7 @@ public class ConstruccionTest {
 			Jugador jugador1 = new Jugador ("carlos","rojo",new Terran());
 			Jugador jugador2 = new Jugador ("dean","azul",new Protoss());
 			
-			Juego juego = new Juego(jugador1, jugador2,100);
+			Juego juego = new Juego(jugador1, jugador2,100, 0);
 			
 			juego.ordenFabricacionDeEdificios(new Barraca(), 3, 3);
 			Assert.assertFalse(mapa.obtenerContenidoEnPosicion(3, 3).getElementoEnTierra().esLoMismo(new Barraca()));
@@ -229,7 +229,7 @@ public class ConstruccionTest {
 			Jugador jugador1 = new Jugador ("carlos","rojo",new Terran());
 			Jugador jugador2 = new Jugador ("dean","azul",new Protoss());
 			
-			Juego juego = new Juego(jugador1, jugador2, 100);
+			Juego juego = new Juego(jugador1, jugador2, 100, 0);
 			Mapa mapa = juego.getMapa();
 			mapa.colocarEn(3, 3, new FuenteDeMinerales());
 			
@@ -246,7 +246,7 @@ public class ConstruccionTest {
 			Jugador jugador1 = new Jugador ("carlos","rojo",new Terran());
 			Jugador jugador2 = new Jugador ("dean","azul",new Terran());
 			
-			Juego juego = new Juego(jugador1, jugador2, 100);
+			Juego juego = new Juego(jugador1, jugador2, 100, 0);
 			Mapa mapa = juego.getMapa();
 			jugador1.setDinero(99999, 99999);	
 			
@@ -272,7 +272,7 @@ public class ConstruccionTest {
 			Jugador jugador1 = new Jugador ("carlos","rojo",new Protoss());
 			Jugador jugador2 = new Jugador ("dean","azul",new Protoss());
 			
-			Juego juego = new Juego(jugador1, jugador2, 100);
+			Juego juego = new Juego(jugador1, jugador2, 100, 0);
 			jugador1.setDinero(99999, 99999);	
 			
 			Acceso acceso = new Acceso();

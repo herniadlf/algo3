@@ -50,7 +50,7 @@ public class NaveTransporteTerranTest extends TestCase {
 		jugador1 = new Jugador ("carlos","rojo",new Protoss());
 		jugador2 = new Jugador ("dean","azul",new Protoss());
 		
-		Juego juego = new Juego(jugador1, jugador2, 100);
+		Juego juego = new Juego(jugador1, jugador2, 100, 0);
 		mapa = juego.getMapa();
 		jugador1.setDinero(99999, 99999);
 				
