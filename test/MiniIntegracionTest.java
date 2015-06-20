@@ -29,6 +29,7 @@ import src.construcciones.Creadora;
 import src.construcciones.DepositoDeSuministros;
 import src.construcciones.Fabrica;
 import src.construcciones.PuertoEstelarTerran;
+import src.construcciones.Refineria;
 import src.mapa.EspacioDisponible;
 import src.mapa.Mapa;
 import src.razas.Terran;
@@ -75,6 +76,9 @@ public class MiniIntegracionTest {
 			juego.pasarTurno();
 		}			
 		
+		
+		
+		
 		Assert.assertTrue(juego.getMapa().obtenerContenidoEnPosicion(4,6).getElementoEnTierra().esLoMismo(new Marine()));
 		Assert.assertTrue(juego.getMapa().obtenerContenidoEnPosicion(6,6).getElementoEnTierra().esLoMismo(new Marine()));
 		Assert.assertTrue(juego.getMapa().obtenerContenidoEnPosicion(5,6).getElementoEnTierra().esLoMismo(new Marine()));
@@ -104,33 +108,10 @@ public class MiniIntegracionTest {
 		
 	Assert.assertFalse(juego.getMapa().obtenerContenidoEnPosicion(10,10).getElementoEnTierra().esLoMismo(new Barraca()));
 	
-	juego.pasarTurno();
-	juego.pasarTurno();
-	juego.pasarTurno();
-	juego.pasarTurno();
-	juego.pasarTurno();
-	juego.pasarTurno();
-	juego.pasarTurno();
-	juego.pasarTurno();
-	juego.pasarTurno();
-	juego.pasarTurno();
-	juego.pasarTurno();
-	juego.pasarTurno();
-	juego.pasarTurno();
-	juego.pasarTurno();
-	juego.pasarTurno();
-	juego.pasarTurno();
-	juego.pasarTurno();
-	juego.pasarTurno();
-	juego.pasarTurno();
-	juego.pasarTurno();
-	juego.pasarTurno();
-	juego.pasarTurno();
-	juego.pasarTurno();
-	juego.pasarTurno();
-	juego.pasarTurno();
-	juego.pasarTurno();
-	
+	for (int i = 0; i<14;i++){ // pasar turnos para que se creen
+		juego.pasarTurno();
+		juego.pasarTurno();
+	}			
 	
 	
 	Assert.assertTrue(juego.getMapa().obtenerContenidoEnPosicion(10,10).getElementoEnTierra().esLoMismo(new Barraca()));
@@ -204,16 +185,72 @@ public class MiniIntegracionTest {
 		
 		Assert.assertTrue(juego.getJugadorActual().getNombre() == "dean");
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 	}
+	
+	@Test
+	public void creacionDeEspectroYEdificiosNecesariosATravesDeJuego() 
+	throws ExcepcionPosicionInvalida, ExcepcionYaHayElementoEnLaPosicion, 
+		ExcepcionSuperaLimenteDeArbolesPermitos, ExcepcionNoPudoCrearseUnidad, ExcepcionNoPudoColocarseEdificio, ExcepcionErrorPasoDeTurno, ExcepcionNoHayLugarParaCrear{
+		Jugador jugador1 = new Jugador ("carlos","rojo",new Terran());
+		Jugador jugador2 = new Jugador ("dean","azul",new Terran());
+		
+		Juego juego = new Juego(jugador1, jugador2, 100, 0);
+		Mapa mapa = juego.getMapa();
+		jugador1.setDinero(99999, 99999);
+		
+		
+		DepositoDeSuministros  depositoDeSuministro1 = new DepositoDeSuministros();
+		DepositoDeSuministros  depositoDeSuministro2 = new DepositoDeSuministros();
+		Barraca barraca= new Barraca();
+		Fabrica fabrica = new Fabrica();
+		PuertoEstelarTerran puertoEstelar= new PuertoEstelarTerran();
+		
+		
+		juego.ordenFabricacionDeEdificios(depositoDeSuministro1, 30, 30);
+		juego.ordenFabricacionDeEdificios(depositoDeSuministro2, 20, 30);
+		juego.ordenFabricacionDeEdificios(barraca, 10, 10);
+		
+		for (int i = 0; i<12;i++){ // pasar turnos para que se creen
+			juego.pasarTurno();
+			juego.pasarTurno();
+		}		
+		
+		//Verifico que se crearon los depositosDeSuministros en el mapa 
+		Assert.assertTrue(mapa.obtenerContenidoEnPosicion(30,30).getElementoEnTierra().esLoMismo(new DepositoDeSuministros()));
+		Assert.assertTrue(mapa.obtenerContenidoEnPosicion(20,30).getElementoEnTierra().esLoMismo(new DepositoDeSuministros()));
+		Assert.assertTrue(mapa.obtenerContenidoEnPosicion(10,10).getElementoEnTierra().esLoMismo(new Barraca()));
+		
+		juego.ordenFabricacionDeEdificios(fabrica, 35, 35);
+		
+		for (int i = 0; i<12;i++){ // pasar turnos para que se creen
+			juego.pasarTurno();
+			juego.pasarTurno();}
+		
+		Assert.assertTrue(mapa.obtenerContenidoEnPosicion(35,35).getElementoEnTierra().esLoMismo(new Fabrica()));
+		
+		
+		juego.ordenFabricacionDeEdificios(puertoEstelar, 40, 40);
+		
+		for (int i = 0; i<10;i++){ // pasar turnos para que se creen
+			juego.pasarTurno();
+			juego.pasarTurno();}
+		
+		Assert.assertTrue(mapa.obtenerContenidoEnPosicion(40,40).getElementoEnTierra().esLoMismo(new PuertoEstelarTerran()));
+		
+		
+		
+		Unidad espectro = new Espectro();
+		juego.ordenarFabricacionUnidad(espectro,(Creadora) puertoEstelar);
+		
+	for (int i = 0; i<8;i++){ // pasar turnos para que se creen
+			juego.pasarTurno();
+			juego.pasarTurno();
+		}		
+		
+	
+		Assert.assertTrue(juego.getMapa().obtenerContenidoEnPosicion(39,41).getElementoEnAire().esLoMismo(new Espectro()));
+		
+		}
 	
 	
 
