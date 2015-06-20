@@ -280,4 +280,21 @@ public class MiniIntegracionTest {
 		juego.ordenarFabricacionUnidad(espectro,(Creadora) barraca);	
 	
 	}
+	
+	@Test (expected = ExcepcionNoPudoColocarseEdificio.class)
+	public void intentarCrearEdificioQueNoCorrespondeALaRazaLanzaExcepcion() throws ExcepcionPosicionInvalida, ExcepcionYaHayElementoEnLaPosicion, ExcepcionSuperaLimenteDeArbolesPermitos, ExcepcionNoPudoColocarseEdificio, ExcepcionConstruccionNoCorrespondiente, ExcepcionRecursoInsuficiente, ExcepcionNoPudoCrearseUnidad, ExcepcionElEdificioNoPerteneceATusConstrucciones{
+	
+		Jugador jugador1 = new Jugador ("carlos","rojo",new Terran());
+		Jugador jugador2 = new Jugador ("dean","azul",new Terran());
+		
+		Juego juego = new Juego(jugador1, jugador2, 100, 0);
+		Mapa mapa = juego.getMapa();
+		jugador1.setDinero(99999, 99999);
+		
+		Construccion acceso = new Acceso();
+		
+		juego.ordenFabricacionDeEdificios(acceso, 10, 10);
+	
+	}
+	
 }
