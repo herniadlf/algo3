@@ -21,6 +21,7 @@ import src.mapa.Posicion;
 
 public class Construccion implements Atacable {
 	
+	private String duenio;
 	private int turnoInicioDeConstruccion;
 	private String nombre;
 	private int tiempoDeConstruccion;
@@ -259,6 +260,14 @@ public class Construccion implements Atacable {
 		
 		// No afecta a construcciones
 		
+	} 
+
+	public String getDuenio() {
+		return duenio;
+	}
+
+	public void setDuenio(String duenio) {
+		this.duenio = duenio;
 	}
 	
 }

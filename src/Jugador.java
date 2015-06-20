@@ -7,8 +7,11 @@ import excepciones.ExcepcionConstruccionNoCorrespondiente;
 import excepciones.ExcepcionEdificioDestruido;
 import excepciones.ExcepcionEdificioNoPuedeCrearUnidad;
 import excepciones.ExcepcionEdificioPrevioRequerido;
+import excepciones.ExcepcionElEdificioNoPerteneceATusConstrucciones;
+import excepciones.ExcepcionElementoFueraDelRangoDeAtaque;
 import excepciones.ExcepcionErrorPasoDeTurno;
 import excepciones.ExcepcionExtractoraSinRecurso;
+import excepciones.ExcepcionLaUnidadNoPertenceATuTropa;
 import excepciones.ExcepcionNoHayLugarParaCrear;
 import excepciones.ExcepcionNoPudoColocarseEdificio;
 import excepciones.ExcepcionNoPudoColocarseUnidad;
@@ -67,6 +70,13 @@ public class Jugador {
 		this.unidadesAlistadas= new ArrayList<Unidad>();
 		
 	}		
+	
+	
+	public ArrayList<Unidad> getUnidadesAlistades (){
+		return this.unidadesAlistadas;
+		
+		
+	}
 	
 	public String getNombre() {
 		
@@ -298,4 +308,47 @@ public class Jugador {
 		getRaza().pasoTurno();		
 	}
 	
+	
+	public boolean contieneALaUnidad(Unidad unaUnidad) {
+		
+		return unidadesAlistadas.contains(unaUnidad);
+		
+	}
+	
+	public boolean contieneALaConstruccion(Construccion unaConstruccion) {
+		
+		return construccionesEnPie.contains(unaConstruccion);
+		
+	}
+	
+	public void atacarCon(Unidad agresor, Atacable victima) throws ExcepcionEdificioNoPuedeCrearUnidad, ExcepcionPosicionInvalida, ExcepcionNoHayLugarParaCrear, ExcepcionYaHayElementoEnLaPosicion, ExcepcionErrorPasoDeTurno, ExcepcionElementoFueraDelRangoDeAtaque, ExcepcionLaUnidadNoPertenceATuTropa{
+		
+		if(this.contieneALaUnidad(agresor)){
+			
+			if(victima.esAereo()){
+				
+				agresor.atacarEnAire(victima);
+			}
+			
+			if(victima.esTerrestre()) {
+				
+				agresor.atacarEnTierra(victima);
+			}			
+		}
+		
+		else {
+			
+			throw new ExcepcionLaUnidadNoPertenceATuTropa("La unidad seleccionada no pertenece a tu tropa de unidades");
+		}
+	}
+
+	public void verificarEdificio(Creadora edificio) throws ExcepcionElEdificioNoPerteneceATusConstrucciones {
+		
+		if(!getConstruccionesEnPie().contains(edificio)){
+			
+			throw new ExcepcionElEdificioNoPerteneceATusConstrucciones("El edificio seleccionado no pertenece a tus construcciones");
+		}
+		
+	}
+				
 }

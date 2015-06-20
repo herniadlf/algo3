@@ -5,9 +5,11 @@ import org.junit.Test;
 
 import excepciones.ExcepcionConstruccionNoCorrespondiente;
 import excepciones.ExcepcionEdificioNoPuedeCrearUnidad;
+import excepciones.ExcepcionElEdificioNoPerteneceATusConstrucciones;
 import excepciones.ExcepcionElementoFueraDelRangoDeAtaque;
 import excepciones.ExcepcionErrorPasoDeTurno;
 import excepciones.ExcepcionExtractoraSinRecurso;
+import excepciones.ExcepcionLaUnidadNoPertenceATuTropa;
 import excepciones.ExcepcionNoHayLugarParaCrear;
 import excepciones.ExcepcionNoPudoColocarseEdificio;
 import excepciones.ExcepcionNoPudoCrearseUnidad;
@@ -46,7 +48,7 @@ public class MiniIntegracionTest {
 			throws ExcepcionNoPudoColocarseEdificio, 
 			ExcepcionNoPudoCrearseUnidad, 
 			ExcepcionErrorPasoDeTurno, 
-			ExcepcionPosicionInvalida, ExcepcionYaHayElementoEnLaPosicion, ExcepcionSuperaLimenteDeArbolesPermitos {
+			ExcepcionPosicionInvalida, ExcepcionYaHayElementoEnLaPosicion, ExcepcionSuperaLimenteDeArbolesPermitos, ExcepcionElEdificioNoPerteneceATusConstrucciones {
 		
 		Jugador jugador1 = new Jugador ("carlos","rojo",new Terran());
 		Jugador jugador2 = new Jugador ("dean","azul",new Terran());
@@ -133,7 +135,7 @@ public class MiniIntegracionTest {
 	
 	@Test
 	public void luegoDeDiezAtaquesPasaElTurno() throws ExcepcionPosicionInvalida,
-	ExcepcionNoHayLugarParaCrear, ExcepcionYaHayElementoEnLaPosicion, ExcepcionEdificioNoPuedeCrearUnidad, ExcepcionNoPudoColocarseEdificio, ExcepcionErrorPasoDeTurno, ExcepcionSuperaLimenteDeArbolesPermitos, ExcepcionElementoFueraDelRangoDeAtaque{
+	ExcepcionNoHayLugarParaCrear, ExcepcionYaHayElementoEnLaPosicion, ExcepcionEdificioNoPuedeCrearUnidad, ExcepcionNoPudoColocarseEdificio, ExcepcionErrorPasoDeTurno, ExcepcionSuperaLimenteDeArbolesPermitos, ExcepcionElementoFueraDelRangoDeAtaque, ExcepcionLaUnidadNoPertenceATuTropa{
 		
 		Jugador jugador1 = new Jugador ("carlos","rojo",new Terran());
 		Jugador jugador2 = new Jugador ("dean","azul",new Terran());
@@ -168,20 +170,23 @@ public class MiniIntegracionTest {
 		barraca.colocarUnidad(primerMarine, mapa);	
 		barraca.colocarUnidad(segundoMarine, mapa);
 		barraca.colocarUnidad(tercerMarine, mapa);
+		jugador1.getUnidadesAlistades().add(primerMarine);
+		jugador1.getUnidadesAlistades().add(segundoMarine);
+		jugador1.getUnidadesAlistades().add(tercerMarine);
 		acceso.colocarUnidad(zealot, mapa);
 		Assert.assertTrue(juego.getJugadorActual().getNombre() == "carlos");
 				
 		
-		primerMarine.atacarEnTierra(zealot);		
-		segundoMarine.atacarEnTierra(zealot);
-		tercerMarine.atacarEnTierra(zealot);
-		primerMarine.atacarEnTierra(zealot);		
-		segundoMarine.atacarEnTierra(zealot);
-		tercerMarine.atacarEnTierra(zealot);
-		primerMarine.atacarEnTierra(zealot);		
-		segundoMarine.atacarEnTierra(zealot);
-		tercerMarine.atacarEnTierra(zealot);
-		tercerMarine.atacarEnTierra(zealot);
+		jugador1.atacarCon(primerMarine, zealot);
+		jugador1.atacarCon(segundoMarine, zealot);
+		jugador1.atacarCon(tercerMarine, zealot);
+		jugador1.atacarCon(primerMarine, zealot);
+		jugador1.atacarCon(segundoMarine, zealot);
+		jugador1.atacarCon(tercerMarine, zealot);
+		jugador1.atacarCon(primerMarine, zealot);
+		jugador1.atacarCon(segundoMarine, zealot);
+		jugador1.atacarCon(tercerMarine, zealot);
+		jugador1.atacarCon(primerMarine, zealot);
 		
 		Assert.assertTrue(juego.getJugadorActual().getNombre() == "dean");
 		
@@ -190,7 +195,7 @@ public class MiniIntegracionTest {
 	@Test
 	public void creacionDeEspectroYEdificiosNecesariosATravesDeJuego() 
 	throws ExcepcionPosicionInvalida, ExcepcionYaHayElementoEnLaPosicion, 
-		ExcepcionSuperaLimenteDeArbolesPermitos, ExcepcionNoPudoCrearseUnidad, ExcepcionNoPudoColocarseEdificio, ExcepcionErrorPasoDeTurno, ExcepcionNoHayLugarParaCrear{
+		ExcepcionSuperaLimenteDeArbolesPermitos, ExcepcionNoPudoCrearseUnidad, ExcepcionNoPudoColocarseEdificio, ExcepcionErrorPasoDeTurno, ExcepcionNoHayLugarParaCrear, ExcepcionElEdificioNoPerteneceATusConstrucciones{
 		Jugador jugador1 = new Jugador ("carlos","rojo",new Terran());
 		Jugador jugador2 = new Jugador ("dean","azul",new Terran());
 		

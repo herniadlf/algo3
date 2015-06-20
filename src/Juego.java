@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import excepciones.ExcepcionConstruccionNoCorrespondiente;
 import excepciones.ExcepcionEdificioNoPuedeCrearUnidad;
+import excepciones.ExcepcionElEdificioNoPerteneceATusConstrucciones;
 import excepciones.ExcepcionErrorPasoDeTurno;
 import excepciones.ExcepcionExtractoraSinRecurso;
 import excepciones.ExcepcionNoHayLugarParaCrear;
@@ -90,10 +91,12 @@ public class Juego {
 		
 	} 
 
-	public void ordenarFabricacionUnidad (Unidad unidad, Creadora edificio) throws ExcepcionNoPudoCrearseUnidad {
+	public void ordenarFabricacionUnidad (Unidad unidad, Creadora edificio) throws ExcepcionNoPudoCrearseUnidad, ExcepcionElEdificioNoPerteneceATusConstrucciones {
 		
 		try {
 			jugadorActual.verificacionUnidad(unidad, edificio);
+			jugadorActual.verificarEdificio(edificio);
+			unidad.setDuenio(jugadorActual.getNombre());
 			unidad.setEdificio(edificio);
 			unidad.setTurnoInicioDeEntrenamiento(turno.devolverTurnoActual());
 			unidad.setAtaquesPermitidosPorTurno(jugadorActual.getAtaquesPermitidosPorTurno());
@@ -101,6 +104,7 @@ public class Juego {
 		} catch (ExcepcionUnidadNoCorrespondiente
 				| ExcepcionRecursoInsuficiente
 				| ExcepcionSuministrosInsuficientes
+				| ExcepcionElEdificioNoPerteneceATusConstrucciones
 				| ExcepcionTopeDePoblacionMaxima e) {
 			throw new ExcepcionNoPudoCrearseUnidad(e);
 		}
@@ -112,6 +116,7 @@ public class Juego {
 		
 		try {
 			jugadorActual.verificacionEdificio(construccion);
+			construccion.setDuenio(jugadorActual.getNombre());
 			construccion.setPosicionX(x);
 			construccion.setPosicionY(y);
 			construccion.verificarTerreno(mapa,x,y);
@@ -128,9 +133,8 @@ public class Juego {
 	}
 
 	public void setJugadorActual(Jugador jugador) {
-		
-		jugadorActual = jugador;	
-		
-	}
 	
+			jugadorActual = jugador;	
+	}		
+		
 }

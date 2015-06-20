@@ -22,6 +22,7 @@ import src.mapa.Posicion;
 
 public abstract class Unidad implements Atacable{
 	
+	protected String duenio;
 	protected String nombre;
 	protected int transporte;
 	protected int vision;
@@ -178,7 +179,7 @@ public abstract class Unidad implements Atacable{
 		int distanciaEntreEnemigos = mapa.distanciaEntreLosPuntos(atacado.getPosicionX(), atacado.getPosicionY(), this.getPosicionX(), this.getPosicionY());
 		
 		if ((distanciaEntreEnemigos) < this.getVision()){
-	
+		
 		int danio = this.getDanio().getDanioTierra();
 		atacado.getVida().aumentarDanioARecibir(danio);
 		atacado.recibirDanio();
@@ -215,10 +216,17 @@ public abstract class Unidad implements Atacable{
 			
 			throw new ExcepcionNoPuedeMoverseUnidad(e);
 		}
-	
-		
-		/* eliminar de las cordenadas anteriores*/
-		
 	}
 	
+		
+	public String getDuenio() {
+		return duenio;
+	}
+	
+
+	public void setDuenio(String duenio) {
+		this.duenio = duenio;
+	}
+			
+		
 }

@@ -292,6 +292,7 @@ public class ConstruccionTest {
 			Assert.assertFalse(jugador1.getConstruccionesEnPie().contains(acceso));
 
 			}
+		
 		@Test (expected = ExcepcionNoPudoColocarseEdificio.class)
 		public void testDestruccionDeEdificioRequeridoImpideCreacion() throws ExcepcionPosicionInvalida, ExcepcionYaHayElementoEnLaPosicion, ExcepcionSuperaLimenteDeArbolesPermitos, ExcepcionNoPudoColocarseEdificio, ExcepcionErrorPasoDeTurno{
 			Jugador jugador1 = new Jugador ("carlos","rojo",new Protoss());

@@ -14,6 +14,7 @@ import excepciones.ExcepcionElementoFueraDelRangoDeAtaque;
 import excepciones.ExcepcionErrorPasoDeTurno;
 import excepciones.ExcepcionExtractoraSinRecurso;
 import excepciones.ExcepcionGeneral;
+import excepciones.ExcepcionLaUnidadNoPertenceATuTropa;
 import excepciones.ExcepcionNoHayLugarParaCrear;
 import excepciones.ExcepcionNoPudoColocarseEdificio;
 import excepciones.ExcepcionNoPudoCrearseUnidad;
@@ -90,7 +91,7 @@ public class UnidadesTerranTest extends TestCase{
 		throws ExcepcionNoPudoColocarseEdificio, 
 		ExcepcionPosicionInvalida, 
 		ExcepcionNoHayLugarParaCrear, 
-		ExcepcionYaHayElementoEnLaPosicion, ExcepcionEdificioNoPuedeCrearUnidad, ExcepcionErrorPasoDeTurno, ExcepcionSuperaLimenteDeArbolesPermitos, ExcepcionElementoFueraDelRangoDeAtaque {
+		ExcepcionYaHayElementoEnLaPosicion, ExcepcionEdificioNoPuedeCrearUnidad, ExcepcionErrorPasoDeTurno, ExcepcionSuperaLimenteDeArbolesPermitos, ExcepcionElementoFueraDelRangoDeAtaque, ExcepcionLaUnidadNoPertenceATuTropa {
 			
 		/*--------------------------------------------------------------------------------*/
 		Jugador jug1 = new Jugador ("carlos","rojo",new Terran());
@@ -108,8 +109,8 @@ public class UnidadesTerranTest extends TestCase{
 		acceso.colocarUnidad(zealot, mapa);
 		marine.setAtaquesPermitidosPorTurno(ataques);
 		ataques.setJuego(juego);
-			
-		marine.atacarEnAire(zealot);
+		jug1.getUnidadesAlistades().add(marine);
+		jug1.atacarCon(marine, zealot);
 		Vida vida= zealot.getVida();
 		Assert.assertTrue((vida.obtenerVida()) == 100);		
 	
@@ -118,7 +119,7 @@ public class UnidadesTerranTest extends TestCase{
 	public void testEspectroPuedeAtacarEdificiosEnemigos() 
 		throws ExcepcionPosicionInvalida, 
 		ExcepcionNoHayLugarParaCrear, 
-		ExcepcionYaHayElementoEnLaPosicion, ExcepcionNoPudoColocarseEdificio, ExcepcionEdificioNoPuedeCrearUnidad, ExcepcionErrorPasoDeTurno, ExcepcionSuperaLimenteDeArbolesPermitos, ExcepcionElementoFueraDelRangoDeAtaque{
+		ExcepcionYaHayElementoEnLaPosicion, ExcepcionNoPudoColocarseEdificio, ExcepcionEdificioNoPuedeCrearUnidad, ExcepcionErrorPasoDeTurno, ExcepcionSuperaLimenteDeArbolesPermitos, ExcepcionElementoFueraDelRangoDeAtaque, ExcepcionLaUnidadNoPertenceATuTropa{
 			
 		Jugador jug1 = new Jugador ("carlos","rojo",new Terran());
 		Jugador jug2 = new Jugador ("Williams", "azul", new Protoss());
@@ -143,9 +144,10 @@ public class UnidadesTerranTest extends TestCase{
 		espectro.setAtaquesPermitidosPorTurno(ataques);
 		ataques.setJuego(juego);
 		puertoEstelarTerran.colocarUnidad(espectro, mapa);
+		jug1.getUnidadesAlistades().add(espectro);
 		Assert.assertTrue(nexo.getEscudo().obtenerResistenciaActual() == 250 );
-		espectro.atacarEnAire(nexo);
-		Assert.assertTrue(nexo.getEscudo().obtenerResistenciaActual() == 230 );
+		jug1.atacarCon(espectro, nexo);
+		Assert.assertTrue(nexo.getEscudo().obtenerResistenciaActual() == 242 );
 					
 	}
 	

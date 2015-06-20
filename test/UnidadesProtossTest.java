@@ -10,6 +10,7 @@ import excepciones.ExcepcionEdificioNoPuedeCrearUnidad;
 import excepciones.ExcepcionElementoFueraDelRangoDeAtaque;
 import excepciones.ExcepcionErrorPasoDeTurno;
 import excepciones.ExcepcionGeneral;
+import excepciones.ExcepcionLaUnidadNoPertenceATuTropa;
 import excepciones.ExcepcionNoHayLugarParaCrear;
 import excepciones.ExcepcionNoPudoColocarseEdificio;
 import excepciones.ExcepcionNoSePuedeTransportar;
@@ -66,7 +67,7 @@ public class UnidadesProtossTest{
 			throws ExcepcionNoPudoColocarseEdificio,
 			ExcepcionPosicionInvalida, 
 			ExcepcionNoHayLugarParaCrear, 
-			ExcepcionYaHayElementoEnLaPosicion, ExcepcionEdificioNoPuedeCrearUnidad, ExcepcionErrorPasoDeTurno, ExcepcionSuperaLimenteDeArbolesPermitos, ExcepcionElementoFueraDelRangoDeAtaque {
+			ExcepcionYaHayElementoEnLaPosicion, ExcepcionEdificioNoPuedeCrearUnidad, ExcepcionErrorPasoDeTurno, ExcepcionSuperaLimenteDeArbolesPermitos, ExcepcionElementoFueraDelRangoDeAtaque, ExcepcionLaUnidadNoPertenceATuTropa {
 		
 		Jugador jug1 = new Jugador ("carlos","rojo",new Terran());
 		jug1.setDinero(9999, 9999);
@@ -80,13 +81,14 @@ public class UnidadesProtossTest{
 		Creadora acceso = (Creadora) jug2.colocar(new Acceso(), mapa, 8, 8);
 		Unidad marine = new Marine();
 		barraca.colocarUnidad(marine, mapa);
+		jug1.getUnidadesAlistades().add(marine);
 		
 		marine.setAtaquesPermitidosPorTurno(ataques);
 		
 		Zealot zealot =  new Zealot();
 		acceso.colocarUnidad(zealot, mapa);
+		jug1.atacarCon(marine, zealot);
 		
-		marine.atacarEnTierra(zealot);
 		Assert.assertTrue((zealot.getVida().obtenerVida()) == 100);
 		Assert.assertTrue((zealot.getEscudo().obtenerResistenciaActual()) == 54 );
 		
@@ -97,7 +99,7 @@ public class UnidadesProtossTest{
 			throws ExcepcionNoPudoColocarseEdificio, 
 			ExcepcionPosicionInvalida, 
 			ExcepcionNoHayLugarParaCrear, 
-			ExcepcionYaHayElementoEnLaPosicion, ExcepcionEdificioNoPuedeCrearUnidad, ExcepcionErrorPasoDeTurno, ExcepcionSuperaLimenteDeArbolesPermitos, ExcepcionElementoFueraDelRangoDeAtaque 
+			ExcepcionYaHayElementoEnLaPosicion, ExcepcionEdificioNoPuedeCrearUnidad, ExcepcionErrorPasoDeTurno, ExcepcionSuperaLimenteDeArbolesPermitos, ExcepcionElementoFueraDelRangoDeAtaque, ExcepcionLaUnidadNoPertenceATuTropa 
 			{
 		
 		Jugador jugador1 = new Jugador ("carlos","rojo",new Terran());
@@ -123,11 +125,15 @@ public class UnidadesProtossTest{
 		barraca.colocarUnidad(primerMarine, mapa);	
 		barraca.colocarUnidad(segundoMarine, mapa);
 		barraca.colocarUnidad(tercerMarine, mapa);
+		jugador1.getUnidadesAlistades().add(primerMarine);
+		jugador1.getUnidadesAlistades().add(segundoMarine);
+		jugador1.getUnidadesAlistades().add(tercerMarine);
+		
 		acceso.colocarUnidad(zealot, mapa);
 				
-		primerMarine.atacarEnTierra(zealot);		
-		segundoMarine.atacarEnTierra(zealot);
-		tercerMarine.atacarEnTierra(zealot);
+		jugador1.atacarCon(primerMarine, zealot);
+		jugador1.atacarCon(segundoMarine, zealot);
+		jugador1.atacarCon(tercerMarine, zealot);
 		
 		int danioTotalRecibido= zealot.getVida().obtenerDanioRecibido();
 		
@@ -185,7 +191,7 @@ public class UnidadesProtossTest{
 		} 
 	
 	@Test (expected = ExcepcionElementoFueraDelRangoDeAtaque.class)
-	public void unidadIntentaAtacarFueraDeSuAlcanceLanzaExcepcion() throws ExcepcionPosicionInvalida, ExcepcionYaHayElementoEnLaPosicion, ExcepcionSuperaLimenteDeArbolesPermitos, ExcepcionNoPudoColocarseEdificio, ExcepcionNoHayLugarParaCrear, ExcepcionEdificioNoPuedeCrearUnidad, ExcepcionErrorPasoDeTurno, ExcepcionElementoFueraDelRangoDeAtaque{
+	public void unidadIntentaAtacarFueraDeSuAlcanceLanzaExcepcion() throws ExcepcionPosicionInvalida, ExcepcionYaHayElementoEnLaPosicion, ExcepcionSuperaLimenteDeArbolesPermitos, ExcepcionNoPudoColocarseEdificio, ExcepcionNoHayLugarParaCrear, ExcepcionEdificioNoPuedeCrearUnidad, ExcepcionErrorPasoDeTurno, ExcepcionElementoFueraDelRangoDeAtaque, ExcepcionLaUnidadNoPertenceATuTropa{
 		
 		Jugador jugador1 = new Jugador ("carlos","rojo",new Terran());
 		Jugador jugador2 = new Jugador ("dean","azul",new Terran());
@@ -201,9 +207,36 @@ public class UnidadesProtossTest{
 		Marine marine = new Marine();
 		
 		acceso.colocarUnidad(zealot, mapa);
+		jugador1.getUnidadesAlistades().add(zealot);
 		barraca.colocarUnidad(marine, mapa);
 		
-		zealot.atacarEnTierra(marine);
+		jugador1.atacarCon(zealot, marine);
 		
 	}
-}
+	
+	@Test (expected = ExcepcionLaUnidadNoPertenceATuTropa.class)
+	public void intentarAtacarConUnidadDelEnemigoLanzaExcepcion() throws ExcepcionPosicionInvalida, ExcepcionYaHayElementoEnLaPosicion, ExcepcionSuperaLimenteDeArbolesPermitos, ExcepcionNoPudoColocarseEdificio, ExcepcionNoHayLugarParaCrear, ExcepcionEdificioNoPuedeCrearUnidad, ExcepcionErrorPasoDeTurno, ExcepcionElementoFueraDelRangoDeAtaque, ExcepcionLaUnidadNoPertenceATuTropa{
+		
+		Jugador jugador1 = new Jugador ("carlos","rojo",new Terran());
+		Jugador jugador2 = new Jugador ("dean","azul",new Terran());
+		
+		Juego juego = new Juego(jugador1, jugador2, 100, 0);
+		Mapa mapa = juego.getMapa();
+		jugador1.setDinero(99999, 99999);
+		Creadora barraca = (Creadora) jugador1.colocar(new Barraca(), mapa, 90, 90);		
+		
+		Creadora acceso = (Creadora) jugador2.colocar(new Acceso(), mapa, 10, 10);	
+		
+		Zealot zealot = new Zealot();	
+		Marine marine = new Marine();
+		
+		acceso.colocarUnidad(zealot, mapa);
+		jugador1.getUnidadesAlistades().add(zealot);
+		barraca.colocarUnidad(marine, mapa);
+		jugador2.getUnidadesAlistades().add(marine);
+		
+		jugador1.atacarCon(marine, zealot);
+	
+	}
+	
+}	
