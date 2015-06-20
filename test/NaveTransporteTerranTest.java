@@ -20,6 +20,7 @@ import src.unidades.*;
 
 import org.junit.Assert;
 
+import excepciones.ExcepcionConstruccionNoCorrespondiente;
 import excepciones.ExcepcionElTransporteEstaLleno;
 import excepciones.ExcepcionElTransporteNoEstaEnElAlcancePermitido;
 import excepciones.ExcepcionErrorPasoDeTurno;
@@ -32,6 +33,7 @@ import excepciones.ExcepcionNoPuedeMoverseUnidad;
 import excepciones.ExcepcionNoSePuedeTransportar;
 import excepciones.ExcepcionNoSePuedenTransportasUnidadesVoladoras;
 import excepciones.ExcepcionPosicionInvalida;
+import excepciones.ExcepcionRecursoInsuficiente;
 import excepciones.ExcepcionYaHayElementoEnLaPosicion;
 
 public class NaveTransporteTerranTest extends TestCase {
@@ -47,14 +49,15 @@ public class NaveTransporteTerranTest extends TestCase {
 	protected void setUp() throws Exception {
 		
 		super.setUp();
-		jugador1 = new Jugador ("carlos","rojo",new Protoss());
-		jugador2 = new Jugador ("dean","azul",new Protoss());
+		jugador1 = new Jugador ("carlos","rojo",new Terran());
+		jugador2 = new Jugador ("dean","azul",new Terran());
 		
 		Juego juego = new Juego(jugador1, jugador2, 100, 0);
 		mapa = juego.getMapa();
 		jugador1.setDinero(99999, 99999);
 				
 		 barraca = (Creadora) jugador1.colocar(new Barraca(), mapa, 50, 50);
+		 jugador1.colocar(new Fabrica(), mapa, 10, 10);
 		 puertoEstelar = (Creadora) jugador1.colocar(new PuertoEstelarTerran(), mapa, 49, 50);
 		
 		naveTransporte = new NaveTransporteTerran();
@@ -82,7 +85,7 @@ public class NaveTransporteTerranTest extends TestCase {
 			
 	}
 	
-	public void testNaveTransporteSoloPuedeLlevar4Golliats() throws ExcepcionPosicionInvalida, ExcepcionNoHayLugarParaCrear, ExcepcionYaHayElementoEnLaPosicion, ExcepcionNoSePuedeTransportar, ExcepcionNoPudoColocarseEdificio{
+	public void testNaveTransporteSoloPuedeLlevar4Golliats() throws ExcepcionPosicionInvalida, ExcepcionNoHayLugarParaCrear, ExcepcionYaHayElementoEnLaPosicion, ExcepcionNoSePuedeTransportar, ExcepcionNoPudoColocarseEdificio, ExcepcionConstruccionNoCorrespondiente, ExcepcionRecursoInsuficiente{
 		
 		Creadora fabrica = (Creadora) jugador1.colocar(new Fabrica(), mapa, 51, 51);
 		

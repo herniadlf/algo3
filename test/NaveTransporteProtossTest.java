@@ -16,6 +16,7 @@ import src.razas.Terran;
 import src.unidades.Marine;
 import src.unidades.NaveTransporteProtoss;
 import src.unidades.Zealot;
+import excepciones.ExcepcionConstruccionNoCorrespondiente;
 import excepciones.ExcepcionElTransporteEstaLleno;
 import excepciones.ExcepcionElTransporteNoEstaEnElAlcancePermitido;
 import excepciones.ExcepcionNoHayLugarParaCrear;
@@ -24,13 +25,14 @@ import excepciones.ExcepcionNoPuedeMoverseUnidad;
 import excepciones.ExcepcionNoSePuedeTransportar;
 import excepciones.ExcepcionNoSePuedenTransportasUnidadesVoladoras;
 import excepciones.ExcepcionPosicionInvalida;
+import excepciones.ExcepcionRecursoInsuficiente;
 import excepciones.ExcepcionSuperaLimenteDeArbolesPermitos;
 import excepciones.ExcepcionYaHayElementoEnLaPosicion;
 
 public class NaveTransporteProtossTest {
 	
 	@Test (expected = ExcepcionNoSePuedeTransportar.class)
-	public void unidadLejanaALaNaveIntentaSubirseYLanzaError() throws ExcepcionPosicionInvalida, ExcepcionYaHayElementoEnLaPosicion, ExcepcionSuperaLimenteDeArbolesPermitos, ExcepcionNoPudoColocarseEdificio, ExcepcionNoHayLugarParaCrear, ExcepcionNoSePuedeTransportar {
+	public void unidadLejanaALaNaveIntentaSubirseYLanzaError() throws ExcepcionPosicionInvalida, ExcepcionYaHayElementoEnLaPosicion, ExcepcionSuperaLimenteDeArbolesPermitos, ExcepcionNoPudoColocarseEdificio, ExcepcionNoHayLugarParaCrear, ExcepcionNoSePuedeTransportar, ExcepcionConstruccionNoCorrespondiente, ExcepcionRecursoInsuficiente {
 		
 		Jugador jugador1 = new Jugador ("carlos","rojo",new Protoss());
 		Jugador jugador2 = new Jugador ("dean","azul",new Protoss());
@@ -52,7 +54,7 @@ public class NaveTransporteProtossTest {
 	}
 	
 	@Test
-	public void testNaveTransporteProtossTransporta4Zealots() throws ExcepcionNoSePuedeTransportar, ExcepcionPosicionInvalida, ExcepcionNoHayLugarParaCrear, ExcepcionYaHayElementoEnLaPosicion, ExcepcionSuperaLimenteDeArbolesPermitos, ExcepcionNoPudoColocarseEdificio{
+	public void testNaveTransporteProtossTransporta4Zealots() throws ExcepcionNoSePuedeTransportar, ExcepcionPosicionInvalida, ExcepcionNoHayLugarParaCrear, ExcepcionYaHayElementoEnLaPosicion, ExcepcionSuperaLimenteDeArbolesPermitos, ExcepcionNoPudoColocarseEdificio, ExcepcionConstruccionNoCorrespondiente, ExcepcionRecursoInsuficiente{
 		
 		Jugador jugador1 = new Jugador ("carlos","rojo",new Protoss());
 		Jugador jugador2 = new Jugador ("dean","azul",new Protoss());
@@ -78,7 +80,7 @@ public class NaveTransporteProtossTest {
 		
 	}
 	@Test
-	public void testNaveTransporteProtossSoloSeMuevePorSuRangoDeVision() throws ExcepcionPosicionInvalida, ExcepcionYaHayElementoEnLaPosicion, ExcepcionSuperaLimenteDeArbolesPermitos, ExcepcionNoPudoColocarseEdificio, ExcepcionNoPuedeMoverseUnidad, ExcepcionNoHayLugarParaCrear{
+	public void testNaveTransporteProtossSoloSeMuevePorSuRangoDeVision() throws ExcepcionPosicionInvalida, ExcepcionYaHayElementoEnLaPosicion, ExcepcionSuperaLimenteDeArbolesPermitos, ExcepcionNoPudoColocarseEdificio, ExcepcionNoPuedeMoverseUnidad, ExcepcionNoHayLugarParaCrear, ExcepcionConstruccionNoCorrespondiente, ExcepcionRecursoInsuficiente{
 		
 		Jugador jugador1 = new Jugador ("carlos","rojo",new Protoss());
 		Jugador jugador2 = new Jugador ("dean","azul",new Protoss());

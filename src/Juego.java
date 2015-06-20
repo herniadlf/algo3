@@ -72,7 +72,7 @@ public class Juego {
 		
 	}
 	
-	public void pasarTurno () throws ExcepcionErrorPasoDeTurno 	{
+	public void pasarTurno () throws ExcepcionErrorPasoDeTurno, ExcepcionConstruccionNoCorrespondiente, ExcepcionRecursoInsuficiente 	{
 		
 		turno.aumentarTurno();
 		if ((turno.devolverTurnoActual()%2)==0){

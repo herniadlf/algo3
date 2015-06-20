@@ -39,7 +39,7 @@ import src.unidades.Zealot;
 public class ConstruccionTest {
 		
 		@Test
-		public void construccionExitosaPorRecursosSuficientes() throws ExcepcionNoPudoColocarseEdificio {
+		public void construccionExitosaPorRecursosSuficientes() throws ExcepcionNoPudoColocarseEdificio, ExcepcionConstruccionNoCorrespondiente, ExcepcionRecursoInsuficiente {
 				Mapa mapa = new Mapa(50);
 				Jugador jug = new Jugador("carlos","rojo",new Terran()); // Jugador se crea con 800 M			
 				
@@ -49,7 +49,7 @@ public class ConstruccionTest {
 		}
 			
 		@Test
-		public void construccionExitosaEnElMapa() throws ExcepcionNoPudoColocarseEdificio, ExcepcionPosicionInvalida{
+		public void construccionExitosaEnElMapa() throws ExcepcionNoPudoColocarseEdificio, ExcepcionPosicionInvalida, ExcepcionConstruccionNoCorrespondiente, ExcepcionRecursoInsuficiente{
 			Mapa mapa = new Mapa(50);
 			Jugador jug = new Jugador("carlos","rojo",new Terran());
 			jug.setDinero(9999999, 999999); // ya que pruebo construir en todos los puntos del mapa necesito mucha plata
@@ -75,7 +75,7 @@ public class ConstruccionTest {
 	
 		
 		@Test
-		public void construccionExitosaDeFabricaConBarraca() throws ExcepcionNoPudoColocarseEdificio, ExcepcionPosicionInvalida {
+		public void construccionExitosaDeFabricaConBarraca() throws ExcepcionNoPudoColocarseEdificio, ExcepcionPosicionInvalida, ExcepcionConstruccionNoCorrespondiente, ExcepcionRecursoInsuficiente {
 			Mapa mapa = new Mapa(50);
 			Jugador jug = new Jugador("carlos","rojo", new Terran());
 			
@@ -86,7 +86,7 @@ public class ConstruccionTest {
 		}
 		
 		@Test
-		public void nuevoPilonAumentaSuministrosDeJugador() throws ExcepcionNoPudoColocarseEdificio{
+		public void nuevoPilonAumentaSuministrosDeJugador() throws ExcepcionNoPudoColocarseEdificio, ExcepcionConstruccionNoCorrespondiente, ExcepcionRecursoInsuficiente{
 			Mapa mapa = new Mapa(50);
 			Jugador jug = new Jugador ("carlos","rojo",new Protoss());
 			
@@ -102,7 +102,7 @@ public class ConstruccionTest {
 				throws ExcepcionNoPudoColocarseEdificio, 
 				ExcepcionPosicionInvalida, 
 				ExcepcionNoHayLugarParaCrear, 
-				ExcepcionYaHayElementoEnLaPosicion  {
+				ExcepcionYaHayElementoEnLaPosicion, ExcepcionConstruccionNoCorrespondiente, ExcepcionRecursoInsuficiente  {
 			Mapa mapa = new Mapa(50);
 			Jugador jug = new Jugador ("carlos","rojo",new Terran());
 			jug.setDinero(999999, 999999);
@@ -142,7 +142,7 @@ public class ConstruccionTest {
 				throws ExcepcionNoPudoColocarseEdificio, 
 				ExcepcionPosicionInvalida,
 				ExcepcionNoHayLugarParaCrear, 
-				ExcepcionYaHayElementoEnLaPosicion {
+				ExcepcionYaHayElementoEnLaPosicion, ExcepcionConstruccionNoCorrespondiente, ExcepcionRecursoInsuficiente {
 			
 			Mapa mapa = new Mapa(50);
 			Jugador jug = new Jugador ("carlos","rojo",new Terran());
@@ -175,7 +175,7 @@ public class ConstruccionTest {
 				throws ExcepcionPosicionInvalida, 
 				ExcepcionYaHayElementoEnLaPosicion, 
 				ExcepcionNoPudoColocarseEdificio, 
-				ExcepcionErrorPasoDeTurno, ExcepcionSuperaLimenteDeArbolesPermitos {
+				ExcepcionErrorPasoDeTurno, ExcepcionSuperaLimenteDeArbolesPermitos, ExcepcionConstruccionNoCorrespondiente, ExcepcionRecursoInsuficiente {
 			
 			Jugador jugador1 = new Jugador ("carlos","rojo",new Terran());
 			Jugador jugador2 = new Jugador ("dean","azul",new Terran());
@@ -203,7 +203,7 @@ public class ConstruccionTest {
 		}
 		
 		@Test (expected = ExcepcionNoPudoColocarseEdificio.class)
-		public void seReservaLugarAunqueLaConstruccionNoEstaFinalizada() throws ExcepcionNoPudoColocarseEdificio, ExcepcionPosicionInvalida, ExcepcionErrorPasoDeTurno, ExcepcionYaHayElementoEnLaPosicion, ExcepcionSuperaLimenteDeArbolesPermitos {
+		public void seReservaLugarAunqueLaConstruccionNoEstaFinalizada() throws ExcepcionNoPudoColocarseEdificio, ExcepcionPosicionInvalida, ExcepcionErrorPasoDeTurno, ExcepcionYaHayElementoEnLaPosicion, ExcepcionSuperaLimenteDeArbolesPermitos, ExcepcionConstruccionNoCorrespondiente, ExcepcionRecursoInsuficiente {
 			
 			Mapa mapa = new Mapa(50);
 			Jugador jugador1 = new Jugador ("carlos","rojo",new Terran());
@@ -224,7 +224,7 @@ public class ConstruccionTest {
 				throws ExcepcionPosicionInvalida, 
 				ExcepcionYaHayElementoEnLaPosicion, 
 				ExcepcionNoPudoColocarseEdificio,
-				ExcepcionErrorPasoDeTurno, ExcepcionSuperaLimenteDeArbolesPermitos {
+				ExcepcionErrorPasoDeTurno, ExcepcionSuperaLimenteDeArbolesPermitos, ExcepcionConstruccionNoCorrespondiente, ExcepcionRecursoInsuficiente {
 		
 			Jugador jugador1 = new Jugador ("carlos","rojo",new Terran());
 			Jugador jugador2 = new Jugador ("dean","azul",new Protoss());
@@ -241,7 +241,7 @@ public class ConstruccionTest {
 		}
 		
 		@Test
-		public void testDestruccionDeEdificioProvocaEliminacionDelMapa() throws ExcepcionPosicionInvalida, ExcepcionNoPudoColocarseEdificio, ExcepcionYaHayElementoEnLaPosicion, ExcepcionSuperaLimenteDeArbolesPermitos {
+		public void testDestruccionDeEdificioProvocaEliminacionDelMapa() throws ExcepcionPosicionInvalida, ExcepcionNoPudoColocarseEdificio, ExcepcionYaHayElementoEnLaPosicion, ExcepcionSuperaLimenteDeArbolesPermitos, ExcepcionConstruccionNoCorrespondiente, ExcepcionRecursoInsuficiente {
 			
 			Jugador jugador1 = new Jugador ("carlos","rojo",new Terran());
 			Jugador jugador2 = new Jugador ("dean","azul",new Terran());
@@ -250,9 +250,9 @@ public class ConstruccionTest {
 			Mapa mapa = juego.getMapa();
 			jugador1.setDinero(99999, 99999);	
 			
-			Creadora acceso = (Creadora) jugador2.colocar(new Acceso(), mapa, 2, 2);		
+			Creadora acceso = (Creadora) jugador2.colocar(new Barraca(), mapa, 2, 2);		
 			
-			Assert.assertTrue(mapa.obtenerContenidoEnPosicion(2, 2).getElementoEnTierra().getNombre()=="Acceso");
+			Assert.assertTrue(mapa.obtenerContenidoEnPosicion(2, 2).getElementoEnTierra().getNombre()=="Barraca");
 					
 			acceso.getVida().aumentarDanioARecibir(600);
 			acceso.recibirDanio();
@@ -267,7 +267,7 @@ public class ConstruccionTest {
 			}
 		
 		@Test
-		public void testDestruccionDeEdificioLoEliminaDeEdificiosEnPie() throws ExcepcionPosicionInvalida, ExcepcionNoPudoColocarseEdificio, ExcepcionYaHayElementoEnLaPosicion, ExcepcionSuperaLimenteDeArbolesPermitos, ExcepcionErrorPasoDeTurno {
+		public void testDestruccionDeEdificioLoEliminaDeEdificiosEnPie() throws ExcepcionPosicionInvalida, ExcepcionNoPudoColocarseEdificio, ExcepcionYaHayElementoEnLaPosicion, ExcepcionSuperaLimenteDeArbolesPermitos, ExcepcionErrorPasoDeTurno, ExcepcionConstruccionNoCorrespondiente, ExcepcionRecursoInsuficiente {
 			
 			Jugador jugador1 = new Jugador ("carlos","rojo",new Protoss());
 			Jugador jugador2 = new Jugador ("dean","azul",new Protoss());
@@ -294,7 +294,7 @@ public class ConstruccionTest {
 			}
 		
 		@Test (expected = ExcepcionNoPudoColocarseEdificio.class)
-		public void testDestruccionDeEdificioRequeridoImpideCreacion() throws ExcepcionPosicionInvalida, ExcepcionYaHayElementoEnLaPosicion, ExcepcionSuperaLimenteDeArbolesPermitos, ExcepcionNoPudoColocarseEdificio, ExcepcionErrorPasoDeTurno{
+		public void testDestruccionDeEdificioRequeridoImpideCreacion() throws ExcepcionPosicionInvalida, ExcepcionYaHayElementoEnLaPosicion, ExcepcionSuperaLimenteDeArbolesPermitos, ExcepcionNoPudoColocarseEdificio, ExcepcionErrorPasoDeTurno, ExcepcionConstruccionNoCorrespondiente, ExcepcionRecursoInsuficiente{
 			Jugador jugador1 = new Jugador ("carlos","rojo",new Protoss());
 			Jugador jugador2 = new Jugador ("dean","azul",new Protoss());
 			
@@ -316,5 +316,19 @@ public class ConstruccionTest {
 			juego.ordenFabricacionDeEdificios(fabrica_2, 10, 10);
 			
 		}
+		
+		@Test (expected = ExcepcionNoPudoColocarseEdificio.class)
+		public void testCrearEdificioDeOtraRazaLanzaExcepcion() throws ExcepcionPosicionInvalida, ExcepcionYaHayElementoEnLaPosicion, ExcepcionSuperaLimenteDeArbolesPermitos, ExcepcionNoPudoColocarseEdificio, ExcepcionConstruccionNoCorrespondiente, ExcepcionRecursoInsuficiente {
+			Jugador jugador1 = new Jugador ("carlos","rojo",new Terran());
+			Jugador jugador2 = new Jugador ("dean","azul",new Protoss());
+			
+			Juego juego = new Juego(jugador1, jugador2, 100, 0);
+			jugador1.setDinero(99999, 99999);
+			
+			Construccion barraca = jugador1.colocar(new Acceso(), juego.getMapa(), 5,5);
+	
+			
+		}
+		
 		
 }

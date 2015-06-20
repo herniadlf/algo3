@@ -156,9 +156,10 @@ public class Jugador {
 		
 	}
 		
-	public Construccion colocar(Construccion edificio, Mapa map, int i, int j) throws ExcepcionNoPudoColocarseEdificio  {
+	public Construccion colocar(Construccion edificio, Mapa map, int i, int j) throws ExcepcionNoPudoColocarseEdificio, ExcepcionConstruccionNoCorrespondiente, ExcepcionRecursoInsuficiente  {
 	
 		try {				
+			verificacionEdificio(edificio);
 			edificio.setPosicionX(i);
 			edificio.setPosicionY(j);
 			edificio.setAlrededores();
@@ -167,6 +168,7 @@ public class Jugador {
 			this.gastarPlata(edificio.getCosto());
 			poblacionDisponible = poblacionDisponible + edificio.getCantidadDeSuministros();			
 		} catch (ExcepcionPosicionInvalida | ExcepcionExtractoraSinRecurso
+				| ExcepcionConstruccionNoCorrespondiente
 				| ExcepcionYaHayElementoEnLaPosicion  e) {
 				throw new ExcepcionNoPudoColocarseEdificio(e);
 		}		
@@ -255,7 +257,7 @@ public class Jugador {
 	}
 	
 	public void actualizarFabricacionConstrucciones (Turno turno, Mapa mapa) 
-			throws ExcepcionNoPudoColocarseEdificio 	{
+			throws ExcepcionNoPudoColocarseEdificio, ExcepcionConstruccionNoCorrespondiente, ExcepcionRecursoInsuficiente 	{
 		
 		int i=0;
 		int turnosPasados;
@@ -283,7 +285,7 @@ public class Jugador {
 		
 	}
 
-	public void pasoTurno(Turno turno, Mapa mapa) throws ExcepcionErrorPasoDeTurno 	{
+	public void pasoTurno(Turno turno, Mapa mapa) throws ExcepcionErrorPasoDeTurno, ExcepcionConstruccionNoCorrespondiente, ExcepcionRecursoInsuficiente 	{
 		
 		try{
 			actualizarTurnoEnRaza();
@@ -321,7 +323,7 @@ public class Jugador {
 		
 	}
 	
-	public void atacarCon(Unidad agresor, Atacable victima) throws ExcepcionEdificioNoPuedeCrearUnidad, ExcepcionPosicionInvalida, ExcepcionNoHayLugarParaCrear, ExcepcionYaHayElementoEnLaPosicion, ExcepcionErrorPasoDeTurno, ExcepcionElementoFueraDelRangoDeAtaque, ExcepcionLaUnidadNoPertenceATuTropa{
+	public void atacarCon(Unidad agresor, Atacable victima) throws ExcepcionEdificioNoPuedeCrearUnidad, ExcepcionPosicionInvalida, ExcepcionNoHayLugarParaCrear, ExcepcionYaHayElementoEnLaPosicion, ExcepcionErrorPasoDeTurno, ExcepcionElementoFueraDelRangoDeAtaque, ExcepcionLaUnidadNoPertenceATuTropa, ExcepcionConstruccionNoCorrespondiente, ExcepcionRecursoInsuficiente{
 		
 		if(this.contieneALaUnidad(agresor)){
 			

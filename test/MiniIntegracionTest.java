@@ -34,6 +34,7 @@ import src.construcciones.PuertoEstelarTerran;
 import src.construcciones.Refineria;
 import src.mapa.EspacioDisponible;
 import src.mapa.Mapa;
+import src.razas.Protoss;
 import src.razas.Terran;
 import src.unidades.Espectro;
 import src.unidades.Marine;
@@ -48,7 +49,7 @@ public class MiniIntegracionTest {
 			throws ExcepcionNoPudoColocarseEdificio, 
 			ExcepcionNoPudoCrearseUnidad, 
 			ExcepcionErrorPasoDeTurno, 
-			ExcepcionPosicionInvalida, ExcepcionYaHayElementoEnLaPosicion, ExcepcionSuperaLimenteDeArbolesPermitos, ExcepcionElEdificioNoPerteneceATusConstrucciones {
+			ExcepcionPosicionInvalida, ExcepcionYaHayElementoEnLaPosicion, ExcepcionSuperaLimenteDeArbolesPermitos, ExcepcionElEdificioNoPerteneceATusConstrucciones, ExcepcionConstruccionNoCorrespondiente, ExcepcionRecursoInsuficiente {
 		
 		Jugador jugador1 = new Jugador ("carlos","rojo",new Terran());
 		Jugador jugador2 = new Jugador ("dean","azul",new Terran());
@@ -94,7 +95,7 @@ public class MiniIntegracionTest {
 	@Test
 	public void testCrearEdificiosSegunTurno()
 			throws ExcepcionNoPudoColocarseEdificio, 
-			ExcepcionPosicionInvalida, ExcepcionErrorPasoDeTurno, ExcepcionYaHayElementoEnLaPosicion, ExcepcionSuperaLimenteDeArbolesPermitos {
+			ExcepcionPosicionInvalida, ExcepcionErrorPasoDeTurno, ExcepcionYaHayElementoEnLaPosicion, ExcepcionSuperaLimenteDeArbolesPermitos, ExcepcionConstruccionNoCorrespondiente, ExcepcionRecursoInsuficiente {
 
 		Jugador jugador1 = new Jugador ("carlos","rojo",new Terran());
 		Jugador jugador2 = new Jugador ("dean","azul",new Terran());
@@ -135,10 +136,10 @@ public class MiniIntegracionTest {
 	
 	@Test
 	public void luegoDeDiezAtaquesPasaElTurno() throws ExcepcionPosicionInvalida,
-	ExcepcionNoHayLugarParaCrear, ExcepcionYaHayElementoEnLaPosicion, ExcepcionEdificioNoPuedeCrearUnidad, ExcepcionNoPudoColocarseEdificio, ExcepcionErrorPasoDeTurno, ExcepcionSuperaLimenteDeArbolesPermitos, ExcepcionElementoFueraDelRangoDeAtaque, ExcepcionLaUnidadNoPertenceATuTropa{
+	ExcepcionNoHayLugarParaCrear, ExcepcionYaHayElementoEnLaPosicion, ExcepcionEdificioNoPuedeCrearUnidad, ExcepcionNoPudoColocarseEdificio, ExcepcionErrorPasoDeTurno, ExcepcionSuperaLimenteDeArbolesPermitos, ExcepcionElementoFueraDelRangoDeAtaque, ExcepcionLaUnidadNoPertenceATuTropa, ExcepcionConstruccionNoCorrespondiente, ExcepcionRecursoInsuficiente{
 		
 		Jugador jugador1 = new Jugador ("carlos","rojo",new Terran());
-		Jugador jugador2 = new Jugador ("dean","azul",new Terran());
+		Jugador jugador2 = new Jugador ("dean","azul",new Protoss());
 		Turno turno = new Turno();
 		
 		
@@ -195,7 +196,7 @@ public class MiniIntegracionTest {
 	@Test
 	public void creacionDeEspectroYEdificiosNecesariosATravesDeJuego() 
 	throws ExcepcionPosicionInvalida, ExcepcionYaHayElementoEnLaPosicion, 
-		ExcepcionSuperaLimenteDeArbolesPermitos, ExcepcionNoPudoCrearseUnidad, ExcepcionNoPudoColocarseEdificio, ExcepcionErrorPasoDeTurno, ExcepcionNoHayLugarParaCrear, ExcepcionElEdificioNoPerteneceATusConstrucciones{
+		ExcepcionSuperaLimenteDeArbolesPermitos, ExcepcionNoPudoCrearseUnidad, ExcepcionNoPudoColocarseEdificio, ExcepcionErrorPasoDeTurno, ExcepcionNoHayLugarParaCrear, ExcepcionElEdificioNoPerteneceATusConstrucciones, ExcepcionConstruccionNoCorrespondiente, ExcepcionRecursoInsuficiente{
 		Jugador jugador1 = new Jugador ("carlos","rojo",new Terran());
 		Jugador jugador2 = new Jugador ("dean","azul",new Terran());
 		

@@ -1,9 +1,11 @@
 package src;
 
+import excepciones.ExcepcionConstruccionNoCorrespondiente;
 import excepciones.ExcepcionEdificioNoPuedeCrearUnidad;
 import excepciones.ExcepcionErrorPasoDeTurno;
 import excepciones.ExcepcionNoHayLugarParaCrear;
 import excepciones.ExcepcionPosicionInvalida;
+import excepciones.ExcepcionRecursoInsuficiente;
 import excepciones.ExcepcionYaHayElementoEnLaPosicion;
 
 	public class AtaquesPermitidosPorTurno {
@@ -19,7 +21,7 @@ import excepciones.ExcepcionYaHayElementoEnLaPosicion;
 	}
 	
 	public void aumentarAtaquesPermitidos () throws ExcepcionEdificioNoPuedeCrearUnidad,
-	ExcepcionPosicionInvalida, ExcepcionNoHayLugarParaCrear, ExcepcionYaHayElementoEnLaPosicion, ExcepcionErrorPasoDeTurno{
+	ExcepcionPosicionInvalida, ExcepcionNoHayLugarParaCrear, ExcepcionYaHayElementoEnLaPosicion, ExcepcionErrorPasoDeTurno, ExcepcionConstruccionNoCorrespondiente, ExcepcionRecursoInsuficiente{
 		
 		this.ataques = this.ataques +1;
 		if (this.ataques ==10){
