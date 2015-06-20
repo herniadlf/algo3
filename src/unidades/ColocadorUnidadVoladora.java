@@ -14,13 +14,13 @@ public class ColocadorUnidadVoladora implements ColocadorDeUnidades {
 	public Posicion posicionAColocar(Unidad aColocar, Mapa map,
 			LinkedList<Posicion> alrededores) throws ExcepcionPosicionInvalida, ExcepcionNoHayLugarParaCrear {
 		
-		Posicion auxiliar = alrededores.getFirst();
-		Boolean hayLugar = (map.obtenerContenidoEnPosicion(auxiliar.getX(), auxiliar.getY())).getElementoEnAire().esOcupable();
-		Iterator<Posicion> list = alrededores.iterator();
-	
-		while ( (hayLugar == false) && (list.hasNext()) ){
-			auxiliar = (Posicion) list.next();
-			hayLugar = (map.obtenerContenidoEnPosicion(auxiliar.getX(), auxiliar.getY())).getElementoEnAire().esOcupable();
+		int i = 0;
+		Boolean hayLugar = false;
+		Posicion auxiliar = new Posicion(0,0);
+		while ( (i < alrededores.size()) && (!hayLugar) ){
+			auxiliar = alrededores.get(i);
+			hayLugar = map.obtenerContenidoEnPosicion(auxiliar.getX(), auxiliar.getY()).getElementoEnAire().esOcupable();
+			i++;
 		}		
 		if ( !hayLugar ){
 			throw new ExcepcionNoHayLugarParaCrear("No hay espacio disponible para la creacion");

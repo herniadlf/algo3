@@ -46,7 +46,7 @@ public class Interfaz {
 		
 		setScreenSize(Toolkit.getDefaultToolkit().getScreenSize());
 		JFrame.setDefaultLookAndFeelDecorated(true);
-		JPopupMenu.setDefaultLightWeightPopupEnabled(false);
+		JPopupMenu.setDefaultLightWeightPopupEnabled(true);
 		
 		setFramePrincipal(new JFrame());
 		getFramePrincipal().setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -87,8 +87,8 @@ public class Interfaz {
             	cargarMenuPrincipal();
             }
         });
-
-        botonContinuar.setBounds(0,0,imagenPortada.getIconWidth(),imagenPortada.getIconHeight());
+        
+        botonContinuar.setBounds(0,0,imagenPortada.getIconWidth(),imagenPortada.getIconHeight()-30);
 
         panel.add(botonContinuar);
         
@@ -220,7 +220,7 @@ public class Interfaz {
 						throw new ExcepcionNombreElegido();
 					}
 					juego.getJugadorActual().setNombre(texto.getText());
-					JOptionPane.showMessageDialog(null, "Bienvenido " + juego.getJugadorActual().getNombre() + "!!");
+					JOptionPane.showMessageDialog(null, "¡Bienvenido/a " + juego.getJugadorActual().getNombre() + "!");
 					cargarSeleccionDeRaza();
 				} catch (ExcepcionNombreElegido e){
 					cargarPedidoNombre();

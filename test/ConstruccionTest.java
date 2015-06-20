@@ -292,5 +292,28 @@ public class ConstruccionTest {
 			Assert.assertFalse(jugador1.getConstruccionesEnPie().contains(acceso));
 
 			}
+		@Test (expected = ExcepcionNoPudoColocarseEdificio.class)
+		public void testDestruccionDeEdificioRequeridoImpideCreacion() throws ExcepcionPosicionInvalida, ExcepcionYaHayElementoEnLaPosicion, ExcepcionSuperaLimenteDeArbolesPermitos, ExcepcionNoPudoColocarseEdificio, ExcepcionErrorPasoDeTurno{
+			Jugador jugador1 = new Jugador ("carlos","rojo",new Protoss());
+			Jugador jugador2 = new Jugador ("dean","azul",new Protoss());
+			
+			Juego juego = new Juego(jugador1, jugador2, 100, 0);
+			jugador1.setDinero(99999, 99999);
+			
+			Construccion barraca = jugador1.colocar(new Barraca(), juego.getMapa(), 5,5);
+			Construccion fabrica = jugador1.colocar(new Fabrica(), juego.getMapa(), 6, 8);
+			
+			Assert.assertTrue ( juego.getMapa().obtenerContenidoEnPosicion(6, 8).getElementoEnTierra().esLoMismo(fabrica));
+			
+			barraca.getVida().aumentarDanioARecibir(1001);
+			barraca.recibirDanio();
+			
+			juego.pasarTurno();
+			juego.pasarTurno();
+			
+			Construccion fabrica_2 = new Fabrica();
+			juego.ordenFabricacionDeEdificios(fabrica_2, 10, 10);
+			
+		}
 		
 }

@@ -276,6 +276,7 @@ public class Jugador {
 	public void pasoTurno(Turno turno, Mapa mapa) throws ExcepcionErrorPasoDeTurno 	{
 		
 		try{
+			actualizarTurnoEnRaza();
 			actualizarTurnoEnConstrucciones(turno, mapa);	
 			actualizarFabricacionConstrucciones(turno, mapa);
 			
@@ -291,6 +292,10 @@ public class Jugador {
 			unidad.pasoTurno();
 		}
 	
+	}
+
+	private void actualizarTurnoEnRaza() {
+		getRaza().pasoTurno();		
 	}
 	
 }

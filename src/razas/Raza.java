@@ -12,13 +12,12 @@ public abstract class Raza {
 	protected LinkedList<Construccion> construccionesPosibles;
 	
 	public void verificarEdificioPosible(Construccion c) throws ExcepcionConstruccionNoCorrespondiente{
-		
-		Iterator<Construccion> list = construccionesPosibles.iterator();
-		Boolean founded = construccionesPosibles.element().esLoMismo(c);
-		while ( (list.hasNext()) && (founded == false) ){
-			Construccion auxiliar = (Construccion) list.next();
-			founded = auxiliar.esLoMismo(c);
-		}
+		int i = 0;
+		Boolean founded = false;
+		while ( (i < construccionesPosibles.size() ) && (!founded) ){
+			founded = construccionesPosibles.get(i).esLoMismo(c);
+			i++;
+		}		
 		if (!founded){
 			throw new ExcepcionConstruccionNoCorrespondiente("Edificio no corresponde a la raza");
 		}
@@ -32,6 +31,18 @@ public abstract class Raza {
 	}
 		
 	public abstract Construccion getEdificioPrincipal();
+
+	public void pasoTurno() {
+		int i=0;
+		while (i < construccionesPosibles.size()){
+			if ( construccionesPosibles.get(i).getVida().devolverEstadoDeVida() ) {
+				construccionesPosibles.remove(i);
+			}
+			i++;
+		}
+		
+		
+	}
 					
 }
 
