@@ -32,6 +32,7 @@ import src.construcciones.DepositoDeSuministros;
 import src.construcciones.Fabrica;
 import src.construcciones.PuertoEstelarTerran;
 import src.construcciones.Refineria;
+import src.mapa.Escombros;
 import src.mapa.EspacioDisponible;
 import src.mapa.Mapa;
 import src.razas.Protoss;
@@ -109,15 +110,17 @@ public class MiniIntegracionTest {
 		juego.ordenFabricacionDeEdificios(barraca, 10, 10);
 
 		
-	Assert.assertFalse(juego.getMapa().obtenerContenidoEnPosicion(10,10).getElementoEnTierra().esLoMismo(new Barraca()));
-	
-	for (int i = 0; i<14;i++){ // pasar turnos para que se creen
-		juego.pasarTurno();
-		juego.pasarTurno();
-	}			
-	
-	
-	Assert.assertTrue(juego.getMapa().obtenerContenidoEnPosicion(10,10).getElementoEnTierra().esLoMismo(new Barraca()));
+		Assert.assertFalse(juego.getMapa().obtenerContenidoEnPosicion(10,10).getElementoEnTierra().esLoMismo(new Barraca()));
+		
+		Assert.assertTrue(juego.getMapa().obtenerContenidoEnPosicion(10,10).getElementoEnTierra().esLoMismo(new Escombros()));
+		
+		for (int i = 0; i<13;i++){ // pasar turnos para que se creen
+			juego.pasarTurno();
+			juego.pasarTurno();
+		}			
+		
+		
+		Assert.assertTrue(juego.getMapa().obtenerContenidoEnPosicion(10,10).getElementoEnTierra().esLoMismo(new Barraca()));
 	}
 	
 	@Test (expected = ExcepcionNoPudoColocarseEdificio.class)
@@ -246,9 +249,10 @@ public class MiniIntegracionTest {
 		
 		
 		Unidad espectro = new Espectro();
+		
 		juego.ordenarFabricacionUnidad(espectro,(Creadora) puertoEstelar);
 		
-	for (int i = 0; i<8;i++){ // pasar turnos para que se creen
+		for (int i = 0; i<8;i++){ // pasar turnos para que se creen
 			juego.pasarTurno();
 			juego.pasarTurno();
 		}		
@@ -258,6 +262,22 @@ public class MiniIntegracionTest {
 		
 		}
 	
+	@Test (expected = ExcepcionNoPudoCrearseUnidad.class)
+	public void intentarCrearUnidadQueNoCorrespondeAlEdificioLanzaExcepcion() throws ExcepcionPosicionInvalida, ExcepcionYaHayElementoEnLaPosicion, ExcepcionSuperaLimenteDeArbolesPermitos, ExcepcionNoPudoColocarseEdificio, ExcepcionConstruccionNoCorrespondiente, ExcepcionRecursoInsuficiente, ExcepcionNoPudoCrearseUnidad, ExcepcionElEdificioNoPerteneceATusConstrucciones{
 	
-
+		Jugador jugador1 = new Jugador ("carlos","rojo",new Terran());
+		Jugador jugador2 = new Jugador ("dean","azul",new Terran());
+		
+		Juego juego = new Juego(jugador1, jugador2, 100, 0);
+		Mapa mapa = juego.getMapa();
+		jugador1.setDinero(99999, 99999);
+			
+		Creadora barraca = (Creadora) jugador1.colocar(new Barraca(), mapa, 5, 5);		
+		jugador1.getConstruccionesEnPie().add(barraca);
+		
+		Unidad espectro = new Espectro();
+		
+		juego.ordenarFabricacionUnidad(espectro,(Creadora) barraca);	
+	
+	}
 }
