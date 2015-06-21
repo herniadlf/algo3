@@ -96,12 +96,12 @@ public void pasoTurno() {
 	@Override
 	public boolean esTerrestre() {
 		// TODO Auto-generated method stub
-		return true;
+		return false;
 	}
 	@Override
 	public boolean esAereo() {
 		// TODO Auto-generated method stub
-		return false;
+		return true;
 	}
 
 	@Override

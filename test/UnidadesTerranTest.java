@@ -19,6 +19,7 @@ import excepciones.ExcepcionLaUnidadNoPertenceATuTropa;
 import excepciones.ExcepcionNoHayLugarParaCrear;
 import excepciones.ExcepcionNoPudoColocarseEdificio;
 import excepciones.ExcepcionNoPudoCrearseUnidad;
+import excepciones.ExcepcionNoPuedeMoverseUnidad;
 import excepciones.ExcepcionPosicionInvalida;
 import excepciones.ExcepcionRecursoInsuficiente;
 import excepciones.ExcepcionSuperaLimenteDeArbolesPermitos;
@@ -151,6 +152,31 @@ public class UnidadesTerranTest extends TestCase{
 		jug1.atacarCon(espectro, nexo);
 		Assert.assertTrue(nexo.getEscudo().obtenerResistenciaActual() == 242 );
 					
+	}
+	
+	public void testMarineSePuedeMoverHasta7posiciones(){
+		
+		Marine marine = new Marine();
+		marine.setMapa(mapa);
+		Posicion posicionMarine = new Posicion(1,1);
+		marine.setPosicion(posicionMarine);
+		
+		try {
+			marine.moverAPosicionDeterminada(1, 4);
+		} catch (ExcepcionNoPuedeMoverseUnidad e) {
+			e.printStackTrace();
+		}
+		
+		Assert.assertTrue(marine.getPosicionX() == 1 & marine.getPosicionY() == 4);
+		
+		try {
+			marine.moverAPosicionDeterminada(1, 11);
+		} catch (ExcepcionNoPuedeMoverseUnidad e) {
+			e.printStackTrace();
+		}
+		
+		Assert.assertTrue(marine.getPosicionX() == 1 & marine.getPosicionY() == 11);
+		
 	}
 	
 	

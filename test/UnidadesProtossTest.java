@@ -64,6 +64,18 @@ public class UnidadesProtossTest{
 		
 	}
 	
+
+	@Test
+	public void testScoutSeCreaCon100escudoY150deVida(){
+		
+		Scout scout = new Scout();
+		
+		Assert.assertTrue((scout.getVida().obtenerVida()) == 150);
+		Assert.assertTrue((scout.getEscudo().obtenerResistenciaActual()) == 100 );
+		
+	}
+	
+	
 	@Test
 	public void testAtacarZealotNuevoPorMarineSoloDaniaEscudo() 
 			throws ExcepcionNoPudoColocarseEdificio,

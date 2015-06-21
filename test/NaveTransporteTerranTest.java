@@ -56,9 +56,9 @@ public class NaveTransporteTerranTest extends TestCase {
 		mapa = juego.getMapa();
 		jugador1.setDinero(99999, 99999);
 				
-		 barraca = (Creadora) jugador1.colocar(new Barraca(), mapa, 50, 50);
-		 jugador1.colocar(new Fabrica(), mapa, 10, 10);
-		 puertoEstelar = (Creadora) jugador1.colocar(new PuertoEstelarTerran(), mapa, 49, 50);
+		barraca = (Creadora) jugador1.colocar(new Barraca(), mapa, 50, 50);
+		jugador1.colocar(new Fabrica(), mapa, 10, 10);
+	 	puertoEstelar = (Creadora) jugador1.colocar(new PuertoEstelarTerran(), mapa, 49, 50);
 		
 		naveTransporte = new NaveTransporteTerran();
 		puertoEstelar.colocarUnidad(naveTransporte, mapa);
@@ -80,7 +80,6 @@ public class NaveTransporteTerranTest extends TestCase {
 			
 		}
 		
-			
 		Assert.assertTrue(naveTransporte.cantidadPasajeros() == 8);		
 			
 	}
@@ -164,6 +163,19 @@ public class NaveTransporteTerranTest extends TestCase {
 		} catch (ExcepcionNoSePuedeTransportar e) {
 			e.printStackTrace();
 		}
+		
+	}
+	
+	public void testNaveTransporteNoPuedeLlevarOtraNaveDeTransporte() throws ExcepcionPosicionInvalida, ExcepcionNoHayLugarParaCrear, ExcepcionYaHayElementoEnLaPosicion{
+		
+		NaveTransporteTerran otraNaveTransporte = new NaveTransporteTerran();
+		puertoEstelar.colocarUnidad(otraNaveTransporte, mapa);
+		try {
+			naveTransporte.llevar(otraNaveTransporte);
+		} catch (ExcepcionNoSePuedeTransportar e) {
+			e.printStackTrace();
+		}
+		
 		
 	}
 	
