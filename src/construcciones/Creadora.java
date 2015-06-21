@@ -54,8 +54,10 @@ public abstract class Creadora extends NoExtractora {
 	public void colocarUnidad ( Unidad aColocar , Mapa map ) 
 			throws ExcepcionPosicionInvalida, 
 			ExcepcionNoHayLugarParaCrear, 
-			ExcepcionYaHayElementoEnLaPosicion {		
-		
+			ExcepcionYaHayElementoEnLaPosicion, 
+			ExcepcionUnidadNoCorrespondiente {		
+			
+			verificarUnidadCreable(aColocar);
 			Posicion auxiliar = aColocar.getColocador().posicionAColocar(aColocar,map,alrededores);		
 			map.colocarEn(auxiliar.getX(), auxiliar.getY(), aColocar);
 			aColocar.setMapa(map);
@@ -63,7 +65,7 @@ public abstract class Creadora extends NoExtractora {
 		
 	}
 	
-	public void pasoTurno (Turno turno, Mapa map, Jugador jugadorActual) throws ExcepcionNoPudoColocarseUnidad, ExcepcionEdificioDestruido {
+	public void pasoTurno (Turno turno, Mapa map, Jugador jugadorActual) throws ExcepcionNoPudoColocarseUnidad, ExcepcionEdificioDestruido, ExcepcionUnidadNoCorrespondiente {
 		
 		int i=0;
 		int turnosPasados;

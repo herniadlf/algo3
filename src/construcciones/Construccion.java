@@ -8,6 +8,7 @@ import excepciones.ExcepcionExtractoraSinRecurso;
 import excepciones.ExcepcionNoHayLugarParaCrear;
 import excepciones.ExcepcionNoPudoColocarseUnidad;
 import excepciones.ExcepcionPosicionInvalida;
+import excepciones.ExcepcionUnidadNoCorrespondiente;
 import excepciones.ExcepcionYaHayElementoEnLaPosicion;
 import src.Atacable;
 import src.Dinero;
@@ -235,7 +236,7 @@ public class Construccion implements Atacable {
 		
 	}
 
-	public void pasoTurno(Turno turno, Mapa map, Jugador jugador) throws ExcepcionNoPudoColocarseUnidad, ExcepcionEdificioDestruido {
+	public void pasoTurno(Turno turno, Mapa map, Jugador jugador) throws ExcepcionNoPudoColocarseUnidad, ExcepcionEdificioDestruido, ExcepcionUnidadNoCorrespondiente {
 		if (vida.devolverEstadoDeVida()){
 			throw new ExcepcionEdificioDestruido();
 		}
