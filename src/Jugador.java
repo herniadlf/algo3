@@ -229,7 +229,7 @@ public class Jugador {
 		
 	}
 	
-	public void actualizarTurnoEnConstrucciones (Turno turno, Mapa map) throws ExcepcionNoPudoColocarseUnidad {
+	public void actualizarTurnoEnConstrucciones (Turno turno, Mapa map) throws ExcepcionNoPudoColocarseUnidad, ExcepcionUnidadNoCorrespondiente {
 		
 		int i = 0;
 		while (construccionesEnPie.size()>i){
@@ -285,7 +285,7 @@ public class Jugador {
 		
 	}
 
-	public void pasoTurno(Turno turno, Mapa mapa) throws ExcepcionErrorPasoDeTurno, ExcepcionConstruccionNoCorrespondiente, ExcepcionRecursoInsuficiente 	{
+	public void pasoTurno(Turno turno, Mapa mapa) throws ExcepcionErrorPasoDeTurno, ExcepcionConstruccionNoCorrespondiente, ExcepcionRecursoInsuficiente, ExcepcionUnidadNoCorrespondiente 	{
 		
 		try{
 			actualizarTurnoEnRaza();
@@ -323,7 +323,7 @@ public class Jugador {
 		
 	}
 	
-	public void atacarCon(Unidad agresor, Atacable victima) throws ExcepcionEdificioNoPuedeCrearUnidad, ExcepcionPosicionInvalida, ExcepcionNoHayLugarParaCrear, ExcepcionYaHayElementoEnLaPosicion, ExcepcionErrorPasoDeTurno, ExcepcionElementoFueraDelRangoDeAtaque, ExcepcionLaUnidadNoPertenceATuTropa, ExcepcionConstruccionNoCorrespondiente, ExcepcionRecursoInsuficiente{
+	public void atacarCon(Unidad agresor, Atacable victima) throws ExcepcionEdificioNoPuedeCrearUnidad, ExcepcionPosicionInvalida, ExcepcionNoHayLugarParaCrear, ExcepcionYaHayElementoEnLaPosicion, ExcepcionErrorPasoDeTurno, ExcepcionElementoFueraDelRangoDeAtaque, ExcepcionLaUnidadNoPertenceATuTropa, ExcepcionConstruccionNoCorrespondiente, ExcepcionRecursoInsuficiente, ExcepcionUnidadNoCorrespondiente{
 		
 		if(this.contieneALaUnidad(agresor)){
 			
