@@ -18,6 +18,7 @@ import excepciones.ExcepcionNoSePuedeTransportar;
 import excepciones.ExcepcionPosicionInvalida;
 import excepciones.ExcepcionRecursoInsuficiente;
 import excepciones.ExcepcionSuperaLimenteDeArbolesPermitos;
+import excepciones.ExcepcionUnidadNoCorrespondiente;
 import excepciones.ExcepcionYaHayElementoEnLaPosicion;
 import src.AtaquesPermitidosPorTurno;
 import src.Juego;
@@ -81,7 +82,7 @@ public class UnidadesProtossTest{
 			throws ExcepcionNoPudoColocarseEdificio,
 			ExcepcionPosicionInvalida, 
 			ExcepcionNoHayLugarParaCrear, 
-			ExcepcionYaHayElementoEnLaPosicion, ExcepcionEdificioNoPuedeCrearUnidad, ExcepcionErrorPasoDeTurno, ExcepcionSuperaLimenteDeArbolesPermitos, ExcepcionElementoFueraDelRangoDeAtaque, ExcepcionLaUnidadNoPertenceATuTropa, ExcepcionConstruccionNoCorrespondiente, ExcepcionRecursoInsuficiente {
+			ExcepcionYaHayElementoEnLaPosicion, ExcepcionEdificioNoPuedeCrearUnidad, ExcepcionErrorPasoDeTurno, ExcepcionSuperaLimenteDeArbolesPermitos, ExcepcionElementoFueraDelRangoDeAtaque, ExcepcionLaUnidadNoPertenceATuTropa, ExcepcionConstruccionNoCorrespondiente, ExcepcionRecursoInsuficiente, ExcepcionUnidadNoCorrespondiente {
 		
 		Jugador jug1 = new Jugador ("carlos","rojo",new Terran());
 		jug1.setDinero(9999, 9999);
@@ -113,7 +114,7 @@ public class UnidadesProtossTest{
 			throws ExcepcionNoPudoColocarseEdificio, 
 			ExcepcionPosicionInvalida, 
 			ExcepcionNoHayLugarParaCrear, 
-			ExcepcionYaHayElementoEnLaPosicion, ExcepcionEdificioNoPuedeCrearUnidad, ExcepcionErrorPasoDeTurno, ExcepcionSuperaLimenteDeArbolesPermitos, ExcepcionElementoFueraDelRangoDeAtaque, ExcepcionLaUnidadNoPertenceATuTropa, ExcepcionConstruccionNoCorrespondiente, ExcepcionRecursoInsuficiente 
+			ExcepcionYaHayElementoEnLaPosicion, ExcepcionEdificioNoPuedeCrearUnidad, ExcepcionErrorPasoDeTurno, ExcepcionSuperaLimenteDeArbolesPermitos, ExcepcionElementoFueraDelRangoDeAtaque, ExcepcionLaUnidadNoPertenceATuTropa, ExcepcionConstruccionNoCorrespondiente, ExcepcionRecursoInsuficiente, ExcepcionUnidadNoCorrespondiente 
 			{
 		
 		Jugador jugador1 = new Jugador ("carlos","rojo",new Terran());
@@ -172,7 +173,7 @@ public class UnidadesProtossTest{
 			throws ExcepcionNoPudoColocarseEdificio, 
 			ExcepcionPosicionInvalida, 
 			ExcepcionNoHayLugarParaCrear, 
-			ExcepcionYaHayElementoEnLaPosicion, ExcepcionEdificioNoPuedeCrearUnidad, ExcepcionErrorPasoDeTurno, ExcepcionSuperaLimenteDeArbolesPermitos, ExcepcionConstruccionNoCorrespondiente, ExcepcionRecursoInsuficiente 
+			ExcepcionYaHayElementoEnLaPosicion, ExcepcionEdificioNoPuedeCrearUnidad, ExcepcionErrorPasoDeTurno, ExcepcionSuperaLimenteDeArbolesPermitos, ExcepcionConstruccionNoCorrespondiente, ExcepcionRecursoInsuficiente, ExcepcionUnidadNoCorrespondiente 
 			{
 		
 		Jugador jugador1 = new Jugador ("carlos","rojo",new Protoss());
@@ -205,7 +206,7 @@ public class UnidadesProtossTest{
 		} 
 	
 	@Test (expected = ExcepcionElementoFueraDelRangoDeAtaque.class)
-	public void unidadIntentaAtacarFueraDeSuAlcanceLanzaExcepcion() throws ExcepcionPosicionInvalida, ExcepcionYaHayElementoEnLaPosicion, ExcepcionSuperaLimenteDeArbolesPermitos, ExcepcionNoPudoColocarseEdificio, ExcepcionNoHayLugarParaCrear, ExcepcionEdificioNoPuedeCrearUnidad, ExcepcionErrorPasoDeTurno, ExcepcionElementoFueraDelRangoDeAtaque, ExcepcionLaUnidadNoPertenceATuTropa, ExcepcionConstruccionNoCorrespondiente, ExcepcionRecursoInsuficiente{
+	public void unidadIntentaAtacarFueraDeSuAlcanceLanzaExcepcion() throws ExcepcionPosicionInvalida, ExcepcionYaHayElementoEnLaPosicion, ExcepcionSuperaLimenteDeArbolesPermitos, ExcepcionNoPudoColocarseEdificio, ExcepcionNoHayLugarParaCrear, ExcepcionEdificioNoPuedeCrearUnidad, ExcepcionErrorPasoDeTurno, ExcepcionElementoFueraDelRangoDeAtaque, ExcepcionLaUnidadNoPertenceATuTropa, ExcepcionConstruccionNoCorrespondiente, ExcepcionRecursoInsuficiente, ExcepcionUnidadNoCorrespondiente{
 		
 		Jugador jugador1 = new Jugador ("carlos","rojo",new Terran());
 		Jugador jugador2 = new Jugador ("dean","azul",new Protoss());
@@ -229,7 +230,7 @@ public class UnidadesProtossTest{
 	}
 	
 	@Test (expected = ExcepcionLaUnidadNoPertenceATuTropa.class)
-	public void intentarAtacarConUnidadDelEnemigoLanzaExcepcion() throws ExcepcionPosicionInvalida, ExcepcionYaHayElementoEnLaPosicion, ExcepcionSuperaLimenteDeArbolesPermitos, ExcepcionNoPudoColocarseEdificio, ExcepcionNoHayLugarParaCrear, ExcepcionEdificioNoPuedeCrearUnidad, ExcepcionErrorPasoDeTurno, ExcepcionElementoFueraDelRangoDeAtaque, ExcepcionLaUnidadNoPertenceATuTropa, ExcepcionConstruccionNoCorrespondiente, ExcepcionRecursoInsuficiente{
+	public void intentarAtacarConUnidadDelEnemigoLanzaExcepcion() throws ExcepcionPosicionInvalida, ExcepcionYaHayElementoEnLaPosicion, ExcepcionSuperaLimenteDeArbolesPermitos, ExcepcionNoPudoColocarseEdificio, ExcepcionNoHayLugarParaCrear, ExcepcionEdificioNoPuedeCrearUnidad, ExcepcionErrorPasoDeTurno, ExcepcionElementoFueraDelRangoDeAtaque, ExcepcionLaUnidadNoPertenceATuTropa, ExcepcionConstruccionNoCorrespondiente, ExcepcionRecursoInsuficiente, ExcepcionUnidadNoCorrespondiente{
 		
 		Jugador jugador1 = new Jugador ("carlos","rojo",new Terran());
 		Jugador jugador2 = new Jugador ("dean","azul",new Protoss());
@@ -250,6 +251,23 @@ public class UnidadesProtossTest{
 		jugador2.getUnidadesAlistades().add(marine);
 		
 		jugador1.atacarCon(marine, zealot);
+	
+	}
+	
+	@Test (expected = ExcepcionUnidadNoCorrespondiente.class)
+	public void intentarCrearUnidadConEdificioIncorrectoLanzaExcepcion() throws ExcepcionPosicionInvalida, ExcepcionNoHayLugarParaCrear, ExcepcionYaHayElementoEnLaPosicion, ExcepcionUnidadNoCorrespondiente, ExcepcionNoPudoColocarseEdificio, ExcepcionConstruccionNoCorrespondiente, ExcepcionRecursoInsuficiente, ExcepcionSuperaLimenteDeArbolesPermitos {
+		
+		Jugador jugador1 = new Jugador ("carlos","rojo",new Terran());
+		Jugador jugador2 = new Jugador ("dean","azul",new Protoss());
+		
+		Juego juego = new Juego(jugador1, jugador2, 100, 0);
+		Mapa mapa = juego.getMapa();
+		jugador1.setDinero(99999, 99999);
+		Creadora barraca = (Creadora) jugador1.colocar(new Barraca(), mapa, 90, 90);		
+		
+		Zealot zealot = new Zealot();
+		
+		barraca.colocarUnidad(zealot, mapa);
 	
 	}
 	
