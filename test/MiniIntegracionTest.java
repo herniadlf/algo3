@@ -78,19 +78,16 @@ public class MiniIntegracionTest {
 		for (int i = 0; i<4;i++){ // pasar turnos para que se creen
 			juego.pasarTurno();
 			juego.pasarTurno();
-		}			
-		
-		
-		
+		}		
 		
 		Assert.assertTrue(juego.getMapa().obtenerContenidoEnPosicion(4,6).getElementoEnTierra().esLoMismo(new Marine()));
 		Assert.assertTrue(juego.getMapa().obtenerContenidoEnPosicion(6,6).getElementoEnTierra().esLoMismo(new Marine()));
 		Assert.assertTrue(juego.getMapa().obtenerContenidoEnPosicion(5,6).getElementoEnTierra().esLoMismo(new Marine()));
-		
-	
-
-		
-		
+			
+		Assert.assertTrue(juego.getJugadorActual().contieneALaUnidad(marine));
+		Assert.assertTrue(juego.getJugadorActual().contieneALaUnidad(marine2));
+		Assert.assertTrue(juego.getJugadorActual().contieneALaUnidad(marine3));
+			
 	}
 	
 	@Test
@@ -121,6 +118,8 @@ public class MiniIntegracionTest {
 		
 		
 		Assert.assertTrue(juego.getMapa().obtenerContenidoEnPosicion(10,10).getElementoEnTierra().esLoMismo(new Barraca()));
+		
+		Assert.assertTrue(juego.getJugadorActual().contieneALaConstruccion(barraca));
 	}
 	
 	@Test (expected = ExcepcionNoPudoColocarseEdificio.class)

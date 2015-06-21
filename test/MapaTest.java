@@ -4,12 +4,14 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import excepciones.ExcepcionExtractoraSinRecurso;
+import excepciones.ExcepcionNoPuedeMoverseUnidad;
 import excepciones.ExcepcionPosicionInvalida;
 import excepciones.ExcepcionSuperaLimenteDeArbolesPermitos;
 import excepciones.ExcepcionYaHayElementoEnLaPosicion;
 import src.Mineral;
 import src.mapa.*;
 import src.unidades.Espectro;
+import src.unidades.Marine;
 import src.construcciones.*;
 import excepciones.*;
 
@@ -78,7 +80,7 @@ public class MapaTest {
 	
 	
 	@Test (expected = ExcepcionPosicionInvalida.class)
-	public void ingresarPosicionNoValidaLanzaExcepcion() throws ExcepcionPosicionInvalida, ExcepcionYaHayElementoEnLaPosicion {
+	public void ColocarEnPosicionNoValidaLanzaExcepcion() throws ExcepcionPosicionInvalida, ExcepcionYaHayElementoEnLaPosicion {
 		
 		Mapa mapa = new Mapa(10);
 		
@@ -87,7 +89,6 @@ public class MapaTest {
 		mapa.colocarEn(11, 11, unaBarraca);
 
 	}
-	
 	
 	@Test
 	public void eliminarElementoDelMapa() throws ExcepcionPosicionInvalida, ExcepcionYaHayElementoEnLaPosicion {

@@ -14,6 +14,7 @@ import excepciones.ExcepcionLaUnidadNoPertenceATuTropa;
 import excepciones.ExcepcionNoHayLugarParaCrear;
 import excepciones.ExcepcionNoPudoColocarseEdificio;
 import excepciones.ExcepcionNoPudoColocarseUnidad;
+import excepciones.ExcepcionNoPuedeMoverseUnidad;
 import excepciones.ExcepcionPosicionInvalida;
 import excepciones.ExcepcionRecursoInsuficiente;
 import excepciones.ExcepcionSuministrosInsuficientes;
@@ -280,6 +281,19 @@ public class Jugador {
 		
 		this.unidadesAlistadas.add(unidad);	
 		
+	}
+	
+	public void moverUnidadAPosicion(Unidad unidad, int posX, int posY) throws ExcepcionNoPuedeMoverseUnidad, ExcepcionLaUnidadNoPertenceATuTropa {
+		
+		if(this.contieneALaUnidad(unidad)){
+			
+			unidad.moverAPosicionDeterminada(posX, posY);
+		}
+		
+		else{
+			
+			throw new ExcepcionLaUnidadNoPertenceATuTropa("La unidad seleccionada no pertenece a tu tropa de unidades");
+		}
 	}
 
 	public void pasoTurno(Turno turno, Mapa mapa) throws ExcepcionErrorPasoDeTurno, ExcepcionConstruccionNoCorrespondiente, ExcepcionRecursoInsuficiente, ExcepcionUnidadNoCorrespondiente 	{

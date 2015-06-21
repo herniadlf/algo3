@@ -14,6 +14,7 @@ import excepciones.ExcepcionGeneral;
 import excepciones.ExcepcionLaUnidadNoPertenceATuTropa;
 import excepciones.ExcepcionNoHayLugarParaCrear;
 import excepciones.ExcepcionNoPudoColocarseEdificio;
+import excepciones.ExcepcionNoPuedeMoverseUnidad;
 import excepciones.ExcepcionNoSePuedeTransportar;
 import excepciones.ExcepcionPosicionInvalida;
 import excepciones.ExcepcionRecursoInsuficiente;
@@ -220,10 +221,10 @@ public class UnidadesProtossTest{
 		Marine marine = new Marine();
 		
 		acceso.colocarUnidad(zealot, mapa);
-		jugador1.getUnidadesAlistades().add(zealot);
+		jugador2.getUnidadesAlistades().add(zealot);
 		barraca.colocarUnidad(marine, mapa);
 		
-		jugador1.atacarCon(zealot, marine);
+		jugador2.atacarCon(zealot, marine);
 		
 	}
 	
@@ -244,11 +245,11 @@ public class UnidadesProtossTest{
 		Marine marine = new Marine();
 		
 		acceso.colocarUnidad(zealot, mapa);
-		jugador1.getUnidadesAlistades().add(zealot);
+		jugador2.getUnidadesAlistades().add(zealot);
 		barraca.colocarUnidad(marine, mapa);
-		jugador2.getUnidadesAlistades().add(marine);
+		jugador1.getUnidadesAlistades().add(marine);
 		
-		jugador1.atacarCon(marine, zealot);
+		jugador2.atacarCon(marine, zealot);
 	
 	}
 	
@@ -267,6 +268,51 @@ public class UnidadesProtossTest{
 		
 		barraca.colocarUnidad(zealot, mapa);
 	
+	}
+	
+	@Test (expected = ExcepcionNoPuedeMoverseUnidad.class)
+	public void moverUnidadAPosicionNoValidaLanzaExcepcion() throws ExcepcionNoPuedeMoverseUnidad, ExcepcionLaUnidadNoPertenceATuTropa, ExcepcionNoPudoColocarseEdificio, ExcepcionConstruccionNoCorrespondiente, ExcepcionRecursoInsuficiente, ExcepcionPosicionInvalida, ExcepcionYaHayElementoEnLaPosicion, ExcepcionSuperaLimenteDeArbolesPermitos, ExcepcionNoHayLugarParaCrear, ExcepcionUnidadNoCorrespondiente{
+		
+		Jugador jugador1 = new Jugador ("carlos","rojo",new Protoss());
+		Jugador jugador2 = new Jugador ("dean","azul",new Protoss());
+		
+		Juego juego = new Juego(jugador1, jugador2, 100, 0);
+		Mapa mapa = juego.getMapa();
+		jugador1.setDinero(99999, 99999);
+		Creadora acceso = (Creadora) jugador1.colocar(new Acceso(), mapa, 90, 90);		
+		
+		Zealot zealot = new Zealot();
+		acceso.colocarUnidad(zealot, mapa);
+		jugador1.getUnidadesAlistades().add(zealot);
+		
+		jugador1.moverUnidadAPosicion(zealot, 101, 101);
+		
+	}
+	
+	@Test (expected = ExcepcionLaUnidadNoPertenceATuTropa.class )
+	public void intentarMoverUnidadDelEnemigoLanzaExcepcion() throws ExcepcionNoPuedeMoverseUnidad, ExcepcionLaUnidadNoPertenceATuTropa, ExcepcionNoPudoColocarseEdificio, ExcepcionConstruccionNoCorrespondiente, ExcepcionRecursoInsuficiente, ExcepcionPosicionInvalida, ExcepcionYaHayElementoEnLaPosicion, ExcepcionSuperaLimenteDeArbolesPermitos, ExcepcionNoHayLugarParaCrear, ExcepcionUnidadNoCorrespondiente{
+		
+		Jugador jugador1 = new Jugador ("carlos","rojo",new Terran());
+		Jugador jugador2 = new Jugador ("dean","azul",new Protoss());
+		
+		Juego juego = new Juego(jugador1, jugador2, 100, 0);
+		Mapa mapa = juego.getMapa();
+		jugador1.setDinero(99999, 99999);
+		Creadora barraca = (Creadora) jugador1.colocar(new Barraca(), mapa, 90, 90);		
+		
+		Creadora acceso = (Creadora) jugador2.colocar(new Acceso(), mapa, 10, 10);	
+		
+		Zealot zealot = new Zealot();	
+		Marine marine = new Marine();
+		
+		acceso.colocarUnidad(zealot, mapa);
+		jugador2.getUnidadesAlistades().add(zealot);
+		barraca.colocarUnidad(marine, mapa);
+		jugador1.getUnidadesAlistades().add(marine);
+		
+		jugador1.moverUnidadAPosicion(zealot, 50, 50);
+		
+		
 	}
 	
 }	
