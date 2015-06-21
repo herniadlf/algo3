@@ -11,6 +11,7 @@ import excepciones.ExcepcionNoHayLugarParaCrear;
 import excepciones.ExcepcionNoPuedeMoverseUnidad;
 import excepciones.ExcepcionPosicionInvalida;
 import excepciones.ExcepcionRecursoInsuficiente;
+import excepciones.ExcepcionUnidadNoCorrespondiente;
 import excepciones.ExcepcionYaHayElementoEnLaPosicion;
 import src.Atacable;
 import src.AtaquesPermitidosPorTurno;
@@ -159,7 +160,7 @@ public abstract class Unidad implements Atacable{
 	
 	}
 	
-	public void atacarEnAire (Atacable atacado) throws ExcepcionEdificioNoPuedeCrearUnidad, ExcepcionPosicionInvalida, ExcepcionNoHayLugarParaCrear, ExcepcionYaHayElementoEnLaPosicion, ExcepcionErrorPasoDeTurno, ExcepcionElementoFueraDelRangoDeAtaque, ExcepcionConstruccionNoCorrespondiente, ExcepcionRecursoInsuficiente{
+	public void atacarEnAire (Atacable atacado) throws ExcepcionEdificioNoPuedeCrearUnidad, ExcepcionPosicionInvalida, ExcepcionNoHayLugarParaCrear, ExcepcionYaHayElementoEnLaPosicion, ExcepcionErrorPasoDeTurno, ExcepcionElementoFueraDelRangoDeAtaque, ExcepcionConstruccionNoCorrespondiente, ExcepcionRecursoInsuficiente, ExcepcionUnidadNoCorrespondiente{
 		
 		int distanciaEntreEnemigos = mapa.distanciaEntreLosPuntos(atacado.getPosicionX(), atacado.getPosicionY(), this.getPosicionX(), this.getPosicionY());
 		if ((distanciaEntreEnemigos) < this.getVision()){
@@ -177,7 +178,7 @@ public abstract class Unidad implements Atacable{
 	} 
 	
 	
-	public void atacarEnTierra(Atacable atacado) throws ExcepcionEdificioNoPuedeCrearUnidad, ExcepcionPosicionInvalida, ExcepcionNoHayLugarParaCrear, ExcepcionYaHayElementoEnLaPosicion, ExcepcionErrorPasoDeTurno, ExcepcionElementoFueraDelRangoDeAtaque, ExcepcionConstruccionNoCorrespondiente, ExcepcionRecursoInsuficiente{
+	public void atacarEnTierra(Atacable atacado) throws ExcepcionEdificioNoPuedeCrearUnidad, ExcepcionPosicionInvalida, ExcepcionNoHayLugarParaCrear, ExcepcionYaHayElementoEnLaPosicion, ExcepcionErrorPasoDeTurno, ExcepcionElementoFueraDelRangoDeAtaque, ExcepcionConstruccionNoCorrespondiente, ExcepcionRecursoInsuficiente, ExcepcionUnidadNoCorrespondiente{
 		int distanciaEntreEnemigos = mapa.distanciaEntreLosPuntos(atacado.getPosicionX(), atacado.getPosicionY(), this.getPosicionX(), this.getPosicionY());
 		
 		if ((distanciaEntreEnemigos) < this.getVision()){
