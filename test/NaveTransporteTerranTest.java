@@ -34,6 +34,7 @@ import excepciones.ExcepcionNoSePuedeTransportar;
 import excepciones.ExcepcionNoSePuedenTransportasUnidadesVoladoras;
 import excepciones.ExcepcionPosicionInvalida;
 import excepciones.ExcepcionRecursoInsuficiente;
+import excepciones.ExcepcionUnidadNoCorrespondiente;
 import excepciones.ExcepcionYaHayElementoEnLaPosicion;
 
 public class NaveTransporteTerranTest extends TestCase {
@@ -70,7 +71,7 @@ public class NaveTransporteTerranTest extends TestCase {
 			
 	}
 	
-	public void testNaveTransporteTerranTransporta8Marines() throws ExcepcionPosicionInvalida, ExcepcionNoHayLugarParaCrear, ExcepcionYaHayElementoEnLaPosicion, ExcepcionNoSePuedeTransportar{
+	public void testNaveTransporteTerranTransporta8Marines() throws ExcepcionPosicionInvalida, ExcepcionNoHayLugarParaCrear, ExcepcionYaHayElementoEnLaPosicion, ExcepcionNoSePuedeTransportar, ExcepcionUnidadNoCorrespondiente{
 		
 		for(int i = 0 ; i < 8 ; i++){
 			
@@ -84,7 +85,7 @@ public class NaveTransporteTerranTest extends TestCase {
 			
 	}
 	
-	public void testNaveTransporteSoloPuedeLlevar4Golliats() throws ExcepcionPosicionInvalida, ExcepcionNoHayLugarParaCrear, ExcepcionYaHayElementoEnLaPosicion, ExcepcionNoSePuedeTransportar, ExcepcionNoPudoColocarseEdificio, ExcepcionConstruccionNoCorrespondiente, ExcepcionRecursoInsuficiente{
+	public void testNaveTransporteSoloPuedeLlevar4Golliats() throws ExcepcionPosicionInvalida, ExcepcionNoHayLugarParaCrear, ExcepcionYaHayElementoEnLaPosicion, ExcepcionNoSePuedeTransportar, ExcepcionNoPudoColocarseEdificio, ExcepcionConstruccionNoCorrespondiente, ExcepcionRecursoInsuficiente, ExcepcionUnidadNoCorrespondiente{
 		
 		Creadora fabrica = (Creadora) jugador1.colocar(new Fabrica(), mapa, 51, 51);
 		
@@ -141,7 +142,7 @@ public class NaveTransporteTerranTest extends TestCase {
 
 	}
 	
-	public void testNaveTranporteNoPuedeLlevarEspectro() throws ExcepcionElTransporteEstaLleno, ExcepcionElTransporteNoEstaEnElAlcancePermitido, ExcepcionNoSePuedeTransportar, ExcepcionPosicionInvalida, ExcepcionNoHayLugarParaCrear, ExcepcionYaHayElementoEnLaPosicion{
+	public void testNaveTranporteNoPuedeLlevarEspectro() throws ExcepcionElTransporteEstaLleno, ExcepcionElTransporteNoEstaEnElAlcancePermitido, ExcepcionNoSePuedeTransportar, ExcepcionPosicionInvalida, ExcepcionNoHayLugarParaCrear, ExcepcionYaHayElementoEnLaPosicion, ExcepcionUnidadNoCorrespondiente{
 		
 		Espectro espectro = new Espectro();
 		puertoEstelar.colocarUnidad(espectro, mapa);
@@ -154,7 +155,7 @@ public class NaveTransporteTerranTest extends TestCase {
 		
 	}
 	
-	public void testNaveTranporteNoPuedeLlevarNaveCiencia() throws ExcepcionNoSePuedeTransportar, ExcepcionPosicionInvalida, ExcepcionNoHayLugarParaCrear, ExcepcionYaHayElementoEnLaPosicion{
+	public void testNaveTranporteNoPuedeLlevarNaveCiencia() throws ExcepcionNoSePuedeTransportar, ExcepcionPosicionInvalida, ExcepcionNoHayLugarParaCrear, ExcepcionYaHayElementoEnLaPosicion, ExcepcionUnidadNoCorrespondiente{
 		
 		NaveCiencia naveCiencia = new NaveCiencia();
 		puertoEstelar.colocarUnidad(naveCiencia, mapa);
@@ -166,7 +167,7 @@ public class NaveTransporteTerranTest extends TestCase {
 		
 	}
 	
-	public void testNaveTransporteNoPuedeLlevarOtraNaveDeTransporte() throws ExcepcionPosicionInvalida, ExcepcionNoHayLugarParaCrear, ExcepcionYaHayElementoEnLaPosicion{
+	public void testNaveTransporteNoPuedeLlevarOtraNaveDeTransporte() throws ExcepcionPosicionInvalida, ExcepcionNoHayLugarParaCrear, ExcepcionYaHayElementoEnLaPosicion, ExcepcionUnidadNoCorrespondiente{
 		
 		NaveTransporteTerran otraNaveTransporte = new NaveTransporteTerran();
 		puertoEstelar.colocarUnidad(otraNaveTransporte, mapa);
