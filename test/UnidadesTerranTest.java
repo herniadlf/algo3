@@ -23,6 +23,7 @@ import excepciones.ExcepcionNoPuedeMoverseUnidad;
 import excepciones.ExcepcionPosicionInvalida;
 import excepciones.ExcepcionRecursoInsuficiente;
 import excepciones.ExcepcionSuperaLimenteDeArbolesPermitos;
+import excepciones.ExcepcionUnidadNoCorrespondiente;
 import excepciones.ExcepcionYaHayElementoEnLaPosicion;
 import src.*;
 import src.construcciones.*;
@@ -94,7 +95,7 @@ public class UnidadesTerranTest extends TestCase{
 		throws ExcepcionNoPudoColocarseEdificio, 
 		ExcepcionPosicionInvalida, 
 		ExcepcionNoHayLugarParaCrear, 
-		ExcepcionYaHayElementoEnLaPosicion, ExcepcionEdificioNoPuedeCrearUnidad, ExcepcionErrorPasoDeTurno, ExcepcionSuperaLimenteDeArbolesPermitos, ExcepcionElementoFueraDelRangoDeAtaque, ExcepcionLaUnidadNoPertenceATuTropa, ExcepcionConstruccionNoCorrespondiente, ExcepcionRecursoInsuficiente {
+		ExcepcionYaHayElementoEnLaPosicion, ExcepcionEdificioNoPuedeCrearUnidad, ExcepcionErrorPasoDeTurno, ExcepcionSuperaLimenteDeArbolesPermitos, ExcepcionElementoFueraDelRangoDeAtaque, ExcepcionLaUnidadNoPertenceATuTropa, ExcepcionConstruccionNoCorrespondiente, ExcepcionRecursoInsuficiente, ExcepcionUnidadNoCorrespondiente {
 			
 		/*--------------------------------------------------------------------------------*/
 		Jugador jug1 = new Jugador ("carlos","rojo",new Terran());
@@ -122,7 +123,7 @@ public class UnidadesTerranTest extends TestCase{
 	public void testEspectroPuedeAtacarEdificiosEnemigos() 
 		throws ExcepcionPosicionInvalida, 
 		ExcepcionNoHayLugarParaCrear, 
-		ExcepcionYaHayElementoEnLaPosicion, ExcepcionNoPudoColocarseEdificio, ExcepcionEdificioNoPuedeCrearUnidad, ExcepcionErrorPasoDeTurno, ExcepcionSuperaLimenteDeArbolesPermitos, ExcepcionElementoFueraDelRangoDeAtaque, ExcepcionLaUnidadNoPertenceATuTropa, ExcepcionConstruccionNoCorrespondiente, ExcepcionRecursoInsuficiente{
+		ExcepcionYaHayElementoEnLaPosicion, ExcepcionNoPudoColocarseEdificio, ExcepcionEdificioNoPuedeCrearUnidad, ExcepcionErrorPasoDeTurno, ExcepcionSuperaLimenteDeArbolesPermitos, ExcepcionElementoFueraDelRangoDeAtaque, ExcepcionLaUnidadNoPertenceATuTropa, ExcepcionConstruccionNoCorrespondiente, ExcepcionRecursoInsuficiente, ExcepcionUnidadNoCorrespondiente{
 			
 		Jugador jug1 = new Jugador ("carlos","rojo",new Terran());
 		Jugador jug2 = new Jugador ("Williams", "azul", new Protoss());
