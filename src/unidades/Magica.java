@@ -41,18 +41,6 @@ public abstract class Magica extends Unidad {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
-	@Override
-	public void atacarEnTierra(Atacable atacado) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void atacarEnAire(Atacable atacado) {
-		// TODO Auto-generated method stub
-
-	}
 
 	@Override
 	public void recibirDanio() throws ExcepcionPosicionInvalida {

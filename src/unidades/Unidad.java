@@ -162,35 +162,24 @@ public abstract class Unidad implements Atacable{
 	
 	}
 	
-	public void atacarEnAire (Atacable atacado) throws ExcepcionEdificioNoPuedeCrearUnidad, ExcepcionPosicionInvalida, ExcepcionNoHayLugarParaCrear, ExcepcionYaHayElementoEnLaPosicion, ExcepcionErrorPasoDeTurno, ExcepcionElementoFueraDelRangoDeAtaque, ExcepcionConstruccionNoCorrespondiente, ExcepcionRecursoInsuficiente, ExcepcionUnidadNoCorrespondiente{
+	public void atacar(Atacable atacado) throws ExcepcionEdificioNoPuedeCrearUnidad, ExcepcionPosicionInvalida, ExcepcionNoHayLugarParaCrear, ExcepcionYaHayElementoEnLaPosicion, ExcepcionErrorPasoDeTurno, ExcepcionConstruccionNoCorrespondiente, ExcepcionRecursoInsuficiente, ExcepcionUnidadNoCorrespondiente, ExcepcionElementoFueraDelRangoDeAtaque {
 		
 		int distanciaEntreEnemigos = mapa.distanciaEntreLosPuntos(atacado.getPosicionX(), atacado.getPosicionY(), this.getPosicionX(), this.getPosicionY());
+		int danioARecibir = 0;
 		if ((distanciaEntreEnemigos) < this.getVision()){
-
-		int danio = this.getDanio().getDanioAire();
-		atacado.getVida().aumentarDanioARecibir(danio);
-		atacado.recibirDanio();
-		ataques.aumentarAtaquesPermitidos();
+			
+			if(atacado.esAereo()) {
+				danioARecibir = this.getDanio().getDanioAire();
+			}
+			if(atacado.esTerrestre()) {
+				danioARecibir = this.getDanio().getDanioTierra();
+			}
+			
+			atacado.getVida().aumentarDanioARecibir(danioARecibir);
+			atacado.recibirDanio();
+			ataques.aumentarAtaquesPermitidos();
 		
 		} else {
-			
-			throw new ExcepcionElementoFueraDelRangoDeAtaque("El enemigo se encuentra fuera del rango de ataque");
-		
-		}
-	} 
-	
-	
-	public void atacarEnTierra(Atacable atacado) throws ExcepcionEdificioNoPuedeCrearUnidad, ExcepcionPosicionInvalida, ExcepcionNoHayLugarParaCrear, ExcepcionYaHayElementoEnLaPosicion, ExcepcionErrorPasoDeTurno, ExcepcionElementoFueraDelRangoDeAtaque, ExcepcionConstruccionNoCorrespondiente, ExcepcionRecursoInsuficiente, ExcepcionUnidadNoCorrespondiente{
-		int distanciaEntreEnemigos = mapa.distanciaEntreLosPuntos(atacado.getPosicionX(), atacado.getPosicionY(), this.getPosicionX(), this.getPosicionY());
-		
-		if ((distanciaEntreEnemigos) < this.getVision()){
-		
-		int danio = this.getDanio().getDanioTierra();
-		atacado.getVida().aumentarDanioARecibir(danio);
-		atacado.recibirDanio();
-		ataques.aumentarAtaquesPermitidos();
-		
-		}else {
 			
 			throw new ExcepcionElementoFueraDelRangoDeAtaque("El enemigo se encuentra fuera del rango de ataque");
 		

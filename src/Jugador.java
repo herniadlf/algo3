@@ -324,15 +324,7 @@ public class Jugador {
 		
 		if(this.contieneALaUnidad(agresor)){
 			
-			if(victima.esAereo()){
-				
-				agresor.atacarEnAire(victima);
-			}
-			
-			if(victima.esTerrestre()) {
-				
-				agresor.atacarEnTierra(victima);
-			}			
+			agresor.atacar(victima);			
 		}
 		
 		else {
