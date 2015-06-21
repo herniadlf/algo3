@@ -28,6 +28,7 @@ import src.construcciones.NexoMineral;
 import src.construcciones.Pilon;
 import src.construcciones.PuertoEstelarTerran;
 import src.construcciones.Refineria;
+import src.mapa.Escombros;
 import src.mapa.FuenteDeGasVespeno;
 import src.mapa.FuenteDeMinerales;
 import src.mapa.Mapa;
@@ -331,5 +332,24 @@ public class ConstruccionTest {
 			
 		}
 		
+		@Test
+		public void testCrearDosEdificiosElMismoTurno() throws ExcepcionPosicionInvalida, ExcepcionYaHayElementoEnLaPosicion, ExcepcionSuperaLimenteDeArbolesPermitos, ExcepcionNoPudoColocarseEdificio, ExcepcionErrorPasoDeTurno, ExcepcionConstruccionNoCorrespondiente, ExcepcionRecursoInsuficiente, ExcepcionUnidadNoCorrespondiente{
+			Jugador jugador1 = new Jugador ("carlos","rojo",new Terran());
+			Jugador jugador2 = new Jugador ("dean","azul",new Protoss());
+			
+			Juego juego = new Juego(jugador1, jugador2, 100, 0);
+			jugador1.setDinero(99999, 99999);
+			
+			juego.ordenFabricacionDeEdificios(new Barraca(), 5, 5);
+			juego.ordenFabricacionDeEdificios(new Barraca(), 8, 8);
+						
+			for (int i = 0; i < 12; i++){
+				juego.pasarTurno();
+				juego.pasarTurno();				
+			}
+
+			Assert.assertTrue(juego.getMapa().obtenerContenidoEnPosicion(5, 5).getElementoEnTierra().esLoMismo(new Barraca()));
+			Assert.assertTrue(juego.getMapa().obtenerContenidoEnPosicion(8, 8).getElementoEnTierra().esLoMismo(new Barraca()));
+		}
 		
 }

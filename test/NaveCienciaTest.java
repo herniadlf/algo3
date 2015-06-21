@@ -40,7 +40,7 @@ public class NaveCienciaTest extends TestCase {
 			e.printStackTrace();
 		}
 	
-		NaveCiencia naveCiencia = puertoEstelar.crearNaveCiencia();
+		NaveCiencia naveCiencia = new NaveCiencia();
 	
 		Assert.assertTrue(naveCiencia.getVida().obtenerVida() == 200);
 

@@ -46,8 +46,7 @@ public class UnidadesProtossTest{
 	@Test
 	public void testZealotSeCreaCon60escudoY100deVida(){
 		
-		Acceso acceso = new Acceso();
-		Zealot zealot = acceso.crearZealot();		
+		Zealot zealot = new Zealot();		
 		
 		Assert.assertTrue((zealot.getVida().obtenerVida()) == 100);
 		Assert.assertTrue((zealot.getEscudo().obtenerResistenciaActual()) == 60 );
@@ -57,8 +56,7 @@ public class UnidadesProtossTest{
 	@Test
 	public void testDragonSeCreaCon80escudoY100deVida(){
 		
-		Acceso acceso = new Acceso();
-		Dragon dragon = acceso.crearDragon();		
+		Dragon dragon = new Dragon();
 		
 		Assert.assertTrue((dragon.getVida().obtenerVida()) == 100);
 		Assert.assertTrue((dragon.getEscudo().obtenerResistenciaActual()) == 80 );

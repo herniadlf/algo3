@@ -1,10 +1,7 @@
 package src.construcciones;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
-
-import excepciones.ExcepcionPosicionInvalida;
-import src.ConstantesAlgoCraft;
+import src.ReglaDeDanioTerran;
 import src.unidades.*;
 
 
@@ -25,24 +22,6 @@ public class Barraca extends Creadora {
 		setCosto(COSTO_MINERALES,COSTO_GAS);
 		setTiempoDeConstruccion(TIEMPO);
 		setEdificioRequerido(new DepositoDeSuministros());
-		
+		reglaDeDanio = new ReglaDeDanioTerran();
 	}
-	
-	public Marine crearMarine(){
-		
-		Marine marine = new Marine();
-		return marine;
-		
-	}
-	
-	public void recibirDanio () throws ExcepcionPosicionInvalida{
-		
-		this.getVida().disminuirVidaPorDanio();
-		boolean estadoDeVidaFinalizado= vida.devolverEstadoDeVida();
-		  if (estadoDeVidaFinalizado==true){
-			 mapa.eliminarElementoTerrestreEnPosicion(super.getPosicionX(), super.getPosicionY());
-		  }
-		  
-	}
-	
 }

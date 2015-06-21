@@ -210,16 +210,16 @@ public class Interfaz {
 		
 		JPanel cuadroDeTexto = new JPanel();
 		JLabel nombre = new JLabel("Nombre: ");
-		JTextField texto = new JTextField(15);
-		texto.addActionListener(new ActionListener() {
+		final JTextField ingreso = new JTextField(15);
+		ingreso.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				try{
-					if (texto.getText().equals(juego.getJugador1().getNombre())){
+					if (ingreso.getText().equals(juego.getJugador1().getNombre())){
 						JOptionPane.showMessageDialog(null, "Nombre Ya Elegido");
 						throw new ExcepcionNombreElegido();
 					}
-					juego.getJugadorActual().setNombre(texto.getText());
+					juego.getJugadorActual().setNombre(ingreso.getText());
 					JOptionPane.showMessageDialog(null, "¡Bienvenido/a " + juego.getJugadorActual().getNombre() + "!");
 					cargarSeleccionDeRaza();
 				} catch (ExcepcionNombreElegido e){
@@ -228,7 +228,7 @@ public class Interfaz {
 			}
 		});	
 		cuadroDeTexto.add(nombre);
-		cuadroDeTexto.add(texto);
+		cuadroDeTexto.add(ingreso);
 		
 		getFramePrincipal().getContentPane().add(cuadroDeTexto,BorderLayout.CENTER);
 		getFramePrincipal().setSize(400, 100);

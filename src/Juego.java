@@ -1,13 +1,10 @@
 package src;
 
-import java.util.ArrayList;
 
 import excepciones.ExcepcionConstruccionNoCorrespondiente;
-import excepciones.ExcepcionEdificioNoPuedeCrearUnidad;
 import excepciones.ExcepcionElEdificioNoPerteneceATusConstrucciones;
 import excepciones.ExcepcionErrorPasoDeTurno;
 import excepciones.ExcepcionExtractoraSinRecurso;
-import excepciones.ExcepcionNoHayLugarParaCrear;
 import excepciones.ExcepcionNoPudoColocarseEdificio;
 import excepciones.ExcepcionNoPudoCrearseUnidad;
 import excepciones.ExcepcionPosicionInvalida;
@@ -19,9 +16,7 @@ import excepciones.ExcepcionUnidadNoCorrespondiente;
 import excepciones.ExcepcionYaHayElementoEnLaPosicion;
 import src.construcciones.Construccion;
 import src.construcciones.Creadora;
-import src.mapa.Escombros;
 import src.mapa.Mapa;
-import src.mapa.Mapeable;
 import src.unidades.Unidad;
 
 public class Juego {

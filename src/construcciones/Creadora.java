@@ -1,11 +1,8 @@
 package src.construcciones;
-import java.util.AbstractCollection;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.LinkedList;
 
 import excepciones.ExcepcionEdificioDestruido;
-import excepciones.ExcepcionEdificioNoPuedeCrearUnidad;
 import excepciones.ExcepcionNoHayLugarParaCrear;
 import excepciones.ExcepcionNoPudoColocarseUnidad;
 import excepciones.ExcepcionPosicionInvalida;
@@ -14,9 +11,7 @@ import excepciones.ExcepcionYaHayElementoEnLaPosicion;
 import src.Jugador;
 import src.Turno;
 import src.mapa.Mapa;
-import src.mapa.EspacioDisponible;
 import src.mapa.Posicion;
-import src.unidades.ColocadorDeUnidades;
 import src.unidades.Unidad;
 
 public abstract class Creadora extends NoExtractora {
@@ -39,11 +34,11 @@ public abstract class Creadora extends NoExtractora {
 	
 	public void verificarUnidadCreable(Unidad aEntrenar) throws ExcepcionUnidadNoCorrespondiente {
 		
-		Iterator<Unidad> list = unidadesCreables.iterator();		
-		Boolean founded = unidadesCreables.element().esLoMismo(aEntrenar);
-		while ( (list.hasNext()) && (founded == false) ){
-			Unidad auxiliar = (Unidad) list.next();
-			founded = auxiliar.esLoMismo(aEntrenar);
+		int i=0;
+		Boolean founded = false;
+		while ( (i < unidadesCreables.size()) && (!founded) ) {
+			founded = unidadesCreables.get(i).esLoMismo(aEntrenar);
+			i++;
 		}
 		if (!founded){
 			throw new ExcepcionUnidadNoCorrespondiente("No corresponde la unidad a este edificio");
@@ -81,9 +76,10 @@ public abstract class Creadora extends NoExtractora {
 			if ( turnosPasados  >= unidadesEnFabricacion.get(i).getTiempoDeCreacion()){
 				try{
 					colocarUnidad(unidadesEnFabricacion.get(i), map);
-					jugadorActual.agragarAUnidadesAlistadas(unidadesEnFabricacion.get(i));
+					jugadorActual.agregarAUnidadesAlistadas(unidadesEnFabricacion.get(i));
 					jugadorActual.actualizarPorNuevaUnidad(unidadesEnFabricacion.get(i),unidadesEnFabricacion.get(i).getEdifico(), map);				
 					unidadesEnFabricacion.remove(i);
+					i--;
 				}
 				catch ( ExcepcionNoHayLugarParaCrear e ) {}	
 				catch (ExcepcionPosicionInvalida | ExcepcionYaHayElementoEnLaPosicion w){

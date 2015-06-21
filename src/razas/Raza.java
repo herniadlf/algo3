@@ -37,12 +37,12 @@ public abstract class Raza {
 		while (i < construccionesPosibles.size()){
 			if ( construccionesPosibles.get(i).getVida().devolverEstadoDeVida() ) {
 				construccionesPosibles.remove(i);
+				i--;
 			}
 			i++;
 		}
 		
 		
 	}
-					
 }
 

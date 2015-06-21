@@ -6,7 +6,6 @@ import java.util.Iterator;
 import excepciones.ExcepcionConstruccionNoCorrespondiente;
 import excepciones.ExcepcionEdificioDestruido;
 import excepciones.ExcepcionEdificioNoPuedeCrearUnidad;
-import excepciones.ExcepcionEdificioPrevioRequerido;
 import excepciones.ExcepcionElEdificioNoPerteneceATusConstrucciones;
 import excepciones.ExcepcionElementoFueraDelRangoDeAtaque;
 import excepciones.ExcepcionErrorPasoDeTurno;
@@ -22,11 +21,8 @@ import excepciones.ExcepcionTopeDePoblacionMaxima;
 import excepciones.ExcepcionUnidadNoCorrespondiente;
 import excepciones.ExcepcionYaHayElementoEnLaPosicion;
 import src.construcciones.Construccion;
-import src.construcciones.Arquitecto;
 import src.construcciones.Creadora;
 import src.mapa.Mapa;
-import src.mapa.Mapeable;
-import src.razas.Protoss;
 import src.razas.Raza;
 import src.unidades.Unidad;
 
@@ -271,7 +267,8 @@ public class Jugador {
 			if ( turnosPasados  >= construccionesEnCamino.get(i).getTiempoDeConstruccion()){				
 				colocar(construccionesEnCamino.get(i), mapa, construccionesEnCamino.get(i).getPosicionX(), construccionesEnCamino.get(i).getPosicionY());
 				construccionesEnPie.add(construccionesEnCamino.get(i));
-				construccionesEnCamino.remove(i);				
+				construccionesEnCamino.remove(i);
+				i--;
 			} 
 			
 			i++;	
@@ -279,7 +276,7 @@ public class Jugador {
 		
 	}
 	
-	public void agragarAUnidadesAlistadas (Unidad unidad){
+	public void agregarAUnidadesAlistadas (Unidad unidad){
 		
 		this.unidadesAlistadas.add(unidad);	
 		

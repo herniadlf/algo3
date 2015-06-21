@@ -1,7 +1,6 @@
 package src.construcciones;
 
-import excepciones.ExcepcionPosicionInvalida;
-import src.ConstantesAlgoCraft;
+import src.ReglaDeDanioTerran;
 
 public class DepositoDeSuministros extends NoExtractora{
 	
@@ -20,16 +19,7 @@ public class DepositoDeSuministros extends NoExtractora{
 		setTiempoDeConstruccion(TIEMPO);
 		setEdificioRequerido(this);
 		capacidadDeSuministros = SUMINISTROS;
-		
-	}
-	
-	public void recibirDanio() throws ExcepcionPosicionInvalida{
-			
-		this.getVida().disminuirVidaPorDanio();
-		boolean estadoDeVidaFinalizado= vida.devolverEstadoDeVida();
-		  if (estadoDeVidaFinalizado==true){
-			 mapa.eliminarElementoTerrestreEnPosicion(super.getPosicionX(), super.getPosicionY());
-			 }	
+		reglaDeDanio = new ReglaDeDanioTerran();
 	}
 	
 }

@@ -1,8 +1,8 @@
 package src.unidades;
 
-import src.ConstantesAlgoCraft;
 import src.Danio;
 import src.Dinero;
+import src.ReglaDeDanioTerran;
 import src.Vida;
 import src.mapa.Mapeable;
 
@@ -33,7 +33,8 @@ public class Espectro extends Unidad {
 		vida = new Vida(VIDA);
 		vision = VISION;
 		colocador = (ColocadorUnidadVoladora) new ColocadorUnidadVoladora();
-	
+		reglaDeDanio = new ReglaDeDanioTerran();
+
 	}
 	
 	@Override
@@ -64,16 +65,6 @@ public class Espectro extends Unidad {
 	public ColocadorUnidadVoladora getColocador(){
 		return (ColocadorUnidadVoladora)colocador;
 	}
-	
-	public void recibirDanio (){
-		
-	
-		vida.disminuirVidaPorDanio();;
-		
-	}
-
-
-
 
 	@Override
 	public boolean esOcupable() {

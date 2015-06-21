@@ -1,8 +1,8 @@
 package src.unidades;
 
-import src.ConstantesAlgoCraft;
 import src.Danio;
 import src.Dinero;
+import src.ReglaDeDanioTerran;
 import src.Vida;
 import src.mapa.Mapeable;
 
@@ -31,7 +31,8 @@ public class Marine extends Unidad {
 		vida = new Vida(VIDA);
 		vision = VISION;
 		colocador = (ColocadorUnidadTerrestre) new ColocadorUnidadTerrestre();
-		
+		reglaDeDanio = new ReglaDeDanioTerran();
+
 	}
 		
 	@Override
@@ -60,16 +61,6 @@ public class Marine extends Unidad {
 		return (ColocadorUnidadTerrestre)colocador;
 	}
 	
-	public void recibirDanio (){
-		
-	
-		vida.disminuirVidaPorDanio();;
-		
-	}
-
-	
-
-
 	@Override
 	public boolean esOcupable() {
 		// TODO Auto-generated method stub

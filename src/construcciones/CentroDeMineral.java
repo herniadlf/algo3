@@ -1,10 +1,8 @@
 package src.construcciones;
 
 import excepciones.ExcepcionEdificioDestruido;
-import excepciones.ExcepcionPosicionInvalida;
-import src.ConstantesAlgoCraft;
 import src.Jugador;
-import src.Mineral;
+import src.ReglaDeDanioTerran;
 import src.Turno;
 import src.mapa.FuenteDeMinerales;
 import src.mapa.Mapa;
@@ -25,19 +23,9 @@ public class CentroDeMineral extends Extractora {
 		setCosto(COSTO_MINERALES,COSTO_GAS);
 		setTiempoDeConstruccion(TIEMPO);
 		setEdificioRequerido(new DepositoDeSuministros());
-		
+		reglaDeDanio = new ReglaDeDanioTerran();
 	}
 		
-	public void recibirDanio () throws ExcepcionPosicionInvalida{
-			
-		this.getVida().disminuirVidaPorDanio();
-		boolean estadoDeVidaFinalizado= vida.devolverEstadoDeVida();
-		  if (estadoDeVidaFinalizado==true){
-			 mapa.eliminarElementoTerrestreEnPosicion(super.getPosicionX(), super.getPosicionY());
-		  }
-		  
-	}
-	
 	public void pasoTurno(Turno turno, Mapa mapa, Jugador jugadorActual) throws ExcepcionEdificioDestruido{
 		
 		if (vida.devolverEstadoDeVida()){

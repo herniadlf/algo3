@@ -1,12 +1,7 @@
 package src.unidades;
 
-import java.util.ArrayList;
-
 import excepciones.ExcepcionPosicionInvalida;
 import src.Atacable;
-import src.Danio;
-import src.Dinero;
-import src.Vida;
 import src.mapa.Mapeable;
 
 public abstract class Magica extends Unidad {

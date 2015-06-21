@@ -3,8 +3,8 @@ package src.construcciones;
 import java.util.LinkedList;
 
 import excepciones.ExcepcionPosicionInvalida;
-import src.ConstantesAlgoCraft;
 import src.Escudo;
+import src.ReglaDeDanioProtoss;
 import src.unidades.*;
 
 public class Acceso extends Creadora {
@@ -28,21 +28,7 @@ public class Acceso extends Creadora {
 		setTiempoDeConstruccion(TIEMPO);
 		setEdificioRequerido(new Pilon());
 		escudo = new Escudo(ESCUDO,this);
-		
-	}
-		
-	public Zealot crearZealot(){
-			
-		Zealot zealot = new Zealot();
-		return zealot;
-			
-	}
-		
-	public AltoTemplario crearAltoTemplario(){
-			
-		AltoTemplario alto = new AltoTemplario();
-		return alto;
-			
+		reglaDeDanio = new ReglaDeDanioProtoss(escudo);
 	}
 		
 	public Escudo getEscudo(){
@@ -50,22 +36,5 @@ public class Acceso extends Creadora {
 		return escudo;
 		
 	}
-		
-	public void recibirDanio() throws ExcepcionPosicionInvalida{
 					
-		escudo.atacar(this.getVida().obtenerDanioRecibido());
-		boolean estadoDeVidaFinalizado= vida.devolverEstadoDeVida();
-		  if (estadoDeVidaFinalizado==true){
-			 mapa.eliminarElementoTerrestreEnPosicion(super.getPosicionX(), super.getPosicionY());
-		 }
-		  
-	}
-
-	public Dragon crearDragon() {
-
-		Dragon dragon = new Dragon();
-		return dragon;
-		
-	}	
-			
 }

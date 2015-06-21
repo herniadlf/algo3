@@ -2,9 +2,10 @@ package src.construcciones;
 
 import excepciones.ExcepcionEdificioDestruido;
 import excepciones.ExcepcionPosicionInvalida;
-import src.ConstantesAlgoCraft;
+import src.Atacable;
 import src.Escudo;
 import src.Jugador;
+import src.ReglaDeDanioProtoss;
 import src.Turno;
 import src.mapa.FuenteDeGasVespeno;
 import src.mapa.Mapa;
@@ -28,18 +29,8 @@ public class Asimilador extends Extractora {
 		setTiempoDeConstruccion(TIEMPO);
 		setEdificioRequerido(new Pilon());
 		escudo = new Escudo(ESCUDO,this);
-		
+		reglaDeDanio = new ReglaDeDanioProtoss(escudo);
 	}	
-	
-	public void recibirDanio () throws ExcepcionPosicionInvalida{	
-		
-		escudo.atacar(this.getVida().obtenerDanioRecibido());
-		boolean estadoDeVidaFinalizado= vida.devolverEstadoDeVida();
-		  if (estadoDeVidaFinalizado==true){
-			 mapa.eliminarElementoTerrestreEnPosicion(super.getPosicionX(), super.getPosicionY());
-		  }
-		  
-	}
 	
 	public void pasoTurno(Turno turno, Mapa mapa, Jugador jugadorActual) throws ExcepcionEdificioDestruido{
 		

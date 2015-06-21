@@ -1,8 +1,6 @@
 package src.unidades;
 
-import java.util.Iterator;
 import java.util.LinkedList;
-
 import src.mapa.Mapa;
 import src.mapa.Posicion;
 import excepciones.ExcepcionNoHayLugarParaCrear;

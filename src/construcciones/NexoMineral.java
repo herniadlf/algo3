@@ -2,12 +2,11 @@ package src.construcciones;
 
 import excepciones.ExcepcionEdificioDestruido;
 import excepciones.ExcepcionPosicionInvalida;
-import src.ConstantesAlgoCraft;
 import src.Escudo;
 import src.Jugador;
+import src.ReglaDeDanioProtoss;
 import src.Turno;
 import src.mapa.FuenteDeMinerales;
-import src.mapa.FuenteDeRecurso;
 import src.mapa.Mapa;
 
 public class NexoMineral extends Extractora {
@@ -29,22 +28,13 @@ public class NexoMineral extends Extractora {
 		setTiempoDeConstruccion(TIEMPO);
 		setEdificioRequerido(new Pilon());
 		escudo = new Escudo(ESCUDO,this);
-		
+		reglaDeDanio = new ReglaDeDanioProtoss(escudo);
 	}
 
 	public Escudo getEscudo(){
 		
 		return escudo;
 		
-	}
-	
-	public void recibirDanio () throws ExcepcionPosicionInvalida{
-		
-		escudo.atacar(this.getVida().obtenerDanioRecibido());
-		boolean estadoDeVidaFinalizado= vida.devolverEstadoDeVida();
-		  if (estadoDeVidaFinalizado==true){
-			 mapa.eliminarElementoTerrestreEnPosicion(super.getPosicionX(), super.getPosicionY());
-			 }
 	}
 	
 	public void pasoTurno(Turno turno, Mapa mapa, Jugador jugadorActual) throws ExcepcionEdificioDestruido{

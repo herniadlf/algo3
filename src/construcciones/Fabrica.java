@@ -3,7 +3,7 @@ package src.construcciones;
 import java.util.LinkedList;
 
 import excepciones.ExcepcionPosicionInvalida;
-import src.ConstantesAlgoCraft;
+import src.ReglaDeDanioTerran;
 import src.unidades.*;
 
 public class Fabrica extends Creadora {
@@ -23,23 +23,7 @@ public class Fabrica extends Creadora {
 		setCosto(COSTO_MINERALES,COSTO_GAS);	
 		setTiempoDeConstruccion(TIEMPO);
 		setEdificioRequerido(new Barraca());
-		
+		reglaDeDanio = new ReglaDeDanioTerran();
 	}
 	
-	public Golliat crearGolliat() {
-		
-		Golliat golliat = new Golliat();
-		return golliat;
-		
-	}
-	
-	public void recibirDanio () throws ExcepcionPosicionInvalida{
-			
-		this.getVida().disminuirVidaPorDanio();
-		boolean estadoDeVidaFinalizado= vida.devolverEstadoDeVida();
-		  if (estadoDeVidaFinalizado==true){
-			 mapa.eliminarElementoTerrestreEnPosicion(super.getPosicionX(), super.getPosicionY());
-			 }	
-	}
-
 }

@@ -46,31 +46,18 @@ public class UnidadesTerranTest extends TestCase{
 			
 	}
 		
-	public void testmarineCuesta50mineralYseCreaCon40deVida() throws ExcepcionPosicionInvalida, ExcepcionExtractoraSinRecurso {
+	public void testmarineCuesta50mineralYseCreaCon40deVida() {
 
-		Barraca barraca = new Barraca();
-		try {
-			jugador.colocar(barraca,mapa,3,4);
-		} catch (Exception e) {
-			e.printStackTrace();
-		} 
-		Marine marine = barraca.crearMarine();
+		Marine marine = new Marine();
 			
 		Assert.assertTrue((marine.getVida().obtenerVida()) == 40);
-		//falta chequear el mineral
+		Assert.assertEquals(marine.getCosto().getMinerales(),50);
 		
 	}
 		
-	public void testgolliatSeCreaCon125DeVida() throws ExcepcionPosicionInvalida, ExcepcionExtractoraSinRecurso{
+	public void testgolliatSeCreaCon125DeVida() {
 		
-		Fabrica fabrica = new Fabrica();
-		try {
-			jugador.colocar(fabrica,mapa,4,4);
-		} catch (Exception e) {
-			e.printStackTrace();
-		} 
-		
-		Golliat golliat = fabrica.crearGolliat();
+		Golliat golliat = new Golliat();
 			
 		Assert.assertTrue((golliat.getVida().obtenerVida()) == 125);
 			
@@ -79,14 +66,7 @@ public class UnidadesTerranTest extends TestCase{
 	
 	public void testEspectroSeCreaCon120deVida() throws ExcepcionPosicionInvalida, ExcepcionExtractoraSinRecurso{
 		
-		PuertoEstelarTerran puertoEstelar = new PuertoEstelarTerran();
-		try {
-			jugador.colocar(puertoEstelar,mapa,30,30);			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		
-		Espectro espectro = puertoEstelar.crearEspectro();	
+		Espectro espectro = new Espectro();
 		Assert.assertTrue(espectro.getVida().obtenerVida() == 120);
 			
 	}

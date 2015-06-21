@@ -1,10 +1,8 @@
 package src.construcciones;
 
 import java.util.LinkedList;
-
-import excepciones.ExcepcionPosicionInvalida;
-import src.ConstantesAlgoCraft;
 import src.Escudo;
+import src.ReglaDeDanioProtoss;
 import src.unidades.*;
 
 public class ArchivosTemplarios extends Creadora {
@@ -27,24 +25,6 @@ public class ArchivosTemplarios extends Creadora {
 		setVida(VIDA);
 		setEdificioRequerido(new PuertoEstelarProtoss());
 		escudo = new Escudo (ESCUDO,this);
-		
+		reglaDeDanio = new ReglaDeDanioProtoss(escudo);
 	}
-
-	public AltoTemplario crearAltoTemplario() {
-		
-		AltoTemplario altoTemplario = new AltoTemplario();
-		return altoTemplario;
-		
-	}
-	
-	public void recibirDanio () throws ExcepcionPosicionInvalida{
-		
-		escudo.atacar(this.getVida().obtenerDanioRecibido());
-		boolean estadoDeVidaFinalizado= vida.devolverEstadoDeVida();
-		  if (estadoDeVidaFinalizado==true){
-			 mapa.eliminarElementoTerrestreEnPosicion(super.getPosicionX(), super.getPosicionY());
-			}
-		  
-	}
-		
 }

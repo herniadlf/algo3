@@ -1,10 +1,8 @@
 package src.unidades;
 
-import java.util.ArrayList;
-
-import src.ConstantesAlgoCraft;
 import src.Danio;
 import src.Dinero;
+import src.ReglaDeDanioTerran;
 import src.Vida;
 import src.mapa.Mapeable;
 
@@ -39,7 +37,8 @@ public class NaveCiencia extends Magica {
 		energia = new Energia(ENERGIA);
 		energiaPorTurno = 10;
 		colocador = (ColocadorUnidadVoladora) new ColocadorUnidadVoladora();
-		
+		reglaDeDanio = new ReglaDeDanioTerran();
+
 	}
 	
 	@Override
@@ -95,17 +94,6 @@ public class NaveCiencia extends Magica {
 		}
 			
 	}
-
-	
-	public void recibirDanio (){
-		
-	
-		vida.disminuirVidaPorDanio();;
-		
-	}
-
-	
-
 
 	@Override
 	public boolean esOcupable() {

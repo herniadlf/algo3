@@ -5,7 +5,6 @@ import src.Jugador;
 import src.Turno;
 import src.mapa.FuenteDeRecurso;
 import src.mapa.Mapa;
-import src.mapa.Mapeable;
 
 public abstract class Extractora extends Construccion {
 	

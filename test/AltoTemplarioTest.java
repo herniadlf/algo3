@@ -32,7 +32,8 @@ public class AltoTemplarioTest extends TestCase {
 		mapa = new Mapa(50);
 		jugador = new Jugador("Atila","rojo", new Terran());
 		archivosTemplarios = new ArchivosTemplarios();
-		altoTemplario = archivosTemplarios.crearAltoTemplario();
+		altoTemplario = new AltoTemplario();
+		
 		
 	}
 	

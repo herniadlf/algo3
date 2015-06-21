@@ -1,9 +1,6 @@
 package src.mapa;
 
-import java.util.Arrays;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
@@ -11,9 +8,7 @@ import excepciones.ExcepcionExtractoraSinRecurso;
 import excepciones.ExcepcionPosicionInvalida;
 import excepciones.ExcepcionSuperaLimenteDeArbolesPermitos;
 import excepciones.ExcepcionYaHayElementoEnLaPosicion;
-import src.ConstantesAlgoCraft;
 import src.construcciones.Extractora;
-import src.mapa.*;
 
 public class Mapa {
 

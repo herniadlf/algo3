@@ -3,9 +3,7 @@ package src.construcciones;
 import java.util.LinkedList;
 
 import excepciones.ExcepcionEdificioDestruido;
-import excepciones.ExcepcionEdificioNoPuedeCrearUnidad;
 import excepciones.ExcepcionExtractoraSinRecurso;
-import excepciones.ExcepcionNoHayLugarParaCrear;
 import excepciones.ExcepcionNoPudoColocarseUnidad;
 import excepciones.ExcepcionPosicionInvalida;
 import excepciones.ExcepcionUnidadNoCorrespondiente;
@@ -13,6 +11,7 @@ import excepciones.ExcepcionYaHayElementoEnLaPosicion;
 import src.Atacable;
 import src.Dinero;
 import src.Jugador;
+import src.ReglaDeDanio;
 import src.Turno;
 import src.Vida;
 import src.mapa.Mapa;
@@ -32,9 +31,11 @@ public class Construccion implements Atacable {
 	protected int posicionY;
 	protected Arquitecto arquitecto;
 	protected Mapa mapa;
-	public Construccion edificioRequerido;
+	private Construccion edificioRequerido;
 	protected int capacidadDeSuministros;
 	protected LinkedList<Posicion> alrededores;
+	protected ReglaDeDanio reglaDeDanio;
+	
 	
 	public void setTurnoInicioDEConstruccion(int turno){
 		
@@ -221,7 +222,11 @@ public class Construccion implements Atacable {
 	}
 	
 	public void recibirDanio() throws ExcepcionPosicionInvalida {	
-		
+		reglaDeDanio.recibirDanio(this);
+		boolean estadoDeVidaFinalizado= vida.devolverEstadoDeVida();
+		  if (estadoDeVidaFinalizado==true){
+			 mapa.eliminarElementoTerrestreEnPosicion(getPosicionX(),getPosicionY());
+		 }
 	}
 
 	public void atacarConEMP(int danio) {

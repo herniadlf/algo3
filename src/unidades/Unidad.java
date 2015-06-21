@@ -17,6 +17,7 @@ import src.Atacable;
 import src.AtaquesPermitidosPorTurno;
 import src.Danio;
 import src.Dinero;
+import src.ReglaDeDanio;
 import src.Vida;
 import src.construcciones.Creadora;
 import src.mapa.Mapa;
@@ -43,6 +44,7 @@ public abstract class Unidad implements Atacable{
 	protected Creadora edificio;
 	protected AtaquesPermitidosPorTurno ataques;
 	protected boolean afectadoPorRadiacion;
+	protected ReglaDeDanio reglaDeDanio;
 	
 	public void setMapa (Mapa mapa){
 		
@@ -196,7 +198,14 @@ public abstract class Unidad implements Atacable{
 		
 	}
 
-	public abstract void recibirDanio () throws ExcepcionPosicionInvalida;
+	public void recibirDanio () throws ExcepcionPosicionInvalida{
+		
+		reglaDeDanio.recibirDanio(this);
+		boolean estadoDeVidaFinalizado= vida.devolverEstadoDeVida();
+		  if (estadoDeVidaFinalizado==true){
+			 mapa.eliminarElementoTerrestreEnPosicion(getPosicionX(),getPosicionY());
+		 }
+	}
 	
 	public boolean esLoMismo(Mapeable aComparar){
 		

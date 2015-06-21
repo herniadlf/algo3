@@ -1,9 +1,7 @@
 package src.construcciones;
 
 import java.util.LinkedList;
-
-import excepciones.ExcepcionPosicionInvalida;
-import src.ConstantesAlgoCraft;
+import src.ReglaDeDanioTerran;
 import src.unidades.*;
 
 public class PuertoEstelarTerran extends Creadora {
@@ -25,36 +23,6 @@ public class PuertoEstelarTerran extends Creadora {
 		setCosto(COSTO_MINERALES,COSTO_GAS);
 		setTiempoDeConstruccion(TIEMPO);
 		setEdificioRequerido(new Fabrica());
-		
+		reglaDeDanio = new ReglaDeDanioTerran();
 	}
-	
-	public Espectro crearEspectro() {
-		
-		Espectro espectro = new Espectro();
-		return espectro;
-		
-	}
-
-	public NaveCiencia crearNaveCiencia() {
-		
-		NaveCiencia naveCiencia = new NaveCiencia();	
-		return naveCiencia;
-	}
-
-	public NaveTransporteTerran crearNaveTransporteTerran() {
-		
-		NaveTransporteTerran naveTransporte = new NaveTransporteTerran();
-		return naveTransporte;
-		
-	}
-
-	public void recibirDanio () throws ExcepcionPosicionInvalida{
-		
-		this.getVida().disminuirVidaPorDanio();
-		boolean estadoDeVidaFinalizado= vida.devolverEstadoDeVida();
-		  if (estadoDeVidaFinalizado==true){
-			 mapa.eliminarElementoTerrestreEnPosicion(super.getPosicionX(), super.getPosicionY());
-			 }
-	}
-	
 }

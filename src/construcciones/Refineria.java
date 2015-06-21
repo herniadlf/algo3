@@ -1,9 +1,8 @@
 package src.construcciones;
 
 import excepciones.ExcepcionEdificioDestruido;
-import excepciones.ExcepcionPosicionInvalida;
-import src.ConstantesAlgoCraft;
 import src.Jugador;
+import src.ReglaDeDanioTerran;
 import src.Turno;
 import src.mapa.FuenteDeGasVespeno;
 import src.mapa.Mapa;
@@ -24,17 +23,7 @@ public class Refineria extends Extractora{
 		setCosto(COSTO_MINERALES,COSTO_GAS);
 		setTiempoDeConstruccion(TIEMPO);
 		setEdificioRequerido(new DepositoDeSuministros());
-		
-	}
-	
-	
-	public void recibirDanio () throws ExcepcionPosicionInvalida{
-		
-		this.getVida().disminuirVidaPorDanio();
-		boolean estadoDeVidaFinalizado= vida.devolverEstadoDeVida();
-		  if (estadoDeVidaFinalizado==true){
-			 mapa.eliminarElementoTerrestreEnPosicion(super.getPosicionX(), super.getPosicionY());
-			 }
+		reglaDeDanio = new ReglaDeDanioTerran();
 	}
 	
 	public void pasoTurno(Turno turno, Mapa mapa, Jugador jugadorActual) throws ExcepcionEdificioDestruido{

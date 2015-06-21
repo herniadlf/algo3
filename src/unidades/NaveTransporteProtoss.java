@@ -2,12 +2,11 @@ package src.unidades;
 
 import java.util.ArrayList;
 
-import excepciones.ExcepcionElTransporteEstaLleno;
 import excepciones.ExcepcionPosicionInvalida;
-import src.ConstantesAlgoCraft;
 import src.Danio;
 import src.Dinero;
 import src.Escudo;
+import src.ReglaDeDanioProtoss;
 import src.Vida;
 import src.mapa.Mapeable;
 
@@ -39,7 +38,7 @@ public class NaveTransporteProtoss extends DeTransporte {
 		escudo = new Escudo (ESCUDO,this);
 		colocador = (ColocadorUnidadVoladora) new ColocadorUnidadVoladora();
 		unidadesAbordo = new ArrayList<Unidad>();
-		
+		reglaDeDanio = new ReglaDeDanioProtoss(escudo);
 	}	
 		
 public void pasoTurno() {
@@ -77,17 +76,6 @@ public void pasoTurno() {
 		return (ColocadorUnidadVoladora)colocador;
 	}
 	
-	
-	public void recibirDanio () throws ExcepcionPosicionInvalida{
-		
-		escudo.atacar(this.getVida().obtenerDanioRecibido());
-		boolean estadoDeVidaFinalizado= vida.devolverEstadoDeVida();
-		  if (estadoDeVidaFinalizado==true){
-			 super.mapa.eliminarElementoTerrestreEnPosicion(super.getPosicionX(), super.getPosicionY());
-			 }
-		
-	}
-
 	@Override
 	public boolean esOcupable() {
 		// TODO Auto-generated method stub

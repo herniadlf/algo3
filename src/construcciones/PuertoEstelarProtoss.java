@@ -1,10 +1,8 @@
 package src.construcciones;
 
 import java.util.LinkedList;
-
-import excepciones.ExcepcionPosicionInvalida;
-import src.ConstantesAlgoCraft;
 import src.Escudo;
+import src.ReglaDeDanioProtoss;
 import src.unidades.*;
 
 public class PuertoEstelarProtoss extends Creadora {
@@ -28,17 +26,7 @@ public class PuertoEstelarProtoss extends Creadora {
 		setCosto(COSTO_MINERALES,COSTO_GAS);
 		setEdificioRequerido(new Acceso());
 		escudo = new Escudo(ESCUDO,this);
-		
+		reglaDeDanio = new ReglaDeDanioProtoss(escudo);
 	}
-	
-	public void recibirDanio () throws ExcepcionPosicionInvalida{
 		
-		escudo.atacar(this.getVida().obtenerDanioRecibido());
-		boolean estadoDeVidaFinalizado= vida.devolverEstadoDeVida();
-		  if (estadoDeVidaFinalizado==true){
-			 mapa.eliminarElementoTerrestreEnPosicion(super.getPosicionX(), super.getPosicionY());
-			 }
-	}
-	
-	
 }

@@ -2,9 +2,9 @@ package src.unidades;
 
 import java.util.ArrayList;
 
-import src.ConstantesAlgoCraft;
 import src.Danio;
 import src.Dinero;
+import src.ReglaDeDanioTerran;
 import src.Vida;
 import src.mapa.Mapeable;
 
@@ -35,6 +35,7 @@ public class NaveTransporteTerran extends DeTransporte {
 		vision = VISION;
 		colocador = (ColocadorUnidadVoladora) new ColocadorUnidadVoladora();
 		unidadesAbordo = new ArrayList<Unidad>();
+		reglaDeDanio = new ReglaDeDanioTerran();
 	}
 	
 	@Override
@@ -66,16 +67,6 @@ public class NaveTransporteTerran extends DeTransporte {
 	}
 	
 	
-	public void recibirDanio (){
-		
-	
-		vida.disminuirVidaPorDanio();;
-		
-	}
-
-	
-
-
 	@Override
 	public boolean esOcupable() {
 		// TODO Auto-generated method stub

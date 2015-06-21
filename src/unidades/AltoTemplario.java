@@ -4,6 +4,7 @@ import excepciones.ExcepcionPosicionInvalida;
 import src.Danio;
 import src.Dinero;
 import src.Escudo;
+import src.ReglaDeDanioProtoss;
 import src.Vida;
 import src.mapa.Mapeable;
 
@@ -45,7 +46,7 @@ public class AltoTemplario extends Magica {
 		tormenta = null;
 		afectadoPorRadiacion = false;
 		danioRadiacion = 0;
-		
+		reglaDeDanio = new ReglaDeDanioProtoss(escudo);
 	}
 		
 	public Mapeable colocarContenido() {
@@ -106,17 +107,6 @@ public class AltoTemplario extends Magica {
 			alucinacion.atacar(unidad);
 			energia.disminuirEnergia(alucinacion.obtenerEnergiaNecesaria());
 		}
-		
-	}
-	
-	public void recibirDanio () throws ExcepcionPosicionInvalida{
-	
-
-		escudo.atacar(this.getVida().obtenerDanioRecibido());
-		boolean estadoDeVidaFinalizado= vida.devolverEstadoDeVida();
-		  if (estadoDeVidaFinalizado==true){
-			 super.mapa.eliminarElementoTerrestreEnPosicion(super.getPosicionX(), super.getPosicionY());
-		 }
 		
 	}
 

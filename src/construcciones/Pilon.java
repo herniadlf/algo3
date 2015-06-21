@@ -1,8 +1,8 @@
 package src.construcciones;
 
 import excepciones.ExcepcionPosicionInvalida;
-import src.ConstantesAlgoCraft;
 import src.Escudo;
+import src.ReglaDeDanioProtoss;
 
 public class Pilon extends NoExtractora {
 	
@@ -23,16 +23,7 @@ public class Pilon extends NoExtractora {
 		setEdificioRequerido(this);
 		capacidadDeSuministros = SUMINISTROS;
 		escudo = new Escudo(ESCUDO,this);
-		
+		reglaDeDanio = new ReglaDeDanioProtoss(escudo);
 	}
-	
-	public void recibirDanio () throws ExcepcionPosicionInvalida{
 		
-		escudo.atacar(this.getVida().obtenerDanioRecibido());
-		boolean estadoDeVidaFinalizado= vida.devolverEstadoDeVida();
-		  if (estadoDeVidaFinalizado==true){
-			 mapa.eliminarElementoTerrestreEnPosicion(super.getPosicionX(), super.getPosicionY());
-			 }
-	}
-	
 }
