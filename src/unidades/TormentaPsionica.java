@@ -24,11 +24,10 @@ public class TormentaPsionica extends PorRangoAtaque {
 		
 		try {
 			Sector sector = mapa.obtenerContenidoEnPosicion(x, y);
-			if(!(sector.getElementoEnTierra().getClass() == new EspacioDisponible().getClass())){
-				if(!(sector.getElementoEnTierra().getClass() == new FuenteDeRecurso().getClass())){
+			if (Atacable.class.isAssignableFrom(sector.getElementoEnTierra().getClass())){
 					Atacable objetoEnTierra = (Atacable)sector.getElementoEnTierra();
 					objetoEnTierra.afectadoPorTormentaPsionica(danio);		
-				}		
+						
 			}	
 			if(!(sector.getElementoEnAire().getClass() == new EspacioDisponible().getClass())){
 					Atacable objetoEnAire = (Atacable)sector.getElementoEnAire();

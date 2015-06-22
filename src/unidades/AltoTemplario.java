@@ -1,6 +1,8 @@
 package src.unidades;
 
+import excepciones.ExcepcionNoHayLugarParaCrear;
 import excepciones.ExcepcionPosicionInvalida;
+import excepciones.ExcepcionYaHayElementoEnLaPosicion;
 import src.Danio;
 import src.Dinero;
 import src.Escudo;
@@ -41,7 +43,7 @@ public class AltoTemplario extends Magica {
 		escudo = new Escudo (ESCUDO,this);
 		energia = new Energia(ENERGIA);
 		energiaPorTurno = 15;
-		colocador = (ColocadorUnidadTerrestre) new ColocadorUnidadTerrestre();
+		colocador = new ColocadorDeUnidades();
 		tormentaEnCurso = false;
 		tormenta = null;
 		afectadoPorRadiacion = false;
@@ -69,9 +71,9 @@ public class AltoTemplario extends Magica {
 		return null;
 	}
 
-	public ColocadorUnidadTerrestre getColocador(){
+	public ColocadorDeUnidades getColocador(){
 		
-		return (ColocadorUnidadTerrestre)colocador;
+		return colocador;
 		
 	}
 
@@ -100,7 +102,7 @@ public class AltoTemplario extends Magica {
 
 	}
 	
-	public void alucinacion(Unidad unidad){
+	public void alucinacion(Unidad unidad) throws InstantiationException, IllegalAccessException, ExcepcionPosicionInvalida, ExcepcionNoHayLugarParaCrear, ExcepcionYaHayElementoEnLaPosicion{
 		
 		Alucinacion alucinacion = new Alucinacion(unidad);
 		if(energia.obtenerCantidad() >= alucinacion.obtenerEnergiaNecesaria()){

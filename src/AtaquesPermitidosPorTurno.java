@@ -21,7 +21,7 @@ import excepciones.ExcepcionYaHayElementoEnLaPosicion;
 		
 	}
 	
-	public void aumentarAtaquesPermitidos () throws ExcepcionEdificioNoPuedeCrearUnidad,
+	public void contabilizarAtaquesEnTurno () throws ExcepcionEdificioNoPuedeCrearUnidad,
 	ExcepcionPosicionInvalida, ExcepcionNoHayLugarParaCrear, ExcepcionYaHayElementoEnLaPosicion, ExcepcionErrorPasoDeTurno, ExcepcionConstruccionNoCorrespondiente, ExcepcionRecursoInsuficiente, ExcepcionUnidadNoCorrespondiente{
 		
 		this.ataques = this.ataques +1;

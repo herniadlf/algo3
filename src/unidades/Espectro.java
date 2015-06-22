@@ -32,7 +32,7 @@ public class Espectro extends Unidad {
 		transporte = TRANSPORTE;
 		vida = new Vida(VIDA);
 		vision = VISION;
-		colocador = (ColocadorUnidadVoladora) new ColocadorUnidadVoladora();
+		colocador = new ColocadorDeUnidades();
 		reglaDeDanio = new ReglaDeDanioTerran();
 
 	}
@@ -62,8 +62,8 @@ public class Espectro extends Unidad {
 	}
 
 	
-	public ColocadorUnidadVoladora getColocador(){
-		return (ColocadorUnidadVoladora)colocador;
+	public ColocadorDeUnidades getColocador(){
+		return colocador;
 	}
 
 	@Override

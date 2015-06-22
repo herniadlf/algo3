@@ -35,7 +35,7 @@ public class Dragon extends Unidad {
 		vida = new Vida(VIDA);
 		vision = VISION;
 		escudo = new Escudo (ESCUDO,this);
-		colocador = (ColocadorUnidadVoladora) new ColocadorUnidadVoladora();
+		colocador = new ColocadorDeUnidades();
 		reglaDeDanio = new ReglaDeDanioProtoss(escudo);
 	}
 	
@@ -71,8 +71,8 @@ public void pasoTurno() {
 		return null;
 	}
 	
-	public ColocadorUnidadTerrestre getColocador(){
-		return (ColocadorUnidadTerrestre)colocador;
+	public ColocadorDeUnidades getColocador(){
+		return colocador;
 	}
 	
 	@Override

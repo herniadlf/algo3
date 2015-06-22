@@ -24,12 +24,11 @@ public class Radiacion extends PorRangoAtaque{
 		
 		try {
 			Sector sector = mapa.obtenerContenidoEnPosicion(x, y);
-			if(!(sector.getElementoEnTierra().getClass() == new EspacioDisponible().getClass())){
-				if(!(sector.getElementoEnTierra().getClass() == new FuenteDeRecurso().getClass())){
+			if (Atacable.class.isAssignableFrom(sector.getElementoEnTierra().getClass())){
 					Atacable objetoEnTierra = (Atacable)sector.getElementoEnTierra();
 					objetoEnTierra.afectadoPorRadiacion(danio);		
 				}		
-			}	
+			
 			
 		} catch (ExcepcionPosicionInvalida e) {
 			e.printStackTrace();	

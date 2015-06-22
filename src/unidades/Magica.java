@@ -8,8 +8,6 @@ public abstract class Magica extends Unidad {
 
 	int energiaPorTurno;
 	Energia energia;
-	//ArrayList<Magia> magias = new ArrayList<Magia>();
-	
 	
 	public void pasoTurno(){
 		

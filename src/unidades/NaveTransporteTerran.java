@@ -33,7 +33,7 @@ public class NaveTransporteTerran extends DeTransporte {
 		transporte = TRANSPORTE;
 		vida = new Vida(VIDA);
 		vision = VISION;
-		colocador = (ColocadorUnidadVoladora) new ColocadorUnidadVoladora();
+		colocador = new ColocadorDeUnidades();
 		unidadesAbordo = new ArrayList<Unidad>();
 		reglaDeDanio = new ReglaDeDanioTerran();
 	}
@@ -62,8 +62,8 @@ public class NaveTransporteTerran extends DeTransporte {
 		return null;
 	}
 
-	public ColocadorUnidadVoladora getColocador(){
-		return (ColocadorUnidadVoladora)colocador;
+	public ColocadorDeUnidades getColocador(){
+		return colocador;
 	}
 	
 	

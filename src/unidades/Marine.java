@@ -30,7 +30,7 @@ public class Marine extends Unidad {
 		transporte = TRANSPORTE;
 		vida = new Vida(VIDA);
 		vision = VISION;
-		colocador = (ColocadorUnidadTerrestre) new ColocadorUnidadTerrestre();
+		colocador = new ColocadorDeUnidades();
 		reglaDeDanio = new ReglaDeDanioTerran();
 
 	}
@@ -57,8 +57,8 @@ public class Marine extends Unidad {
 		return null;
 	}
 		
-	public ColocadorUnidadTerrestre getColocador(){
-		return (ColocadorUnidadTerrestre)colocador;
+	public ColocadorDeUnidades getColocador(){
+		return colocador;
 	}
 	
 	@Override

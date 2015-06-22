@@ -1,5 +1,9 @@
 package test;
 
+import java.util.Iterator;
+import java.util.LinkedList;
+
+import excepciones.ExcepcionNoHayLugarParaCrear;
 import excepciones.ExcepcionPosicionInvalida;
 import excepciones.ExcepcionYaHayElementoEnLaPosicion;
 import src.Jugador;
@@ -33,8 +37,9 @@ public class AltoTemplarioTest extends TestCase {
 		jugador = new Jugador("Atila","rojo", new Terran());
 		archivosTemplarios = new ArchivosTemplarios();
 		altoTemplario = new AltoTemplario();
-		
-		
+		Posicion pos = new Posicion(30, 30);
+		altoTemplario.setPosicion(pos);
+		altoTemplario.setMapa(mapa);
 	}
 	
 	public void testAltoTemplarioComienzaCon40Vida40EscudoY50Energia() {
@@ -47,7 +52,6 @@ public class AltoTemplarioTest extends TestCase {
 	
 	public void testTormentaPsionicaCuesta75Energia(){
 		
-		altoTemplario.setMapa(mapa);
 		altoTemplario.pasoTurno();
 		altoTemplario.pasoTurno();
 		altoTemplario.tormentaPsionica(30,30);
@@ -55,10 +59,13 @@ public class AltoTemplarioTest extends TestCase {
 		
 	}
 	
-	public void  testAlucinacionCuesta100Energia(){
+	public void  testAlucinacionCuesta100Energia() throws InstantiationException, IllegalAccessException, ExcepcionPosicionInvalida, ExcepcionNoHayLugarParaCrear, ExcepcionYaHayElementoEnLaPosicion{
 		
-		altoTemplario.setMapa(mapa);
 		Espectro espectro = new Espectro();
+		espectro.setMapa(mapa);
+		Posicion posicion = new Posicion(10, 10);
+		espectro.setPosicion(posicion);
+		
 		altoTemplario.pasoTurno();//65
 		altoTemplario.pasoTurno();//80
 		altoTemplario.pasoTurno();//95
@@ -108,22 +115,46 @@ public class AltoTemplarioTest extends TestCase {
 		
 	}
 	
-	/*
-	public void testAltoTemplarioAlucinaUnScout(){
+	
+	public void testAltoTemplarioAlucinaUnScout() throws ExcepcionPosicionInvalida, InstantiationException, IllegalAccessException, ExcepcionNoHayLugarParaCrear, ExcepcionYaHayElementoEnLaPosicion{
 		
 		Scout scout = new Scout();
 		scout.setMapa(mapa);
 		Posicion posicionScout = new Posicion(20,20);
 		scout.setPosicion(posicionScout);
-		
+		altoTemplario.pasoTurno();
+		altoTemplario.pasoTurno();
+		altoTemplario.pasoTurno();
+		altoTemplario.pasoTurno();
+		altoTemplario.pasoTurno();
+		altoTemplario.pasoTurno();
+		altoTemplario.pasoTurno();
 		altoTemplario.alucinacion(scout);
-		for(int i=0; i<8; i++){
-			
-			mapa.
-			
+		int cantidadDeScouts = 0;
+		int posicionX = scout.getPosicionX();
+		int posicionY = scout.getPosicionY();
+		LinkedList<Posicion> alrededores;	
+		
+		alrededores = new LinkedList<Posicion>();
+		alrededores.add(new Posicion(posicionX-1,posicionY+1));
+		alrededores.add(new Posicion(posicionX,posicionY+1));
+		alrededores.add(new Posicion(posicionX+1,posicionY+1));
+		alrededores.add(new Posicion(posicionX+1,posicionY));
+		alrededores.add(new Posicion(posicionX+1,posicionY-1));
+		alrededores.add(new Posicion(posicionX,posicionY-1));
+		alrededores.add(new Posicion(posicionX-1,posicionY-1));
+		alrededores.add(new Posicion(posicionX-1,posicionY));	
+		
+		Iterator<Posicion> i = alrededores.iterator();
+		while(i.hasNext()){
+			Posicion posicion = i.next();
+			System.out.println(mapa.obtenerContenidoEnPosicion(posicion.getX(), posicion.getY()).getElementoEnAire().getNombre());
+			if(mapa.obtenerContenidoEnPosicion(posicion.getX(), posicion.getY()).getElementoEnAire().esLoMismo(new Scout())){
+					
+				cantidadDeScouts++;
+			}
 		}
-		
-		
+	
+		Assert.assertEquals(2, cantidadDeScouts);
 	}
-	 */
 }

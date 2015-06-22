@@ -37,7 +37,7 @@ public class Zealot extends Unidad {
 		vida = new Vida(VIDA);
 		vision = VISION;
 		escudo = new Escudo (ESCUDO,this);
-		colocador = (ColocadorUnidadTerrestre) new ColocadorUnidadTerrestre();
+		colocador = new ColocadorDeUnidades();
 		reglaDeDanio = new ReglaDeDanioProtoss(escudo);
 	}		
 	
@@ -78,8 +78,8 @@ public void pasoTurno() {
 		return null;
 	}
 
-	public ColocadorUnidadTerrestre getColocador(){
-		return (ColocadorUnidadTerrestre)colocador;
+	public ColocadorDeUnidades getColocador(){
+		return colocador;
 	}
 
 	@Override

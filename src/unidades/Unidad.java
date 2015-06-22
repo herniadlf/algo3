@@ -177,7 +177,7 @@ public abstract class Unidad implements Atacable{
 			
 			atacado.getVida().aumentarDanioARecibir(danioARecibir);
 			atacado.recibirDanio();
-			ataques.aumentarAtaquesPermitidos();
+			ataques.contabilizarAtaquesEnTurno();
 		
 		} else {
 			

@@ -36,7 +36,7 @@ public class NaveTransporteProtoss extends DeTransporte {
 		vida = new Vida(VIDA);
 		vision = VISION;
 		escudo = new Escudo (ESCUDO,this);
-		colocador = (ColocadorUnidadVoladora) new ColocadorUnidadVoladora();
+		colocador = new ColocadorDeUnidades();
 		unidadesAbordo = new ArrayList<Unidad>();
 		reglaDeDanio = new ReglaDeDanioProtoss(escudo);
 	}	
@@ -72,8 +72,8 @@ public void pasoTurno() {
 		return null;
 	}
 
-	public ColocadorUnidadVoladora getColocador(){
-		return (ColocadorUnidadVoladora)colocador;
+	public ColocadorDeUnidades getColocador(){
+		return colocador;
 	}
 	
 	@Override
