@@ -42,10 +42,5 @@ public abstract class Magica extends Unidad {
 		return null;
 	}
 
-	@Override
-	public void recibirDanio() throws ExcepcionPosicionInvalida {
-		// TODO Auto-generated method stub
-
-	}
-
+	
 }
