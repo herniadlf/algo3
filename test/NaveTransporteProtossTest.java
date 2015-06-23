@@ -83,6 +83,10 @@ public class NaveTransporteProtossTest {
 	@Test
 	public void testNaveTransporteProtossSoloSeMuevePorSuRangoDeVision() throws ExcepcionPosicionInvalida, ExcepcionYaHayElementoEnLaPosicion, ExcepcionSuperaLimenteDeArbolesPermitos, ExcepcionNoPudoColocarseEdificio, ExcepcionNoPuedeMoverseUnidad, ExcepcionNoHayLugarParaCrear, ExcepcionConstruccionNoCorrespondiente, ExcepcionRecursoInsuficiente{
 		
+		
+		
+		
+		
 		Jugador jugador1 = new Jugador ("carlos","rojo",new Protoss());
 		Jugador jugador2 = new Jugador ("dean","azul",new Protoss());
 		
@@ -98,6 +102,7 @@ public class NaveTransporteProtossTest {
 		Posicion posicion = new Posicion (1,2);
 		naveProtoss.setPosicion(posicion);
 		naveProtoss.setMapa(mapa);
+		naveProtoss.setJugador(jugador1);
 		
 		try{
 			naveProtoss.transportarUnidades(20, 20);

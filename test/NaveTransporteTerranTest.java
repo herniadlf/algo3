@@ -34,6 +34,7 @@ import excepciones.ExcepcionNoSePuedeTransportar;
 import excepciones.ExcepcionNoSePuedenTransportasUnidadesVoladoras;
 import excepciones.ExcepcionPosicionInvalida;
 import excepciones.ExcepcionRecursoInsuficiente;
+import excepciones.ExcepcionSuperaLimenteDeArbolesPermitos;
 import excepciones.ExcepcionUnidadNoCorrespondiente;
 import excepciones.ExcepcionYaHayElementoEnLaPosicion;
 
@@ -101,19 +102,39 @@ public class NaveTransporteTerranTest extends TestCase {
 	}
 	
 	
-	public void testTransporteDeUnidadesAUnDeterminadoPunto() throws ExcepcionNoPudoColocarseEdificio, ExcepcionNoPudoCrearseUnidad, ExcepcionErrorPasoDeTurno, ExcepcionPosicionInvalida, ExcepcionYaHayElementoEnLaPosicion, ExcepcionElTransporteEstaLleno, ExcepcionNoHayLugarParaCrear, ExcepcionNoSePuedenTransportasUnidadesVoladoras, ExcepcionElTransporteNoEstaEnElAlcancePermitido, ExcepcionNoSePuedeTransportar, ExcepcionNoPuedeMoverseUnidad{
+	public void testTransporteDeUnidadesAUnDeterminadoPunto() throws ExcepcionNoPudoColocarseEdificio, ExcepcionNoPudoCrearseUnidad, ExcepcionErrorPasoDeTurno, ExcepcionPosicionInvalida, ExcepcionYaHayElementoEnLaPosicion, ExcepcionElTransporteEstaLleno, ExcepcionNoHayLugarParaCrear, ExcepcionNoSePuedenTransportasUnidadesVoladoras, ExcepcionElTransporteNoEstaEnElAlcancePermitido, ExcepcionNoSePuedeTransportar, ExcepcionNoPuedeMoverseUnidad, ExcepcionSuperaLimenteDeArbolesPermitos{
+		Jugador jug1 = new Jugador ("carlos","rojo",new Terran());
+		Jugador jug2 = new Jugador ("Williams", "azul", new Terran());
+		Juego juego = new Juego(jug1, jug2, 100, 0);
+		
+		
+		Marine marine = new Marine();
+		marine.setJugador(jug1);
+		marine.setMapa(juego.getMapa());
+		Posicion posicionMarine = new Posicion(1,1);
+		marine.setPosicion(posicionMarine);
+		
 		
 		Marine marine1= new Marine();
 		Marine marine2= new Marine();
 		Marine marine3= new Marine();
-		marine1.setMapa(mapa);
-		marine2.setMapa(mapa);
-		marine3.setMapa(mapa);
+		marine1.setMapa(juego.getMapa());
+		marine2.setMapa(juego.getMapa());
+		marine3.setMapa(juego.getMapa());
+		
+		
+		
+		marine1.setJugador(jug1);
+		marine2.setJugador(jug1);
+		marine3.setJugador(jug1);
+		
+		naveTransporte.setJugador(jug1);
+		
 		
 		mapa.colocarEn(1, 2, naveTransporte);
 		Posicion posicion = new Posicion (1,2);
 		naveTransporte.setPosicion(posicion);
-		naveTransporte.setMapa(mapa);
+		naveTransporte.setMapa(juego.getMapa());
 		
 		mapa.colocarEn(2,5,marine1);
 		Posicion posicion1 = new Posicion (2,5);

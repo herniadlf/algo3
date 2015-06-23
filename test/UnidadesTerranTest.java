@@ -135,10 +135,17 @@ public class UnidadesTerranTest extends TestCase{
 					
 	}
 	
-	public void testMarineSePuedeMoverHasta7posiciones(){
+	public void testMarineSePuedeMoverHasta7posiciones() throws ExcepcionPosicionInvalida, ExcepcionYaHayElementoEnLaPosicion, ExcepcionSuperaLimenteDeArbolesPermitos{
+		
+		
+		Jugador jug1 = new Jugador ("carlos","rojo",new Terran());
+		Jugador jug2 = new Jugador ("Williams", "azul", new Protoss());
+		Juego juego = new Juego(jug1, jug2, 100, 0);
+		
 		
 		Marine marine = new Marine();
-		marine.setMapa(mapa);
+		marine.setJugador(jug1);
+		marine.setMapa(juego.getMapa());
 		Posicion posicionMarine = new Posicion(1,1);
 		marine.setPosicion(posicionMarine);
 		
