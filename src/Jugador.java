@@ -24,6 +24,8 @@ import excepciones.ExcepcionYaHayElementoEnLaPosicion;
 import src.construcciones.Construccion;
 import src.construcciones.Creadora;
 import src.mapa.Mapa;
+import src.mapa.Posicion;
+import src.mapa.Sector;
 import src.razas.Raza;
 import src.unidades.Unidad;
 
@@ -40,8 +42,10 @@ public class Jugador {
 	ArrayList <Construccion> construccionesEnCamino;
 	ArrayList<Construccion> construccionesEnPie;
 	AtaquesPermitidosPorTurno ataques;
-	private Juego juego;
 	ArrayList<Unidad> unidadesAlistadas;
+	ArrayList<Sector> rangoDeVision;
+
+	private Juego juego;
 	
 	public Jugador(String nombre, String color, Raza raza) {
 		
@@ -54,6 +58,7 @@ public class Jugador {
 		this.construccionesEnPie= new ArrayList <Construccion>();
 		this.ataques= new  AtaquesPermitidosPorTurno();
 		this.unidadesAlistadas= new ArrayList<Unidad>();
+		rangoDeVision = new ArrayList<Sector>();
 			
 	}
 	
@@ -121,18 +126,6 @@ public class Jugador {
 		
 		return poblacionDisponible; 
 
-	}
-	
-	public void setJuego (Juego juego){
-		
-		this.juego= juego;
-		
-	}
-	
-	public Juego getJuego(){
-		
-		return this.juego;
-		
 	}
 	
 	public void setPoblacionDisponible(int numero) { 
@@ -354,6 +347,28 @@ public class Jugador {
 			throw new ExcepcionElEdificioNoPerteneceATusConstrucciones("El edificio seleccionado no pertenece a tus construcciones");
 		}
 		
+	}
+
+	public void setRangoDeVision(int posX,int posY,int rango, Mapa map) {
+		for (int i = posX-rango; i <= posX+rango; i++){
+			for (int j = posY-rango; j<= posY+rango;j++){
+				try {
+					Sector auxiliar = map.obtenerContenidoEnPosicion(i, j);
+					if (!rangoDeVision.contains(auxiliar)){
+						rangoDeVision.add(auxiliar);					
+					}
+				}
+				catch (ExcepcionPosicionInvalida e){}
+			}
+		}
+		
+		
+		
+	}
+
+	public void setJuego(Juego j) {
+		// TODO Auto-generated method stub
+		juego = j;
 	}
 				
 }
