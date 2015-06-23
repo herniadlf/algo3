@@ -24,7 +24,9 @@ public class Ambientador {
 			
 		try {
 			final int rangoInicial = 8;
-			mapa.colocarEn(posPrincipal1, posPrincipal1, jugador1.getRaza().getEdificioPrincipal());		
+			
+			mapa.colocarEn(posPrincipal1, posPrincipal1, jugador1.getRaza().getEdificioPrincipal());	
+			
 			jugador1.setRangoDeVision(posPrincipal1,posPrincipal1,rangoInicial,mapa);
 			mapa.colocarEn(posPrincipal2, posPrincipal2, jugador2.getRaza().getEdificioPrincipal());
 			jugador2.setRangoDeVision(posPrincipal2,posPrincipal2,rangoInicial,mapa);

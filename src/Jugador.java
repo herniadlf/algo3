@@ -69,6 +69,8 @@ public class Jugador {
 		this.construccionesEnPie= new ArrayList <Construccion>();
 		this.ataques= new  AtaquesPermitidosPorTurno();
 		this.unidadesAlistadas= new ArrayList<Unidad>();
+		rangoDeVision = new ArrayList<Sector>();
+		
 		
 	}		
 	

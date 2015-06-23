@@ -36,7 +36,8 @@ public class PedidoTamanioMapa {
 			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				ip.setJuego(generarJuego(TAMANIO_CHICO,ip));				
+				ip.setJuego(generarJuego(TAMANIO_CHICO,ip));
+				
 			}
 		});
 		JButton botonMediano = new JButton("Mediano");
@@ -44,7 +45,8 @@ public class PedidoTamanioMapa {
 			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				ip.setJuego(generarJuego(TAMANIO_MEDIANO,ip));				
+				ip.setJuego(generarJuego(TAMANIO_MEDIANO,ip));
+				
 			}
 		});
 		JButton botonGrande = new JButton("Grande");
@@ -65,12 +67,15 @@ public class PedidoTamanioMapa {
 	}
 	protected Juego generarJuego(int tamanioMapa, InterfazPrincipal ip) {
 		try {
-			return (new Juego(juego.getJugador1(),juego.getJugador2(),tamanioMapa,0));
+			
+			return (new Juego(ip.getJuego().getJugador1(),ip.getJuego().getJugador2(),tamanioMapa,0));
+			
 		}
 		catch (ExcepcionPosicionInvalida | ExcepcionYaHayElementoEnLaPosicion | ExcepcionSuperaLimenteDeArbolesPermitos e) {
 			cargarPedidoTamanioMapa(ip);
 			return null;
 		}
+		
 		
 	}
 	}

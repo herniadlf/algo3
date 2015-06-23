@@ -31,6 +31,7 @@ public class Juego {
 		jugador1 = jug1;
 		jugador2 = jug2;
 		mapa = new Ambientador().ambientarMapa(tamanioMapa, cantidadArboles, jug1, jug2);
+		
 		jugadorActual = jug1;		
 		turno = new Turno();
 		
