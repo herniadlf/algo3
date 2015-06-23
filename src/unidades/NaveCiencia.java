@@ -72,27 +72,8 @@ public class NaveCiencia extends Magica {
 	
 		return energia.obtenerCantidad(); 
 	}
+	 
 	
-	public void emp(int x, int y) {
-		
-		EMP emp = new EMP(mapa, x, y);
-		if(energia.obtenerCantidad() >= emp.obtenerEnergiaNecesaria()){
-			emp.atacar();
-			energia.disminuirEnergia(emp.obtenerEnergiaNecesaria());
-		}
-	
-	}
-	
-	public void radiacion(Unidad unidad){
-		
-		Radiacion radiacion = new Radiacion(unidad,mapa);
-		if(energia.obtenerCantidad() >= radiacion.obtenerEnergiaNecesaria()){
-			radiacion.atacar();
-			energia.disminuirEnergia(radiacion.obtenerEnergiaNecesaria());
-		}
-			
-	}
-
 	@Override
 	public boolean esOcupable() {
 		// TODO Auto-generated method stub
@@ -128,6 +109,12 @@ public class NaveCiencia extends Magica {
 	public void afectadoPorRadiacion(int danio){
 		
 		//supuesto: no afecta a naves
+		
+	}
+
+	@Override
+	public void pasoTurno() {
+		energia.aumentarEnergia(energiaPorTurno);
 		
 	}
 	

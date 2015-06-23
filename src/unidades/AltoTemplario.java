@@ -89,35 +89,12 @@ public class AltoTemplario extends Magica {
 		
 	}
 
-	public void tormentaPsionica(int x, int y) {
-
-		tormenta = new TormentaPsionica(mapa,x,y);
-
-		if(energia.obtenerCantidad() >= tormenta.obtenerEnergiaNecesaria()) {
-			tormenta.atacar();
-			energia.disminuirEnergia(tormenta.obtenerEnergiaNecesaria());
-			tormentaEnCurso = true;
-		
-		}
-
-	}
-	
-	public void alucinacion(Unidad unidad) throws InstantiationException, IllegalAccessException, ExcepcionPosicionInvalida, ExcepcionNoHayLugarParaCrear, ExcepcionYaHayElementoEnLaPosicion{
-	
-		Alucinacion alucinacion = new Alucinacion(unidad);
-		if(energia.obtenerCantidad() >= alucinacion.obtenerEnergiaNecesaria()){
-			alucinacion.atacar(unidad);
-			energia.disminuirEnergia(alucinacion.obtenerEnergiaNecesaria());
-		}
-		
-	}
-
 	public boolean esOcupable() {
 		
 		return false;
 		
 	}
-
+	
 	public boolean esTerrestre() {
 		
 		return true;
@@ -158,19 +135,6 @@ public class AltoTemplario extends Magica {
 		
 	}
 	
-	public void pasoTurno(){
-		
-		energia.aumentarEnergia(energiaPorTurno);
-		if(tormentaEnCurso){
-			tormenta.atacar();
-			tormentaEnCurso = false;
-		}
-		if(afectadoPorRadiacion){
-			Radiacion radiacion = new Radiacion(this,mapa);
-			radiacion.atacar();
-		}
-		
-	}
 	
 }
 

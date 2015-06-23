@@ -26,6 +26,8 @@ import src.construcciones.Creadora;
 import src.mapa.Mapa;
 import src.mapa.Sector;
 import src.razas.Raza;
+import src.unidades.Magia;
+import src.unidades.Magica;
 import src.unidades.Unidad;
 
 public class Jugador {
@@ -340,6 +342,22 @@ public class Jugador {
 			throw new ExcepcionLaUnidadNoPertenceATuTropa("La unidad seleccionada no pertenece a tu tropa de unidades");
 		}
 	}
+	
+	public void atacarCon(Magica agresor, Magia magia) throws ExcepcionEdificioNoPuedeCrearUnidad, ExcepcionPosicionInvalida, ExcepcionNoHayLugarParaCrear, ExcepcionYaHayElementoEnLaPosicion, ExcepcionErrorPasoDeTurno, ExcepcionConstruccionNoCorrespondiente, ExcepcionRecursoInsuficiente, ExcepcionUnidadNoCorrespondiente, ExcepcionElementoFueraDelRangoDeAtaque, ExcepcionLaUnidadNoPertenceATuTropa{
+		
+		if(this.contieneALaUnidad(agresor)){
+			
+			agresor.atacar(magia);		
+			
+		}
+		
+		else {
+			
+			throw new ExcepcionLaUnidadNoPertenceATuTropa("La unidad seleccionada no pertenece a tu tropa de unidades");
+		}
+		
+	}
+	
 
 	public void verificarEdificio(Creadora edificio) throws ExcepcionElEdificioNoPerteneceATusConstrucciones {
 		

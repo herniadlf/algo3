@@ -3,41 +3,45 @@ package src.unidades;
 import src.Atacable;
 import src.mapa.EspacioDisponible;
 import src.mapa.Mapa;
+import src.mapa.Mapeable;
 import src.mapa.Sector;
 import excepciones.ExcepcionPosicionInvalida;
 
-public class TormentaPsionica extends PorRangoAtaque {
+public class TormentaPsionica extends Magia {
 	
-	public TormentaPsionica(Mapa mapa, int x, int y){
+	public TormentaPsionica(Unidad atacado){
 		
 		danio = 100;
 		energiaNecesaria = 75;
-		this.mapa = mapa;
-		posicionX = x;
-		posicionY = y;
+		this.mapa = atacado.getMapa();
+		posicionX = atacado.getPosicionX();
+		posicionY = atacado.getPosicionY();
 		this.setAlrededores();
+		nombre = "TormentaPsionica";
 		
 	}
 	
-	public void atacarEnEstaPosicion(int x,int y){
+	public void atacarEnEstaPosicion(int x,int y) {
 		
-		try {
-			Sector sector = mapa.obtenerContenidoEnPosicion(x, y);
-			if (Atacable.class.isAssignableFrom(sector.getElementoEnTierra().getClass())){
-					Atacable objetoEnTierra = (Atacable)sector.getElementoEnTierra();
-					objetoEnTierra.afectadoPorTormentaPsionica(danio);		
-						
-			}	
-			if(!(sector.getElementoEnAire().getClass() == new EspacioDisponible().getClass())){
-					Atacable objetoEnAire = (Atacable)sector.getElementoEnAire();
-					objetoEnAire.afectadoPorTormentaPsionica(danio);	
-			
+		if(this.hayAtacableEnTierra(x, y)){	
+				
+			try {
+				this.obtenerAtacadoEnTierra().afectadoPorTormentaPsionica(danio);
+			} catch (ExcepcionPosicionInvalida e) {
+				e.printStackTrace();
 			}
-			
-		} catch (ExcepcionPosicionInvalida e) {
-			e.printStackTrace();	
-		}	
-	
+						
+		}		
+				
+		if(this.hayAtacableEnAire(x, y)){
+				
+			try {
+				this.obtenerAtacadoEnAire().afectadoPorTormentaPsionica(danio);
+			} catch (ExcepcionPosicionInvalida e) {
+				e.printStackTrace();
+			}	
+		}
+		
 	}
 	
 }

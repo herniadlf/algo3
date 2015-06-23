@@ -2,9 +2,18 @@ package test;
 
 import java.util.Iterator;
 import java.util.LinkedList;
+
 import org.junit.Assert;
+
+import excepciones.ExcepcionConstruccionNoCorrespondiente;
+import excepciones.ExcepcionEdificioNoPuedeCrearUnidad;
+import excepciones.ExcepcionElementoFueraDelRangoDeAtaque;
+import excepciones.ExcepcionErrorPasoDeTurno;
+import excepciones.ExcepcionLaUnidadNoPertenceATuTropa;
 import excepciones.ExcepcionNoHayLugarParaCrear;
 import excepciones.ExcepcionPosicionInvalida;
+import excepciones.ExcepcionRecursoInsuficiente;
+import excepciones.ExcepcionUnidadNoCorrespondiente;
 import excepciones.ExcepcionYaHayElementoEnLaPosicion;
 import src.Jugador;
 import src.construcciones.ArchivosTemplarios;
@@ -13,8 +22,11 @@ import src.mapa.Mapa;
 import src.mapa.Posicion;
 import src.razas.Terran;
 import src.unidades.AltoTemplario;
+import src.unidades.Alucinacion;
 import src.unidades.Espectro;
+import src.unidades.Marine;
 import src.unidades.Scout;
+import src.unidades.TormentaPsionica;
 import junit.framework.TestCase;
 
 public class AltoTemplarioTest extends TestCase {
@@ -44,34 +56,39 @@ public class AltoTemplarioTest extends TestCase {
 		
 	}
 	
-	public void testTormentaPsionicaCuesta75Energia(){
+	public void testTormentaPsionicaCuesta75Energia() throws ExcepcionEdificioNoPuedeCrearUnidad, ExcepcionPosicionInvalida, ExcepcionNoHayLugarParaCrear, ExcepcionYaHayElementoEnLaPosicion, ExcepcionErrorPasoDeTurno, ExcepcionConstruccionNoCorrespondiente, ExcepcionRecursoInsuficiente, ExcepcionUnidadNoCorrespondiente, ExcepcionElementoFueraDelRangoDeAtaque, ExcepcionLaUnidadNoPertenceATuTropa{
 		
+		Marine marine = new Marine();
+		Posicion posicion = new Posicion(10, 10);
+		marine.setPosicion(posicion);
+		marine.setMapa(mapa);
 		altoTemplario.pasoTurno();
 		altoTemplario.pasoTurno();
-		altoTemplario.tormentaPsionica(30,30);
+		altoTemplario.atacar(new TormentaPsionica(marine));
 		Assert.assertTrue(altoTemplario.obtenerEnergia() == 5);
 		
 	}
 	
-	public void  testAlucinacionCuesta100Energia() throws InstantiationException, IllegalAccessException, ExcepcionPosicionInvalida, ExcepcionNoHayLugarParaCrear, ExcepcionYaHayElementoEnLaPosicion{
+	public void  testAlucinacionCuesta100Energia() throws InstantiationException, IllegalAccessException, ExcepcionPosicionInvalida, ExcepcionNoHayLugarParaCrear, ExcepcionYaHayElementoEnLaPosicion, ExcepcionEdificioNoPuedeCrearUnidad, ExcepcionErrorPasoDeTurno, ExcepcionConstruccionNoCorrespondiente, ExcepcionRecursoInsuficiente, ExcepcionUnidadNoCorrespondiente, ExcepcionElementoFueraDelRangoDeAtaque, ExcepcionLaUnidadNoPertenceATuTropa{
 		
 		Espectro espectro = new Espectro();
 		espectro.setMapa(mapa);
 		Posicion posicion = new Posicion(10, 10);
 		espectro.setPosicion(posicion);
+		mapa.colocarEn(10, 10, espectro);
 		
 		altoTemplario.pasoTurno();//65
 		altoTemplario.pasoTurno();//80
 		altoTemplario.pasoTurno();//95
 		altoTemplario.pasoTurno();//110
-		altoTemplario.alucinacion(espectro);
+		altoTemplario.atacar(new Alucinacion(espectro));
 		
 		Assert.assertTrue(altoTemplario.obtenerEnergia() == 10);
 		
 	}
 	
 	
-	public void testTormentaPsionicaDaña100DuranteDosTurnosAtodasLasUnidades() throws ExcepcionPosicionInvalida, ExcepcionYaHayElementoEnLaPosicion{
+	public void testTormentaPsionicaDaña100DuranteDosTurnosAtodasLasUnidades() throws ExcepcionPosicionInvalida, ExcepcionYaHayElementoEnLaPosicion, ExcepcionEdificioNoPuedeCrearUnidad, ExcepcionNoHayLugarParaCrear, ExcepcionErrorPasoDeTurno, ExcepcionConstruccionNoCorrespondiente, ExcepcionRecursoInsuficiente, ExcepcionUnidadNoCorrespondiente, ExcepcionElementoFueraDelRangoDeAtaque, ExcepcionLaUnidadNoPertenceATuTropa{
 		
 		altoTemplario.setMapa(mapa);
 		Scout scout = new Scout();
@@ -80,16 +97,15 @@ public class AltoTemplarioTest extends TestCase {
 		//Marine marine = new Marine();
 		
 		mapa.colocarEn(21, 21, scout);
-		Posicion posicionScout = new Posicion(21,21);
+		Posicion posicionScout = new Posicion(20,20);
 		scout.setPosicion(posicionScout);
 		//mapa.colocarEn(20, 21, marine);
-		mapa.colocarEn(20, 20, fabrica);
+		mapa.colocarEn(20, 21, fabrica);
 		
 		//cargar energia
 		altoTemplario.pasoTurno();//65
 		altoTemplario.pasoTurno();//80
-		
-		altoTemplario.tormentaPsionica(20, 20); //5
+		altoTemplario.atacar(new TormentaPsionica(scout));//5
 		Assert.assertTrue(altoTemplario.obtenerEnergia() == 5);
 		
 		//1er Turno saco 100 solo a UNIDADES
@@ -110,17 +126,20 @@ public class AltoTemplarioTest extends TestCase {
 	}
 	
 	
-	public void testAltoTemplarioAlucinaUnScout() throws ExcepcionPosicionInvalida, InstantiationException, IllegalAccessException, ExcepcionNoHayLugarParaCrear, ExcepcionYaHayElementoEnLaPosicion{
+	public void testAltoTemplarioAlucinaUnScout() throws ExcepcionPosicionInvalida, InstantiationException, IllegalAccessException, ExcepcionNoHayLugarParaCrear, ExcepcionYaHayElementoEnLaPosicion, ExcepcionEdificioNoPuedeCrearUnidad, ExcepcionErrorPasoDeTurno, ExcepcionConstruccionNoCorrespondiente, ExcepcionRecursoInsuficiente, ExcepcionUnidadNoCorrespondiente, ExcepcionElementoFueraDelRangoDeAtaque, ExcepcionLaUnidadNoPertenceATuTropa{
 		
 		Scout scout = new Scout();
 		scout.setMapa(mapa);
 		Posicion posicionScout = new Posicion(20,20);
 		scout.setPosicion(posicionScout);
+		mapa.colocarEn(20, 20, scout);
+		
 		altoTemplario.pasoTurno();
 		altoTemplario.pasoTurno();
 		altoTemplario.pasoTurno();
 		altoTemplario.pasoTurno();
-		altoTemplario.alucinacion(scout);
+		altoTemplario.atacar(new Alucinacion(scout));
+	
 		int cantidadDeScouts = 0;
 		int posicionX = scout.getPosicionX();
 		int posicionY = scout.getPosicionY();
