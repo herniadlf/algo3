@@ -17,6 +17,7 @@ import src.Atacable;
 import src.AtaquesPermitidosPorTurno;
 import src.Danio;
 import src.Dinero;
+import src.Jugador;
 import src.ReglaDeDanio;
 import src.Vida;
 import src.construcciones.Creadora;
@@ -45,6 +46,19 @@ public abstract class Unidad implements Atacable{
 	protected AtaquesPermitidosPorTurno ataques;
 	protected boolean afectadoPorRadiacion;
 	protected ReglaDeDanio reglaDeDanio;
+	protected Jugador jugador;
+	
+	
+	public void setJugador (Jugador jugador){
+		this.jugador= jugador;
+		}
+	
+	public Jugador getJugador (){
+		return this.jugador;
+		
+		
+	}
+	
 	
 	public void setMapa (Mapa mapa){
 		
@@ -210,6 +224,7 @@ public abstract class Unidad implements Atacable{
 		mapa.eliminarElementoTerrestreEnPosicion(posicion.getX(), posicion.getY());
 		Posicion nuevaPosicion = new Posicion(x,y);
 		this.setPosicion(nuevaPosicion);
+		jugador.setRangoDeVision(x,y,rangoAtaque,mapa);
 		
 		}
 		
