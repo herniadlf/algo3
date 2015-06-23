@@ -23,7 +23,6 @@ import javax.swing.JPopupMenu;
 import javax.swing.JTextField;
 import javax.swing.SpringLayout;
 
-import Visual.Portada;
 import excepciones.ExcepcionColorYaElegido;
 import excepciones.ExcepcionNombreElegido;
 import src.Juego;
