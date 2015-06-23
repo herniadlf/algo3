@@ -2,11 +2,13 @@ package test;
 
 import org.junit.Assert;
 
+import src.Ambientador;
 import src.Jugador;
 import src.Mineral;
 import src.construcciones.PuertoEstelarTerran;
 import src.mapa.Mapa;
 import src.mapa.Posicion;
+import src.razas.Protoss;
 import src.razas.Terran;
 import src.unidades.AltoTemplario;
 import src.unidades.Dragon;
@@ -15,6 +17,7 @@ import src.unidades.Zealot;
 import excepciones.ExcepcionExtractoraSinRecurso;
 import excepciones.ExcepcionNoPuedeMoverseUnidad;
 import excepciones.ExcepcionPosicionInvalida;
+import excepciones.ExcepcionSuperaLimenteDeArbolesPermitos;
 import excepciones.ExcepcionYaHayElementoEnLaPosicion;
 import junit.framework.TestCase;
 
@@ -123,10 +126,17 @@ public class NaveCienciaTest extends TestCase {
 		
 	}
 	
-	public void testAltoTemplarioAfectadoPorRadiacionAlMoverseDaniaUnidadesASuAlrededor() throws ExcepcionPosicionInvalida, ExcepcionYaHayElementoEnLaPosicion, ExcepcionNoPuedeMoverseUnidad{
+	public void testAltoTemplarioAfectadoPorRadiacionAlMoverseDaniaUnidadesASuAlrededor() throws ExcepcionPosicionInvalida, ExcepcionYaHayElementoEnLaPosicion, ExcepcionNoPuedeMoverseUnidad, ExcepcionSuperaLimenteDeArbolesPermitos{
+		
+		Jugador jugador1 = new Jugador ("carlos","rojo",new Terran());
+		Jugador jugador2 = new Jugador ("Williams", "azul", new Protoss());
+		Ambientador ambientador = new Ambientador ();
+		ambientador.ambientarMapa(50, 0, jugador1, jugador2);
 		
 		AltoTemplario altoTemplario = new AltoTemplario();
 		altoTemplario.setMapa(mapa);
+		altoTemplario.setJugador(jugador);
+		
 		
 		Dragon dragon = new Dragon();
 		dragon.setMapa(mapa);
