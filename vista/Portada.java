@@ -17,7 +17,7 @@ public class Portada {
 	
 	public Portada(Juego j){
 		menu = new MenuPrincipal(j);
-		juego = j;
+		juego = j; // el juego se crea en menu principal esto para mi no iria pero no lo quiero sacar
 		
 	}
 	

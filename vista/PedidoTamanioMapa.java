@@ -48,6 +48,7 @@ public class PedidoTamanioMapa {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				ip.setJuego(generarJuego(TAMANIO_MEDIANO,ip));
+				interfazPartida.cargar(ip);
 				
 			}
 		});
@@ -57,6 +58,7 @@ public class PedidoTamanioMapa {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				ip.setJuego(generarJuego(TAMANIO_GRANDE,ip));
+				interfazPartida.cargar(ip);
 			}
 		});
 		panelTamanio.add(botonChico);
