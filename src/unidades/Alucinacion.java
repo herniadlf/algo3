@@ -1,7 +1,5 @@
 package src.unidades;
 
-import java.util.Iterator;
-
 import excepciones.ExcepcionNoHayLugarParaCrear;
 import excepciones.ExcepcionPosicionInvalida;
 import excepciones.ExcepcionYaHayElementoEnLaPosicion;

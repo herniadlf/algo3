@@ -1,13 +1,9 @@
 package src.construcciones;
 
-import excepciones.ExcepcionEdificioDestruido;
-import excepciones.ExcepcionPosicionInvalida;
 import src.Escudo;
-import src.Jugador;
 import src.ReglaDeDanioProtoss;
-import src.Turno;
 import src.mapa.FuenteDeMinerales;
-import src.mapa.Mapa;
+
 
 public class NexoMineral extends Extractora {
 	
@@ -34,17 +30,6 @@ public class NexoMineral extends Extractora {
 	public Escudo getEscudo(){
 		
 		return escudo;
-		
-	}
-	
-	public void pasoTurno(Turno turno, Mapa mapa, Jugador jugadorActual) throws ExcepcionEdificioDestruido{
-		
-		if (vida.devolverEstadoDeVida()){
-			throw new ExcepcionEdificioDestruido();
-		}
-		int minerales = jugadorActual.getDinero().getMinerales()  + RECURSOS_POR_TURNO;
-		int gas = jugadorActual.getDinero().getGasVespeno();
-		jugadorActual.setDinero(minerales, gas);
 		
 	}
 	

@@ -3,8 +3,6 @@ package src.unidades;
 import java.util.ArrayList;
 import excepciones.ExcepcionPosicionInvalida;
 import src.Atacable;
-import src.mapa.EspacioDisponible;
-import src.mapa.FuenteDeRecurso;
 import src.mapa.Mapa;
 import src.mapa.Posicion;
 import src.mapa.Sector;

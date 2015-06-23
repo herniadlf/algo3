@@ -24,7 +24,6 @@ import excepciones.ExcepcionYaHayElementoEnLaPosicion;
 import src.construcciones.Construccion;
 import src.construcciones.Creadora;
 import src.mapa.Mapa;
-import src.mapa.Posicion;
 import src.mapa.Sector;
 import src.razas.Raza;
 import src.unidades.Unidad;
@@ -367,7 +366,6 @@ public class Jugador {
 	}
 
 	public void setJuego(Juego j) {
-		// TODO Auto-generated method stub
 		juego = j;
 	}
 				

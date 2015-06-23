@@ -9,8 +9,6 @@ import src.mapa.Mapeable;
 
 public class NaveCiencia extends Magica {
 
-	private static int ENERGIA_POR_TURNO = 10;
-	
 	private static final int DANIO_AIRE = 0;
 	private static final int DANIO_TIERRA = 0;
 	private static final int RANGO_ATAQUE = 0;

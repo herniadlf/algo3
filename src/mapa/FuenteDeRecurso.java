@@ -1,5 +1,6 @@
 package src.mapa;
 
+import src.Dinero;
 import src.Recurso;
 
 
@@ -7,6 +8,7 @@ public class FuenteDeRecurso implements Mapeable {
 	
 	protected String nombre;
 	protected Recurso recurso;
+	protected static final int RECURSOS_POR_TURNO = 10;
 	
 	public Recurso getRecurso(){
 		return recurso;
@@ -54,5 +56,10 @@ public class FuenteDeRecurso implements Mapeable {
 	public boolean esAereo() {
 		return false;
 	}
+
+	public Dinero extraer(){
+		return null;
+	}			
+	
 	
 }

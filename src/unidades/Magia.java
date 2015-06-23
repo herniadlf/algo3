@@ -1,6 +1,5 @@
 package src.unidades;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 
 import src.mapa.Posicion;

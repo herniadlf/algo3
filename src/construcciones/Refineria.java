@@ -1,11 +1,8 @@
 package src.construcciones;
 
-import excepciones.ExcepcionEdificioDestruido;
-import src.Jugador;
 import src.ReglaDeDanioTerran;
-import src.Turno;
 import src.mapa.FuenteDeGasVespeno;
-import src.mapa.Mapa;
+
 
 public class Refineria extends Extractora{
 	
@@ -24,17 +21,5 @@ public class Refineria extends Extractora{
 		setTiempoDeConstruccion(TIEMPO);
 		setEdificioRequerido(new DepositoDeSuministros());
 		reglaDeDanio = new ReglaDeDanioTerran();
-	}
-	
-	public void pasoTurno(Turno turno, Mapa mapa, Jugador jugadorActual) throws ExcepcionEdificioDestruido{
-		
-		if (vida.devolverEstadoDeVida()){
-			throw new ExcepcionEdificioDestruido();
-		}
-		int minerales = jugadorActual.getDinero().getMinerales();
-		int gas = jugadorActual.getDinero().getGasVespeno() + RECURSOS_POR_TURNO;
-		jugadorActual.setDinero(minerales, gas);
-		
-	}
-	
+	}	
 }

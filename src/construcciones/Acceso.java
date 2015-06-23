@@ -1,8 +1,6 @@
 package src.construcciones;
 
 import java.util.LinkedList;
-
-import excepciones.ExcepcionPosicionInvalida;
 import src.Escudo;
 import src.ReglaDeDanioProtoss;
 import src.unidades.*;

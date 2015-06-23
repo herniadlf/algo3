@@ -1,6 +1,5 @@
 package src.unidades;
 
-import excepciones.ExcepcionPosicionInvalida;
 import src.Danio;
 import src.Dinero;
 import src.Escudo;

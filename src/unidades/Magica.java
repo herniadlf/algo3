@@ -1,7 +1,5 @@
 package src.unidades;
 
-import excepciones.ExcepcionPosicionInvalida;
-import src.Atacable;
 import src.mapa.Mapeable;
 
 public abstract class Magica extends Unidad {

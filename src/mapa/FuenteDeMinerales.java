@@ -1,5 +1,6 @@
 package src.mapa;
 
+import src.Dinero;
 import src.Mineral;
 
 public class FuenteDeMinerales extends FuenteDeRecurso {
@@ -10,4 +11,7 @@ public class FuenteDeMinerales extends FuenteDeRecurso {
 		nombre = "Mineral";
 	}
 	
+	public Dinero extraer(){
+		return new Dinero(RECURSOS_POR_TURNO,0);
+	}
 }

@@ -1,6 +1,5 @@
 package src.construcciones;
 
-import excepciones.ExcepcionPosicionInvalida;
 import src.Escudo;
 import src.ReglaDeDanioProtoss;
 
