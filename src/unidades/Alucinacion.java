@@ -26,33 +26,27 @@ public class Alucinacion extends Magia{
 	
 	public void atacar(Unidad unidad) throws InstantiationException, IllegalAccessException, ExcepcionPosicionInvalida, ExcepcionNoHayLugarParaCrear, ExcepcionYaHayElementoEnLaPosicion{
 		
-		//Class clase = unidad.getClass();
+		this.setAlrededores();
 		
-		//copia1 = (Unidad) clase.newInstance();
+		Class clase = unidad.getClass();
 		
-		copia2 = new Scout();
-			
-		ColocadorDeUnidades colocador = unidad.getColocador();
+		copia1 = (Unidad) clase.newInstance();
+		
+		copia2 = (Unidad) clase.newInstance();
 		
 		Mapa mapa = unidad.getMapa();
 		
-		//this.colocarUnidad(copia1, mapa, colocador);
-		this.colocarUnidad(copia2, mapa, colocador);
+	    this.colocarUnidad(copia1, mapa);
+		this.colocarUnidad(copia2, mapa);
 		
 	}
 	
-	private void colocarUnidad(Unidad unidad,Mapa mapa, ColocadorDeUnidades colocador) throws ExcepcionPosicionInvalida, ExcepcionNoHayLugarParaCrear, ExcepcionYaHayElementoEnLaPosicion{
+	private void colocarUnidad (Unidad aColocar , Mapa map ) throws ExcepcionPosicionInvalida, ExcepcionNoHayLugarParaCrear, ExcepcionYaHayElementoEnLaPosicion {
 		
-		Posicion posicion;
-
-			posicion = colocador.posicionAColocar(unidad, mapa, alrededores);
-			System.out.println(posicion.getX());
-			System.out.println(posicion.getY());
-			mapa.colocarEn(posicion.getX(), posicion.getY(), unidad);
-			unidad.setMapa(mapa);
-			unidad.setPosicion(posicion);
-			
-	
+		Posicion auxiliar = aColocar.getColocador().posicionAColocar(aColocar,map,alrededores);		
+		map.colocarEn(auxiliar.getX(), auxiliar.getY(), aColocar);
+		aColocar.setMapa(map);
+		aColocar.setPosicion(auxiliar);
 		
 	}
 		
