@@ -126,9 +126,6 @@ public class AltoTemplarioTest extends TestCase {
 		altoTemplario.pasoTurno();
 		altoTemplario.pasoTurno();
 		altoTemplario.pasoTurno();
-		altoTemplario.pasoTurno();
-		altoTemplario.pasoTurno();
-		altoTemplario.pasoTurno();
 		altoTemplario.alucinacion(scout);
 		int cantidadDeScouts = 0;
 		int posicionX = scout.getPosicionX();
@@ -148,7 +145,6 @@ public class AltoTemplarioTest extends TestCase {
 		Iterator<Posicion> i = alrededores.iterator();
 		while(i.hasNext()){
 			Posicion posicion = i.next();
-			System.out.println(mapa.obtenerContenidoEnPosicion(posicion.getX(), posicion.getY()).getElementoEnAire().getNombre());
 			if(mapa.obtenerContenidoEnPosicion(posicion.getX(), posicion.getY()).getElementoEnAire().esLoMismo(new Scout())){
 					
 				cantidadDeScouts++;
