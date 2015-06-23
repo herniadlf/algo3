@@ -103,7 +103,7 @@ public class AltoTemplario extends Magica {
 	}
 	
 	public void alucinacion(Unidad unidad) throws InstantiationException, IllegalAccessException, ExcepcionPosicionInvalida, ExcepcionNoHayLugarParaCrear, ExcepcionYaHayElementoEnLaPosicion{
-		
+	
 		Alucinacion alucinacion = new Alucinacion(unidad);
 		if(energia.obtenerCantidad() >= alucinacion.obtenerEnergiaNecesaria()){
 			alucinacion.atacar(unidad);
