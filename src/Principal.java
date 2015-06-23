@@ -1,12 +1,12 @@
 package src;
 
-import vista.Interfaz;
+import vista.InterfazPrincipal;
 
 public class Principal {
 	
 		public static void main(String[] args) {
 
-			new Interfaz();
+			new InterfazPrincipal();
 			
 		}
 		
