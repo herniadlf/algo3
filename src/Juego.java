@@ -92,6 +92,7 @@ public class Juego {
 			jugadorActual.verificacionUnidad(unidad, edificio);
 			jugadorActual.verificarEdificio(edificio);
 			unidad.setDuenio(jugadorActual.getNombre());
+			unidad.setJugador(jugadorActual);
 			unidad.setEdificio(edificio);
 			unidad.setTurnoInicioDeEntrenamiento(turno.devolverTurnoActual());
 			unidad.setAtaquesPermitidosPorTurno(jugadorActual.getAtaquesPermitidosPorTurno());
