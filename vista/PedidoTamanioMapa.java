@@ -18,9 +18,11 @@ public class PedidoTamanioMapa {
 	private static int TAMANIO_GRANDE = 100;
 	
 	Juego juego;
+	InterfazPartida interfazPartida;
+	
 	protected PedidoTamanioMapa(Juego j) {
-		// TODO Auto-generated constructor stub
 		juego = j;
+		interfazPartida = new InterfazPartida(juego);
 	}
 	public void cargarPedidoTamanioMapa(final InterfazPrincipal ip) {
 		// TODO Auto-generated method stub
@@ -37,7 +39,7 @@ public class PedidoTamanioMapa {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				ip.setJuego(generarJuego(TAMANIO_CHICO,ip));
-				
+				interfazPartida.cargar(ip);
 			}
 		});
 		JButton botonMediano = new JButton("Mediano");
@@ -67,9 +69,8 @@ public class PedidoTamanioMapa {
 	}
 	protected Juego generarJuego(int tamanioMapa, InterfazPrincipal ip) {
 		try {
-			
-			return (new Juego(ip.getJuego().getJugador1(),ip.getJuego().getJugador2(),tamanioMapa,0));
-			
+			Juego juegoDefinitivo = new Juego(ip.getJuego().getJugador1(),ip.getJuego().getJugador2(),tamanioMapa,0);
+			return (juegoDefinitivo);			
 		}
 		catch (ExcepcionPosicionInvalida | ExcepcionYaHayElementoEnLaPosicion | ExcepcionSuperaLimenteDeArbolesPermitos e) {
 			cargarPedidoTamanioMapa(ip);

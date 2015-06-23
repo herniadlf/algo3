@@ -40,5 +40,8 @@ public class Terran extends Raza {
 		
 	}
 	
+	public String getNombre(){
+		return "Terran";
+	}
 	
 }

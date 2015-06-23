@@ -2,25 +2,19 @@ package test;
 
 import java.util.Iterator;
 import java.util.LinkedList;
-
+import org.junit.Assert;
 import excepciones.ExcepcionNoHayLugarParaCrear;
 import excepciones.ExcepcionPosicionInvalida;
 import excepciones.ExcepcionYaHayElementoEnLaPosicion;
 import src.Jugador;
-import src.Mineral;
 import src.construcciones.ArchivosTemplarios;
 import src.construcciones.Fabrica;
 import src.mapa.Mapa;
 import src.mapa.Posicion;
 import src.razas.Terran;
 import src.unidades.AltoTemplario;
-import src.unidades.Dragon;
 import src.unidades.Espectro;
-import src.unidades.Marine;
-import src.unidades.NaveCiencia;
 import src.unidades.Scout;
-import src.unidades.Zealot;
-import junit.framework.Assert;
 import junit.framework.TestCase;
 
 public class AltoTemplarioTest extends TestCase {

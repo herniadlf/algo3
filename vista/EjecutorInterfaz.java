@@ -1,15 +1,21 @@
 package vista;
 
+import src.Juego;
+
 
 
 
 public class EjecutorInterfaz {
 //-------------------------------------------------- COMIENZO DE MAIN ---------------------------------------
-	public static void main(String[] args) {
-		
+	static Juego juego;
+	private static Portada portada;
+	static InterfazPrincipal interfazPrincipal;
 	
-		new InterfazPrincipal();
-		
+	public static void main(String[] args) {		
+		juego = new Juego();
+		interfazPrincipal = new InterfazPrincipal(juego);
+		portada = new Portada(juego);
+		portada.cargarPortada(interfazPrincipal);
 	}
 }
 	

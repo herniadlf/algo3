@@ -1,30 +1,14 @@
 package vista;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.GridLayout;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
-
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 import javax.swing.JPopupMenu;
-import javax.swing.JTextField;
-import javax.swing.SpringLayout;
-
-import excepciones.ExcepcionColorYaElegido;
-import excepciones.ExcepcionNombreElegido;
 import src.Juego;
 
 
@@ -34,11 +18,9 @@ public class InterfazPrincipal extends JFrame {
 
 	JFrame framePrincipal;
 	
-	Juego juego;
+	Juego juego;	
 	
-	private Portada portada;
-	
-	public InterfazPrincipal(){
+	public InterfazPrincipal(Juego j){
 		
 		setScreenSize(Toolkit.getDefaultToolkit().getScreenSize());
 		JFrame.setDefaultLookAndFeelDecorated(true);
@@ -46,15 +28,11 @@ public class InterfazPrincipal extends JFrame {
 		
 		setFramePrincipal(new JFrame());
 		getFramePrincipal().setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		juego = new Juego();
-		portada = new Portada(juego);
-		portada.cargarPortada(this);
+		juego = j;
 	}
 	
 	public Juego getJuego (){
-		return juego;
-		
-		
+		return juego;		
 	}
 	
 	
@@ -119,4 +97,4 @@ public class InterfazPrincipal extends JFrame {
 	}
 	
 	
-	}
+}

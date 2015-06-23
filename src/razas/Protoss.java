@@ -32,4 +32,8 @@ public class Protoss extends Raza {
 		
 	}
 	
+	public String getNombre(){
+		return "Protoss";
+	}
+	
 }

@@ -40,9 +40,9 @@ public abstract class Raza {
 				i--;
 			}
 			i++;
-		}
-		
-		
+		}		
 	}
+	
+	public abstract String getNombre();
 }
 
