@@ -82,8 +82,6 @@ public class Juego {
 		}
 		
 		jugadorActual.pasoTurno(turno,mapa);
-	
-		
 	} 
 
 	public void ordenarFabricacionUnidad (Unidad unidad, Creadora edificio) throws ExcepcionNoPudoCrearseUnidad, ExcepcionElEdificioNoPerteneceATusConstrucciones {

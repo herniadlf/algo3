@@ -31,6 +31,10 @@ public abstract class Raza {
 	}
 		
 	public abstract Construccion getEdificioPrincipal();
+	
+	public LinkedList<Construccion> getConstruccionesPosibles(){
+		return construccionesPosibles;
+	}
 
 	public void pasoTurno() {
 		int i=0;

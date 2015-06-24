@@ -6,14 +6,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
-import javax.swing.JDialog;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
-import javax.swing.JTextPane;
-import javax.swing.SwingConstants;
-import javax.swing.text.JTextComponent;
+
 
 import excepciones.ExcepcionConstruccionNoCorrespondiente;
 import excepciones.ExcepcionErrorPasoDeTurno;
@@ -26,17 +21,17 @@ public class InterfazPartida {
 	
 	Juego controladorJuego;
 	MenuUnidades menuUnidades;
-	Jugador jugador;
-	public InterfazPartida(Juego juego) {
-		
-		
+	MenuConstrucciones menuConstrucciones;
+	
+	public InterfazPartida() {
 	}
 
 	public void cargar(final InterfazPrincipal ip) {
 		
 		controladorJuego= ip.getJuego();
-		jugador = controladorJuego.getJugadorActual();
+		Jugador jugador = controladorJuego.getJugadorActual();
 		menuUnidades = new MenuUnidades(jugador);
+		menuConstrucciones = new MenuConstrucciones(jugador,this);
 		
 		ip.getFramePrincipal().getContentPane().removeAll();
 		ip.getFramePrincipal().setJMenuBar(null);
@@ -52,7 +47,7 @@ public class InterfazPartida {
 		informacion.setLineWrap(true);
 		informacion.append("Raza: " + jugador.getRaza().getNombre() +"\n");
 		informacion.append("Minerales: " + jugador.getDinero().getMinerales() + "\n" + "Gas Vespeno: " + jugador.getDinero().getGasVespeno() + "\n");
-		informacion.append("Turno: " + controladorJuego.getTurno());
+		informacion.append("Turno: " + controladorJuego.getTurno() );
 		panelJuego.add(informacion);
 		JButton cambioTurno = new JButton("Fin turno");
 		cambioTurno.addActionListener(new ActionListener() {
@@ -95,16 +90,7 @@ public class InterfazPartida {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.print ("pendiente");
-				
-				/*try {
-					
-					MenuConstrucciones.cargar(jugador);
-				} catch (ExcepcionErrorPasoDeTurno
-						| ExcepcionConstruccionNoCorrespondiente
-						| ExcepcionRecursoInsuficiente
-						| ExcepcionUnidadNoCorrespondiente e1) {
-				}*/
+				menuConstrucciones.cargar(ip);
 			}
 		});
 		
@@ -116,5 +102,7 @@ public class InterfazPartida {
 		ip.getFramePrincipal().setSize(700, 500);
 		ip.getFramePrincipal().show();		
 	}
-
+	public Juego getControlador(){
+		return controladorJuego;
+	}
 }

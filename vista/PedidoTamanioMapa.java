@@ -22,7 +22,7 @@ public class PedidoTamanioMapa {
 	
 	protected PedidoTamanioMapa(Juego j) {
 		juego = j;
-		interfazPartida = new InterfazPartida(juego);
+		interfazPartida = new InterfazPartida();
 	}
 	public void cargarPedidoTamanioMapa(final InterfazPrincipal ip) {
 		// TODO Auto-generated method stub

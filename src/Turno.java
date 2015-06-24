@@ -4,10 +4,8 @@ public class Turno {
 	
 	int turno;
 	
-	public Turno() {
-		
-		turno = 1;
-		
+	public Turno() {	
+		turno = 1;	
 	}
 	
 	public void aumentarTurno(){
