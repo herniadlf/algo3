@@ -46,15 +46,6 @@ public class UnidadesTerranTest extends TestCase{
 			
 	}
 		
-	public void testmarineCuesta50mineralYseCreaCon40deVida() {
-
-		Marine marine = new Marine();
-			
-		Assert.assertTrue((marine.getVida().obtenerVida()) == 40);
-		Assert.assertEquals(marine.getCosto().getMinerales(),50);
-		
-	}
-		
 	public void testgolliatSeCreaCon125DeVida() {
 		
 		Golliat golliat = new Golliat();
@@ -63,7 +54,6 @@ public class UnidadesTerranTest extends TestCase{
 			
 	}
 		
-	
 	public void testEspectroSeCreaCon120deVida() throws ExcepcionPosicionInvalida, ExcepcionExtractoraSinRecurso{
 		
 		Espectro espectro = new Espectro();
@@ -134,39 +124,5 @@ public class UnidadesTerranTest extends TestCase{
 		Assert.assertTrue(nexo.getEscudo().obtenerResistenciaActual() == 242 );
 					
 	}
-	
-	public void testMarineSePuedeMoverHasta7posiciones() throws ExcepcionPosicionInvalida, ExcepcionYaHayElementoEnLaPosicion, ExcepcionSuperaLimenteDeArbolesPermitos{
-		
-		
-		Jugador jug1 = new Jugador ("carlos","rojo",new Terran());
-		Jugador jug2 = new Jugador ("Williams", "azul", new Protoss());
-		Juego juego = new Juego(jug1, jug2, 100, 0);
-		
-		
-		Marine marine = new Marine();
-		marine.setJugador(jug1);
-		marine.setMapa(juego.getMapa());
-		Posicion posicionMarine = new Posicion(1,1);
-		marine.setPosicion(posicionMarine);
-		
-		try {
-			marine.moverAPosicionDeterminada(1, 4);
-		} catch (ExcepcionNoPuedeMoverseUnidad e) {
-			e.printStackTrace();
-		}
-		
-		Assert.assertTrue(marine.getPosicionX() == 1 & marine.getPosicionY() == 4);
-		
-		try {
-			marine.moverAPosicionDeterminada(1, 11);
-		} catch (ExcepcionNoPuedeMoverseUnidad e) {
-			e.printStackTrace();
-		}
-		
-		Assert.assertTrue(marine.getPosicionX() == 1 & marine.getPosicionY() == 11);
-		
-	}
-	
-	
 	
 }
