@@ -36,16 +36,66 @@ public class Dragon extends Unidad {
 		escudo = new Escudo (ESCUDO,this);
 		colocador = new ColocadorDeUnidades();
 		reglaDeDanio = new ReglaDeDanioProtoss(escudo);
+		
 	}
 	
-public void pasoTurno() {
+	public void pasoTurno() {
 		
 		escudo.pasoTurno();
 		
+	}
+	
+	public ColocadorDeUnidades getColocador(){
+		
+		return colocador;
 		
 	}
 	
+
+	public boolean esOcupable() {
+
+		return false;
+		
+	}
+
+
+	public boolean esTerrestre() {
+		
+		return true;
+		
+	}
+
+	public boolean esAereo() {
+		
+		return false;
+		
+	}
+
+	public Escudo getEscudo(){
+		
+		return escudo;
+		
+	}
+
+	public void atacarConEMP(int danio) {
+		
+		escudo.atacar(danio);
+		
+	}
 	
+
+	public void afectadoPorTormentaPsionica(int danio){
+		
+		escudo.atacar(danio);
+		
+	}
+	
+	public void afectadoPorRadiacion(int danio){
+		
+		escudo.atacar(danio);
+		
+	}
+
 	@Override
 	public Mapeable colocarContenido() {
 		// TODO Auto-generated method stub
@@ -69,55 +119,5 @@ public void pasoTurno() {
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
-	public ColocadorDeUnidades getColocador(){
-		return colocador;
-	}
-	
-	@Override
-	public boolean esOcupable() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean esTerrestre() {
-		// TODO Auto-generated method stub
-		return true;
-	}
-
-	@Override
-	public boolean esAereo() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	public Escudo getEscudo(){
-		
-		return escudo;
-		
-	}
-
-	@Override
-	public void atacarConEMP(int danio) {
-		
-		escudo.atacar(danio);
-		
-	}
-	
-
-	public void afectadoPorTormentaPsionica(int danio){
-		
-		escudo.atacar(danio);
-		
-	}
-	
-	public void afectadoPorRadiacion(int danio){
-		
-		escudo.atacar(danio);
-		
-	}
-	
-	
 
 }

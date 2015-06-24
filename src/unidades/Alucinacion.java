@@ -8,14 +8,12 @@ import src.mapa.Posicion;
 
 public class Alucinacion extends Magia{
 	
-	private Unidad alucinado;
 	private Unidad copia1;
 	private Unidad copia2;
 	private boolean alucine;
 	
 	public Alucinacion(Unidad alucinado){
 		
-		this.alucinado = alucinado;
 		energiaNecesaria = 100;
 		mapa = alucinado.getMapa();
 		posicionX = alucinado.getPosicionX();
@@ -26,23 +24,22 @@ public class Alucinacion extends Magia{
 		
 	}
 	
-	public void atacar(Unidad unidad) throws InstantiationException, IllegalAccessException, ExcepcionPosicionInvalida, ExcepcionNoHayLugarParaCrear, ExcepcionYaHayElementoEnLaPosicion{
+	public void atacar(Unidad unidad) 
+		throws InstantiationException, IllegalAccessException, ExcepcionPosicionInvalida, ExcepcionNoHayLugarParaCrear, 
+		ExcepcionYaHayElementoEnLaPosicion{
 		
 		this.setAlrededores();
-		
 		Class clase = unidad.getClass();
-		
 		copia1 = (Unidad) clase.newInstance();
-		
 		copia2 = (Unidad) clase.newInstance();
-		
 		Mapa mapa = unidad.getMapa();
-		
 	    this.colocarUnidad(copia1, mapa);
 		this.colocarUnidad(copia2, mapa);
+		
 	}	
 	
-	private void colocarUnidad (Unidad aColocar , Mapa map ) throws ExcepcionPosicionInvalida, ExcepcionNoHayLugarParaCrear, ExcepcionYaHayElementoEnLaPosicion {
+	private void colocarUnidad (Unidad aColocar , Mapa map ) throws 
+		ExcepcionPosicionInvalida, ExcepcionNoHayLugarParaCrear, ExcepcionYaHayElementoEnLaPosicion {
 		
 		Posicion auxiliar = aColocar.getColocador().posicionAColocar(aColocar,map,alrededores);		
 		map.colocarEn(auxiliar.getX(), auxiliar.getY(), aColocar);
@@ -51,33 +48,30 @@ public class Alucinacion extends Magia{
 		
 	}
 
-	@Override
 	void atacarEnEstaPosicion(int x, int y) {
 		
 		if(!(alucine)){
-		Unidad unidad = null;
-		try {
-			if(mapa.obtenerContenidoEnPosicion(x, y).getElementoEnAire().getNombre() == "Espacio Disponible"){
-				unidad = (Unidad) mapa.obtenerContenidoEnPosicion(x, y).getElementoEnTierra();
-				
-			}
-			else{
-				unidad = (Unidad) mapa.obtenerContenidoEnPosicion(x, y).getElementoEnAire();
-			}
+			Unidad unidad = null;
 			
-			this.atacar(unidad);
-			alucine = true;
-			
-		}
-		 catch (ExcepcionPosicionInvalida |
-				 InstantiationException |
-				 IllegalAccessException |
-				 ExcepcionNoHayLugarParaCrear |
-				 ExcepcionYaHayElementoEnLaPosicion e) {
+			try {
+				if(mapa.obtenerContenidoEnPosicion(x, y).getElementoEnAire().getNombre() == "Espacio Disponible"){
+					unidad = (Unidad) mapa.obtenerContenidoEnPosicion(x, y).getElementoEnTierra();
+				}
+				else{
+					unidad = (Unidad) mapa.obtenerContenidoEnPosicion(x, y).getElementoEnAire();
+				}
+				this.atacar(unidad);
+				alucine = true;
+			}
+			catch (ExcepcionPosicionInvalida |
+					InstantiationException |
+					IllegalAccessException |
+					ExcepcionNoHayLugarParaCrear |
+					ExcepcionYaHayElementoEnLaPosicion e) {
 			 		
-			 		e.printStackTrace();
+						e.printStackTrace();
 	
-		 		}
+		 			}
 		
 		}
 	

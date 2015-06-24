@@ -1,8 +1,6 @@
 package src.unidades;
 
-import excepciones.ExcepcionNoHayLugarParaCrear;
 import excepciones.ExcepcionPosicionInvalida;
-import excepciones.ExcepcionYaHayElementoEnLaPosicion;
 import src.Danio;
 import src.Dinero;
 import src.Escudo;
@@ -25,8 +23,6 @@ public class AltoTemplario extends Magica {
 	private static final int COSTO_GAS = 150;
 	private static int ENERGIA = 50;
 	Escudo escudo;
-	private boolean tormentaEnCurso;
-	private TormentaPsionica tormenta;
 	private int danioRadiacion;
 	
 	public AltoTemplario() {	
@@ -45,10 +41,10 @@ public class AltoTemplario extends Magica {
 		energiaPorTurno = 15;
 		colocador = new ColocadorDeUnidades();
 		tormentaEnCurso = false;
-		tormenta = null;
 		afectadoPorRadiacion = false;
 		danioRadiacion = 0;
 		reglaDeDanio = new ReglaDeDanioProtoss(escudo);
+		
 	}
 		
 	public Mapeable colocarContenido() {
@@ -134,7 +130,6 @@ public class AltoTemplario extends Magica {
 		vida.reestablecerDanioRecibido();
 		
 	}
-	
 	
 }
 

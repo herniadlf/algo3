@@ -12,6 +12,7 @@ public abstract class Raza {
 	protected LinkedList<Construccion> construccionesPosibles;
 	
 	public void verificarEdificioPosible(Construccion c) throws ExcepcionConstruccionNoCorrespondiente{
+		
 		int i = 0;
 		Boolean founded = false;
 		while ( (i < construccionesPosibles.size() ) && (!founded) ){
@@ -33,10 +34,13 @@ public abstract class Raza {
 	public abstract Construccion getEdificioPrincipal();
 	
 	public LinkedList<Construccion> getConstruccionesPosibles(){
+		
 		return construccionesPosibles;
+		
 	}
 
 	public void pasoTurno() {
+		
 		int i=0;
 		while (i < construccionesPosibles.size()){
 			if ( construccionesPosibles.get(i).getVida().estaMuerto() ) {
@@ -44,13 +48,17 @@ public abstract class Raza {
 				i--;
 			}
 			i++;
-		}		
+		}	
+		
 	}
 	
 	public abstract String getNombre();
 
 	public LinkedList<Unidad> getUnidadesPosibles() {
+		
 		return unidadesPosibles;
+		
 	}
+	
 }
 
