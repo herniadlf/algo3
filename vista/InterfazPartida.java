@@ -6,9 +6,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
+
+
+import javax.swing.LayoutStyle;
 
 import excepciones.ExcepcionConstruccionNoCorrespondiente;
 import excepciones.ExcepcionErrorPasoDeTurno;
@@ -22,7 +26,7 @@ public class InterfazPartida {
 	Juego controladorJuego;
 	MenuUnidades menuUnidades;
 	MenuConstrucciones menuConstrucciones;
-	
+	ListaEdificiosEnPie listaEdificios;
 	public InterfazPartida() {
 	}
 
@@ -31,7 +35,8 @@ public class InterfazPartida {
 		controladorJuego= ip.getJuego();
 		Jugador jugador = controladorJuego.getJugadorActual();
 		menuUnidades = new MenuUnidades(jugador);
-		menuConstrucciones = new MenuConstrucciones(jugador,this);
+		menuConstrucciones = new MenuConstrucciones(controladorJuego,this,ip);
+		listaEdificios = new ListaEdificiosEnPie(controladorJuego,this);
 		
 		ip.getFramePrincipal().getContentPane().removeAll();
 		ip.getFramePrincipal().setJMenuBar(null);
@@ -48,6 +53,7 @@ public class InterfazPartida {
 		informacion.append("Raza: " + jugador.getRaza().getNombre() +"\n");
 		informacion.append("Minerales: " + jugador.getDinero().getMinerales() + "\n" + "Gas Vespeno: " + jugador.getDinero().getGasVespeno() + "\n");
 		informacion.append("Turno: " + controladorJuego.getTurno() );
+		informacion.append("\n Tamaño del Mapa: " + controladorJuego.getMapa().getTamanioMapa());
 		panelJuego.add(informacion);
 		JButton cambioTurno = new JButton("Fin turno");
 		cambioTurno.addActionListener(new ActionListener() {
@@ -81,14 +87,24 @@ public class InterfazPartida {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				menuConstrucciones.cargar(ip);
+				menuConstrucciones.cargar();
 			}
 		});
-		
-		
+		JLabel edificiosEnPie = new JLabel("Construcciones en Pie");
+		JButton ver = new JButton("Ver");
+		ver.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				listaEdificios.cargar(ip);
+			}
+		});
+		edificiosEnPie.setLabelFor(ver);		
 		panelJuego.add(cambioTurno);
 		panelJuego.add (unidades);
 		panelJuego.add (construcciones);
+		panelJuego.add (edificiosEnPie);
+		panelJuego.add (ver);
 		ip.getFramePrincipal().getContentPane().add(panelJuego,BorderLayout.WEST);	
 		ip.getFramePrincipal().setSize(700, 500);
 		ip.getFramePrincipal().show();		

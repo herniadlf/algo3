@@ -104,12 +104,12 @@ public class MiniIntegracionTest {
 		
 		Construccion barraca = new Barraca();
 		
-		juego.ordenFabricacionDeEdificios(barraca, 10, 10);
+		juego.ordenFabricacionDeEdificios(barraca, 78, 78);
 
 		
-		Assert.assertFalse(juego.getMapa().obtenerContenidoEnPosicion(10,10).getElementoEnTierra().esLoMismo(new Barraca()));
+		Assert.assertFalse(juego.getMapa().obtenerContenidoEnPosicion(78,78).getElementoEnTierra().esLoMismo(new Barraca()));
 		
-		Assert.assertTrue(juego.getMapa().obtenerContenidoEnPosicion(10,10).getElementoEnTierra().esLoMismo(new Escombros()));
+		Assert.assertTrue(juego.getMapa().obtenerContenidoEnPosicion(78,78).getElementoEnTierra().esLoMismo(new Escombros()));
 		
 		for (int i = 0; i<13;i++){ // pasar turnos para que se creen
 			juego.pasarTurno();
@@ -117,7 +117,7 @@ public class MiniIntegracionTest {
 		}			
 		
 		
-		Assert.assertTrue(juego.getMapa().obtenerContenidoEnPosicion(10,10).getElementoEnTierra().esLoMismo(new Barraca()));
+		Assert.assertTrue(juego.getMapa().obtenerContenidoEnPosicion(78,78).getElementoEnTierra().esLoMismo(new Barraca()));
 		
 		Assert.assertTrue(juego.getJugadorActual().contieneALaConstruccion(barraca));
 	}
@@ -214,9 +214,9 @@ public class MiniIntegracionTest {
 		PuertoEstelarTerran puertoEstelar= new PuertoEstelarTerran();
 		
 		
-		juego.ordenFabricacionDeEdificios(depositoDeSuministro1, 30, 30);
-		juego.ordenFabricacionDeEdificios(depositoDeSuministro2, 20, 30);
-		juego.ordenFabricacionDeEdificios(barraca, 10, 10);
+		juego.ordenFabricacionDeEdificios(depositoDeSuministro1, 72, 77);
+		juego.ordenFabricacionDeEdificios(depositoDeSuministro2, 70, 75);
+		juego.ordenFabricacionDeEdificios(barraca, 74, 74);
 		
 		for (int i = 0; i<12;i++){ // pasar turnos para que se creen
 			juego.pasarTurno();
@@ -224,26 +224,26 @@ public class MiniIntegracionTest {
 		}		
 		
 		//Verifico que se crearon los depositosDeSuministros en el mapa 
-		Assert.assertTrue(mapa.obtenerContenidoEnPosicion(30,30).getElementoEnTierra().esLoMismo(new DepositoDeSuministros()));
-		Assert.assertTrue(mapa.obtenerContenidoEnPosicion(20,30).getElementoEnTierra().esLoMismo(new DepositoDeSuministros()));
-		Assert.assertTrue(mapa.obtenerContenidoEnPosicion(10,10).getElementoEnTierra().esLoMismo(new Barraca()));
+		Assert.assertTrue(mapa.obtenerContenidoEnPosicion(72,77).getElementoEnTierra().esLoMismo(new DepositoDeSuministros()));
+		Assert.assertTrue(mapa.obtenerContenidoEnPosicion(70,75).getElementoEnTierra().esLoMismo(new DepositoDeSuministros()));
+		Assert.assertTrue(mapa.obtenerContenidoEnPosicion(74,74).getElementoEnTierra().esLoMismo(new Barraca()));
 		
-		juego.ordenFabricacionDeEdificios(fabrica, 35, 35);
+		juego.ordenFabricacionDeEdificios(fabrica, 72, 72);
 		
 		for (int i = 0; i<12;i++){ // pasar turnos para que se creen
 			juego.pasarTurno();
 			juego.pasarTurno();}
 		
-		Assert.assertTrue(mapa.obtenerContenidoEnPosicion(35,35).getElementoEnTierra().esLoMismo(new Fabrica()));
+		Assert.assertTrue(mapa.obtenerContenidoEnPosicion(72,72).getElementoEnTierra().esLoMismo(new Fabrica()));
 		
 		
-		juego.ordenFabricacionDeEdificios(puertoEstelar, 40, 40);
+		juego.ordenFabricacionDeEdificios(puertoEstelar, 70, 77);
 		
 		for (int i = 0; i<10;i++){ // pasar turnos para que se creen
 			juego.pasarTurno();
 			juego.pasarTurno();}
 		
-		Assert.assertTrue(mapa.obtenerContenidoEnPosicion(40,40).getElementoEnTierra().esLoMismo(new PuertoEstelarTerran()));
+		Assert.assertTrue(mapa.obtenerContenidoEnPosicion(70,77).getElementoEnTierra().esLoMismo(new PuertoEstelarTerran()));
 		
 		
 		
@@ -257,7 +257,7 @@ public class MiniIntegracionTest {
 		}		
 		
 	
-		Assert.assertTrue(juego.getMapa().obtenerContenidoEnPosicion(39,41).getElementoEnAire().esLoMismo(new Espectro()));
+		Assert.assertTrue(juego.getMapa().obtenerContenidoEnPosicion(69,78).getElementoEnAire().esLoMismo(new Espectro()));
 		
 		}
 	

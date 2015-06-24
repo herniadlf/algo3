@@ -13,7 +13,7 @@ public class DepositoDeSuministros extends NoExtractora{
 	public DepositoDeSuministros(){
 		
 		super();
-		setNombre("Deposito de Suministros");
+		setNombre("Deposito");
 		setVida(VIDA);
 		setCosto(COSTO_MINERALES,COSTO_GAS);
 		setTiempoDeConstruccion(TIEMPO);

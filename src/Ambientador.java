@@ -26,10 +26,17 @@ public class Ambientador {
 			final int rangoInicial = 8;
 			
 			mapa.colocarEn(posPrincipal1, posPrincipal1, jugador1.getRaza().getEdificioPrincipal());	
-			
+			jugador1.getRaza().getEdificioPrincipal().setPosicionX(posPrincipal1);
+			jugador1.getRaza().getEdificioPrincipal().setPosicionY(posPrincipal1);
+			jugador1.construccionesEnPie.add(jugador1.getRaza().getEdificioPrincipal());
 			jugador1.setRangoDeVision(posPrincipal1,posPrincipal1,rangoInicial,mapa);
+			
 			mapa.colocarEn(posPrincipal2, posPrincipal2, jugador2.getRaza().getEdificioPrincipal());
+			jugador2.getRaza().getEdificioPrincipal().setPosicionX(posPrincipal2);
+			jugador2.getRaza().getEdificioPrincipal().setPosicionY(posPrincipal2);		
+			jugador2.construccionesEnPie.add(jugador2.getRaza().getEdificioPrincipal());
 			jugador2.setRangoDeVision(posPrincipal2,posPrincipal2,rangoInicial,mapa);
+			
 			this.agregarFuentes(mapa, CANT_DE_FUENTES_RECURSOS, posPrincipal1, posPrincipal1);
 			
 			this.agregarFuentes(mapa, CANT_DE_FUENTES_RECURSOS, posPrincipal1, posPrincipal2);

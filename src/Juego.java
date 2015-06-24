@@ -5,6 +5,7 @@ import excepciones.ExcepcionConstruccionNoCorrespondiente;
 import excepciones.ExcepcionElEdificioNoPerteneceATusConstrucciones;
 import excepciones.ExcepcionErrorPasoDeTurno;
 import excepciones.ExcepcionExtractoraSinRecurso;
+import excepciones.ExcepcionFueraDelRangoDeVision;
 import excepciones.ExcepcionNoPudoColocarseEdificio;
 import excepciones.ExcepcionNoPudoCrearseUnidad;
 import excepciones.ExcepcionPosicionInvalida;
@@ -109,7 +110,7 @@ public class Juego {
 	public void ordenFabricacionDeEdificios (Construccion construccion, int x, int y) throws ExcepcionNoPudoColocarseEdificio {
 		
 		try {
-			jugadorActual.verificacionEdificio(construccion);
+			jugadorActual.verificacionEdificio(construccion,x,y,mapa);
 			construccion.setDuenio(jugadorActual.getNombre());
 			construccion.setPosicionX(x);
 			construccion.setPosicionY(y);
@@ -120,7 +121,8 @@ public class Juego {
 		} catch (ExcepcionConstruccionNoCorrespondiente
 				| ExcepcionRecursoInsuficiente | 
 				ExcepcionYaHayElementoEnLaPosicion | 
-				ExcepcionExtractoraSinRecurso |ExcepcionPosicionInvalida e) {	
+				ExcepcionExtractoraSinRecurso |ExcepcionPosicionInvalida 
+				| ExcepcionFueraDelRangoDeVision e) {	
 			throw new ExcepcionNoPudoColocarseEdificio(e);
 		}	
 	

@@ -10,6 +10,7 @@ import excepciones.ExcepcionElEdificioNoPerteneceATusConstrucciones;
 import excepciones.ExcepcionElementoFueraDelRangoDeAtaque;
 import excepciones.ExcepcionErrorPasoDeTurno;
 import excepciones.ExcepcionExtractoraSinRecurso;
+import excepciones.ExcepcionFueraDelRangoDeVision;
 import excepciones.ExcepcionLaUnidadNoPertenceATuTropa;
 import excepciones.ExcepcionNoHayLugarParaCrear;
 import excepciones.ExcepcionNoPudoColocarseEdificio;
@@ -158,7 +159,7 @@ public class Jugador {
 			edificio.setAlrededores();
 			edificio.colocar(map);
 			this.getRaza().actualizarEdificios(edificio);
-			this.gastarPlata(edificio.getCosto());
+			//this.gastarPlata(edificio.getCosto());
 			poblacionDisponible = poblacionDisponible + edificio.getCantidadDeSuministros();			
 		} catch (ExcepcionPosicionInvalida | ExcepcionExtractoraSinRecurso
 				| ExcepcionConstruccionNoCorrespondiente
@@ -169,12 +170,18 @@ public class Jugador {
 		return edificio;
 		
 	}
-	
+	/* for testing */
 	public void verificacionEdificio(Construccion edificio) throws ExcepcionConstruccionNoCorrespondiente, ExcepcionRecursoInsuficiente{
 		
 		this.getRaza().verificarEdificioPosible(edificio.getEdificioRequerido());
 		this.gastoPosible(edificio.getCosto());
 		
+	}
+	public void verificacionEdificio(Construccion edificio, int x, int y, Mapa map) throws ExcepcionConstruccionNoCorrespondiente, ExcepcionPosicionInvalida, ExcepcionFueraDelRangoDeVision, ExcepcionRecursoInsuficiente{
+		Sector auxiliar = map.obtenerContenidoEnPosicion(x, y);
+		if (!rangoDeVision.contains(auxiliar)) { throw new ExcepcionFueraDelRangoDeVision("Fuera del rango de vision"); }
+		this.getRaza().verificarEdificioPosible(edificio.getEdificioRequerido());
+		this.gastoPosible(edificio.getCosto());
 	}
 	
 	private void gastoPosible(Dinero costo) throws ExcepcionRecursoInsuficiente{

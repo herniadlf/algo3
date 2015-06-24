@@ -17,6 +17,7 @@ public class Pilon extends NoExtractora {
 		
 		super();
 		setVida(VIDA);
+		setNombre("Pilon");
 		setCosto(COSTO_MINERALES,COSTO_GAS);
 		setTiempoDeConstruccion(TIEMPO);
 		setEdificioRequerido(this);
