@@ -46,14 +46,6 @@ public class UnidadesTerranTest extends TestCase{
 			
 	}
 		
-	public void testgolliatSeCreaCon125DeVida() {
-		
-		Golliat golliat = new Golliat();
-			
-		Assert.assertTrue((golliat.getVida().obtenerVida()) == 125);
-			
-	}
-		
 	public void testEspectroSeCreaCon120deVida() throws ExcepcionPosicionInvalida, ExcepcionExtractoraSinRecurso{
 		
 		Espectro espectro = new Espectro();

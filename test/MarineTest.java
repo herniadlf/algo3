@@ -37,6 +37,7 @@ public class MarineTest extends TestCase{
 		mapa = new Mapa(50);
 		jugador = new Jugador("Lionel Messi","rojo", new Terran());
 		marine = new Marine();	
+		
 	}
 	
 	public void testMarineOcupa1enTransporte(){

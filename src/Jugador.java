@@ -178,11 +178,14 @@ public class Jugador {
 		this.gastoPosible(edificio.getCosto());
 		
 	}
-	public void verificacionEdificio(Construccion edificio, int x, int y, Mapa map) throws ExcepcionConstruccionNoCorrespondiente, ExcepcionPosicionInvalida, ExcepcionFueraDelRangoDeVision, ExcepcionRecursoInsuficiente{
+	public void verificacionEdificio(Construccion edificio, int x, int y, Mapa map) throws 
+		ExcepcionConstruccionNoCorrespondiente, ExcepcionPosicionInvalida, ExcepcionFueraDelRangoDeVision, ExcepcionRecursoInsuficiente{
+		
 		Sector auxiliar = map.obtenerContenidoEnPosicion(x, y);
 		if (!rangoDeVision.contains(auxiliar)) { throw new ExcepcionFueraDelRangoDeVision("Fuera del rango de vision"); }
 		this.getRaza().verificarEdificioPosible(edificio.getEdificioRequerido());
 		this.gastoPosible(edificio.getCosto());
+		
 	}
 	
 	private void gastoPosible(Dinero costo) throws ExcepcionRecursoInsuficiente{
