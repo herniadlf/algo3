@@ -136,7 +136,7 @@ public class NaveCienciaTest extends TestCase {
 		Assert.assertTrue(altoTemplario.getVida().obtenerVida() == 20);
 		
 		altoTemplario.pasoTurno();
-		Assert.assertTrue(altoTemplario.getVida().devolverEstadoDeVida());
+		Assert.assertTrue(altoTemplario.getVida().estaMuerto());
 		
 	}
 	

@@ -39,7 +39,7 @@ public abstract class Raza {
 	public void pasoTurno() {
 		int i=0;
 		while (i < construccionesPosibles.size()){
-			if ( construccionesPosibles.get(i).getVida().devolverEstadoDeVida() ) {
+			if ( construccionesPosibles.get(i).getVida().estaMuerto() ) {
 				construccionesPosibles.remove(i);
 				i--;
 			}

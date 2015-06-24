@@ -65,7 +65,7 @@ public abstract class Creadora extends NoExtractora {
 		int i=0;
 		int turnosPasados;
 		int turnoOrdenoFabricacion;
-		if (vida.devolverEstadoDeVida()){
+		if (vida.estaMuerto()){
 			throw new ExcepcionEdificioDestruido();
 		}
 		while (this.unidadesEnFabricacion.size()>i){

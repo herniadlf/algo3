@@ -31,7 +31,7 @@ public abstract class Extractora extends Construccion {
 	}
 	
 	public void pasoTurno(Turno turno, Mapa mapa, Jugador jugadorActual) throws ExcepcionEdificioDestruido{
-		if (vida.devolverEstadoDeVida()){
+		if (vida.estaMuerto()){
 			throw new ExcepcionEdificioDestruido();
 		}
 		Dinero extraido = fuente.extraer();

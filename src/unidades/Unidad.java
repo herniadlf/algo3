@@ -206,7 +206,7 @@ public abstract class Unidad implements Atacable{
 	public void recibirDanio () throws ExcepcionPosicionInvalida{
 		
 		reglaDeDanio.recibirDanio(this);
-		boolean estadoDeVidaFinalizado= vida.devolverEstadoDeVida();
+		boolean estadoDeVidaFinalizado= vida.estaMuerto();
 		  if (estadoDeVidaFinalizado==true){
 			 mapa.eliminarElementoTerrestreEnPosicion(getPosicionX(),getPosicionY());
 		 }

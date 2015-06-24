@@ -163,7 +163,7 @@ public class UnidadesProtossTest{
 		dragon.getVida().aumentarDanioARecibir(200);
 		dragon.getVida().disminuirVidaPorDanio();
 		
-		Assert.assertTrue(dragon.getVida().devolverEstadoDeVida());
+		Assert.assertTrue(dragon.getVida().estaMuerto());
 		
 	}
 	

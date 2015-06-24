@@ -223,7 +223,7 @@ public class Construccion implements Atacable {
 	
 	public void recibirDanio() throws ExcepcionPosicionInvalida {	
 		reglaDeDanio.recibirDanio(this);
-		boolean estadoDeVidaFinalizado= vida.devolverEstadoDeVida();
+		boolean estadoDeVidaFinalizado= vida.estaMuerto();
 		  if (estadoDeVidaFinalizado==true){
 			 mapa.eliminarElementoTerrestreEnPosicion(getPosicionX(),getPosicionY());
 		 }
@@ -242,7 +242,7 @@ public class Construccion implements Atacable {
 	}
 
 	public void pasoTurno(Turno turno, Mapa map, Jugador jugador) throws ExcepcionNoPudoColocarseUnidad, ExcepcionEdificioDestruido, ExcepcionUnidadNoCorrespondiente {
-		if (vida.devolverEstadoDeVida()){
+		if (vida.estaMuerto()){
 			throw new ExcepcionEdificioDestruido();
 		}
 			
