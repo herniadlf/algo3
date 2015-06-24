@@ -50,6 +50,7 @@ public class NaveTransporteTerranTest extends TestCase {
 	
 	protected void setUp() throws Exception {
 		
+		
 		super.setUp();
 		jugador1 = new Jugador ("carlos","rojo",new Terran());
 		jugador2 = new Jugador ("dean","azul",new Terran());

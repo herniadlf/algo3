@@ -48,5 +48,9 @@ public abstract class Raza {
 	}
 	
 	public abstract String getNombre();
+
+	public LinkedList<Unidad> getUnidadesPosibles() {
+		return unidadesPosibles;
+	}
 }
 

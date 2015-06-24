@@ -48,6 +48,8 @@ public abstract class Unidad implements Atacable{
 	protected ReglaDeDanio reglaDeDanio;
 	protected Jugador jugador;
 	
+	public Unidad(){};
+	
 	
 	public void setJugador (Jugador jugador){
 		this.jugador= jugador;

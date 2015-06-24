@@ -71,16 +71,7 @@ public class InterfazPartida {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.print ("lo estoy haciendo");
-				
-				/*try { MenuUnidades.cargar(jugador);
-					
-					cargar(ip);
-				} catch (ExcepcionErrorPasoDeTurno
-						| ExcepcionConstruccionNoCorrespondiente
-						| ExcepcionRecursoInsuficiente
-						| ExcepcionUnidadNoCorrespondiente e1) {
-				}*/
+				menuUnidades.cargar(ip);
 			}
 		});
 		
