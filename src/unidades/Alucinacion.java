@@ -69,20 +69,18 @@ public class Alucinacion extends Magia{
 			alucine = true;
 			
 		}
-		 catch (ExcepcionPosicionInvalida e) {
-			e.printStackTrace();
-		} catch (InstantiationException e) {
-			e.printStackTrace();
-		} catch (IllegalAccessException e) {
-			e.printStackTrace();
-		} catch (ExcepcionNoHayLugarParaCrear e) {
-			e.printStackTrace();
-		} catch (ExcepcionYaHayElementoEnLaPosicion e) {
-			e.printStackTrace();
-		}
-
-		}
+		 catch (ExcepcionPosicionInvalida |
+				 InstantiationException |
+				 IllegalAccessException |
+				 ExcepcionNoHayLugarParaCrear |
+				 ExcepcionYaHayElementoEnLaPosicion e) {
+			 		
+			 		e.printStackTrace();
+	
+		 		}
 		
+		}
+	
 	}
 	
 }
