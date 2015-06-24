@@ -1,6 +1,5 @@
 package src;
 
-
 import excepciones.ExcepcionConstruccionNoCorrespondiente;
 import excepciones.ExcepcionElEdificioNoPerteneceATusConstrucciones;
 import excepciones.ExcepcionErrorPasoDeTurno;
@@ -68,26 +67,25 @@ public class Juego {
 		
 	}
 	
-	public void pasarTurno () throws ExcepcionErrorPasoDeTurno, ExcepcionConstruccionNoCorrespondiente, ExcepcionRecursoInsuficiente, ExcepcionUnidadNoCorrespondiente 	{
+	public void pasarTurno () throws 
+		ExcepcionErrorPasoDeTurno, ExcepcionConstruccionNoCorrespondiente, ExcepcionRecursoInsuficiente, ExcepcionUnidadNoCorrespondiente{
 		
 		turno.aumentarTurno();
 		if ((turno.devolverTurnoActual()%2)==0){
-			
-			jugadorActual = jugador2;
-			
+			jugadorActual = jugador2;	
 		}
 		else {
-			
-			jugadorActual = jugador1;
-			
+			jugadorActual = jugador1;	
 		}
-		
 		jugadorActual.pasoTurno(turno,mapa);
+		
 	} 
 
-	public void ordenarFabricacionUnidad (Unidad unidad, Creadora edificio) throws ExcepcionNoPudoCrearseUnidad, ExcepcionElEdificioNoPerteneceATusConstrucciones {
+	public void ordenarFabricacionUnidad (Unidad unidad, Creadora edificio) throws 
+		ExcepcionNoPudoCrearseUnidad, ExcepcionElEdificioNoPerteneceATusConstrucciones {
 		
 		try {
+			
 			jugadorActual.verificacionUnidad(unidad, edificio);
 			jugadorActual.verificarEdificio(edificio);
 			unidad.setDuenio(jugadorActual.getNombre());
@@ -96,6 +94,7 @@ public class Juego {
 			unidad.setTurnoInicioDeEntrenamiento(turno.devolverTurnoActual());
 			unidad.setAtaquesPermitidosPorTurno(jugadorActual.getAtaquesPermitidosPorTurno());
 			edificio.agregarUnidadAEntrenamiento(unidad);
+			
 		} catch (ExcepcionUnidadNoCorrespondiente
 				| ExcepcionRecursoInsuficiente
 				| ExcepcionSuministrosInsuficientes
@@ -107,9 +106,11 @@ public class Juego {
 		
 	}
 	
-	public void ordenFabricacionDeEdificios (Construccion construccion, int x, int y) throws ExcepcionNoPudoColocarseEdificio {
+	public void ordenFabricacionDeEdificios (Construccion construccion, int x, int y) throws 
+		ExcepcionNoPudoColocarseEdificio {
 		
 		try {
+			
 			jugadorActual.verificacionEdificio(construccion,x,y,mapa);
 			construccion.setDuenio(jugadorActual.getNombre());
 			construccion.setPosicionX(x);
@@ -118,6 +119,7 @@ public class Juego {
 			construccion.setTurnoInicioDEConstruccion(turno.devolverTurnoActual());
 			jugadorActual.obtenerConstruccionesEnCamino().add(construccion);		
 			jugadorActual.gastarPlata(construccion.getCosto());
+			
 		} catch (ExcepcionConstruccionNoCorrespondiente
 				| ExcepcionRecursoInsuficiente | 
 				ExcepcionYaHayElementoEnLaPosicion | 
@@ -131,9 +133,13 @@ public class Juego {
 	public void setJugadorActual(Jugador jugador) {
 	
 			jugadorActual = jugador;	
+			
 	}		
+	
 	public int getTurno(){
+		
 		return (turno.devolverTurnoActual()/2);
+		
 	}
 		
 }
