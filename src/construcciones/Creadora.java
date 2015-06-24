@@ -46,17 +46,17 @@ public abstract class Creadora extends NoExtractora {
 		
 	}
 	
-	public void colocarUnidad ( Unidad aColocar , Mapa map ) 
-			throws ExcepcionPosicionInvalida, 
-			ExcepcionNoHayLugarParaCrear, 
-			ExcepcionYaHayElementoEnLaPosicion, 
-			ExcepcionUnidadNoCorrespondiente {		
+	public void colocarUnidad ( Unidad aColocar , Mapa map ) throws 
+		ExcepcionPosicionInvalida, 
+		ExcepcionNoHayLugarParaCrear, 
+		ExcepcionYaHayElementoEnLaPosicion, 
+		ExcepcionUnidadNoCorrespondiente {		
 			
-			verificarUnidadCreable(aColocar);
-			Posicion auxiliar = aColocar.getColocador().posicionAColocar(aColocar,map,alrededores);		
-			map.colocarEn(auxiliar.getX(), auxiliar.getY(), aColocar);
-			aColocar.setMapa(map);
-			aColocar.setPosicion(auxiliar);
+		verificarUnidadCreable(aColocar);
+		Posicion auxiliar = aColocar.getColocador().posicionAColocar(aColocar,map,alrededores);		
+		map.colocarEn(auxiliar.getX(), auxiliar.getY(), aColocar);
+		aColocar.setMapa(map);
+		aColocar.setPosicion(auxiliar);
 		
 	}
 	

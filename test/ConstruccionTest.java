@@ -323,7 +323,8 @@ public class ConstruccionTest {
 		}
 		
 		@Test
-		public void testCrearDosEdificiosElMismoTurno() throws ExcepcionPosicionInvalida, ExcepcionYaHayElementoEnLaPosicion, ExcepcionSuperaLimenteDeArbolesPermitos, ExcepcionNoPudoColocarseEdificio, ExcepcionErrorPasoDeTurno, ExcepcionConstruccionNoCorrespondiente, ExcepcionRecursoInsuficiente, ExcepcionUnidadNoCorrespondiente{
+		public void testCrearDosEdificiosElMismoTurno() throws ExcepcionPosicionInvalida, ExcepcionYaHayElementoEnLaPosicion, ExcepcionSuperaLimenteDeArbolesPermitos, ExcepcionErrorPasoDeTurno, ExcepcionConstruccionNoCorrespondiente, ExcepcionRecursoInsuficiente, ExcepcionUnidadNoCorrespondiente, ExcepcionNoPudoColocarseEdificio {
+			
 			Jugador jugador1 = new Jugador ("carlos","rojo",new Terran());
 			Jugador jugador2 = new Jugador ("dean","azul",new Protoss());
 			
@@ -331,6 +332,7 @@ public class ConstruccionTest {
 			jugador1.setDinero(99999, 99999);
 			
 			juego.ordenFabricacionDeEdificios(new Barraca(), 74, 77);
+			
 			juego.ordenFabricacionDeEdificios(new Barraca(), 78, 78);
 						
 			for (int i = 0; i < 12; i++){
@@ -340,6 +342,7 @@ public class ConstruccionTest {
 
 			Assert.assertTrue(juego.getMapa().obtenerContenidoEnPosicion(74, 77).getElementoEnTierra().esLoMismo(new Barraca()));
 			Assert.assertTrue(juego.getMapa().obtenerContenidoEnPosicion(78, 78).getElementoEnTierra().esLoMismo(new Barraca()));
+			
 		}
 		
 }

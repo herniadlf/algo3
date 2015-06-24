@@ -187,7 +187,7 @@ public class Construccion implements Atacable {
 		return null;
 		
 	}
-
+	
 	public Mapeable dibujar() {
 		// TODO Auto-generated method stub
 		return null;
@@ -221,12 +221,14 @@ public class Construccion implements Atacable {
 		
 	}
 	
-	public void recibirDanio() throws ExcepcionPosicionInvalida {	
+	public void recibirDanio() throws ExcepcionPosicionInvalida {
+		
 		reglaDeDanio.recibirDanio(this);
 		boolean estadoDeVidaFinalizado= vida.estaMuerto();
 		  if (estadoDeVidaFinalizado==true){
 			 mapa.eliminarElementoTerrestreEnPosicion(getPosicionX(),getPosicionY());
 		 }
+		  
 	}
 
 	public void atacarConEMP(int danio) {
@@ -241,15 +243,17 @@ public class Construccion implements Atacable {
 		
 	}
 
-	public void pasoTurno(Turno turno, Mapa map, Jugador jugador) throws ExcepcionNoPudoColocarseUnidad, ExcepcionEdificioDestruido, ExcepcionUnidadNoCorrespondiente {
+	public void pasoTurno(Turno turno, Mapa map, Jugador jugador) throws 
+		ExcepcionNoPudoColocarseUnidad, ExcepcionEdificioDestruido, ExcepcionUnidadNoCorrespondiente {
+		
 		if (vida.estaMuerto()){
 			throw new ExcepcionEdificioDestruido();
 		}
 			
 	}
 
-	public void verificarTerreno(Mapa map, int x, int y) 
-			throws ExcepcionPosicionInvalida, ExcepcionExtractoraSinRecurso, ExcepcionYaHayElementoEnLaPosicion {
+	public void verificarTerreno(Mapa map, int x, int y) throws 
+		ExcepcionPosicionInvalida, ExcepcionExtractoraSinRecurso, ExcepcionYaHayElementoEnLaPosicion {
 		
 		arquitecto.verificarTerreno(map,x,y,this);	
 		
@@ -269,11 +273,15 @@ public class Construccion implements Atacable {
 	} 
 
 	public String getDuenio() {
+		
 		return duenio;
+		
 	}
 
 	public void setDuenio(String duenio) {
+		
 		this.duenio = duenio;
+		
 	}
 	
 }

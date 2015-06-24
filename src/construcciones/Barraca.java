@@ -23,5 +23,7 @@ public class Barraca extends Creadora {
 		setTiempoDeConstruccion(TIEMPO);
 		setEdificioRequerido(new DepositoDeSuministros());
 		reglaDeDanio = new ReglaDeDanioTerran();
+		
 	}
+	
 }

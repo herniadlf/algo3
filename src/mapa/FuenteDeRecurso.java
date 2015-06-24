@@ -11,7 +11,9 @@ public class FuenteDeRecurso implements Mapeable {
 	protected static final int RECURSOS_POR_TURNO = 10;
 	
 	public Recurso getRecurso(){
+		
 		return recurso;
+		
 	}
 	
 	public FuenteDeRecurso(){
@@ -19,11 +21,15 @@ public class FuenteDeRecurso implements Mapeable {
 	}
 	
 	public FuenteDeRecurso colocarContenido(){
+		
 		return null;
+		
 	}
 
 	public boolean esLoMismo(Mapeable aComparar){
+		
 		return (this.getNombre() == aComparar.getNombre());
+		
 	}
 	
 	public Mapeable dibujar() {
@@ -42,23 +48,33 @@ public class FuenteDeRecurso implements Mapeable {
 	}
 
 	public String getNombre() {
+		
 		return nombre;
+		
 	}
 
 	public boolean esOcupable() {
+		
 		return false;
+		
 	}
 
 	public boolean esTerrestre() {
+		
 		return true;
+		
 	}
 
 	public boolean esAereo() {
+		
 		return false;
+		
 	}
 
 	public Dinero extraer(){
+		
 		return null;
+		
 	}			
 	
 	

@@ -21,5 +21,7 @@ public class Refineria extends Extractora{
 		setTiempoDeConstruccion(TIEMPO);
 		setEdificioRequerido(new DepositoDeSuministros());
 		reglaDeDanio = new ReglaDeDanioTerran();
+		
 	}	
+	
 }

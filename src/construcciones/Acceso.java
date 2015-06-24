@@ -27,6 +27,7 @@ public class Acceso extends Creadora {
 		setEdificioRequerido(new Pilon());
 		escudo = new Escudo(ESCUDO,this);
 		reglaDeDanio = new ReglaDeDanioProtoss(escudo);
+		
 	}
 		
 	public Escudo getEscudo(){

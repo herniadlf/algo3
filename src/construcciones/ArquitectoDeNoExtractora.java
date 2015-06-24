@@ -10,8 +10,8 @@ import excepciones.ExcepcionYaHayElementoEnLaPosicion;
 public class ArquitectoDeNoExtractora implements Arquitecto {
 
 	public void colocar(Mapa map, Construccion edificio)
-			throws ExcepcionPosicionInvalida, ExcepcionExtractoraSinRecurso,
-			ExcepcionYaHayElementoEnLaPosicion {
+		throws ExcepcionPosicionInvalida, ExcepcionExtractoraSinRecurso,
+		ExcepcionYaHayElementoEnLaPosicion {
 		
 		map.eliminarElementoTerrestreEnPosicion(edificio.getPosicionX(), edificio.getPosicionY()); //remueve escombros
 		map.colocarEn(edificio.getPosicionX(), edificio.getPosicionY(), edificio);
@@ -19,8 +19,8 @@ public class ArquitectoDeNoExtractora implements Arquitecto {
 		
 	}
 
-	public void verificarTerreno(Mapa map, int x, int y,Construccion construccion) throws ExcepcionPosicionInvalida,
-			ExcepcionExtractoraSinRecurso, ExcepcionYaHayElementoEnLaPosicion {
+	public void verificarTerreno(Mapa map, int x, int y,Construccion construccion) throws 
+		ExcepcionPosicionInvalida, ExcepcionExtractoraSinRecurso, ExcepcionYaHayElementoEnLaPosicion {
 		
 		map.validarPosicionSinElemento(new Posicion(x,y), construccion.esTerrestre());
 		map.colocarEn(x, y, new Escombros());

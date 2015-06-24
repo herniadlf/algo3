@@ -24,6 +24,7 @@ public class Pilon extends NoExtractora {
 		capacidadDeSuministros = SUMINISTROS;
 		escudo = new Escudo(ESCUDO,this);
 		reglaDeDanio = new ReglaDeDanioProtoss(escudo);
+		
 	}
 		
 }

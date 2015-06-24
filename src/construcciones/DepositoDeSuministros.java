@@ -20,6 +20,7 @@ public class DepositoDeSuministros extends NoExtractora{
 		setEdificioRequerido(this);
 		capacidadDeSuministros = SUMINISTROS;
 		reglaDeDanio = new ReglaDeDanioTerran();
+		
 	}
 	
 }

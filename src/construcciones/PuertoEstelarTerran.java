@@ -24,5 +24,7 @@ public class PuertoEstelarTerran extends Creadora {
 		setTiempoDeConstruccion(TIEMPO);
 		setEdificioRequerido(new Fabrica());
 		reglaDeDanio = new ReglaDeDanioTerran();
+		
 	}
+	
 }

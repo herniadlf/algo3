@@ -31,13 +31,16 @@ public abstract class Extractora extends Construccion {
 	}
 	
 	public void pasoTurno(Turno turno, Mapa mapa, Jugador jugadorActual) throws ExcepcionEdificioDestruido{
+		
 		if (vida.estaMuerto()){
 			throw new ExcepcionEdificioDestruido();
 		}
+		
 		Dinero extraido = fuente.extraer();
 		int minerales = jugadorActual.getDinero().getMinerales() + extraido.getMinerales();
 		int gas = jugadorActual.getDinero().getGasVespeno() + extraido.getGasVespeno();
 		jugadorActual.setDinero(minerales, gas);
+		
 	}
 		
 }

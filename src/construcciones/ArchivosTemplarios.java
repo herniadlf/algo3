@@ -26,5 +26,7 @@ public class ArchivosTemplarios extends Creadora {
 		setEdificioRequerido(new PuertoEstelarProtoss());
 		escudo = new Escudo (ESCUDO,this);
 		reglaDeDanio = new ReglaDeDanioProtoss(escudo);
+		
 	}
+	
 }

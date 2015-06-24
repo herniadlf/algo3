@@ -27,6 +27,7 @@ public class PuertoEstelarProtoss extends Creadora {
 		setEdificioRequerido(new Acceso());
 		escudo = new Escudo(ESCUDO,this);
 		reglaDeDanio = new ReglaDeDanioProtoss(escudo);
+		
 	}
 		
 }

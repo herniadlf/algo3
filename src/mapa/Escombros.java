@@ -15,13 +15,11 @@ public class Escombros implements Mapeable {
 		return null;
 	}
 
-	
 	public Mapeable dibujar() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	
 	public Mapeable quitarContenido() {
 		// TODO Auto-generated method stub
 		return null;	
@@ -32,7 +30,6 @@ public class Escombros implements Mapeable {
 		return null;
 	}
 
-	
 	public boolean esLoMismo(Mapeable mapeable) {
 		
 		return (mapeable.getNombre() == nombre);

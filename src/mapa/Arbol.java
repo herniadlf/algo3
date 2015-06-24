@@ -41,14 +41,12 @@ public class Arbol implements Mapeable{
 		
 	}
 
-	
 	public boolean esOcupable() {
 		
 		return false;
 		
 	}
 
-	
 	public boolean esTerrestre() {
 		
 		return true;

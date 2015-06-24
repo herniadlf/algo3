@@ -24,5 +24,7 @@ public class Asimilador extends Extractora {
 		setEdificioRequerido(new Pilon());
 		escudo = new Escudo(ESCUDO,this);
 		reglaDeDanio = new ReglaDeDanioProtoss(escudo);
+		
 	}		
+	
 }

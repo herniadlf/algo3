@@ -20,6 +20,7 @@ public class CentroDeMineral extends Extractora {
 		setTiempoDeConstruccion(TIEMPO);
 		setEdificioRequerido(new DepositoDeSuministros());
 		reglaDeDanio = new ReglaDeDanioTerran();
+		
 	}
 	
 }
