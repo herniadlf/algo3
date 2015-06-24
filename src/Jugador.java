@@ -74,13 +74,11 @@ public class Jugador {
 		this.unidadesAlistadas= new ArrayList<Unidad>();
 		rangoDeVision = new ArrayList<Sector>();
 		
-		
-	}		
-	
+	}			
 	
 	public ArrayList<Unidad> getUnidadesAlistades (){
-		return this.unidadesAlistadas;
 		
+		return this.unidadesAlistadas;
 		
 	}
 	
@@ -150,9 +148,11 @@ public class Jugador {
 		
 	}
 		
-	public Construccion colocar(Construccion edificio, Mapa map, int i, int j) throws ExcepcionNoPudoColocarseEdificio, ExcepcionConstruccionNoCorrespondiente, ExcepcionRecursoInsuficiente  {
+	public Construccion colocar(Construccion edificio, Mapa map, int i, int j) throws 
+		ExcepcionNoPudoColocarseEdificio, ExcepcionConstruccionNoCorrespondiente, ExcepcionRecursoInsuficiente {
 	
-		try {				
+		try {	
+			
 			verificacionEdificio(edificio);
 			edificio.setPosicionX(i);
 			edificio.setPosicionY(j);
@@ -160,7 +160,8 @@ public class Jugador {
 			edificio.colocar(map);
 			this.getRaza().actualizarEdificios(edificio);
 			//this.gastarPlata(edificio.getCosto());
-			poblacionDisponible = poblacionDisponible + edificio.getCantidadDeSuministros();			
+			poblacionDisponible = poblacionDisponible + edificio.getCantidadDeSuministros();	
+			
 		} catch (ExcepcionPosicionInvalida | ExcepcionExtractoraSinRecurso
 				| ExcepcionConstruccionNoCorrespondiente
 				| ExcepcionYaHayElementoEnLaPosicion  e) {
@@ -197,14 +198,15 @@ public class Jugador {
 	
 	public Unidad actualizarPorNuevaUnidad(Unidad aEntrenar, Creadora edificio, Mapa map) {
 		
-			poblacionDisponible = poblacionDisponible - aEntrenar.getSuministros();
-			poblacionActual = poblacionActual + aEntrenar.getSuministros();
-			this.gastarPlata(aEntrenar.getCosto());					
-			return aEntrenar;
+		poblacionDisponible = poblacionDisponible - aEntrenar.getSuministros();
+		poblacionActual = poblacionActual + aEntrenar.getSuministros();
+		this.gastarPlata(aEntrenar.getCosto());					
+		return aEntrenar;
 		
 	}
 	
-	public void verificacionUnidad(Unidad unidad, Creadora edificio) throws ExcepcionUnidadNoCorrespondiente, ExcepcionRecursoInsuficiente, ExcepcionSuministrosInsuficientes, ExcepcionTopeDePoblacionMaxima{ 
+	public void verificacionUnidad(Unidad unidad, Creadora edificio) throws 
+		ExcepcionUnidadNoCorrespondiente, ExcepcionRecursoInsuficiente, ExcepcionSuministrosInsuficientes, ExcepcionTopeDePoblacionMaxima{ 
 		
 		edificio.verificarUnidadCreable(unidad);
 		this.gastoPosible(unidad.getCosto());
@@ -229,7 +231,8 @@ public class Jugador {
 		
 	}
 	
-	public void actualizarTurnoEnConstrucciones (Turno turno, Mapa map) throws ExcepcionNoPudoColocarseUnidad, ExcepcionUnidadNoCorrespondiente {
+	public void actualizarTurnoEnConstrucciones (Turno turno, Mapa map) throws 
+		ExcepcionNoPudoColocarseUnidad, ExcepcionUnidadNoCorrespondiente {
 		
 		int i = 0;
 		while (construccionesEnPie.size()>i){
@@ -256,8 +259,8 @@ public class Jugador {
 		
 	}
 	
-	public void actualizarFabricacionConstrucciones (Turno turno, Mapa mapa) 
-			throws ExcepcionNoPudoColocarseEdificio, ExcepcionConstruccionNoCorrespondiente, ExcepcionRecursoInsuficiente 	{
+	public void actualizarFabricacionConstrucciones (Turno turno, Mapa mapa) throws
+		ExcepcionNoPudoColocarseEdificio, ExcepcionConstruccionNoCorrespondiente, ExcepcionRecursoInsuficiente 	{
 		
 		int i=0;
 		int turnosPasados;
@@ -289,19 +292,19 @@ public class Jugador {
 	public void moverUnidadAPosicion(Unidad unidad, int posX, int posY) throws ExcepcionNoPuedeMoverseUnidad, ExcepcionLaUnidadNoPertenceATuTropa {
 		
 		if(this.contieneALaUnidad(unidad)){
-			
 			unidad.moverAPosicionDeterminada(posX, posY);
 		}
-		
-		else{
-			
+		else{	
 			throw new ExcepcionLaUnidadNoPertenceATuTropa("La unidad seleccionada no pertenece a tu tropa de unidades");
 		}
+		
 	}
 
-	public void pasoTurno(Turno turno, Mapa mapa) throws ExcepcionErrorPasoDeTurno, ExcepcionConstruccionNoCorrespondiente, ExcepcionRecursoInsuficiente, ExcepcionUnidadNoCorrespondiente 	{
+	public void pasoTurno(Turno turno, Mapa mapa) throws 
+		ExcepcionErrorPasoDeTurno, ExcepcionConstruccionNoCorrespondiente, ExcepcionRecursoInsuficiente, ExcepcionUnidadNoCorrespondiente{
 		
 		try{
+			
 			actualizarTurnoEnRaza();
 			actualizarTurnoEnConstrucciones(turno, mapa);	
 			actualizarFabricacionConstrucciones(turno, mapa);
@@ -309,8 +312,6 @@ public class Jugador {
 		} catch ( ExcepcionNoPudoColocarseEdificio | ExcepcionNoPudoColocarseUnidad e){
 			throw new ExcepcionErrorPasoDeTurno(e);
 		}
-		
-		
 		
 		Iterator<Unidad> i = unidadesAlistadas.iterator();
 		while(i.hasNext()){
@@ -321,9 +322,10 @@ public class Jugador {
 	}
 
 	private void actualizarTurnoEnRaza() {
+		
 		getRaza().pasoTurno();		
+		
 	}
-	
 	
 	public boolean contieneALaUnidad(Unidad unaUnidad) {
 		
@@ -342,6 +344,7 @@ public class Jugador {
 		if(!this.contieneALaUnidad(unaUnidad)){
 			
 			throw new ExcepcionLaUnidadNoPertenceATuTropa("La unidad seleccionada no pertenece a tu tropa de unidades");
+			
 		}
 		
 	}
@@ -349,7 +352,8 @@ public class Jugador {
 	public void atacarCon(Unidad agresor, Atacable victima) throws ExcepcionEdificioNoPuedeCrearUnidad, ExcepcionPosicionInvalida, ExcepcionNoHayLugarParaCrear, ExcepcionYaHayElementoEnLaPosicion, ExcepcionErrorPasoDeTurno, ExcepcionElementoFueraDelRangoDeAtaque, ExcepcionLaUnidadNoPertenceATuTropa, ExcepcionConstruccionNoCorrespondiente, ExcepcionRecursoInsuficiente, ExcepcionUnidadNoCorrespondiente{
 			
 		this.verificarUnidad(agresor);
-		agresor.atacar(victima);			
+		agresor.atacar(victima);	
+		
 	}
 	
 	public void atacarCon(Magica agresor, Magia magia) throws ExcepcionEdificioNoPuedeCrearUnidad, ExcepcionPosicionInvalida, ExcepcionNoHayLugarParaCrear, ExcepcionYaHayElementoEnLaPosicion, ExcepcionErrorPasoDeTurno, ExcepcionConstruccionNoCorrespondiente, ExcepcionRecursoInsuficiente, ExcepcionUnidadNoCorrespondiente, ExcepcionElementoFueraDelRangoDeAtaque, ExcepcionLaUnidadNoPertenceATuTropa{
@@ -358,7 +362,6 @@ public class Jugador {
 		agresor.atacar(magia);		
 		
 	}
-	
 
 	public void verificarEdificio(Creadora edificio) throws ExcepcionElEdificioNoPerteneceATusConstrucciones {
 		
@@ -370,6 +373,7 @@ public class Jugador {
 	}
 
 	public void setRangoDeVision(int posX,int posY,int rango, Mapa map) {
+		
 		for (int i = posX-rango; i <= posX+rango; i++){
 			for (int j = posY-rango; j<= posY+rango;j++){
 				try {
@@ -380,14 +384,14 @@ public class Jugador {
 				}
 				catch (ExcepcionPosicionInvalida e){}
 			}
-		}
-		
-		
+		}	
 		
 	}
 
-	public void setJuego(Juego j) {
-		juego = j;
+	public void setJuego(Juego nuevoJuego) {
+		
+		juego = nuevoJuego;
+		
 	}
 				
 }

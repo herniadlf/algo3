@@ -22,7 +22,8 @@ import excepciones.ExcepcionYaHayElementoEnLaPosicion;
 	}
 	
 	public void contabilizarAtaquesEnTurno () throws ExcepcionEdificioNoPuedeCrearUnidad,
-	ExcepcionPosicionInvalida, ExcepcionNoHayLugarParaCrear, ExcepcionYaHayElementoEnLaPosicion, ExcepcionErrorPasoDeTurno, ExcepcionConstruccionNoCorrespondiente, ExcepcionRecursoInsuficiente, ExcepcionUnidadNoCorrespondiente{
+		ExcepcionPosicionInvalida, ExcepcionNoHayLugarParaCrear, ExcepcionYaHayElementoEnLaPosicion, ExcepcionErrorPasoDeTurno, 
+		ExcepcionConstruccionNoCorrespondiente, ExcepcionRecursoInsuficiente, ExcepcionUnidadNoCorrespondiente{
 		
 		this.ataques = this.ataques +1;
 		if (this.ataques ==10){
@@ -53,11 +54,4 @@ import excepciones.ExcepcionYaHayElementoEnLaPosicion;
 	}
 		
 }
-	
-	
-		
-	
-	
-	
-
 

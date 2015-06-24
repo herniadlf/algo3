@@ -26,7 +26,6 @@ public class Escudo{
 		}
 		else {	
 			resistenciaActual = resistenciaActual - danio;
-			
 		}
 		
 	}
@@ -43,8 +42,7 @@ public class Escudo{
 			resistenciaActual = resistenciaActual + REGENERACION_POR_TURNO;
 		}
 		else {
-			resistenciaActual = resistenciaTotal;
-			
+			resistenciaActual = resistenciaTotal;	
 		}
 		
 	}

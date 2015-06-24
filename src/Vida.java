@@ -46,7 +46,7 @@ public class Vida {
 		
 	}
 	
-	public boolean devolverEstadoDeVida (){
+	public boolean estaMuerto (){
 		
 		return this.finalizada;
 		

@@ -14,7 +14,8 @@ public class Ambientador {
 	private static int CANT_DE_FUENTES_RECURSOS = 4;
 	private static int DISTANCIA_MAXIMA = 10;
 	
-	public Mapa ambientarMapa(int tamanioMapa, int cantDeArboles, Jugador jugador1, Jugador jugador2) throws ExcepcionPosicionInvalida, ExcepcionYaHayElementoEnLaPosicion, ExcepcionSuperaLimenteDeArbolesPermitos {
+	public Mapa ambientarMapa(int tamanioMapa, int cantDeArboles, Jugador jugador1, Jugador jugador2) throws
+		ExcepcionPosicionInvalida, ExcepcionYaHayElementoEnLaPosicion, ExcepcionSuperaLimenteDeArbolesPermitos {
 		
 		Mapa mapa = new Mapa(tamanioMapa);
 		
@@ -23,6 +24,7 @@ public class Ambientador {
 		int posPrincipal2 = (tamanioMapa - posPrincipal1);
 			
 		try {
+			
 			final int rangoInicial = 8;
 			
 			mapa.colocarEn(posPrincipal1, posPrincipal1, jugador1.getRaza().getEdificioPrincipal());	
@@ -56,7 +58,8 @@ public class Ambientador {
 
 	}
 	
-	public void agregarFuentes(Mapa mapa, int cantidadDeseada, int alrededorDeX, int alrededorDeY) throws ExcepcionPosicionInvalida, ExcepcionYaHayElementoEnLaPosicion{
+	public void agregarFuentes(Mapa mapa, int cantidadDeseada, int alrededorDeX, int alrededorDeY) throws 
+		ExcepcionPosicionInvalida, ExcepcionYaHayElementoEnLaPosicion{
 		
 		Random random = new Random();
 		
