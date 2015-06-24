@@ -2,10 +2,8 @@ package excepciones;
 
 public class ExcepcionElTransporteEstaLleno extends ExcepcionGeneral {
 
-	public ExcepcionElTransporteEstaLleno(String descripcion){
-		
-		super(descripcion,null);
-		
+	public ExcepcionElTransporteEstaLleno(String descripcion){	
+		super(descripcion,null);	
 	}
 	
 }
