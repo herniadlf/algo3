@@ -7,11 +7,13 @@ import java.util.Random;
 import excepciones.ExcepcionExtractoraSinRecurso;
 import excepciones.ExcepcionPosicionInvalida;
 import excepciones.ExcepcionSuperaLimenteDeArbolesPermitos;
+import excepciones.ExcepcionTamanioDelMapaInvalido;
 import excepciones.ExcepcionYaHayElementoEnLaPosicion;
 import src.construcciones.Extractora;
 
 public class Mapa {
 
+	private static int TAMANIO_MAXIMO = 800;
 	private Map<Posicion,Mapeable> mapa;
 	private int tamanio;
 	
@@ -20,20 +22,24 @@ public class Mapa {
 		return this.tamanio;
 	}
 	
-	public Mapa(int unTamanio) {
+	public Mapa(int unTamanio) throws ExcepcionTamanioDelMapaInvalido {
 		
-		this.tamanio = unTamanio;
-		this.mapa = new HashMap<Posicion,Mapeable>();
+		if(unTamanio > 0 && unTamanio <= TAMANIO_MAXIMO){
+			this.tamanio = unTamanio;
+			this.mapa = new HashMap<Posicion,Mapeable>();
 		
-		for (int i = 1; i <= tamanio; i++) {
-			for (int j = 1; j <= tamanio; j++) {
+			for (int i = 1; i <= tamanio; i++) {
+				for (int j = 1; j <= tamanio; j++) {
 				
-				Posicion posicion = new Posicion(i,j);
-				Sector unSector = new Sector(new EspacioDisponible(), new EspacioDisponible());
-				mapa.put(posicion, unSector);
+					Posicion posicion = new Posicion(i,j);
+					Sector unSector = new Sector(new EspacioDisponible(), new EspacioDisponible());
+					mapa.put(posicion, unSector);
+				}
 			}
+		} else {
+			
+			throw new ExcepcionTamanioDelMapaInvalido("El tamanio ingresado es invalido");
 		}
-		
 	}
 	
 	public void colocarEn(int i, int j, Mapeable unElemento) throws ExcepcionPosicionInvalida, ExcepcionYaHayElementoEnLaPosicion {

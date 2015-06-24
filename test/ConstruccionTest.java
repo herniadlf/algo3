@@ -13,6 +13,7 @@ import excepciones.ExcepcionNoPudoColocarseEdificio;
 import excepciones.ExcepcionPosicionInvalida;
 import excepciones.ExcepcionRecursoInsuficiente;
 import excepciones.ExcepcionSuperaLimenteDeArbolesPermitos;
+import excepciones.ExcepcionTamanioDelMapaInvalido;
 import excepciones.ExcepcionUnidadNoCorrespondiente;
 import excepciones.ExcepcionYaHayElementoEnLaPosicion;
 import src.*;
@@ -41,7 +42,7 @@ import src.unidades.Zealot;
 public class ConstruccionTest {
 		
 		@Test
-		public void construccionExitosaEnElMapa() throws ExcepcionNoPudoColocarseEdificio, ExcepcionPosicionInvalida, ExcepcionConstruccionNoCorrespondiente, ExcepcionRecursoInsuficiente{
+		public void construccionExitosaEnElMapa() throws ExcepcionNoPudoColocarseEdificio, ExcepcionPosicionInvalida, ExcepcionConstruccionNoCorrespondiente, ExcepcionRecursoInsuficiente, ExcepcionTamanioDelMapaInvalido{
 			Mapa mapa = new Mapa(50);
 			Jugador jug = new Jugador("carlos","rojo",new Terran());
 			jug.setDinero(9999999, 999999); // ya que pruebo construir en todos los puntos del mapa necesito mucha plata
@@ -56,7 +57,7 @@ public class ConstruccionTest {
 		} 
 				
 		@Test (expected = ExcepcionNoPudoColocarseEdificio.class)
-		public void noConstruyeFabricaSinBarraca() throws ExcepcionNoPudoColocarseEdificio, ExcepcionPosicionInvalida, ExcepcionYaHayElementoEnLaPosicion, ExcepcionSuperaLimenteDeArbolesPermitos {
+		public void noConstruyeFabricaSinBarraca() throws ExcepcionNoPudoColocarseEdificio, ExcepcionPosicionInvalida, ExcepcionYaHayElementoEnLaPosicion, ExcepcionSuperaLimenteDeArbolesPermitos, ExcepcionTamanioDelMapaInvalido {
 			Jugador jugador1 = new Jugador ("carlos","rojo",new Terran());
 			Jugador jugador2 = new Jugador ("dean","azul",new Terran());
 			
@@ -67,7 +68,7 @@ public class ConstruccionTest {
 	
 		
 		@Test
-		public void construccionExitosaDeFabricaConBarraca() throws ExcepcionNoPudoColocarseEdificio, ExcepcionPosicionInvalida, ExcepcionConstruccionNoCorrespondiente, ExcepcionRecursoInsuficiente {
+		public void construccionExitosaDeFabricaConBarraca() throws ExcepcionNoPudoColocarseEdificio, ExcepcionPosicionInvalida, ExcepcionConstruccionNoCorrespondiente, ExcepcionRecursoInsuficiente, ExcepcionTamanioDelMapaInvalido {
 			Mapa mapa = new Mapa(50);
 			Jugador jug = new Jugador("carlos","rojo", new Terran());
 			
@@ -78,7 +79,7 @@ public class ConstruccionTest {
 		}
 		
 		@Test
-		public void nuevoPilonAumentaSuministrosDeJugador() throws ExcepcionNoPudoColocarseEdificio, ExcepcionConstruccionNoCorrespondiente, ExcepcionRecursoInsuficiente{
+		public void nuevoPilonAumentaSuministrosDeJugador() throws ExcepcionNoPudoColocarseEdificio, ExcepcionConstruccionNoCorrespondiente, ExcepcionRecursoInsuficiente, ExcepcionTamanioDelMapaInvalido{
 			Mapa mapa = new Mapa(50);
 			Jugador jug = new Jugador ("carlos","rojo",new Protoss());
 			
@@ -94,7 +95,7 @@ public class ConstruccionTest {
 				throws ExcepcionNoPudoColocarseEdificio, 
 				ExcepcionPosicionInvalida, 
 				ExcepcionNoHayLugarParaCrear, 
-				ExcepcionYaHayElementoEnLaPosicion, ExcepcionConstruccionNoCorrespondiente, ExcepcionRecursoInsuficiente, ExcepcionUnidadNoCorrespondiente  {
+				ExcepcionYaHayElementoEnLaPosicion, ExcepcionConstruccionNoCorrespondiente, ExcepcionRecursoInsuficiente, ExcepcionUnidadNoCorrespondiente, ExcepcionTamanioDelMapaInvalido  {
 			Mapa mapa = new Mapa(50);
 			Jugador jug = new Jugador ("carlos","rojo",new Terran());
 			jug.setDinero(999999, 999999);
@@ -134,7 +135,7 @@ public class ConstruccionTest {
 				throws ExcepcionNoPudoColocarseEdificio, 
 				ExcepcionPosicionInvalida,
 				ExcepcionNoHayLugarParaCrear, 
-				ExcepcionYaHayElementoEnLaPosicion, ExcepcionConstruccionNoCorrespondiente, ExcepcionRecursoInsuficiente, ExcepcionUnidadNoCorrespondiente {
+				ExcepcionYaHayElementoEnLaPosicion, ExcepcionConstruccionNoCorrespondiente, ExcepcionRecursoInsuficiente, ExcepcionUnidadNoCorrespondiente, ExcepcionTamanioDelMapaInvalido {
 			
 			Mapa mapa = new Mapa(50);
 			Jugador jug = new Jugador ("carlos","rojo",new Terran());
@@ -167,7 +168,7 @@ public class ConstruccionTest {
 				throws ExcepcionPosicionInvalida, 
 				ExcepcionYaHayElementoEnLaPosicion, 
 				ExcepcionNoPudoColocarseEdificio, 
-				ExcepcionErrorPasoDeTurno, ExcepcionSuperaLimenteDeArbolesPermitos, ExcepcionConstruccionNoCorrespondiente, ExcepcionRecursoInsuficiente, ExcepcionUnidadNoCorrespondiente {
+				ExcepcionErrorPasoDeTurno, ExcepcionSuperaLimenteDeArbolesPermitos, ExcepcionConstruccionNoCorrespondiente, ExcepcionRecursoInsuficiente, ExcepcionUnidadNoCorrespondiente, ExcepcionTamanioDelMapaInvalido {
 			
 			Jugador jugador1 = new Jugador ("carlos","rojo",new Terran());
 			Jugador jugador2 = new Jugador ("dean","azul",new Terran());
@@ -195,7 +196,7 @@ public class ConstruccionTest {
 		}
 		
 		@Test (expected = ExcepcionNoPudoColocarseEdificio.class)
-		public void seReservaLugarAunqueLaConstruccionNoEstaFinalizada() throws ExcepcionNoPudoColocarseEdificio, ExcepcionPosicionInvalida, ExcepcionErrorPasoDeTurno, ExcepcionYaHayElementoEnLaPosicion, ExcepcionSuperaLimenteDeArbolesPermitos, ExcepcionConstruccionNoCorrespondiente, ExcepcionRecursoInsuficiente, ExcepcionUnidadNoCorrespondiente {
+		public void seReservaLugarAunqueLaConstruccionNoEstaFinalizada() throws ExcepcionNoPudoColocarseEdificio, ExcepcionPosicionInvalida, ExcepcionErrorPasoDeTurno, ExcepcionYaHayElementoEnLaPosicion, ExcepcionSuperaLimenteDeArbolesPermitos, ExcepcionConstruccionNoCorrespondiente, ExcepcionRecursoInsuficiente, ExcepcionUnidadNoCorrespondiente, ExcepcionTamanioDelMapaInvalido {
 			
 			Mapa mapa = new Mapa(50);
 			Jugador jugador1 = new Jugador ("carlos","rojo",new Terran());
@@ -216,7 +217,7 @@ public class ConstruccionTest {
 				throws ExcepcionPosicionInvalida, 
 				ExcepcionYaHayElementoEnLaPosicion, 
 				ExcepcionNoPudoColocarseEdificio,
-				ExcepcionErrorPasoDeTurno, ExcepcionSuperaLimenteDeArbolesPermitos, ExcepcionConstruccionNoCorrespondiente, ExcepcionRecursoInsuficiente, ExcepcionUnidadNoCorrespondiente {
+				ExcepcionErrorPasoDeTurno, ExcepcionSuperaLimenteDeArbolesPermitos, ExcepcionConstruccionNoCorrespondiente, ExcepcionRecursoInsuficiente, ExcepcionUnidadNoCorrespondiente, ExcepcionTamanioDelMapaInvalido {
 		
 			Jugador jugador1 = new Jugador ("carlos","rojo",new Terran());
 			Jugador jugador2 = new Jugador ("dean","azul",new Protoss());
@@ -233,7 +234,7 @@ public class ConstruccionTest {
 		}
 		
 		@Test
-		public void testDestruccionDeEdificioProvocaEliminacionDelMapa() throws ExcepcionPosicionInvalida, ExcepcionNoPudoColocarseEdificio, ExcepcionYaHayElementoEnLaPosicion, ExcepcionSuperaLimenteDeArbolesPermitos, ExcepcionConstruccionNoCorrespondiente, ExcepcionRecursoInsuficiente {
+		public void testDestruccionDeEdificioProvocaEliminacionDelMapa() throws ExcepcionPosicionInvalida, ExcepcionNoPudoColocarseEdificio, ExcepcionYaHayElementoEnLaPosicion, ExcepcionSuperaLimenteDeArbolesPermitos, ExcepcionConstruccionNoCorrespondiente, ExcepcionRecursoInsuficiente, ExcepcionTamanioDelMapaInvalido {
 			
 			Jugador jugador1 = new Jugador ("carlos","rojo",new Terran());
 			Jugador jugador2 = new Jugador ("dean","azul",new Terran());
@@ -259,7 +260,7 @@ public class ConstruccionTest {
 			}
 		
 		@Test
-		public void testDestruccionDeEdificioLoEliminaDeEdificiosEnPie() throws ExcepcionPosicionInvalida, ExcepcionNoPudoColocarseEdificio, ExcepcionYaHayElementoEnLaPosicion, ExcepcionSuperaLimenteDeArbolesPermitos, ExcepcionErrorPasoDeTurno, ExcepcionConstruccionNoCorrespondiente, ExcepcionRecursoInsuficiente, ExcepcionUnidadNoCorrespondiente {
+		public void testDestruccionDeEdificioLoEliminaDeEdificiosEnPie() throws ExcepcionPosicionInvalida, ExcepcionNoPudoColocarseEdificio, ExcepcionYaHayElementoEnLaPosicion, ExcepcionSuperaLimenteDeArbolesPermitos, ExcepcionErrorPasoDeTurno, ExcepcionConstruccionNoCorrespondiente, ExcepcionRecursoInsuficiente, ExcepcionUnidadNoCorrespondiente, ExcepcionTamanioDelMapaInvalido {
 			
 			Jugador jugador1 = new Jugador ("carlos","rojo",new Protoss());
 			Jugador jugador2 = new Jugador ("dean","azul",new Protoss());
@@ -286,7 +287,7 @@ public class ConstruccionTest {
 			}
 		
 		@Test (expected = ExcepcionNoPudoColocarseEdificio.class)
-		public void testDestruccionDeEdificioRequeridoImpideCreacion() throws ExcepcionPosicionInvalida, ExcepcionYaHayElementoEnLaPosicion, ExcepcionSuperaLimenteDeArbolesPermitos, ExcepcionNoPudoColocarseEdificio, ExcepcionErrorPasoDeTurno, ExcepcionConstruccionNoCorrespondiente, ExcepcionRecursoInsuficiente, ExcepcionUnidadNoCorrespondiente{
+		public void testDestruccionDeEdificioRequeridoImpideCreacion() throws ExcepcionPosicionInvalida, ExcepcionYaHayElementoEnLaPosicion, ExcepcionSuperaLimenteDeArbolesPermitos, ExcepcionNoPudoColocarseEdificio, ExcepcionErrorPasoDeTurno, ExcepcionConstruccionNoCorrespondiente, ExcepcionRecursoInsuficiente, ExcepcionUnidadNoCorrespondiente, ExcepcionTamanioDelMapaInvalido{
 			Jugador jugador1 = new Jugador ("carlos","rojo",new Protoss());
 			Jugador jugador2 = new Jugador ("dean","azul",new Protoss());
 			
@@ -310,7 +311,7 @@ public class ConstruccionTest {
 		}
 		
 		@Test (expected = ExcepcionNoPudoColocarseEdificio.class)
-		public void testCrearEdificioDeOtraRazaLanzaExcepcion() throws ExcepcionPosicionInvalida, ExcepcionYaHayElementoEnLaPosicion, ExcepcionSuperaLimenteDeArbolesPermitos, ExcepcionNoPudoColocarseEdificio, ExcepcionConstruccionNoCorrespondiente, ExcepcionRecursoInsuficiente {
+		public void testCrearEdificioDeOtraRazaLanzaExcepcion() throws ExcepcionPosicionInvalida, ExcepcionYaHayElementoEnLaPosicion, ExcepcionSuperaLimenteDeArbolesPermitos, ExcepcionNoPudoColocarseEdificio, ExcepcionConstruccionNoCorrespondiente, ExcepcionRecursoInsuficiente, ExcepcionTamanioDelMapaInvalido {
 			Jugador jugador1 = new Jugador ("carlos","rojo",new Terran());
 			Jugador jugador2 = new Jugador ("dean","azul",new Protoss());
 			
@@ -323,7 +324,7 @@ public class ConstruccionTest {
 		}
 		
 		@Test
-		public void testCrearDosEdificiosElMismoTurno() throws ExcepcionPosicionInvalida, ExcepcionYaHayElementoEnLaPosicion, ExcepcionSuperaLimenteDeArbolesPermitos, ExcepcionErrorPasoDeTurno, ExcepcionConstruccionNoCorrespondiente, ExcepcionRecursoInsuficiente, ExcepcionUnidadNoCorrespondiente, ExcepcionNoPudoColocarseEdificio {
+		public void testCrearDosEdificiosElMismoTurno() throws ExcepcionPosicionInvalida, ExcepcionYaHayElementoEnLaPosicion, ExcepcionSuperaLimenteDeArbolesPermitos, ExcepcionErrorPasoDeTurno, ExcepcionConstruccionNoCorrespondiente, ExcepcionRecursoInsuficiente, ExcepcionUnidadNoCorrespondiente, ExcepcionNoPudoColocarseEdificio, ExcepcionTamanioDelMapaInvalido {
 			
 			Jugador jugador1 = new Jugador ("carlos","rojo",new Terran());
 			Jugador jugador2 = new Jugador ("dean","azul",new Protoss());

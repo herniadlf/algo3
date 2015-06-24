@@ -11,6 +11,7 @@ import excepciones.ExcepcionNoPuedeMoverseUnidad;
 import excepciones.ExcepcionPosicionInvalida;
 import excepciones.ExcepcionRecursoInsuficiente;
 import excepciones.ExcepcionSuperaLimenteDeArbolesPermitos;
+import excepciones.ExcepcionTamanioDelMapaInvalido;
 import excepciones.ExcepcionUnidadNoCorrespondiente;
 import excepciones.ExcepcionYaHayElementoEnLaPosicion;
 import src.Dinero;
@@ -46,7 +47,7 @@ public class MarineTest extends TestCase{
 		
 	}
 	
-	public void testMarineCuesta50deMineral() throws ExcepcionNoPudoColocarseEdificio, ExcepcionConstruccionNoCorrespondiente, ExcepcionRecursoInsuficiente, ExcepcionPosicionInvalida, ExcepcionYaHayElementoEnLaPosicion, ExcepcionSuperaLimenteDeArbolesPermitos, ExcepcionNoPudoCrearseUnidad, ExcepcionElEdificioNoPerteneceATusConstrucciones, ExcepcionErrorPasoDeTurno, ExcepcionUnidadNoCorrespondiente{
+	public void testMarineCuesta50deMineral() throws ExcepcionNoPudoColocarseEdificio, ExcepcionConstruccionNoCorrespondiente, ExcepcionRecursoInsuficiente, ExcepcionPosicionInvalida, ExcepcionYaHayElementoEnLaPosicion, ExcepcionSuperaLimenteDeArbolesPermitos, ExcepcionNoPudoCrearseUnidad, ExcepcionElEdificioNoPerteneceATusConstrucciones, ExcepcionErrorPasoDeTurno, ExcepcionUnidadNoCorrespondiente, ExcepcionTamanioDelMapaInvalido{
 		
 		//Empieza con 800 de minerales 
 		Jugador jugador1 = new Jugador ("carlos","rojo",new Terran());
@@ -83,7 +84,7 @@ public class MarineTest extends TestCase{
 	}
 	
 	public void testMarineSePuedeMoverHasta7posiciones() throws 
-		ExcepcionPosicionInvalida, ExcepcionYaHayElementoEnLaPosicion, ExcepcionSuperaLimenteDeArbolesPermitos{	
+		ExcepcionPosicionInvalida, ExcepcionYaHayElementoEnLaPosicion, ExcepcionSuperaLimenteDeArbolesPermitos, ExcepcionTamanioDelMapaInvalido{	
 		
 		Jugador jug1 = new Jugador ("carlos","rojo",new Terran());
 		Jugador jug2 = new Jugador ("Williams", "azul", new Protoss());

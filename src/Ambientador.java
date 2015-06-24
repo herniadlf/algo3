@@ -4,6 +4,7 @@ import java.util.Random;
 
 import excepciones.ExcepcionPosicionInvalida;
 import excepciones.ExcepcionSuperaLimenteDeArbolesPermitos;
+import excepciones.ExcepcionTamanioDelMapaInvalido;
 import excepciones.ExcepcionYaHayElementoEnLaPosicion;
 import src.mapa.FuenteDeGasVespeno;
 import src.mapa.FuenteDeMinerales;
@@ -15,7 +16,7 @@ public class Ambientador {
 	private static int DISTANCIA_MAXIMA = 10;
 	
 	public Mapa ambientarMapa(int tamanioMapa, int cantDeArboles, Jugador jugador1, Jugador jugador2) throws
-		ExcepcionPosicionInvalida, ExcepcionYaHayElementoEnLaPosicion, ExcepcionSuperaLimenteDeArbolesPermitos {
+		ExcepcionPosicionInvalida, ExcepcionYaHayElementoEnLaPosicion, ExcepcionSuperaLimenteDeArbolesPermitos, ExcepcionTamanioDelMapaInvalido {
 		
 		Mapa mapa = new Mapa(tamanioMapa);
 		

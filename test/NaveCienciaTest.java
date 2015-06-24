@@ -20,6 +20,7 @@ import excepciones.ExcepcionExtractoraSinRecurso;
 import excepciones.ExcepcionNoPuedeMoverseUnidad;
 import excepciones.ExcepcionPosicionInvalida;
 import excepciones.ExcepcionSuperaLimenteDeArbolesPermitos;
+import excepciones.ExcepcionTamanioDelMapaInvalido;
 import excepciones.ExcepcionYaHayElementoEnLaPosicion;
 import junit.framework.TestCase;
 
@@ -140,7 +141,7 @@ public class NaveCienciaTest extends TestCase {
 		
 	}
 	
-	public void testAltoTemplarioAfectadoPorRadiacionAlMoverseDaniaUnidadesASuAlrededor() throws ExcepcionPosicionInvalida, ExcepcionYaHayElementoEnLaPosicion, ExcepcionNoPuedeMoverseUnidad, ExcepcionSuperaLimenteDeArbolesPermitos{
+	public void testAltoTemplarioAfectadoPorRadiacionAlMoverseDaniaUnidadesASuAlrededor() throws ExcepcionPosicionInvalida, ExcepcionYaHayElementoEnLaPosicion, ExcepcionNoPuedeMoverseUnidad, ExcepcionSuperaLimenteDeArbolesPermitos, ExcepcionTamanioDelMapaInvalido{
 		
 		Jugador jugador1 = new Jugador ("carlos","rojo",new Terran());
 		Jugador jugador2 = new Jugador ("Williams", "azul", new Protoss());

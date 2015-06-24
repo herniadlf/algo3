@@ -9,6 +9,7 @@ import javax.swing.JPanel;
 
 import excepciones.ExcepcionPosicionInvalida;
 import excepciones.ExcepcionSuperaLimenteDeArbolesPermitos;
+import excepciones.ExcepcionTamanioDelMapaInvalido;
 import excepciones.ExcepcionYaHayElementoEnLaPosicion;
 import src.Juego;
 
@@ -74,7 +75,7 @@ public class PedidoTamanioMapa {
 			Juego juegoDefinitivo = new Juego(ip.getJuego().getJugador1(),ip.getJuego().getJugador2(),tamanioMapa,0);
 			return (juegoDefinitivo);			
 		}
-		catch (ExcepcionPosicionInvalida | ExcepcionYaHayElementoEnLaPosicion | ExcepcionSuperaLimenteDeArbolesPermitos e) {
+		catch (ExcepcionPosicionInvalida | ExcepcionTamanioDelMapaInvalido | ExcepcionYaHayElementoEnLaPosicion | ExcepcionSuperaLimenteDeArbolesPermitos e) {
 			cargarPedidoTamanioMapa(ip);
 			return null;
 		}

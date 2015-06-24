@@ -7,6 +7,7 @@ import excepciones.ExcepcionExtractoraSinRecurso;
 import excepciones.ExcepcionNoPuedeMoverseUnidad;
 import excepciones.ExcepcionPosicionInvalida;
 import excepciones.ExcepcionSuperaLimenteDeArbolesPermitos;
+import excepciones.ExcepcionTamanioDelMapaInvalido;
 import excepciones.ExcepcionYaHayElementoEnLaPosicion;
 import src.Mineral;
 import src.mapa.*;
@@ -18,8 +19,15 @@ import excepciones.*;
 public class MapaTest {
 	
 
+	@Test (expected = ExcepcionTamanioDelMapaInvalido.class)
+	public void CrearMapaConTamanioNoPermitidoLanzaExcepcion() throws ExcepcionTamanioDelMapaInvalido{
+		
+		//el tamanio maximo permitod es de 800
+		Mapa mapa = new Mapa (900);
+	}
+	
 	@Test
-	public void creacionDelMapaConSectores() throws ExcepcionPosicionInvalida {
+	public void creacionDelMapaConSectores() throws ExcepcionPosicionInvalida, ExcepcionTamanioDelMapaInvalido {
 		
 		Mapa mapa = new Mapa(10);
 		
@@ -33,7 +41,7 @@ public class MapaTest {
 	}
 	
 	@Test
-	public void colocoYObtengoElementoEnElMapa() throws ExcepcionPosicionInvalida, ExcepcionYaHayElementoEnLaPosicion {
+	public void colocoYObtengoElementoEnElMapa() throws ExcepcionPosicionInvalida, ExcepcionYaHayElementoEnLaPosicion, ExcepcionTamanioDelMapaInvalido {
 		
 		Mapa mapa = new Mapa(10);
 		
@@ -46,7 +54,7 @@ public class MapaTest {
 	}
 	
 	@Test
-	public void enUnMismoSectorHayElementoTerrestreYAereo() throws ExcepcionPosicionInvalida, ExcepcionYaHayElementoEnLaPosicion {
+	public void enUnMismoSectorHayElementoTerrestreYAereo() throws ExcepcionPosicionInvalida, ExcepcionYaHayElementoEnLaPosicion, ExcepcionTamanioDelMapaInvalido {
 		
 		Mapa mapa = new Mapa(10);
 		
@@ -64,7 +72,7 @@ public class MapaTest {
 	}
 	
 	@Test (expected = ExcepcionYaHayElementoEnLaPosicion.class)
-	public void siYaHayElementoLanzaExcepcion() throws ExcepcionPosicionInvalida, ExcepcionYaHayElementoEnLaPosicion {
+	public void siYaHayElementoLanzaExcepcion() throws ExcepcionPosicionInvalida, ExcepcionYaHayElementoEnLaPosicion, ExcepcionTamanioDelMapaInvalido {
 		
 		Mapa mapa = new Mapa(10);
 		
@@ -80,7 +88,7 @@ public class MapaTest {
 	
 	
 	@Test (expected = ExcepcionPosicionInvalida.class)
-	public void ColocarEnPosicionNoValidaLanzaExcepcion() throws ExcepcionPosicionInvalida, ExcepcionYaHayElementoEnLaPosicion {
+	public void ColocarEnPosicionNoValidaLanzaExcepcion() throws ExcepcionPosicionInvalida, ExcepcionYaHayElementoEnLaPosicion, ExcepcionTamanioDelMapaInvalido {
 		
 		Mapa mapa = new Mapa(10);
 		
@@ -91,7 +99,7 @@ public class MapaTest {
 	}
 	
 	@Test
-	public void eliminarElementoDelMapa() throws ExcepcionPosicionInvalida, ExcepcionYaHayElementoEnLaPosicion {
+	public void eliminarElementoDelMapa() throws ExcepcionPosicionInvalida, ExcepcionYaHayElementoEnLaPosicion, ExcepcionTamanioDelMapaInvalido {
 		
 		Mapa mapa = new Mapa(10);
 		
@@ -108,7 +116,7 @@ public class MapaTest {
 	}
 	
 	@Test
-	public void calcularDitanciaEntreDosPuntos() {
+	public void calcularDitanciaEntreDosPuntos() throws ExcepcionTamanioDelMapaInvalido {
 		
 		Mapa mapa = new Mapa(10);
 		
@@ -116,7 +124,7 @@ public class MapaTest {
 	}
 	
 	@Test
-	public void colocarArbolesEnMapa() throws ExcepcionPosicionInvalida, ExcepcionSuperaLimenteDeArbolesPermitos, ExcepcionYaHayElementoEnLaPosicion {
+	public void colocarArbolesEnMapa() throws ExcepcionPosicionInvalida, ExcepcionSuperaLimenteDeArbolesPermitos, ExcepcionYaHayElementoEnLaPosicion, ExcepcionTamanioDelMapaInvalido {
 		
 		Mapa mapa = new Mapa(100);
 		
@@ -140,7 +148,7 @@ public class MapaTest {
 	}
 	
 	@Test (expected = ExcepcionSuperaLimenteDeArbolesPermitos.class)
-	public void colocarMasArbolesQueElDiezPorcientoDelMapaLanzaExcepcion() throws ExcepcionPosicionInvalida, ExcepcionSuperaLimenteDeArbolesPermitos, ExcepcionYaHayElementoEnLaPosicion {
+	public void colocarMasArbolesQueElDiezPorcientoDelMapaLanzaExcepcion() throws ExcepcionPosicionInvalida, ExcepcionSuperaLimenteDeArbolesPermitos, ExcepcionYaHayElementoEnLaPosicion, ExcepcionTamanioDelMapaInvalido {
 		
 	Mapa mapa = new Mapa(100);
 		
@@ -149,7 +157,7 @@ public class MapaTest {
 	}
 	
 	@Test
-	public void construyeExtractoraSobreRecurso() throws ExcepcionPosicionInvalida, ExcepcionYaHayElementoEnLaPosicion, ExcepcionExtractoraSinRecurso {
+	public void construyeExtractoraSobreRecurso() throws ExcepcionPosicionInvalida, ExcepcionYaHayElementoEnLaPosicion, ExcepcionExtractoraSinRecurso, ExcepcionTamanioDelMapaInvalido {
 		
 		Mapa mapa = new Mapa(10);
 		
@@ -178,7 +186,7 @@ public class MapaTest {
 	}
 	
 	@Test (expected = ExcepcionExtractoraSinRecurso.class)
-	public void noConstruyeExtractorSiNoHayRecurso() throws ExcepcionPosicionInvalida, ExcepcionExtractoraSinRecurso {
+	public void noConstruyeExtractorSiNoHayRecurso() throws ExcepcionPosicionInvalida, ExcepcionExtractoraSinRecurso, ExcepcionTamanioDelMapaInvalido {
 		
 		Mapa mapa = new Mapa(10);
 		

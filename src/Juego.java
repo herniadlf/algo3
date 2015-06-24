@@ -11,6 +11,7 @@ import excepciones.ExcepcionPosicionInvalida;
 import excepciones.ExcepcionRecursoInsuficiente;
 import excepciones.ExcepcionSuministrosInsuficientes;
 import excepciones.ExcepcionSuperaLimenteDeArbolesPermitos;
+import excepciones.ExcepcionTamanioDelMapaInvalido;
 import excepciones.ExcepcionTopeDePoblacionMaxima;
 import excepciones.ExcepcionUnidadNoCorrespondiente;
 import excepciones.ExcepcionYaHayElementoEnLaPosicion;
@@ -25,7 +26,7 @@ public class Juego {
 	Jugador jugador1,jugador2, jugadorActual;
 	Turno turno;
 	
-	public Juego(Jugador jug1, Jugador jug2, int tamanioMapa, int cantidadArboles) throws ExcepcionPosicionInvalida, ExcepcionYaHayElementoEnLaPosicion, ExcepcionSuperaLimenteDeArbolesPermitos {
+	public Juego(Jugador jug1, Jugador jug2, int tamanioMapa, int cantidadArboles) throws ExcepcionPosicionInvalida, ExcepcionYaHayElementoEnLaPosicion, ExcepcionSuperaLimenteDeArbolesPermitos, ExcepcionTamanioDelMapaInvalido {
 		
 		super();
 		jugador1 = jug1;

@@ -5,6 +5,7 @@ import org.junit.Test;
 
 import excepciones.ExcepcionPosicionInvalida;
 import excepciones.ExcepcionSuperaLimenteDeArbolesPermitos;
+import excepciones.ExcepcionTamanioDelMapaInvalido;
 import excepciones.ExcepcionYaHayElementoEnLaPosicion;
 import src.Ambientador;
 import src.Jugador;
@@ -20,7 +21,7 @@ import src.construcciones.*;
 public class AmbientadorTest {
 	
 	@Test
-	public void ambientaElMapaCorrectamenteConLasBasesDeLosJugadores() throws ExcepcionPosicionInvalida, ExcepcionYaHayElementoEnLaPosicion, ExcepcionSuperaLimenteDeArbolesPermitos {
+	public void ambientaElMapaCorrectamenteConLasBasesDeLosJugadores() throws ExcepcionPosicionInvalida, ExcepcionYaHayElementoEnLaPosicion, ExcepcionSuperaLimenteDeArbolesPermitos, ExcepcionTamanioDelMapaInvalido {
 		
 		Jugador jugador1 = new Jugador("p1", "rojo", new Terran());
 		
@@ -43,7 +44,7 @@ public class AmbientadorTest {
 	}
 	
 	@Test
-	public void ambientaElMapaCorrectamenteConLasFuentesDeRecuros() throws ExcepcionPosicionInvalida, ExcepcionYaHayElementoEnLaPosicion, ExcepcionSuperaLimenteDeArbolesPermitos {
+	public void ambientaElMapaCorrectamenteConLasFuentesDeRecuros() throws ExcepcionPosicionInvalida, ExcepcionYaHayElementoEnLaPosicion, ExcepcionSuperaLimenteDeArbolesPermitos, ExcepcionTamanioDelMapaInvalido {
 		
 		Jugador jugador1 = new Jugador("p1", "rojo", new Terran());
 		
@@ -80,7 +81,7 @@ public class AmbientadorTest {
 	}
 	
 	@Test
-	public void ambientaElMapaCorrectamenteConArboles() throws ExcepcionPosicionInvalida, ExcepcionYaHayElementoEnLaPosicion, ExcepcionSuperaLimenteDeArbolesPermitos {
+	public void ambientaElMapaCorrectamenteConArboles() throws ExcepcionPosicionInvalida, ExcepcionYaHayElementoEnLaPosicion, ExcepcionSuperaLimenteDeArbolesPermitos, ExcepcionTamanioDelMapaInvalido {
 		
 		Jugador jugador1 = new Jugador("p1", "rojo", new Terran());
 		
