@@ -72,11 +72,8 @@ public class MoverUnidad {
 	private class EscuchaBotonSeleccionar implements ActionListener{
 		Unidad aMover;
 		
-		public EscuchaBotonSeleccionar(Unidad u) {
-			try {
-				aMover = u.getClass().newInstance();
-			} catch (InstantiationException | IllegalAccessException e) {				
-			}
+		public EscuchaBotonSeleccionar(Unidad u) {			
+				aMover = u;			
 		}
 
 		public void actionPerformed(ActionEvent arg0) {

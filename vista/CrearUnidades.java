@@ -37,23 +37,15 @@ import javax.swing.SpringLayout;
 
 
 
-import excepciones.ExcepcionConstruccionNoCorrespondiente;
+
+
 import excepciones.ExcepcionElEdificioNoPerteneceATusConstrucciones;
-import excepciones.ExcepcionErrorPasoDeTurno;
 import excepciones.ExcepcionNoHayConstruccionesCreadoras;
 import excepciones.ExcepcionNoPudoCrearseUnidad;
-import excepciones.ExcepcionRecursoInsuficiente;
-import excepciones.ExcepcionUnidadNoCorrespondiente;
-import src.Atacable;
 import src.Juego;
 import src.Jugador;
-import src.construcciones.Barraca;
 import src.construcciones.Construccion;
 import src.construcciones.Creadora;
-import src.mapa.Mapeable;
-import src.razas.Protoss;
-import src.razas.Raza;
-import src.razas.Terran;
 import src.unidades.Unidad;
 
 
@@ -166,14 +158,14 @@ public class CrearUnidades extends JFrame {
 				indiceUnidad= obtenerIndiceDeElemento (posicionPuntoUnidades, unidad, indiceBuscadoUnidades);					
 					
 				try {
-					juego.ordenarFabricacionUnidad((unidadesIndexadas.get(indiceUnidad)), (Creadora) construccionesIndexadas.get(indiceConstruccion));
+					juego.ordenarFabricacionUnidad((unidadesIndexadas.get(indiceUnidad)).getClass().newInstance(), (Creadora) construccionesIndexadas.get(indiceConstruccion));
 					JOptionPane.showMessageDialog(null, "Entrenamiento de unidad en camino!");
 					frameCrear.getContentPane().removeAll();
 					frameCrear.setJMenuBar(null);
 					frameCrear.setVisible(false);
 					menuAnterior.cargar(ip);
 				} catch (ExcepcionNoPudoCrearseUnidad
-						| ExcepcionElEdificioNoPerteneceATusConstrucciones e1) {
+						| ExcepcionElEdificioNoPerteneceATusConstrucciones | InstantiationException | IllegalAccessException e1) {
 						JOptionPane.showMessageDialog(null, e1.getMessage());
 						frameCrear.getContentPane().removeAll();
 						frameCrear.setJMenuBar(null);
