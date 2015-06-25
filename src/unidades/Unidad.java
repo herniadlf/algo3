@@ -225,7 +225,16 @@ public abstract class Unidad implements Atacable{
 		try {
 			
 		mapa.colocarEn(x, y, this);
-		mapa.eliminarElementoTerrestreEnPosicion(posicion.getX(), posicion.getY());
+		
+		if(this.esTerrestre()){
+			
+			mapa.eliminarElementoTerrestreEnPosicion(posicion.getX(), posicion.getY());
+		}
+		if(this.esAereo()) {
+			
+			mapa.eliminarElementoAereoEnPosicion(posicion.getX(), posicion.getY());
+		}
+	
 		Posicion nuevaPosicion = new Posicion(x,y);
 		this.setPosicion(nuevaPosicion);
 		jugador.setRangoDeVision(x,y,rangoAtaque,mapa);
