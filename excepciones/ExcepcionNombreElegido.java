@@ -2,8 +2,8 @@ package excepciones;
 
 public class ExcepcionNombreElegido extends ExcepcionGeneral {
 
-	public ExcepcionNombreElegido() {
-		super(null, null);
+	public ExcepcionNombreElegido(String string) {
+		super(string, null);
 	}
 
 }

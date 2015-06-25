@@ -144,9 +144,9 @@ public class Construccion implements Atacable {
 		
 	}
 	
-	public void setEdificioRequerido(Construccion edificioRequerido) {
+	public void setEdificioRequerido(Construccion edificio) {
 		
-		this.edificioRequerido = edificioRequerido;
+		this.edificioRequerido = edificio;
 		
 	}
 	

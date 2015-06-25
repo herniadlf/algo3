@@ -11,7 +11,10 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.JWindow;
 
+import org.omg.CORBA.SystemException;
+
 import excepciones.ExcepcionNoPudoColocarseEdificio;
+import excepciones.ExcepcionPosicionInvalida;
 import src.Juego;
 import src.Jugador;
 import src.construcciones.Construccion;
@@ -21,6 +24,9 @@ public class MenuConstrucciones {
 	InterfazPartida interfazPartida;	
 	Juego controladorJuego;
 	InterfazPrincipal interfazPrincipal;
+	ListaEdificiosEnPie listaEdificios;
+	ListaDeRecursos listaDeRecursos;
+	ListaDeEdificiosEnCurso listaEnCurso;
 	
 	public MenuConstrucciones(Juego j, InterfazPartida iPartida, InterfazPrincipal iPrincipal){	
 		controladorJuego = j;
@@ -30,20 +36,51 @@ public class MenuConstrucciones {
 	}
 	
 	public void cargar() {
+		listaDeRecursos = new ListaDeRecursos(controladorJuego,interfazPartida);
+		listaEdificios = new ListaEdificiosEnPie(controladorJuego,interfazPartida);
+		listaEnCurso = new ListaDeEdificiosEnCurso(controladorJuego,interfazPartida);
 		JFrame frameConstruccion = new JFrame();
 		frameConstruccion.getContentPane().removeAll();
 		frameConstruccion.setJMenuBar(null);
-		frameConstruccion.setTitle("Construccion");
-		frameConstruccion.setSize(400, 400);
+		frameConstruccion.setTitle("Construccion");		
 		
 		JPanel panelConstruccion = new JPanel();
 		for (int i = 0; i < jugadorActual.getRaza().getConstruccionesPosibles().size(); i++){
-			Construccion auxiliar = jugadorActual.getRaza().getConstruccionesPosibles().get(i);
+			Construccion auxiliar = jugadorActual.getRaza().getConstruccionesPosibles().get(i);			
 			panelConstruccion.add(generarBotonDeConstruccion(auxiliar));
 		}
-		
+		JButton construcciones = new JButton("Construcciones en Pie");
+		construcciones.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				listaEdificios.cargar(interfazPrincipal);
+			}
+		});		
+		JButton recursos = new JButton("Recursos Cercanos");
+		recursos.addActionListener(new ActionListener() {			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				try {
+					listaDeRecursos.cargar(interfazPrincipal);
+				} catch (ExcepcionPosicionInvalida e) {}
+			}
+		});	
+		JButton enCurso = new JButton("Construcciones en Curso");
+		enCurso.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				listaEnCurso.cargar(interfazPrincipal);
+				
+			}
+		});
+		panelConstruccion.add(construcciones);
+		panelConstruccion.add(recursos);
+		panelConstruccion.add(enCurso);
 		frameConstruccion.getContentPane().add(panelConstruccion);
 		frameConstruccion.setSize(700, 500);
+		frameConstruccion.setLocation(650,250);
 		frameConstruccion.show();
 	}
 	

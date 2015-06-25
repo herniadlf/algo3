@@ -61,7 +61,9 @@ public class NaveTransporteTerranTest extends TestCase {
 		jugador1.setDinero(99999, 99999);
 				
 		barraca = (Creadora) jugador1.colocar(new Barraca(), mapa, 50, 50);
+		jugador1.getConstruccionesEnPie().add(barraca);
 		jugador1.colocar(new Fabrica(), mapa, 10, 10);
+		jugador1.getConstruccionesEnPie().add(new Fabrica());
 	 	puertoEstelar = (Creadora) jugador1.colocar(new PuertoEstelarTerran(), mapa, 49, 50);
 		
 		naveTransporte = new NaveTransporteTerran();

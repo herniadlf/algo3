@@ -93,9 +93,14 @@ public class UnidadesTerranTest extends TestCase{
 		jug1.setDinero(999999, 999999);
 		jug2.setDinero(9999, 9999);
 		
+		jug1.getConstruccionesEnPie().add(new DepositoDeSuministros());
 		Creadora barraca = (Creadora) jug1.colocar(new Barraca(),mapa,5,5);
+		jug1.getConstruccionesEnPie().add(barraca);
 		Creadora fabrica = (Creadora) jug1.colocar(new Fabrica(),mapa, 9,9);
+		jug1.getConstruccionesEnPie().add(fabrica);
 		Creadora puertoEstelarTerran = (Creadora) jug1.colocar(new PuertoEstelarTerran(), mapa, 16, 16);
+		
+		jug2.getConstruccionesEnPie().add(new Pilon());
 		NexoMineral nexo =  (NexoMineral) jug2.colocar(new NexoMineral(), mapa, 18, 18);
 		//Como creo 8 espectrs que requieren 2 suministros, en total necesito 16 suministros,
 		//por lo cual construyo 3 depositosdesuminitros 

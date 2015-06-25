@@ -59,8 +59,8 @@ public class GolliatTest extends TestCase{
 		Juego juego = new Juego(jugador1, jugador2, 100, 0);
 		Mapa mapa = juego.getMapa();
 		
-		Assert.assertEquals(jugador1.getDinero().getMinerales(),800);
-		Assert.assertEquals(jugador1.getDinero().getGasVespeno(),400);
+		Assert.assertEquals(jugador1.getDinero().getMinerales(),200);
+		Assert.assertEquals(jugador1.getDinero().getGasVespeno(),200);
 		
 		Creadora barraca = (Creadora) jugador1.colocar(new Barraca(), mapa, 5, 5);	
 		jugador1.getConstruccionesEnPie().add(barraca);
@@ -88,8 +88,8 @@ public class GolliatTest extends TestCase{
 		Juego juego = new Juego(jugador1, jugador2, 100, 0);
 		Mapa mapa = juego.getMapa();
 		
-		Assert.assertEquals(jugador1.getDinero().getMinerales(),800);
-		Assert.assertEquals(jugador1.getDinero().getGasVespeno(),400);
+		Assert.assertEquals(jugador1.getDinero().getMinerales(),200);
+		Assert.assertEquals(jugador1.getDinero().getGasVespeno(),200);
 		
 		Creadora barraca = (Creadora) jugador1.colocar(new Barraca(), mapa, 5, 5);	
 		jugador1.getConstruccionesEnPie().add(barraca);
@@ -103,8 +103,8 @@ public class GolliatTest extends TestCase{
 			juego.pasarTurno();
 		}	
 		
-		Assert.assertEquals(jugador1.getDinero().getMinerales(),700);
-		Assert.assertEquals(jugador1.getDinero().getGasVespeno(),350);
+		Assert.assertEquals(jugador1.getDinero().getMinerales(),100);
+		Assert.assertEquals(jugador1.getDinero().getGasVespeno(),150);
 		
 	}
 	

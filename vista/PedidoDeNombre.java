@@ -10,6 +10,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import src.Juego;
+import excepciones.ExcepcionErrorDeLongitud;
 import excepciones.ExcepcionNombreElegido;
 
 public class PedidoDeNombre {
@@ -36,14 +37,14 @@ public class PedidoDeNombre {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				try{
-					if (ingreso.getText().equals(ip.getJuego().getJugador1().getNombre())){
-						JOptionPane.showMessageDialog(null, "Nombre Ya Elegido");
-						throw new ExcepcionNombreElegido();
-					}
+					if (ingreso.getText().equals(ip.getJuego().getJugador1().getNombre())){throw new ExcepcionNombreElegido("Nombre Ya Elegido");}
+					if (ingreso.getText().length() < 4 ) { throw new ExcepcionErrorDeLongitud("Error. Minimo 4 caracteres"); }						
+					
 					ip.getJuego().getJugadorActual().setNombre(ingreso.getText());
 					JOptionPane.showMessageDialog(null, "¡Bienvenido/a " + ip.getJuego().getJugadorActual().getNombre() + "!");
 					pedidoDeRaza.cargarSeleccionDeRaza(ip);
-				} catch (ExcepcionNombreElegido e){
+				} catch (ExcepcionNombreElegido | ExcepcionErrorDeLongitud e){
+					JOptionPane.showMessageDialog(null, e.getMessage());
 					cargarPedidoNombre(ip);
 				}
 			}

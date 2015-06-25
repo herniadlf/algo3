@@ -6,9 +6,11 @@ import excepciones.ExcepcionPosicionInvalida;
 import excepciones.ExcepcionSuperaLimenteDeArbolesPermitos;
 import excepciones.ExcepcionTamanioDelMapaInvalido;
 import excepciones.ExcepcionYaHayElementoEnLaPosicion;
+import src.construcciones.Construccion;
 import src.mapa.FuenteDeGasVespeno;
 import src.mapa.FuenteDeMinerales;
 import src.mapa.Mapa;
+import src.mapa.Posicion;
 
 public class Ambientador {
 	
@@ -27,22 +29,23 @@ public class Ambientador {
 		try {
 			
 			final int rangoInicial = 8;
-			
-			mapa.colocarEn(posPrincipal1, posPrincipal1, jugador1.getRaza().getEdificioPrincipal());	
-			jugador1.getRaza().getEdificioPrincipal().setPosicionX(posPrincipal1);
-			jugador1.getRaza().getEdificioPrincipal().setPosicionY(posPrincipal1);
-			jugador1.construccionesEnPie.add(jugador1.getRaza().getEdificioPrincipal());
+			Construccion principal1 = jugador1.getRaza().getEdificioPrincipal();
+			principal1.setPosicionX(posPrincipal1);
+			principal1.setPosicionY(posPrincipal1);
+			mapa.colocarEn(posPrincipal1, posPrincipal1, principal1);	
+			jugador1.construccionesEnPie.add(principal1);			
 			jugador1.setRangoDeVision(posPrincipal1,posPrincipal1,rangoInicial,mapa);
 			
-			mapa.colocarEn(posPrincipal2, posPrincipal2, jugador2.getRaza().getEdificioPrincipal());
-			jugador2.getRaza().getEdificioPrincipal().setPosicionX(posPrincipal2);
-			jugador2.getRaza().getEdificioPrincipal().setPosicionY(posPrincipal2);		
-			jugador2.construccionesEnPie.add(jugador2.getRaza().getEdificioPrincipal());
+			Construccion principal2 = jugador2.getRaza().getEdificioPrincipal();
+			principal2.setPosicionX(posPrincipal2);
+			principal2.setPosicionY(posPrincipal2);	
+			mapa.colocarEn(posPrincipal2, posPrincipal2, jugador2.getRaza().getEdificioPrincipal());			
+			jugador2.construccionesEnPie.add(principal2);		
 			jugador2.setRangoDeVision(posPrincipal2,posPrincipal2,rangoInicial,mapa);
 			
 			this.agregarFuentes(mapa, CANT_DE_FUENTES_RECURSOS, posPrincipal1, posPrincipal1);
 			
-			this.agregarFuentes(mapa, CANT_DE_FUENTES_RECURSOS, posPrincipal1, posPrincipal2);
+			this.agregarFuentes(mapa, CANT_DE_FUENTES_RECURSOS, posPrincipal2, posPrincipal2);
 			
 			mapa.crearCantidadDeArbolesEnMapa(cantDeArboles);
 			
@@ -74,6 +77,7 @@ public class Ambientador {
 			try {
 				
 				mapa.colocarEn(alrededorDeX + i, alrededorDeY + j, new FuenteDeMinerales());
+				mapa.agregarAListaDeFuentes(new Posicion(alrededorDeX + i,alrededorDeY + j));
 				totalFuentesDeMineral++;
 				
 				}
@@ -95,6 +99,7 @@ public class Ambientador {
 				
 				mapa.colocarEn(alrededorDeX + i, alrededorDeY + j, new FuenteDeGasVespeno());
 				totalFuentesDeGasVespeno++;
+				mapa.agregarAListaDeFuentes(new Posicion(alrededorDeX + i,alrededorDeY + j));
 				
 				}
 			

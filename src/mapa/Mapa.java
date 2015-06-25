@@ -1,5 +1,6 @@
 package src.mapa;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
@@ -16,6 +17,8 @@ public class Mapa {
 	private static int TAMANIO_MAXIMO = 800;
 	private Map<Posicion,Mapeable> mapa;
 	private int tamanio;
+	private ArrayList<Posicion> posicionesDeFuentes;
+
 	
 	public int getTamanioMapa(){
 		
@@ -40,8 +43,16 @@ public class Mapa {
 			
 			throw new ExcepcionTamanioDelMapaInvalido("El tamanio ingresado es invalido");
 		}
+		posicionesDeFuentes = new ArrayList<Posicion>();
 	}
 	
+	public void agregarAListaDeFuentes(Posicion fuente){
+		posicionesDeFuentes.add(fuente);
+	}
+	
+	public ArrayList<Posicion> getListaRecursos(){
+		return posicionesDeFuentes;
+	}
 	public void colocarEn(int i, int j, Mapeable unElemento) throws ExcepcionPosicionInvalida, ExcepcionYaHayElementoEnLaPosicion {
 		
 		Posicion posicion = new Posicion(i,j);

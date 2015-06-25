@@ -55,7 +55,7 @@ public class Jugador {
 		setColor(color);
 		setRaza(raza);
 		setPoblacionDisponible(5);
-		setDinero(800,400);
+		setDinero(200,200);
 		this.construccionesEnCamino= new ArrayList<Construccion>();	
 		this.construccionesEnPie= new ArrayList <Construccion>();
 		this.ataques= new  AtaquesPermitidosPorTurno();
@@ -67,7 +67,7 @@ public class Jugador {
 	public Jugador() {
 		
 		setPoblacionDisponible(5);
-		setDinero(800,400);
+		setDinero(200,400);
 		this.construccionesEnCamino= new ArrayList<Construccion>();	
 		this.construccionesEnPie= new ArrayList <Construccion>();
 		this.ataques= new  AtaquesPermitidosPorTurno();
@@ -151,20 +151,18 @@ public class Jugador {
 	public Construccion colocar(Construccion edificio, Mapa map, int i, int j) throws 
 		ExcepcionNoPudoColocarseEdificio, ExcepcionConstruccionNoCorrespondiente, ExcepcionRecursoInsuficiente {
 	
-		try {	
-			
-			verificacionEdificio(edificio);
+		try {				
+			//verificacionEdificio(edificio);
 			edificio.setPosicionX(i);
 			edificio.setPosicionY(j);
 			edificio.setAlrededores();
 			edificio.colocar(map);
 			this.getRaza().actualizarEdificios(edificio);
-			//this.gastarPlata(edificio.getCosto());
 			poblacionDisponible = poblacionDisponible + edificio.getCantidadDeSuministros();	
 			
 		} catch (ExcepcionPosicionInvalida | ExcepcionExtractoraSinRecurso
-				| ExcepcionConstruccionNoCorrespondiente
-				| ExcepcionYaHayElementoEnLaPosicion  e) {
+				| /*ExcepcionConstruccionNoCorrespondiente
+				|*/ ExcepcionYaHayElementoEnLaPosicion  e) {
 				throw new ExcepcionNoPudoColocarseEdificio(e);
 		}		
 		
@@ -173,8 +171,8 @@ public class Jugador {
 	}
 	/* for testing */
 	public void verificacionEdificio(Construccion edificio) throws ExcepcionConstruccionNoCorrespondiente, ExcepcionRecursoInsuficiente{
-		
-		this.getRaza().verificarEdificioPosible(edificio.getEdificioRequerido());
+		verificarEdificioPrevio(edificio.getEdificioRequerido());
+		this.getRaza().verificarEdificioPosible(edificio);
 		this.gastoPosible(edificio.getCosto());
 		
 	}
@@ -183,11 +181,25 @@ public class Jugador {
 		
 		Sector auxiliar = map.obtenerContenidoEnPosicion(x, y);
 		if (!rangoDeVision.contains(auxiliar)) { throw new ExcepcionFueraDelRangoDeVision("Fuera del rango de vision"); }
-		this.getRaza().verificarEdificioPosible(edificio.getEdificioRequerido());
-		this.gastoPosible(edificio.getCosto());
+		getRaza().verificarEdificioPosible(edificio);
+		verificarEdificioPrevio(edificio.getEdificioRequerido());
+		gastoPosible(edificio.getCosto());
 		
 	}
 	
+	private void verificarEdificioPrevio(Construccion edificioRequerido) throws ExcepcionConstruccionNoCorrespondiente {
+		int i= 0;
+		Boolean founded = false;
+		while ( (i < construccionesEnPie.size()) && !founded ) {
+			founded = (construccionesEnPie.get(i).esLoMismo(edificioRequerido));
+			i++;
+		}
+		if (!founded) {
+			throw new ExcepcionConstruccionNoCorrespondiente("Edificio no habilitado");
+		}
+		
+	}
+
 	private void gastoPosible(Dinero costo) throws ExcepcionRecursoInsuficiente{
 		
 		if (this.getDinero().getMinerales() < costo.getMinerales()){
@@ -390,7 +402,10 @@ public class Jugador {
 		}	
 		
 	}
-
+	
+	public ArrayList<Sector> getRangoDeVision(){
+		return rangoDeVision;
+	}
 	public void setJuego(Juego nuevoJuego) {
 		
 		juego = nuevoJuego;

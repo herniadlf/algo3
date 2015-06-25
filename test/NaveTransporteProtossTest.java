@@ -33,6 +33,20 @@ import excepciones.ExcepcionYaHayElementoEnLaPosicion;
 
 public class NaveTransporteProtossTest {
 	
+	/*@Test
+	public void construccionExitosaEnElMapa() throws ExcepcionNoPudoColocarseEdificio, ExcepcionPosicionInvalida, ExcepcionConstruccionNoCorrespondiente, ExcepcionRecursoInsuficiente, ExcepcionTamanioDelMapaInvalido{
+		Mapa mapa = new Mapa(50);
+		Jugador jug = new Jugador("carlos","rojo",new Terran());
+		jug.setDinero(9999999, 999999); // ya que pruebo construir en todos los puntos del mapa necesito mucha plata
+		
+		for (int i=1; i< mapa.getTamanioMapa();i++){
+			for (int j=1; j<mapa.getTamanioMapa(); j++){
+				Construccion b = new Barraca();
+				b = jug.colocar(b, mapa, i, j);
+				Assert.assertTrue( ( mapa.obtenerContenidoEnPosicion(i, j) ).getElementoEnTierra().esLoMismo(b));					
+			}				
+		}
+	} */
 	@Test (expected = ExcepcionNoSePuedeTransportar.class)
 	public void unidadLejanaALaNaveIntentaSubirseYLanzaError() throws ExcepcionPosicionInvalida, ExcepcionYaHayElementoEnLaPosicion, ExcepcionSuperaLimenteDeArbolesPermitos, ExcepcionNoPudoColocarseEdificio, ExcepcionNoHayLugarParaCrear, ExcepcionNoSePuedeTransportar, ExcepcionConstruccionNoCorrespondiente, ExcepcionRecursoInsuficiente, ExcepcionUnidadNoCorrespondiente, ExcepcionTamanioDelMapaInvalido {
 		
@@ -42,7 +56,8 @@ public class NaveTransporteProtossTest {
 		Juego juego = new Juego(jugador1, jugador2, 100, 0);
 		Mapa mapa = juego.getMapa();
 		jugador1.setDinero(99999, 99999);
-		Creadora acceso = (Creadora) jugador1.colocar(new Acceso(), mapa, 90, 50);		
+		Creadora acceso = (Creadora) jugador1.colocar(new Acceso(), mapa, 90, 50);	
+		jugador1.getConstruccionesEnPie().add(acceso);
 		Creadora puertoEstelar = (Creadora) jugador1.colocar(new PuertoEstelarProtoss(), mapa, 10, 10);
 		
 		NaveTransporteProtoss naveProtoss = new NaveTransporteProtoss();	
@@ -65,6 +80,7 @@ public class NaveTransporteProtossTest {
 		Mapa mapa = juego.getMapa();
 		jugador1.setDinero(99999, 99999);
 		Creadora acceso = (Creadora) jugador1.colocar(new Acceso(), mapa, 50, 50);		
+		jugador1.getConstruccionesEnPie().add(acceso);
 		Creadora puertoEstelar = (Creadora) jugador1.colocar(new PuertoEstelarProtoss(), mapa, 49, 50);
 		
 		NaveTransporteProtoss naveProtoss = new NaveTransporteProtoss();
@@ -95,6 +111,7 @@ public class NaveTransporteProtossTest {
 		Mapa mapa = juego.getMapa();
 		jugador1.setDinero(99999, 99999);
 		Creadora acceso = (Creadora) jugador1.colocar(new Acceso(), mapa, 90, 50);		
+		jugador1.getConstruccionesEnPie().add(acceso);
 		Creadora puertoEstelar = (Creadora) jugador1.colocar(new PuertoEstelarProtoss(), mapa, 10, 10);
 		
 		NaveTransporteProtoss naveProtoss = new NaveTransporteProtoss();	

@@ -55,8 +55,8 @@ public class MarineTest extends TestCase{
 		
 		Juego juego = new Juego(jugador1, jugador2, 100, 0);
 		Mapa mapa = juego.getMapa();
-		
-		Assert.assertEquals(jugador1.getDinero().getMinerales(),800);
+		jugador1.setDinero(900, 999);
+		Assert.assertEquals(jugador1.getDinero().getMinerales(),900);
 		
 		Creadora barraca = (Creadora) jugador1.colocar(new Barraca(), mapa, 5, 5);	
 		jugador1.getConstruccionesEnPie().add(barraca);
@@ -69,7 +69,7 @@ public class MarineTest extends TestCase{
 		juego.pasarTurno();
 		juego.pasarTurno();
 		
-		Assert.assertEquals(jugador1.getDinero().getMinerales(),750);
+		Assert.assertEquals(jugador1.getDinero().getMinerales(),850);
 		
 	}
 	

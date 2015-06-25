@@ -6,6 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
@@ -23,10 +24,10 @@ public class ListaEdificiosEnPie {
 		iPartida = interfazPartida;
 	}
 	public void cargar(InterfazPrincipal ip) {
-		ip.getFramePrincipal().getContentPane().removeAll();
-		ip.getFramePrincipal().setJMenuBar(null);		
-		ip.getFramePrincipal().setTitle("Construcciones del Jugador: " + controladorJuego.getJugadorActual().getNombre() + " en pie");
-		ip.getFramePrincipal().setBackground(Color.WHITE);		
+		JFrame frameEdificiosEnPie = new JFrame();
+		frameEdificiosEnPie.getContentPane().removeAll();
+		frameEdificiosEnPie.setJMenuBar(null);
+		frameEdificiosEnPie.setTitle("Construcciones del Jugador: " + controladorJuego.getJugadorActual().getNombre() + " en pie");	
 		
 		JPanel panelEdificios = new JPanel();
 		JTextArea lista = new JTextArea("");
@@ -39,17 +40,21 @@ public class ListaEdificiosEnPie {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				iPartida.cargar(ip);				
+				iPartida.cargar(ip);	
+				frameEdificiosEnPie.getContentPane().removeAll();
+				frameEdificiosEnPie.setJMenuBar(null);
+				frameEdificiosEnPie.setVisible(false);
 			}
 		});
 		panelEdificios.add(lista);
 		panelEdificios.add(avanzar);
-		ip.getFramePrincipal().getContentPane().add(panelEdificios);
-		ip.getFramePrincipal().setSize(700, 500);
-		ip.getFramePrincipal().show();
+		frameEdificiosEnPie.getContentPane().add(panelEdificios);
+		frameEdificiosEnPie.setSize(700, 500);
+		frameEdificiosEnPie.show();
 	}
 	private String generarTexto(Construccion auxiliar) {
-		return (auxiliar.getNombre() + ". Ubicacion: ( " + auxiliar.getPosicionX() + "," + auxiliar.getPosicionY() + ")");
+		
+		return (auxiliar.getNombre() + ". Ubicacion: ( " + auxiliar.getPosicionX() + "," + auxiliar.getPosicionY() + ") Vida: " + auxiliar.getVida().obtenerVida());
 		
 	}
 	

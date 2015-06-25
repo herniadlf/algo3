@@ -5,8 +5,10 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
@@ -26,7 +28,8 @@ public class InterfazPartida {
 	Juego controladorJuego;
 	MenuUnidades menuUnidades;
 	MenuConstrucciones menuConstrucciones;
-	ListaEdificiosEnPie listaEdificios;
+	VistaMapa vistaMapa;
+	
 	public InterfazPartida() {
 	}
 
@@ -36,19 +39,23 @@ public class InterfazPartida {
 		Jugador jugador = controladorJuego.getJugadorActual();
 		menuUnidades = new MenuUnidades(jugador);
 		menuConstrucciones = new MenuConstrucciones(controladorJuego,this,ip);
-		listaEdificios = new ListaEdificiosEnPie(controladorJuego,this);
-		
+		vistaMapa = new VistaMapa(controladorJuego,this,ip);
+			
 		ip.getFramePrincipal().getContentPane().removeAll();
 		ip.getFramePrincipal().setJMenuBar(null);
 		
 		ip.getFramePrincipal().setTitle("AlgoCraft");
-		ip.getFramePrincipal().setBackground(Color.WHITE);
 		
-		JPanel panelJuego = new JPanel();	
-		panelJuego.setBackground(Color.WHITE);
+		JPanel panelJuego = new JPanel();
+	   
+		String ruta = new String(System.getProperty("user.dir")+"\\trunk\\imagenes\\");
+	    ImageIcon imagenBandera = new ImageIcon(ruta+"bandera"+jugador.getColor()+".png");
+	    JLabel labelColor = new JLabel(imagenBandera);
+	    labelColor.setBounds(0,0,imagenBandera.getIconWidth(),imagenBandera.getIconHeight());
+	    panelJuego.add(labelColor);
+	    
 		JTextArea informacion = new JTextArea("Nombre: " + jugador.getNombre() +"\n");
-		informacion.setSize(150, 400);
-		informacion.setBackground(Color.WHITE);
+		informacion.setSize(150, 400);		
 		informacion.setLineWrap(true);
 		informacion.append("Raza: " + jugador.getRaza().getNombre() +"\n");
 		informacion.append("Minerales: " + jugador.getDinero().getMinerales() + "\n" + "Gas Vespeno: " + jugador.getDinero().getGasVespeno() + "\n");
@@ -67,6 +74,7 @@ public class InterfazPartida {
 						| ExcepcionConstruccionNoCorrespondiente
 						| ExcepcionRecursoInsuficiente
 						| ExcepcionUnidadNoCorrespondiente e1) {
+					JOptionPane.showMessageDialog(null, e1.getMessage());
 				}
 			}
 		});
@@ -90,23 +98,24 @@ public class InterfazPartida {
 				menuConstrucciones.cargar();
 			}
 		});
-		JLabel edificiosEnPie = new JLabel("Construcciones en Pie");
-		JButton ver = new JButton("Ver");
-		ver.addActionListener(new ActionListener() {
+		
+		JButton verMapa = new JButton("Ver Mapa");
+		verMapa.addActionListener(new ActionListener() {
 			
 			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				listaEdificios.cargar(ip);
+			public void actionPerformed(ActionEvent e) {
+				vistaMapa.cargar();
+				
 			}
 		});
-		edificiosEnPie.setLabelFor(ver);		
+			
 		panelJuego.add(cambioTurno);
 		panelJuego.add (unidades);
 		panelJuego.add (construcciones);
-		panelJuego.add (edificiosEnPie);
-		panelJuego.add (ver);
-		ip.getFramePrincipal().getContentPane().add(panelJuego,BorderLayout.WEST);	
+		panelJuego.add(verMapa);
+		ip.getFramePrincipal().getContentPane().add(panelJuego,BorderLayout.WEST);			
 		ip.getFramePrincipal().setSize(700, 500);
+		ip.getFramePrincipal().setLocation(450,250);
 		ip.getFramePrincipal().show();		
 	}
 	public Juego getControlador(){
