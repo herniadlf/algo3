@@ -1,6 +1,4 @@
 package test;
-import java.util.ArrayList;
-
 import org.junit.Assert;
 
 import excepciones.ExcepcionConstruccionNoCorrespondiente;
@@ -25,8 +23,6 @@ import src.mapa.Posicion;
 import src.razas.Protoss;
 import src.razas.Terran;
 import src.unidades.Golliat;
-import src.unidades.Marine;
-import src.unidades.Unidad;
 import junit.framework.TestCase;
 
 public class GolliatTest extends TestCase{

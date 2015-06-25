@@ -9,7 +9,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import src.Juego;
 import excepciones.ExcepcionErrorDeLongitud;
 import excepciones.ExcepcionNombreElegido;
 

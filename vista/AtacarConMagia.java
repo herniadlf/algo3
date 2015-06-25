@@ -25,15 +25,11 @@ import excepciones.ExcepcionYaHayElementoEnLaPosicion;
 import src.Juego;
 import src.Jugador;
 import src.construcciones.Construccion;
-import src.construcciones.Pilon;
-import src.unidades.AltoTemplario;
 import src.unidades.EMP;
 import src.unidades.Magia;
 import src.unidades.Magica;
-import src.unidades.NaveCiencia;
 import src.unidades.TormentaPsionica;
 import src.unidades.Unidad;
-import src.unidades.Zealot;
 
 public class AtacarConMagia {
 	
@@ -107,8 +103,9 @@ protected void cargar (InterfazPrincipal ip){
 	
 	juego = ip.getJuego();
 	jugador = ip.getJuego().getJugadorActual();
-
-		
+	
+	//solo para porrear
+	
 	if (jugador ==juego.getJugador1()){
 		unidadesEnemigas= juego.getJugador2().getUnidadesAlistades();
 		construccionesEnemigas = juego.getJugador2().getConstruccionesEnPie();
@@ -197,8 +194,8 @@ protected void cargar (InterfazPrincipal ip){
 			
 
 			
-			indiceUnidadEnemiga= metodosDeCarga.obtenerIndiceDeElemento(posicionPuntoUnidadesMagicas, unidadMagica, indiceBuscadoUnidadesMagicas);
-			indiceUnidadMagica= metodosDeCarga.obtenerIndiceDeElemento(posicionPuntoUnidadesMagicas, unidadEnemiga, indiceBuscadoUnidadesMagicas);
+			indiceUnidadEnemiga= metodosDeCarga.obtenerIndiceDeElemento(posicionPuntoUnidadesEnemigas, unidadEnemiga, indiceBuscadoUnidadesEnemigas);
+			indiceUnidadMagica= metodosDeCarga.obtenerIndiceDeElemento(posicionPuntoUnidadesMagicas, unidadMagica, indiceBuscadoUnidadesMagicas);
 			
 
 			

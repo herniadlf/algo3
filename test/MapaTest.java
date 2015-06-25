@@ -4,17 +4,13 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import excepciones.ExcepcionExtractoraSinRecurso;
-import excepciones.ExcepcionNoPuedeMoverseUnidad;
 import excepciones.ExcepcionPosicionInvalida;
 import excepciones.ExcepcionSuperaLimenteDeArbolesPermitos;
 import excepciones.ExcepcionTamanioDelMapaInvalido;
 import excepciones.ExcepcionYaHayElementoEnLaPosicion;
-import src.Mineral;
 import src.mapa.*;
 import src.unidades.Espectro;
-import src.unidades.Marine;
 import src.construcciones.*;
-import excepciones.*;
 
 public class MapaTest {
 	

@@ -14,7 +14,6 @@ import excepciones.ExcepcionSuperaLimenteDeArbolesPermitos;
 import excepciones.ExcepcionTamanioDelMapaInvalido;
 import excepciones.ExcepcionUnidadNoCorrespondiente;
 import excepciones.ExcepcionYaHayElementoEnLaPosicion;
-import src.Dinero;
 import src.Juego;
 import src.Jugador;
 import src.construcciones.Barraca;

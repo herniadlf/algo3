@@ -4,10 +4,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import excepciones.ExcepcionConstruccionNoCorrespondiente;
-import excepciones.ExcepcionEdificioNoPuedeCrearUnidad;
-import excepciones.ExcepcionEdificioPrevioRequerido;
 import excepciones.ExcepcionErrorPasoDeTurno;
-import excepciones.ExcepcionExtractoraSinRecurso;
 import excepciones.ExcepcionNoHayLugarParaCrear;
 import excepciones.ExcepcionNoPudoColocarseEdificio;
 import excepciones.ExcepcionPosicionInvalida;
@@ -29,16 +26,13 @@ import src.construcciones.NexoMineral;
 import src.construcciones.Pilon;
 import src.construcciones.PuertoEstelarTerran;
 import src.construcciones.Refineria;
-import src.mapa.Escombros;
 import src.mapa.FuenteDeGasVespeno;
 import src.mapa.FuenteDeMinerales;
 import src.mapa.Mapa;
-import src.mapa.EspacioDisponible;
 import src.razas.Protoss;
 import src.razas.Terran;
 import src.unidades.Espectro;
 import src.unidades.Marine;
-import src.unidades.Zealot;
 public class ConstruccionTest {
 		
 						

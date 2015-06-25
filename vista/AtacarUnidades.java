@@ -1,41 +1,30 @@
 package vista;
 
-import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.util.ArrayList;
-import java.util.LinkedList;
-
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import excepciones.ExcepcionConstruccionNoCorrespondiente;
 import excepciones.ExcepcionEdificioNoPuedeCrearUnidad;
-import excepciones.ExcepcionElEdificioNoPerteneceATusConstrucciones;
 import excepciones.ExcepcionElementoFueraDelRangoDeAtaque;
 import excepciones.ExcepcionErrorPasoDeTurno;
 import excepciones.ExcepcionLaUnidadNoPertenceATuTropa;
 import excepciones.ExcepcionNoHayLugarParaCrear;
-import excepciones.ExcepcionNoPudoCrearseUnidad;
 import excepciones.ExcepcionPosicionInvalida;
 import excepciones.ExcepcionRecursoInsuficiente;
 import excepciones.ExcepcionUnidadNoCorrespondiente;
 import excepciones.ExcepcionYaHayElementoEnLaPosicion;
 import src.Juego;
 import src.Jugador;
-import src.construcciones.Barraca;
 import src.construcciones.Construccion;
-import src.construcciones.Creadora;
-import src.construcciones.Pilon;
-import src.unidades.Marine;
 import src.unidades.Unidad;
-import src.unidades.Zealot;
 
 public class AtacarUnidades extends JFrame {
 	
@@ -127,7 +116,7 @@ protected void cargar(final InterfazPrincipal ip)  {
 	JFrame frameAtacar= new JFrame();
 	frameAtacar.getContentPane().removeAll();
 	frameAtacar.setJMenuBar(null);
-	frameAtacar.setTitle("AtaqueConMagia: Unidad   Edificio   UnidadEnemiga");
+	frameAtacar.setTitle("Atacar Enemigo: Unidad   UnidadEnemiga   EdificioEnemigo");
 	JPanel panelAtaque = new JPanel();
 	
 		desplegableUnidadesAlistadas.addItem("");

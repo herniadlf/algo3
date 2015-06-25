@@ -1,8 +1,5 @@
 package test;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -10,12 +7,10 @@ import excepciones.ExcepcionConstruccionNoCorrespondiente;
 import excepciones.ExcepcionEdificioNoPuedeCrearUnidad;
 import excepciones.ExcepcionElementoFueraDelRangoDeAtaque;
 import excepciones.ExcepcionErrorPasoDeTurno;
-import excepciones.ExcepcionGeneral;
 import excepciones.ExcepcionLaUnidadNoPertenceATuTropa;
 import excepciones.ExcepcionNoHayLugarParaCrear;
 import excepciones.ExcepcionNoPudoColocarseEdificio;
 import excepciones.ExcepcionNoPuedeMoverseUnidad;
-import excepciones.ExcepcionNoSePuedeTransportar;
 import excepciones.ExcepcionPosicionInvalida;
 import excepciones.ExcepcionRecursoInsuficiente;
 import excepciones.ExcepcionSuperaLimenteDeArbolesPermitos;
@@ -25,20 +20,13 @@ import excepciones.ExcepcionYaHayElementoEnLaPosicion;
 import src.AtaquesPermitidosPorTurno;
 import src.Juego;
 import src.Jugador;
-import src.Vida;
 import src.construcciones.Acceso;
 import src.construcciones.Barraca;
-import src.construcciones.Construccion;
 import src.construcciones.Creadora;
-import src.construcciones.DepositoDeSuministros;
-import src.construcciones.Pilon;
-import src.construcciones.PuertoEstelarProtoss;
 import src.mapa.Mapa;
-import src.mapa.Posicion;
 import src.razas.Protoss;
 import src.razas.Terran;
 import src.unidades.*;
-import junit.framework.TestCase;
 
 public class UnidadesProtossTest{
 	

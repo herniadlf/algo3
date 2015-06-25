@@ -1,20 +1,14 @@
 package test;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-
 import junit.framework.TestCase;
 import src.Juego;
 import src.Jugador;
-import src.construcciones.Acceso;
 import src.construcciones.Barraca;
 import src.construcciones.Creadora;
 import src.construcciones.Fabrica;
-import src.construcciones.PuertoEstelarProtoss;
 import src.construcciones.PuertoEstelarTerran;
 import src.mapa.Mapa;
 import src.mapa.Posicion;
-import src.razas.Protoss;
 import src.razas.Terran;
 import src.unidades.*;
 
@@ -25,7 +19,6 @@ import excepciones.ExcepcionElTransporteEstaLleno;
 import excepciones.ExcepcionElTransporteNoEstaEnElAlcancePermitido;
 import excepciones.ExcepcionErrorPasoDeTurno;
 import excepciones.ExcepcionExtractoraSinRecurso;
-import excepciones.ExcepcionGeneral;
 import excepciones.ExcepcionNoHayLugarParaCrear;
 import excepciones.ExcepcionNoPudoColocarseEdificio;
 import excepciones.ExcepcionNoPudoCrearseUnidad;

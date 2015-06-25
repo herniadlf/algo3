@@ -1,8 +1,5 @@
 package test;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-
 import junit.framework.TestCase;
 import src.unidades.*;
 
@@ -10,16 +7,12 @@ import org.junit.Assert;
 
 import excepciones.ExcepcionConstruccionNoCorrespondiente;
 import excepciones.ExcepcionEdificioNoPuedeCrearUnidad;
-import excepciones.ExcepcionElTransporteEstaLleno;
 import excepciones.ExcepcionElementoFueraDelRangoDeAtaque;
 import excepciones.ExcepcionErrorPasoDeTurno;
 import excepciones.ExcepcionExtractoraSinRecurso;
-import excepciones.ExcepcionGeneral;
 import excepciones.ExcepcionLaUnidadNoPertenceATuTropa;
 import excepciones.ExcepcionNoHayLugarParaCrear;
 import excepciones.ExcepcionNoPudoColocarseEdificio;
-import excepciones.ExcepcionNoPudoCrearseUnidad;
-import excepciones.ExcepcionNoPuedeMoverseUnidad;
 import excepciones.ExcepcionPosicionInvalida;
 import excepciones.ExcepcionRecursoInsuficiente;
 import excepciones.ExcepcionSuperaLimenteDeArbolesPermitos;
@@ -29,7 +22,6 @@ import excepciones.ExcepcionYaHayElementoEnLaPosicion;
 import src.*;
 import src.construcciones.*;
 import src.mapa.Mapa;
-import src.mapa.Posicion;
 import src.razas.Protoss;
 import src.razas.Terran;
 import src.unidades.Marine;

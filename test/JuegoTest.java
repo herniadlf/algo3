@@ -2,9 +2,6 @@ package test;
 
 import junit.framework.TestCase;
 
-import org.junit.Assert;
-import org.junit.Test;
-
 import excepciones.ExcepcionConstruccionNoCorrespondiente;
 import excepciones.ExcepcionNoPudoColocarseEdificio;
 import excepciones.ExcepcionPosicionInvalida;

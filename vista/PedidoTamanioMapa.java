@@ -15,8 +15,8 @@ import src.Juego;
 
 public class PedidoTamanioMapa {
 	private static int TAMANIO_CHICO = 100;
-	private static int TAMANIO_MEDIANO = 300;
-	private static int TAMANIO_GRANDE = 500;
+	private static int TAMANIO_MEDIANO = 150;
+	private static int TAMANIO_GRANDE = 200;
 	
 	Juego juego;
 	InterfazPartida interfazPartida;

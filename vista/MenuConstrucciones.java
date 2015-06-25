@@ -9,10 +9,6 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.JWindow;
-
-import org.omg.CORBA.SystemException;
-
 import excepciones.ExcepcionNoPudoColocarseEdificio;
 import excepciones.ExcepcionPosicionInvalida;
 import src.Juego;

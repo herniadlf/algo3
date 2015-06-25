@@ -1,31 +1,13 @@
 package vista;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
-
 import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
-
-import excepciones.ExcepcionConstruccionNoCorrespondiente;
-import excepciones.ExcepcionErrorPasoDeTurno;
 import excepciones.ExcepcionNoHayConstruccionesCreadoras;
-import excepciones.ExcepcionNombreElegido;
-import excepciones.ExcepcionRecursoInsuficiente;
-import excepciones.ExcepcionUnidadNoCorrespondiente;
 import src.Jugador;
-import src.razas.Protoss;
-import src.razas.Raza;
-import src.razas.Terran;
-import src.unidades.Marine;
-import src.unidades.Unidad;
 
 public class MenuUnidades {
 	
@@ -52,7 +34,7 @@ public class MenuUnidades {
 		JFrame frameMenuUnidades= new JFrame();
 		frameMenuUnidades.getContentPane().removeAll();
 		frameMenuUnidades.setJMenuBar(null);
-		frameMenuUnidades.setTitle("AtaqueConMagia: Unidad   Edificio   UnidadEnemiga");
+		frameMenuUnidades.setTitle("Menu Unidades");
 		
 		
 		JPanel panelUnidades = new JPanel();	
@@ -83,6 +65,9 @@ public class MenuUnidades {
 			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
+				frameMenuUnidades.getContentPane().removeAll();
+				frameMenuUnidades.setJMenuBar(null);
+				frameMenuUnidades.setVisible(false);
 				opcionAtacarUsandoMagia.cargar(ip);
 				
 			}

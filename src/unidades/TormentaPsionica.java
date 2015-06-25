@@ -1,10 +1,5 @@
 package src.unidades;
 
-import src.Atacable;
-import src.mapa.EspacioDisponible;
-import src.mapa.Mapa;
-import src.mapa.Mapeable;
-import src.mapa.Sector;
 import excepciones.ExcepcionPosicionInvalida;
 
 public class TormentaPsionica extends Magia {
