@@ -3,9 +3,7 @@ package src.unidades;
 import java.util.Iterator;
 import java.util.LinkedList;
 
-import excepciones.ExcepcionNoHayLugarParaCrear;
 import excepciones.ExcepcionPosicionInvalida;
-import excepciones.ExcepcionYaHayElementoEnLaPosicion;
 import src.Atacable;
 import src.mapa.Mapa;
 import src.mapa.Posicion;
@@ -60,6 +58,7 @@ public abstract class Magia {
 		else{
 			return false;
 		}
+		
 	}
 	
 	public boolean hayAtacableEnAire(int x, int y){
@@ -77,6 +76,7 @@ public abstract class Magia {
 		else{
 			return false;
 		}
+		
 	}
 	
 	public Atacable obtenerAtacadoEnTierra(){

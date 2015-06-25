@@ -74,7 +74,9 @@ public abstract class Unidad implements Atacable{
 		
 	}
 	
-	public abstract void pasoTurno ();
+	public void pasoTurno (){
+	
+	}
 	
 	public void setAtaquesPermitidosPorTurno(AtaquesPermitidosPorTurno ata){
 		this.ataques = ata;

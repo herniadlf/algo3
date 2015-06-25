@@ -11,7 +11,7 @@ public class Golliat extends Unidad {
 
 	private static final int DANIO_AIRE = 10;
 	private static final int DANIO_TIERRA = 12;
-	private static final int RANGO_ATAQUE = 6;//es el rango de ataque en tierra.. pero tambien tiene rango en aire.:S
+	private static final int RANGO_ATAQUE = 6;//Es el rango de ataque en tierra. Pero tambien tiene rango en aire.
 	private static final int SUMINISTRO = 2;
 	private static final int TIEMPO_CREACION = 6;
 	private static final int TRANSPORTE = 2;
@@ -61,30 +61,32 @@ public class Golliat extends Unidad {
 	}
 	
 	public ColocadorDeUnidades getColocador(){
+		
 		return colocador;
+		
 	}
 	
-	@Override
 	public boolean esOcupable() {
-		// TODO Auto-generated method stub
+		
 		return false;
+		
 	}
 
-	@Override
 	public boolean esTerrestre() {
-		// TODO Auto-generated method stub
+		
 		return true;
+		
 	}
 
-	@Override
 	public boolean esAereo() {
-		// TODO Auto-generated method stub
+		
 		return false;
+		
 	}
 
-	@Override
 	public void atacarConEMP(int danio) {
-		// no afecta
+		
+		// no afecta a unidades amigas
 		
 	}
 
@@ -94,20 +96,10 @@ public class Golliat extends Unidad {
 		
 	}
 
-	@Override
-	public void pasoTurno() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
 	public void afectadoPorRadiacion(int danio) {
 		
 		vida.aumentarDanioARecibir(danio);
 		
 	}
 	
-	
-	
-
 }

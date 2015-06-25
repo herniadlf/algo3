@@ -8,7 +8,6 @@ import src.mapa.Mapeable;
 
 
 public class Espectro extends Unidad {
-
 	
 	private static final int DANIO_AIRE = 20;
 	private static final int DANIO_TIERRA = 8;
@@ -63,29 +62,32 @@ public class Espectro extends Unidad {
 
 	
 	public ColocadorDeUnidades getColocador(){
+		
 		return colocador;
+		
 	}
 
-	@Override
 	public boolean esOcupable() {
-		// TODO Auto-generated method stub
+	
 		return false;
+		
 	}
 
-	@Override
 	public boolean esTerrestre() {
-		// TODO Auto-generated method stub
+		
 		return false;
+		
 	}
 
-	@Override
 	public boolean esAereo() {
-		// TODO Auto-generated method stub
+	
 		return true;
+		
 	}
 
-	@Override
+	
 	public void atacarConEMP(int danio) {
+		
 		// no afecta
 		
 	}
@@ -96,19 +98,10 @@ public class Espectro extends Unidad {
 		
 	}
 
-	@Override
-	public void pasoTurno() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
 	public void afectadoPorRadiacion(int danio) {
 		
 		vida.aumentarDanioARecibir(danio);
 		
 	}
-	
-
 	
 }
