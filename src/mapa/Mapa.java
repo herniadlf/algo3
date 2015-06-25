@@ -15,6 +15,7 @@ import src.construcciones.Extractora;
 public class Mapa {
 
 	private static int TAMANIO_MAXIMO = 800;
+	private static int TAMANIO_MINIMO = 100;
 	private Map<Posicion,Mapeable> mapa;
 	private int tamanio;
 	private ArrayList<Posicion> posicionesDeFuentes;
@@ -27,7 +28,7 @@ public class Mapa {
 	
 	public Mapa(int unTamanio) throws ExcepcionTamanioDelMapaInvalido {
 		
-		if(unTamanio > 0 && unTamanio <= TAMANIO_MAXIMO){
+		if(unTamanio >= TAMANIO_MINIMO && unTamanio <= TAMANIO_MAXIMO){
 			this.tamanio = unTamanio;
 			this.mapa = new HashMap<Posicion,Mapeable>();
 		

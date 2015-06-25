@@ -29,7 +29,7 @@ public class MapaTest {
 	@Test
 	public void creacionDelMapaConSectores() throws ExcepcionPosicionInvalida, ExcepcionTamanioDelMapaInvalido {
 		
-		Mapa mapa = new Mapa(10);
+		Mapa mapa = new Mapa(100);
 		
 		for (int i = 1; i <= mapa.getTamanioMapa(); i++) {
 			for (int j = 1; j <= mapa.getTamanioMapa(); j++) {
@@ -43,7 +43,7 @@ public class MapaTest {
 	@Test
 	public void colocoYObtengoElementoEnElMapa() throws ExcepcionPosicionInvalida, ExcepcionYaHayElementoEnLaPosicion, ExcepcionTamanioDelMapaInvalido {
 		
-		Mapa mapa = new Mapa(10);
+		Mapa mapa = new Mapa(100);
 		
 		Barraca unaBarraca = new Barraca();
 		
@@ -56,7 +56,7 @@ public class MapaTest {
 	@Test
 	public void enUnMismoSectorHayElementoTerrestreYAereo() throws ExcepcionPosicionInvalida, ExcepcionYaHayElementoEnLaPosicion, ExcepcionTamanioDelMapaInvalido {
 		
-		Mapa mapa = new Mapa(10);
+		Mapa mapa = new Mapa(100);
 		
 		Barraca unaBarraca = new Barraca();
 		
@@ -74,7 +74,7 @@ public class MapaTest {
 	@Test (expected = ExcepcionYaHayElementoEnLaPosicion.class)
 	public void siYaHayElementoLanzaExcepcion() throws ExcepcionPosicionInvalida, ExcepcionYaHayElementoEnLaPosicion, ExcepcionTamanioDelMapaInvalido {
 		
-		Mapa mapa = new Mapa(10);
+		Mapa mapa = new Mapa(100);
 		
 		Barraca unaBarraca = new Barraca();
 		
@@ -90,18 +90,18 @@ public class MapaTest {
 	@Test (expected = ExcepcionPosicionInvalida.class)
 	public void ColocarEnPosicionNoValidaLanzaExcepcion() throws ExcepcionPosicionInvalida, ExcepcionYaHayElementoEnLaPosicion, ExcepcionTamanioDelMapaInvalido {
 		
-		Mapa mapa = new Mapa(10);
+		Mapa mapa = new Mapa(100);
 		
 		Barraca unaBarraca = new Barraca();
 		
-		mapa.colocarEn(11, 11, unaBarraca);
+		mapa.colocarEn(110, 110, unaBarraca);
 
 	}
 	
 	@Test
 	public void eliminarElementoDelMapa() throws ExcepcionPosicionInvalida, ExcepcionYaHayElementoEnLaPosicion, ExcepcionTamanioDelMapaInvalido {
 		
-		Mapa mapa = new Mapa(10);
+		Mapa mapa = new Mapa(100);
 		
 		Barraca unaBarraca = new Barraca();
 		
@@ -118,7 +118,7 @@ public class MapaTest {
 	@Test
 	public void calcularDitanciaEntreDosPuntos() throws ExcepcionTamanioDelMapaInvalido {
 		
-		Mapa mapa = new Mapa(10);
+		Mapa mapa = new Mapa(100);
 		
 		Assert.assertEquals(mapa.distanciaEntreLosPuntos(7, 5, 4, 1), 5);
 	}
@@ -159,7 +159,7 @@ public class MapaTest {
 	@Test
 	public void construyeExtractoraSobreRecurso() throws ExcepcionPosicionInvalida, ExcepcionYaHayElementoEnLaPosicion, ExcepcionExtractoraSinRecurso, ExcepcionTamanioDelMapaInvalido {
 		
-		Mapa mapa = new Mapa(10);
+		Mapa mapa = new Mapa(100);
 		
 		FuenteDeMinerales unaFuenteDeMineral = new FuenteDeMinerales();
 		
@@ -188,7 +188,7 @@ public class MapaTest {
 	@Test (expected = ExcepcionExtractoraSinRecurso.class)
 	public void noConstruyeExtractorSiNoHayRecurso() throws ExcepcionPosicionInvalida, ExcepcionExtractoraSinRecurso, ExcepcionTamanioDelMapaInvalido {
 		
-		Mapa mapa = new Mapa(10);
+		Mapa mapa = new Mapa(100);
 		
 		Extractora unExtractor = new CentroDeMineral();
 		

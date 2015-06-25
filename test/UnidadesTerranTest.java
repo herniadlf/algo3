@@ -42,7 +42,7 @@ public class UnidadesTerranTest extends TestCase{
 	protected void setUp() throws Exception {
 			
 		super.setUp();
-		mapa = new Mapa(50);
+		mapa = new Mapa(100);
 		jugador = new Jugador("carlos","rojo", new Terran());
 			
 	}

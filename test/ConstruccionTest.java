@@ -58,11 +58,11 @@ public class ConstruccionTest {
 			
 			Jugador jug = new Jugador ("carlos","rojo",new Protoss());
 			Jugador jug2 = new Jugador ("mario","verde",new Protoss());
-			Juego juego = new Juego(jug, jug2, 50, 0);
+			Juego juego = new Juego(jug, jug2, 100, 0);
 			Mapa mapa = juego.getMapa();
-			jug.colocar(new Pilon(),mapa,9,9);
+			jug.colocar(new Pilon(),mapa,95,95);
 			Assert.assertEquals(10, jug.getPoblacionDisponible());
-			jug.colocar(new Pilon(),mapa,5,5);
+			jug.colocar(new Pilon(),mapa,90,90);
 			Assert.assertEquals(15, jug.getPoblacionDisponible());
 		}
 		
@@ -173,14 +173,13 @@ public class ConstruccionTest {
 		@Test (expected = ExcepcionNoPudoColocarseEdificio.class)
 		public void seReservaLugarAunqueLaConstruccionNoEstaFinalizada() throws ExcepcionNoPudoColocarseEdificio, ExcepcionPosicionInvalida, ExcepcionErrorPasoDeTurno, ExcepcionYaHayElementoEnLaPosicion, ExcepcionSuperaLimenteDeArbolesPermitos, ExcepcionConstruccionNoCorrespondiente, ExcepcionRecursoInsuficiente, ExcepcionUnidadNoCorrespondiente, ExcepcionTamanioDelMapaInvalido {
 			
-			Mapa mapa = new Mapa(50);
 			Jugador jugador1 = new Jugador ("carlos","rojo",new Terran());
 			Jugador jugador2 = new Jugador ("dean","azul",new Protoss());
 			
 			Juego juego = new Juego(jugador1, jugador2,100, 0);
 			
 			juego.ordenFabricacionDeEdificios(new Barraca(), 3, 3);
-			Assert.assertFalse(mapa.obtenerContenidoEnPosicion(3, 3).getElementoEnTierra().esLoMismo(new Barraca()));
+			Assert.assertFalse(juego.getMapa().obtenerContenidoEnPosicion(3, 3).getElementoEnTierra().esLoMismo(new Barraca()));
 			//todavia no se termino la construccion
 			juego.pasarTurno();
 			juego.ordenFabricacionDeEdificios(new Acceso(), 3, 3);
@@ -309,17 +308,17 @@ public class ConstruccionTest {
 			Juego juego = new Juego(jugador1, jugador2, 100, 0);
 			jugador1.setDinero(99999, 99999);
 			
-			juego.ordenFabricacionDeEdificios(new Barraca(), 74, 77);
+			juego.ordenFabricacionDeEdificios(new Barraca(), 70, 70);
 			
-			juego.ordenFabricacionDeEdificios(new Barraca(), 80, 80);
+			juego.ordenFabricacionDeEdificios(new Barraca(), 72, 72 );
 						
 			for (int i = 0; i < 12; i++){
 				juego.pasarTurno();
 				juego.pasarTurno();				
 			}
 
-			Assert.assertTrue(juego.getMapa().obtenerContenidoEnPosicion(74, 77).getElementoEnTierra().esLoMismo(new Barraca()));
-			Assert.assertTrue(juego.getMapa().obtenerContenidoEnPosicion(80, 80).getElementoEnTierra().esLoMismo(new Barraca()));
+			Assert.assertTrue(juego.getMapa().obtenerContenidoEnPosicion(70, 70).getElementoEnTierra().esLoMismo(new Barraca()));
+			Assert.assertTrue(juego.getMapa().obtenerContenidoEnPosicion(72, 72).getElementoEnTierra().esLoMismo(new Barraca()));
 			
 		}
 		

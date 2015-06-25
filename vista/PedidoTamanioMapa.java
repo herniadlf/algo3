@@ -14,9 +14,9 @@ import excepciones.ExcepcionYaHayElementoEnLaPosicion;
 import src.Juego;
 
 public class PedidoTamanioMapa {
-	private static int TAMANIO_CHICO = 50;
-	private static int TAMANIO_MEDIANO = 75;
-	private static int TAMANIO_GRANDE = 100;
+	private static int TAMANIO_CHICO = 100;
+	private static int TAMANIO_MEDIANO = 300;
+	private static int TAMANIO_GRANDE = 500;
 	
 	Juego juego;
 	InterfazPartida interfazPartida;

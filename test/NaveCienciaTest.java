@@ -32,7 +32,7 @@ public class NaveCienciaTest extends TestCase {
 	protected void setUp() throws Exception {
 		
 		super.setUp();
-		mapa = new Mapa(50);
+		mapa = new Mapa(100);
 		jugador = new Jugador("carlos","rojo", new Terran());
 		
 	}
@@ -146,7 +146,7 @@ public class NaveCienciaTest extends TestCase {
 		Jugador jugador1 = new Jugador ("carlos","rojo",new Terran());
 		Jugador jugador2 = new Jugador ("Williams", "azul", new Protoss());
 		Ambientador ambientador = new Ambientador ();
-		ambientador.ambientarMapa(50, 0, jugador1, jugador2);
+		ambientador.ambientarMapa(100, 0, jugador1, jugador2);
 		
 		AltoTemplario altoTemplario = new AltoTemplario();
 		altoTemplario.setMapa(mapa);

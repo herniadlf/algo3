@@ -15,7 +15,7 @@ import src.mapa.Posicion;
 public class Ambientador {
 	
 	private static int CANT_DE_FUENTES_RECURSOS = 4;
-	private static int DISTANCIA_MAXIMA = 10;
+	private static int DISTANCIA_MAXIMA = 6;
 	
 	public Mapa ambientarMapa(int tamanioMapa, int cantDeArboles, Jugador jugador1, Jugador jugador2) throws
 		ExcepcionPosicionInvalida, ExcepcionYaHayElementoEnLaPosicion, ExcepcionSuperaLimenteDeArbolesPermitos, ExcepcionTamanioDelMapaInvalido {
