@@ -103,14 +103,15 @@ public class MiniIntegracionTest {
 		Mapa mapa = juego.getMapa();
 		jugador1.setDinero(99999, 99999);
 		
+		
+		
 		Construccion barraca = new Barraca();
 		
-		juego.ordenFabricacionDeEdificios(barraca, 78, 78);
-
+		juego.ordenFabricacionDeEdificios(barraca, 72, 72);
 		
-		Assert.assertFalse(juego.getMapa().obtenerContenidoEnPosicion(78,78).getElementoEnTierra().esLoMismo(new Barraca()));
+		Assert.assertFalse(juego.getMapa().obtenerContenidoEnPosicion(72,72).getElementoEnTierra().esLoMismo(new Barraca()));
 		
-		Assert.assertTrue(juego.getMapa().obtenerContenidoEnPosicion(78,78).getElementoEnTierra().esLoMismo(new Escombros()));
+		Assert.assertTrue(juego.getMapa().obtenerContenidoEnPosicion(72,72).getElementoEnTierra().esLoMismo(new Escombros()));
 		
 		for (int i = 0; i<13;i++){ // pasar turnos para que se creen
 			juego.pasarTurno();
@@ -118,7 +119,7 @@ public class MiniIntegracionTest {
 		}			
 		
 		
-		Assert.assertTrue(juego.getMapa().obtenerContenidoEnPosicion(78,78).getElementoEnTierra().esLoMismo(new Barraca()));
+		Assert.assertTrue(juego.getMapa().obtenerContenidoEnPosicion(72, 72).getElementoEnTierra().esLoMismo(new Barraca()));
 		
 		Assert.assertTrue(juego.getJugadorActual().contieneALaConstruccion(barraca));
 	}

@@ -105,10 +105,8 @@ public class ConstruccionTest {
 			Assert.assertTrue(mapa.obtenerContenidoEnPosicion(72,71).getElementoEnAire().esLoMismo(new Espectro()));
 			Assert.assertTrue(mapa.obtenerContenidoEnPosicion(72,72).getElementoEnAire().esLoMismo(new Espectro()));
 		}
+		
 		@Test 
-		/* Puede fallar porque los recursos se asignan random: 
-		 * si justo hay uno, va a fallar. En la integracion se maneja esta excepcion
-		 */
 		public void creacionDeUnidadesTerrestresAlrededorDeEdificio() 
 				throws ExcepcionNoPudoColocarseEdificio, 
 				ExcepcionPosicionInvalida,
@@ -121,7 +119,7 @@ public class ConstruccionTest {
 			Mapa mapa = juego.getMapa();
 			jug.setDinero(999999, 999999);
 			jug.colocar(new DepositoDeSuministros(), mapa, 70, 70);
-			Creadora barraca = (Creadora) jug.colocar(new Barraca(),mapa,80,80);
+			Creadora barraca = (Creadora) jug.colocar(new Barraca(),mapa,20,20);
 			
 			barraca.colocarUnidad(new Marine(), mapa);
 			barraca.colocarUnidad(new Marine(), mapa);
@@ -133,14 +131,14 @@ public class ConstruccionTest {
 			barraca.colocarUnidad(new Marine(), mapa);
 			
 			// VERIFICO QUE SE CREAN A LOS COSTADOS DEL EDIFICIO
-			Assert.assertTrue(mapa.obtenerContenidoEnPosicion(79,79).getElementoEnTierra().esLoMismo(new Marine()));
-			Assert.assertTrue(mapa.obtenerContenidoEnPosicion(79,80).getElementoEnTierra().esLoMismo(new Marine()));
-			Assert.assertTrue(mapa.obtenerContenidoEnPosicion(79,81).getElementoEnTierra().esLoMismo(new Marine()));
-			Assert.assertTrue(mapa.obtenerContenidoEnPosicion(80,79).getElementoEnTierra().esLoMismo(new Marine()));
-			Assert.assertTrue(mapa.obtenerContenidoEnPosicion(80,81).getElementoEnTierra().esLoMismo(new Marine()));
-			Assert.assertTrue(mapa.obtenerContenidoEnPosicion(81,79).getElementoEnTierra().esLoMismo(new Marine()));
-			Assert.assertTrue(mapa.obtenerContenidoEnPosicion(81,80).getElementoEnTierra().esLoMismo(new Marine()));
-			Assert.assertTrue(mapa.obtenerContenidoEnPosicion(81,81).getElementoEnTierra().esLoMismo(new Marine()));
+			Assert.assertTrue(mapa.obtenerContenidoEnPosicion(19,19).getElementoEnTierra().esLoMismo(new Marine()));
+			Assert.assertTrue(mapa.obtenerContenidoEnPosicion(19,20).getElementoEnTierra().esLoMismo(new Marine()));
+			Assert.assertTrue(mapa.obtenerContenidoEnPosicion(19,21).getElementoEnTierra().esLoMismo(new Marine()));
+			Assert.assertTrue(mapa.obtenerContenidoEnPosicion(20,19).getElementoEnTierra().esLoMismo(new Marine()));
+			Assert.assertTrue(mapa.obtenerContenidoEnPosicion(20,21).getElementoEnTierra().esLoMismo(new Marine()));
+			Assert.assertTrue(mapa.obtenerContenidoEnPosicion(21,19).getElementoEnTierra().esLoMismo(new Marine()));
+			Assert.assertTrue(mapa.obtenerContenidoEnPosicion(21,20).getElementoEnTierra().esLoMismo(new Marine()));
+			Assert.assertTrue(mapa.obtenerContenidoEnPosicion(21,21).getElementoEnTierra().esLoMismo(new Marine()));
 		}
 		
 		@Test
@@ -313,7 +311,7 @@ public class ConstruccionTest {
 			
 			juego.ordenFabricacionDeEdificios(new Barraca(), 74, 77);
 			
-			juego.ordenFabricacionDeEdificios(new Barraca(), 78, 78);
+			juego.ordenFabricacionDeEdificios(new Barraca(), 80, 80);
 						
 			for (int i = 0; i < 12; i++){
 				juego.pasarTurno();
@@ -321,7 +319,7 @@ public class ConstruccionTest {
 			}
 
 			Assert.assertTrue(juego.getMapa().obtenerContenidoEnPosicion(74, 77).getElementoEnTierra().esLoMismo(new Barraca()));
-			Assert.assertTrue(juego.getMapa().obtenerContenidoEnPosicion(78, 78).getElementoEnTierra().esLoMismo(new Barraca()));
+			Assert.assertTrue(juego.getMapa().obtenerContenidoEnPosicion(80, 80).getElementoEnTierra().esLoMismo(new Barraca()));
 			
 		}
 		
