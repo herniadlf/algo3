@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -29,57 +30,39 @@ public class MenuUnidades {
 	
 	Jugador jugadorActual;
 	CrearUnidades opcionDeCrearUnidades;
+	AtacarUnidades opcionAtacarUnidades;
+	AtacarConMagia opcionAtacarUsandoMagia;
+	MoverUnidad opcionMoverUnidad;
 
 	public MenuUnidades(Jugador jugador) {
 		jugadorActual =jugador;
 		opcionDeCrearUnidades = new CrearUnidades();
+		opcionAtacarUnidades = new AtacarUnidades();
+		opcionAtacarUsandoMagia =new AtacarConMagia();
+		opcionMoverUnidad = new MoverUnidad();
 		
 	}
 	
 	
-	/*public void cargarListaConUnidadesDisponibles (InterfazPrincipal ip, Object JButton){
-		ArrayList<Unidad> unidades = jugadorActual.getUnidadesAlistades(); 
-		Unidad marine1 = new Marine();
-		unidades.add(marine1);
-		int i=0;
-		
-		while (unidades.size()>i){
-			
-			
-			JButton unidad= new JButton("Fin turno");
-			//cambioTurno.addActionListener(new ActionListener() {
-				
-				
-						/*controladorJuego.pasarTurno();
-						cargar(ip);
-					i++;
-				}
-			);
-			
-			i++;
-			
-			
-		}
-		
-		
-		}*/
 	
 	
 	
 	protected void cargar(final InterfazPrincipal ip) {
 		// TODO Auto-generated method stub
-		ip.getFramePrincipal().getContentPane().removeAll();
-		ip.getFramePrincipal().setJMenuBar(null);
-		ip.getFramePrincipal().setTitle("Menu Unidades");
+		
+		JFrame frameMenuUnidades= new JFrame();
+		frameMenuUnidades.getContentPane().removeAll();
+		frameMenuUnidades.setJMenuBar(null);
+		frameMenuUnidades.setTitle("AtaqueConMagia: Unidad   Edificio   UnidadEnemiga");
 		
 		
-		ip.getFramePrincipal().setBackground(Color.BLACK);
+		
 		
 		JPanel panelUnidades = new JPanel();	
 		panelUnidades.setBackground(Color.BLACK);
 		
-		JButton CrearUnidades = new JButton("Crear Unidades");
-		CrearUnidades.addActionListener(new ActionListener() {
+		JButton crearUnidades = new JButton("Crear Unidades");
+		crearUnidades.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
@@ -88,39 +71,63 @@ public class MenuUnidades {
 			}
 		});
 		
-		panelUnidades.add(CrearUnidades);
 		
-		
-		
-		
-		/*JPanel cuadroDeTexto = new JPanel();
-		JLabel nombre = new JLabel("Nombre: ");
-		final JTextField ingreso = new JTextField(15);
-		ingreso.addActionListener(new ActionListener() {
+	
+		JButton atacarConMagia= new JButton("RealizarAtaqueConMagia");
+		atacarConMagia.addActionListener(new ActionListener() {
+			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				try{
-					if (ingreso.getText().equals(ip.getJuego().getJugador1().getNombre())){
-						JOptionPane.showMessageDialog(null, "Nombre Ya Elegido");
-						throw new ExcepcionNombreElegido();
-					}
-					ip.getJuego().getJugadorActual().setNombre(ingreso.getText());
-					JOptionPane.showMessageDialog(null, "¡Bienvenido/a " + ip.getJuego().getJugadorActual().getNombre() + "!");
-					pedidoDeRaza.cargarSeleccionDeRaza(ip);
-				} catch (ExcepcionNombreElegido e){
-					cargarPedidoNombre(ip);
-				}
+				opcionAtacarUsandoMagia.cargar(ip);
+				
 			}
-		});	
-		cuadroDeTexto.add(nombre);
-		cuadroDeTexto.add(ingreso);*/
+		});
+		
+		
+		JButton moverUnidades = new JButton("Mover Unidades");
+		moverUnidades.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				//opcionMoverUnidad.cargar(ip);
+				
+			}
+		});
+		
+		
+		JButton atacar = new JButton("Atacar");
+		atacar.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				opcionAtacarUnidades.cargar(ip);
+				
+			}
+		});
+		
+		
+		
+		
+		
+		panelUnidades.add(crearUnidades);
+		panelUnidades.add (atacarConMagia);
+		panelUnidades.add(moverUnidades);
+		panelUnidades.add(atacar);
+		
+		
+		
+		
+		
+		
 		
 		
 		
 	
-		ip.getFramePrincipal().getContentPane().add(panelUnidades,BorderLayout.CENTER);
-		ip.getFramePrincipal().setSize(700, 500);
-		ip.getFramePrincipal().show();
+		frameMenuUnidades.getContentPane().add(panelUnidades);
+		frameMenuUnidades.setSize(700, 500);
+		frameMenuUnidades.setLocation(650,250);
+		frameMenuUnidades.show();
+		
 	}
 
 	
