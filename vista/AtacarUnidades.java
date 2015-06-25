@@ -67,11 +67,11 @@ public class AtacarUnidades extends JFrame {
 	int indiceUnidadAlistadas;
 	int indiceUnidadEnemigas;
 	int indiceConstruccionesEnemigas;
+	MenuUnidades menuAnterior;
 	
 	
-	
-	public AtacarUnidades(){
-	
+	public AtacarUnidades(MenuUnidades menuUnidades){
+		menuAnterior = menuUnidades;
 		unidadesAlistadas= new ArrayList<Unidad>();
 		construccionesEnemigas = new ArrayList<Construccion>();
 		unidadesEnemigas = new ArrayList <Unidad>();

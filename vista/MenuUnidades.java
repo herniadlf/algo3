@@ -16,6 +16,7 @@ import javax.swing.JTextField;
 
 import excepciones.ExcepcionConstruccionNoCorrespondiente;
 import excepciones.ExcepcionErrorPasoDeTurno;
+import excepciones.ExcepcionNoHayConstruccionesCreadoras;
 import excepciones.ExcepcionNombreElegido;
 import excepciones.ExcepcionRecursoInsuficiente;
 import excepciones.ExcepcionUnidadNoCorrespondiente;
@@ -33,19 +34,17 @@ public class MenuUnidades {
 	AtacarUnidades opcionAtacarUnidades;
 	AtacarConMagia opcionAtacarUsandoMagia;
 	MoverUnidad opcionMoverUnidad;
-
-	public MenuUnidades(Jugador jugador) {
+	InterfazPartida interfazAnterior;
+	
+	public MenuUnidades(Jugador jugador, InterfazPartida interfazPartida) {
+		interfazAnterior = interfazPartida;
 		jugadorActual =jugador;
-		opcionDeCrearUnidades = new CrearUnidades();
-		opcionAtacarUnidades = new AtacarUnidades();
-		opcionAtacarUsandoMagia =new AtacarConMagia();
-		opcionMoverUnidad = new MoverUnidad();
+		opcionDeCrearUnidades = new CrearUnidades(this);
+		opcionAtacarUnidades = new AtacarUnidades(this);
+		opcionAtacarUsandoMagia =new AtacarConMagia(this);
+		opcionMoverUnidad = new MoverUnidad(this,interfazPartida);
 		
 	}
-	
-	
-	
-	
 	
 	protected void cargar(final InterfazPrincipal ip) {
 		// TODO Auto-generated method stub
@@ -56,21 +55,27 @@ public class MenuUnidades {
 		frameMenuUnidades.setTitle("AtaqueConMagia: Unidad   Edificio   UnidadEnemiga");
 		
 		
-		
-		
 		JPanel panelUnidades = new JPanel();	
-		panelUnidades.setBackground(Color.BLACK);
 		
 		JButton crearUnidades = new JButton("Crear Unidades");
 		crearUnidades.addActionListener(new ActionListener() {
 			
 			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				opcionDeCrearUnidades.cargar(ip);
-				
+			public void actionPerformed(ActionEvent arg0) {				
+				try {
+					frameMenuUnidades.getContentPane().removeAll();
+					frameMenuUnidades.setJMenuBar(null);
+					frameMenuUnidades.setVisible(false);
+					opcionDeCrearUnidades.cargar(ip);
+				} catch (ExcepcionNoHayConstruccionesCreadoras e) {
+					JOptionPane.showMessageDialog(null, e.getMessage());
+					frameMenuUnidades.getContentPane().removeAll();
+					frameMenuUnidades.setJMenuBar(null);
+					frameMenuUnidades.setVisible(false);
+					cargar(ip);
+				}				
 			}
 		});
-		
 		
 	
 		JButton atacarConMagia= new JButton("RealizarAtaqueConMagia");
@@ -89,8 +94,10 @@ public class MenuUnidades {
 			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				//opcionMoverUnidad.cargar(ip);
-				
+				frameMenuUnidades.getContentPane().removeAll();
+				frameMenuUnidades.setJMenuBar(null);
+				frameMenuUnidades.setVisible(false);
+				opcionMoverUnidad.cargar(ip);				
 			}
 		});
 		
@@ -113,15 +120,7 @@ public class MenuUnidades {
 		panelUnidades.add (atacarConMagia);
 		panelUnidades.add(moverUnidades);
 		panelUnidades.add(atacar);
-		
-		
-		
-		
-		
-		
-		
-		
-		
+				
 	
 		frameMenuUnidades.getContentPane().add(panelUnidades);
 		frameMenuUnidades.setSize(700, 500);

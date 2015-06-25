@@ -8,6 +8,7 @@ import javax.swing.JComboBox;
 
 import src.Jugador;
 import src.construcciones.Construccion;
+import src.unidades.Magica;
 import src.unidades.Unidad;
 
 public class MetodosDeCarga {
@@ -36,7 +37,7 @@ public class MetodosDeCarga {
 		while (jugador.getUnidadesAlistades().size()>i){
 			ArrayList<Unidad>unidades = jugador.getUnidadesAlistades();
 			
-			if (unidades.get(i).getNombre()=="Alto Templario"||unidades.get(i).getNombre() =="Nave Ciencia" ){
+			if (unidades.get(i) instanceof Magica){
 				
 				menuDesplegable.addItem(Integer.toString(i)+"."+ unidades.get(i).getNombre());
 				unidadesMagicas.add(unidades.get(i));

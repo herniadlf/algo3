@@ -37,7 +37,7 @@ public class InterfazPartida {
 		
 		controladorJuego= ip.getJuego();
 		Jugador jugador = controladorJuego.getJugadorActual();
-		menuUnidades = new MenuUnidades(jugador);
+		menuUnidades = new MenuUnidades(jugador,this);
 		menuConstrucciones = new MenuConstrucciones(controladorJuego,this,ip);
 		vistaMapa = new VistaMapa(controladorJuego,this,ip);
 			

@@ -154,6 +154,7 @@ public class MenuConstrucciones {
 		private int getX(){ return posX; }
 		private int getY(){ return posY; }
 	}
+	
 	private class EscuchaBotonConstruccion implements ActionListener{
 		Construccion aConstruir;
 		public EscuchaBotonConstruccion(Construccion c) {

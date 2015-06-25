@@ -67,7 +67,7 @@ public class Jugador {
 	public Jugador() {
 		
 		setPoblacionDisponible(5);
-		setDinero(200,400);
+		setDinero(200,200);
 		this.construccionesEnCamino= new ArrayList<Construccion>();	
 		this.construccionesEnPie= new ArrayList <Construccion>();
 		this.ataques= new  AtaquesPermitidosPorTurno();

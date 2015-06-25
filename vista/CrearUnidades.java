@@ -36,9 +36,11 @@ import javax.swing.SpringLayout;
 
 
 
+
 import excepciones.ExcepcionConstruccionNoCorrespondiente;
 import excepciones.ExcepcionElEdificioNoPerteneceATusConstrucciones;
 import excepciones.ExcepcionErrorPasoDeTurno;
+import excepciones.ExcepcionNoHayConstruccionesCreadoras;
 import excepciones.ExcepcionNoPudoCrearseUnidad;
 import excepciones.ExcepcionRecursoInsuficiente;
 import excepciones.ExcepcionUnidadNoCorrespondiente;
@@ -75,9 +77,11 @@ public class CrearUnidades extends JFrame {
 	JComboBox desplegableEdificios;
 	int indiceConstruccion;
 	int indiceUnidad;
+	MenuUnidades menuAnterior;
 	
 	
-	public CrearUnidades(){
+	public CrearUnidades(MenuUnidades menuUnidades){
+	menuAnterior = menuUnidades;
 	indiceConstruccion =0;
 	indiceUnidad=0;
 	unidad = new String();
@@ -86,23 +90,17 @@ public class CrearUnidades extends JFrame {
 	etiquetaUnidad= new JLabel();
 	etiquetaEdificio= new JLabel(); 
 	construccionesIndexadas = new ArrayList <Construccion>();
-	unidadesIndexadas = new ArrayList <Unidad>();
-	
-	
-	
-}
-	
-	
-	
-	
+	unidadesIndexadas = new ArrayList <Unidad>();	
+}	
 		
-	protected void cargar(final InterfazPrincipal ip)  {
+	protected void cargar(final InterfazPrincipal ip) throws ExcepcionNoHayConstruccionesCreadoras  {
 		
 		JPanel panelCreacion = new JPanel();
 		juego = ip.getJuego();
 		jugador = ip.getJuego().getJugadorActual();
-		unidadesPosibles = jugador.getRaza().getUnidadesPosibles();
-		construcciones = jugador.getConstruccionesEnPie();
+		unidadesPosibles = jugador.getRaza().getUnidadesPosibles();		
+		preraraListaDeCreadoras();
+		
 		JComboBox desplegableUnidades = new JComboBox();
 		desplegableUnidades.addItem("");
 		JComboBox desplegableEdificios = new JComboBox();
@@ -114,13 +112,6 @@ public class CrearUnidades extends JFrame {
 		frameCrear.setJMenuBar(null);
 		frameCrear.setTitle("Creacion De Unidad");
 		JPanel panelAtaque = new JPanel();
-		
-				
-				
-		ip.getFramePrincipal().getContentPane().removeAll();
-		ip.getFramePrincipal().setJMenuBar(null);
-		ip.getFramePrincipal().setTitle("Elija primero la unidad y luego el edificio asociado");
-		
 		
 		int i =0;
 		int j=0;
@@ -169,22 +160,25 @@ public class CrearUnidades extends JFrame {
 				String indiceBuscadoUnidades="";
 				
 				int posicionPuntoConstruccion=1;
-				int posicionPuntoUnidades=1;
-				
-				
-				
+				int posicionPuntoUnidades=1;				
 				
 				indiceConstruccion= obtenerIndiceDeElemento (posicionPuntoConstruccion, construccion, indiceBuscadoConstruccion);
-				indiceUnidad= obtenerIndiceDeElemento (posicionPuntoUnidades, unidad, indiceBuscadoUnidades);
-				
+				indiceUnidad= obtenerIndiceDeElemento (posicionPuntoUnidades, unidad, indiceBuscadoUnidades);					
 					
-					
-					try {
+				try {
 					juego.ordenarFabricacionUnidad((unidadesIndexadas.get(indiceUnidad)), (Creadora) construccionesIndexadas.get(indiceConstruccion));
+					JOptionPane.showMessageDialog(null, "Entrenamiento de unidad en camino!");
+					frameCrear.getContentPane().removeAll();
+					frameCrear.setJMenuBar(null);
+					frameCrear.setVisible(false);
+					menuAnterior.cargar(ip);
 				} catch (ExcepcionNoPudoCrearseUnidad
 						| ExcepcionElEdificioNoPerteneceATusConstrucciones e1) {
-					// TODO Auto-generated catch block
-					JOptionPane.showMessageDialog(null, e1.getMessage());
+						JOptionPane.showMessageDialog(null, e1.getMessage());
+						frameCrear.getContentPane().removeAll();
+						frameCrear.setJMenuBar(null);
+						frameCrear.setVisible(false);
+						menuAnterior.cargar(ip);
 				}
 	
 					
@@ -206,12 +200,25 @@ public class CrearUnidades extends JFrame {
 	
 	}
 	
+	private void preraraListaDeCreadoras() throws ExcepcionNoHayConstruccionesCreadoras {
+		construcciones = new ArrayList<Construccion>();
+		int i= 0;
+		while ( i < jugador.getConstruccionesEnPie().size()){
+			Construccion auxiliar = jugador.getConstruccionesEnPie().get(i);
+			if ( (auxiliar instanceof Creadora) ){
+				construcciones.add(auxiliar);
+			}
+			i++;
+		}
+		if (construcciones.size() == 0){ throw new ExcepcionNoHayConstruccionesCreadoras("Construya algun edificio que cree unidades"); }
+	}
+
 	//------------------------------------------------------------------------------------------------	
 
 	public void cargarListaDesplegableConstrucciones (JComboBox menuDesplegable, ArrayList<Construccion>construccionesIndexadas,
 			ArrayList<Construccion> construccion){
-		int i=0;
-		while (construccion.size()>i){
+		int i = 0;
+		while ( i < construccion.size()){
 			menuDesplegable.addItem(Integer.toString(i)+"."+ construccion.get(i).getNombre());
 			construccionesIndexadas.add (construccion.get(i));
 					i++;

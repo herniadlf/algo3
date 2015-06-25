@@ -72,12 +72,13 @@ public class AtacarConMagia {
 	JButton atacarEdificio;
 	JButton atacarUnidad;
 	
+	MenuUnidades menuAnterior;
 	
 	
-public AtacarConMagia(){
+public AtacarConMagia(MenuUnidades menuUnidades){
 	
 	metodosDeCarga = new MetodosDeCarga();
-	
+	menuAnterior = menuUnidades;
 	unidadesMagicas= new ArrayList<Unidad>();
 	construccionesEnemigas = new ArrayList<Construccion>();
 	unidadesEnemigas = new ArrayList <Unidad>();
@@ -107,6 +108,7 @@ protected void cargar (InterfazPrincipal ip){
 	juego = ip.getJuego();
 	jugador = ip.getJuego().getJugadorActual();
 
+		
 	if (jugador ==juego.getJugador1()){
 		unidadesEnemigas= juego.getJugador2().getUnidadesAlistades();
 		construccionesEnemigas = juego.getJugador2().getConstruccionesEnPie();
@@ -124,10 +126,6 @@ protected void cargar (InterfazPrincipal ip){
 	frameAtacarConMagia.setTitle("AtaqueConMagia");
 	JPanel panelAtaqueConMagias = new JPanel();
 	
-	
-	
-	
-	jugador.getUnidadesAlistades().add(new AltoTemplario());
 	
 	desplegableUnidadesMagicas.addItem("");
 	desplegableUnidadesEnemigas.addItem("");
@@ -218,12 +216,7 @@ protected void cargar (InterfazPrincipal ip){
 						Magia magia = new TormentaPsionica (unidadesEnemigasIndexadas.get(indiceUnidadEnemiga));
 						
 					} else {
-						Magia magia = new EMP (unidadesEnemigasIndexadas.get(indiceUnidadEnemiga));
-						
-						
-						
-						
-						
+						Magia magia = new EMP (unidadesEnemigasIndexadas.get(indiceUnidadEnemiga));		
 					}
 					
 					try {
@@ -237,12 +230,10 @@ protected void cargar (InterfazPrincipal ip){
 							| ExcepcionRecursoInsuficiente
 							| ExcepcionUnidadNoCorrespondiente
 							| ExcepcionElementoFueraDelRangoDeAtaque
-							| ExcepcionLaUnidadNoPertenceATuTropa e1) {
-						// TODO Auto-generated catch block
+							| ExcepcionLaUnidadNoPertenceATuTropa e1) {						
 						JOptionPane.showMessageDialog(null, e1.getMessage());
 					}
-					
-				
+					menuAnterior.cargar(ip);
 				}
 			});
 			
