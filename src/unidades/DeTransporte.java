@@ -42,7 +42,7 @@ public abstract class DeTransporte extends Unidad {
 	
 	private void verificarNaveVoladora(Unidad unidad) throws ExcepcionNoSePuedenTransportasUnidadesVoladoras {
 		
-		if (unidad.getTransporte() == 0 | unidad.getNombre() == "NaveTransporteTerran" | unidad.getNombre() == "NaveTransporteProtoss"){
+		if (unidad.esAereo()){
 			throw new ExcepcionNoSePuedenTransportasUnidadesVoladoras("Solo transporto unidades terrestres"); 
 		}
 		
