@@ -28,7 +28,7 @@ public abstract class DeTransporte extends Unidad {
 			verificarNaveVoladora(unidad);
 			
 			mapa.eliminarElementoTerrestreEnPosicion(unidad.getPosicionX(), unidad.getPosicionY());
-			unidadesAbordo.add(unidad);	
+			getUnidadesAbordo().add(unidad);	
 				
 		}
 		catch (ExcepcionNoSePuedenTransportasUnidadesVoladoras | ExcepcionElTransporteEstaLleno |
@@ -38,6 +38,11 @@ public abstract class DeTransporte extends Unidad {
 				
 		}
 		
+	}
+	
+	private ArrayList<Unidad> getUnidadesAbordo() {
+		
+		return this.unidadesAbordo;
 	}
 	
 	private void verificarNaveVoladora(Unidad unidad) throws ExcepcionNoSePuedenTransportasUnidadesVoladoras {
