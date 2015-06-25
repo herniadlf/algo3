@@ -103,7 +103,6 @@ public class CrearUnidades extends JFrame {
 		jugador = ip.getJuego().getJugadorActual();
 		unidadesPosibles = jugador.getRaza().getUnidadesPosibles();
 		construcciones = jugador.getConstruccionesEnPie();
-		construcciones.add(new Barraca());
 		JComboBox desplegableUnidades = new JComboBox();
 		desplegableUnidades.addItem("");
 		JComboBox desplegableEdificios = new JComboBox();
@@ -185,7 +184,7 @@ public class CrearUnidades extends JFrame {
 				} catch (ExcepcionNoPudoCrearseUnidad
 						| ExcepcionElEdificioNoPerteneceATusConstrucciones e1) {
 					// TODO Auto-generated catch block
-					e1.printStackTrace();
+					JOptionPane.showMessageDialog(null, e1.getMessage());
 				}
 	
 					

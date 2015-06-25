@@ -30,8 +30,8 @@ public class ListaDeRecursos {
 		iPartida = interfazPartida;
 	}
 
-	public void cargar(InterfazPrincipal ip) throws ExcepcionPosicionInvalida {
-		JFrame frameRecursos = new JFrame();
+	public void cargar(final InterfazPrincipal ip) throws ExcepcionPosicionInvalida {
+		final JFrame frameRecursos = new JFrame();
 		frameRecursos.getContentPane().removeAll();
 		frameRecursos.setJMenuBar(null);		
 		frameRecursos.setTitle("Recursos");	

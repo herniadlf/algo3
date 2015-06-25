@@ -107,7 +107,7 @@ public class MenuConstrucciones {
 			nuevaFrame.setSize(300, 100);	
 			JPanel panelPosicion = new JPanel();
 			JLabel posicionX = new JLabel("Ingrese posicion X: ");
-			JTextField ingresoPosX = new JTextField(3);
+			final JTextField ingresoPosX = new JTextField(3);
 			ingresoPosX.setFocusable(true);
 			ingresoPosX.addActionListener(new ActionListener() {				
 				@Override
@@ -129,7 +129,7 @@ public class MenuConstrucciones {
 			nuevaFrame.setSize(300, 100);	
 			JPanel panelPosicion = new JPanel();
 			JLabel posicionY = new JLabel("Ingrese posicion Y: ");
-			JTextField ingresoPosY = new JTextField(3);
+			final JTextField ingresoPosY = new JTextField(3);
 			ingresoPosY.setFocusable(true);
 			ingresoPosY.addActionListener(new ActionListener() {				
 				@Override

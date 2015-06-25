@@ -12,6 +12,7 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import excepciones.ExcepcionConstruccionNoCorrespondiente;
@@ -100,9 +101,26 @@ public class AtacarUnidades extends JFrame {
 protected void cargar(final InterfazPrincipal ip)  {
 		
 	//Carga para prueba
-	unidadesAlistadas.add(new Marine());
-	construccionesEnemigas.add(new Pilon());
-	unidadesEnemigas.add(new Zealot());
+	
+
+	juego = ip.getJuego();
+	jugador = ip.getJuego().getJugadorActual();
+	
+	unidadesAlistadas= jugador.getUnidadesAlistades();
+	
+	if (jugador ==juego.getJugador1()){
+		unidadesEnemigas= juego.getJugador2().getUnidadesAlistades();
+		construccionesEnemigas = juego.getJugador2().getConstruccionesEnPie();
+		}
+	
+	else {
+		unidadesEnemigas= juego.getJugador1().getUnidadesAlistades();
+		construccionesEnemigas = juego.getJugador1().getConstruccionesEnPie();
+		}
+		
+		
+		
+		
 	
 	
 
@@ -112,14 +130,6 @@ protected void cargar(final InterfazPrincipal ip)  {
 	frameAtacar.setTitle("AtaqueConMagia: Unidad   Edificio   UnidadEnemiga");
 	JPanel panelAtaque = new JPanel();
 	
-	
-	
-	
-		
-		juego = ip.getJuego();
-		jugador = ip.getJuego().getJugadorActual();
-		
-		
 		desplegableUnidadesAlistadas.addItem("");
 		desplegableEdificiosEnemigos.addItem("");
 		desplegableUnidadesEnemigas.addItem("");
@@ -216,7 +226,9 @@ protected void cargar(final InterfazPrincipal ip)  {
 						| ExcepcionRecursoInsuficiente
 						| ExcepcionUnidadNoCorrespondiente e1) {
 					// TODO Auto-generated catch block
-					e1.printStackTrace();
+					JOptionPane.showMessageDialog(null, e1.getMessage());
+					
+				
 				}
 	
 					
@@ -263,7 +275,8 @@ protected void cargar(final InterfazPrincipal ip)  {
 						| ExcepcionRecursoInsuficiente
 						| ExcepcionUnidadNoCorrespondiente e1) {
 					// TODO Auto-generated catch block
-					e1.printStackTrace();
+					JOptionPane.showMessageDialog(null, e1.getMessage());
+					
 				}
 	
 					

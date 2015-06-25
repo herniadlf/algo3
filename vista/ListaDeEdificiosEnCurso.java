@@ -24,7 +24,7 @@ public class ListaDeEdificiosEnCurso {
 	}
 
 	public void cargar(InterfazPrincipal interfazPrincipal) {
-		JFrame nuevaFrame = new JFrame();
+		final JFrame nuevaFrame = new JFrame();
 		nuevaFrame.getContentPane().removeAll();
 		nuevaFrame.setJMenuBar(null);
 		nuevaFrame.setTitle("Edificios en construccion.");	

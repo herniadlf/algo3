@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import excepciones.ExcepcionConstruccionNoCorrespondiente;
@@ -103,9 +104,19 @@ public AtacarConMagia(){
 
 protected void cargar (InterfazPrincipal ip){
 	
-	
+	juego = ip.getJuego();
+	jugador = ip.getJuego().getJugadorActual();
 
-	unidadesEnemigas.add(new Zealot());
+	if (jugador ==juego.getJugador1()){
+		unidadesEnemigas= juego.getJugador2().getUnidadesAlistades();
+		construccionesEnemigas = juego.getJugador2().getConstruccionesEnPie();
+		}
+	
+	else {
+		unidadesEnemigas= juego.getJugador1().getUnidadesAlistades();
+		construccionesEnemigas = juego.getJugador1().getConstruccionesEnPie();
+		}
+		
 	
 	JFrame frameAtacarConMagia= new JFrame();
 	frameAtacarConMagia.getContentPane().removeAll();
@@ -114,8 +125,7 @@ protected void cargar (InterfazPrincipal ip){
 	JPanel panelAtaqueConMagias = new JPanel();
 	
 	
-	juego = ip.getJuego();
-	jugador = ip.getJuego().getJugadorActual();
+	
 	
 	jugador.getUnidadesAlistades().add(new AltoTemplario());
 	
@@ -229,7 +239,7 @@ protected void cargar (InterfazPrincipal ip){
 							| ExcepcionElementoFueraDelRangoDeAtaque
 							| ExcepcionLaUnidadNoPertenceATuTropa e1) {
 						// TODO Auto-generated catch block
-						e1.printStackTrace();
+						JOptionPane.showMessageDialog(null, e1.getMessage());
 					}
 					
 				

@@ -23,8 +23,8 @@ public class ListaEdificiosEnPie {
 		controladorJuego = controlador;
 		iPartida = interfazPartida;
 	}
-	public void cargar(InterfazPrincipal ip) {
-		JFrame frameEdificiosEnPie = new JFrame();
+	public void cargar(final InterfazPrincipal ip) {
+		final JFrame frameEdificiosEnPie = new JFrame();
 		frameEdificiosEnPie.getContentPane().removeAll();
 		frameEdificiosEnPie.setJMenuBar(null);
 		frameEdificiosEnPie.setTitle("Construcciones del Jugador: " + controladorJuego.getJugadorActual().getNombre() + " en pie");	
