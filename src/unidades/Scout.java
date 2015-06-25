@@ -39,13 +39,11 @@ public class Scout extends Unidad {
 		reglaDeDanio = new ReglaDeDanioProtoss(escudo);
 	}		
 	
-public void pasoTurno() {
+	public void pasoTurno() {
 		
-		escudo.pasoTurno();
-		
+		escudo.pasoTurno();	
 		
 	}
-	
 	
 	@Override
 	public Mapeable colocarContenido() {
@@ -80,16 +78,19 @@ public void pasoTurno() {
 	public boolean esOcupable() {
 		
 		return false;
+		
 	}
 
 	public boolean esTerrestre() {
 		
 		return false;
+		
 	}
 
 	public boolean esAereo() {
 		
 		return true;
+		
 	}
 
 	public void atacarConEMP(int danio) {
@@ -103,7 +104,6 @@ public void pasoTurno() {
 		return escudo;
 		
 	}
-	
 
 	public void afectadoPorTormentaPsionica(int danio) throws ExcepcionPosicionInvalida{
 			
@@ -113,7 +113,6 @@ public void pasoTurno() {
 		
 	}
 
-	@Override
 	public void afectadoPorRadiacion(int danio){
 		
 		vida.aumentarDanioARecibir(danio);

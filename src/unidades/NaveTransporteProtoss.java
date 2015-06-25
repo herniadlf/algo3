@@ -39,10 +39,9 @@ public class NaveTransporteProtoss extends DeTransporte {
 		reglaDeDanio = new ReglaDeDanioProtoss(escudo);
 	}	
 		
-public void pasoTurno() {
+	public void pasoTurno() {
 		
 		escudo.pasoTurno();
-		
 		
 	}
 	
@@ -71,37 +70,28 @@ public void pasoTurno() {
 	}
 
 	public ColocadorDeUnidades getColocador(){
+		
 		return colocador;
-	}
-	
-	@Override
-	public boolean esOcupable() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-	@Override
-	public boolean esTerrestre() {
-		// TODO Auto-generated method stub
-		return false;
-	}
-	@Override
-	public boolean esAereo() {
-		// TODO Auto-generated method stub
-		return true;
-	}
-
-	@Override
-	public void atacarConEMP(int danio) {
-		escudo.atacar(danio);
 		
 	}
 
+	public boolean esOcupable() {
+		
+		return false;
+		
+	}
+
+
+	public void atacarConEMP(int danio) {
+		
+		escudo.atacar(danio);
+		
+	}
 
 	public void afectadoPorTormentaPsionica(int danio){
 		
 		escudo.atacar(danio);
 		
 	}
-	
 	
 }

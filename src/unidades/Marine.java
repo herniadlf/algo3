@@ -58,30 +58,31 @@ public class Marine extends Unidad {
 	}
 		
 	public ColocadorDeUnidades getColocador(){
+		
 		return colocador;
+		
 	}
 	
-	@Override
 	public boolean esOcupable() {
-		// TODO Auto-generated method stub
+	
 		return false;
+		
 	}
 
-	@Override
 	public boolean esTerrestre() {
-		// TODO Auto-generated method stub
+	
 		return true;
+		
 	}
 
-	@Override
 	public boolean esAereo() {
-		// TODO Auto-generated method stub
+	
 		return false;
 	}
 
-	@Override
 	public void atacarConEMP(int danio) {
-		//no afecta
+		
+		//no afecta a unidades amigas
 		
 	}
 
@@ -91,21 +92,14 @@ public class Marine extends Unidad {
 		
 	}
 
-	@Override
 	public void pasoTurno() {
-		// TODO Auto-generated method stub
 		
 	}
 
-	@Override
 	public void afectadoPorRadiacion(int danio) {
 		
 		vida.aumentarDanioARecibir(danio);
 		
 	}
-	
-	
-	
-
 
 }

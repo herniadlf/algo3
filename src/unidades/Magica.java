@@ -1,6 +1,5 @@
 package src.unidades;
 
-import src.Atacable;
 import src.mapa.Mapeable;
 
 public abstract class Magica extends Unidad {

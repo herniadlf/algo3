@@ -52,19 +52,20 @@ public abstract class Unidad implements Atacable{
 	
 	
 	public void setJugador (Jugador jugador){
-		this.jugador= jugador;
-		}
-	
-	public Jugador getJugador (){
-		return this.jugador;
 		
+		this.jugador = jugador;
 		
 	}
 	
+	public Jugador getJugador (){
+		
+		return this.jugador;
+		
+	}
 	
 	public void setMapa (Mapa mapa){
 		
-		this.mapa =mapa;
+		this.mapa = mapa;
 		
 	}
 	
@@ -75,26 +76,31 @@ public abstract class Unidad implements Atacable{
 	}
 	
 	public void pasoTurno (){
-	
+		
+		if(afectadoPorRadiacion){
+			Radiacion radiacion = new Radiacion(this);
+			radiacion.atacar();
+		}
+		
 	}
 	
-	public void setAtaquesPermitidosPorTurno(AtaquesPermitidosPorTurno ata){
-		this.ataques = ata;
+	public void setAtaquesPermitidosPorTurno(AtaquesPermitidosPorTurno ataques){
 		
+		this.ataques = ataques;
 		
 	} 
 	
-	public void setEdificio (Creadora e){
-		edificio = e;
+	public void setEdificio (Creadora edificio){
 		
-		}
+		this.edificio = edificio;
+		
+	}
 	
 	public Creadora getEdifico (){
+		
 		return edificio;
 		
-		
 	} 
-	
 	
 	public void setPosicion (Posicion posicion){
 		
@@ -104,13 +110,13 @@ public abstract class Unidad implements Atacable{
 	
 	public void setTurnoInicioDeEntrenamiento (int turno){
 		
-		this.turnoInicioEntrenamiento= turno;
-		
+		this.turnoInicioEntrenamiento= turno;	
 		
 	}
+	
 	public int getTurnoDeEntrenamiento (){
-		return this.turnoInicioEntrenamiento;
 		
+		return this.turnoInicioEntrenamiento;
 		
 	}
 	
@@ -119,46 +125,55 @@ public abstract class Unidad implements Atacable{
 		return colocador;
 		
 	}
+	
 	public  String getNombre(){
 		
 		return nombre;
 		
 	}
+	
 	public  int getTransporte(){
 		
 		return transporte;
 		
 	}
+	
 	public  int getVision (){
 		
 		return vision;
 		
 	}
+	
 	public  Dinero getCosto(){
 		
 		return costo;
 		
 	}
+	
 	public  int getTiempoDeCreacion(){
 		
 		return tiempoDeCreacion;
 		
 	}
+	
 	public  int getSuministros(){
 		
 		return suministro;
 		
 	}
+	
 	public  int getRangoDeAtaques(){
 		
 		return rangoAtaque;
 		
 	}
+	
 	public  Vida getVida(){
 		
 		return vida;
 		
 	}
+	
 	public  Danio getDanio(){
 		
 		return danio;
@@ -166,10 +181,13 @@ public abstract class Unidad implements Atacable{
 	}
 	
 	public int getPosicionX (){
+		
 		return posicion.getX();
-		}
+		
+	}
 	
 	public int getPosicionY(){
+		
 		return posicion.getY();	
 		
 	}	
@@ -180,11 +198,14 @@ public abstract class Unidad implements Atacable{
 	
 	}
 	
-	public void atacar(Atacable atacado) throws ExcepcionEdificioNoPuedeCrearUnidad, ExcepcionPosicionInvalida, ExcepcionNoHayLugarParaCrear, ExcepcionYaHayElementoEnLaPosicion, ExcepcionErrorPasoDeTurno, ExcepcionConstruccionNoCorrespondiente, ExcepcionRecursoInsuficiente, ExcepcionUnidadNoCorrespondiente, ExcepcionElementoFueraDelRangoDeAtaque {
+	public void atacar(Atacable atacado) throws 
+		ExcepcionEdificioNoPuedeCrearUnidad, ExcepcionPosicionInvalida, ExcepcionNoHayLugarParaCrear, ExcepcionYaHayElementoEnLaPosicion, 
+		ExcepcionErrorPasoDeTurno, ExcepcionConstruccionNoCorrespondiente, ExcepcionRecursoInsuficiente, ExcepcionUnidadNoCorrespondiente, 
+		ExcepcionElementoFueraDelRangoDeAtaque {
 		
-		int distanciaEntreEnemigos = mapa.distanciaEntreLosPuntos(atacado.getPosicionX(), atacado.getPosicionY(), this.getPosicionX(), this.getPosicionY());
+		int distEntreEnemigos = mapa.distanciaEntreLosPuntos(atacado.getPosicionX(),atacado.getPosicionY(),this.getPosicionX(),this.getPosicionY());
 		int danioARecibir = 0;
-		if ((distanciaEntreEnemigos) < this.getVision()){
+		if ((distEntreEnemigos) < this.getVision()){
 			
 			if(atacado.esAereo()) {
 				danioARecibir = this.getDanio().getDanioAire();
@@ -212,6 +233,7 @@ public abstract class Unidad implements Atacable{
 		  if (estadoDeVidaFinalizado==true){
 			 mapa.eliminarElementoTerrestreEnPosicion(getPosicionX(),getPosicionY());
 		 }
+		  
 	}
 	
 	public boolean esLoMismo(Mapeable aComparar){
@@ -245,17 +267,20 @@ public abstract class Unidad implements Atacable{
 			
 			throw new ExcepcionNoPuedeMoverseUnidad(e);
 		}
+		
 	}
 	
 		
 	public String getDuenio() {
+		
 		return duenio;
+		
 	}
 	
-
 	public void setDuenio(String duenio) {
+		
 		this.duenio = duenio;
-	}
-			
+		
+	}	
 		
 }

@@ -1,10 +1,5 @@
 package src.unidades;
 
-import src.Atacable;
-import src.mapa.Mapa;
-import src.mapa.Sector;
-import excepciones.ExcepcionPosicionInvalida;
-
 public class Radiacion extends Magia{
 	
 	public Radiacion(Unidad afectado) {

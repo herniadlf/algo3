@@ -41,14 +41,15 @@ public class Zealot extends Unidad {
 		reglaDeDanio = new ReglaDeDanioProtoss(escudo);
 	}		
 	
-public void pasoTurno() {
+	public void pasoTurno() {
 		
 		escudo.pasoTurno();
-		
+		if(afectadoPorRadiacion){
+			Radiacion radiacion = new Radiacion(this);
+			radiacion.atacar();
+		}
 		
 	}
-	
-
 		
 	public Escudo getEscudo(){
 		
@@ -79,32 +80,31 @@ public void pasoTurno() {
 	}
 
 	public ColocadorDeUnidades getColocador(){
+		
 		return colocador;
+		
 	}
 
-	@Override
 	public boolean esOcupable() {
-		// TODO Auto-generated method stub
+		
 		return false;
+		
 	}
 
-
-	@Override
 	public boolean esTerrestre() {
-		// TODO Auto-generated method stub
+		
 		return true;
+		
 	}
 
-
-	@Override
 	public boolean esAereo() {
-		// TODO Auto-generated method stub
+		
 		return false;
+		
 	}
 
-
-	@Override
 	public void atacarConEMP(int danio) {
+		
 		escudo.atacar(danio);
 		
 	}
@@ -127,5 +127,4 @@ public void pasoTurno() {
 		
 	}
 	
-
 }

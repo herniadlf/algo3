@@ -64,39 +64,38 @@ public class NaveCiencia extends Magica {
 	}
 
 	public ColocadorDeUnidades getColocador(){
+		
 		return colocador;
+		
 	}
-	
 
 	public int obtenerEnergia() {
 	
 		return energia.obtenerCantidad(); 
+		
 	}
-	 
-	
-	@Override
+
 	public boolean esOcupable() {
-		// TODO Auto-generated method stub
+		
 		return false;
+		
 	}
 
-
-	@Override
 	public boolean esTerrestre() {
-		// TODO Auto-generated method stub
+		
 		return false;
+		
 	}
 
-
-	@Override
 	public boolean esAereo() {
-		// TODO Auto-generated method stub
+		
 		return true;
+		
 	}
 
-	@Override
 	public void atacarConEMP(int danio) {
-		// no afecta
+		
+		// No afecta a unidades amigas
 		
 	}
 	
@@ -112,15 +111,10 @@ public class NaveCiencia extends Magica {
 		
 	}
 
-	@Override
 	public void pasoTurno() {
+		
 		energia.aumentarEnergia(energiaPorTurno);
 		
 	}
-	
-
-	
-
-	
 
 }
