@@ -54,11 +54,14 @@ public class InterfazPartida {
 		JTextArea informacion = new JTextArea("Nombre: " + jugador.getNombre() +"\n");
 		informacion.setSize(150, 400);		
 		informacion.setLineWrap(true);
+		informacion.setFocusable(false);
 		informacion.append("Raza: " + jugador.getRaza().getNombre() +"\n");
 		informacion.append("Minerales: " + jugador.getDinero().getMinerales() + "\n" + "Gas Vespeno: " + jugador.getDinero().getGasVespeno() + "\n");
 		informacion.append("Turno: " + controladorJuego.getTurno() );
 		informacion.append("\n Tamaño del Mapa: " + controladorJuego.getMapa().getTamanioMapa());
+		informacion.append("\n Poblacion Actual:" + jugador.getPoblacionActual() +"\n Poblacion Disponible "+jugador.getPoblacionDisponible());
 		panelJuego.add(informacion);
+		
 		JButton cambioTurno = new JButton("Fin turno");
 		cambioTurno.addActionListener(new ActionListener() {
 			
@@ -66,6 +69,7 @@ public class InterfazPartida {
 			public void actionPerformed(ActionEvent e) {
 				try {
 					controladorJuego.pasarTurno();
+					limpiar();
 					cargar(ip);
 				} catch (ExcepcionErrorPasoDeTurno
 						| ExcepcionConstruccionNoCorrespondiente
@@ -115,6 +119,13 @@ public class InterfazPartida {
 		ip.getFramePrincipal().setLocation(450,250);
 		ip.getFramePrincipal().show();		
 	}
+	protected void limpiar() {
+		menuUnidades.limpiar();
+		menuConstrucciones.limpiar();
+		vistaMapa.limpiar();
+		
+	}
+
 	public Juego getControlador(){
 		return controladorJuego;
 	}

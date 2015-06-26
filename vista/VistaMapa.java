@@ -7,6 +7,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JWindow;
 
 import excepciones.ExcepcionPosicionInvalida;
 import src.Juego;
@@ -18,21 +19,23 @@ public class VistaMapa {
 	Juego controladorJuego;
 	InterfazPartida iPartida;
 	InterfazPrincipal iPrincipal;
+	JFrame frameMapa;
 	
 	public VistaMapa(Juego controlador, InterfazPartida interfazPartida, InterfazPrincipal ip) {
 		controladorJuego = controlador;
 		iPartida = interfazPartida;
 		iPrincipal = ip;
+		frameMapa = new JFrame();
 	}
 
 	public void cargar() {
-		JFrame frameMapa = new JFrame();
+		
 		frameMapa.getContentPane().removeAll();
 		frameMapa.setJMenuBar(null);
 		frameMapa.setTitle("Mapa");	
 		int tamanio = controladorJuego.getMapa().getTamanioMapa();
 		String ruta = new String(System.getProperty("user.dir")+"\\trunk\\imagenes\\mapeables\\");
-	   		
+	   	
 		JPanel panelMapa = new JPanel();
 		GridLayout gL = new GridLayout(tamanio-1,tamanio-1);
 		gL.setHgap(0);
@@ -60,12 +63,20 @@ public class VistaMapa {
 				
 			}
 		}
-		panelMapa.setSize(Toolkit.getDefaultToolkit().getScreenResolution(),Toolkit.getDefaultToolkit().getScreenResolution());
-		frameMapa.getContentPane().add(panelMapa);
-		frameMapa.setSize(Toolkit.getDefaultToolkit().getScreenResolution(),Toolkit.getDefaultToolkit().getScreenResolution());
+		//panelMapa.setSize(Toolkit.getDefaultToolkit().getScreenSize().width-10,Toolkit.getDefaultToolkit().getScreenSize().height-10);
+		frameMapa.getContentPane().add(panelMapa);			
 		frameMapa.setLocation(tamanio/2,tamanio/2);
-		frameMapa.setResizable(true);
+		int resX = Toolkit.getDefaultToolkit().getScreenSize().width;
+		int resY = Toolkit.getDefaultToolkit().getScreenSize().height;
+		frameMapa.setSize( resX - (int)(resX*0.25), resY - (int)(resY*0.25));
+		frameMapa.setResizable(true);		
 		frameMapa.show();	
+	}
+
+	public void limpiar() {
+		frameMapa.getContentPane().removeAll();
+		frameMapa.setJMenuBar(null);
+		frameMapa.setVisible(false);
 	}
 
 }

@@ -2,10 +2,12 @@ package vista;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+
 import excepciones.ExcepcionNoHayConstruccionesCreadoras;
 import src.Jugador;
 
@@ -17,6 +19,8 @@ public class MenuUnidades {
 	AtacarConMagia opcionAtacarUsandoMagia;
 	MoverUnidad opcionMoverUnidad;
 	InterfazPartida interfazAnterior;
+	ListaUnidadesPropias unidadesPropias;
+	JFrame frameMenuUnidades;
 	
 	public MenuUnidades(Jugador jugador, InterfazPartida interfazPartida) {
 		interfazAnterior = interfazPartida;
@@ -25,13 +29,12 @@ public class MenuUnidades {
 		opcionAtacarUnidades = new AtacarUnidades(this);
 		opcionAtacarUsandoMagia =new AtacarConMagia(this);
 		opcionMoverUnidad = new MoverUnidad(this,interfazPartida);
-		
+		unidadesPropias = new ListaUnidadesPropias(this);
+		frameMenuUnidades= new JFrame();
 	}
 	
 	protected void cargar(final InterfazPrincipal ip) {
-		// TODO Auto-generated method stub
 		
-		JFrame frameMenuUnidades= new JFrame();
 		frameMenuUnidades.getContentPane().removeAll();
 		frameMenuUnidades.setJMenuBar(null);
 		frameMenuUnidades.setTitle("Menu Unidades");
@@ -97,15 +100,20 @@ public class MenuUnidades {
 			}
 		});
 		
-		
-		
-		
+		JButton verUnidades = new JButton("Unidades Creadas");
+		verUnidades.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				unidadesPropias.cargar(ip);
+			}
+		});				
 		
 		panelUnidades.add(crearUnidades);
 		panelUnidades.add (atacarConMagia);
 		panelUnidades.add(moverUnidades);
 		panelUnidades.add(atacar);
-				
+		panelUnidades.add(verUnidades);
 	
 		frameMenuUnidades.getContentPane().add(panelUnidades);
 		frameMenuUnidades.setSize(700, 500);
@@ -114,19 +122,15 @@ public class MenuUnidades {
 		
 	}
 
-	
-		
-		
-		
-		
-		
+	public void limpiar() {
+		opcionDeCrearUnidades.limpiar();
+		opcionAtacarUnidades.limpiar();
+		opcionAtacarUsandoMagia.limpiar();
+		opcionMoverUnidad.limpiar();		
+		unidadesPropias.limpiar();	
+		frameMenuUnidades.getContentPane().removeAll();
+		frameMenuUnidades.setJMenuBar(null);
+		frameMenuUnidades.setVisible(false);
 	}
-
-	
-	
-	
-	
-	
-	
-
-
+		
+}

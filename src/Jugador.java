@@ -55,7 +55,7 @@ public class Jugador {
 		setColor(color);
 		setRaza(raza);
 		setPoblacionDisponible(5);
-		setDinero(200,200);
+		setDinero(999,999);
 		this.construccionesEnCamino= new ArrayList<Construccion>();	
 		this.construccionesEnPie= new ArrayList <Construccion>();
 		this.ataques= new  AtaquesPermitidosPorTurno();
@@ -67,7 +67,7 @@ public class Jugador {
 	public Jugador() {
 		
 		setPoblacionDisponible(5);
-		setDinero(200,200);
+		setDinero(999,999);
 		this.construccionesEnCamino= new ArrayList<Construccion>();	
 		this.construccionesEnPie= new ArrayList <Construccion>();
 		this.ataques= new  AtaquesPermitidosPorTurno();
@@ -76,7 +76,7 @@ public class Jugador {
 		
 	}			
 	
-	public ArrayList<Unidad> getUnidadesAlistades (){
+	public ArrayList<Unidad> getUnidadesAlistadas (){
 		
 		return this.unidadesAlistadas;
 		
@@ -306,7 +306,7 @@ public class Jugador {
 	
 	public void moverUnidadAPosicion(Unidad unidad, int posX, int posY) throws ExcepcionNoPuedeMoverseUnidad, ExcepcionLaUnidadNoPertenceATuTropa {
 		
-		if(this.contieneALaUnidad(unidad)){
+		if(contieneALaUnidad(unidad)){
 			unidad.moverAPosicionDeterminada(posX, posY);
 		}
 		else{	
@@ -410,6 +410,25 @@ public class Jugador {
 		
 		juego = nuevoJuego;
 		
+	}
+
+	public void actualizarMuerteDeUnidad(Unidad unidad) {
+		Boolean fin = false;
+		int i = 0;
+		while (i < unidadesAlistadas.size() && !fin) {
+			if (unidadesAlistadas.get(i) == unidad){
+				unidadesAlistadas.remove(i);
+				poblacionActual = poblacionActual - unidadesAlistadas.get(i).getSuministros();
+				poblacionDisponible = poblacionDisponible + unidadesAlistadas.get(i).getSuministros();
+				fin = true;
+			}
+			i++;
+		}
+		
+	}
+	
+	public int getPoblacionActual(){
+		return poblacionActual;
 	}
 				
 }

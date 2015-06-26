@@ -168,9 +168,9 @@ public class MiniIntegracionTest {
 		barraca.colocarUnidad(primerMarine, mapa);	
 		barraca.colocarUnidad(segundoMarine, mapa);
 		barraca.colocarUnidad(tercerMarine, mapa);
-		jugador1.getUnidadesAlistades().add(primerMarine);
-		jugador1.getUnidadesAlistades().add(segundoMarine);
-		jugador1.getUnidadesAlistades().add(tercerMarine);
+		jugador1.getUnidadesAlistadas().add(primerMarine);
+		jugador1.getUnidadesAlistadas().add(segundoMarine);
+		jugador1.getUnidadesAlistadas().add(tercerMarine);
 		acceso.colocarUnidad(zealot, mapa);
 		Assert.assertTrue(juego.getJugadorActual().getNombre() == "carlos");
 				

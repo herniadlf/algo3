@@ -84,7 +84,7 @@ public class UnidadesProtossTest{
 		Creadora acceso = (Creadora) jug2.colocar(new Acceso(), mapa, 8, 8);
 		Unidad marine = new Marine();
 		barraca.colocarUnidad(marine, mapa);
-		jug1.getUnidadesAlistades().add(marine);
+		jug1.getUnidadesAlistadas().add(marine);
 		
 		marine.setAtaquesPermitidosPorTurno(ataques);
 		
@@ -128,9 +128,9 @@ public class UnidadesProtossTest{
 		barraca.colocarUnidad(primerMarine, mapa);	
 		barraca.colocarUnidad(segundoMarine, mapa);
 		barraca.colocarUnidad(tercerMarine, mapa);
-		jugador1.getUnidadesAlistades().add(primerMarine);
-		jugador1.getUnidadesAlistades().add(segundoMarine);
-		jugador1.getUnidadesAlistades().add(tercerMarine);
+		jugador1.getUnidadesAlistadas().add(primerMarine);
+		jugador1.getUnidadesAlistadas().add(segundoMarine);
+		jugador1.getUnidadesAlistadas().add(tercerMarine);
 		
 		acceso.colocarUnidad(zealot, mapa);
 				
@@ -210,7 +210,7 @@ public class UnidadesProtossTest{
 		Marine marine = new Marine();
 		
 		acceso.colocarUnidad(zealot, mapa);
-		jugador2.getUnidadesAlistades().add(zealot);
+		jugador2.getUnidadesAlistadas().add(zealot);
 		barraca.colocarUnidad(marine, mapa);
 		
 		jugador2.atacarCon(zealot, marine);
@@ -234,9 +234,9 @@ public class UnidadesProtossTest{
 		Marine marine = new Marine();
 		
 		acceso.colocarUnidad(zealot, mapa);
-		jugador2.getUnidadesAlistades().add(zealot);
+		jugador2.getUnidadesAlistadas().add(zealot);
 		barraca.colocarUnidad(marine, mapa);
-		jugador1.getUnidadesAlistades().add(marine);
+		jugador1.getUnidadesAlistadas().add(marine);
 		
 		jugador2.atacarCon(marine, zealot);
 	
@@ -272,7 +272,7 @@ public class UnidadesProtossTest{
 		
 		Zealot zealot = new Zealot();
 		acceso.colocarUnidad(zealot, mapa);
-		jugador1.getUnidadesAlistades().add(zealot);
+		jugador1.getUnidadesAlistadas().add(zealot);
 		
 		jugador1.moverUnidadAPosicion(zealot, 101, 101);
 		
@@ -295,9 +295,9 @@ public class UnidadesProtossTest{
 		Marine marine = new Marine();
 		
 		acceso.colocarUnidad(zealot, mapa);
-		jugador2.getUnidadesAlistades().add(zealot);
+		jugador2.getUnidadesAlistadas().add(zealot);
 		barraca.colocarUnidad(marine, mapa);
-		jugador1.getUnidadesAlistades().add(marine);
+		jugador1.getUnidadesAlistadas().add(marine);
 		
 		jugador1.moverUnidadAPosicion(zealot, 50, 50);
 		

@@ -45,20 +45,21 @@ public class CrearUnidades extends JFrame {
 	int indiceConstruccion;
 	int indiceUnidad;
 	MenuUnidades menuAnterior;
-	
+	JFrame frameCrear;
 	
 	public CrearUnidades(MenuUnidades menuUnidades){
-	menuAnterior = menuUnidades;
-	indiceConstruccion =0;
-	indiceUnidad=0;
-	unidad = new String();
-	construccion = "";
-	crear = new JButton();
-	etiquetaUnidad= new JLabel();
-	etiquetaEdificio= new JLabel(); 
-	construccionesIndexadas = new ArrayList <Construccion>();
-	unidadesIndexadas = new ArrayList <Unidad>();	
-}	
+		menuAnterior = menuUnidades;
+		indiceConstruccion =0;
+		indiceUnidad=0;
+		unidad = new String();
+		construccion = "";
+		crear = new JButton();
+		etiquetaUnidad= new JLabel();
+		etiquetaEdificio= new JLabel(); 
+		construccionesIndexadas = new ArrayList <Construccion>();
+		unidadesIndexadas = new ArrayList <Unidad>();	
+		frameCrear= new JFrame();
+	}	
 		
 	protected void cargar(final InterfazPrincipal ip) throws ExcepcionNoHayConstruccionesCreadoras  {
 		
@@ -73,8 +74,7 @@ public class CrearUnidades extends JFrame {
 		JComboBox desplegableEdificios = new JComboBox();
 		desplegableEdificios.addItem("");
 		
-
-		JFrame frameCrear= new JFrame();
+		
 		frameCrear.getContentPane().removeAll();
 		frameCrear.setJMenuBar(null);
 		frameCrear.setTitle("Creacion De Unidad");
@@ -162,9 +162,6 @@ public class CrearUnidades extends JFrame {
 		frameCrear.setLocation(650,250);
 		frameCrear.show();
 		
-	
-	
-	
 	}
 	
 	private void preraraListaDeCreadoras() throws ExcepcionNoHayConstruccionesCreadoras {
@@ -211,23 +208,11 @@ public class CrearUnidades extends JFrame {
 		
 		}
 
-
-
-
-
-	
-	
-	
-		
-		
-
-
+	public void limpiar() {		
+		frameCrear.getContentPane().removeAll();
+		frameCrear.setJMenuBar(null);	
+		frameCrear.setVisible(false);
+	}
 
 }
 		
-
-
-
-
-
-

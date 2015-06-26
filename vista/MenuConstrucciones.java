@@ -23,19 +23,21 @@ public class MenuConstrucciones {
 	ListaEdificiosEnPie listaEdificios;
 	ListaDeRecursos listaDeRecursos;
 	ListaDeEdificiosEnCurso listaEnCurso;
+	JFrame frameConstruccion;
 	
 	public MenuConstrucciones(Juego j, InterfazPartida iPartida, InterfazPrincipal iPrincipal){	
 		controladorJuego = j;
 		jugadorActual = j.getJugadorActual();
 		interfazPartida = iPartida;	
 		interfazPrincipal = iPrincipal;
-	}
-	
-	public void cargar() {
 		listaDeRecursos = new ListaDeRecursos(controladorJuego,interfazPartida);
 		listaEdificios = new ListaEdificiosEnPie(controladorJuego,interfazPartida);
 		listaEnCurso = new ListaDeEdificiosEnCurso(controladorJuego,interfazPartida);
-		JFrame frameConstruccion = new JFrame();
+		frameConstruccion = new JFrame();
+	}
+	
+	public void cargar() {
+		
 		frameConstruccion.getContentPane().removeAll();
 		frameConstruccion.setJMenuBar(null);
 		frameConstruccion.setTitle("Construccion");		
@@ -135,6 +137,7 @@ public class MenuConstrucciones {
 					try {				
 						controladorJuego.ordenFabricacionDeEdificios(aConstruir, posX, posY);
 						JOptionPane.showMessageDialog(null, "Construccion de " + aConstruir.getNombre() + " en camino!");
+						frameConstruccion.setVisible(false);
 						interfazPartida.cargar(interfazPrincipal);
 						
 					} catch (ExcepcionNoPudoColocarseEdificio excepcion) {
@@ -165,5 +168,14 @@ public class MenuConstrucciones {
 			pp.cargarY();
 			pp.cargarX();			
 		}
+	}
+
+	public void limpiar() {
+		listaEdificios.limpiar();
+		listaDeRecursos.limpiar();
+		listaEnCurso.limpiar();
+		frameConstruccion.getContentPane().removeAll();
+		frameConstruccion.setJMenuBar(null);
+		frameConstruccion.setVisible(false);
 	}
 }

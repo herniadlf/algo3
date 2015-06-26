@@ -68,7 +68,7 @@ public class UnidadesTerranTest extends TestCase{
 		acceso.colocarUnidad(zealot, mapa);
 		marine.setAtaquesPermitidosPorTurno(ataques);
 		ataques.setJuego(juego);
-		jug1.getUnidadesAlistades().add(marine);
+		jug1.getUnidadesAlistadas().add(marine);
 		jug1.atacarCon(marine, zealot);
 		Vida vida= zealot.getVida();
 		Assert.assertTrue((vida.obtenerVida()) == 100);		
@@ -108,7 +108,7 @@ public class UnidadesTerranTest extends TestCase{
 		espectro.setAtaquesPermitidosPorTurno(ataques);
 		ataques.setJuego(juego);
 		puertoEstelarTerran.colocarUnidad(espectro, mapa);
-		jug1.getUnidadesAlistades().add(espectro);
+		jug1.getUnidadesAlistadas().add(espectro);
 		Assert.assertTrue(nexo.getEscudo().obtenerResistenciaActual() == 250 );
 		jug1.atacarCon(espectro, nexo);
 		Assert.assertTrue(nexo.getEscudo().obtenerResistenciaActual() == 242 );

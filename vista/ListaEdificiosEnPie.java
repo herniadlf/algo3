@@ -15,19 +15,22 @@ public class ListaEdificiosEnPie {
 
 	Juego controladorJuego;
 	InterfazPartida iPartida;
+	JFrame frameEdificiosEnPie ;
 	
 	public ListaEdificiosEnPie(Juego controlador, InterfazPartida interfazPartida) {
 		controladorJuego = controlador;
 		iPartida = interfazPartida;
+		frameEdificiosEnPie = new JFrame();
 	}
 	public void cargar(final InterfazPrincipal ip) {
-		final JFrame frameEdificiosEnPie = new JFrame();
+	
 		frameEdificiosEnPie.getContentPane().removeAll();
 		frameEdificiosEnPie.setJMenuBar(null);
 		frameEdificiosEnPie.setTitle("Construcciones del Jugador: " + controladorJuego.getJugadorActual().getNombre() + " en pie");	
 		
 		JPanel panelEdificios = new JPanel();
 		JTextArea lista = new JTextArea("");
+		lista.setFocusable(false);
 		for (int i = 0; i < controladorJuego.getJugadorActual().getConstruccionesEnPie().size() ; i++){
 			Construccion auxiliar = controladorJuego.getJugadorActual().getConstruccionesEnPie().get(i);
 			lista.append("\n" + generarTexto(auxiliar));
@@ -53,6 +56,11 @@ public class ListaEdificiosEnPie {
 		
 		return (auxiliar.getNombre() + ". Ubicacion: ( " + auxiliar.getPosicionX() + "," + auxiliar.getPosicionY() + ") Vida: " + auxiliar.getVida().obtenerVida());
 		
+	}
+	public void limpiar() {
+		frameEdificiosEnPie.getContentPane().removeAll();
+		frameEdificiosEnPie.setJMenuBar(null);
+		frameEdificiosEnPie.setVisible(false);
 	}
 	
 

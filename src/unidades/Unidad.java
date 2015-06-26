@@ -7,6 +7,7 @@ import excepciones.ExcepcionConstruccionNoCorrespondiente;
 import excepciones.ExcepcionEdificioNoPuedeCrearUnidad;
 import excepciones.ExcepcionElementoFueraDelRangoDeAtaque;
 import excepciones.ExcepcionErrorPasoDeTurno;
+import excepciones.ExcepcionFueraDelRangoDeVision;
 import excepciones.ExcepcionNoHayLugarParaCrear;
 import excepciones.ExcepcionNoPuedeMoverseUnidad;
 import excepciones.ExcepcionPosicionInvalida;
@@ -232,6 +233,7 @@ public abstract class Unidad implements Atacable{
 		boolean estadoDeVidaFinalizado= vida.estaMuerto();
 		  if (estadoDeVidaFinalizado==true){
 			 mapa.eliminarElementoTerrestreEnPosicion(getPosicionX(),getPosicionY());
+			 jugador.actualizarMuerteDeUnidad(this);
 		 }
 		  
 	}
@@ -244,26 +246,25 @@ public abstract class Unidad implements Atacable{
 	
 	public void moverAPosicionDeterminada (int x, int y) throws ExcepcionNoPuedeMoverseUnidad {
 		
-		try {
-			
-		mapa.colocarEn(x, y, this);
+		try {		
+			if ( mapa.distanciaEntreLosPuntos(x, y, getPosicionX(), getPosicionY()) > vision ) { throw new ExcepcionFueraDelRangoDeVision("No puede moverse unidad tan lejos"); }
+			mapa.colocarEn(x, y, this);		
+			if(this.esTerrestre()){
+				
+				mapa.eliminarElementoTerrestreEnPosicion(posicion.getX(), posicion.getY());
+			}
+			if(this.esAereo()) {
+				
+				mapa.eliminarElementoAereoEnPosicion(posicion.getX(), posicion.getY());
+			}
 		
-		if(this.esTerrestre()){
-			
-			mapa.eliminarElementoTerrestreEnPosicion(posicion.getX(), posicion.getY());
-		}
-		if(this.esAereo()) {
-			
-			mapa.eliminarElementoAereoEnPosicion(posicion.getX(), posicion.getY());
-		}
-	
-		Posicion nuevaPosicion = new Posicion(x,y);
-		this.setPosicion(nuevaPosicion);
-		jugador.setRangoDeVision(x,y,rangoAtaque,mapa);
+			Posicion nuevaPosicion = new Posicion(x,y);
+			setPosicion(nuevaPosicion);
+			jugador.setRangoDeVision(x,y,vision,mapa);
 		
 		}
 		
-		catch (ExcepcionPosicionInvalida | ExcepcionYaHayElementoEnLaPosicion e) {
+		catch (ExcepcionPosicionInvalida | ExcepcionYaHayElementoEnLaPosicion | ExcepcionFueraDelRangoDeVision e) {
 			
 			throw new ExcepcionNoPuedeMoverseUnidad(e);
 		}

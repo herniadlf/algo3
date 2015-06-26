@@ -8,6 +8,8 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
+
 import excepciones.ExcepcionFueraDelRangoDeVision;
 import excepciones.ExcepcionPosicionInvalida;
 import src.Juego;
@@ -20,14 +22,16 @@ public class ListaDeRecursos {
 	
 	Juego controladorJuego;
 	InterfazPartida iPartida;
+	JFrame frameRecursos;
 	
 	public ListaDeRecursos(Juego controlador, InterfazPartida interfazPartida) {
 		controladorJuego = controlador;
 		iPartida = interfazPartida;
+		frameRecursos = new JFrame();
 	}
 
 	public void cargar(final InterfazPrincipal ip) throws ExcepcionPosicionInvalida {
-		final JFrame frameRecursos = new JFrame();
+		
 		frameRecursos.getContentPane().removeAll();
 		frameRecursos.setJMenuBar(null);		
 		frameRecursos.setTitle("Recursos");	
@@ -35,19 +39,16 @@ public class ListaDeRecursos {
 		int tamanioLista = controladorJuego.getMapa().getListaRecursos().size(); 
 		
 		JPanel panelRecursos = new JPanel();
-		GridLayout gL = new GridLayout(tamanioLista, 1);
-		panelRecursos.setLayout(gL);
 		
-		JLabel listaRecursos = new JLabel("Recuerde que solo puede construir un extractor sobre una fuente de recursos. \n");
-		panelRecursos.add(listaRecursos);
+		JTextArea listaRecursos = new JTextArea("Recuerde que solo puede construir un extractor sobre una fuente de recursos. \n");
+		listaRecursos.setFocusable(false);
 		for (int i = 0; i < tamanioLista ; i++){
 			Posicion pos = controladorJuego.getMapa().getListaRecursos().get(i);
 			int x = pos.getX(), y = pos.getY();
 			Mapeable auxiliar =  controladorJuego.getMapa().obtenerContenidoEnPosicion(x, y).getElementoEnTierra();
 			try{
 				verificacionRangoDeVision(controladorJuego.getMapa().obtenerContenidoEnPosicion(x, y));
-				JLabel unLabel = new JLabel("\n" + auxiliar.getNombre() + " Posicion: (" + x + "," + y + ")");
-				panelRecursos.add(unLabel);
+				listaRecursos.append("\n" + auxiliar.getNombre() + " Posicion: (" + x + "," + y + ")");				
 			} catch ( ExcepcionFueraDelRangoDeVision e) {}
 		}		
 		JButton avanzar = new JButton("Ok");
@@ -61,6 +62,7 @@ public class ListaDeRecursos {
 				frameRecursos.setVisible(false);			
 			}
 		});		
+		panelRecursos.add(listaRecursos);
 		panelRecursos.add(avanzar);
 		frameRecursos.getContentPane().add(panelRecursos);
 		frameRecursos.setSize(700, 500);
@@ -72,6 +74,12 @@ public class ListaDeRecursos {
 			throw new ExcepcionFueraDelRangoDeVision("Fuera del rango de vision");
 		}
 		
+	}
+
+	public void limpiar() {
+		frameRecursos.getContentPane().removeAll();
+		frameRecursos.setJMenuBar(null);
+		frameRecursos.setVisible(false);
 	}
 
 }

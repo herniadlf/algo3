@@ -32,8 +32,8 @@ public class MetodosDeCarga {
 		Jugador jugador	){
 		
 		int i=0;
-		while (jugador.getUnidadesAlistades().size()>i){
-			ArrayList<Unidad>unidades = jugador.getUnidadesAlistades();
+		while (jugador.getUnidadesAlistadas().size()>i){
+			ArrayList<Unidad>unidades = jugador.getUnidadesAlistadas();
 			
 			if (unidades.get(i) instanceof Magica){
 				

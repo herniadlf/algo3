@@ -15,14 +15,16 @@ public class ListaDeEdificiosEnCurso {
 	
 	Juego controladorJuego;
 	InterfazPartida iPartida;
+	JFrame nuevaFrame;
 	
 	public ListaDeEdificiosEnCurso(Juego controlador,	InterfazPartida interfazPartida) {
 		controladorJuego = controlador;
 		iPartida = interfazPartida;
+		nuevaFrame = new JFrame();
 	}
 
 	public void cargar(InterfazPrincipal interfazPrincipal) {
-		final JFrame nuevaFrame = new JFrame();
+		
 		nuevaFrame.getContentPane().removeAll();
 		nuevaFrame.setJMenuBar(null);
 		nuevaFrame.setTitle("Edificios en construccion.");	
@@ -64,6 +66,12 @@ public class ListaDeEdificiosEnCurso {
 		int turnosPasados = controladorJuego.getTurno() - (auxiliar.getTurnoInicioDeConstruccion()/2);
 		
 		return (auxiliar.getTiempoDeConstruccion() - turnosPasados);
+	}
+
+	public void limpiar() {
+		nuevaFrame.getContentPane().removeAll();
+		nuevaFrame.setJMenuBar(null);
+		nuevaFrame.setVisible(false);
 	}	
 	
 }
