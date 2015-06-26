@@ -133,6 +133,7 @@ public class NaveTransporteTerranTest extends TestCase {
 		naveTransporte.setPosicion(posicion);
 		naveTransporte.setMapa(juego.getMapa());
 		
+		
 		mapa.colocarEn(2,5,marine1);
 		Posicion posicion1 = new Posicion (2,5);
 		marine1.setPosicion(posicion1);
@@ -146,17 +147,17 @@ public class NaveTransporteTerranTest extends TestCase {
 		naveTransporte.llevar(marine1);
 		naveTransporte.llevar(marine2);
 		naveTransporte.llevar(marine3);
-		naveTransporte.transportarUnidades(8, 8);
+		naveTransporte.transportarUnidades(6, 6);
 		
 		// Verifico que las unidades hallan viajado a la posicion determinada 
-		Assert.assertTrue(marine1.getPosicionX() == 7);
-		Assert.assertTrue(marine1.getPosicionY()==9);
+		Assert.assertTrue(marine1.getPosicionX() == 5);
+		Assert.assertTrue(marine1.getPosicionY()==7);
 		
-		Assert.assertTrue(marine2.getPosicionX() == 8);
-		Assert.assertTrue(marine2.getPosicionY()==9);
+		Assert.assertTrue(marine2.getPosicionX() == 6);
+		Assert.assertTrue(marine2.getPosicionY()==7);
 		
-		Assert.assertTrue(marine3.getPosicionX() == 9);
-		Assert.assertTrue(marine3.getPosicionY()==9);
+		Assert.assertTrue(marine3.getPosicionX() == 7);
+		Assert.assertTrue(marine3.getPosicionY()==7);
 
 	}
 	

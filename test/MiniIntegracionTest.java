@@ -157,9 +157,13 @@ public class MiniIntegracionTest {
 		
 		AtaquesPermitidosPorTurno ataques = new AtaquesPermitidosPorTurno();
 		Unidad primerMarine = new Marine();
+		primerMarine.setJugador(jugador1);
 		Unidad segundoMarine = new Marine();
+		segundoMarine.setJugador(jugador1);
 		Unidad tercerMarine = new Marine();
-		Unidad zealot = new Zealot();	
+		tercerMarine.setJugador(jugador1);
+		Unidad zealot = new Zealot();
+		zealot.setJugador(jugador2);
 		primerMarine.setAtaquesPermitidosPorTurno(ataques);
 		segundoMarine.setAtaquesPermitidosPorTurno(ataques);
 		tercerMarine.setAtaquesPermitidosPorTurno(ataques);

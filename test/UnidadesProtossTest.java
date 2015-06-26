@@ -174,6 +174,7 @@ public class UnidadesProtossTest{
 		Creadora acceso = (Creadora) jugador2.colocar(new Acceso(), mapa, 2, 2);		
 	
 		Zealot zealot = new Zealot();	
+		zealot.setJugador(jugador2);
 		
 		acceso.colocarUnidad(zealot, mapa);
 		

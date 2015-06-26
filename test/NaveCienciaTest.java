@@ -126,6 +126,7 @@ public class NaveCienciaTest extends TestCase {
 		Posicion posicionAltoTemplario = new Posicion(20,20);
 		altoTemplario.setPosicion(posicionAltoTemplario);
 		mapa.colocarEn(20, 20, altoTemplario);
+		altoTemplario.setJugador(new Jugador());
 		naveCiencia.setMapa(mapa);
 		
 		naveCiencia.atacar(new Radiacion(altoTemplario));;
