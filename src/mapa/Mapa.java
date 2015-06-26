@@ -14,8 +14,8 @@ import src.construcciones.Extractora;
 
 public class Mapa {
 
-	private static int TAMANIO_MAXIMO = 800;
-	private static int TAMANIO_MINIMO = 100;
+	private static int TAMANIO_MAXIMO = 200;
+	private static int TAMANIO_MINIMO = 50;
 	private Map<Posicion,Mapeable> mapa;
 	private int tamanio;
 	private ArrayList<Posicion> posicionesDeFuentes;
