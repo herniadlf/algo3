@@ -134,6 +134,27 @@ public class GolliatTest extends TestCase{
 		Assert.assertTrue(golliat.getPosicionX() == 1 & golliat.getPosicionY() == 12);
 	
 	}
+	
+	public void testGolliatNoPuedeMoverMasAllaDeSuRangoDeVision() throws 
+	ExcepcionPosicionInvalida, ExcepcionYaHayElementoEnLaPosicion, ExcepcionSuperaLimenteDeArbolesPermitos, ExcepcionTamanioDelMapaInvalido{	
+
+	Jugador jug1 = new Jugador ("carlos","rojo",new Terran());
+	Jugador jug2 = new Jugador ("Williams", "azul", new Protoss());
+	Juego juego = new Juego(jug1, jug2, 100, 0);
+
+	Golliat golliat = new Golliat();
+	golliat.setJugador(jug1);
+	golliat.setMapa(juego.getMapa());
+	Posicion posicionMarine = new Posicion(1,1);
+	golliat.setPosicion(posicionMarine);
+
+	try {
+		golliat.moverAPosicionDeterminada(1,10);
+	} catch (ExcepcionNoPuedeMoverseUnidad e) {
+		e.printStackTrace();
+	}
+
+}
 
 
 }
