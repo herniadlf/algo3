@@ -5,6 +5,10 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 
 import src.Jugador;
+import src.unidades.AltoTemplario;
+import src.unidades.Dragon;
+import src.unidades.NaveTransporteProtoss;
+import src.unidades.Scout;
 import src.unidades.Unidad;
 import src.unidades.Zealot;
 
@@ -39,17 +43,9 @@ public class ListaUnidadesPropias {
 	}
 
 	private String generarTexto(Unidad auxiliar) {
-
-		if(auxiliar.getJugador().getRaza().getNombre()== "Protoss"){
-	
-			return (auxiliar.getNombre()+"Posicion: ("+auxiliar.getPosicionX()+","+auxiliar.getPosicionY()+") Vida: "+auxiliar.getVida().obtenerVida()+ " Escudo: "+((Zealot)auxiliar).getEscudo().obtenerResistenciaActual()+"\n");
 		
-		}
-		else{
+			return (auxiliar.getNombre()+"Posicion: ("+auxiliar.getPosicionX()+","+auxiliar.getPosicionY()+") Vida: "+auxiliar.getVida().obtenerVida()+"\n");
 		
-		return (auxiliar.getNombre()+"Posicion: ("+auxiliar.getPosicionX()+","+auxiliar.getPosicionY()+") Vida: "+auxiliar.getVida().obtenerVida()+"\n");
-		
-		}
 	}
 
 	public void limpiar() {
