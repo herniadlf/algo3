@@ -111,10 +111,4 @@ public class NaveCiencia extends Magica {
 		
 	}
 
-	public void pasoTurno() {
-		
-		energia.aumentarEnergia(energiaPorTurno);
-		
-	}
-
 }

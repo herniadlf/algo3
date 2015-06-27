@@ -42,10 +42,7 @@ public class Dragon extends Unidad {
 	public void pasoTurno() {
 		
 		escudo.pasoTurno();
-		if(afectadoPorRadiacion){
-			Radiacion radiacion = new Radiacion(this);
-			radiacion.atacar();
-		}
+		super.pasoTurno();
 		
 	}
 	

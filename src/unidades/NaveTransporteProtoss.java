@@ -42,7 +42,7 @@ public class NaveTransporteProtoss extends DeTransporte {
 	public void pasoTurno() {
 		
 		escudo.pasoTurno();
-		
+		super.pasoTurno();
 	}
 	
 	@Override

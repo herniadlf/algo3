@@ -42,6 +42,7 @@ public class Scout extends Unidad {
 	public void pasoTurno() {
 		
 		escudo.pasoTurno();	
+		super.pasoTurno();
 		
 	}
 	

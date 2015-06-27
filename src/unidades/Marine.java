@@ -92,10 +92,6 @@ public class Marine extends Unidad {
 		
 	}
 
-	public void pasoTurno() {
-		
-	}
-
 	public void afectadoPorRadiacion(int danio) {
 		
 		vida.aumentarDanioARecibir(danio);
