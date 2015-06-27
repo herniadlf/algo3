@@ -25,6 +25,8 @@ import excepciones.ExcepcionYaHayElementoEnLaPosicion;
 import src.Juego;
 import src.Jugador;
 import src.construcciones.Construccion;
+import src.mapa.Posicion;
+import src.unidades.AltoTemplario;
 import src.unidades.Alucinacion;
 import src.unidades.EMP;
 import src.unidades.Magia;
@@ -105,8 +107,16 @@ import src.unidades.Unidad;
 		juego = ip.getJuego();
 		jugador = ip.getJuego().getJugadorActual();
 		
-		//jugador.getUnidadesAlistadas().add(new NaveCiencia());
-		//juego.getJugador2().getUnidadesAlistadas().add(new Marine());
+
+		Marine marine = new Marine();
+		Posicion posicion = new Posicion(10, 10);
+		marine.setPosicion(posicion);
+		marine.setMapa(juego.getMapa());
+		
+		
+		
+		jugador.getUnidadesAlistadas().add(new AltoTemplario());
+		juego.getJugador2().getUnidadesAlistadas().add(marine);
 		
 		if (jugador ==juego.getJugador1()){
 			unidadesEnemigas= juego.getJugador2().getUnidadesAlistadas();
@@ -190,26 +200,33 @@ indiceUnidadEnemiga= metodosDeCarga.obtenerIndiceDeElemento(posicionPuntoUnidade
 indiceUnidadMagica= metodosDeCarga.obtenerIndiceDeElemento(posicionPuntoUnidadesMagicas, unidadMagica, indiceBuscadoUnidadesMagicas);
 				
 	
-				
-				
-				
-	
-		
 				crearBotonesMagias (indiceUnidadMagica);
 				magia1.addActionListener(new ActionListener() {
 					
 					@Override
 					public void actionPerformed(ActionEvent e) {
 						Magica agresor = (Magica) unidadesMagicas.get(indiceUnidadMagica);
-						if (magia1.getName()=="Tormenta psionica"){
+						if (magia1.getActionCommand()=="Tormenta psionica"){
+							
 							magia = new TormentaPsionica (unidadesEnemigasIndexadas.get(indiceUnidadEnemiga));
 							
+						
+							
+							
 						} else {
-							magia = new EMP (unidadesEnemigasIndexadas.get(indiceUnidadEnemiga));		
+							
+							magia = new EMP (unidadesEnemigasIndexadas.get(indiceUnidadEnemiga));
+							
+						
+							
+							
 						}
 						
 						try {
 							jugador.atacarCon(agresor, magia);
+							JOptionPane.showMessageDialog(null, "Ataque exitoso con"+magia.obtenerNombre());
+							System.out.print(magia);
+							
 						} catch (ExcepcionEdificioNoPuedeCrearUnidad
 								| ExcepcionPosicionInvalida
 								| ExcepcionNoHayLugarParaCrear
@@ -232,15 +249,29 @@ indiceUnidadMagica= metodosDeCarga.obtenerIndiceDeElemento(posicionPuntoUnidades
 					@Override
 					public void actionPerformed(ActionEvent e) {
 						Magica agresor = (Magica) unidadesMagicas.get(indiceUnidadMagica);
-						if (magia2.getName()=="Alucinacion"){
+						if (magia2.getActionCommand()=="Alucinacion"){
 							magia = new Alucinacion (unidadesEnemigasIndexadas.get(indiceUnidadEnemiga));
 							
+							
+							
+							
+							
+						
+							
 						} else {
-							magia = new Radiacion (unidadesEnemigasIndexadas.get(indiceUnidadEnemiga));		
+						
+							magia = new Radiacion (unidadesEnemigasIndexadas.get(indiceUnidadEnemiga));	
+							
+							
+							
+							
+							
 						}
 						
 						try {
 							jugador.atacarCon(agresor, magia);
+							JOptionPane.showMessageDialog(null, "Ataque exitoso con"+magia.obtenerNombre());
+							System.out.print(magia);
 						} catch (ExcepcionEdificioNoPuedeCrearUnidad
 								| ExcepcionPosicionInvalida
 								| ExcepcionNoHayLugarParaCrear

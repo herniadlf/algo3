@@ -373,6 +373,9 @@ public class Jugador {
 	
 	public void atacarCon(Magica agresor, Magia magia) throws ExcepcionEdificioNoPuedeCrearUnidad, ExcepcionPosicionInvalida, ExcepcionNoHayLugarParaCrear, ExcepcionYaHayElementoEnLaPosicion, ExcepcionErrorPasoDeTurno, ExcepcionConstruccionNoCorrespondiente, ExcepcionRecursoInsuficiente, ExcepcionUnidadNoCorrespondiente, ExcepcionElementoFueraDelRangoDeAtaque, ExcepcionLaUnidadNoPertenceATuTropa{
 			
+		/*System.out.print(agresor.getNombre());
+		System.out.print(magia.obtenerNombre());
+		System.out.print(magia.obtenerAtacadoEnTierra());*/
 		this.verificarUnidad(agresor);
 		agresor.atacar(magia);		
 		
