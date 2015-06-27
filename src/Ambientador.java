@@ -53,7 +53,7 @@ public class Ambientador {
 		
 		catch (ExcepcionSuperaLimenteDeArbolesPermitos e) {
 			
-			mapa.crearCantidadDeArbolesEnMapa((int) (mapa.getTamanioMapa()*0.1));
+			mapa.crearCantidadDeArbolesEnMapa((int) (mapa.getTamanioMapa()));
 			e.printStackTrace();
 			
 		}

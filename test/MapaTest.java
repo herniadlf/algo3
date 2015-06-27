@@ -18,8 +18,8 @@ public class MapaTest {
 	@Test (expected = ExcepcionTamanioDelMapaInvalido.class)
 	public void CrearMapaConTamanioNoPermitidoLanzaExcepcion() throws ExcepcionTamanioDelMapaInvalido{
 		
-		//el tamanio maximo permitod es de 800
-		Mapa mapa = new Mapa (900);
+		//el tamanio maximo permitod es de 200
+		Mapa mapa = new Mapa (250);
 	}
 	
 	@Test
@@ -124,7 +124,7 @@ public class MapaTest {
 		
 		Mapa mapa = new Mapa(100);
 		
-		mapa.crearCantidadDeArbolesEnMapa(10);
+		mapa.crearCantidadDeArbolesEnMapa(100);
 		
 		int casillerosConArboles = 0;
 		
@@ -139,7 +139,7 @@ public class MapaTest {
 			}
 		}
 		
-		Assert.assertEquals(casillerosConArboles, 10);	
+		Assert.assertEquals(casillerosConArboles, 100);	
 		
 	}
 	
@@ -148,7 +148,7 @@ public class MapaTest {
 		
 	Mapa mapa = new Mapa(100);
 		
-	mapa.crearCantidadDeArbolesEnMapa(20);
+	mapa.crearCantidadDeArbolesEnMapa(200);
 		
 	}
 	

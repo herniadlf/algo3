@@ -72,7 +72,7 @@ public class PedidoTamanioMapa {
 	}
 	protected Juego generarJuego(int tamanioMapa, InterfazPrincipal ip) {
 		try {
-			Juego juegoDefinitivo = new Juego(ip.getJuego().getJugador1(),ip.getJuego().getJugador2(),tamanioMapa,0);
+			Juego juegoDefinitivo = new Juego(ip.getJuego().getJugador1(),ip.getJuego().getJugador2(),tamanioMapa,tamanioMapa);
 			return (juegoDefinitivo);			
 		}
 		catch (ExcepcionPosicionInvalida | ExcepcionTamanioDelMapaInvalido | ExcepcionYaHayElementoEnLaPosicion | ExcepcionSuperaLimenteDeArbolesPermitos e) {

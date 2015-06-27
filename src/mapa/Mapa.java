@@ -146,7 +146,7 @@ public class Mapa {
 	public void crearCantidadDeArbolesEnMapa(int cantidadDeArboles) throws 
 		ExcepcionPosicionInvalida, ExcepcionSuperaLimenteDeArbolesPermitos, ExcepcionYaHayElementoEnLaPosicion{
 		
-		if(cantidadDeArboles <= (int)(tamanio * 0.1) ) { //Como máximo el 10% del tamaño del mapa
+		if(cantidadDeArboles <= (int)(tamanio) ) { //Como máximo el tamaño del mapa
 			
 			Random random = new Random();
 			int totalArbolesCreados = 0;
@@ -164,7 +164,7 @@ public class Mapa {
 		}
 		
 		else {
-			throw new ExcepcionSuperaLimenteDeArbolesPermitos("La cantidad de arboles no debe superar el 10% del tamanio del mapa");
+			throw new ExcepcionSuperaLimenteDeArbolesPermitos("La cantidad de arboles supera el limite permitido");
 		}
 		
 	}
