@@ -94,4 +94,10 @@ public class NaveTransporteProtoss extends DeTransporte {
 		
 	}
 	
+	public Escudo getEscudo(){
+		
+		return escudo;
+		
+	}
+	
 }
