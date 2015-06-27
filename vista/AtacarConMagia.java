@@ -25,9 +25,13 @@ import excepciones.ExcepcionYaHayElementoEnLaPosicion;
 import src.Juego;
 import src.Jugador;
 import src.construcciones.Construccion;
+import src.unidades.Alucinacion;
 import src.unidades.EMP;
 import src.unidades.Magia;
 import src.unidades.Magica;
+import src.unidades.Marine;
+import src.unidades.NaveCiencia;
+import src.unidades.Radiacion;
 import src.unidades.TormentaPsionica;
 import src.unidades.Unidad;
 
@@ -43,29 +47,27 @@ import src.unidades.Unidad;
 		int indiceUnidadEnemiga;
 		
 		ArrayList<Unidad> unidadesMagicas;
-		ArrayList <Construccion> construccionesEnemigas;
 		ArrayList <Unidad> unidadesEnemigas;
 		
 		String unidadEnemiga;
 		String unidadMagica;
-		String construccionEnemiga;
+	
 		
 		
 		JButton atacar;
 		Magia magia;
-		private ArrayList <Construccion> construccionesIndexadas;
+	
 		private ArrayList <Unidad> unidadesMagicasIndexadas;
 		private ArrayList <Unidad> unidadesEnemigasIndexadas;
 		
 		JComboBox desplegableUnidadesMagicas;
-		JComboBox desplegableEdificiosEnemigos;
 		JComboBox desplegableUnidadesEnemigas;
 		JComboBox desplegableMagiasPermitidas;
 		
 		JButton magia1;
 		JButton magia2;
 		
-		JButton atacarEdificio;
+		
 		JButton atacarUnidad;
 		
 		MenuUnidades menuAnterior;
@@ -76,19 +78,18 @@ import src.unidades.Unidad;
 		metodosDeCarga = new MetodosDeCarga();
 		menuAnterior = menuUnidades;
 		unidadesMagicas= new ArrayList<Unidad>();
-		construccionesEnemigas = new ArrayList<Construccion>();
+	
 		unidadesEnemigas = new ArrayList <Unidad>();
 		
 		unidadMagica = new String();
-		construccionEnemiga = new String ();
+		
 		unidadEnemiga = new String ();
 	
-		construccionesIndexadas = new ArrayList<Construccion>();
+		
 		unidadesMagicasIndexadas = new ArrayList<Unidad>();
 		unidadesEnemigasIndexadas = new ArrayList <Unidad>();
 	
 		desplegableUnidadesMagicas= new JComboBox();
-		desplegableEdificiosEnemigos = new JComboBox();
 		desplegableUnidadesEnemigas = new JComboBox();
 		desplegableMagiasPermitidas = new JComboBox();
 		
@@ -99,19 +100,22 @@ import src.unidades.Unidad;
 	}
 	
 	
-	protected void cargar (InterfazPrincipal ip){
+	protected void cargar (final InterfazPrincipal ip){
 		
 		juego = ip.getJuego();
-		jugador = ip.getJuego().getJugadorActual();	
+		jugador = ip.getJuego().getJugadorActual();
+		
+		//jugador.getUnidadesAlistadas().add(new NaveCiencia());
+		//juego.getJugador2().getUnidadesAlistadas().add(new Marine());
 		
 		if (jugador ==juego.getJugador1()){
 			unidadesEnemigas= juego.getJugador2().getUnidadesAlistadas();
-			construccionesEnemigas = juego.getJugador2().getConstruccionesEnPie();
+			
 			}
 		
 		else {
 			unidadesEnemigas= juego.getJugador1().getUnidadesAlistadas();
-			construccionesEnemigas = juego.getJugador1().getConstruccionesEnPie();
+			
 			}
 					
 		frameAtacarConMagia.getContentPane().removeAll();
@@ -124,8 +128,8 @@ import src.unidades.Unidad;
 		desplegableUnidadesEnemigas.addItem("");
 		metodosDeCarga.cargarListaDesplegablesUnidadesMagicas( desplegableUnidadesMagicas, unidadesMagicas, jugador);
 		metodosDeCarga.caragarListasDesplegablesUnidades (desplegableUnidadesEnemigas, unidadesEnemigasIndexadas,unidadesEnemigas);
-		metodosDeCarga.cargarListaDesplegableConstrucciones (desplegableEdificiosEnemigos, construccionesIndexadas,
-				construccionesEnemigas);
+		
+				
 		
 	
 		//___________________________________________________________________________________
@@ -151,15 +155,7 @@ import src.unidades.Unidad;
 				}
 				);
 		
-		desplegableEdificiosEnemigos.addItemListener(
-				new ItemListener(){
-					public void itemStateChanged(ItemEvent event){
-						if(event.getStateChange()==ItemEvent.SELECTED)
-							construccionEnemiga= event.getItem().toString();
-							
-					}
-				}
-				);
+		
 		
 		panelAtaqueConMagias.add(desplegableUnidadesMagicas);
 		panelAtaqueConMagias.add(desplegableUnidadesEnemigas);
@@ -190,8 +186,8 @@ import src.unidades.Unidad;
 				
 	
 				
-				indiceUnidadEnemiga= metodosDeCarga.obtenerIndiceDeElemento(posicionPuntoUnidadesEnemigas, unidadEnemiga, indiceBuscadoUnidadesEnemigas);
-				indiceUnidadMagica= metodosDeCarga.obtenerIndiceDeElemento(posicionPuntoUnidadesMagicas, unidadMagica, indiceBuscadoUnidadesMagicas);
+indiceUnidadEnemiga= metodosDeCarga.obtenerIndiceDeElemento(posicionPuntoUnidadesEnemigas, unidadEnemiga, indiceBuscadoUnidadesEnemigas);
+indiceUnidadMagica= metodosDeCarga.obtenerIndiceDeElemento(posicionPuntoUnidadesMagicas, unidadMagica, indiceBuscadoUnidadesMagicas);
 				
 	
 				
@@ -206,10 +202,10 @@ import src.unidades.Unidad;
 					public void actionPerformed(ActionEvent e) {
 						Magica agresor = (Magica) unidadesMagicas.get(indiceUnidadMagica);
 						if (magia1.getName()=="Tormenta psionica"){
-							Magia magia = new TormentaPsionica (unidadesEnemigasIndexadas.get(indiceUnidadEnemiga));
+							magia = new TormentaPsionica (unidadesEnemigasIndexadas.get(indiceUnidadEnemiga));
 							
 						} else {
-							Magia magia = new EMP (unidadesEnemigasIndexadas.get(indiceUnidadEnemiga));		
+							magia = new EMP (unidadesEnemigasIndexadas.get(indiceUnidadEnemiga));		
 						}
 						
 						try {
@@ -229,6 +225,46 @@ import src.unidades.Unidad;
 						menuAnterior.cargar(ip);
 					}
 				});
+				
+				
+				magia2.addActionListener(new ActionListener() {
+					
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						Magica agresor = (Magica) unidadesMagicas.get(indiceUnidadMagica);
+						if (magia2.getName()=="Alucinacion"){
+							magia = new Alucinacion (unidadesEnemigasIndexadas.get(indiceUnidadEnemiga));
+							
+						} else {
+							magia = new Radiacion (unidadesEnemigasIndexadas.get(indiceUnidadEnemiga));		
+						}
+						
+						try {
+							jugador.atacarCon(agresor, magia);
+						} catch (ExcepcionEdificioNoPuedeCrearUnidad
+								| ExcepcionPosicionInvalida
+								| ExcepcionNoHayLugarParaCrear
+								| ExcepcionYaHayElementoEnLaPosicion
+								| ExcepcionErrorPasoDeTurno
+								| ExcepcionConstruccionNoCorrespondiente
+								| ExcepcionRecursoInsuficiente
+								| ExcepcionUnidadNoCorrespondiente
+								| ExcepcionElementoFueraDelRangoDeAtaque
+								| ExcepcionLaUnidadNoPertenceATuTropa e1) {						
+							JOptionPane.showMessageDialog(null, e1.getMessage());
+						}
+						menuAnterior.cargar(ip);
+					}
+				});
+				
+				
+				
+				
+				
+				
+				
+				
+				
 				
 				
 				
