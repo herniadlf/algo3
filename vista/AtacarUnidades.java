@@ -171,8 +171,9 @@ import src.unidades.Unidad;
 					
 					
 						
-					try {
+					try {			
 						jugador.atacarCon( unidadesAlistadasIndexadas.get(indiceUnidadAlistadas),	unidadesEnemigasIndexadas.get(indiceUnidadEnemigas));
+						JOptionPane.showMessageDialog(null, "Ataque de "+unidadesAlistadasIndexadas.get(indiceUnidadAlistadas).getNombre()+" exitoso!");
 					} catch (ExcepcionEdificioNoPuedeCrearUnidad
 							| ExcepcionPosicionInvalida
 							| ExcepcionNoHayLugarParaCrear
