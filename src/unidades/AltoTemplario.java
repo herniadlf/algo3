@@ -46,26 +46,6 @@ public class AltoTemplario extends Magica {
 		reglaDeDanio = new ReglaDeDanioProtoss(escudo);
 		
 	}
-		
-	public Mapeable colocarContenido() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public Mapeable dibujar() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public Mapeable quitarContenido() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public Mapeable mover() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	public ColocadorDeUnidades getColocador(){
 		

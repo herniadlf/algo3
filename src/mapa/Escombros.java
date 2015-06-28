@@ -9,26 +9,6 @@ public class Escombros implements Mapeable {
 		nombre = "Escombros";
 		
 	}
-	
-	public Mapeable colocarContenido() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public Mapeable dibujar() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public Mapeable quitarContenido() {
-		// TODO Auto-generated method stub
-		return null;	
-	}
-
-	public Mapeable mover() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	public boolean esLoMismo(Mapeable mapeable) {
 		

@@ -188,21 +188,6 @@ public class Construccion implements Atacable {
 		
 	}
 	
-	public Mapeable dibujar() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
-	public Mapeable quitarContenido() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public Mapeable mover() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
 	public boolean esOcupable() {
 	
 		return false;

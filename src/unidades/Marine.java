@@ -36,28 +36,6 @@ public class Marine extends Unidad {
 
 	}
 		
-	@Override
-	public Mapeable colocarContenido() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	@Override
-	public Mapeable dibujar() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Mapeable quitarContenido() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public Mapeable mover() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-		
 	public ColocadorDeUnidades getColocador(){
 		
 		return colocador;

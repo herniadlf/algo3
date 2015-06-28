@@ -84,30 +84,6 @@ public class Dragon extends Unidad {
 		escudo.atacar(danio);
 		
 	}
-
-	@Override
-	public Mapeable colocarContenido() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Mapeable dibujar() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Mapeable quitarContenido() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Mapeable mover() {
-		// TODO Auto-generated method stub
-		return null;
-	}
 	
 	public Unidad duplicarConAlucinacion() {
 		
