@@ -246,6 +246,9 @@ public class Construccion implements Atacable {
 	public void pasoTurno(Turno turno, Mapa map, Jugador jugador) throws 
 		ExcepcionNoPudoColocarseUnidad, ExcepcionEdificioDestruido, ExcepcionUnidadNoCorrespondiente {
 			
+		if (vida.estaMuerto()){
+			throw new ExcepcionEdificioDestruido();
+		}
 	}
 
 	public void verificarTerreno(Mapa map, int x, int y) throws 
