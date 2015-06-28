@@ -3,8 +3,10 @@ package vista;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -40,7 +42,15 @@ public class MenuUnidades {
 		frameMenuUnidades.setTitle("Menu Unidades");
 		
 		
-		JPanel panelUnidades = new JPanel();	
+		JPanel panelUnidades = new JPanel();
+		
+		String ruta = new String(System.getProperty("user.dir")+"\\trunk\\imagenes\\");
+		ImageIcon unidades = new ImageIcon(ruta+"unidades.png");
+		JLabel labelColor = new JLabel(unidades);
+		JLabel labelUnidad = new JLabel(unidades);
+		labelColor.setBounds(0,0,unidades.getIconWidth(),unidades.getIconHeight());
+		panelUnidades.add(labelUnidad);
+		
 		
 		JButton crearUnidades = new JButton("Crear Unidades");
 		crearUnidades.addActionListener(new ActionListener() {
