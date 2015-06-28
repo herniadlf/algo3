@@ -90,8 +90,7 @@ public class Marine extends Unidad {
 	public Unidad duplicarConAlucinacion() {
 		
 		Marine duplicado = new Marine();
-		duplicado.vida = new Vida(1);
-		duplicado.danio = new Danio(0, 0);
+		this.modificarVidaYAtaqueDeUnidadAlucinada(duplicado);
 		return duplicado;
 		
 	}

@@ -109,9 +109,7 @@ public class Scout extends Unidad {
 	public Unidad duplicarConAlucinacion() {
 		
 		Scout duplicado = new Scout();
-		duplicado.vida = new Vida(1);
-		duplicado.escudo = new Escudo(0, duplicado);
-		duplicado.danio = new Danio(0, 0);
+		this.modificarVidaYAtaqueDeUnidadAlucinada(duplicado);
 		return duplicado;
 		
 	}

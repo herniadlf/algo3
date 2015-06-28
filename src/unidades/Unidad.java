@@ -314,6 +314,13 @@ public abstract class Unidad implements Atacable{
 		
 	}
 	
+	protected void modificarVidaYAtaqueDeUnidadAlucinada(Unidad duplicado){
+		
+		duplicado.vida = new Vida(1);
+		duplicado.danio = new Danio(0, 0);
+		
+	}
+	
 	public abstract Escudo getEscudo();
 		
 }

@@ -3,13 +3,13 @@ package src.unidades;
 import excepciones.ExcepcionNoHayLugarParaCrear;
 import excepciones.ExcepcionPosicionInvalida;
 import excepciones.ExcepcionYaHayElementoEnLaPosicion;
+import src.Atacable;
 import src.mapa.Mapa;
 import src.mapa.Posicion;
 
 public class Alucinacion extends Magia{
 	
-	private Unidad copia1;
-	private Unidad copia2;
+	private Unidad copia;
 	private boolean alucine;
 	
 	public Alucinacion(Unidad alucinado){
@@ -29,22 +29,21 @@ public class Alucinacion extends Magia{
 		ExcepcionYaHayElementoEnLaPosicion{
 		
 		this.setAlrededores();
-		copia1 = unidad.duplicarConAlucinacion();
-		copia2 = unidad.duplicarConAlucinacion();
-		copia1.setJugador(unidad.getJugador());
-		copia2.setJugador(unidad.getJugador());
-		copia1.setDuenio(unidad.getDuenio());
-		copia2.setDuenio(unidad.getDuenio());
-		unidad.getJugador().agregarAUnidadesAlistadas(copia1);
-		unidad.getJugador().agregarAUnidadesAlistadas(copia2);
-		copia1.setAtaquesPermitidosPorTurno(unidad.getJugador().getAtaquesPermitidosPorTurno());
-		copia2.setAtaquesPermitidosPorTurno(unidad.getJugador().getAtaquesPermitidosPorTurno());
-		Mapa mapa = unidad.getMapa();
-	    this.colocarUnidad(copia1, mapa);
-		this.colocarUnidad(copia2, mapa);
-
+		this.setearUnidadDuplicada(unidad);
+		this.setearUnidadDuplicada(unidad);
 		
 	}	
+	
+	private void setearUnidadDuplicada(Unidad unidad) throws ExcepcionPosicionInvalida, ExcepcionNoHayLugarParaCrear, ExcepcionYaHayElementoEnLaPosicion {
+		
+		copia = unidad.duplicarConAlucinacion();
+		copia.setJugador(unidad.getJugador());
+		copia.setDuenio(unidad.getDuenio());
+		unidad.getJugador().agregarAUnidadesAlistadas(copia);
+		copia.setAtaquesPermitidosPorTurno(unidad.getJugador().getAtaquesPermitidosPorTurno());
+		Mapa mapa = unidad.getMapa();
+		this.colocarUnidad(copia, mapa);
+	}
 	
 	private void colocarUnidad (Unidad aColocar , Mapa map ) throws 
 		ExcepcionPosicionInvalida, ExcepcionNoHayLugarParaCrear, ExcepcionYaHayElementoEnLaPosicion {
@@ -62,10 +61,10 @@ public class Alucinacion extends Magia{
 			Unidad unidad = null;
 			
 			try {
-				if(mapa.obtenerContenidoEnPosicion(x, y).getElementoEnAire().getNombre() == "Espacio Disponible"){
+				if(Unidad.class.isAssignableFrom(mapa.obtenerContenidoEnPosicion(x, y).getElementoEnTierra().getClass())){
 					unidad = (Unidad) mapa.obtenerContenidoEnPosicion(x, y).getElementoEnTierra();
 				}
-				else{
+				if(Unidad.class.isAssignableFrom(mapa.obtenerContenidoEnPosicion(x, y).getElementoEnAire().getClass())) {
 					unidad = (Unidad) mapa.obtenerContenidoEnPosicion(x, y).getElementoEnAire();
 				}
 				this.atacar(unidad);

@@ -105,9 +105,7 @@ public class NaveTransporteProtoss extends DeTransporte {
 	public Unidad duplicarConAlucinacion() {
 		
 		NaveTransporteProtoss duplicado = new NaveTransporteProtoss();
-		duplicado.vida = new Vida(1);
-		duplicado.escudo = new Escudo(0, duplicado);
-		duplicado.danio = new Danio(0, 0);
+		this.modificarVidaYAtaqueDeUnidadAlucinada(duplicado);
 		return duplicado;
 		
 	}

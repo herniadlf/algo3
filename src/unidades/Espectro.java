@@ -97,8 +97,7 @@ public class Espectro extends Unidad {
 	public Unidad duplicarConAlucinacion() {
 		
 		Espectro duplicado = new Espectro();
-		duplicado.vida = new Vida(1);
-		duplicado.danio = new Danio(0, 0);
+		this.modificarVidaYAtaqueDeUnidadAlucinada(duplicado);
 		return duplicado;
 		
 	}
