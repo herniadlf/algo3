@@ -93,7 +93,10 @@ public class Golliat extends Unidad {
 	
 	public Unidad duplicarConAlucinacion() {
 		
-		return new Golliat();
+		Golliat duplicado = new Golliat();
+		duplicado.vida = new Vida(1);
+		duplicado.danio = new Danio(0, 0);
+		return duplicado;
 		
 	}
 	

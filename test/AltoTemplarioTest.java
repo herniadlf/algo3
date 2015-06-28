@@ -168,9 +168,15 @@ public class AltoTemplarioTest extends TestCase {
 			if(mapa.obtenerContenidoEnPosicion(posicion.getX(), posicion.getY()).getElementoEnAire().esLoMismo(new Scout())){
 				
 				Unidad unidad = (Unidad) mapa.obtenerContenidoEnPosicion(posicion.getX(), posicion.getY()).getElementoEnAire();
-				if(unidad.getDuenio()==jugador.getNombre() && jugador.contieneALaUnidad(unidad)){
+				if(unidad.getDuenio()==jugador.getNombre() && 
+					jugador.contieneALaUnidad(unidad) &&
+					unidad.getVida().obtenerVida() == 1 &&
+					unidad.getEscudo().obtenerResistenciaActual() == 0 &&
+					unidad.getDanio().getDanioTierra() == 0 &&
+					unidad.getDanio().getDanioAire() == 0){
 					
 					cantidadDeScouts++;	
+				
 				}		
 			}
 		}

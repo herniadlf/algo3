@@ -114,7 +114,12 @@ public class NaveCiencia extends Magica {
 	
 	public Unidad duplicarConAlucinacion() {
 		
-		return new NaveCiencia();
+		NaveCiencia duplicado = new NaveCiencia();
+		duplicado.vida = new Vida(1);
+		duplicado.danio = new Danio(0, 0);
+		duplicado.energia = new Energia (0);
+		duplicado.energiaPorTurno = 0;
+		return duplicado;
 		
 	}
 	

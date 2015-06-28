@@ -56,7 +56,7 @@ public class Alucinacion extends Magia{
 		
 	}
 
-	void atacarEnEstaPosicion(int x, int y) {
+	public void atacarEnEstaPosicion(int x, int y) {
 		
 		if(!(alucine)){
 			Unidad unidad = null;

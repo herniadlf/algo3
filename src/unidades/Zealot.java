@@ -107,7 +107,11 @@ public class Zealot extends Unidad {
 	
 	public Unidad duplicarConAlucinacion() {
 		
-		return new Zealot();
+		Zealot duplicado = new Zealot();
+		duplicado.vida = new Vida(1);
+		duplicado.escudo = new Escudo(0, duplicado);
+		duplicado.danio = new Danio(0, 0);
+		return duplicado;
 		
 	}
 		

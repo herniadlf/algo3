@@ -111,7 +111,13 @@ public class AltoTemplario extends Magica {
 	
 	public Unidad duplicarConAlucinacion() {
 		
-		return new AltoTemplario();
+		AltoTemplario duplicado = new AltoTemplario();
+		duplicado.vida = new Vida(1);
+		duplicado.escudo = new Escudo(0, duplicado);
+		duplicado.danio = new Danio(0, 0);
+		duplicado.energia = new Energia (0);
+		duplicado.energiaPorTurno = 0;
+		return duplicado;
 		
 	}
 		

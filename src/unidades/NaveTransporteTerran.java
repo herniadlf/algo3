@@ -88,7 +88,10 @@ public class NaveTransporteTerran extends DeTransporte {
 	
 	public Unidad duplicarConAlucinacion() {
 		
-		return new NaveTransporteTerran();
+		NaveTransporteTerran duplicado = new NaveTransporteTerran();
+		duplicado.vida = new Vida(1);
+		duplicado.danio = new Danio(0, 0);
+		return duplicado;
 		
 	}
 	

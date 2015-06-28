@@ -111,7 +111,11 @@ public class Dragon extends Unidad {
 	
 	public Unidad duplicarConAlucinacion() {
 		
-		return new Dragon();
+		Dragon duplicado = new Dragon();
+		duplicado.vida = new Vida(1);
+		duplicado.escudo = new Escudo(0, duplicado);
+		duplicado.danio = new Danio(0, 0);
+		return duplicado;
 		
 	}
 		
