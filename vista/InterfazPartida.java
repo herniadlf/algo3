@@ -51,6 +51,11 @@ public class InterfazPartida {
 	    labelColor.setBounds(0,0,imagenBandera.getIconWidth(),imagenBandera.getIconHeight());
 	    panelJuego.add(labelColor);
 	    
+	    ImageIcon banner = new ImageIcon(ruta+"banner.png");
+	    JLabel labelBanner = new JLabel(banner);
+	    labelColor.setBounds(0,0,banner.getIconWidth(),banner.getIconHeight());
+	    panelJuego.add(labelBanner);
+	    
 		JTextArea informacion = new JTextArea("Nombre: " + jugador.getNombre() +"\n");
 		informacion.setSize(150, 400);		
 		informacion.setLineWrap(true);
