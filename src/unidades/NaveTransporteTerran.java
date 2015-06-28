@@ -84,5 +84,12 @@ public class NaveTransporteTerran extends DeTransporte {
 		vida.aumentarDanioARecibir(danio);
 		
 	}
+	
+	public Unidad duplicarConAlucinacion() {
+		
+		return new NaveTransporteTerran();
+		
+	}
+		
 
 }

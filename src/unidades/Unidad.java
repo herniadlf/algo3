@@ -305,6 +305,12 @@ public abstract class Unidad implements Atacable{
 		
 		this.duenio = duenio;
 		
-	}	
+	}
+	
+	public Unidad duplicarConAlucinacion() {
+		
+		return this;
+		
+	}
 		
 }

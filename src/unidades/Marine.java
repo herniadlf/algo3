@@ -85,6 +85,13 @@ public class Marine extends Unidad {
 		//no afecta a unidades amigas
 		
 	}
+	
+	public Unidad duplicarConAlucinacion() {
+		
+		return new Marine();
+		
+	}
+		
 
 
 }

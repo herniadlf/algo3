@@ -105,6 +105,13 @@ public class Scout extends Unidad {
 		return escudo;
 		
 	}
+	
+	public Unidad duplicarConAlucinacion() {
+		
+		return new Scout();
+		
+	}
+		
 
 	
 }

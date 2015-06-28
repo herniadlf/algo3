@@ -29,12 +29,20 @@ public class Alucinacion extends Magia{
 		ExcepcionYaHayElementoEnLaPosicion{
 		
 		this.setAlrededores();
-		Class clase = unidad.getClass();
-		copia1 = (Unidad) clase.newInstance();
-		copia2 = (Unidad) clase.newInstance();
+		copia1 = unidad.duplicarConAlucinacion();
+		copia2 = unidad.duplicarConAlucinacion();
+		copia1.setJugador(unidad.getJugador());
+		copia2.setJugador(unidad.getJugador());
+		copia1.setDuenio(unidad.getDuenio());
+		copia2.setDuenio(unidad.getDuenio());
+		unidad.getJugador().agregarAUnidadesAlistadas(copia1);
+		unidad.getJugador().agregarAUnidadesAlistadas(copia2);
+		copia1.setAtaquesPermitidosPorTurno(unidad.getJugador().getAtaquesPermitidosPorTurno());
+		copia2.setAtaquesPermitidosPorTurno(unidad.getJugador().getAtaquesPermitidosPorTurno());
 		Mapa mapa = unidad.getMapa();
 	    this.colocarUnidad(copia1, mapa);
 		this.colocarUnidad(copia2, mapa);
+
 		
 	}	
 	

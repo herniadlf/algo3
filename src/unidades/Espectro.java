@@ -92,6 +92,13 @@ public class Espectro extends Unidad {
 		// no afecta
 		
 	}
+	
+	public Unidad duplicarConAlucinacion() {
+		
+		return new Espectro();
+		
+	}
+		
 
 	
 }

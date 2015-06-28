@@ -89,4 +89,11 @@ public class Golliat extends Unidad {
 		// no afecta a unidades amigas
 		
 	}
+	
+	public Unidad duplicarConAlucinacion() {
+		
+		return new Golliat();
+		
+	}
+		
 }

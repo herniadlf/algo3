@@ -110,5 +110,12 @@ public class NaveCiencia extends Magica {
 		//supuesto: no afecta a naves
 		
 	}
+	
+	public Unidad duplicarConAlucinacion() {
+		
+		return new NaveCiencia();
+		
+	}
+		
 
 }

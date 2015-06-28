@@ -109,6 +109,13 @@ public class AltoTemplario extends Magica {
 		
 	}
 	
+	public Unidad duplicarConAlucinacion() {
+		
+		return new AltoTemplario();
+		
+	}
+		
+	
 }
 
 

@@ -104,6 +104,13 @@ public class Zealot extends Unidad {
 		escudo.atacar(danio);
 		
 	}
+	
+	public Unidad duplicarConAlucinacion() {
+		
+		return new Zealot();
+		
+	}
+		
 
 	
 }

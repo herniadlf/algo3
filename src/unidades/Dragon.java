@@ -108,5 +108,12 @@ public class Dragon extends Unidad {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	public Unidad duplicarConAlucinacion() {
+		
+		return new Dragon();
+		
+	}
+		
 
 }
