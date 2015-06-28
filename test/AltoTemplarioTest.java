@@ -172,7 +172,8 @@ public class AltoTemplarioTest extends TestCase {
 					jugador.contieneALaUnidad(unidad) &&
 					unidad.getVida().obtenerVida() == 1 &&
 					unidad.getDanio().getDanioTierra() == 0 &&
-					unidad.getDanio().getDanioAire() == 0){
+					unidad.getDanio().getDanioAire() == 0 &&
+					unidad.getEscudo().obtenerResistenciaActual() == 100){
 					
 					cantidadDeScouts++;	
 				
