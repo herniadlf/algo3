@@ -60,6 +60,13 @@ public abstract class Magica extends Unidad {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	public int obtenerEnergia() {
+		
+		return energia.obtenerCantidad(); 
+		
+	}
+
 
 	
 }

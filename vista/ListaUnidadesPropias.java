@@ -7,6 +7,7 @@ import javax.swing.JTextArea;
 import src.Jugador;
 import src.unidades.AltoTemplario;
 import src.unidades.Dragon;
+import src.unidades.NaveCiencia;
 import src.unidades.NaveTransporteProtoss;
 import src.unidades.Scout;
 import src.unidades.Unidad;
@@ -45,10 +46,20 @@ public class ListaUnidadesPropias {
 	private String generarTexto(Unidad auxiliar) {
 		
 		if(auxiliar.getJugador().getRaza().getNombre() == "Protoss"){
-			return (auxiliar.getNombre()+"Posicion: ("+auxiliar.getPosicionX()+","+auxiliar.getPosicionY()+") Vida: "+auxiliar.getVida().obtenerVida()+" Escudo: "+auxiliar.getEscudo().obtenerResistenciaActual()+"\n");
+			if(auxiliar.getNombre() == "Alto Templario"){
+				return (auxiliar.getNombre()+"Posicion: ("+auxiliar.getPosicionX()+","+auxiliar.getPosicionY()+") Vida: "+auxiliar.getVida().obtenerVida()+" Escudo: "+auxiliar.getEscudo().obtenerResistenciaActual()+" Energia: "+((AltoTemplario)auxiliar).obtenerEnergia()+"\n");
+			}
+			else{
+				return (auxiliar.getNombre()+"Posicion: ("+auxiliar.getPosicionX()+","+auxiliar.getPosicionY()+") Vida: "+auxiliar.getVida().obtenerVida()+" Escudo: "+auxiliar.getEscudo().obtenerResistenciaActual()+"\n");
+			}
 		}
 		else{
-			return (auxiliar.getNombre()+"Posicion: ("+auxiliar.getPosicionX()+","+auxiliar.getPosicionY()+") Vida: "+auxiliar.getVida().obtenerVida()+"\n");
+			if(auxiliar.getNombre() == "Nave Ciencia"){
+				return (auxiliar.getNombre()+"Posicion: ("+auxiliar.getPosicionX()+","+auxiliar.getPosicionY()+") Vida: "+auxiliar.getVida().obtenerVida()+" Energia: "+((NaveCiencia)auxiliar).obtenerEnergia()+"\n");
+			}
+			else{
+				return (auxiliar.getNombre()+"Posicion: ("+auxiliar.getPosicionX()+","+auxiliar.getPosicionY()+") Vida: "+auxiliar.getVida().obtenerVida()+"\n");
+			}
 		}
 		
 	}
