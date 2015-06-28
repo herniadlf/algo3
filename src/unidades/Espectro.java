@@ -3,6 +3,7 @@ package src.unidades;
 import excepciones.ExcepcionPosicionInvalida;
 import src.Danio;
 import src.Dinero;
+import src.Escudo;
 import src.ReglaDeDanioTerran;
 import src.Vida;
 import src.mapa.Mapeable;
@@ -99,6 +100,11 @@ public class Espectro extends Unidad {
 		
 	}
 		
+	public Escudo getEscudo(){
+		
+		return null;
+		
+	}
 
 	
 }

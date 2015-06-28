@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import src.Danio;
 import src.Dinero;
+import src.Escudo;
 import src.ReglaDeDanioTerran;
 import src.Vida;
 import src.mapa.Mapeable;
@@ -88,6 +89,12 @@ public class NaveTransporteTerran extends DeTransporte {
 	public Unidad duplicarConAlucinacion() {
 		
 		return new NaveTransporteTerran();
+		
+	}
+	
+	public Escudo getEscudo(){
+		
+		return null;
 		
 	}
 		

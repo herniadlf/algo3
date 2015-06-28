@@ -44,7 +44,12 @@ public class ListaUnidadesPropias {
 
 	private String generarTexto(Unidad auxiliar) {
 		
+		if(auxiliar.getJugador().getRaza().getNombre() == "Protoss"){
+			return (auxiliar.getNombre()+"Posicion: ("+auxiliar.getPosicionX()+","+auxiliar.getPosicionY()+") Vida: "+auxiliar.getVida().obtenerVida()+" Escudo: "+auxiliar.getEscudo().obtenerResistenciaActual()+"\n");
+		}
+		else{
 			return (auxiliar.getNombre()+"Posicion: ("+auxiliar.getPosicionX()+","+auxiliar.getPosicionY()+") Vida: "+auxiliar.getVida().obtenerVida()+"\n");
+		}
 		
 	}
 

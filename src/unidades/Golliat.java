@@ -2,6 +2,7 @@ package src.unidades;
 
 import src.Danio;
 import src.Dinero;
+import src.Escudo;
 import src.ReglaDeDanioTerran;
 import src.Vida;
 import src.mapa.Mapeable;
@@ -95,5 +96,10 @@ public class Golliat extends Unidad {
 		return new Golliat();
 		
 	}
+	
+	public Escudo getEscudo(){
 		
+		return null;
+		
+	}
 }

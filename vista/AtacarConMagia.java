@@ -107,17 +107,6 @@ import src.unidades.Unidad;
 		juego = ip.getJuego();
 		jugador = ip.getJuego().getJugadorActual();
 		
-
-		Marine marine = new Marine();
-		Posicion posicion = new Posicion(10, 10);
-		marine.setPosicion(posicion);
-		marine.setMapa(juego.getMapa());
-		
-		
-		
-		jugador.getUnidadesAlistadas().add(new AltoTemplario());
-		juego.getJugador2().getUnidadesAlistadas().add(marine);
-		
 		if (jugador ==juego.getJugador1()){
 			unidadesEnemigas= juego.getJugador2().getUnidadesAlistadas();
 			

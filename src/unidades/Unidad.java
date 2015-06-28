@@ -18,6 +18,7 @@ import src.Atacable;
 import src.AtaquesPermitidosPorTurno;
 import src.Danio;
 import src.Dinero;
+import src.Escudo;
 import src.Jugador;
 import src.ReglaDeDanio;
 import src.Vida;
@@ -312,5 +313,7 @@ public abstract class Unidad implements Atacable{
 		return this;
 		
 	}
+	
+	public abstract Escudo getEscudo();
 		
 }

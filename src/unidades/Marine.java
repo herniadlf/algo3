@@ -2,6 +2,7 @@ package src.unidades;
 
 import src.Danio;
 import src.Dinero;
+import src.Escudo;
 import src.ReglaDeDanioTerran;
 import src.Vida;
 import src.mapa.Mapeable;
@@ -92,6 +93,10 @@ public class Marine extends Unidad {
 		
 	}
 		
-
+	public Escudo getEscudo(){
+		
+		return null;
+		
+	}
 
 }
