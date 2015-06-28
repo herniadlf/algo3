@@ -107,6 +107,7 @@ import src.unidades.Unidad;
 		juego = ip.getJuego();
 		jugador = ip.getJuego().getJugadorActual();
 		
+
 		if (jugador ==juego.getJugador1()){
 			unidadesEnemigas= juego.getJugador2().getUnidadesAlistadas();
 			
@@ -214,7 +215,7 @@ indiceUnidadMagica= metodosDeCarga.obtenerIndiceDeElemento(posicionPuntoUnidades
 						try {
 							jugador.atacarCon(agresor, magia);
 							JOptionPane.showMessageDialog(null, "Ataque exitoso con"+magia.obtenerNombre());
-							System.out.print(magia);
+							
 							
 						} catch (ExcepcionEdificioNoPuedeCrearUnidad
 								| ExcepcionPosicionInvalida
