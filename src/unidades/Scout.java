@@ -106,25 +106,6 @@ public class Scout extends Unidad {
 		
 	}
 
-	public void afectadoPorTormentaPsionica(int danio) throws ExcepcionPosicionInvalida{
-			
-		vida.aumentarDanioARecibir(danio);
-		this.recibirDanio();
-		vida.reestablecerDanioRecibido();
-		
-	}
-
-	public void afectadoPorRadiacion(int danio){
-		
-		vida.aumentarDanioARecibir(danio);
-		try {
-			this.recibirDanio();
-		} catch (ExcepcionPosicionInvalida e) {
-			e.printStackTrace();
-		}
-		vida.reestablecerDanioRecibido();
-		
-	}
 	
 }
 

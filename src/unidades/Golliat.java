@@ -89,17 +89,4 @@ public class Golliat extends Unidad {
 		// no afecta a unidades amigas
 		
 	}
-
-	public void afectadoPorTormentaPsionica(int danio){
-		
-		vida.aumentarDanioARecibir(danio);
-		
-	}
-
-	public void afectadoPorRadiacion(int danio) {
-		
-		vida.aumentarDanioARecibir(danio);
-		
-	}
-	
 }

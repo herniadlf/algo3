@@ -105,22 +105,5 @@ public class Zealot extends Unidad {
 		
 	}
 
-	public void afectadoPorTormentaPsionica(int danio){
-		
-		escudo.atacar(danio);
-		
-	}
-	
-	public void afectadoPorRadiacion(int danio){
-		
-		vida.aumentarDanioARecibir(danio);
-		try {
-			this.recibirDanio();
-		} catch (ExcepcionPosicionInvalida e) {
-			e.printStackTrace();
-		}
-		vida.reestablecerDanioRecibido();
-		
-	}
 	
 }

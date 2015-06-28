@@ -420,9 +420,9 @@ public class Jugador {
 		int i = 0;
 		while (i < unidadesAlistadas.size() && !fin) {
 			if (unidadesAlistadas.get(i) == unidad){
-				unidadesAlistadas.remove(i);
 				poblacionActual = poblacionActual - unidadesAlistadas.get(i).getSuministros();
 				poblacionDisponible = poblacionDisponible + unidadesAlistadas.get(i).getSuministros();
+				unidadesAlistadas.remove(i);
 				fin = true;
 			}
 			i++;

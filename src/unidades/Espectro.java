@@ -1,5 +1,6 @@
 package src.unidades;
 
+import excepciones.ExcepcionPosicionInvalida;
 import src.Danio;
 import src.Dinero;
 import src.ReglaDeDanioTerran;
@@ -92,16 +93,5 @@ public class Espectro extends Unidad {
 		
 	}
 
-	public void afectadoPorTormentaPsionica(int danio){
-		
-		vida.aumentarDanioARecibir(danio);
-		
-	}
-
-	public void afectadoPorRadiacion(int danio) {
-		
-		vida.aumentarDanioARecibir(danio);
-		
-	}
 	
 }

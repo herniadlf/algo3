@@ -86,16 +86,5 @@ public class Marine extends Unidad {
 		
 	}
 
-	public void afectadoPorTormentaPsionica(int danio){
-		
-		vida.aumentarDanioARecibir(danio);
-		
-	}
-
-	public void afectadoPorRadiacion(int danio) {
-		
-		vida.aumentarDanioARecibir(danio);
-		
-	}
 
 }

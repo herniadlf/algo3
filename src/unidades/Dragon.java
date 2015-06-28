@@ -1,5 +1,6 @@
 package src.unidades;
 
+import excepciones.ExcepcionPosicionInvalida;
 import src.Danio;
 import src.Dinero;
 import src.Escudo;
@@ -79,19 +80,6 @@ public class Dragon extends Unidad {
 	}
 
 	public void atacarConEMP(int danio) {
-		
-		escudo.atacar(danio);
-		
-	}
-	
-
-	public void afectadoPorTormentaPsionica(int danio){
-		
-		escudo.atacar(danio);
-		
-	}
-	
-	public void afectadoPorRadiacion(int danio){
 		
 		escudo.atacar(danio);
 		

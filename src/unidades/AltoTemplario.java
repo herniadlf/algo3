@@ -109,28 +109,6 @@ public class AltoTemplario extends Magica {
 		
 	}
 	
-	public void afectadoPorTormentaPsionica(int danio) throws ExcepcionPosicionInvalida{
-		
-		vida.aumentarDanioARecibir(danio);
-		this.recibirDanio();
-		vida.reestablecerDanioRecibido();
-		
-	}
-
-	public void afectadoPorRadiacion(int danio){
-		
-		afectadoPorRadiacion = true;
-		danioRadiacion = danio;
-		vida.aumentarDanioARecibir(danioRadiacion);
-		try {
-			this.recibirDanio();
-		} catch (ExcepcionPosicionInvalida e) {
-			e.printStackTrace();
-		}
-		vida.reestablecerDanioRecibido();
-		
-	}
-	
 }
 
 

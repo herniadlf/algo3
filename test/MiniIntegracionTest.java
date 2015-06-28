@@ -31,10 +31,13 @@ import src.construcciones.Fabrica;
 import src.construcciones.PuertoEstelarTerran;
 import src.mapa.Escombros;
 import src.mapa.Mapa;
+import src.mapa.Posicion;
 import src.razas.Protoss;
 import src.razas.Terran;
+import src.unidades.AltoTemplario;
 import src.unidades.Espectro;
 import src.unidades.Marine;
+import src.unidades.TormentaPsionica;
 import src.unidades.Unidad;
 import src.unidades.Zealot;
 
@@ -294,5 +297,44 @@ public class MiniIntegracionTest {
 		juego.ordenFabricacionDeEdificios(acceso, 10, 10);
 	
 	}
+	
+	@Test
+	public void jugadorAtacarConMagia() throws ExcepcionPosicionInvalida, ExcepcionYaHayElementoEnLaPosicion, ExcepcionSuperaLimenteDeArbolesPermitos, ExcepcionTamanioDelMapaInvalido, ExcepcionEdificioNoPuedeCrearUnidad, ExcepcionNoHayLugarParaCrear, ExcepcionErrorPasoDeTurno, ExcepcionConstruccionNoCorrespondiente, ExcepcionRecursoInsuficiente, ExcepcionUnidadNoCorrespondiente, ExcepcionElementoFueraDelRangoDeAtaque, ExcepcionLaUnidadNoPertenceATuTropa{
+		
+		Jugador jugador1 = new Jugador ("carlos","rojo",new Terran());
+		Jugador jugador2 = new Jugador ("dean","azul",new Protoss());
+
+		Juego juego = new Juego(jugador1, jugador2, 100, 0);
+		Mapa mapa = juego.getMapa();
+		jugador1.setDinero(99999, 99999);
+		
+		Marine marine = new Marine();
+		Posicion posMarine = new Posicion(10,10);
+		marine.setPosicion(posMarine);
+		marine.setMapa(mapa);
+		mapa.colocarEn(10, 10, marine);
+		
+		AltoTemplario alto = new AltoTemplario();
+		Posicion posAlto = new Posicion(15,15);
+		alto.setPosicion(posAlto);
+		alto.setMapa(mapa);
+		mapa.colocarEn(15, 15, alto);
+		
+		jugador1.agregarAUnidadesAlistadas(marine);
+		jugador2.agregarAUnidadesAlistadas(alto);
+		
+		alto.pasoTurno();
+		alto.pasoTurno();
+		alto.pasoTurno();
+		marine.setJugador(jugador1);
+		
+		jugador2.atacarCon(alto, new TormentaPsionica(marine));
+		
+		Assert.assertTrue(marine.getVida().estaMuerto());
+		
+		
+	}
+	
+	
 	
 }
