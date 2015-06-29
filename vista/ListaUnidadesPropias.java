@@ -48,18 +48,18 @@ public class ListaUnidadesPropias {
 		
 		if(auxiliar.getJugador().getRaza().getNombre() == "Protoss"){
 			if(auxiliar.getNombre() == "Alto Templario"){
-				return (auxiliar.getNombre()+"Posicion: ("+auxiliar.getPosicionX()+","+auxiliar.getPosicionY()+") Vida: "+auxiliar.getVida().obtenerVida()+" Escudo: "+auxiliar.getEscudo().obtenerResistenciaActual()+" Energia: "+((AltoTemplario)auxiliar).obtenerEnergia()+"\n");
+				return (auxiliar.getNombre()+" Posicion: ("+auxiliar.getPosicionX()+","+auxiliar.getPosicionY()+") Vida: "+auxiliar.getVida().obtenerVida()+" Escudo: "+auxiliar.getEscudo().obtenerResistenciaActual()+" Energia: "+((AltoTemplario)auxiliar).obtenerEnergia()+"\n");
 			}
 			else{
-				return (auxiliar.getNombre()+"Posicion: ("+auxiliar.getPosicionX()+","+auxiliar.getPosicionY()+") Vida: "+auxiliar.getVida().obtenerVida()+" Escudo: "+auxiliar.getEscudo().obtenerResistenciaActual()+"\n");
+				return (auxiliar.getNombre()+" Posicion: ("+auxiliar.getPosicionX()+","+auxiliar.getPosicionY()+") Vida: "+auxiliar.getVida().obtenerVida()+" Escudo: "+auxiliar.getEscudo().obtenerResistenciaActual()+"\n");
 			}
 		}
 		else{
 			if(auxiliar.getNombre() == "Nave Ciencia"){
-				return (auxiliar.getNombre()+"Posicion: ("+auxiliar.getPosicionX()+","+auxiliar.getPosicionY()+") Vida: "+auxiliar.getVida().obtenerVida()+" Energia: "+((NaveCiencia)auxiliar).obtenerEnergia()+"\n");
+				return (auxiliar.getNombre()+" Posicion: ("+auxiliar.getPosicionX()+","+auxiliar.getPosicionY()+") Vida: "+auxiliar.getVida().obtenerVida()+" Energia: "+((NaveCiencia)auxiliar).obtenerEnergia()+"\n");
 			}
 			else{
-				return (auxiliar.getNombre()+"Posicion: ("+auxiliar.getPosicionX()+","+auxiliar.getPosicionY()+") Vida: "+auxiliar.getVida().obtenerVida()+"\n");
+				return (auxiliar.getNombre()+" Posicion: ("+auxiliar.getPosicionX()+","+auxiliar.getPosicionY()+") Vida: "+auxiliar.getVida().obtenerVida()+"\n");
 			}
 		}
 		

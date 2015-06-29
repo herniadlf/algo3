@@ -62,12 +62,12 @@ public class ListaEdificiosEnPie {
 		   auxiliar.getNombre()== "Puerto Estelar Protoss" ||
 		   auxiliar.getNombre()== "Archivos Templarios"){
 			
-			return (auxiliar.getNombre()+"Posicion: ("+auxiliar.getPosicionX()+","+auxiliar.getPosicionY()+") Vida: "+auxiliar.getVida().obtenerVida()+" Escudo: "+ auxiliar.getEscudo().obtenerResistenciaActual()+"\n");
+			return (auxiliar.getNombre()+" Posicion: ("+auxiliar.getPosicionX()+","+auxiliar.getPosicionY()+") Vida: "+auxiliar.getVida().obtenerVida()+" Escudo: "+ auxiliar.getEscudo().obtenerResistenciaActual()+"\n");
 			
 		}
 			else{
 				
-				return (auxiliar.getNombre()+"Posicion: ("+auxiliar.getPosicionX()+","+auxiliar.getPosicionY()+") Vida: "+auxiliar.getVida().obtenerVida()+"\n");
+				return (auxiliar.getNombre()+" Posicion: ("+auxiliar.getPosicionX()+","+auxiliar.getPosicionY()+") Vida: "+auxiliar.getVida().obtenerVida()+"\n");
 			}
 		
 	}

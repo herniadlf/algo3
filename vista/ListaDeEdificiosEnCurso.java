@@ -39,7 +39,7 @@ public class ListaDeEdificiosEnCurso {
 		for ( int i = 0; i < tamanioLista; i++){
 			Construccion auxiliar = controladorJuego.getJugadorActual().obtenerConstruccionesEnCamino().get(i);
 			if (obtenerTurnosRestantes(auxiliar) > 0){
-				JLabel unLabel = new JLabel(auxiliar.getNombre()+"  Posicion: ("+auxiliar.getPosicionX()+","+
+				JLabel unLabel = new JLabel(auxiliar.getNombre()+" Posicion: ("+auxiliar.getPosicionX()+","+
 												auxiliar.getPosicionY()+")  Turnos Restantes: "+
 													obtenerTurnosRestantes(auxiliar)+"\n");	
 				unPanel.add(unLabel);
