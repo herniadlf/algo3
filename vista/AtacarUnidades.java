@@ -28,7 +28,7 @@ import src.construcciones.Construccion;
 import src.unidades.Magica;
 import src.unidades.Unidad;
 
-	public class AtacarUnidades extends CargarInformacionAtaques {
+	public class AtacarUnidades extends CargarInformacionUnidades {
 		
 	
 		private static final long serialVersionUID = 1L;

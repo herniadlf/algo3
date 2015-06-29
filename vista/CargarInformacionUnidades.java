@@ -11,10 +11,10 @@ import src.construcciones.Construccion;
 import src.unidades.Magica;
 import src.unidades.Unidad;
 
-public abstract class CargarInformacionAtaques {
+public abstract class CargarInformacionUnidades {
 	
 	
-	public CargarInformacionAtaques (){}
+	public CargarInformacionUnidades (){}
 	
 	
 	

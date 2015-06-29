@@ -37,9 +37,9 @@ import src.unidades.Radiacion;
 import src.unidades.TormentaPsionica;
 import src.unidades.Unidad;
 
-	public class AtacarConMagia extends CargarInformacionAtaques {
+	public class AtacarConMagia extends CargarInformacionUnidades {
 	
-		private CargarInformacionAtaques metodosDeCarga;
+		private CargarInformacionUnidades metodosDeCarga;
 		
 		Juego juego;
 		Jugador jugador;
