@@ -87,7 +87,7 @@ public class MenuConstrucciones {
 		panelConstruccion.add(enCurso);
 		frameConstruccion.getContentPane().add(panelConstruccion);
 		frameConstruccion.setSize(700, 500);
-		frameConstruccion.setLocation(650,250);
+		frameConstruccion.setLocation(450,250);
 		frameConstruccion.show();
 	}
 	

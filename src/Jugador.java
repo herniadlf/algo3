@@ -218,7 +218,7 @@ public class Jugador {
 		
 		poblacionDisponible = poblacionDisponible - aEntrenar.getSuministros();
 		poblacionActual = poblacionActual + aEntrenar.getSuministros();
-		this.gastarPlata(aEntrenar.getCosto());					
+		//this.gastarPlata(aEntrenar.getCosto());					
 		return aEntrenar;
 		
 	}

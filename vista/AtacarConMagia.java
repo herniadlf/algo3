@@ -174,7 +174,7 @@ import src.unidades.Unidad;
 		panelAtaqueConMagias.add(atacarUnidad);
 		frameAtacarConMagia.getContentPane().add(panelAtaqueConMagias);
 		frameAtacarConMagia.setSize(700, 500);
-		frameAtacarConMagia.setLocation(650,250);
+		frameAtacarConMagia.setLocation(450,250);
 		frameAtacarConMagia.show();
 		
 	}  
@@ -248,6 +248,7 @@ import src.unidades.Unidad;
 					| ExcepcionLaUnidadNoPertenceATuTropa e1) {						
 				JOptionPane.showMessageDialog(null, e1.getMessage());
 			}
+			limpiar();
 			menuAnterior.cargar(ip);
 		
 		
@@ -294,6 +295,7 @@ import src.unidades.Unidad;
 							| ExcepcionLaUnidadNoPertenceATuTropa e1) {						
 						JOptionPane.showMessageDialog(null, e1.getMessage());
 					}
+					limpiar();
 					menuAnterior.cargar(ip);
 					
 					
@@ -322,6 +324,7 @@ import src.unidades.Unidad;
 					| ExcepcionLaUnidadNoPertenceATuTropa e1) {						
 				JOptionPane.showMessageDialog(null, e1.getMessage());
 			}
+			limpiar();
 			menuAnterior.cargar(ip);
 			
 			

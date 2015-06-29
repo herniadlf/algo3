@@ -95,7 +95,7 @@ public class Juego {
 			unidad.setTurnoInicioDeEntrenamiento(turno.devolverTurnoActual());
 			unidad.setAtaquesPermitidosPorTurno(jugadorActual.getAtaquesPermitidosPorTurno());
 			edificio.agregarUnidadAEntrenamiento(unidad);
-			
+			jugadorActual.gastarPlata(unidad.getCosto());
 		} catch (ExcepcionUnidadNoCorrespondiente
 				| ExcepcionRecursoInsuficiente
 				| ExcepcionSuministrosInsuficientes

@@ -148,7 +148,7 @@ import src.unidades.Unidad;
 	
 			frameAtacar.getContentPane().add(panelAtaque);
 			frameAtacar.setSize(700, 500);
-			frameAtacar.setLocation(650,250);
+			frameAtacar.setLocation(450,250);
 			frameAtacar.show();
 	}
 	

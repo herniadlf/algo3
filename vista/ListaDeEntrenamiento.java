@@ -1,7 +1,10 @@
 package vista;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
@@ -45,8 +48,17 @@ public class ListaDeEntrenamiento {
 				nuevaInformacion.append("\n" + auxiliar.getNombre() + " Turnos restantes: " + turnosRestantes);		
 			}
 		}
+		JButton avanzar = new JButton("Ok");
+		avanzar.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {						
+				limpiar();		
+			}
+		});
 		
 		nuevoPanel.add(nuevaInformacion);
+		nuevoPanel.add(avanzar);
 		frameActual.getContentPane().add(nuevoPanel);
 		frameActual.pack();
 		frameActual.show();
