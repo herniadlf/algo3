@@ -24,19 +24,14 @@ import excepciones.ExcepcionUnidadNoCorrespondiente;
 import excepciones.ExcepcionYaHayElementoEnLaPosicion;
 import src.Juego;
 import src.Jugador;
-import src.construcciones.Construccion;
-import src.mapa.Posicion;
-import src.unidades.AltoTemplario;
 import src.unidades.Alucinacion;
 import src.unidades.EMP;
 import src.unidades.Magia;
 import src.unidades.Magica;
-import src.unidades.Marine;
-import src.unidades.NaveCiencia;
 import src.unidades.Radiacion;
 import src.unidades.TormentaPsionica;
 import src.unidades.Unidad;
-import src.unidades.Zealot;
+
 
 	public class AtacarConMagia extends CargarInformacionUnidades {
 	
@@ -61,7 +56,7 @@ import src.unidades.Zealot;
 		JButton magia1;
 		JButton magia2;
 		JButton atacarUnidad;
-		MenuUnidades menuAnterior;
+		InterfazPartida menuAnterior;
 		JFrame frameAtacarConMagia;
 		JFrame framemagia;
 		JPanel panelDeMagias;
@@ -79,10 +74,10 @@ import src.unidades.Zealot;
 				
 		
 		
-	public AtacarConMagia(MenuUnidades menuUnidades){
+	public AtacarConMagia(InterfazPartida interfazPartida){
 		
 		
-		menuAnterior = menuUnidades;
+		menuAnterior = interfazPartida;
 		unidadesMagicas= new ArrayList<Unidad>();
 		unidadesEnemigas = new ArrayList <Unidad>();
 		unidadMagica = new String();
@@ -289,7 +284,7 @@ import src.unidades.Zealot;
 					try {
 						jugador.atacarCon(agresor, magia);
 						JOptionPane.showMessageDialog(null, "Ataque exitoso con"+magia.obtenerNombre());
-						System.out.print(magia);
+						
 					} catch (ExcepcionEdificioNoPuedeCrearUnidad
 							| ExcepcionPosicionInvalida
 							| ExcepcionNoHayLugarParaCrear
@@ -317,7 +312,7 @@ import src.unidades.Zealot;
 			try {
 				jugador.atacarCon(agresor, magia);
 				JOptionPane.showMessageDialog(null, "Ataque exitoso con"+magia.obtenerNombre());
-				System.out.print(magia);
+				
 			} catch (ExcepcionEdificioNoPuedeCrearUnidad
 					| ExcepcionPosicionInvalida
 					| ExcepcionNoHayLugarParaCrear
@@ -400,18 +395,6 @@ import src.unidades.Zealot;
 		frameAtacarConMagia.setJMenuBar(null);
 		frameAtacarConMagia.setVisible(false);
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	
 

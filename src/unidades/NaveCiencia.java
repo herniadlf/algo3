@@ -1,50 +1,43 @@
 package src.unidades;
 
-import excepciones.ExcepcionPosicionInvalida;
 import src.Danio;
 import src.Dinero;
 import src.Escudo;
-import src.ReglaDeDanioProtoss;
+import src.ReglaDeDanioTerran;
 import src.Vida;
 import src.mapa.Mapeable;
 
-public class AltoTemplario extends Magica {
-	
+
+public class NaveCiencia extends Magica {
+
 	private static final int DANIO_AIRE = 0;
 	private static final int DANIO_TIERRA = 0;
 	private static final int RANGO_ATAQUE = 0;
 	private static final int SUMINISTRO = 2;
-	private static final int TIEMPO_CREACION = 7;
-	private static final int TRANSPORTE = 2;
-	private static final int VIDA = 40;
-	private static final int ESCUDO = 40;
-	private static final int VISION = 7;
-	private static final int COSTO_MINERALES = 50;
-	private static final int COSTO_GAS = 150;
-	private static int ENERGIA = 50;
-	Escudo escudo;
-	private int danioRadiacion;
+	private static final int TIEMPO_CREACION = 10;
+	private static final int TRANSPORTE = 0;
+	private static final int VIDA = 200;
+	private static final int VISION = 10;
+	private static final int ENERGIA = 50;
+	private static final int COSTO_MINERALES = 100;
+	private static final int COSTO_GAS = 225;
 	
-	public AltoTemplario() {	
+	public NaveCiencia (){
 		
 		costo = new Dinero(COSTO_MINERALES,COSTO_GAS);
 		danio = new Danio(DANIO_AIRE,DANIO_TIERRA);
-		nombre = "Alto Templario";
+		nombre = "Nave Ciencia";
 		rangoAtaque = RANGO_ATAQUE;
 		suministro = SUMINISTRO;
 		tiempoDeCreacion = TIEMPO_CREACION;
 		transporte = TRANSPORTE;
 		vida = new Vida(VIDA);
 		vision = VISION;
-		escudo = new Escudo (ESCUDO,this);
 		energia = new Energia(ENERGIA);
-		energiaPorTurno = 15;
+		energiaPorTurno = 10;
 		colocador = new ColocadorDeUnidades();
-		tormentaEnCurso = false;
-		afectadoPorRadiacion = false;
-		danioRadiacion = 0;
-		reglaDeDanio = new ReglaDeDanioProtoss(escudo);
-		
+		reglaDeDanio = new ReglaDeDanioTerran();
+
 	}
 
 	public ColocadorDeUnidades getColocador(){
@@ -53,15 +46,9 @@ public class AltoTemplario extends Magica {
 		
 	}
 
-	public Escudo getEscudo() {
-	
-		return escudo;
-		
-	}
-
 	public int obtenerEnergia() {
 	
-		return energia.obtenerCantidad();
+		return energia.obtenerCantidad(); 
 		
 	}
 
@@ -70,37 +57,52 @@ public class AltoTemplario extends Magica {
 		return false;
 		
 	}
-	
+
 	public boolean esTerrestre() {
+		
+		return false;
+		
+	}
+
+	public boolean esAereo() {
 		
 		return true;
 		
 	}
 
-	public boolean esAereo() {
+	public void atacarConEMP(int danio) {
+		
+		// No afecta a unidades amigas
+		
+	}
 	
-		return false;
+	public void afectadoPorTormentaPsionica(int danio){
+		
+		vida.aumentarDanioARecibir(danio);
 		
 	}
 
-	public void atacarConEMP(int danio) {
+	public void afectadoPorRadiacion(int danio){
 		
-		energia.disminuirEnergia(danio);
+		//supuesto: no afecta a naves
 		
 	}
 	
 	public Unidad duplicarConAlucinacion() {
 		
-		AltoTemplario duplicado = new AltoTemplario();
+		NaveCiencia duplicado = new NaveCiencia();
 		this.modificarVidaYAtaqueDeUnidadAlucinada(duplicado);
 		duplicado.energia = new Energia (0);
 		duplicado.energiaPorTurno = 0;
 		return duplicado;
 		
 	}
-		
 	
+	public Escudo getEscudo(){
+		
+		return null;
+		
+	}
+		
+
 }
-
-
-

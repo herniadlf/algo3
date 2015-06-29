@@ -8,28 +8,26 @@ import src.ReglaDeDanioProtoss;
 import src.Vida;
 import src.mapa.Mapeable;
 
-public class AltoTemplario extends Magica {
-	
-	private static final int DANIO_AIRE = 0;
-	private static final int DANIO_TIERRA = 0;
-	private static final int RANGO_ATAQUE = 0;
-	private static final int SUMINISTRO = 2;
-	private static final int TIEMPO_CREACION = 7;
-	private static final int TRANSPORTE = 2;
-	private static final int VIDA = 40;
-	private static final int ESCUDO = 40;
-	private static final int VISION = 7;
-	private static final int COSTO_MINERALES = 50;
+public class Scout extends Unidad {
+
+	private static final int DANIO_AIRE = 14;
+	private static final int DANIO_TIERRA = 8;
+	private static final int RANGO_ATAQUE = 4;
+	private static final int SUMINISTRO = 3;
+	private static final int TIEMPO_CREACION = 8;
+	private static final int TRANSPORTE = 0;
+	private static final int VIDA = 150;
+	private static final int ESCUDO = 100;
+	private static final int VISION= 7;
+	private static final int COSTO_MINERALES = 300;
 	private static final int COSTO_GAS = 150;
-	private static int ENERGIA = 50;
 	Escudo escudo;
-	private int danioRadiacion;
 	
-	public AltoTemplario() {	
+	public Scout (){
 		
 		costo = new Dinero(COSTO_MINERALES,COSTO_GAS);
 		danio = new Danio(DANIO_AIRE,DANIO_TIERRA);
-		nombre = "Alto Templario";
+		nombre = "Scout";
 		rangoAtaque = RANGO_ATAQUE;
 		suministro = SUMINISTRO;
 		tiempoDeCreacion = TIEMPO_CREACION;
@@ -37,68 +35,62 @@ public class AltoTemplario extends Magica {
 		vida = new Vida(VIDA);
 		vision = VISION;
 		escudo = new Escudo (ESCUDO,this);
-		energia = new Energia(ENERGIA);
-		energiaPorTurno = 15;
 		colocador = new ColocadorDeUnidades();
-		tormentaEnCurso = false;
-		afectadoPorRadiacion = false;
-		danioRadiacion = 0;
 		reglaDeDanio = new ReglaDeDanioProtoss(escudo);
+	}		
+	
+	public void pasoTurno() {
+		
+		escudo.pasoTurno();	
+		super.pasoTurno();
 		
 	}
-
+	
 	public ColocadorDeUnidades getColocador(){
 		
 		return colocador;
 		
 	}
-
-	public Escudo getEscudo() {
 	
-		return escudo;
-		
-	}
-
-	public int obtenerEnergia() {
-	
-		return energia.obtenerCantidad();
-		
-	}
-
 	public boolean esOcupable() {
 		
 		return false;
 		
 	}
-	
+
 	public boolean esTerrestre() {
+		
+		return false;
+		
+	}
+
+	public boolean esAereo() {
 		
 		return true;
 		
 	}
 
-	public boolean esAereo() {
-	
-		return false;
-		
-	}
-
 	public void atacarConEMP(int danio) {
 		
-		energia.disminuirEnergia(danio);
+		escudo.atacar(danio);
+		
+	}
+	
+	public Escudo getEscudo(){
+		
+		return escudo;
 		
 	}
 	
 	public Unidad duplicarConAlucinacion() {
 		
-		AltoTemplario duplicado = new AltoTemplario();
+		Scout duplicado = new Scout();
 		this.modificarVidaYAtaqueDeUnidadAlucinada(duplicado);
-		duplicado.energia = new Energia (0);
-		duplicado.energiaPorTurno = 0;
 		return duplicado;
 		
 	}
 		
+
 	
 }
 

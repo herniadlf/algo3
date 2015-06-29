@@ -1,34 +1,35 @@
 package src.mapa;
 
-public class Arbol implements Mapeable{
-
+public class Escombros implements Mapeable {
+	
 	private String nombre;
 	
-	public Arbol(){
+	public Escombros(){
 		
-		this.nombre = "Arbol";
-	}
-	
-	public boolean esLoMismo(Mapeable aComparar){
-		
-		return (this.getNombre() == aComparar.getNombre());
+		nombre = "Escombros";
 		
 	}
-	
+
+	public boolean esLoMismo(Mapeable mapeable) {
+		
+		return (mapeable.getNombre() == nombre);
+		
+	}
+
 	public String getNombre() {
 		
-		return this.nombre;
+		return nombre;
 		
 	}
 
 	public boolean esOcupable() {
-		
+	
 		return false;
 		
 	}
 
 	public boolean esTerrestre() {
-		
+	
 		return true;
 		
 	}

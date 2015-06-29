@@ -1,12 +1,13 @@
 package src.mapa;
 
-public class Arbol implements Mapeable{
-
+public class EspacioDisponible implements Mapeable{
+	
 	private String nombre;
 	
-	public Arbol(){
+	public EspacioDisponible(){
 		
-		this.nombre = "Arbol";
+		nombre = "Espacio Disponible";
+		
 	}
 	
 	public boolean esLoMismo(Mapeable aComparar){
@@ -14,29 +15,30 @@ public class Arbol implements Mapeable{
 		return (this.getNombre() == aComparar.getNombre());
 		
 	}
-	
+
 	public String getNombre() {
 		
-		return this.nombre;
+		return nombre;
 		
 	}
-
+	
 	public boolean esOcupable() {
 		
-		return false;
+		return true;
 		
 	}
-
+	
 	public boolean esTerrestre() {
 		
 		return true;
 		
 	}
-
+	
 	public boolean esAereo() {
 		
-		return false;
+		return true;
 		
 	}
 
 }
+

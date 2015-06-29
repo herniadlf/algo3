@@ -1,5 +1,6 @@
 package src.unidades;
 
+
 import excepciones.ExcepcionPosicionInvalida;
 import src.Danio;
 import src.Dinero;
@@ -8,28 +9,27 @@ import src.ReglaDeDanioProtoss;
 import src.Vida;
 import src.mapa.Mapeable;
 
-public class AltoTemplario extends Magica {
-	
+
+public class Zealot extends Unidad {
+
 	private static final int DANIO_AIRE = 0;
-	private static final int DANIO_TIERRA = 0;
-	private static final int RANGO_ATAQUE = 0;
+	private static final int DANIO_TIERRA = 8;
+	private static final int RANGO_ATAQUE = 1;
 	private static final int SUMINISTRO = 2;
-	private static final int TIEMPO_CREACION = 7;
+	private static final int TIEMPO_CREACION = 4;
 	private static final int TRANSPORTE = 2;
-	private static final int VIDA = 40;
-	private static final int ESCUDO = 40;
-	private static final int VISION = 7;
-	private static final int COSTO_MINERALES = 50;
-	private static final int COSTO_GAS = 150;
-	private static int ENERGIA = 50;
+	private static final int VIDA = 100;
+	private static final int ESCUDO = 60;
+	private static final int VISION= 7;
+	private static final int COSTO_MINERALES = 100;
+	private static final int COSTO_GAS = 0;
 	Escudo escudo;
-	private int danioRadiacion;
 	
-	public AltoTemplario() {	
+	public Zealot (){
 		
 		costo = new Dinero(COSTO_MINERALES,COSTO_GAS);
 		danio = new Danio(DANIO_AIRE,DANIO_TIERRA);
-		nombre = "Alto Templario";
+		nombre = "Zealot";
 		rangoAtaque = RANGO_ATAQUE;
 		suministro = SUMINISTRO;
 		tiempoDeCreacion = TIEMPO_CREACION;
@@ -37,31 +37,25 @@ public class AltoTemplario extends Magica {
 		vida = new Vida(VIDA);
 		vision = VISION;
 		escudo = new Escudo (ESCUDO,this);
-		energia = new Energia(ENERGIA);
-		energiaPorTurno = 15;
 		colocador = new ColocadorDeUnidades();
-		tormentaEnCurso = false;
-		afectadoPorRadiacion = false;
-		danioRadiacion = 0;
 		reglaDeDanio = new ReglaDeDanioProtoss(escudo);
-		
-	}
-
-	public ColocadorDeUnidades getColocador(){
-		
-		return colocador;
-		
-	}
-
-	public Escudo getEscudo() {
+	}		
 	
+	public void pasoTurno() {
+		
+		escudo.pasoTurno();
+		super.pasoTurno();
+	}
+		
+	public Escudo getEscudo(){
+		
 		return escudo;
 		
 	}
-
-	public int obtenerEnergia() {
 	
-		return energia.obtenerCantidad();
+	public ColocadorDeUnidades getColocador(){
+		
+		return colocador;
 		
 	}
 
@@ -70,7 +64,7 @@ public class AltoTemplario extends Magica {
 		return false;
 		
 	}
-	
+
 	public boolean esTerrestre() {
 		
 		return true;
@@ -78,29 +72,25 @@ public class AltoTemplario extends Magica {
 	}
 
 	public boolean esAereo() {
-	
+		
 		return false;
 		
 	}
 
 	public void atacarConEMP(int danio) {
 		
-		energia.disminuirEnergia(danio);
+		escudo.atacar(danio);
 		
 	}
 	
 	public Unidad duplicarConAlucinacion() {
 		
-		AltoTemplario duplicado = new AltoTemplario();
+		Zealot duplicado = new Zealot();
 		this.modificarVidaYAtaqueDeUnidadAlucinada(duplicado);
-		duplicado.energia = new Energia (0);
-		duplicado.energiaPorTurno = 0;
 		return duplicado;
 		
 	}
 		
+
 	
 }
-
-
-
