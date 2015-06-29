@@ -33,6 +33,7 @@ public class ListaUnidadesPropias {
 		
 		JPanel nuevoPanel = new JPanel();
 		JTextArea nuevaInformacion = new JTextArea("");
+		nuevaInformacion.setFocusable(false);
 		for (int i = 0 ; i < tamanioLista ; i++){
 			Unidad auxiliar = controlador.getUnidadesAlistadas().get(i);
 			nuevaInformacion.append(generarTexto(auxiliar));

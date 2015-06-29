@@ -18,7 +18,7 @@ public class Turno {
 	
 	public int devolverTurnoActual(){
 		
-		return this.turno;
+		return turno;
 		
 	}
 

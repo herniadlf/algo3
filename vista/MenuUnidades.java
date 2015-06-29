@@ -48,6 +48,13 @@ public class MenuUnidades {
 		
 		JPanel panelUnidades = new JPanel();
 		
+		String ruta = new String(System.getProperty("user.dir")+"\\trunk\\imagenes\\");
+		ImageIcon unidades = new ImageIcon(ruta+"unidades.png");
+		JLabel labelColor = new JLabel(unidades);
+		JLabel labelUnidad = new JLabel(unidades);
+		labelColor.setBounds(0,0,unidades.getIconWidth(),unidades.getIconHeight());
+		panelUnidades.add(labelUnidad);
+		
 		JButton crearUnidades = new JButton("Crear Unidades");
 		crearUnidades.addActionListener(new ActionListener() {
 			

@@ -39,7 +39,8 @@ public class ListaDeEntrenamiento {
 		nuevaInformacion.setFocusable(false);
 		for (int i = 0 ; i < tamanioLista ; i++){
 			Unidad auxiliar = unidades.get(i);
-			int turnosRestantes = controlador.getTurno() - (auxiliar.getTurnoDeEntrenamiento()/2);
+			
+			int turnosRestantes = obtenerTurnosRestantes(auxiliar);
 			if (turnosRestantes > 0){
 				nuevaInformacion.append("\n" + auxiliar.getNombre() + " Turnos restantes: " + turnosRestantes);		
 			}
@@ -50,6 +51,12 @@ public class ListaDeEntrenamiento {
 		frameActual.pack();
 		frameActual.show();
 		
+	}
+
+	private int obtenerTurnosRestantes(Unidad auxiliar) {
+		int turnosPasados = controlador.getTurno() - (auxiliar.getTurnoDeEntrenamiento()/2);
+		
+		return (auxiliar.getTiempoDeCreacion() - turnosPasados);
 	}
 
 	private void armadoDeLista(ArrayList<Construccion> construccionesEnPie) {

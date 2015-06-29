@@ -56,11 +56,12 @@ public class Jugador {
 		setColor(color);
 		setRaza(raza);
 		setPoblacionDisponible(5);
-		setDinero(200,200);
-		this.construccionesEnCamino= new ArrayList<Construccion>();	
-		this.construccionesEnPie= new ArrayList <Construccion>();
-		this.ataques= new  AtaquesPermitidosPorTurno();
-		this.unidadesAlistadas= new ArrayList<Unidad>();
+		//setDinero(200,200);	
+		setDinero(800, 800);
+		construccionesEnCamino= new ArrayList<Construccion>();	
+		construccionesEnPie= new ArrayList <Construccion>();
+		ataques= new  AtaquesPermitidosPorTurno();
+		unidadesAlistadas= new ArrayList<Unidad>();
 		rangoDeVision = new ArrayList<Sector>();
 			
 	}
@@ -68,7 +69,8 @@ public class Jugador {
 	public Jugador() {
 		
 		setPoblacionDisponible(5);
-		setDinero(200,200);		
+		//setDinero(200,200);	
+		setDinero(800, 800);
 		this.construccionesEnCamino= new ArrayList<Construccion>();	
 		this.construccionesEnPie= new ArrayList <Construccion>();
 		this.ataques= new  AtaquesPermitidosPorTurno();

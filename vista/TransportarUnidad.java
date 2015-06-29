@@ -115,7 +115,7 @@ public class TransportarUnidad {
 		for (int i = 0; i < listaUnidades.size(); i++){
 			final Unidad aTransportar = listaUnidades.get(i);
 			if ( !(naveTransporte.getUnidadesAbordo().contains(aTransportar)) ){
-				JLabel unLabel = new JLabel("\n" + aTransportar.getNombre() + "Posicion: (" + aTransportar.getPosicionX() + "," + 
+				JLabel unLabel = new JLabel("\n" + aTransportar.getNombre() + " Posicion: (" + aTransportar.getPosicionX() + "," + 
 														aTransportar.getPosicionY() +") ");
 				
 				JButton botonCargar = new JButton("Seleccionar");
@@ -159,8 +159,8 @@ public class TransportarUnidad {
 
 		public void actionPerformed(ActionEvent arg0) {
 			CargarPosicion pp = new CargarPosicion(aTransportar);					
-			pp.cargarX();
-			pp.cargarY();						
+			pp.cargarY();
+			pp.cargarX();						
 		}
 	}
 	
