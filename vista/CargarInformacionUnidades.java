@@ -34,21 +34,22 @@ public abstract class CargarInformacionUnidades {
 	//--------------------------------------------------------------------------------------------------
 	
 	public void cargarListaDesplegablesUnidadesMagicas(JComboBox menuDesplegable, ArrayList<Unidad>unidadesMagicas,
-		Jugador jugador	){
-		
-		int i=0;
-		while (jugador.getUnidadesAlistadas().size()>i){
-			ArrayList<Unidad>unidades = jugador.getUnidadesAlistadas();
+			Jugador jugador	){
 			
-			if (unidades.get(i) instanceof Magica){
+			int i=0;
+			int j=0;
+			while (jugador.getUnidadesAlistadas().size()>i){
+				ArrayList<Unidad>unidades = jugador.getUnidadesAlistadas();
 				
-				menuDesplegable.addItem(Integer.toString(i)+"."+ unidades.get(i).getNombre());
-				unidadesMagicas.add(unidades.get(i));
+				if (unidades.get(i) instanceof Magica){
+					
+					menuDesplegable.addItem(Integer.toString(j)+"."+ unidades.get(i).getNombre());
+					unidadesMagicas.add(unidades.get(i));
+					j++;
+					}
 				i++;
 				}
-			}
-	} 
-	
+		} 
 	
 //------------------------------------------------------------------------------------------------	
 	
