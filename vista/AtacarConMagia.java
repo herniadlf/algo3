@@ -36,6 +36,7 @@ import src.unidades.NaveCiencia;
 import src.unidades.Radiacion;
 import src.unidades.TormentaPsionica;
 import src.unidades.Unidad;
+import src.unidades.Zealot;
 
 	public class AtacarConMagia extends CargarInformacionUnidades {
 	
@@ -45,6 +46,7 @@ import src.unidades.Unidad;
 		Jugador jugador;
 		int indiceUnidadMagica;
 		int indiceUnidadEnemiga;
+		int indiceUnidadAmiga;
 		ArrayList<Unidad> unidadesMagicas;
 		ArrayList <Unidad> unidadesEnemigas;
 		String unidadEnemiga;
@@ -66,6 +68,17 @@ import src.unidades.Unidad;
 		Magica agresor;
 		InterfazPrincipal ip;
 		
+		//Para unidades amigas
+				JButton alucinarAmiga;
+				JComboBox desplegableUnidadesAmigas;
+				String unidadAmiga;
+				ArrayList<Unidad> unidadesAmigas;
+				ArrayList<Unidad> unidadesAmigasIndexadas;
+				JFrame frameAlucinar;
+				JPanel panelAlucinar;
+				
+		
+		
 	public AtacarConMagia(MenuUnidades menuUnidades){
 		
 		
@@ -79,34 +92,50 @@ import src.unidades.Unidad;
 		desplegableUnidadesMagicas= new JComboBox();
 		desplegableUnidadesEnemigas = new JComboBox();
 		desplegableMagiasPermitidas = new JComboBox();
+		desplegableUnidadesAmigas= new JComboBox();
 		indiceUnidadMagica= 0;
 		indiceUnidadEnemiga= 0;
+		indiceUnidadAmiga=0;
 		frameAtacarConMagia = new JFrame();
+		frameAlucinar = new JFrame();
+		panelAlucinar = new JPanel();
+
+		unidadAmiga = new String();
+		unidadesAmigas = new ArrayList<Unidad>();
+		unidadesAmigasIndexadas = new ArrayList<Unidad>();
+		alucinarAmiga = new JButton("Provocar Alucionacion unidad amiga");
+		
 		
 	}
 	
 	
 	protected void cargar (final InterfazPrincipal ip){
 		
+		
 		juego = ip.getJuego();
 		jugador = ip.getJuego().getJugadorActual();
-		
 		this.setInterfaz(ip);
 		cargarJugadores ();
-		
 
-					
+		unidadesAmigas = jugador.getUnidadesAlistadas();
 		frameAtacarConMagia.getContentPane().removeAll();
 		frameAtacarConMagia.setJMenuBar(null);
 		frameAtacarConMagia.setTitle("AtaqueConMagia");
 		JPanel panelAtaqueConMagias = new JPanel();
 		
-		
 		desplegableUnidadesMagicas.addItem("");
 		desplegableUnidadesEnemigas.addItem("");
+		desplegableUnidadesAmigas.addItem("");
+		
+		
 		cargarListaDesplegablesUnidadesMagicas( desplegableUnidadesMagicas, unidadesMagicas, jugador);
 		caragarListasDesplegablesUnidades (desplegableUnidadesEnemigas, unidadesEnemigasIndexadas,unidadesEnemigas);
+		caragarListasDesplegablesUnidades (desplegableUnidadesAmigas, unidadesAmigasIndexadas,unidadesAmigas);
+		
+		
+		
 		agregarAccionesListasDesplegables();
+		
 		panelAtaqueConMagias.add(desplegableUnidadesMagicas);
 		panelAtaqueConMagias.add(desplegableUnidadesEnemigas);
 		
@@ -115,13 +144,11 @@ import src.unidades.Unidad;
 			public void actionPerformed(ActionEvent e) {
 				CargarAccionAtacarConMagia();
 				magia1.addActionListener(new ActionListener() {
-					
 					@Override
 					public void actionPerformed(ActionEvent e) {
 						
 						 CargarAccionAtacarConMagiaUno();
-						
-					}
+						}
 				});
 				
 				
@@ -192,8 +219,6 @@ import src.unidades.Unidad;
 		
 		indiceUnidadEnemiga= obtenerIndiceDeElemento(posicionPuntoUnidadesEnemigas, unidadEnemiga, indiceBuscadoUnidadesEnemigas);
 		indiceUnidadMagica= obtenerIndiceDeElemento(posicionPuntoUnidadesMagicas, unidadMagica, indiceBuscadoUnidadesMagicas);
-		
-
 		crearBotonesMagias (indiceUnidadMagica);
 	}
 	
@@ -237,41 +262,78 @@ import src.unidades.Unidad;
 	public void CargarAccionAtacarConMagiaDos(){
 		agresor = (Magica) unidadesMagicas.get(indiceUnidadMagica);
 		if (magia2.getActionCommand()=="Alucinacion"){
-			magia = new Alucinacion (unidadesEnemigasIndexadas.get(indiceUnidadEnemiga));
+			
+			JOptionPane.showMessageDialog(null, "Este ataque produce una copia de una unidad amiga, no afecta enemigos");
+			frameAlucinar.getContentPane().removeAll();
+			frameAlucinar.setJMenuBar(null);
+			frameAlucinar.setTitle("Seleccionar unidad Amiga para aplicar Alucinacion");
+			panelAlucinar.add(desplegableUnidadesAmigas);
+			
+			panelAlucinar.add(alucinarAmiga);
+			frameAlucinar.getContentPane().add(panelAlucinar);
+			frameAlucinar.setSize(700, 500);
+			frameAlucinar.setLocation(650,250);
+			frameAlucinar.show();
+			
+			alucinarAmiga.addActionListener(new ActionListener() {
+				
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					
+					String indiceBuscadoUnidadesAmigas="";
+					int posicionPuntoUnidadesAmigas=0;
+					indiceUnidadAmiga=obtenerIndiceDeElemento(posicionPuntoUnidadesAmigas, unidadAmiga, indiceBuscadoUnidadesAmigas);
+					magia = new Alucinacion (unidadesAmigasIndexadas.get(indiceUnidadAmiga));
+					try {
+						jugador.atacarCon(agresor, magia);
+						JOptionPane.showMessageDialog(null, "Ataque exitoso con"+magia.obtenerNombre());
+						System.out.print(magia);
+					} catch (ExcepcionEdificioNoPuedeCrearUnidad
+							| ExcepcionPosicionInvalida
+							| ExcepcionNoHayLugarParaCrear
+							| ExcepcionYaHayElementoEnLaPosicion
+							| ExcepcionErrorPasoDeTurno
+							| ExcepcionConstruccionNoCorrespondiente
+							| ExcepcionRecursoInsuficiente
+							| ExcepcionUnidadNoCorrespondiente
+							| ExcepcionElementoFueraDelRangoDeAtaque
+							| ExcepcionLaUnidadNoPertenceATuTropa e1) {						
+						JOptionPane.showMessageDialog(null, e1.getMessage());
+					}
+					menuAnterior.cargar(ip);
+					
+					
+				}
+			});
 			
 			
-			
-			
-			
-		
-			
-		} else {
+			} else {
 		
 			magia = new Radiacion (unidadesEnemigasIndexadas.get(indiceUnidadEnemiga));	
 			
 			
-			
+			try {
+				jugador.atacarCon(agresor, magia);
+				JOptionPane.showMessageDialog(null, "Ataque exitoso con"+magia.obtenerNombre());
+				System.out.print(magia);
+			} catch (ExcepcionEdificioNoPuedeCrearUnidad
+					| ExcepcionPosicionInvalida
+					| ExcepcionNoHayLugarParaCrear
+					| ExcepcionYaHayElementoEnLaPosicion
+					| ExcepcionErrorPasoDeTurno
+					| ExcepcionConstruccionNoCorrespondiente
+					| ExcepcionRecursoInsuficiente
+					| ExcepcionUnidadNoCorrespondiente
+					| ExcepcionElementoFueraDelRangoDeAtaque
+					| ExcepcionLaUnidadNoPertenceATuTropa e1) {						
+				JOptionPane.showMessageDialog(null, e1.getMessage());
+			}
+			menuAnterior.cargar(ip);
 			
 			
 		}
 		
-		try {
-			jugador.atacarCon(agresor, magia);
-			JOptionPane.showMessageDialog(null, "Ataque exitoso con"+magia.obtenerNombre());
-			System.out.print(magia);
-		} catch (ExcepcionEdificioNoPuedeCrearUnidad
-				| ExcepcionPosicionInvalida
-				| ExcepcionNoHayLugarParaCrear
-				| ExcepcionYaHayElementoEnLaPosicion
-				| ExcepcionErrorPasoDeTurno
-				| ExcepcionConstruccionNoCorrespondiente
-				| ExcepcionRecursoInsuficiente
-				| ExcepcionUnidadNoCorrespondiente
-				| ExcepcionElementoFueraDelRangoDeAtaque
-				| ExcepcionLaUnidadNoPertenceATuTropa e1) {						
-			JOptionPane.showMessageDialog(null, e1.getMessage());
-		}
-		menuAnterior.cargar(ip);
+		
 		
 	}
 	
@@ -298,6 +360,18 @@ import src.unidades.Unidad;
 					}
 				}
 				);
+		
+		desplegableUnidadesAmigas.addItemListener(
+				new ItemListener(){
+					public void itemStateChanged(ItemEvent event){
+						if(event.getStateChange()==ItemEvent.SELECTED)
+							unidadAmiga= event.getItem().toString();
+							
+					}
+				}
+				);
+		
+		
 		
 	}
 	
