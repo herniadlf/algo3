@@ -1,9 +1,7 @@
 package src.unidades;
 
-import excepciones.ExcepcionPosicionInvalida;
 import src.Danio;
 import src.Dinero;
-import src.Escudo;
 import src.ReglaDeDanioTerran;
 import src.Vida;
 import src.mapa.Mapeable;
@@ -38,6 +36,31 @@ public class Espectro extends Unidad {
 
 	}
 	
+	@Override
+	public Mapeable colocarContenido() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Mapeable dibujar() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Mapeable quitarContenido() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Mapeable mover() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	
 	public ColocadorDeUnidades getColocador(){
 		
 		return colocador;
@@ -68,20 +91,17 @@ public class Espectro extends Unidad {
 		// no afecta
 		
 	}
-	
-	public Unidad duplicarConAlucinacion() {
+
+	public void afectadoPorTormentaPsionica(int danio){
 		
-		Espectro duplicado = new Espectro();
-		this.modificarVidaYAtaqueDeUnidadAlucinada(duplicado);
-		return duplicado;
-		
-	}
-		
-	public Escudo getEscudo(){
-		
-		return null;
+		vida.aumentarDanioARecibir(danio);
 		
 	}
 
+	public void afectadoPorRadiacion(int danio) {
+		
+		vida.aumentarDanioARecibir(danio);
+		
+	}
 	
 }

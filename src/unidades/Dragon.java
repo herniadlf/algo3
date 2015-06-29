@@ -1,6 +1,5 @@
 package src.unidades;
 
-import excepciones.ExcepcionPosicionInvalida;
 import src.Danio;
 import src.Dinero;
 import src.Escudo;
@@ -43,7 +42,10 @@ public class Dragon extends Unidad {
 	public void pasoTurno() {
 		
 		escudo.pasoTurno();
-		super.pasoTurno();
+		if(afectadoPorRadiacion){
+			Radiacion radiacion = new Radiacion(this);
+			radiacion.atacar();
+		}
 		
 	}
 	
@@ -85,13 +87,41 @@ public class Dragon extends Unidad {
 		
 	}
 	
-	public Unidad duplicarConAlucinacion() {
+
+	public void afectadoPorTormentaPsionica(int danio){
 		
-		Dragon duplicado = new Dragon();
-		this.modificarVidaYAtaqueDeUnidadAlucinada(duplicado);
-		return duplicado;
+		escudo.atacar(danio);
 		
 	}
+	
+	public void afectadoPorRadiacion(int danio){
 		
+		escudo.atacar(danio);
+		
+	}
+
+	@Override
+	public Mapeable colocarContenido() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Mapeable dibujar() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Mapeable quitarContenido() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Mapeable mover() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }

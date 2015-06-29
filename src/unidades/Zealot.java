@@ -44,7 +44,11 @@ public class Zealot extends Unidad {
 	public void pasoTurno() {
 		
 		escudo.pasoTurno();
-		super.pasoTurno();
+		if(afectadoPorRadiacion){
+			Radiacion radiacion = new Radiacion(this);
+			radiacion.atacar();
+		}
+		
 	}
 		
 	public Escudo getEscudo(){
@@ -53,6 +57,28 @@ public class Zealot extends Unidad {
 		
 	}
 	
+	@Override
+	public Mapeable colocarContenido() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public Mapeable dibujar() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Mapeable quitarContenido() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public Mapeable mover() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	public ColocadorDeUnidades getColocador(){
 		
 		return colocador;
@@ -82,15 +108,23 @@ public class Zealot extends Unidad {
 		escudo.atacar(danio);
 		
 	}
-	
-	public Unidad duplicarConAlucinacion() {
+
+	public void afectadoPorTormentaPsionica(int danio){
 		
-		Zealot duplicado = new Zealot();
-		this.modificarVidaYAtaqueDeUnidadAlucinada(duplicado);
-		return duplicado;
+		escudo.atacar(danio);
 		
 	}
+	
+	public void afectadoPorRadiacion(int danio){
 		
-
+		vida.aumentarDanioARecibir(danio);
+		try {
+			this.recibirDanio();
+		} catch (ExcepcionPosicionInvalida e) {
+			e.printStackTrace();
+		}
+		vida.reestablecerDanioRecibido();
+		
+	}
 	
 }

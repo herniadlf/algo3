@@ -42,8 +42,31 @@ public class Scout extends Unidad {
 	public void pasoTurno() {
 		
 		escudo.pasoTurno();	
-		super.pasoTurno();
 		
+	}
+	
+	@Override
+	public Mapeable colocarContenido() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Mapeable dibujar() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Mapeable quitarContenido() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Mapeable mover() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 	public ColocadorDeUnidades getColocador(){
@@ -81,16 +104,26 @@ public class Scout extends Unidad {
 		return escudo;
 		
 	}
-	
-	public Unidad duplicarConAlucinacion() {
-		
-		Scout duplicado = new Scout();
-		this.modificarVidaYAtaqueDeUnidadAlucinada(duplicado);
-		return duplicado;
+
+	public void afectadoPorTormentaPsionica(int danio) throws ExcepcionPosicionInvalida{
+			
+		vida.aumentarDanioARecibir(danio);
+		this.recibirDanio();
+		vida.reestablecerDanioRecibido();
 		
 	}
-		
 
+	public void afectadoPorRadiacion(int danio){
+		
+		vida.aumentarDanioARecibir(danio);
+		try {
+			this.recibirDanio();
+		} catch (ExcepcionPosicionInvalida e) {
+			e.printStackTrace();
+		}
+		vida.reestablecerDanioRecibido();
+		
+	}
 	
 }
 

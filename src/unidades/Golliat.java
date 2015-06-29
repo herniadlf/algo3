@@ -2,7 +2,6 @@ package src.unidades;
 
 import src.Danio;
 import src.Dinero;
-import src.Escudo;
 import src.ReglaDeDanioTerran;
 import src.Vida;
 import src.mapa.Mapeable;
@@ -37,6 +36,30 @@ public class Golliat extends Unidad {
 
 	}
 	
+	@Override
+	public Mapeable colocarContenido() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Mapeable dibujar() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Mapeable quitarContenido() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Mapeable mover() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
 	public ColocadorDeUnidades getColocador(){
 		
 		return colocador;
@@ -66,18 +89,17 @@ public class Golliat extends Unidad {
 		// no afecta a unidades amigas
 		
 	}
-	
-	public Unidad duplicarConAlucinacion() {
+
+	public void afectadoPorTormentaPsionica(int danio){
 		
-		Golliat duplicado = new Golliat();
-		this.modificarVidaYAtaqueDeUnidadAlucinada(duplicado);
-		return duplicado;
+		vida.aumentarDanioARecibir(danio);
+		
+	}
+
+	public void afectadoPorRadiacion(int danio) {
+		
+		vida.aumentarDanioARecibir(danio);
 		
 	}
 	
-	public Escudo getEscudo(){
-		
-		return null;
-		
-	}
 }

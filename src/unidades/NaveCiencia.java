@@ -2,7 +2,6 @@ package src.unidades;
 
 import src.Danio;
 import src.Dinero;
-import src.Escudo;
 import src.ReglaDeDanioTerran;
 import src.Vida;
 import src.mapa.Mapeable;
@@ -38,6 +37,30 @@ public class NaveCiencia extends Magica {
 		colocador = new ColocadorDeUnidades();
 		reglaDeDanio = new ReglaDeDanioTerran();
 
+	}
+	
+	@Override
+	public Mapeable colocarContenido() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Mapeable dibujar() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Mapeable quitarContenido() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Mapeable mover() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	public ColocadorDeUnidades getColocador(){
@@ -87,22 +110,11 @@ public class NaveCiencia extends Magica {
 		//supuesto: no afecta a naves
 		
 	}
-	
-	public Unidad duplicarConAlucinacion() {
+
+	public void pasoTurno() {
 		
-		NaveCiencia duplicado = new NaveCiencia();
-		this.modificarVidaYAtaqueDeUnidadAlucinada(duplicado);
-		duplicado.energia = new Energia (0);
-		duplicado.energiaPorTurno = 0;
-		return duplicado;
+		energia.aumentarEnergia(energiaPorTurno);
 		
 	}
-	
-	public Escudo getEscudo(){
-		
-		return null;
-		
-	}
-		
 
 }

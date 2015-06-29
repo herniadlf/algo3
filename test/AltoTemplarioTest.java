@@ -27,7 +27,6 @@ import src.unidades.Espectro;
 import src.unidades.Marine;
 import src.unidades.Scout;
 import src.unidades.TormentaPsionica;
-import src.unidades.Unidad;
 import junit.framework.TestCase;
 
 public class AltoTemplarioTest extends TestCase {
@@ -77,9 +76,6 @@ public class AltoTemplarioTest extends TestCase {
 		Posicion posicion = new Posicion(10, 10);
 		espectro.setPosicion(posicion);
 		mapa.colocarEn(10, 10, espectro);
-		espectro.setDuenio(jugador.getNombre());
-		espectro.setJugador(jugador);
-		jugador.agregarAUnidadesAlistadas(espectro);
 		
 		altoTemplario.pasoTurno();//65
 		altoTemplario.pasoTurno();//80
@@ -137,9 +133,6 @@ public class AltoTemplarioTest extends TestCase {
 		Posicion posicionScout = new Posicion(20,20);
 		scout.setPosicion(posicionScout);
 		mapa.colocarEn(20, 20, scout);
-		scout.setDuenio(jugador.getNombre());
-		scout.setJugador(jugador);
-		jugador.agregarAUnidadesAlistadas(scout);
 		
 		altoTemplario.pasoTurno();
 		altoTemplario.pasoTurno();
@@ -166,18 +159,8 @@ public class AltoTemplarioTest extends TestCase {
 		while(i.hasNext()){
 			Posicion posicion = i.next();
 			if(mapa.obtenerContenidoEnPosicion(posicion.getX(), posicion.getY()).getElementoEnAire().esLoMismo(new Scout())){
-				
-				Unidad unidad = (Unidad) mapa.obtenerContenidoEnPosicion(posicion.getX(), posicion.getY()).getElementoEnAire();
-				if(unidad.getDuenio()==jugador.getNombre() && 
-					jugador.contieneALaUnidad(unidad) &&
-					unidad.getVida().obtenerVida() == 1 &&
-					unidad.getDanio().getDanioTierra() == 0 &&
-					unidad.getDanio().getDanioAire() == 0 &&
-					unidad.getEscudo().obtenerResistenciaActual() == 100){
 					
-					cantidadDeScouts++;	
-				
-				}		
+				cantidadDeScouts++;
 			}
 		}
 	

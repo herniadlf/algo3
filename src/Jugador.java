@@ -56,6 +56,7 @@ public class Jugador {
 		setRaza(raza);
 		setPoblacionDisponible(5);
 		setDinero(200,200);
+		//setDinero(99999,99999);
 		this.construccionesEnCamino= new ArrayList<Construccion>();	
 		this.construccionesEnPie= new ArrayList <Construccion>();
 		this.ataques= new  AtaquesPermitidosPorTurno();
@@ -68,6 +69,7 @@ public class Jugador {
 		
 		setPoblacionDisponible(5);
 		setDinero(200,200);
+		//setDinero(99999,99999);
 		this.construccionesEnCamino= new ArrayList<Construccion>();	
 		this.construccionesEnPie= new ArrayList <Construccion>();
 		this.ataques= new  AtaquesPermitidosPorTurno();
@@ -373,9 +375,6 @@ public class Jugador {
 	
 	public void atacarCon(Magica agresor, Magia magia) throws ExcepcionEdificioNoPuedeCrearUnidad, ExcepcionPosicionInvalida, ExcepcionNoHayLugarParaCrear, ExcepcionYaHayElementoEnLaPosicion, ExcepcionErrorPasoDeTurno, ExcepcionConstruccionNoCorrespondiente, ExcepcionRecursoInsuficiente, ExcepcionUnidadNoCorrespondiente, ExcepcionElementoFueraDelRangoDeAtaque, ExcepcionLaUnidadNoPertenceATuTropa{
 			
-		/*System.out.print(agresor.getNombre());
-		System.out.print(magia.obtenerNombre());
-		System.out.print(magia.obtenerAtacadoEnTierra());*/
 		this.verificarUnidad(agresor);
 		agresor.atacar(magia);		
 		
@@ -420,9 +419,9 @@ public class Jugador {
 		int i = 0;
 		while (i < unidadesAlistadas.size() && !fin) {
 			if (unidadesAlistadas.get(i) == unidad){
+				unidadesAlistadas.remove(i);
 				poblacionActual = poblacionActual - unidadesAlistadas.get(i).getSuministros();
 				poblacionDisponible = poblacionDisponible + unidadesAlistadas.get(i).getSuministros();
-				unidadesAlistadas.remove(i);
 				fin = true;
 			}
 			i++;

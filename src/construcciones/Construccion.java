@@ -188,6 +188,21 @@ public class Construccion implements Atacable {
 		
 	}
 	
+	public Mapeable dibujar() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	public Mapeable quitarContenido() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public Mapeable mover() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
 	public boolean esOcupable() {
 	
 		return false;
@@ -209,7 +224,6 @@ public class Construccion implements Atacable {
 	public void recibirDanio() throws ExcepcionPosicionInvalida {
 		
 		reglaDeDanio.recibirDanio(this);
-		this.getVida().reestablecerDanioRecibido();
 		boolean estadoDeVidaFinalizado= vida.estaMuerto();
 		  if (estadoDeVidaFinalizado==true){
 			 mapa.eliminarElementoTerrestreEnPosicion(getPosicionX(),getPosicionY());
@@ -231,10 +245,11 @@ public class Construccion implements Atacable {
 
 	public void pasoTurno(Turno turno, Mapa map, Jugador jugador) throws 
 		ExcepcionNoPudoColocarseUnidad, ExcepcionEdificioDestruido, ExcepcionUnidadNoCorrespondiente {
-			
+		
 		if (vida.estaMuerto()){
 			throw new ExcepcionEdificioDestruido();
 		}
+			
 	}
 
 	public void verificarTerreno(Mapa map, int x, int y) throws 

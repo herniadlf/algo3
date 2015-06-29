@@ -1,14 +1,12 @@
 package src.unidades;
 
 import java.util.ArrayList;
-
 import src.Danio;
 import src.Dinero;
 import src.Escudo;
 import src.ReglaDeDanioProtoss;
 import src.Vida;
 import src.mapa.Mapeable;
-import test.NaveTransporteProtossTest;
 
 public class NaveTransporteProtoss extends DeTransporte {
 	private static final int DANIO_AIRE = 0;
@@ -44,7 +42,31 @@ public class NaveTransporteProtoss extends DeTransporte {
 	public void pasoTurno() {
 		
 		escudo.pasoTurno();
-		super.pasoTurno();
+		
+	}
+	
+	@Override
+	public Mapeable colocarContenido() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Mapeable dibujar() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Mapeable quitarContenido() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Mapeable mover() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	public ColocadorDeUnidades getColocador(){
@@ -77,14 +99,5 @@ public class NaveTransporteProtoss extends DeTransporte {
 		return escudo;
 		
 	}
-	
-	public Unidad duplicarConAlucinacion() {
-		
-		NaveTransporteProtoss duplicado = new NaveTransporteProtoss();
-		this.modificarVidaYAtaqueDeUnidadAlucinada(duplicado);
-		return duplicado;
-		
-	}
-		
 	
 }

@@ -26,7 +26,7 @@ import excepciones.ExcepcionYaHayElementoEnLaPosicion;
 		ExcepcionConstruccionNoCorrespondiente, ExcepcionRecursoInsuficiente, ExcepcionUnidadNoCorrespondiente{
 		
 		this.ataques = this.ataques +1;
-		if (this.ataques ==10){
+		if (this.ataques == 10){
 			
 			this.ataques=0;
 			juego.pasarTurno();

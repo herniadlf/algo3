@@ -12,6 +12,26 @@ public class Sector implements Mapeable{
 		this.elementoEnAire = elementoEnAire;
 		
 	}
+	
+	public Mapeable colocarContenido() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public Mapeable dibujar() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public Mapeable quitarContenido() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public Mapeable mover() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 	public boolean esLoMismo(Mapeable m) {
 		

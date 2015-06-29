@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 import src.Danio;
 import src.Dinero;
-import src.Escudo;
 import src.ReglaDeDanioTerran;
 import src.Vida;
 import src.mapa.Mapeable;
@@ -39,6 +38,30 @@ public class NaveTransporteTerran extends DeTransporte {
 		reglaDeDanio = new ReglaDeDanioTerran();
 	}
 	
+	@Override
+	public Mapeable colocarContenido() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Mapeable dibujar() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Mapeable quitarContenido() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Mapeable mover() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	public ColocadorDeUnidades getColocador(){
 		
 		return colocador;
@@ -61,20 +84,5 @@ public class NaveTransporteTerran extends DeTransporte {
 		vida.aumentarDanioARecibir(danio);
 		
 	}
-	
-	public Unidad duplicarConAlucinacion() {
-		
-		NaveTransporteTerran duplicado = new NaveTransporteTerran();
-		this.modificarVidaYAtaqueDeUnidadAlucinada(duplicado);
-		return duplicado;
-		
-	}
-	
-	public Escudo getEscudo(){
-		
-		return null;
-		
-	}
-		
 
 }

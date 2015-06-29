@@ -46,6 +46,26 @@ public class AltoTemplario extends Magica {
 		reglaDeDanio = new ReglaDeDanioProtoss(escudo);
 		
 	}
+		
+	public Mapeable colocarContenido() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public Mapeable dibujar() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public Mapeable quitarContenido() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public Mapeable mover() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 	public ColocadorDeUnidades getColocador(){
 		
@@ -89,16 +109,27 @@ public class AltoTemplario extends Magica {
 		
 	}
 	
-	public Unidad duplicarConAlucinacion() {
+	public void afectadoPorTormentaPsionica(int danio) throws ExcepcionPosicionInvalida{
 		
-		AltoTemplario duplicado = new AltoTemplario();
-		this.modificarVidaYAtaqueDeUnidadAlucinada(duplicado);
-		duplicado.energia = new Energia (0);
-		duplicado.energiaPorTurno = 0;
-		return duplicado;
+		vida.aumentarDanioARecibir(danio);
+		this.recibirDanio();
+		vida.reestablecerDanioRecibido();
 		
 	}
+
+	public void afectadoPorRadiacion(int danio){
 		
+		afectadoPorRadiacion = true;
+		danioRadiacion = danio;
+		vida.aumentarDanioARecibir(danioRadiacion);
+		try {
+			this.recibirDanio();
+		} catch (ExcepcionPosicionInvalida e) {
+			e.printStackTrace();
+		}
+		vida.reestablecerDanioRecibido();
+		
+	}
 	
 }
 

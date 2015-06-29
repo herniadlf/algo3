@@ -138,8 +138,10 @@ public class UnidadesProtossTest{
 		jugador1.atacarCon(segundoMarine, zealot);
 		jugador1.atacarCon(tercerMarine, zealot);
 		
+		int danioTotalRecibido= zealot.getVida().obtenerDanioRecibido();
 		
-		Assert.assertTrue(zealot.getEscudo().obtenerResistenciaActual() == 42);
+		
+		Assert.assertTrue(danioTotalRecibido == 18 );
 		
 		}
 	

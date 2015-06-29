@@ -18,7 +18,6 @@ import src.Atacable;
 import src.AtaquesPermitidosPorTurno;
 import src.Danio;
 import src.Dinero;
-import src.Escudo;
 import src.Jugador;
 import src.ReglaDeDanio;
 import src.Vida;
@@ -49,7 +48,6 @@ public abstract class Unidad implements Atacable{
 	protected boolean afectadoPorRadiacion;
 	protected ReglaDeDanio reglaDeDanio;
 	protected Jugador jugador;
-	protected int danioRadiacion;
 	
 	public Unidad(){};
 	
@@ -109,6 +107,10 @@ public abstract class Unidad implements Atacable{
 		
 		this.posicion = posicion;
 		
+	}
+	
+	public Posicion getPosicion () {
+		return posicion;
 	}
 	
 	public void setTurnoInicioDeEntrenamiento (int turno){
@@ -232,7 +234,6 @@ public abstract class Unidad implements Atacable{
 	public void recibirDanio () throws ExcepcionPosicionInvalida{
 		
 		reglaDeDanio.recibirDanio(this);
-		this.getVida().reestablecerDanioRecibido();
 		boolean estadoDeVidaFinalizado= vida.estaMuerto();
 		  if (estadoDeVidaFinalizado==true){
 			 mapa.eliminarElementoTerrestreEnPosicion(getPosicionX(),getPosicionY());
@@ -274,28 +275,6 @@ public abstract class Unidad implements Atacable{
 		
 	}
 	
-	public void afectadoPorTormentaPsionica(int danio) throws ExcepcionPosicionInvalida{
-		
-		vida.aumentarDanioARecibir(danio);
-		this.recibirDanio();
-		vida.reestablecerDanioRecibido();
-		
-	}
-	
-	public void afectadoPorRadiacion(int danio){
-		
-		afectadoPorRadiacion = true;
-		danioRadiacion = danio;
-		vida.aumentarDanioARecibir(danioRadiacion);
-		try {
-			this.recibirDanio();
-		} catch (ExcepcionPosicionInvalida e) {
-			e.printStackTrace();
-		}
-		vida.reestablecerDanioRecibido();
-		
-	}
-	
 		
 	public String getDuenio() {
 		
@@ -307,21 +286,6 @@ public abstract class Unidad implements Atacable{
 		
 		this.duenio = duenio;
 		
-	}
-	
-	public Unidad duplicarConAlucinacion() {
-		
-		return this;
-		
-	}
-	
-	protected void modificarVidaYAtaqueDeUnidadAlucinada(Unidad duplicado){
-		
-		duplicado.vida = new Vida(1);
-		duplicado.danio = new Danio(0, 0);
-		
-	}
-	
-	public abstract Escudo getEscudo();
+	}	
 		
 }

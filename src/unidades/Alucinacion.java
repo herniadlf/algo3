@@ -3,13 +3,13 @@ package src.unidades;
 import excepciones.ExcepcionNoHayLugarParaCrear;
 import excepciones.ExcepcionPosicionInvalida;
 import excepciones.ExcepcionYaHayElementoEnLaPosicion;
-import src.Atacable;
 import src.mapa.Mapa;
 import src.mapa.Posicion;
 
 public class Alucinacion extends Magia{
 	
-	private Unidad copia;
+	private Unidad copia1;
+	private Unidad copia2;
 	private boolean alucine;
 	
 	public Alucinacion(Unidad alucinado){
@@ -29,21 +29,14 @@ public class Alucinacion extends Magia{
 		ExcepcionYaHayElementoEnLaPosicion{
 		
 		this.setAlrededores();
-		this.setearUnidadDuplicada(unidad);
-		this.setearUnidadDuplicada(unidad);
+		Class clase = unidad.getClass();
+		copia1 = (Unidad) clase.newInstance();
+		copia2 = (Unidad) clase.newInstance();
+		Mapa mapa = unidad.getMapa();
+	    this.colocarUnidad(copia1, mapa);
+		this.colocarUnidad(copia2, mapa);
 		
 	}	
-	
-	private void setearUnidadDuplicada(Unidad unidad) throws ExcepcionPosicionInvalida, ExcepcionNoHayLugarParaCrear, ExcepcionYaHayElementoEnLaPosicion {
-		
-		copia = unidad.duplicarConAlucinacion();
-		copia.setJugador(unidad.getJugador());
-		copia.setDuenio(unidad.getDuenio());
-		unidad.getJugador().agregarAUnidadesAlistadas(copia);
-		copia.setAtaquesPermitidosPorTurno(unidad.getJugador().getAtaquesPermitidosPorTurno());
-		Mapa mapa = unidad.getMapa();
-		this.colocarUnidad(copia, mapa);
-	}
 	
 	private void colocarUnidad (Unidad aColocar , Mapa map ) throws 
 		ExcepcionPosicionInvalida, ExcepcionNoHayLugarParaCrear, ExcepcionYaHayElementoEnLaPosicion {
@@ -55,16 +48,16 @@ public class Alucinacion extends Magia{
 		
 	}
 
-	public void atacarEnEstaPosicion(int x, int y) {
+	void atacarEnEstaPosicion(int x, int y) {
 		
 		if(!(alucine)){
 			Unidad unidad = null;
 			
 			try {
-				if(Unidad.class.isAssignableFrom(mapa.obtenerContenidoEnPosicion(x, y).getElementoEnTierra().getClass())){
+				if(mapa.obtenerContenidoEnPosicion(x, y).getElementoEnAire().getNombre() == "Espacio Disponible"){
 					unidad = (Unidad) mapa.obtenerContenidoEnPosicion(x, y).getElementoEnTierra();
 				}
-				if(Unidad.class.isAssignableFrom(mapa.obtenerContenidoEnPosicion(x, y).getElementoEnAire().getClass())) {
+				else{
 					unidad = (Unidad) mapa.obtenerContenidoEnPosicion(x, y).getElementoEnAire();
 				}
 				this.atacar(unidad);
