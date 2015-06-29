@@ -3,14 +3,12 @@ package vista;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-
 import excepciones.ExcepcionNoPudoColocarseEdificio;
 import excepciones.ExcepcionPosicionInvalida;
 import src.Juego;
@@ -18,6 +16,7 @@ import src.Jugador;
 import src.construcciones.Construccion;
 
 public class MenuConstrucciones {
+	
 	Jugador jugadorActual;
 	InterfazPartida interfazPartida;	
 	Juego controladorJuego;
@@ -43,16 +42,8 @@ public class MenuConstrucciones {
 		frameConstruccion.getContentPane().removeAll();
 		frameConstruccion.setJMenuBar(null);
 		frameConstruccion.setTitle("Construccion");		
-		    
+		
 		JPanel panelConstruccion = new JPanel();
-		
-		String ruta = new String(System.getProperty("user.dir")+"\\trunk\\imagenes\\");
-		ImageIcon imagenConstruccion = new ImageIcon(ruta+"imagenConstruccion.png");
-		JLabel labelColor = new JLabel(imagenConstruccion);
-		JLabel labelConstruccion = new JLabel(imagenConstruccion);
-		labelColor.setBounds(0,0,imagenConstruccion.getIconWidth(),imagenConstruccion.getIconHeight());
-		panelConstruccion.add(labelConstruccion);
-		
 		for (int i = 0; i < jugadorActual.getRaza().getConstruccionesPosibles().size(); i++){
 			Construccion auxiliar = jugadorActual.getRaza().getConstruccionesPosibles().get(i);			
 			panelConstruccion.add(generarBotonDeConstruccion(auxiliar));

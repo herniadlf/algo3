@@ -24,10 +24,8 @@ import src.construcciones.Creadora;
 import src.unidades.Unidad;
 
 
-public class CrearUnidades extends CargarInformacionUnidades {
+public class CrearUnidades extends JFrame {
 	
-	
-
 	private static final long serialVersionUID = 1L;
 	Juego juego;
 	Jugador jugador;
@@ -44,13 +42,11 @@ public class CrearUnidades extends CargarInformacionUnidades {
 	JComboBox desplegableEdificios;
 	int indiceConstruccion;
 	int indiceUnidad;
-	MenuUnidades menuAnterior;
+	InterfazPartida menuAnterior;
 	JFrame frameCrear;
-	InterfazPrincipal ip;
 	
-	
-	public CrearUnidades(MenuUnidades menuUnidades){
-		menuAnterior = menuUnidades;
+	public CrearUnidades(InterfazPartida interfazAnterior){
+		menuAnterior = interfazAnterior;
 		indiceConstruccion =0;
 		indiceUnidad=0;
 		unidad = new String();
@@ -63,19 +59,17 @@ public class CrearUnidades extends CargarInformacionUnidades {
 		frameCrear= new JFrame();
 	}	
 		
-	protected void cargar(final InterfazPrincipal interfaz) throws ExcepcionNoHayConstruccionesCreadoras  {
+	protected void cargar(final InterfazPrincipal ip) throws ExcepcionNoHayConstruccionesCreadoras  {
 		
 		JPanel panelCreacion = new JPanel();
-		juego = interfaz.getJuego();
-		ip= interfaz;
-		
-		cargarJugadores();
-		
+		juego = ip.getJuego();
+		jugador = ip.getJuego().getJugadorActual();
+		unidadesPosibles = jugador.getRaza().getUnidadesPosibles();		
 		preraraListaDeCreadoras();
 		
-		desplegableUnidades = new JComboBox();
+		JComboBox desplegableUnidades = new JComboBox();
 		desplegableUnidades.addItem("");
-		desplegableEdificios = new JComboBox();
+		JComboBox desplegableEdificios = new JComboBox();
 		desplegableEdificios.addItem("");
 		
 		
@@ -90,7 +84,15 @@ public class CrearUnidades extends CargarInformacionUnidades {
 		
 		cargarListaDesplegableConstrucciones (desplegableEdificios, construccionesIndexadas, construcciones);
 		
-		
+		desplegableEdificios.addItemListener(
+				new ItemListener(){
+					public void itemStateChanged(ItemEvent event){
+						if(event.getStateChange()==ItemEvent.SELECTED)
+							construccion = event.getItem().toString();
+							
+					}
+				}
+			);
 		
 		
 		while (unidadesPosibles.size()>i){
@@ -99,9 +101,15 @@ public class CrearUnidades extends CargarInformacionUnidades {
 					i++;
 				}
 		
-		
-		agregarAccionesListasDesplegables(); 
-		
+		desplegableUnidades.addItemListener(
+				new ItemListener(){
+					public void itemStateChanged(ItemEvent event){
+						if(event.getStateChange()==ItemEvent.SELECTED)
+							unidad= event.getItem().toString();
+							
+					}
+				}
+				);
 		
 		
 	
@@ -125,16 +133,12 @@ public class CrearUnidades extends CargarInformacionUnidades {
 				try {
 					juego.ordenarFabricacionUnidad((unidadesIndexadas.get(indiceUnidad)).getClass().newInstance(), (Creadora) construccionesIndexadas.get(indiceConstruccion));
 					JOptionPane.showMessageDialog(null, "Entrenamiento de unidad en camino!");
-					frameCrear.getContentPane().removeAll();
-					frameCrear.setJMenuBar(null);
-					frameCrear.setVisible(false);
+					limpiar();
 					menuAnterior.cargar(ip);
 				} catch (ExcepcionNoPudoCrearseUnidad
 						| ExcepcionElEdificioNoPerteneceATusConstrucciones | InstantiationException | IllegalAccessException e1) {
 						JOptionPane.showMessageDialog(null, e1.getMessage());
-						frameCrear.getContentPane().removeAll();
-						frameCrear.setJMenuBar(null);
-						frameCrear.setVisible(false);
+						limpiar();
 						menuAnterior.cargar(ip);
 				}
 	
@@ -169,50 +173,39 @@ public class CrearUnidades extends CargarInformacionUnidades {
 
 	//------------------------------------------------------------------------------------------------	
 
-	
-	
-	
+	public void cargarListaDesplegableConstrucciones (JComboBox menuDesplegable, ArrayList<Construccion>construccionesIndexadas,
+			ArrayList<Construccion> construccion){
+		int i = 0;
+		while ( i < construccion.size()){
+			menuDesplegable.addItem(Integer.toString(i)+"."+ construccion.get(i).getNombre());
+			construccionesIndexadas.add (construccion.get(i));
+					i++;
+				}
+		
+		
+	}
 
 	//----------------------------------------------------------------------------------------------------
 
-	
+	public final  int obtenerIndiceDeElemento (int posicion, String cadena, String indiceBuscado){
+
+		posicion= cadena.indexOf(".");
+		int i=0;
+		while (i < posicion){
+			
+			indiceBuscado= indiceBuscado+ (cadena.charAt(i));
+			i++;
+			}
+
+		
+		return (Integer.parseInt(indiceBuscado));
+		
+		}
 
 	public void limpiar() {		
 		frameCrear.getContentPane().removeAll();
 		frameCrear.setJMenuBar(null);	
 		frameCrear.setVisible(false);
-	}
-
-	@Override
-	public void agregarAccionesListasDesplegables() {
-		desplegableEdificios.addItemListener(
-				new ItemListener(){
-					public void itemStateChanged(ItemEvent event){
-						if(event.getStateChange()==ItemEvent.SELECTED)
-							construccion = event.getItem().toString();
-							
-					}
-				}
-			);
-		
-		desplegableUnidades.addItemListener(
-				new ItemListener(){
-					public void itemStateChanged(ItemEvent event){
-						if(event.getStateChange()==ItemEvent.SELECTED)
-							unidad= event.getItem().toString();
-							
-					}
-				}
-				);
-		
-		
-	}
-
-	@Override
-	public void cargarJugadores() {
-		jugador = ip.getJuego().getJugadorActual();
-		unidadesPosibles = jugador.getRaza().getUnidadesPosibles();		
-		
 	}
 
 }

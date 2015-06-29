@@ -41,8 +41,8 @@ public class VistaMapa {
 		gL.setHgap(0);
 		gL.setVgap(0);
 		panelMapa.setLayout(gL);
-		for (int i = 1; i < tamanio; i++){
-			for (int j = 1; j < tamanio; j++){
+		for (int j = 1; j < tamanio; j++){
+			for (int i = 1; i < tamanio; i++){
 				try {
 					Sector obtenido = controladorJuego.getMapa().obtenerContenidoEnPosicion(i, j);
 					if (!controladorJuego.getJugadorActual().getRangoDeVision().contains(obtenido)){

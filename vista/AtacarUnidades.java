@@ -25,10 +25,9 @@ import excepciones.ExcepcionYaHayElementoEnLaPosicion;
 import src.Juego;
 import src.Jugador;
 import src.construcciones.Construccion;
-import src.unidades.Magica;
 import src.unidades.Unidad;
 
-	public class AtacarUnidades extends CargarInformacionUnidades {
+	public class AtacarUnidades extends JFrame {
 		
 	
 		private static final long serialVersionUID = 1L;
@@ -56,11 +55,11 @@ import src.unidades.Unidad;
 		int indiceUnidadAlistadas;
 		int indiceUnidadEnemigas;
 		int indiceConstruccionesEnemigas;
-		MenuUnidades menuAnterior;
+		InterfazPartida menuAnterior;
 		JFrame frameAtacar;
 		
-	public AtacarUnidades(MenuUnidades menuUnidades){
-			menuAnterior = menuUnidades;
+	public AtacarUnidades(InterfazPartida interfazAnterior){
+			menuAnterior = interfazAnterior;
 			unidadesAlistadas= new ArrayList<Unidad>();
 			construccionesEnemigas = new ArrayList<Construccion>();
 			unidadesEnemigas = new ArrayList <Unidad>();
@@ -87,14 +86,21 @@ import src.unidades.Unidad;
 		juego = ip.getJuego();
 		jugador = ip.getJuego().getJugadorActual();
 		
-		cargarJugadores ();
-		
 		unidadesAlistadas= jugador.getUnidadesAlistadas();
 		
+		if (jugador ==juego.getJugador1()){
+			unidadesEnemigas= juego.getJugador2().getUnidadesAlistadas();
+			construccionesEnemigas = juego.getJugador2().getConstruccionesEnPie();
+			}
 		
+		else {
+			unidadesEnemigas= juego.getJugador1().getUnidadesAlistadas();
+			construccionesEnemigas = juego.getJugador1().getConstruccionesEnPie();
+			}
 		
 		frameAtacar.getContentPane().removeAll();
 		frameAtacar.setJMenuBar(null);
+		
 		frameAtacar.setTitle("Atacar Enemigo: Unidad   UnidadEnemiga   EdificioEnemigo");
 		JPanel panelAtaque = new JPanel();
 		
@@ -103,13 +109,44 @@ import src.unidades.Unidad;
 			desplegableUnidadesEnemigas.addItem("");
 			
 			caragarListasDesplegablesUnidades (desplegableUnidadesAlistadas, unidadesAlistadasIndexadas,unidadesAlistadas);
+			
+			desplegableUnidadesAlistadas.addItemListener(
+					new ItemListener(){
+						public void itemStateChanged(ItemEvent event){
+							if(event.getStateChange()==ItemEvent.SELECTED)
+								unidadAlistada = event.getItem().toString();
+								
+						}
+					}
+				);
+			
+			
+			
 			caragarListasDesplegablesUnidades (desplegableUnidadesEnemigas, unidadesEnemigasIndexadas,unidadesEnemigas);
+			
+			desplegableUnidadesEnemigas.addItemListener(
+					new ItemListener(){
+						public void itemStateChanged(ItemEvent event){
+							if(event.getStateChange()==ItemEvent.SELECTED)
+								unidadEnemiga= event.getItem().toString();
+								
+						}
+					}
+					);
+			
+			
 			cargarListaDesplegableConstrucciones (desplegableEdificiosEnemigos, construccionesIndexadas, construccionesEnemigas);
 			
-			agregarAccionesListasDesplegables();
 			
-			
-			
+			desplegableEdificiosEnemigos.addItemListener(
+					new ItemListener(){
+						public void itemStateChanged(ItemEvent event){
+							if(event.getStateChange()==ItemEvent.SELECTED)
+								construccionEnemiga= event.getItem().toString();
+								
+						}
+					}
+					);
 			panelAtaque.add(desplegableUnidadesAlistadas);
 			panelAtaque.add (desplegableUnidadesEnemigas);
 			panelAtaque.add(desplegableEdificiosEnemigos);
@@ -121,10 +158,36 @@ import src.unidades.Unidad;
 				
 				@Override
 				public void actionPerformed(ActionEvent e) {
+					String indiceBuscadoUnidadesAlistadas="";
+					int posicionPuntoUnidadesAlistadas=1;
 					
-					agregarAccionAtacarUnidad();
+					
+					String indiceBuscadoUnidadesEnemigas="";
+					int posicionPuntoUnidadesEnemigas=1;
+					
+	
+					indiceUnidadEnemigas = obtenerIndiceDeElemento (posicionPuntoUnidadesEnemigas, unidadEnemiga, indiceBuscadoUnidadesEnemigas);
+					indiceUnidadAlistadas= obtenerIndiceDeElemento (posicionPuntoUnidadesAlistadas,unidadAlistada, indiceBuscadoUnidadesAlistadas);
 					
 					
+						
+					try {
+						jugador.atacarCon( unidadesAlistadasIndexadas.get(indiceUnidadAlistadas),	unidadesEnemigasIndexadas.get(indiceUnidadEnemigas));
+					} catch (ExcepcionEdificioNoPuedeCrearUnidad
+							| ExcepcionPosicionInvalida
+							| ExcepcionNoHayLugarParaCrear
+							| ExcepcionYaHayElementoEnLaPosicion
+							| ExcepcionErrorPasoDeTurno
+							| ExcepcionElementoFueraDelRangoDeAtaque
+							| ExcepcionLaUnidadNoPertenceATuTropa
+							| ExcepcionConstruccionNoCorrespondiente
+							| ExcepcionRecursoInsuficiente
+							| ExcepcionUnidadNoCorrespondiente e1) {
+						// TODO Auto-generated catch block
+						JOptionPane.showMessageDialog(null, e1.getMessage());
+					}
+					limpiar();
+					menuAnterior.cargar(ip); 
 				}
 			});
 			
@@ -136,10 +199,36 @@ import src.unidades.Unidad;
 				
 				@Override
 				public void actionPerformed(ActionEvent e) {
-					agregarAccionesAtacarEdificio ();
-		
+					String indiceBuscadoUnidadesAlistadas="";
+					int posicionPuntoUnidadesAlistadas=1;
+					String indiceBuscadoConstruccionesEnemigas="";
+					int posicionPuntoConstruccionesEnemigas=1;
+					
+	
+					indiceConstruccionesEnemigas= obtenerIndiceDeElemento (posicionPuntoConstruccionesEnemigas, construccionEnemiga, indiceBuscadoConstruccionesEnemigas);	
+					indiceUnidadAlistadas = obtenerIndiceDeElemento (posicionPuntoUnidadesAlistadas, unidadAlistada, indiceBuscadoUnidadesAlistadas);	
+					
+						
+					try {
+						jugador.atacarCon( unidadesAlistadasIndexadas.get(indiceUnidadAlistadas),	construccionesIndexadas.get(indiceConstruccionesEnemigas));
+					} catch (ExcepcionEdificioNoPuedeCrearUnidad
+							| ExcepcionPosicionInvalida
+							| ExcepcionNoHayLugarParaCrear
+							| ExcepcionYaHayElementoEnLaPosicion
+							| ExcepcionErrorPasoDeTurno
+							| ExcepcionElementoFueraDelRangoDeAtaque
+							| ExcepcionLaUnidadNoPertenceATuTropa
+							| ExcepcionConstruccionNoCorrespondiente
+							| ExcepcionRecursoInsuficiente
+							| ExcepcionUnidadNoCorrespondiente e1) {
+						// TODO Auto-generated catch block
+						JOptionPane.showMessageDialog(null, e1.getMessage());
+						
+					}
+					limpiar();
+					menuAnterior.cargar(ip);
 							
-						}
+				}
 			});
 			
 			panelAtaque.add(atacarUnidad);
@@ -153,155 +242,55 @@ import src.unidades.Unidad;
 	
 	//------------------------------------------------------------------------------------------------------------
 	
+	public void caragarListasDesplegablesUnidades (JComboBox menuDesplegable, ArrayList<Unidad>unidadesIndexadas,
+			ArrayList<Unidad> unidades){
+		int i=0;
+		while (unidades.size()>i){
+			menuDesplegable.addItem(Integer.toString(i)+"."+ unidades.get(i).getNombre());
+			unidadesIndexadas.add (unidades.get(i));
+					i++;
+				}
+		}
+	
 	
 	
 	
 	//------------------------------------------------------------------------------------------------	
 	
-
-	
-
-	
-	
-	
-	
-	
+	public void cargarListaDesplegableConstrucciones (JComboBox menuDesplegable, ArrayList<Construccion>construccionesIndexadas,
+			ArrayList<Construccion> construccion){
+		int i=0;
+		while (construccion.size()>i){
+			menuDesplegable.addItem(Integer.toString(i)+"."+ construccion.get(i).getNombre());
+			construccionesIndexadas.add (construccion.get(i));
+					i++;
+				}
+		
+		
+	}
 	
 	//----------------------------------------------------------------------------------------------------
 	
+	public final  int obtenerIndiceDeElemento (int posicion, String cadena, String indiceBuscado){
 	
-	
-	public void agregarAccionAtacarUnidad(){
-		
-		String indiceBuscadoUnidadesAlistadas="";
-		int posicionPuntoUnidadesAlistadas=1;
-		String indiceBuscadoUnidadesEnemigas="";
-		int posicionPuntoUnidadesEnemigas=1;
-		indiceUnidadEnemigas = obtenerIndiceDeElemento (posicionPuntoUnidadesEnemigas, unidadEnemiga, indiceBuscadoUnidadesEnemigas);
-		indiceUnidadAlistadas= obtenerIndiceDeElemento (posicionPuntoUnidadesAlistadas,unidadAlistada, indiceBuscadoUnidadesAlistadas);
-		
-		
+		posicion= cadena.indexOf(".");
+		int i=0;
+		while (i < posicion){
 			
-		try {			
-			jugador.atacarCon( unidadesAlistadasIndexadas.get(indiceUnidadAlistadas),	unidadesEnemigasIndexadas.get(indiceUnidadEnemigas));
-			JOptionPane.showMessageDialog(null, "Ataque de "+unidadesAlistadasIndexadas.get(indiceUnidadAlistadas).getNombre()+" exitoso!");
-		} catch (ExcepcionEdificioNoPuedeCrearUnidad
-				| ExcepcionPosicionInvalida
-				| ExcepcionNoHayLugarParaCrear
-				| ExcepcionYaHayElementoEnLaPosicion
-				| ExcepcionErrorPasoDeTurno
-				| ExcepcionElementoFueraDelRangoDeAtaque
-				| ExcepcionLaUnidadNoPertenceATuTropa
-				| ExcepcionConstruccionNoCorrespondiente
-				| ExcepcionRecursoInsuficiente
-				| ExcepcionUnidadNoCorrespondiente e1) {
-			// TODO Auto-generated catch block
-			JOptionPane.showMessageDialog(null, e1.getMessage());
+			indiceBuscado= indiceBuscado+ (cadena.charAt(i));
+			i++;
+			}
+	
+		
+		return (Integer.parseInt(indiceBuscado));
+		
 		}
-		
-		
-		
-	}
-	
-	
-	public void agregarAccionesAtacarEdificio (){
-		String indiceBuscadoUnidadesAlistadas="";
-		int posicionPuntoUnidadesAlistadas=1;
-		String indiceBuscadoConstruccionesEnemigas="";
-		int posicionPuntoConstruccionesEnemigas=1;
-		
-		indiceConstruccionesEnemigas= obtenerIndiceDeElemento (posicionPuntoConstruccionesEnemigas, construccionEnemiga, indiceBuscadoConstruccionesEnemigas);	
-		indiceUnidadAlistadas = obtenerIndiceDeElemento (posicionPuntoUnidadesAlistadas, unidadAlistada, indiceBuscadoUnidadesAlistadas);	
-		
-			
-		try {
-			jugador.atacarCon( unidadesAlistadasIndexadas.get(indiceUnidadAlistadas),	construccionesIndexadas.get(indiceConstruccionesEnemigas));
-			JOptionPane.showMessageDialog(null, "Ataque de "+unidadesAlistadasIndexadas.get(indiceUnidadAlistadas).getNombre()+" exitoso!");
-		} catch (ExcepcionEdificioNoPuedeCrearUnidad
-				| ExcepcionPosicionInvalida
-				| ExcepcionNoHayLugarParaCrear
-				| ExcepcionYaHayElementoEnLaPosicion
-				| ExcepcionErrorPasoDeTurno
-				| ExcepcionElementoFueraDelRangoDeAtaque
-				| ExcepcionLaUnidadNoPertenceATuTropa
-				| ExcepcionConstruccionNoCorrespondiente
-				| ExcepcionRecursoInsuficiente
-				| ExcepcionUnidadNoCorrespondiente e1) {
-			// TODO Auto-generated catch block
-			JOptionPane.showMessageDialog(null, e1.getMessage());
-			
-		}
-		
-		
-		
-		
-		
-	}
-	
-	
-	
-	
-	
-	public void agregarAccionesListasDesplegables(){
-		
-		desplegableUnidadesAlistadas.addItemListener(
-				new ItemListener(){
-					public void itemStateChanged(ItemEvent event){
-						if(event.getStateChange()==ItemEvent.SELECTED)
-							unidadAlistada = event.getItem().toString();
-							
-					}
-				}
-			);
-		
-		
-		desplegableUnidadesEnemigas.addItemListener(
-				new ItemListener(){
-					public void itemStateChanged(ItemEvent event){
-						if(event.getStateChange()==ItemEvent.SELECTED)
-							unidadEnemiga= event.getItem().toString();
-							
-					}
-				}
-				);
-		
-		desplegableEdificiosEnemigos.addItemListener(
-				new ItemListener(){
-					public void itemStateChanged(ItemEvent event){
-						if(event.getStateChange()==ItemEvent.SELECTED)
-							construccionEnemiga= event.getItem().toString();
-							
-					}
-				}
-				);
-		
-		
-		
-		
-		
-	};
 	
 	
 	public void limpiar() {
 		frameAtacar.getContentPane().removeAll();
 		frameAtacar.setJMenuBar(null);
 		frameAtacar.setVisible(false);
-	}
-	
-	
-	public void cargarJugadores (){
-		if (jugador ==juego.getJugador1()){
-			unidadesEnemigas= juego.getJugador2().getUnidadesAlistadas();
-			construccionesEnemigas = juego.getJugador2().getConstruccionesEnPie();
-			}
-		
-		else {
-			unidadesEnemigas= juego.getJugador1().getUnidadesAlistadas();
-			construccionesEnemigas = juego.getJugador1().getConstruccionesEnPie();
-			}
-		
-		
-		
 	}
 	
 	

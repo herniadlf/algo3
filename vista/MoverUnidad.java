@@ -21,14 +21,12 @@ import src.unidades.Unidad;
 public class MoverUnidad {
 
 	Juego controladorJuego; 
-	MenuUnidades menuAnterior;
-	InterfazPartida iPartida;
+	InterfazPartida menuAnterior;	
 	InterfazPrincipal iPrincipal;
 	JFrame frameMover;
 	
-	public MoverUnidad(MenuUnidades menuUnidades, InterfazPartida interfazPartida) {
-		menuAnterior = menuUnidades;
-		iPartida = interfazPartida;
+	public MoverUnidad(InterfazPartida interfazPartida) {
+		menuAnterior = interfazPartida;		
 		frameMover = new JFrame();
 	}
 
@@ -76,7 +74,7 @@ public class MoverUnidad {
 		public void actionPerformed(ActionEvent arg0) {
 			CargarPosicion pp = new CargarPosicion(aMover);					
 			pp.cargarY();
-			pp.cargarX();			
+			pp.cargarX();
 		}
 	}
 	
@@ -129,12 +127,14 @@ public class MoverUnidad {
 									
 						try {
 							controladorJuego.getJugadorActual().moverUnidadAPosicion(aMover, posX, posY);
-							JOptionPane.showMessageDialog(null, "Movimiento de " + aMover.getNombre() + " exitoso!");						
-							iPartida.cargar(iPrincipal);
+							JOptionPane.showMessageDialog(null, "Movimiento de " + aMover.getNombre() + " exitoso!");	
+							limpiar();
+							menuAnterior.cargar(iPrincipal);
 						} catch (ExcepcionNoPuedeMoverseUnidad
 								| ExcepcionLaUnidadNoPertenceATuTropa e1) {
 							JOptionPane.showMessageDialog(null, e1.getMessage());
-							iPartida.cargar(iPrincipal);
+							limpiar();
+							menuAnterior.cargar(iPrincipal);
 						}
 					
 				}
@@ -144,8 +144,6 @@ public class MoverUnidad {
 			nuevaFrame.getContentPane().add(panelPosicion);
 			nuevaFrame.show();
 		}
-		private int getX(){ return posX; }
-		private int getY(){ return posY; }
 	}
 
 	public void limpiar() {

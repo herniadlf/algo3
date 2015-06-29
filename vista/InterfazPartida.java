@@ -51,11 +51,6 @@ public class InterfazPartida {
 	    labelColor.setBounds(0,0,imagenBandera.getIconWidth(),imagenBandera.getIconHeight());
 	    panelJuego.add(labelColor);
 	    
-	    ImageIcon banner = new ImageIcon(ruta+"banner.png");
-	    JLabel labelBanner = new JLabel(banner);
-	    labelColor.setBounds(0,0,banner.getIconWidth(),banner.getIconHeight());
-	    panelJuego.add(labelBanner);
-	    
 		JTextArea informacion = new JTextArea("Nombre: " + jugador.getNombre() +"\n");
 		informacion.setSize(150, 400);		
 		informacion.setLineWrap(true);
@@ -65,6 +60,7 @@ public class InterfazPartida {
 		informacion.append("Turno: " + controladorJuego.getTurno() );
 		informacion.append("\n Tamaño del Mapa: " + controladorJuego.getMapa().getTamanioMapa());
 		informacion.append("\n Poblacion Actual:" + jugador.getPoblacionActual() +"\n Poblacion Disponible "+jugador.getPoblacionDisponible());
+		informacion.append("\n Ataques restantes: " + (10 - jugador.getAtaquesPermitidosPorTurno().obtenerAtaquesPermitidos()) ); 
 		panelJuego.add(informacion);
 		
 		JButton cambioTurno = new JButton("Fin turno");
@@ -74,6 +70,7 @@ public class InterfazPartida {
 			public void actionPerformed(ActionEvent e) {
 				try {
 					controladorJuego.pasarTurno();
+					JOptionPane.showMessageDialog(null, "Turno finalizado!");
 					limpiar();
 					cargar(ip);
 				} catch (ExcepcionErrorPasoDeTurno
