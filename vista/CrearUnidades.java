@@ -143,7 +143,7 @@ public class CrearUnidades extends CargarInformacionUnidades {
 
 		frameCrear.getContentPane().add(panelCreacion);
 		frameCrear.setSize(700, 500);
-		frameCrear.setLocation(650,250);
+		frameCrear.setLocation(450,250);
 		frameCrear.show();
 		
 	}

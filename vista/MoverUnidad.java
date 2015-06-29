@@ -51,7 +51,7 @@ public class MoverUnidad {
 		
 		frameMover.getContentPane().add(unPanel);
 		frameMover.pack();
-		frameMover.setLocation(650,250);
+		frameMover.setLocation(450,250);
 		frameMover.show();
 		
 	}

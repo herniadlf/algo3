@@ -70,7 +70,7 @@ public class TransportarUnidad {
 		
 		frameTransportar.getContentPane().add(unPanel);
 		frameTransportar.pack();
-		frameTransportar.setLocation(650,250);
+		frameTransportar.setLocation(450,250);
 		frameTransportar.show();
 	}
 
@@ -107,6 +107,12 @@ public class TransportarUnidad {
 		unPanel.setLayout(gL);
 		JLabel labelTransportar = new JLabel ("Una vez cargadas las unidades, haga click en el boton transportar\n");
 		JButton botonTransportar = generarBotonTransportar(naveTransporte);
+
+		unPanel.add(labelTransportar);
+		unPanel.add(botonTransportar);
+		
+		unPanel.add(new JLabel(""));
+		unPanel.add(new JLabel(""));
 		
 		for (int i = 0; i < listaUnidades.size(); i++){
 			final Unidad aTransportar = listaUnidades.get(i);
@@ -135,10 +141,7 @@ public class TransportarUnidad {
 				unPanel.add(botonCargar);	
 			}
 		}
-		unPanel.add(new JLabel(""));
-		unPanel.add(new JLabel(""));
-		unPanel.add(labelTransportar);
-		unPanel.add(botonTransportar);
+		
 		frameTransportar.getContentPane().add(unPanel);
 		frameTransportar.pack();
 		frameTransportar.show();

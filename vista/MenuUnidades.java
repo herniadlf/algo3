@@ -145,7 +145,7 @@ public class MenuUnidades {
 		
 		frameMenuUnidades.getContentPane().add(panelUnidades);
 		frameMenuUnidades.setSize(700, 500);
-		frameMenuUnidades.setLocation(650,250);
+		frameMenuUnidades.setLocation(450,250);
 		frameMenuUnidades.show();
 		
 		

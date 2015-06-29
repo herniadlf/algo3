@@ -38,13 +38,14 @@ public class Escudo{
 	
 	public void pasoTurno(){
 		
-		if(resistenciaActual + REGENERACION_POR_TURNO <= resistenciaTotal){
-			resistenciaActual = resistenciaActual + REGENERACION_POR_TURNO;
-		}
-		else {
-			resistenciaActual = resistenciaTotal;	
-		}
 		
+			if(resistenciaActual + REGENERACION_POR_TURNO <= resistenciaTotal){
+				resistenciaActual = resistenciaActual + REGENERACION_POR_TURNO;
+			}
+			else {
+				resistenciaActual = resistenciaTotal;	
+			}
+			
 	}
-
+	
 }

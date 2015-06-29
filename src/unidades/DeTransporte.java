@@ -2,8 +2,10 @@ package src.unidades;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
+
 import excepciones.ExcepcionElTransporteEstaLleno;
 import excepciones.ExcepcionElTransporteNoEstaEnElAlcancePermitido;
+import excepciones.ExcepcionFueraDelRangoDeVision;
 import excepciones.ExcepcionNoHayLugarParaCrear;
 import excepciones.ExcepcionNoPuedeMoverseUnidad;
 import excepciones.ExcepcionNoSePuedeTransportar;
@@ -139,4 +141,38 @@ public abstract class DeTransporte extends Unidad {
 		
 	}
 
+
+	public void moverAPosicionDeterminada (int x, int y) throws ExcepcionNoPuedeMoverseUnidad {
+		
+		try {		
+			if ( mapa.distanciaEntreLosPuntos(x, y, getPosicionX(), getPosicionY()) > vision ) { throw new ExcepcionFueraDelRangoDeVision("No puede moverse unidad tan lejos"); }
+			mapa.colocarEn(x, y, this);		
+			if(this.esTerrestre()){
+				
+				mapa.eliminarElementoTerrestreEnPosicion(posicion.getX(), posicion.getY());
+			}
+			if(this.esAereo()) {
+				
+				mapa.eliminarElementoAereoEnPosicion(posicion.getX(), posicion.getY());
+			}
+		
+			Posicion nuevaPosicion = new Posicion(x,y);
+			setPosicion(nuevaPosicion);
+			actualizarUnidadesABordo(getPosicion());
+			jugador.setRangoDeVision(x,y,vision,mapa);
+		
+		}
+		
+		catch (ExcepcionPosicionInvalida | ExcepcionYaHayElementoEnLaPosicion | ExcepcionFueraDelRangoDeVision e) {
+			
+			throw new ExcepcionNoPuedeMoverseUnidad(e);
+		}
+		
+	}
+
+	private void actualizarUnidadesABordo(Posicion pos) throws ExcepcionNoPuedeMoverseUnidad {
+		for (int i = 0; i < unidadesAbordo.size(); i++){
+			unidadesAbordo.get(i).setPosicion(pos);;
+		}		
+	}
 }
