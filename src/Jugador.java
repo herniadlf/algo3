@@ -56,8 +56,8 @@ public class Jugador {
 		setColor(color);
 		setRaza(raza);
 		setPoblacionDisponible(5);
-		//setDinero(200,200);	
-		setDinero(1500, 1500);
+		setDinero(200,200);	
+		//setDinero(1500, 1500);
 		construccionesEnCamino= new ArrayList<Construccion>();	
 		construccionesEnPie= new ArrayList <Construccion>();
 		ataques= new  AtaquesPermitidosPorTurno();
@@ -69,8 +69,8 @@ public class Jugador {
 	public Jugador() {
 		
 		setPoblacionDisponible(5);
-		//setDinero(200,200);	
-		setDinero(1500, 1500);
+		setDinero(200,200);	
+		//setDinero(1500, 1500);
 		this.construccionesEnCamino= new ArrayList<Construccion>();	
 		this.construccionesEnPie= new ArrayList <Construccion>();
 		this.ataques= new  AtaquesPermitidosPorTurno();
