@@ -26,5 +26,12 @@ public class Pilon extends NoExtractora {
 		reglaDeDanio = new ReglaDeDanioProtoss(escudo);
 		
 	}
+	
+	public Escudo getEscudo(){
+		
+		return escudo;
+		
+	}
+		
 		
 }

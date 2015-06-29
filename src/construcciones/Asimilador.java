@@ -25,6 +25,13 @@ public class Asimilador extends Extractora {
 		escudo = new Escudo(ESCUDO,this);
 		reglaDeDanio = new ReglaDeDanioProtoss(escudo);
 		
-	}		
+	}
+	
+	public Escudo getEscudo(){
+		
+		return escudo;
+		
+	}
+		
 	
 }

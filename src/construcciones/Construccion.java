@@ -10,6 +10,7 @@ import excepciones.ExcepcionUnidadNoCorrespondiente;
 import excepciones.ExcepcionYaHayElementoEnLaPosicion;
 import src.Atacable;
 import src.Dinero;
+import src.Escudo;
 import src.Jugador;
 import src.ReglaDeDanio;
 import src.Turno;
@@ -267,6 +268,11 @@ public class Construccion implements Atacable {
 		
 		this.duenio = duenio;
 		
+	}
+	
+	public Escudo getEscudo() {
+		
+		return null;
 	}
 	
 }

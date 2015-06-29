@@ -29,4 +29,10 @@ public class ArchivosTemplarios extends Creadora {
 		
 	}
 	
+	public Escudo getEscudo(){
+		
+		return escudo;
+		
+	}
+		
 }

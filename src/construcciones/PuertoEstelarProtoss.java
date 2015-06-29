@@ -29,5 +29,12 @@ public class PuertoEstelarProtoss extends Creadora {
 		reglaDeDanio = new ReglaDeDanioProtoss(escudo);
 		
 	}
+	
+	public Escudo getEscudo(){
+		
+		return escudo;
+		
+	}
+		
 		
 }

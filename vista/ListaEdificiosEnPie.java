@@ -10,6 +10,9 @@ import javax.swing.JTextArea;
 
 import src.Juego;
 import src.construcciones.Construccion;
+import src.construcciones.Creadora;
+import src.unidades.AltoTemplario;
+import src.unidades.NaveCiencia;
 
 public class ListaEdificiosEnPie {
 
@@ -49,11 +52,26 @@ public class ListaEdificiosEnPie {
 		frameEdificiosEnPie.setSize(700, 500);
 		frameEdificiosEnPie.show();
 	}
+	
 	private String generarTexto(Construccion auxiliar) {
 		
-		return (auxiliar.getNombre() + ". Ubicacion: ( " + auxiliar.getPosicionX() + "," + auxiliar.getPosicionY() + ") Vida: " + auxiliar.getVida().obtenerVida());
+		if(auxiliar.getNombre()== "Nexo Mineral" ||
+		   auxiliar.getNombre()== "Pilon" ||
+		   auxiliar.getNombre()== "Asimilador" ||
+		   auxiliar.getNombre()== "Acceso" ||
+		   auxiliar.getNombre()== "Puerto Estelar Protoss" ||
+		   auxiliar.getNombre()== "Archivos Templarios"){
+			
+			return (auxiliar.getNombre()+"Posicion: ("+auxiliar.getPosicionX()+","+auxiliar.getPosicionY()+") Vida: "+auxiliar.getVida().obtenerVida()+" Escudo: "+ auxiliar.getEscudo().obtenerResistenciaActual()+"\n");
+			
+		}
+			else{
+				
+				return (auxiliar.getNombre()+"Posicion: ("+auxiliar.getPosicionX()+","+auxiliar.getPosicionY()+") Vida: "+auxiliar.getVida().obtenerVida()+"\n");
+			}
 		
 	}
+	
 	public void limpiar() {
 		frameEdificiosEnPie.getContentPane().removeAll();
 		frameEdificiosEnPie.setJMenuBar(null);
