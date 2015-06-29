@@ -28,6 +28,7 @@ public abstract class DeTransporte extends Unidad {
 			verificarNaveVoladora(unidad);
 			
 			mapa.eliminarElementoTerrestreEnPosicion(unidad.getPosicionX(), unidad.getPosicionY());
+			unidad.setPosicion(getPosicion());
 			getUnidadesAbordo().add(unidad);	
 				
 		}
@@ -40,7 +41,7 @@ public abstract class DeTransporte extends Unidad {
 		
 	}
 	
-	private ArrayList<Unidad> getUnidadesAbordo() {
+	public ArrayList<Unidad> getUnidadesAbordo() {
 		
 		return this.unidadesAbordo;
 	}
@@ -81,18 +82,13 @@ public abstract class DeTransporte extends Unidad {
 		
 		int i=0;
 		Mapa mapa = this.getMapa();
-		this.moverAPosicionDeterminada(x, y);
-		mapa.eliminarElementoAereoEnPosicion(this.getPosicionX(), this.getPosicionY());
-		Posicion auxiliar = new Posicion (x,y);
-		this.setPosicion(auxiliar);
-		this.setAlrededores();
+		moverAPosicionDeterminada(x, y);		
+		setAlrededores();
 		
-		while (i< unidadesAbordo.size()){
+		while (!(unidadesAbordo.size() == 0)){
 			Unidad unidad = unidadesAbordo.get(i);
 			this.colocarUnidad(unidad, unidad.getMapa());
-			
-			i++;
-			
+			unidadesAbordo.remove(i);					
 		}
 		
 	} 
