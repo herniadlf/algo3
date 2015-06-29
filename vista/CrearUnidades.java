@@ -24,7 +24,7 @@ import src.construcciones.Creadora;
 import src.unidades.Unidad;
 
 
-public class CrearUnidades extends JFrame {
+public class CrearUnidades extends CargarInformacionUnidades {
 	
 	
 
@@ -46,6 +46,8 @@ public class CrearUnidades extends JFrame {
 	int indiceUnidad;
 	MenuUnidades menuAnterior;
 	JFrame frameCrear;
+	InterfazPrincipal ip;
+	
 	
 	public CrearUnidades(MenuUnidades menuUnidades){
 		menuAnterior = menuUnidades;
@@ -61,17 +63,19 @@ public class CrearUnidades extends JFrame {
 		frameCrear= new JFrame();
 	}	
 		
-	protected void cargar(final InterfazPrincipal ip) throws ExcepcionNoHayConstruccionesCreadoras  {
+	protected void cargar(final InterfazPrincipal interfaz) throws ExcepcionNoHayConstruccionesCreadoras  {
 		
 		JPanel panelCreacion = new JPanel();
-		juego = ip.getJuego();
-		jugador = ip.getJuego().getJugadorActual();
-		unidadesPosibles = jugador.getRaza().getUnidadesPosibles();		
+		juego = interfaz.getJuego();
+		ip= interfaz;
+		
+		cargarJugadores();
+		
 		preraraListaDeCreadoras();
 		
-		JComboBox desplegableUnidades = new JComboBox();
+		desplegableUnidades = new JComboBox();
 		desplegableUnidades.addItem("");
-		JComboBox desplegableEdificios = new JComboBox();
+		desplegableEdificios = new JComboBox();
 		desplegableEdificios.addItem("");
 		
 		
@@ -86,15 +90,7 @@ public class CrearUnidades extends JFrame {
 		
 		cargarListaDesplegableConstrucciones (desplegableEdificios, construccionesIndexadas, construcciones);
 		
-		desplegableEdificios.addItemListener(
-				new ItemListener(){
-					public void itemStateChanged(ItemEvent event){
-						if(event.getStateChange()==ItemEvent.SELECTED)
-							construccion = event.getItem().toString();
-							
-					}
-				}
-			);
+		
 		
 		
 		while (unidadesPosibles.size()>i){
@@ -103,15 +99,9 @@ public class CrearUnidades extends JFrame {
 					i++;
 				}
 		
-		desplegableUnidades.addItemListener(
-				new ItemListener(){
-					public void itemStateChanged(ItemEvent event){
-						if(event.getStateChange()==ItemEvent.SELECTED)
-							unidad= event.getItem().toString();
-							
-					}
-				}
-				);
+		
+		agregarAccionesListasDesplegables(); 
+		
 		
 		
 	
@@ -179,39 +169,50 @@ public class CrearUnidades extends JFrame {
 
 	//------------------------------------------------------------------------------------------------	
 
-	public void cargarListaDesplegableConstrucciones (JComboBox menuDesplegable, ArrayList<Construccion>construccionesIndexadas,
-			ArrayList<Construccion> construccion){
-		int i = 0;
-		while ( i < construccion.size()){
-			menuDesplegable.addItem(Integer.toString(i)+"."+ construccion.get(i).getNombre());
-			construccionesIndexadas.add (construccion.get(i));
-					i++;
-				}
-		
-		
-	}
+	
+	
+	
 
 	//----------------------------------------------------------------------------------------------------
 
-	public final  int obtenerIndiceDeElemento (int posicion, String cadena, String indiceBuscado){
-
-		posicion= cadena.indexOf(".");
-		int i=0;
-		while (i < posicion){
-			
-			indiceBuscado= indiceBuscado+ (cadena.charAt(i));
-			i++;
-			}
-
-		
-		return (Integer.parseInt(indiceBuscado));
-		
-		}
+	
 
 	public void limpiar() {		
 		frameCrear.getContentPane().removeAll();
 		frameCrear.setJMenuBar(null);	
 		frameCrear.setVisible(false);
+	}
+
+	@Override
+	public void agregarAccionesListasDesplegables() {
+		desplegableEdificios.addItemListener(
+				new ItemListener(){
+					public void itemStateChanged(ItemEvent event){
+						if(event.getStateChange()==ItemEvent.SELECTED)
+							construccion = event.getItem().toString();
+							
+					}
+				}
+			);
+		
+		desplegableUnidades.addItemListener(
+				new ItemListener(){
+					public void itemStateChanged(ItemEvent event){
+						if(event.getStateChange()==ItemEvent.SELECTED)
+							unidad= event.getItem().toString();
+							
+					}
+				}
+				);
+		
+		
+	}
+
+	@Override
+	public void cargarJugadores() {
+		jugador = ip.getJuego().getJugadorActual();
+		unidadesPosibles = jugador.getRaza().getUnidadesPosibles();		
+		
 	}
 
 }
