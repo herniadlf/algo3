@@ -123,6 +123,7 @@ import src.unidades.Zealot;
 		frameAtacarConMagia.setTitle("AtaqueConMagia");
 		JPanel panelAtaqueConMagias = new JPanel();
 		
+		
 		desplegableUnidadesMagicas.addItem("");
 		desplegableUnidadesEnemigas.addItem("");
 		desplegableUnidadesAmigas.addItem("");
@@ -131,6 +132,7 @@ import src.unidades.Zealot;
 		cargarListaDesplegablesUnidadesMagicas( desplegableUnidadesMagicas, unidadesMagicas, jugador);
 		caragarListasDesplegablesUnidades (desplegableUnidadesEnemigas, unidadesEnemigasIndexadas,unidadesEnemigas);
 		caragarListasDesplegablesUnidades (desplegableUnidadesAmigas, unidadesAmigasIndexadas,unidadesAmigas);
+		
 		
 		
 		
