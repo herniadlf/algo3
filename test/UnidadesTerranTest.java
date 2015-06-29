@@ -112,6 +112,8 @@ public class UnidadesTerranTest extends TestCase{
 		Assert.assertTrue(nexo.getEscudo().obtenerResistenciaActual() == 250 );
 		jug1.atacarCon(espectro, nexo);
 		Assert.assertTrue(nexo.getEscudo().obtenerResistenciaActual() == 242 );
+		jug1.atacarCon(espectro, nexo);
+		Assert.assertEquals(nexo.getEscudo().obtenerResistenciaActual(),234);
 					
 	}
 	
