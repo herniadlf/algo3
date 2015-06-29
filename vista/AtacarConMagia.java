@@ -198,10 +198,7 @@ import src.unidades.Unidad;
 					 magia1= new JButton ("EMP");
 					 magia2 = new JButton("Radiacion");
 			}
-}
-	
-	
-	
+	}
 	
 	public void CargarAccionAtacarConMagia (){
 		framemagia = new JFrame();

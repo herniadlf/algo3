@@ -1,13 +1,13 @@
 package src.unidades;
 
 
-import excepciones.ExcepcionPosicionInvalida;
+
 import src.Danio;
 import src.Dinero;
 import src.Escudo;
 import src.ReglaDeDanioProtoss;
 import src.Vida;
-import src.mapa.Mapeable;
+
 
 
 public class Zealot extends Unidad {
